@@ -25,7 +25,7 @@ F2 to on/off auto skill 1 2 3 4 an healing Q (On Full-HD Resolution, F2 auto sto
 
 F3 to on/off auto right mouse click
 
-F4 to on/off auto hold right mouse click
+F4 to on/off auto hold right mouse 
 
 
 
