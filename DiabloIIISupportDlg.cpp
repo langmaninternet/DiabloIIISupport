@@ -103,6 +103,7 @@ const int				mainTimerDelay = 30/*ms*/;
 bool					flagOnF1 = false;
 bool					flagOnF2 = false;
 bool					flagOnF3 = false;
+bool					flagOnF4 = false;
 bool					flagOnCtrl5 = false;
 bool					flagOnCtrl6 = false;
 bool					flagOnCtrl9 = false;
@@ -285,6 +286,29 @@ void		SendD3RightMouseClick()
 		Sleep(10 + (rand() % 3));
 	}
 }
+
+
+void		SendD3RightMouseHold()
+{
+	HWND d3Wnd = GetD3Windows();
+	if (d3Wnd)
+	{
+		POINT point = { 0 };
+		GetCursorPos(&point);
+
+		RECT d3Rect = { 0 };
+		GetWindowRect(d3Wnd, &d3Rect);
+
+		LPARAM lParam = (point.x - d3Rect.left) | ((point.y - d3Rect.top) << 16);
+
+		SendMessage(d3Wnd, WM_RBUTTONDOWN, MK_RBUTTON, lParam);
+		Sleep(10 + (rand() % 3));
+		//	SendMessage(d3Wnd, WM_RBUTTONUP, 0, lParam);
+		//	Sleep(10 + (rand() % 3));
+	}
+}
+
+
 void		SendD3Key(int keyCode)
 {
 	HWND d3Wnd = GetD3Windows();
@@ -485,6 +509,16 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK HookProc(int nCode, WPARAM wPa
 				break;
 			case VK_F3:
 				flagOnF3 = !flagOnF3;
+				flagOnF4 = false;
+				flagOnCtrl = false;
+				flagOnCtrl5 = false;
+				flagOnCtrl6 = false;
+				flagOnCtrl9 = false;
+				rightMouseCooldown = 99999;
+				break;
+			case VK_F4:
+				flagOnF4 = !flagOnF4;
+				flagOnF3 = false;
 				flagOnCtrl = false;
 				flagOnCtrl5 = false;
 				flagOnCtrl6 = false;
@@ -1138,13 +1172,13 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 						if (leftMouseCooldown >= d3Config.leftMouseTime)
 						{
 							if (ValidToSendD3Click()) SendD3LeftMouseClick();
-							else
-							{
-								::SendMessageW(d3Wnd, WM_KEYDOWN, d3Config.keyForceStand, 0);
-								Sleep(10);
-								SendD3LeftMouseClick();
-								::SendMessageW(d3Wnd, WM_KEYUP, d3Config.keyForceStand, 0);
-							}
+							//	else
+							//	{
+							//		::SendMessageW(d3Wnd, WM_KEYDOWN, d3Config.keyForceStand, 0);
+							//		Sleep(10);
+							//		SendD3LeftMouseClick();
+							//		::SendMessageW(d3Wnd, WM_KEYUP, d3Config.keyForceStand, 0);
+							//	}
 							leftMouseCooldown = 0;
 						}
 					}
@@ -1158,7 +1192,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				}
 
 
-				if (flagOnF3) GetDlgItem(IDC_RIGHTMOUSETEXT)->SetWindowText(L"Right Mouse (Hotkey F3): \r\n	Running");
+				if (flagOnF3) GetDlgItem(IDC_RIGHTMOUSETEXT)->SetWindowText(L"Right Mouse (Hotkey F3): \r\n	F3-Running");
 				if (flagOnF3 && (d3GameStatus.flagIsOpenKadala || d3GameStatus.flagIsOpenStash == false))
 				{
 					GetDlgItem(IDC_RIGHTMOUSETEXT)->EnableWindow(FALSE);
@@ -1170,24 +1204,58 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 						if (rightMouseCooldown >= d3Config.leftMouseTime)
 						{
 							if (ValidToSendD3Click()) SendD3RightMouseClick();
-							else
-							{
-								::SendMessageW(d3Wnd, WM_KEYDOWN, d3Config.keyForceStand, 0);
-								Sleep(10);
-								SendD3RightMouseClick();
-								::SendMessageW(d3Wnd, WM_KEYUP, d3Config.keyForceStand, 0);
-							}
+							//	else
+							//	{
+							//		::SendMessageW(d3Wnd, WM_KEYDOWN, d3Config.keyForceStand, 0);
+							//		Sleep(10);
+							//		SendD3RightMouseClick();
+							//		::SendMessageW(d3Wnd, WM_KEYUP, d3Config.keyForceStand, 0);
+							//	}
 							rightMouseCooldown = 0;
 						}
 					}
 				}
 				else
 				{
-					GetDlgItem(IDC_RIGHTMOUSETEXT)->SetWindowText(L"Right Mouse (Hotkey F3): ");
+					GetDlgItem(IDC_RIGHTMOUSETEXT)->SetWindowText(L"Right Mouse (F3-Click F4-Hold): ");
 					GetDlgItem(IDC_RIGHTMOUSETEXT)->EnableWindow(TRUE);
 					GetDlgItem(IDC_RIGHTMOUSETEXTMS)->EnableWindow(TRUE);
 					GetDlgItem(IDC_RIGHTMOUSETIME)->EnableWindow(TRUE);
 				}
+
+
+				if (flagOnF4) GetDlgItem(IDC_RIGHTMOUSETEXT)->SetWindowText(L"Right Mouse (Hotkey F4): \r\n	F4-Holding");
+				if (flagOnF4 && (d3GameStatus.flagIsOpenKadala || d3GameStatus.flagIsOpenStash == false))
+				{
+					GetDlgItem(IDC_RIGHTMOUSETEXT)->EnableWindow(FALSE);
+					GetDlgItem(IDC_RIGHTMOUSETEXTMS)->EnableWindow(FALSE);
+					GetDlgItem(IDC_RIGHTMOUSETIME)->EnableWindow(FALSE);
+					if (d3Wnd != 0)
+					{
+						rightMouseCooldown += mainTimerDelay;
+						if (rightMouseCooldown >= d3Config.leftMouseTime)
+						{
+							if (ValidToSendD3Click()) SendD3RightMouseHold();
+							//	else
+							//	{
+							//		::SendMessageW(d3Wnd, WM_KEYDOWN, d3Config.keyForceStand, 0);
+							//		Sleep(10);
+							//		SendD3RightMouseHold();
+							//		::SendMessageW(d3Wnd, WM_KEYUP, d3Config.keyForceStand, 0);
+							//	}
+							rightMouseCooldown = 0;
+						}
+					}
+				}
+				else
+				{
+					GetDlgItem(IDC_RIGHTMOUSETEXT)->SetWindowText(L"Right Mouse (F3-Click F4-Hold): ");
+					GetDlgItem(IDC_RIGHTMOUSETEXT)->EnableWindow(TRUE);
+					GetDlgItem(IDC_RIGHTMOUSETEXTMS)->EnableWindow(TRUE);
+					GetDlgItem(IDC_RIGHTMOUSETIME)->EnableWindow(TRUE);
+				}
+
+
 
 
 			}
