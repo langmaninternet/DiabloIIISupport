@@ -532,7 +532,6 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK HookProc(int nCode, WPARAM wPa
 				flagOnCtrl6 = false;
 				flagOnCtrl9 = false;
 				flagOnWizSingleShot = false;
-				StopStarPact();
 				flagConfirmNextArchon = false;
 				break;
 
@@ -583,16 +582,7 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK HookProc(int nCode, WPARAM wPa
 				flagOnCtrl = true;
 				break;
 			default:
-				if (flagOnWizSingleShot == false && (d3Config.modeArchonEnable || d3Config.modeFireBirdEnable))
-				{
-					if ((keyParam->vkCode == d3Config.keyWizSingleShot) || (d3Config.keyWizSingleShot == L'~' && keyParam->vkCode == VK_OEM_3))
-					{
-						StopStarPact();
-						Sleep(10);
-						StartStarPact();
-						flagOnWizSingleShot = true;
-					}
-				}
+				
 				break;
 			}
 		}
@@ -892,57 +882,6 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 		{
 			flagOnProcess = true;
 
-			/************************************************************************/
-			/* Archon                                                               */
-			/************************************************************************/
-			if (d3Config.modeArchonEnable)
-			{
-				wchar_t bufferWizKey[100] = { 0 };
-				if (d3Config.keyWizSingleShot == L' ') wcscpy(bufferWizKey, L"Space");
-				else if (d3Config.keyWizSingleShot == VK_SHIFT) wcscpy(bufferWizKey, L"Shift");
-				else if (d3Config.keyWizSingleShot == VK_LBUTTON) wcscpy(bufferWizKey, L"LeftMouse");
-				else if (d3Config.keyWizSingleShot == VK_RBUTTON) wcscpy(bufferWizKey, L"RightMouse");
-				else swprintf_s(bufferWizKey, L"%lc", d3Config.keyWizSingleShot);
-
-				if (archonShootCoolDown <= mainTimerDelay)
-				{
-					if (flagConfirmNextArchon)
-					{
-						StartStarPact();
-						flagOnWizSingleShot = true;
-						archonShootCoolDown = archonCycleTime;
-					}
-					else archonShootCoolDown = coeCycleTime;
-				}
-				if (archonShootCoolDown > 0 && startedArchonCyle)
-				{
-					CString buffer;
-					if (flagConfirmNextArchon == false)
-					{
-						if (archonShootCoolDown > 0)
-						{
-							//buffer.AppendFormat(L"Press %ls to cast new cycle rotation\r\nPress 9 to auto cast in %0.2lfs", bufferWizKey, archonShootCoolDown / 1000.0);
-							buffer.AppendFormat(L"Press 9 to auto cast in %0.2lfs", archonShootCoolDown / 1000.0);
-						}
-						else
-						{
-							buffer.AppendFormat(L"Cast..");
-						}
-					}
-					else
-					{
-						buffer.AppendFormat(L"Auto cast in %0.3lfs (Press 0 to skip)", archonShootCoolDown / 1000.0);
-					}
-					if (buffer.GetLength() == 0) buffer.AppendFormat(L"Press %ls to cast new cycle rotation", bufferWizKey);
-					wcscpy_s(overlayStr, 999, buffer.GetBuffer());
-				}
-			}
-			else
-			{
-				overlayStr[0] = NULL;
-			}
-
-
 
 			WCHAR bufferActive[100] = L"Found";
 			if (d3GameStatus.flagInAttackMode)
@@ -983,49 +922,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			);
 			GetDlgItem(IDC_DEBUGINFO)->SetWindowTextW(debugInfo);
 
-			/************************************************************************/
-			/* Wiz                                                                  */
-			/************************************************************************/
-			if (flagOnWizSingleShot)
-			{
-				archonShootStartTime = GetTickCount();
-				archonShootCoolDown = archonCycleTime;
-				flagConfirmNextArchon = false;
-				startedArchonCyle = true;
-				if (d3Config.fullCycleEnable)
-				{
 
-					ArchonStarPactFullCycle(
-						d3Config.keyBlackHole,
-						d3Config.keyWaveOfForce,
-						d3Config.keyMeteor,
-						d3Config.keyArchon,
-						d3Config.keyPrimary,
-						d3Config.keySecondary,
-						d3Config.keyForceStand
-					);
-				}
-				else
-				{
-					ArchonStarPactSCycle(
-						d3Config.keyBlackHole,
-						d3Config.keyWaveOfForce,
-						d3Config.keyMeteor,
-						d3Config.keyArchon,
-						d3Config.keyPrimary,
-						d3Config.keySecondary,
-						d3Config.keyForceStand
-					);
-				}
-				flagOnWizSingleShot = false;
-				StopStarPact();
-
-				GetDlgItem(IDC_SINGLESHOTHOTKEYTEXT)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-				GetDlgItem(IDC_SINGLESHOTHOTKEYFORTEXT)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-				GetDlgItem(IDC_SINGLESHOTHOTCASTMETEORONLY)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-				GetDlgItem(IDC_SINGLESHOTHOTCASTFULLCYCLE)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-				OnShowSkillKey(IDC_SINGLESHOTHOTKEY, d3Config.keyWizSingleShot);
-			}
 			GetCurrentDiabloIIStatus();
 
 

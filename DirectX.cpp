@@ -14,7 +14,6 @@
 
 
 wchar_t overlayStr[1000] = L"";
-extern  bool				flagOnWizCycle;
 IDirect3DDevice9Ex* p_Device = 0;
 ID3DXFont* pFont;
 //ID3DXLine* p_Line;

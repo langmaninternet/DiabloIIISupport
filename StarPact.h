@@ -49,11 +49,6 @@ public:
 /************************************************************************/
 /* StarPact Engine                                                      */
 /************************************************************************/
-void		ArchonStarPactSCycle(const wchar_t blackHoleKey, wchar_t wayOfForceKey, wchar_t meteorKey, wchar_t archonKey, wchar_t primaryKey, wchar_t secondaryKey, wchar_t forceStandKey);
-
-void		ArchonStarPactFullCycle(const wchar_t blackHoleKey, wchar_t wayOfForceKey, wchar_t meteorKey, wchar_t archonKey, wchar_t primaryKey, wchar_t secondaryKey, wchar_t forceStandKey);
-void		StartStarPact(void);
-void		StopStarPact(void);
 void		StarPactDumpData(void);
 
 
