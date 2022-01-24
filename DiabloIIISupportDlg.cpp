@@ -45,9 +45,6 @@ struct DiabloIIISupportConfig
 	int		skill03Enable;
 	int		skill04Enable;
 	int		healingEnable;
-	int		modeFireBirdEnable;
-	int		modeArchonEnable;
-	int		fullCycleEnable;
 
 
 	int     currentProfile;
@@ -64,9 +61,7 @@ struct DiabloIIISupportConfig
 	int		profileskill03Enable[maxProfileNumber + 1];
 	int		profileskill04Enable[maxProfileNumber + 1];
 	int		profilehealingEnable[maxProfileNumber + 1];
-	int		profilemodeFireBirdEnable[maxProfileNumber + 1];
-	int		profilemodeArchonEnable[maxProfileNumber + 1];
-	int		profilelightingBlastEnable[maxProfileNumber + 1];
+
 
 	wchar_t	keySKill01;
 	wchar_t	keySKill02;
@@ -75,13 +70,6 @@ struct DiabloIIISupportConfig
 	wchar_t	keyHealing;
 	wchar_t keyForceClose;
 	wchar_t keyForceStand;
-	wchar_t keyBlackHole;
-	wchar_t keyWaveOfForce;
-	wchar_t keyPrimary;
-	wchar_t keySecondary;
-	wchar_t keyMeteor;
-	wchar_t keyArchon;
-	wchar_t keyWizSingleShot;
 
 
 
@@ -107,7 +95,6 @@ bool					flagOnF4 = false;
 bool					flagOnCtrl5 = false;
 bool					flagOnCtrl6 = false;
 bool					flagOnCtrl9 = false;
-bool					flagOnWizSingleShot = false;
 bool					flagOnProcess = false;
 int						leftMouseCooldown;
 int						rightMouseCooldown;
@@ -118,12 +105,8 @@ int						skillSlot04Cooldown;
 HHOOK					hGlobalHook;
 
 
-DWORD					archonShootStartTime;
-int						archonShootCoolDown;
-bool					flagConfirmNextArchon;
-const int   			archonCycleTime = 32000/*ms*/;
-const int				coeCycleTime = 16000/*ms*/;
-bool					startedArchonCyle = false;
+
+
 
 /************************************************************************/
 /* Process Function                                                     */
@@ -167,10 +150,7 @@ void		ValidateD3Config(void)
 	if (d3Config.skill03Enable != 0) d3Config.skill03Enable = 1;
 	if (d3Config.skill04Enable != 0) d3Config.skill04Enable = 1;
 	if (d3Config.healingEnable != 0) d3Config.healingEnable = 1;
-	if (d3Config.modeArchonEnable != 0) d3Config.modeArchonEnable = 1;
-	if (d3Config.modeFireBirdEnable != 0) d3Config.modeFireBirdEnable = 1;
 	if (d3Config.currentProfile < 0 || d3Config.currentProfile >= maxProfileNumber) d3Config.currentProfile = 0;
-	if (d3Config.fullCycleEnable != 0) d3Config.fullCycleEnable = 1;
 
 	for (int iprofile = 0; iprofile < maxProfileNumber; iprofile++)
 	{
@@ -197,9 +177,6 @@ void		ValidateD3Config(void)
 		if (d3Config.profileskill03Enable[iprofile] != 0) d3Config.profileskill03Enable[iprofile] = 1;
 		if (d3Config.profileskill04Enable[iprofile] != 0) d3Config.profileskill04Enable[iprofile] = 1;
 		if (d3Config.profilehealingEnable[iprofile] != 0) d3Config.profilehealingEnable[iprofile] = 1;
-		if (d3Config.profilemodeFireBirdEnable[iprofile] != 0) d3Config.profilemodeFireBirdEnable[iprofile] = 1;
-		if (d3Config.profilemodeArchonEnable[iprofile] != 0) d3Config.profilemodeArchonEnable[iprofile] = 1;
-		if (d3Config.profilelightingBlastEnable[iprofile] != 0) d3Config.profilelightingBlastEnable[iprofile] = 1;
 	}
 
 
@@ -215,13 +192,6 @@ void		ValidateD3Config(void)
 
 	//wiz
 	ValidateD3Key(d3Config.keyForceStand, VK_SHIFT);
-	ValidateD3Key(d3Config.keyWaveOfForce, '1');
-	ValidateD3Key(d3Config.keyMeteor, '2');
-	ValidateD3Key(d3Config.keyPrimary, VK_LBUTTON);
-	ValidateD3Key(d3Config.keySecondary, VK_RBUTTON);
-	ValidateD3Key(d3Config.keyBlackHole, '3');
-	ValidateD3Key(d3Config.keyArchon, '4');
-	ValidateD3Key(d3Config.keyWizSingleShot, '~');
 
 
 
@@ -231,10 +201,7 @@ void		ValidateD3Config(void)
 	d3Config.healingTime = mainTimerDelay;
 }
 
-bool		IsEnableArchon(void)
-{
-	return d3Config.modeArchonEnable;
-}
+
 HWND		GetD3Windows(void)
 {
 	HWND d3Wnd = FindWindowW(L"D3 Main Window Class", L"Diablo III");
@@ -474,17 +441,6 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK HookProc(int nCode, WPARAM wPa
 		}
 		else if (wParam == WM_KEYDOWN)
 		{
-			if (archonShootCoolDown > 0 && flagConfirmNextArchon == false && keyParam->vkCode == 0x39/*'9'*/)
-			{
-				flagConfirmNextArchon = true;
-			}
-			if (flagConfirmNextArchon == true && keyParam->vkCode == 0x30/*'.'*/)
-			{
-				flagConfirmNextArchon = false;
-			}
-
-
-
 			switch (keyParam->vkCode)
 			{
 			case VK_F1:
@@ -531,8 +487,6 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK HookProc(int nCode, WPARAM wPa
 				flagOnCtrl5 = false;
 				flagOnCtrl6 = false;
 				flagOnCtrl9 = false;
-				flagOnWizSingleShot = false;
-				flagConfirmNextArchon = false;
 				break;
 
 #ifdef _DEBUG
@@ -645,18 +599,7 @@ BEGIN_MESSAGE_MAP(CDiabloIIISupportDlg, CDialogEx)
 	ON_EN_KILLFOCUS(IDC_SKILLKEY03, &CDiabloIIISupportDlg::OnKillFocusSkillKey03)
 	ON_EN_KILLFOCUS(IDC_SKILLKEY04, &CDiabloIIISupportDlg::OnKillFocusSkillKey04)
 	ON_EN_KILLFOCUS(IDC_HEALINGKEY, &CDiabloIIISupportDlg::OnKillfocusHealingKey)
-	ON_BN_CLICKED(IDC_WIZARCHONCHECK, &CDiabloIIISupportDlg::OnBnClickedWizArchoncheck)
-	ON_EN_KILLFOCUS(IDC_METEORKEY, &CDiabloIIISupportDlg::OnKillFocusMeteorKey)
-	ON_BN_CLICKED(IDC_WIZFIREBRIDCHECK, &CDiabloIIISupportDlg::OnBnClickedWizFireBridCheck)
 	ON_EN_KILLFOCUS(IDC_FORCESTANDKEY, &CDiabloIIISupportDlg::OnKillFocusForceStandKey)
-	ON_EN_KILLFOCUS(IDC_ARCHONKEY, &CDiabloIIISupportDlg::OnKillFocusArchonKey)
-	ON_EN_KILLFOCUS(IDC_SINGLESHOTHOTKEY, &CDiabloIIISupportDlg::OnKillFocusSingleShotHotKey)
-	ON_EN_KILLFOCUS(IDC_BLACKHOLEKEY, &CDiabloIIISupportDlg::OnKillFocusBlackHoleKey)
-	ON_EN_KILLFOCUS(IDC_WAVEOFFORCEKEY, &CDiabloIIISupportDlg::OnKillFocusWaveOfForceKey)
-	ON_EN_KILLFOCUS(IDC_PRIMARYSKILLKEY, &CDiabloIIISupportDlg::OnKillFocusPrimarySkillKey)
-	ON_EN_KILLFOCUS(IDC_SECONDARYSKILLKEY, &CDiabloIIISupportDlg::OnKillFocusSecondarySkillKey)
-	ON_BN_CLICKED(IDC_SINGLESHOTHOTCASTMETEORONLY, &CDiabloIIISupportDlg::OnBnClickedSingleshothotcastmeteoronly)
-	ON_BN_CLICKED(IDC_SINGLESHOTHOTCASTFULLCYCLE, &CDiabloIIISupportDlg::OnBnClickedSingleshothotcastfullcycle)
 	ON_BN_CLICKED(IDC_OVERLAY, &CDiabloIIISupportDlg::OnBnClickedOverlay)
 END_MESSAGE_MAP()
 
@@ -758,30 +701,13 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 	((CButton*)GetDlgItem(IDC_HEALINGCHECK))->SetCheck(d3Config.healingEnable);
 
 
-	((CButton*)GetDlgItem(IDC_SINGLESHOTHOTCASTMETEORONLY))->SetCheck(d3Config.fullCycleEnable == false);
-	((CButton*)GetDlgItem(IDC_SINGLESHOTHOTCASTFULLCYCLE))->SetCheck(d3Config.fullCycleEnable);
 
 	OnShowSkillKey(IDC_SKILLKEY01, d3Config.keySKill01);
 	OnShowSkillKey(IDC_SKILLKEY02, d3Config.keySKill02);
 	OnShowSkillKey(IDC_SKILLKEY03, d3Config.keySKill03);
 	OnShowSkillKey(IDC_SKILLKEY04, d3Config.keySKill04);
 	OnShowSkillKey(IDC_HEALINGKEY, d3Config.keyHealing);
-	OnShowSkillKey(IDC_ARCHONKEY, d3Config.keyArchon);
-	OnShowSkillKey(IDC_METEORKEY, d3Config.keyMeteor);
 	OnShowSkillKey(IDC_FORCESTANDKEY, d3Config.keyForceStand);
-	OnShowSkillKey(IDC_SINGLESHOTHOTKEY, d3Config.keyWizSingleShot);
-	OnShowSkillKey(IDC_BLACKHOLEKEY, d3Config.keyBlackHole);
-	OnShowSkillKey(IDC_WAVEOFFORCEKEY, d3Config.keyWaveOfForce);
-	OnShowSkillKey(IDC_PRIMARYSKILLKEY, d3Config.keyPrimary);
-	OnShowSkillKey(IDC_SECONDARYSKILLKEY, d3Config.keySecondary);
-
-	GetDlgItem(IDC_METEORTEXT)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	GetDlgItem(IDC_METEORKEY)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	GetDlgItem(IDC_SINGLESHOTHOTKEYTEXT)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	GetDlgItem(IDC_SINGLESHOTHOTKEYFORTEXT)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	GetDlgItem(IDC_SINGLESHOTHOTCASTMETEORONLY)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	GetDlgItem(IDC_SINGLESHOTHOTCASTFULLCYCLE)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	GetDlgItem(IDC_SINGLESHOTHOTKEY)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
 
 
 
@@ -796,15 +722,10 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 		GetDlgItem(profileID[iprofile])->SetWindowTextW(currentProfileName);
 	}
 
-	((CButton*)GetDlgItem(IDC_WIZFIREBRIDCHECK))->SetCheck(d3Config.modeFireBirdEnable);
-	((CButton*)GetDlgItem(IDC_WIZARCHONCHECK))->SetCheck(d3Config.modeArchonEnable);
-
 
 
 	
 
-	d3Config.modeArchonEnable = !d3Config.modeArchonEnable;
-	OnBnClickedWizArchoncheck();
 
 	hGlobalHook = SetWindowsHookEx(WH_KEYBOARD_LL, HookProc, GetModuleHandle(NULL), 0);
 
@@ -871,12 +792,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 {
 	if (mainTimerID == nIdEvent)
 	{
-		if (archonShootCoolDown > -mainTimerDelay) archonShootCoolDown -= mainTimerDelay;
-		if (archonShootStartTime > 0)
-		{
-			DWORD delayArchonTime = GetTickCount() - archonShootStartTime;
-			if (delayArchonTime < archonCycleTime) archonShootCoolDown = archonCycleTime - delayArchonTime;
-		}
+
 
 		if (flagOnProcess == false)
 		{
@@ -945,11 +861,6 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 						SendD3Key(d3GameStatus.skill01Key);
 						overlayString += L"Auto press skill 1\n";
 					}
-					else if (d3Config.profilemodeArchonEnable && d3GameStatus.flagSkill01IsReadyToAndNeedAutoPress && d3GameStatus.flagInArchonMode)
-					{
-						SendD3Key(d3Config.keySKill01);
-						overlayString += L"Auto press skill 1\n";
-					}
 					if (d3GameStatus.flagSkill02IsReadyToAndNeedAutoPress && d3GameStatus.skill02Key && (d3GameStatus.flagInAttackMode || d3GameStatus.flagInArchonMode))
 					{
 						SendD3Key(d3GameStatus.skill02Key);
@@ -965,11 +876,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 						SendD3Key(d3GameStatus.skill04Key);
 						overlayString += L"Auto press skill 4\n";
 					}
-					if ((d3GameStatus.flagIsDemonHunter || d3GameStatus.flagIsMonk) && d3Config.modeArchonEnable)
-					{
-						OnBnClickedWizArchoncheck();
-						((CButton*)GetDlgItem(IDC_WIZARCHONCHECK))->SetCheck(d3Config.modeArchonEnable);
-					}
+					
 				}
 
 
@@ -1623,34 +1530,11 @@ void CDiabloIIISupportDlg::OnKillFocusForceStandKey()
 {
 	OnKillFocusSkillKey(IDC_FORCESTANDKEY, d3Config.keyForceStand);
 }
-void CDiabloIIISupportDlg::OnKillFocusSingleShotHotKey()
-{
-	OnKillFocusSkillKey(IDC_SINGLESHOTHOTKEY, d3Config.keyWizSingleShot);
-}
-void CDiabloIIISupportDlg::OnKillFocusMeteorKey()
-{
-	OnKillFocusSkillKey(IDC_METEORKEY, d3Config.keyMeteor);
-}
-void CDiabloIIISupportDlg::OnKillFocusArchonKey()
-{
-	OnKillFocusSkillKey(IDC_ARCHONKEY, d3Config.keyArchon);
-}
-void CDiabloIIISupportDlg::OnKillFocusBlackHoleKey()
-{
-	OnKillFocusSkillKey(IDC_BLACKHOLEKEY, d3Config.keyBlackHole);
-}
-void CDiabloIIISupportDlg::OnKillFocusWaveOfForceKey()
-{
-	OnKillFocusSkillKey(IDC_WAVEOFFORCEKEY, d3Config.keyWaveOfForce);
-}
-void CDiabloIIISupportDlg::OnKillFocusPrimarySkillKey()
-{
-	OnKillFocusSkillKey(IDC_PRIMARYSKILLKEY, d3Config.keyPrimary);
-}
-void CDiabloIIISupportDlg::OnKillFocusSecondarySkillKey()
-{
-	OnKillFocusSkillKey(IDC_SECONDARYSKILLKEY, d3Config.keySecondary);
-}
+
+
+
+
+
 
 
 
@@ -1703,77 +1587,6 @@ void CDiabloIIISupportDlg::OnClickedHealingCheck()
 	GetDlgItem(IDC_HEALINGTEXTMS)->EnableWindow(d3Config.healingEnable);
 	OnSaveConfig();
 }
-void CDiabloIIISupportDlg::OnBnClickedWizArchoncheck()
-{
-	d3Config.modeArchonEnable = !d3Config.modeArchonEnable;
-	d3Config.profilemodeArchonEnable[d3Config.currentProfile] = d3Config.modeArchonEnable;
-	GetDlgItem(IDC_ARCHONTEXT)->EnableWindow(d3Config.modeArchonEnable);
-	GetDlgItem(IDC_ARCHONKEY)->EnableWindow(d3Config.modeArchonEnable);
-	GetDlgItem(IDC_BLACKHOLETEXT)->EnableWindow(d3Config.modeArchonEnable);
-	GetDlgItem(IDC_BLACKHOLEKEY)->EnableWindow(d3Config.modeArchonEnable);
-	GetDlgItem(IDC_WAVEOFFORCEKEYTEXT)->EnableWindow(d3Config.modeArchonEnable);
-	GetDlgItem(IDC_WAVEOFFORCEKEY)->EnableWindow(d3Config.modeArchonEnable);
-	GetDlgItem(IDC_PRIMARYSKILLKEYTEXT)->EnableWindow(d3Config.modeArchonEnable);
-	GetDlgItem(IDC_PRIMARYSKILLKEY)->EnableWindow(d3Config.modeArchonEnable);
-	GetDlgItem(IDC_SECONDARYSKILLKEYTEXT)->EnableWindow(d3Config.modeArchonEnable);
-	GetDlgItem(IDC_SECONDARYSKILLKEY)->EnableWindow(d3Config.modeArchonEnable);
-	if (d3Config.modeArchonEnable)
-	{
-		d3Config.modeFireBirdEnable = 0;
-		((CButton*)GetDlgItem(IDC_WIZFIREBRIDCHECK))->SetCheck(0);
-	}
-	GetDlgItem(IDC_METEORTEXT)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	GetDlgItem(IDC_METEORKEY)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	GetDlgItem(IDC_SINGLESHOTHOTKEYTEXT)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	GetDlgItem(IDC_SINGLESHOTHOTKEYFORTEXT)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	GetDlgItem(IDC_SINGLESHOTHOTCASTMETEORONLY)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	GetDlgItem(IDC_SINGLESHOTHOTCASTFULLCYCLE)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	GetDlgItem(IDC_SINGLESHOTHOTKEY)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	OnSaveConfig();
-}
-void CDiabloIIISupportDlg::OnBnClickedWizFireBridCheck()
-{
-	d3Config.modeFireBirdEnable = !d3Config.modeFireBirdEnable;
-	d3Config.profilemodeFireBirdEnable[d3Config.currentProfile] = !d3Config.modeFireBirdEnable;
-	if (d3Config.modeFireBirdEnable)
-	{
-		d3Config.modeArchonEnable = 0;
-		((CButton*)GetDlgItem(IDC_WIZARCHONCHECK))->SetCheck(0);
-		GetDlgItem(IDC_ARCHONTEXT)->EnableWindow(d3Config.modeArchonEnable);
-		GetDlgItem(IDC_ARCHONKEY)->EnableWindow(d3Config.modeArchonEnable);
-		GetDlgItem(IDC_BLACKHOLETEXT)->EnableWindow(d3Config.modeArchonEnable);
-		GetDlgItem(IDC_BLACKHOLEKEY)->EnableWindow(d3Config.modeArchonEnable);
-		GetDlgItem(IDC_WAVEOFFORCEKEYTEXT)->EnableWindow(d3Config.modeArchonEnable);
-		GetDlgItem(IDC_WAVEOFFORCEKEY)->EnableWindow(d3Config.modeArchonEnable);
-		GetDlgItem(IDC_PRIMARYSKILLKEYTEXT)->EnableWindow(d3Config.modeArchonEnable);
-		GetDlgItem(IDC_PRIMARYSKILLKEY)->EnableWindow(d3Config.modeArchonEnable);
-		GetDlgItem(IDC_SECONDARYSKILLKEYTEXT)->EnableWindow(d3Config.modeArchonEnable);
-		GetDlgItem(IDC_SECONDARYSKILLKEY)->EnableWindow(d3Config.modeArchonEnable);
-	}
-	GetDlgItem(IDC_METEORTEXT)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	GetDlgItem(IDC_METEORKEY)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	GetDlgItem(IDC_SINGLESHOTHOTKEYTEXT)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	GetDlgItem(IDC_SINGLESHOTHOTKEYFORTEXT)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	GetDlgItem(IDC_SINGLESHOTHOTCASTMETEORONLY)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	GetDlgItem(IDC_SINGLESHOTHOTCASTFULLCYCLE)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	GetDlgItem(IDC_SINGLESHOTHOTKEY)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	OnSaveConfig();
-}
-void CDiabloIIISupportDlg::OnBnClickedSingleshothotcastmeteoronly()
-{
-	d3Config.fullCycleEnable = !d3Config.fullCycleEnable;
-	((CButton*)GetDlgItem(IDC_SINGLESHOTHOTCASTMETEORONLY))->SetCheck(d3Config.fullCycleEnable == false);
-	((CButton*)GetDlgItem(IDC_SINGLESHOTHOTCASTFULLCYCLE))->SetCheck(d3Config.fullCycleEnable);
-	OnSaveConfig();
-}
-void CDiabloIIISupportDlg::OnBnClickedSingleshothotcastfullcycle()
-{
-	d3Config.fullCycleEnable = !d3Config.fullCycleEnable;
-	((CButton*)GetDlgItem(IDC_SINGLESHOTHOTCASTMETEORONLY))->SetCheck(d3Config.fullCycleEnable == false);
-	((CButton*)GetDlgItem(IDC_SINGLESHOTHOTCASTFULLCYCLE))->SetCheck(d3Config.fullCycleEnable);
-	OnSaveConfig();
-}
-
 
 
 
@@ -1803,8 +1616,6 @@ void CDiabloIIISupportDlg::OnBnClickedProfile()
 	d3Config.skill03Enable = d3Config.profileskill03Enable[d3Config.currentProfile];
 	d3Config.skill04Enable = d3Config.profileskill04Enable[d3Config.currentProfile];
 	d3Config.healingEnable = d3Config.profilehealingEnable[d3Config.currentProfile];
-	d3Config.modeFireBirdEnable = d3Config.profilemodeFireBirdEnable[d3Config.currentProfile];
-	d3Config.modeArchonEnable = d3Config.profilemodeArchonEnable[d3Config.currentProfile];
 
 
 
@@ -1864,18 +1675,8 @@ void CDiabloIIISupportDlg::OnBnClickedProfile()
 	((CButton*)GetDlgItem(IDC_HEALINGCHECK))->SetCheck(d3Config.healingEnable);
 
 
-	GetDlgItem(IDC_METEORTEXT)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	GetDlgItem(IDC_METEORKEY)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	GetDlgItem(IDC_SINGLESHOTHOTKEYTEXT)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	GetDlgItem(IDC_SINGLESHOTHOTKEYFORTEXT)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	GetDlgItem(IDC_SINGLESHOTHOTCASTMETEORONLY)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	GetDlgItem(IDC_SINGLESHOTHOTCASTFULLCYCLE)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	GetDlgItem(IDC_SINGLESHOTHOTKEY)->EnableWindow(d3Config.modeFireBirdEnable || d3Config.modeArchonEnable);
-	((CButton*)GetDlgItem(IDC_WIZFIREBRIDCHECK))->SetCheck(d3Config.modeFireBirdEnable);
-	((CButton*)GetDlgItem(IDC_WIZARCHONCHECK))->SetCheck(d3Config.modeArchonEnable);
 
-	d3Config.modeArchonEnable = !d3Config.modeArchonEnable;
-	OnBnClickedWizArchoncheck();
+
 
 	CString currentProfileName = L"> ";
 	currentProfileName += d3Config.profileName[d3Config.currentProfile];

@@ -25,15 +25,6 @@ public:
 	bool				D3IsOpenKadala(void);
 	bool				D3IsOpenUrshi(void);
 	bool				D3IsOpenStash(void);
-	bool				D3Skill01IsLightningBlastReady(void);
-	bool				D3Skill01IsShadowPowerAndReady(void);
-	bool				D3Skill02IsArchonSlowTimeAndReady(void);
-	bool				D3Skill02IsShadowPowerAndReady(void);
-	bool				D3Skill03IsShadowPowerAndReady(void);
-	bool				D3Skill03IsEpiphanyAndReady(void);
-	bool				D3Skill04IsShadowPowerAndReady(void);
-	bool				D3Skill04IsVegeanceAndReady(void);
-	bool				D3Skill04IsSweepingWindReady(void);
 	bool				D3Skill01KeyIs1(void);
 	bool				D3Skill03KeyIs2(void);
 	bool				D3Skill03KeyIs3(void);

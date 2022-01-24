@@ -124,55 +124,20 @@ void		GetCurrentDiabloIIStatus(void)
 		if (w32gdi.GetPixel(1062, 1001) == 0x020202) d3GameStatus.flagPotionReady = false;
 
 
-		//LightningBlast
-		if (w32gdi.D3Skill01IsLightningBlastReady())
-		{
-			d3GameStatus.flagSkill01IsReadyToAndNeedAutoPress = true;
-			d3GameStatus.flagInArchonMode = true;
-			d3GameStatus.flagIsWizard = true;
-		}
-		else if (d3GameStatus.flagIsWizard == false)
-		{
-			d3GameStatus.flagSkill01IsReadyToAndNeedAutoPress = w32gdi.D3Skill01IsShadowPowerAndReady();
-			if (d3GameStatus.flagSkill01IsReadyToAndNeedAutoPress)
-			{
-				d3GameStatus.flagIsDemonHunter = true;
-			}
-		}
-
-		//Skill02
-		if (w32gdi.D3Skill02IsArchonSlowTimeAndReady())
-		{
-			d3GameStatus.flagSkill02IsReadyToAndNeedAutoPress = true;
-			d3GameStatus.flagIsWizard = true;
-		}
-		else if (d3GameStatus.flagIsWizard == false && d3GameStatus.flagIsMonk == false && w32gdi.D3Skill02IsShadowPowerAndReady())
-		{
-			d3GameStatus.flagSkill02IsReadyToAndNeedAutoPress = true;
-			d3GameStatus.flagIsDemonHunter = true;
-		}
 
 
-		//Skill03
-		if (d3GameStatus.flagIsWizard == false && d3GameStatus.flagIsMonk == false && w32gdi.D3Skill03IsShadowPowerAndReady())
-		{
-			d3GameStatus.flagSkill03IsReadyToAndNeedAutoPress = true;
-			d3GameStatus.flagIsDemonHunter = true;
-		}
+		//	//Skill02
+		//	if (w32gdi.D3Skill02IsArchonSlowTimeAndReady())
+		//	{
+		//		d3GameStatus.flagSkill02IsReadyToAndNeedAutoPress = true;
+		//		d3GameStatus.flagIsWizard = true;
+		//	}
+		//	else if (d3GameStatus.flagIsWizard == false && d3GameStatus.flagIsMonk == false && w32gdi.D3Skill02IsShadowPowerAndReady())
+		//	{
+		//		d3GameStatus.flagSkill02IsReadyToAndNeedAutoPress = true;
+		//		d3GameStatus.flagIsDemonHunter = true;
+		//	}
 
-
-
-		//Skill04
-		if (d3GameStatus.flagIsWizard == false && d3GameStatus.flagIsMonk == false && w32gdi.D3Skill04IsShadowPowerAndReady())
-		{
-			d3GameStatus.flagSkill04IsReadyToAndNeedAutoPress = true;
-			d3GameStatus.flagIsDemonHunter = true;
-		}
-		if (d3GameStatus.flagIsWizard == false && d3GameStatus.flagIsDemonHunter == false && w32gdi.D3Skill04IsSweepingWindReady())
-		{
-			d3GameStatus.flagSkill04IsReadyToAndNeedAutoPress = true;
-			d3GameStatus.flagIsMonk = true;
-		}
 
 		if (w32gdi.D3Skill01KeyIs1()) d3GameStatus.skill01Key = '1';
 		else if (w32gdi.D3Skill01KeyIsQ()) d3GameStatus.skill01Key = 'Q';
