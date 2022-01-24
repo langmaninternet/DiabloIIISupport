@@ -15,60 +15,6 @@
 
 Win32GDI					w32gdi;
 DiabloIIIStatusStruct		d3GameStatus;
-bool						flagOnWizCycle;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -113,6 +59,8 @@ void		GetCurrentDiabloIIStatus(void)
 		d3GameStatus.flagIsOpenKadala = w32gdi.D3IsOpenKadala();
 		d3GameStatus.flagIsOpenUrshi = w32gdi.D3IsOpenUrshi();
 		d3GameStatus.flagIsOpenStash = w32gdi.D3IsOpenStash();
+
+
 		//tọa độ cây kiếm 1155 1022
 		//đứng im == 0x297EB1
 		//đánh nhau == 0x16435E

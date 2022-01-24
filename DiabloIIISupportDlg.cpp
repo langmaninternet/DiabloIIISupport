@@ -90,7 +90,6 @@ const int				mainTimerDelay = 30/*ms*/;
 bool					flagOnF1 = false;
 bool					flagOnF2 = false;
 bool					flagOnF3 = false;
-bool					flagOnF4 = false;
 bool					flagOnCtrl5 = false;
 bool					flagOnCtrl6 = false;
 bool					flagOnCtrl9 = false;
@@ -463,16 +462,6 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK HookProc(int nCode, WPARAM wPa
 				break;
 			case VK_F3:
 				flagOnF3 = !flagOnF3;
-				flagOnF4 = false;
-				flagOnCtrl = false;
-				flagOnCtrl5 = false;
-				flagOnCtrl6 = false;
-				flagOnCtrl9 = false;
-				rightMouseCooldown = 99999;
-				break;
-			case VK_F4:
-				flagOnF4 = !flagOnF4;
-				flagOnF3 = false;
 				flagOnCtrl = false;
 				flagOnCtrl5 = false;
 				flagOnCtrl6 = false;
@@ -800,6 +789,14 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			flagOnProcess = true;
 
 
+			if (d3GameStatus.flagIsOpenUrshi)
+			{
+				flagOnF1 = false;
+				flagOnF2 = false;
+				flagOnF3 = false;
+			}
+
+
 			WCHAR bufferActive[100] = L"Found";
 			if (d3GameStatus.flagInAttackMode)
 			{
@@ -999,7 +996,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				}
 
 
-				if (flagOnF3) GetDlgItem(IDC_RIGHTMOUSETEXT)->SetWindowText(L"Right Mouse (Hotkey F3): \r\n	F3-Running");
+				if (flagOnF3) GetDlgItem(IDC_RIGHTMOUSETEXT)->SetWindowText(L"Right Mouse (Hotkey F2): \r\n	F3-Running");
 				if (flagOnF3 && (d3GameStatus.flagIsOpenKadala || d3GameStatus.flagIsOpenStash == false))
 				{
 					GetDlgItem(IDC_RIGHTMOUSETEXT)->EnableWindow(FALSE);
@@ -1017,38 +1014,11 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				}
 				else
 				{
-					GetDlgItem(IDC_RIGHTMOUSETEXT)->SetWindowText(L"Right Mouse (F3-Click F4-Hold): ");
+					GetDlgItem(IDC_RIGHTMOUSETEXT)->SetWindowText(L"Right Mouse (Hotkey F2): ");
 					GetDlgItem(IDC_RIGHTMOUSETEXT)->EnableWindow(TRUE);
 					GetDlgItem(IDC_RIGHTMOUSETEXTMS)->EnableWindow(TRUE);
 					GetDlgItem(IDC_RIGHTMOUSETIME)->EnableWindow(TRUE);
 				}
-
-
-				if (flagOnF4) GetDlgItem(IDC_RIGHTMOUSETEXT)->SetWindowText(L"Right Mouse (Hotkey F4): \r\n	F4-Holding");
-				if (flagOnF4 && (d3GameStatus.flagIsOpenKadala || d3GameStatus.flagIsOpenStash == false))
-				{
-					GetDlgItem(IDC_RIGHTMOUSETEXT)->EnableWindow(FALSE);
-					GetDlgItem(IDC_RIGHTMOUSETEXTMS)->EnableWindow(FALSE);
-					GetDlgItem(IDC_RIGHTMOUSETIME)->EnableWindow(FALSE);
-					if (d3Wnd != 0)
-					{
-						rightMouseCooldown += mainTimerDelay;
-						if (rightMouseCooldown >= d3Config.leftMouseTime)
-						{
-							if (ValidToSendD3Click()) SendD3RightMouseHold();
-							rightMouseCooldown = 0;
-						}
-					}
-				}
-				else
-				{
-					GetDlgItem(IDC_RIGHTMOUSETEXT)->SetWindowText(L"Right Mouse (F3-Click F4-Hold): ");
-					GetDlgItem(IDC_RIGHTMOUSETEXT)->EnableWindow(TRUE);
-					GetDlgItem(IDC_RIGHTMOUSETEXTMS)->EnableWindow(TRUE);
-					GetDlgItem(IDC_RIGHTMOUSETIME)->EnableWindow(TRUE);
-				}
-
-
 
 
 			}
