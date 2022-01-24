@@ -30,7 +30,7 @@
     <ClInclude Include="DiabloIIISupportDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="StarPact.h">
+    <ClInclude Include="Engine.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="DirectX.h">
@@ -50,7 +50,7 @@
     <ClCompile Include="Dump.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="StarPact.cpp">
+    <ClCompile Include="Engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Win32GDI.cpp">

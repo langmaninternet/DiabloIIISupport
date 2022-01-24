@@ -6,7 +6,7 @@
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
-#include "StarPact.h"
+#include "Engine.h"
 #include "DirectX.h"
 
 
@@ -68,7 +68,6 @@ struct DiabloIIISupportConfig
 	wchar_t	keySKill03;
 	wchar_t	keySKill04;
 	wchar_t	keyHealing;
-	wchar_t keyForceClose;
 	wchar_t keyForceStand;
 
 
@@ -103,7 +102,7 @@ int						skillSlot02Cooldown;
 int						skillSlot03Cooldown;
 int						skillSlot04Cooldown;
 HHOOK					hGlobalHook;
-
+time_t					last_timer;
 
 
 
@@ -187,7 +186,6 @@ void		ValidateD3Config(void)
 	ValidateD3Key(d3Config.keySKill03, '3');
 	ValidateD3Key(d3Config.keySKill04, '4');
 	ValidateD3Key(d3Config.keyHealing, 'Q');
-	ValidateD3Key(d3Config.keyForceClose, ' ');
 
 
 	//wiz
@@ -536,7 +534,7 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK HookProc(int nCode, WPARAM wPa
 				flagOnCtrl = true;
 				break;
 			default:
-				
+
 				break;
 			}
 		}
@@ -724,7 +722,7 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 
 
 
-	
+
 
 
 	hGlobalHook = SetWindowsHookEx(WH_KEYBOARD_LL, HookProc, GetModuleHandle(NULL), 0);
@@ -792,7 +790,10 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 {
 	if (mainTimerID == nIdEvent)
 	{
-
+		time_t current_timer;
+		time(&current_timer);
+		int elapsed_time = (difftime(current_timer, last_timer) * 1000);
+		last_timer = current_timer;
 
 		if (flagOnProcess == false)
 		{
@@ -826,7 +827,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			const WCHAR* validToClick = L"";
 			if (ValidToSendD3Click())  validToClick = L"Vaild to click";
 			CString debugInfo;
-			debugInfo.AppendFormat(L"Diablo III: %ls\r\n	X: %04d     Y: %04d\r\n	W: %04d     H: %04d\r\nCursor: %ls\r\n	X : %04d     Y : %04d\r\n",
+			debugInfo.AppendFormat(L"Diablo III: %ls\r\n	X: %04d     Y: %04d\r\n	W: %04d     H: %04d\r\nCursor: %ls\r\n	X : %04d     Y : %04d\r\nTimer Length = %dms",
 				bufferActive,
 				d3Rect.left,
 				d3Rect.top,
@@ -834,10 +835,19 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				d3Rect.bottom - d3Rect.top,
 				validToClick,
 				point.x,
-				point.y
+				point.y,
+				elapsed_time
 			);
 			GetDlgItem(IDC_DEBUGINFO)->SetWindowTextW(debugInfo);
 
+			if (elapsed_time> mainTimerDelay)
+			{
+				elapsed_time -= mainTimerDelay;
+			}
+			else
+			{
+				elapsed_time = 0;
+			}
 
 			GetCurrentDiabloIIStatus();
 
@@ -876,7 +886,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 						SendD3Key(d3GameStatus.skill04Key);
 						overlayString += L"Auto press skill 4\n";
 					}
-					
+
 				}
 
 
@@ -910,7 +920,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 						if (d3Config.skill01Enable)
 						{
-							skillSlot01Cooldown += mainTimerDelay;
+							skillSlot01Cooldown += mainTimerDelay + elapsed_time;
 							if (skillSlot01Cooldown >= d3Config.skillSlot01Time)
 							{
 								SendD3Key(d3Config.keySKill01);
@@ -919,7 +929,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 						}
 						if (d3Config.skill02Enable)
 						{
-							skillSlot02Cooldown += mainTimerDelay;
+							skillSlot02Cooldown += mainTimerDelay + elapsed_time;
 							if (skillSlot02Cooldown >= d3Config.skillSlot02Time)
 							{
 								SendD3Key(d3Config.keySKill02);
@@ -928,7 +938,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 						}
 						if (d3Config.skill03Enable)
 						{
-							skillSlot03Cooldown += mainTimerDelay;
+							skillSlot03Cooldown += mainTimerDelay + elapsed_time;
 							if (skillSlot03Cooldown >= d3Config.skillSlot03Time)
 							{
 								SendD3Key(d3Config.keySKill03);
@@ -937,7 +947,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 						}
 						if (d3Config.skill04Enable)
 						{
-							skillSlot04Cooldown += mainTimerDelay;
+							skillSlot04Cooldown += mainTimerDelay + elapsed_time;
 							if (skillSlot04Cooldown >= d3Config.skillSlot04Time)
 							{
 								SendD3Key(d3Config.keySKill04);
@@ -976,13 +986,6 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 						if (leftMouseCooldown >= d3Config.leftMouseTime)
 						{
 							if (ValidToSendD3Click()) SendD3LeftMouseClick();
-							//	else
-							//	{
-							//		::SendMessageW(d3Wnd, WM_KEYDOWN, d3Config.keyForceStand, 0);
-							//		Sleep(10);
-							//		SendD3LeftMouseClick();
-							//		::SendMessageW(d3Wnd, WM_KEYUP, d3Config.keyForceStand, 0);
-							//	}
 							leftMouseCooldown = 0;
 						}
 					}
@@ -1008,13 +1011,6 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 						if (rightMouseCooldown >= d3Config.leftMouseTime)
 						{
 							if (ValidToSendD3Click()) SendD3RightMouseClick();
-							//	else
-							//	{
-							//		::SendMessageW(d3Wnd, WM_KEYDOWN, d3Config.keyForceStand, 0);
-							//		Sleep(10);
-							//		SendD3RightMouseClick();
-							//		::SendMessageW(d3Wnd, WM_KEYUP, d3Config.keyForceStand, 0);
-							//	}
 							rightMouseCooldown = 0;
 						}
 					}
@@ -1040,13 +1036,6 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 						if (rightMouseCooldown >= d3Config.leftMouseTime)
 						{
 							if (ValidToSendD3Click()) SendD3RightMouseHold();
-							//	else
-							//	{
-							//		::SendMessageW(d3Wnd, WM_KEYDOWN, d3Config.keyForceStand, 0);
-							//		Sleep(10);
-							//		SendD3RightMouseHold();
-							//		::SendMessageW(d3Wnd, WM_KEYUP, d3Config.keyForceStand, 0);
-							//	}
 							rightMouseCooldown = 0;
 						}
 					}
@@ -1083,7 +1072,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 					double		d3Width = d3Rect.right - d3Rect.left;
 					double		d3Height = d3Rect.bottom - d3Rect.top;
 
-
+					const int	craftDelayTimeInMs = 30;
 					double		d3WidthScale = d3Width / 1920.0;
 					double		d3HeightScale = d3Height / 1080.0;
 					int			xTransmute = (int)round(230.0 * d3WidthScale);
@@ -1151,21 +1140,21 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							{
 								if (flagOnCtrl5) SetD3Mouse(xFill, yFill);
 								if (flagOnCtrl5) SendD3LeftMouseClick();
-								if (flagOnCtrl5) Sleep(50 + (rand() % 5));
+								if (flagOnCtrl5) Sleep(craftDelayTimeInMs + (rand() % 5));
 
 								if (flagOnCtrl5) SetD3Mouse(xTransmute, yTransmute);
 								if (flagOnCtrl5) SendD3LeftMouseClick();
-								if (flagOnCtrl5) Sleep(50 + (rand() % 5));
+								if (flagOnCtrl5) Sleep(craftDelayTimeInMs + (rand() % 5));
 
 								Sleep(250 + (rand() % 10));
 
 								if (flagOnCtrl5) SetD3Mouse(xCubeLeftPage, yCubeLeftPage);
 								if (flagOnCtrl5) SendD3LeftMouseClick();
-								if (flagOnCtrl5) Sleep(50 + (rand() % 5));
+								if (flagOnCtrl5) Sleep(craftDelayTimeInMs + (rand() % 5));
 
 								if (flagOnCtrl5) SetD3Mouse(xCubeRightPage, yCubeRightPage);
 								if (flagOnCtrl5) SendD3LeftMouseClick();
-								if (flagOnCtrl5) Sleep(50 + (rand() % 5));
+								if (flagOnCtrl5) Sleep(craftDelayTimeInMs + (rand() % 5));
 							}
 						}
 						flagOnCtrl5 = false;
@@ -1187,27 +1176,27 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 							if (flagOnCtrl6) SetD3Mouse(xIventoryArray[iitem], yIventoryArray[iitem]);
 							if (flagOnCtrl6) SendD3RightMouseClick();
-							if (flagOnCtrl6) Sleep(50 + (rand() % 5));
+							if (flagOnCtrl6) Sleep(craftDelayTimeInMs + (rand() % 5));
 
 							if (preloadSalvageSlot[iitem] || preloadSalvageSlot[iitem + 1])
 							{
 								if (flagOnCtrl6) SetD3Mouse(xFill, yFill);
 								if (flagOnCtrl6) SendD3LeftMouseClick();
-								if (flagOnCtrl6) Sleep(50 + (rand() % 5));
+								if (flagOnCtrl6) Sleep(craftDelayTimeInMs + (rand() % 5));
 
 								if (flagOnCtrl6) SetD3Mouse(xTransmute, yTransmute);
 								if (flagOnCtrl6) SendD3LeftMouseClick();
-								if (flagOnCtrl6) Sleep(50 + (rand() % 5));
+								if (flagOnCtrl6) Sleep(craftDelayTimeInMs + (rand() % 5));
 
 								Sleep(250 + (rand() % 10));
 
 								if (flagOnCtrl6) SetD3Mouse(xCubeLeftPage, yCubeLeftPage);
 								if (flagOnCtrl6) SendD3LeftMouseClick();
-								if (flagOnCtrl6) Sleep(50 + (rand() % 5));
+								if (flagOnCtrl6) Sleep(craftDelayTimeInMs + (rand() % 5));
 
 								if (flagOnCtrl6) SetD3Mouse(xCubeRightPage, yCubeRightPage);
 								if (flagOnCtrl6) SendD3LeftMouseClick();
-								if (flagOnCtrl6) Sleep(50 + (rand() % 5));
+								if (flagOnCtrl6) Sleep(craftDelayTimeInMs + (rand() % 5));
 							}
 						}
 						flagOnCtrl6 = false;
@@ -1227,7 +1216,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 						if (flagOnCtrl9) SetD3Mouse(xSalvageButton, ySalvageButton);
 						if (flagOnCtrl9) SendD3LeftMouseClick();
-						if (flagOnCtrl9) Sleep(50 + (rand() % 5));
+						if (flagOnCtrl9) Sleep(craftDelayTimeInMs + (rand() % 5));
 
 
 						PreloadSalvageItem(preloadSalvageSlot, 60);
@@ -1235,23 +1224,23 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 						{
 							if (flagOnCtrl9) SetD3Mouse(xIventoryArray[iitem], yIventoryArray[iitem]);
 							if (flagOnCtrl9) SendD3LeftMouseClick();
-							if (flagOnCtrl9) Sleep(40 + (rand() % 5));
+							if (flagOnCtrl9) Sleep(craftDelayTimeInMs + (rand() % 5));
 							if (preloadSalvageSlot[iitem])
 							{
 								if (flagOnCtrl9) SendD3Key(VK_RETURN);
-								if (flagOnCtrl9) Sleep(40 + (rand() % 5));
+								if (flagOnCtrl9) Sleep(craftDelayTimeInMs + (rand() % 5));
 
 								if (flagOnCtrl9) SendD3Key(VK_RETURN);
-								if (flagOnCtrl9) Sleep(40 + (rand() % 5));
+								if (flagOnCtrl9) Sleep(craftDelayTimeInMs + (rand() % 5));
 							}
 						}
 
 						if (flagOnCtrl9) SetD3Mouse(xRepairTable, yRepairTable);
 						if (flagOnCtrl9) SendD3LeftMouseClick();
-						if (flagOnCtrl9) Sleep(50 + (rand() % 5));
+						if (flagOnCtrl9) Sleep(craftDelayTimeInMs + (rand() % 5));
 						if (flagOnCtrl9) SetD3Mouse(xRepairButton, yRepairButton);
 						if (flagOnCtrl9) SendD3LeftMouseClick();
-						if (flagOnCtrl9) Sleep(50 + (rand() % 5));
+						if (flagOnCtrl9) Sleep(craftDelayTimeInMs + (rand() % 5));
 						flagOnCtrl9 = false;
 					}
 

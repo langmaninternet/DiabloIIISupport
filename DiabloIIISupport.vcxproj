@@ -198,7 +198,7 @@
     <ClInclude Include="DiabloIIISupportDlg.h" />
     <ClInclude Include="DirectX.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="StarPact.h" />
+    <ClInclude Include="Engine.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -207,7 +207,7 @@
     <ClCompile Include="DiabloIIISupportDlg.cpp" />
     <ClCompile Include="DirectX.cpp" />
     <ClCompile Include="Dump.cpp" />
-    <ClCompile Include="StarPact.cpp" />
+    <ClCompile Include="Engine.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

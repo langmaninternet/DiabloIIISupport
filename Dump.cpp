@@ -8,7 +8,7 @@
 #include <set>
 #include <string>
 #include <list>
-#include "StarPact.h"
+#include "Engine.h"
 extern Win32GDI w32gdi;
 
 

@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "StarPact.h"
+#include "Engine.h"
 
 
 /*Constructor*/		Win32GDI::Win32GDI()
