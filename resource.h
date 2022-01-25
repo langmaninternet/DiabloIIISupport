@@ -23,7 +23,6 @@
 #define IDC_SKILL03TEXT                 1024
 #define IDC_SKILL04TEXT                 1025
 #define IDC_HEALINGCHECK2               1026
-#define IDC_OVERLAY                     1026
 #define IDC_SKILL01TEXTMS               1027
 #define IDC_SKILL02TEXTMS               1028
 #define IDC_SKILL03TEXTMS               1029
@@ -34,9 +33,6 @@
 #define IDC_LEFTMOUSETEXTMS             1034
 #define IDC_RIGHTMOUSETEXT              1035
 #define IDC_RIGHTMOUSETEXTMS            1036
-#define IDC_WIZARCHONCHECK              1037
-#define IDC_WIZCHECK                    1038
-#define IDC_WIZFIREBRIDCHECK            1038
 #define IDC_CTRL5TEXT                   1039
 #define IDC_CTRL6TEXT                   1040
 #define IDC_CTRLESC                     1042

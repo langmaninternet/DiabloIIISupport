@@ -75,7 +75,6 @@ struct DiabloIIISupportConfig
 
 
 	double	saveDiabloIIISupportVersion;
-	bool	flagShowOverlay;
 };
 
 
@@ -587,7 +586,6 @@ BEGIN_MESSAGE_MAP(CDiabloIIISupportDlg, CDialogEx)
 	ON_EN_KILLFOCUS(IDC_SKILLKEY04, &CDiabloIIISupportDlg::OnKillFocusSkillKey04)
 	ON_EN_KILLFOCUS(IDC_HEALINGKEY, &CDiabloIIISupportDlg::OnKillfocusHealingKey)
 	ON_EN_KILLFOCUS(IDC_FORCESTANDKEY, &CDiabloIIISupportDlg::OnKillFocusForceStandKey)
-	ON_BN_CLICKED(IDC_OVERLAY, &CDiabloIIISupportDlg::OnBnClickedOverlay)
 END_MESSAGE_MAP()
 
 BOOL		CDiabloIIISupportDlg::OnInitDialog()
@@ -716,11 +714,6 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 
 	hGlobalHook = SetWindowsHookEx(WH_KEYBOARD_LL, HookProc, GetModuleHandle(NULL), 0);
 
-	if (d3Config.flagShowOverlay)
-	{
-		CreateOverlay();
-		((CButton*)GetDlgItem(IDC_OVERLAY))->SetCheck(TRUE);
-	}
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
@@ -796,6 +789,22 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				flagOnF3 = false;
 			}
 
+			//	if (d3Config.flagShowOverlay)
+			//	{
+			//		CString overlay;
+			//		if (flagOnF1) overlay += L"F1";
+			//		if (flagOnF2)
+			//		{
+			//			if (overlay.GetLength()>0) overlay += L" ";
+			//			overlay += L"F2";
+			//		}
+			//		if (flagOnF3)
+			//		{
+			//			if (overlay.GetLength() > 0) overlay += L" ";
+			//			overlay += L"F3";
+			//		}
+			//		wprintf_s(overlayStr, L"%ls", overlay.GetBuffer());
+			//	}
 
 			WCHAR bufferActive[100] = L"Found";
 			if (d3GameStatus.flagInAttackMode)
@@ -1702,12 +1711,4 @@ void CDiabloIIISupportDlg::OnBnClickedProfile10()
 	GetDlgItem(profileID[d3Config.currentProfile])->SetWindowTextW(d3Config.profileName[d3Config.currentProfile]);
 	d3Config.currentProfile = 9;
 	OnBnClickedProfile();
-}
-void CDiabloIIISupportDlg::OnBnClickedOverlay()
-{
-	// TODO: Add your control notification handler code here
-	d3Config.flagShowOverlay = !d3Config.flagShowOverlay;
-	if (d3Config.flagShowOverlay) CreateOverlay();
-	else DestroyOverlay();
-	OnSaveConfig();
 }
