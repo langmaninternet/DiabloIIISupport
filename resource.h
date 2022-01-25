@@ -54,23 +54,8 @@
 #define IDC_SKILLKEY03                  1061
 #define IDC_SKILLKEY04                  1062
 #define IDC_HEALINGKEY                  1063
-#define IDC_ARCHONTEXT                  1064
-#define IDC_ARCHONKEY                   1065
-#define IDC_METEORTEXT                  1066
-#define IDC_METEORKEY                   1067
 #define IDC_FORCESTANDTEXT              1068
 #define IDC_FORCESTANDKEY               1069
-#define IDC_SINGLESHOTHOTKEYTEXT        1071
-#define IDC_SINGLESHOTHOTKEY            1072
-#define IDC_SECONDARYSKILLKEYTEXT       1075
-#define IDC_SECONDARYSKILLKEY           1076
-#define IDC_BLACKHOLETEXT               1080
-#define IDC_BLACKHOLEKEY                1081
-#define IDC_WAVEOFFORCEKEYTEXT          1082
-#define IDC_WAVEOFFORCEKEY              1083
-#define IDC_SINGLESHOTHOTCASTMETEORONLY 1086
-#define IDC_SINGLESHOTHOTCASTFULLCYCLE  1087
-#define IDC_SINGLESHOTHOTKEYFORTEXT     1088
 
 // Next default values for new objects
 // 

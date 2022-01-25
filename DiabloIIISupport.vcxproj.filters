@@ -33,9 +33,6 @@
     <ClInclude Include="Engine.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="DirectX.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -54,9 +51,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Win32GDI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DirectX.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

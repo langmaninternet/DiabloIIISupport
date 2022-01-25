@@ -7,7 +7,6 @@
 #define new DEBUG_NEW
 #endif
 #include "Engine.h"
-#include "DirectX.h"
 
 
 
@@ -919,7 +918,6 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 					if (d3Config.skill03Enable && d3Wnd != 0) overlayString.AppendFormat(L"Skill 03: %dms\n", skillSlot01Cooldown);
 					if (d3Config.skill04Enable && d3Wnd != 0) overlayString.AppendFormat(L"Skill 04: %dms\n", skillSlot01Cooldown);
 					if (d3Config.healingEnable && d3GameStatus.flagPotionReady)  overlayString.AppendFormat(L"Healing!\n");
-					wcscpy_s(overlayStr, 999, overlayString.GetBuffer());
 
 					if (d3Wnd != 0)
 					{

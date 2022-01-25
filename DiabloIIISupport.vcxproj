@@ -196,7 +196,6 @@
   <ItemGroup>
     <ClInclude Include="DiabloIIISupport.h" />
     <ClInclude Include="DiabloIIISupportDlg.h" />
-    <ClInclude Include="DirectX.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="stdafx.h" />
@@ -205,7 +204,6 @@
   <ItemGroup>
     <ClCompile Include="DiabloIIISupport.cpp" />
     <ClCompile Include="DiabloIIISupportDlg.cpp" />
-    <ClCompile Include="DirectX.cpp" />
     <ClCompile Include="Dump.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="stdafx.cpp">
