@@ -39,10 +39,8 @@ Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)
 
 
 Elites - Fire Mystic Ally - (Fire CoE Cycle + Shenlong's Spirit) - Good Situation
-Rune(X1_Monk_MysticAlly_v2)==0 
-& BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) > 1900 
-& IsBuffActive(1, P3_ItemPassive_Unique_Ring_026)
-& (MonkAlliesCount() > 9 
+Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) > 1900 & IsBuffActive(1, P3_ItemPassive_Unique_Ring_026) &
+(MonkAlliesCount() > 9 
 | (MonkAlliesCount() > 8 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 3600) 
 | (MonkAlliesCount() > 7 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 3200) 
 | (MonkAlliesCount() > 6 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 2800)
