@@ -12,14 +12,14 @@ BuffTimeLeft(1, ItemPassive_Unique_Ring_735_x1) > 1000 & BuffTimeLeft(2, ItemPas
 
 
 
-Elites - Mystic Ally - On Power + {CoE Cycle | Shenlong's Spirit}
-BuffTimeLeft(0, Pages_Buff_Damage) > 0 
+
+
+Elites - Mystic Ally - {On Power | Infinite Casting} + {CoE Cycle | Shenlong's Spirit}
+(BuffTimeLeft(0, Pages_Buff_Damage) > 0 | BuffTimeLeft(0, Pages_Buff_Infinite_Casting) > 4000)
 & MonkAlliesCount() >= 10 
 & ((Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) > 2000) 
-  |(Rune(X1_Monk_MysticAlly_v2)==1 & BuffTimeLeft(2, P2_ItemPassive_Unique_Ring_038) > 2000)
-  |IsBuffActive(1, P3_ItemPassive_Unique_Ring_026))
-
-
+ |(Rune(X1_Monk_MysticAlly_v2)==1 & BuffTimeLeft(2, P2_ItemPassive_Unique_Ring_038) > 2000)
+ |IsBuffActive(1, P3_ItemPassive_Unique_Ring_026))
 
 
 
@@ -41,7 +41,7 @@ BuffTimeLeft(0, Pages_Buff_Infinite_Casting) > 4000 & Rune(X1_Monk_MysticAlly_v2
 
 
 Elites - Fire Mystic Ally - (Fire CoE Cycle + Shenlong's Spirit + Assimilation + [Dregs of Lies]) - Best Situation
-Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) > 2000 & (IsBuffActive(1, P3_ItemPassive_Unique_Ring_026) |  Primary() > 70%) & BuffStackCount(4, Monk_WayOfTheHundredFists) > 0 & 
+Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) > 2000 & (IsBuffActive(1, P3_ItemPassive_Unique_Ring_026) | Primary() > 70%) & BuffStackCount(4, Monk_WayOfTheHundredFists) > 0 & 
 ((MonkAlliesCount() >= 10 & ((!IsBuffActive(0, P72_ItemPassive_Soulshard_002)) | BuffStackCount(2, P72_ItemPassive_Soulshard_002) > 60)) 
 | (MonkAlliesCount() >= 9 & ((!IsBuffActive(0, P72_ItemPassive_Soulshard_002)) | BuffStackCount(2, P72_ItemPassive_Soulshard_002) > 50) & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 3600) 
 | (MonkAlliesCount() >= 8 & ((!IsBuffActive(0, P72_ItemPassive_Soulshard_002)) | BuffStackCount(2, P72_ItemPassive_Soulshard_002) > 40) & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 3200) 
@@ -57,7 +57,7 @@ Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)
 
 
 Elites - Fire Mystic Ally - (Fire CoE Cycle + Shenlong's Spirit + Assimilation) - Very Good Situation 01
-Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) > 2000 & (IsBuffActive(1, P3_ItemPassive_Unique_Ring_026) |  Primary() > 70%) & BuffStackCount(4, Monk_WayOfTheHundredFists) > 0 & (
+Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) > 2000 & (IsBuffActive(1, P3_ItemPassive_Unique_Ring_026) | Primary() > 70%) & BuffStackCount(4, Monk_WayOfTheHundredFists) > 0 & (
 MonkAlliesCount() >= 10 
 | (MonkAlliesCount() >= 9 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 3600) 
 | (MonkAlliesCount() >= 8 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 3200) 
@@ -70,7 +70,7 @@ MonkAlliesCount() >= 10
 
 
 Elites - Fire Mystic Ally - (Fire CoE Cycle + Shenlong's Spirit + [Dregs of Lies]) - Very Good Situation 02
-Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) > 2000 & (IsBuffActive(1, P3_ItemPassive_Unique_Ring_026) |  Primary() > 70%) & (
+Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) > 2000 & (IsBuffActive(1, P3_ItemPassive_Unique_Ring_026) | Primary() > 70%) & (
 (MonkAlliesCount() >= 10 & ((!IsBuffActive(0, P72_ItemPassive_Soulshard_002)) | BuffStackCount(2, P72_ItemPassive_Soulshard_002) > 60)) 
 | (MonkAlliesCount() >= 9 & ((!IsBuffActive(0, P72_ItemPassive_Soulshard_002)) | BuffStackCount(2, P72_ItemPassive_Soulshard_002) > 50) & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 3600) 
 | (MonkAlliesCount() >= 8 & ((!IsBuffActive(0, P72_ItemPassive_Soulshard_002)) | BuffStackCount(2, P72_ItemPassive_Soulshard_002) > 40) & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 3200) 
@@ -82,7 +82,7 @@ Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)
 
 
 Elites - Fire Mystic Ally - (Fire CoE Cycle + Shenlong's Spirit) - Good Situation
-Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) > 2000 & (IsBuffActive(1, P3_ItemPassive_Unique_Ring_026) |  Primary() > 70%) & (
+Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) > 2000 & (IsBuffActive(1, P3_ItemPassive_Unique_Ring_026) | Primary() > 70%) & (
 MonkAlliesCount() >= 10 
 | (MonkAlliesCount() >= 9 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 3600) 
 | (MonkAlliesCount() >= 8 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 3200) 
@@ -98,7 +98,7 @@ Elites - Clear Spirit - Proc [Shenlong's Spirit]
 Rune(X1_Monk_MysticAlly_v2)==0 & IsBuffActive(0, P3_ItemPassive_Unique_Ring_026) 
 & (
  ((BuffTimeLeft(5, P2_ItemPassive_Unique_Ring_038) > 0 & BuffTimeLeft(5, P2_ItemPassive_Unique_Ring_038) < 2000) | BuffTimeLeft(2, P2_ItemPassive_Unique_Ring_038) > 3500)
-| ( IsBuffActive(0, ItemPassive_Unique_Ring_735_x1) & Cooldown(X1_Monk_MysticAlly_v2) < 4000)   )
+| ( IsBuffActive(0, ItemPassive_Unique_Ring_735_x1) & Cooldown(X1_Monk_MysticAlly_v2) < 4000) )
 )
 
 
