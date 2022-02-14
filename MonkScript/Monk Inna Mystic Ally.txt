@@ -4,11 +4,11 @@
 
 
 
-Elites - Mystic Ally - Focus + Restraint + [Shenlong's Spirit]
+Elites - Mystic Ally - Focus + Restraint + [Shenlong's Spirit] + [Dregs of Lies]
 BuffTimeLeft(1, ItemPassive_Unique_Ring_735_x1) > 1000 & BuffTimeLeft(2, ItemPassive_Unique_Ring_735_x1) > 1000 
 & MonkAlliesCount() >= 10
 & ((!IsBuffActive(0, P3_ItemPassive_Unique_Ring_026)) | IsBuffActive(1, P3_ItemPassive_Unique_Ring_026))
-& ((!IsBuffActive(0, P72_ItemPassive_Soulshard_002)) | Rune(X1_Monk_MysticAlly_v2)==1 | BuffStackCount(2, P72_ItemPassive_Soulshard_002) > 50)
+& (BuffTimeLeft(0, Pages_Buff_Damage) > 0 | Rune(X1_Monk_MysticAlly_v2)==1 | (!IsBuffActive(0, P72_ItemPassive_Soulshard_002)) | BuffStackCount(2, P72_ItemPassive_Soulshard_002) > 50)
 
 
 
@@ -28,12 +28,6 @@ BuffTimeLeft(0, Pages_Buff_Infinite_Casting) > 4000 & Rune(X1_Monk_MysticAlly_v2
 
 
 
-
-
-
-Elites - Mystic Ally - {On Power | Infinite Casting} + [Shenlong's Spirit]
-((BuffTimeLeft(0, Pages_Buff_Damage) > 0 & MonkAlliesCount() >= 10) | BuffTimeLeft(0, Pages_Buff_Infinite_Casting) > 4000)
-& ((!IsBuffActive(0, P3_ItemPassive_Unique_Ring_026)) | IsBuffActive(1, P3_ItemPassive_Unique_Ring_026))
 
 
 
