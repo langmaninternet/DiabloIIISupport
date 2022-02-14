@@ -1,0 +1,19 @@
+
+
+
+
+
+
+Elites - Mystic Ally - Infinite Casting + Shenlong's Spirit
+BuffTimeLeft(0, Pages_Buff_Infinite_Casting) > 4000 & Rune(X1_Monk_MysticAlly_v2)==0 
+& ((!IsBuffActive(0, P3_ItemPassive_Unique_Ring_026)) | IsBuffActive(1, P3_ItemPassive_Unique_Ring_026) | Primary() > 70%)
+
+
+
+
+
+
+
+
+
+
