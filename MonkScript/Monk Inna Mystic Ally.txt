@@ -14,12 +14,12 @@ BuffTimeLeft(1, ItemPassive_Unique_Ring_735_x1) > 1000 & BuffTimeLeft(2, ItemPas
 
 
 
-Elites - Mystic Ally - {On Power | Infinite Casting} + {CoE Cycle | Shenlong's Spirit}
-(BuffTimeLeft(0, Pages_Buff_Damage) > 0 | BuffTimeLeft(0, Pages_Buff_Infinite_Casting) > 4000)
+Elites - Mystic Ally - On Power + {CoE Cycle | Shenlong's Spirit}
+BuffTimeLeft(0, Pages_Buff_Damage) > 0 
 & MonkAlliesCount() >= 10 
 & ((Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) > 2000) 
- |(Rune(X1_Monk_MysticAlly_v2)==1 & BuffTimeLeft(2, P2_ItemPassive_Unique_Ring_038) > 2000)
- |IsBuffActive(1, P3_ItemPassive_Unique_Ring_026))
+| (Rune(X1_Monk_MysticAlly_v2)==1 & BuffTimeLeft(2, P2_ItemPassive_Unique_Ring_038) > 2000) 
+| IsBuffActive(1, P3_ItemPassive_Unique_Ring_026))
 
 
 
