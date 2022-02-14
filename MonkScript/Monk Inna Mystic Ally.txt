@@ -54,9 +54,16 @@ Rune(X1_Monk_MysticAlly_v2)==0 & IsBuffActive(0, P3_ItemPassive_Unique_Ring_026)
 
 
 
-Urshi - Mystic Ally - (Focus + Restraint + Shenlong's Spirit)
+Urshi - Mystic Ally
 WorldIsGreaterRift() & (!WorldIsGreaterRiftNotFinished()) & IsBuffActive(1, P3_ItemPassive_Unique_Ring_026) & MonkAlliesCount() >= 10 
-BuffTimeLeft(1, ItemPassive_Unique_Ring_735_x1) > 1000 & BuffTimeLeft(2, ItemPassive_Unique_Ring_735_x1) > 1000 & IsBuffActive(0, P3_ItemPassive_Unique_Ring_026) 
+
+
+
+
+Elites - Buff - Dashing Strike - Proc [Approach] [Blinding Speed] [Radiance] [Sliver of Terror]
+(Rune(X1_Monk_DashingStrike) == 2 & BuffTimeLeft(2, X1_Monk_DashingStrike) < 500) | (Rune(X1_Monk_DashingStrike) == 4 & BuffTimeLeft(4, X1_Monk_DashingStrike) < 500) | ChargeCount(X1_Monk_DashingStrike) > 1 | MonkAlliesCount() > 10 | (IsBuffActive(0,P72_ItemPassive_Soulshard_015) & Cooldown(X1_Monk_MysticAlly_v2) < 1000) | BuffTimeLeft(0, Pages_Buff_Infinite_Casting) == 0
+
+
 
 
 
