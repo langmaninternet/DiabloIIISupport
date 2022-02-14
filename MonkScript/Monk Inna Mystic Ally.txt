@@ -27,18 +27,13 @@ BuffTimeLeft(0, Pages_Buff_Damage) > 0
 
 
 Elites - Fire Mystic Ally - (Fire CoE Cycle + Shenlong's Spirit + [Assimilation] + [Dregs of Lies]) - Best Situation
-Rune(X1_Monk_MysticAlly_v2)==0 
-& BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) > 2000 
-& ((!IsBuffActive(0, P3_ItemPassive_Unique_Ring_026)) | IsBuffActive(1, P3_ItemPassive_Unique_Ring_026))
-& BuffStackCount(4, Monk_WayOfTheHundredFists) > 0 & 
-(
-  (BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 4001 & MonkAlliesCount() >= 10 & ((!IsBuffActive(0, P72_ItemPassive_Soulshard_002)) | BuffStackCount(2, P72_ItemPassive_Soulshard_002) > 60)) 
-| (BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 3601 & MonkAlliesCount() >= 9  & ((!IsBuffActive(0, P72_ItemPassive_Soulshard_002)) | BuffStackCount(2, P72_ItemPassive_Soulshard_002) > 50)) 
-| (BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 3201 & MonkAlliesCount() >= 8  & ((!IsBuffActive(0, P72_ItemPassive_Soulshard_002)) | BuffStackCount(2, P72_ItemPassive_Soulshard_002) > 40)) 
-| (BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 2801 & MonkAlliesCount() >= 7  & ((!IsBuffActive(0, P72_ItemPassive_Soulshard_002)) | BuffStackCount(2, P72_ItemPassive_Soulshard_002) > 30))
-| (BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 2401 & MonkAlliesCount() >= 6  & ((!IsBuffActive(0, P72_ItemPassive_Soulshard_002)) | BuffStackCount(2, P72_ItemPassive_Soulshard_002) > 20)))
-
-
+Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) > 1900 & IsBuffActive(1, P3_ItemPassive_Unique_Ring_026) &
+(MonkAlliesCount() > 9
+|(BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 3701 & MonkAlliesCount() > 8 & (BuffStackCount(4, Monk_WayOfTheHundredFists) > 0 | ((!IsBuffActive(0, P72_ItemPassive_Soulshard_002)) | BuffStackCount(2, P72_ItemPassive_Soulshard_002) > 50))) 
+|(BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 3301 & MonkAlliesCount() > 7 & (BuffStackCount(4, Monk_WayOfTheHundredFists) > 0 | ((!IsBuffActive(0, P72_ItemPassive_Soulshard_002)) | BuffStackCount(2, P72_ItemPassive_Soulshard_002) > 40))) 
+|(BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 2901 & MonkAlliesCount() > 6 & (BuffStackCount(4, Monk_WayOfTheHundredFists) > 0 | ((!IsBuffActive(0, P72_ItemPassive_Soulshard_002)) | BuffStackCount(2, P72_ItemPassive_Soulshard_002) > 30)))
+|(BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 2501 & MonkAlliesCount() > 5 & (BuffStackCount(4, Monk_WayOfTheHundredFists) > 0 | ((!IsBuffActive(0, P72_ItemPassive_Soulshard_002)) | BuffStackCount(2, P72_ItemPassive_Soulshard_002) > 20)))
+| BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 2301)
 
 
 
@@ -47,8 +42,8 @@ Rune(X1_Monk_MysticAlly_v2)==0
 
 
 Elites - Fire Mystic Ally - (Fire CoE Cycle + Shenlong's Spirit + Assimilation) - Very Good Situation 01
-Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) > 2000 & (IsBuffActive(1, P3_ItemPassive_Unique_Ring_026) | Primary() > 70%) & BuffStackCount(4, Monk_WayOfTheHundredFists) > 0 & (
-MonkAlliesCount() >= 10 
+Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) > 2000 & IsBuffActive(1, P3_ItemPassive_Unique_Ring_026) & BuffStackCount(4, Monk_WayOfTheHundredFists) > 0 & 
+(MonkAlliesCount() >= 10 
 | (MonkAlliesCount() >= 9 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 3600) 
 | (MonkAlliesCount() >= 8 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 3200) 
 | (MonkAlliesCount() >= 7 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 2800)
