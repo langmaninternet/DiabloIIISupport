@@ -79,7 +79,7 @@ BuffTimeLeft(1,ItemPassive_Unique_Ring_735_x1)>1000 & BuffTimeLeft(2,ItemPassive
 Elites - Clear Spirit - Proc [Shenlong's Spirit] on Fire CoE Cycle
 Rune(X1_Monk_MysticAlly_v2)==0 & IsBuffActive(0,P3_ItemPassive_Unique_Ring_026) & (
 (BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038) > 0 & BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038) < 2000) 
-| BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038) > 3400)
+| BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038) > 3000)
 
 
 
