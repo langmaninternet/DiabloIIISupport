@@ -32,13 +32,21 @@ Elites - Mystic Ally - {On Power | Infinite Casting} + {CoE Cycle | Shenlong's S
 
 
 
+Mystic Ally - Infinite Casting + {CoE Cycle | Shenlong's Spirit}
+BuffTimeLeft(0, Pages_Buff_Infinite_Casting) > 4000
+& MonkAlliesCount() >= 10 
+& ((Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)>2000) 
+| (Rune(X1_Monk_MysticAlly_v2)==1 & BuffTimeLeft(2, P2_ItemPassive_Unique_Ring_038)>2000) 
+| IsBuffActive(1, P3_ItemPassive_Unique_Ring_026))
+
+
 
 
 
 
 Mystic Ally - Last chance on CoE Cycle
-(Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)>2000 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)<2200) 
-|(Rune(X1_Monk_MysticAlly_v2)==1 & BuffTimeLeft(2, P2_ItemPassive_Unique_Ring_038)>1850 & BuffTimeLeft(2, P2_ItemPassive_Unique_Ring_038)<2300)
+(Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)>2000 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)<2300) 
+|(Rune(X1_Monk_MysticAlly_v2)==1 & BuffTimeLeft(2, P2_ItemPassive_Unique_Ring_038)>2000 & BuffTimeLeft(2, P2_ItemPassive_Unique_Ring_038)<2300)
 
 
 
@@ -92,5 +100,17 @@ Elites - Buff - Dashing Strike - Proc [Approach] [Blinding Speed] [Radiance] [Sl
 Trash - Dashing Strike
 PlayerIsMoving() & BuffStackCount(4, Monk_WayOfTheHundredFists)==0 & BuffTimeLeft(0,Monk_CycloneStrike)==0 
 & BuffTimeLeft(1, ItemPassive_Unique_Ring_735_x1)==0 & BuffTimeLeft(2, ItemPassive_Unique_Ring_735_x1)==0
+
+
+
+
+Way of the Hundred Fists - [Rift] [Bounties] [Urshi] [Spirit Guards] [Health 60%] [In-geom + Echoing fury]
+WorldIsRift() 
+|(!WorldIsGreaterRift()) 
+|(WorldIsGreaterRift() & (!WorldIsGreaterRiftNotFinished())) 
+|(IsBuffActive(0, P2_ItemPassive_Unique_Ring_034) & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_034) < 1000) 
+| Health() < 60% 
+|(IsBuffActive(0, ItemPassive_Unique_Ring_919_x1) & IsBuffActive(0, P66_ItemPassive_Unique_Ring_927))
+| (Cooldown(X1_Monk_MysticAlly_v2) > 0 & Cooldown(X1_Monk_MysticAlly_v2) < 2000)
 
 
