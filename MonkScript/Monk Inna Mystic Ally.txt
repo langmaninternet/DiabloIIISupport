@@ -2,17 +2,17 @@
 
 
 Fire Mystic Ally - (Fire CoE Cycle + Shenlong's Spirit + [Assimilation] + [Dregs of Lies])
-Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)>2000 & IsBuffActive(1, P3_ItemPassive_Unique_Ring_026) &
+Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>2000 & IsBuffActive(1,P3_ItemPassive_Unique_Ring_026) &
 (MonkAlliesCount()>9
-|(BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)<3701 & MonkAlliesCount()>8 & (BuffStackCount(4, Monk_WayOfTheHundredFists)>0 | BuffStackCount(2, P72_ItemPassive_Soulshard_002)>50)) 
-|(BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)<3301 & MonkAlliesCount()>7 & (BuffStackCount(4, Monk_WayOfTheHundredFists)>0 | BuffStackCount(2, P72_ItemPassive_Soulshard_002)>40)) 
-|(BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)<2901 & MonkAlliesCount()>6 & (BuffStackCount(4, Monk_WayOfTheHundredFists)>0 | BuffStackCount(2, P72_ItemPassive_Soulshard_002)>30))
-|(BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)<2501 & MonkAlliesCount()>5 & (BuffStackCount(4, Monk_WayOfTheHundredFists)>0 | BuffStackCount(2, P72_ItemPassive_Soulshard_002)>20))
-|(MonkAlliesCount()>8 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)<3600) 
-|(MonkAlliesCount()>7 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)<3200) 
-|(MonkAlliesCount()>6 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)<2800)
-|(MonkAlliesCount()>5 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)<2400)
-| BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)<2301)
+|(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<3701 & MonkAlliesCount()>8 & (BuffStackCount(4,Monk_WayOfTheHundredFists)>0 | BuffStackCount(2,P72_ItemPassive_Soulshard_002)>50)) 
+|(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<3301 & MonkAlliesCount()>7 & (BuffStackCount(4,Monk_WayOfTheHundredFists)>0 | BuffStackCount(2,P72_ItemPassive_Soulshard_002)>40)) 
+|(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<2901 & MonkAlliesCount()>6 & (BuffStackCount(4,Monk_WayOfTheHundredFists)>0 | BuffStackCount(2,P72_ItemPassive_Soulshard_002)>30))
+|(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<2501 & MonkAlliesCount()>5 & (BuffStackCount(4,Monk_WayOfTheHundredFists)>0 | BuffStackCount(2,P72_ItemPassive_Soulshard_002)>20))
+|(MonkAlliesCount()>8 & BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<3600) 
+|(MonkAlliesCount()>7 & BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<3200) 
+|(MonkAlliesCount()>6 & BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<2800)
+|(MonkAlliesCount()>5 & BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<2400)
+| BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<2301)
 
 
 
@@ -22,22 +22,22 @@ Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)
 
 
 Elites - Mystic Ally - On Power + {CoE Cycle | Shenlong's Spirit}
-BuffTimeLeft(0, Pages_Buff_Damage)>0
+BuffTimeLeft(0,Pages_Buff_Damage)>0
 & MonkAlliesCount() >= 10 
-& ((Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)>2000) 
-| (Rune(X1_Monk_MysticAlly_v2)==1 & BuffTimeLeft(2, P2_ItemPassive_Unique_Ring_038)>2000) 
-| IsBuffActive(1, P3_ItemPassive_Unique_Ring_026))
+& ((Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>2000) 
+| (Rune(X1_Monk_MysticAlly_v2)==1 & BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000) 
+| IsBuffActive(1,P3_ItemPassive_Unique_Ring_026))
 
 
 
 
 
 Mystic Ally - Infinite Casting + {CoE Cycle | Shenlong's Spirit}
-BuffTimeLeft(0, Pages_Buff_Infinite_Casting) > 4000
+BuffTimeLeft(0,Pages_Buff_Infinite_Casting) > 4000
 & MonkAlliesCount() >= 10 
-& ((Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)>2000) 
-| (Rune(X1_Monk_MysticAlly_v2)==1 & BuffTimeLeft(2, P2_ItemPassive_Unique_Ring_038)>2000) 
-| IsBuffActive(1, P3_ItemPassive_Unique_Ring_026))
+& ((Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>2000) 
+| (Rune(X1_Monk_MysticAlly_v2)==1 & BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000) 
+| IsBuffActive(1,P3_ItemPassive_Unique_Ring_026))
 
 
 
@@ -45,8 +45,8 @@ BuffTimeLeft(0, Pages_Buff_Infinite_Casting) > 4000
 
 
 Mystic Ally - Last chance on CoE Cycle
-(Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)>2000 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)<2300) 
-|(Rune(X1_Monk_MysticAlly_v2)==1 & BuffTimeLeft(2, P2_ItemPassive_Unique_Ring_038)>2000 & BuffTimeLeft(2, P2_ItemPassive_Unique_Ring_038)<2300)
+(Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>2000 & BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<2300) 
+|(Rune(X1_Monk_MysticAlly_v2)==1 & BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 & BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<2300)
 
 
 
@@ -59,10 +59,10 @@ Mystic Ally - Last chance on CoE Cycle
 
 
 Elites - Mystic Ally - Focus + Restraint + [Shenlong's Spirit] + [Dregs of Lies]
-BuffTimeLeft(1, ItemPassive_Unique_Ring_735_x1)>1000 & BuffTimeLeft(2, ItemPassive_Unique_Ring_735_x1)>1000 
+BuffTimeLeft(1,ItemPassive_Unique_Ring_735_x1)>1000 & BuffTimeLeft(2,ItemPassive_Unique_Ring_735_x1)>1000 
 & MonkAlliesCount() >= 10
-& ((!IsBuffActive(0, P3_ItemPassive_Unique_Ring_026)) | IsBuffActive(1, P3_ItemPassive_Unique_Ring_026))
-& (BuffTimeLeft(0, Pages_Buff_Damage)>0 | Rune(X1_Monk_MysticAlly_v2)==1 | (!IsBuffActive(0, P72_ItemPassive_Soulshard_002)) | BuffStackCount(2, P72_ItemPassive_Soulshard_002)>50)
+& ((!IsBuffActive(0,P3_ItemPassive_Unique_Ring_026)) | IsBuffActive(1,P3_ItemPassive_Unique_Ring_026))
+& (BuffTimeLeft(0,Pages_Buff_Damage)>0 | Rune(X1_Monk_MysticAlly_v2)==1 | (!IsBuffActive(0,P72_ItemPassive_Soulshard_002)) | BuffStackCount(2,P72_ItemPassive_Soulshard_002)>50)
 
 
 
@@ -77,29 +77,29 @@ BuffTimeLeft(1, ItemPassive_Unique_Ring_735_x1)>1000 & BuffTimeLeft(2, ItemPassi
 
 
 Elites - Clear Spirit - Proc [Shenlong's Spirit] on Fire CoE Cycle
-Rune(X1_Monk_MysticAlly_v2)==0 & IsBuffActive(0, P3_ItemPassive_Unique_Ring_026) & (
-(BuffTimeLeft(5, P2_ItemPassive_Unique_Ring_038) > 0 & BuffTimeLeft(5, P2_ItemPassive_Unique_Ring_038) < 2000) 
-| BuffTimeLeft(2, P2_ItemPassive_Unique_Ring_038) > 3400)
+Rune(X1_Monk_MysticAlly_v2)==0 & IsBuffActive(0,P3_ItemPassive_Unique_Ring_026) & (
+(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038) > 0 & BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038) < 2000) 
+| BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038) > 3400)
 
 
 
 
 Urshi - Mystic Ally
-WorldIsGreaterRift() & (!WorldIsGreaterRiftNotFinished()) & IsBuffActive(1, P3_ItemPassive_Unique_Ring_026) & MonkAlliesCount() >= 10 
+WorldIsGreaterRift() & (!WorldIsGreaterRiftNotFinished()) & IsBuffActive(1,P3_ItemPassive_Unique_Ring_026) & MonkAlliesCount() >= 10 
 
 
 
 
 Elites - Buff - Dashing Strike - Proc [Approach] [Blinding Speed] [Radiance] [Sliver of Terror]
-(Rune(X1_Monk_DashingStrike) == 2 & BuffTimeLeft(2, X1_Monk_DashingStrike) < 500) | (Rune(X1_Monk_DashingStrike) == 4 & BuffTimeLeft(4, X1_Monk_DashingStrike) < 500) | ChargeCount(X1_Monk_DashingStrike) > 1 | MonkAlliesCount() > 10 | (IsBuffActive(0,P72_ItemPassive_Soulshard_015) & Cooldown(X1_Monk_MysticAlly_v2) < 1000) | BuffTimeLeft(0, Pages_Buff_Infinite_Casting) == 0
+(Rune(X1_Monk_DashingStrike) == 2 & BuffTimeLeft(2,X1_Monk_DashingStrike) < 500) | (Rune(X1_Monk_DashingStrike) == 4 & BuffTimeLeft(4,X1_Monk_DashingStrike) < 500) | ChargeCount(X1_Monk_DashingStrike) > 1 | MonkAlliesCount() > 10 | (IsBuffActive(0,P72_ItemPassive_Soulshard_015) & Cooldown(X1_Monk_MysticAlly_v2) < 1000) | BuffTimeLeft(0,Pages_Buff_Infinite_Casting) == 0
 
 
 
 
 
 Trash - Dashing Strike
-PlayerIsMoving() & BuffStackCount(4, Monk_WayOfTheHundredFists)==0 & BuffTimeLeft(0,Monk_CycloneStrike)==0 
-& BuffTimeLeft(1, ItemPassive_Unique_Ring_735_x1)==0 & BuffTimeLeft(2, ItemPassive_Unique_Ring_735_x1)==0
+PlayerIsMoving() & BuffStackCount(4,Monk_WayOfTheHundredFists)==0 & BuffTimeLeft(0,Monk_CycloneStrike)==0 
+& BuffTimeLeft(1,ItemPassive_Unique_Ring_735_x1)==0 & BuffTimeLeft(2,ItemPassive_Unique_Ring_735_x1)==0
 
 
 
@@ -108,12 +108,12 @@ Way of the Hundred Fists - [Rift] [Bounties] [Urshi] [Spirit Guards] [Health 60%
 WorldIsRift() 
 |(!WorldIsGreaterRift()) 
 |(WorldIsGreaterRift() & (!WorldIsGreaterRiftNotFinished())) 
-|(IsBuffActive(0, P2_ItemPassive_Unique_Ring_034) & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_034) < 1000) 
+|(IsBuffActive(0,P2_ItemPassive_Unique_Ring_034) & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_034) < 1000) 
 | Health() < 60% 
-|(IsBuffActive(0, ItemPassive_Unique_Ring_919_x1) & IsBuffActive(0, P66_ItemPassive_Unique_Ring_927))
-|(Cooldown(X1_Monk_MysticAlly_v2)==0 & Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)>0) 
-|(Cooldown(X1_Monk_MysticAlly_v2)==0 & Rune(X1_Monk_MysticAlly_v2)==1 & BuffTimeLeft(2, P2_ItemPassive_Unique_Ring_038)>0)
-|(Cooldown(X1_Monk_MysticAlly_v2)<4000 & MonkAlliesCount()<10) 
+|(IsBuffActive(0,ItemPassive_Unique_Ring_919_x1) & IsBuffActive(0,P66_ItemPassive_Unique_Ring_927))
+|(Cooldown(X1_Monk_MysticAlly_v2)==0 & Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>0) 
+|(Cooldown(X1_Monk_MysticAlly_v2)==0 & Rune(X1_Monk_MysticAlly_v2)==1 & BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>0)
+|(Cooldown(X1_Monk_MysticAlly_v2)<4000 & MonkAlliesCount()<10 & IsBuffActive(0,P2_ItemPassive_Unique_Ring_038)) 
 
 
 
@@ -121,8 +121,8 @@ WorldIsRift()
 Buff - Serenity
 Health() < 80% 
 | Cooldown(X1_Monk_MysticAlly_v2) > 10000 
-| BuffTimeLeft(0, Pages_Buff_Electrified_TieredRift) > 0 
-| BuffTimeLeft(0, Pages_Buff_Infinite_Casting) > 0 
-| BuffTimeLeft(0, Pages_Buff_Damage) > 0
-|(Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)>2000) 
-|(Rune(X1_Monk_MysticAlly_v2)==1 & BuffTimeLeft(2, P2_ItemPassive_Unique_Ring_038)>2000)
+| BuffTimeLeft(0,Pages_Buff_Electrified_TieredRift) > 0 
+| BuffTimeLeft(0,Pages_Buff_Infinite_Casting) > 0 
+| BuffTimeLeft(0,Pages_Buff_Damage) > 0
+|(Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>2000) 
+|(Rune(X1_Monk_MysticAlly_v2)==1 & BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000)
