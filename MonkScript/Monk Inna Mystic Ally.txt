@@ -122,14 +122,13 @@ WorldIsRift()
 
 
 
-Buff - Cyclone Strike - [Rift] [Bounties] [Urshi] [Lefebvre's Soliloquy] [In-geom + Echoing fury] [On CoE Cycle]
+Buff - Cyclone Strike - [Rift] [Bounties] [Urshi] [Lefebvre's Soliloquy] [In-geom + Echoing fury]
 WorldIsRift() 
 |(!WorldIsGreaterRift()) 
 |(WorldIsGreaterRift() & (!WorldIsGreaterRiftNotFinished())) 
 |(Health() < 70% & IsBuffActive(0, P4_ItemPassive_Unique_Ring_078) & BuffTimeLeft(0,Monk_CycloneStrike) < 1000) 
 |(IsBuffActive(0, ItemPassive_Unique_Ring_919_x1) & IsBuffActive(0, P66_ItemPassive_Unique_Ring_927))
-|(Cooldown(X1_Monk_MysticAlly_v2)==0 & Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>0) 
-|(Cooldown(X1_Monk_MysticAlly_v2)==0 & Rune(X1_Monk_MysticAlly_v2)==1 & BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>0)
+
 
 
 
