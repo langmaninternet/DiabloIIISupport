@@ -104,7 +104,7 @@ PlayerIsMoving() & BuffStackCount(4, Monk_WayOfTheHundredFists)==0 & BuffTimeLef
 
 
 
-Way of the Hundred Fists - [Rift] [Bounties] [Urshi] [Spirit Guards] [Health 60%] [In-geom + Echoing fury] [On CoE Cycle]
+Way of the Hundred Fists - [Rift] [Bounties] [Urshi] [Spirit Guards] [Health 60%] [In-geom + Echoing fury] [On CoE Cycle] [10 Ally]
 WorldIsRift() 
 |(!WorldIsGreaterRift()) 
 |(WorldIsGreaterRift() & (!WorldIsGreaterRiftNotFinished())) 
@@ -113,6 +113,7 @@ WorldIsRift()
 |(IsBuffActive(0, ItemPassive_Unique_Ring_919_x1) & IsBuffActive(0, P66_ItemPassive_Unique_Ring_927))
 |(Cooldown(X1_Monk_MysticAlly_v2)==0 & Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)>0) 
 |(Cooldown(X1_Monk_MysticAlly_v2)==0 & Rune(X1_Monk_MysticAlly_v2)==1 & BuffTimeLeft(2, P2_ItemPassive_Unique_Ring_038)>0)
+|(Cooldown(X1_Monk_MysticAlly_v2)<4000 & MonkAlliesCount()<10) 
 
 
 
