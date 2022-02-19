@@ -113,7 +113,7 @@ WorldIsRift()
 |(IsBuffActive(0,P2_ItemPassive_Unique_Ring_034) & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_034) < 1000) 
 | Health() < 60% 
 |(IsBuffActive(0,ItemPassive_Unique_Ring_919_x1) & IsBuffActive(0,P66_ItemPassive_Unique_Ring_927))
-
+|(IsBuffActive(0,P2_ItemPassive_Unique_Ring_038) & Cooldown(X1_Monk_MysticAlly_v2)<2000)
 
 
 
@@ -127,6 +127,11 @@ WorldIsRift()
 |(Health() < 70% & IsBuffActive(0, P4_ItemPassive_Unique_Ring_078) & BuffTimeLeft(0,Monk_CycloneStrike) < 1000) 
 |(IsBuffActive(0, ItemPassive_Unique_Ring_919_x1) & IsBuffActive(0, P66_ItemPassive_Unique_Ring_927))
 
+
+
+
+
+|(IsBuffActive(0,P2_ItemPassive_Unique_Ring_038) & Cooldown(X1_Monk_MysticAlly_v2)<2000 & & Cooldown(X1_Monk_MysticAlly_v2)>0)
 
 
 
