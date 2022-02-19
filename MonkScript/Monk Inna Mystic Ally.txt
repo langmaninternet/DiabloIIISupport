@@ -114,7 +114,7 @@ WorldIsRift()
 | Health()<60% 
 |(IsBuffActive(0,ItemPassive_Unique_Ring_919_x1)& IsBuffActive(0,P66_ItemPassive_Unique_Ring_927))
 |(IsBuffActive(0,P2_ItemPassive_Unique_Ring_038)& Cooldown(X1_Monk_MysticAlly_v2)<2000 & Cooldown(X1_Monk_MysticAlly_v2)>0)
-|(IsBuffActive(0,P2_ItemPassive_Unique_Ring_038)& Rune(X1_Monk_MysticAlly_v2)==0 & Cooldown(X1_Monk_MysticAlly_v2)<4000 & BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>0 & MonkAlliesCount()<9)
+|(IsBuffActive(0,P2_ItemPassive_Unique_Ring_038)& Rune(X1_Monk_MysticAlly_v2)==0 & Cooldown(X1_Monk_MysticAlly_v2)<2000 & BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>0 & MonkAlliesCount()<9)
 
 
 
