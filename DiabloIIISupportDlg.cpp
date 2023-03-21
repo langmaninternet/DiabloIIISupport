@@ -244,8 +244,8 @@ void		SendD3RightMouseClick()
 
 		SendMessage(d3Wnd, WM_RBUTTONDOWN, MK_RBUTTON, lParam);
 		Sleep(10 + (rand() % 3));
-		SendMessage(d3Wnd, WM_RBUTTONUP, 0, lParam);
-		Sleep(10 + (rand() % 3));
+		//SendMessage(d3Wnd, WM_RBUTTONUP, 0, lParam);
+		//Sleep(10 + (rand() % 3));
 	}
 }
 

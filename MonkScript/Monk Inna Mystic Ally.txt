@@ -150,3 +150,28 @@ Health()<80%
 | BuffTimeLeft(0,Pages_Buff_Damage) > 0
 |(Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>2000)
 |(Rune(X1_Monk_MysticAlly_v2)==1 & BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000)
+
+
+
+
+
+
+Legacy Fire WoL - Cyclone Strike - Density 01
+IsBuffActive(0,ItemPassive_Unique_Gem_023_x1) 
+&Rune(Monk_WaveOfLight)==1
+&!IsBuffActive(0,Monk_Serenity) &((BuffTimeLeft(0,Monk_CycloneStrike)<500&!IsBuffActive(0,Pages_Buff_Invulnerable)&!IsBuffActive(0,Pages_Buff_Infinite_Casting)) |(BuffTimeLeft(0,Monk_CycloneStrike)<1500&ActorCount(P74_Monk_Bell_WaveOfLight_RuneB,35)!=0))
+
+
+Legacy Fire WoL - Cyclone Strike - Density 02
+BuffTimeLeft(0,Monk_CycloneStrike)<4000
+&BuffTimeLeft(0, X1_Monk_Epiphany)>200
+&ActorCount(P74_Monk_Bell_WaveOfLight_RuneB,40)==0
+
+
+Legacy Fire WoL - Cyclone Strike - Density 03
+ChargeCount(X1_Monk_DashingStrike)==0
+&BuffTimeLeft(0,Monk_CycloneStrike)<2500
+&BuffTimeLeft(0, X1_Monk_Epiphany)>200
+&ActorCount(P74_Monk_Bell_WaveOfLight_RuneB,40)==0
+
+
