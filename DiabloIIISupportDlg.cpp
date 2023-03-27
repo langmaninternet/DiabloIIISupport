@@ -845,7 +845,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			);
 			GetDlgItem(IDC_DEBUGINFO)->SetWindowTextW(debugInfo);
 
-			if (elapsed_time> mainTimerDelay)
+			if (elapsed_time > mainTimerDelay)
 			{
 				elapsed_time -= mainTimerDelay;
 			}
@@ -1199,11 +1199,12 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 						PreloadSalvageItem(preloadSalvageSlot, 60);
 						for (int iitem = 0; iitem < 60; iitem++)
 						{
-							if (flagOnCtrl9) SetD3Mouse(xIventoryArray[iitem], yIventoryArray[iitem]);
-							if (flagOnCtrl9) SendD3LeftMouseClick();
-							if (flagOnCtrl9) Sleep(craftDelayTimeInMs + (rand() % 5));
 							if (preloadSalvageSlot[iitem])
 							{
+								if (flagOnCtrl9) SetD3Mouse(xIventoryArray[iitem], yIventoryArray[iitem]);
+								if (flagOnCtrl9) SendD3LeftMouseClick();
+								if (flagOnCtrl9) Sleep(craftDelayTimeInMs + (rand() % 5));
+
 								if (flagOnCtrl9) SendD3Key(VK_RETURN);
 								if (flagOnCtrl9) Sleep(craftDelayTimeInMs + (rand() % 5));
 
