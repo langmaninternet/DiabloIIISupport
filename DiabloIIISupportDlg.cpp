@@ -229,7 +229,7 @@ void		SendD3LeftMouseClick()
 		Sleep(10 + (rand() % 3));
 	}
 }
-void		SendD3RightMouseClick()
+void		SendD3RightMouseHold()
 {
 	HWND d3Wnd = GetD3Windows();
 	if (d3Wnd)
@@ -248,9 +248,7 @@ void		SendD3RightMouseClick()
 		//Sleep(10 + (rand() % 3));
 	}
 }
-
-
-void		SendD3RightMouseHold()
+void		SendD3RightMouseClick()
 {
 	HWND d3Wnd = GetD3Windows();
 	if (d3Wnd)
@@ -265,11 +263,10 @@ void		SendD3RightMouseHold()
 
 		SendMessage(d3Wnd, WM_RBUTTONDOWN, MK_RBUTTON, lParam);
 		Sleep(10 + (rand() % 3));
-		//	SendMessage(d3Wnd, WM_RBUTTONUP, 0, lParam);
-		//	Sleep(10 + (rand() % 3));
+		SendMessage(d3Wnd, WM_RBUTTONUP, 0, lParam);
+		Sleep(10 + (rand() % 3));
 	}
 }
-
 
 void		SendD3Key(int keyCode)
 {
