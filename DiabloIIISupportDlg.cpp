@@ -1143,17 +1143,18 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 						PreloadSalvageItem(preloadSalvageSlot, 60);
 						for (int iitem = 0; iitem < 60; iitem += 2)
 						{
-							if (d3WidthScale == 1280 && d3Height == 1024 && iitem == 0)
-							{
-								iitem = 12;
-							}
-
-							if (flagOnCtrl6) SetD3Mouse(xIventoryArray[iitem], yIventoryArray[iitem]);
-							if (flagOnCtrl6) SendD3RightMouseClick();
-							if (flagOnCtrl6) Sleep(craftDelayTimeInMs + (rand() % 5));
-
 							if (preloadSalvageSlot[iitem] || preloadSalvageSlot[iitem + 1])
 							{
+								if (d3WidthScale == 1280 && d3Height == 1024 && iitem == 0)
+								{
+									iitem = 12;
+								}
+
+								if (flagOnCtrl6) SetD3Mouse(xIventoryArray[iitem], yIventoryArray[iitem]);
+								if (flagOnCtrl6) SendD3RightMouseClick();
+								if (flagOnCtrl6) Sleep(craftDelayTimeInMs + (rand() % 5));
+
+
 								if (flagOnCtrl6) SetD3Mouse(xFill, yFill);
 								if (flagOnCtrl6) SendD3LeftMouseClick();
 								if (flagOnCtrl6) Sleep(craftDelayTimeInMs + (rand() % 5));
