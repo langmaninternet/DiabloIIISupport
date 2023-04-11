@@ -2,10 +2,11 @@
 #include "Engine.h"
 
 
-/*Constructor*/		Win32GDI::Win32GDI()
+/*Constructor*/		Win32GDI::Win32GDI(void)
 {
 	hBitmap = NULL;
 	hMemDC = NULL;
+	rectDesktop = { 0 };
 	HWND		hDesktop = GetDesktopWindow();
 	HDC			hdcDesktop = GetWindowDC(hDesktop);
 	if (hdcDesktop != NULL)

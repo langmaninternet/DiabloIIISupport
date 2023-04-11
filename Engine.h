@@ -16,7 +16,7 @@ private:
 	HDC			hMemDC;
 	RECT		rectDesktop;
 public:
-	/*Constructor*/		Win32GDI();
+	/*Constructor*/		Win32GDI(void);
 	void				CaptureDesktop(void);
 	int					GetPixel(int x, int y);
 	bool				ValidMode(void);
