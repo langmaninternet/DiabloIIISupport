@@ -1015,197 +1015,196 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			/************************************************************************/
 			/* Craft                                                                */
 			/************************************************************************/
-			if (d3Wnd != 0 && IsD3WindowActive())
+			if (d3Wnd != 0 && IsD3WindowActive() && (flagOnCtrl5 || flagOnCtrl6 || flagOnCtrl9))
 			{
-				if ((flagOnCtrl5 || flagOnCtrl6 || flagOnCtrl9))
+
+				GetDlgItem(IDC_CTRL5TEXT)->EnableWindow(FALSE);
+				GetDlgItem(IDC_CTRL6TEXT)->EnableWindow(FALSE);
+				GetDlgItem(IDC_CTRL9TEXT)->EnableWindow(FALSE);
+				double		d3Width = d3Rect.right - d3Rect.left;
+				double		d3Height = d3Rect.bottom - d3Rect.top;
+
+				const int	craftDelayTimeInMs = 30;
+				double		d3WidthScale = d3Width / 1920.0;
+				double		d3HeightScale = d3Height / 1080.0;
+				int			xTransmute = (int)round(230.0 * d3WidthScale);
+				int			yTransmute = (int)round(830.0 * d3HeightScale);
+				int			xFill = (int)round(720.0 * d3WidthScale);
+				int			yFill = (int)round(840.0 * d3HeightScale);
+				int			xIventoryArray[60] = { int(1428 * d3WidthScale), int(1428 * d3WidthScale), int(1428 * d3WidthScale), int(1428 * d3WidthScale), int(1428 * d3WidthScale), int(1428 * d3WidthScale), int(1478 * d3WidthScale), int(1478 * d3WidthScale), int(1478 * d3WidthScale), int(1478 * d3WidthScale), int(1478 * d3WidthScale), int(1478 * d3WidthScale), int(1529 * d3WidthScale), int(1529 * d3WidthScale), int(1529 * d3WidthScale), int(1529 * d3WidthScale), int(1529 * d3WidthScale), int(1529 * d3WidthScale), int(1579 * d3WidthScale), int(1579 * d3WidthScale), int(1579 * d3WidthScale), int(1579 * d3WidthScale), int(1579 * d3WidthScale), int(1579 * d3WidthScale), int(1630 * d3WidthScale), int(1630 * d3WidthScale), int(1630 * d3WidthScale), int(1630 * d3WidthScale), int(1630 * d3WidthScale), int(1630 * d3WidthScale), int(1680 * d3WidthScale), int(1680 * d3WidthScale), int(1680 * d3WidthScale), int(1680 * d3WidthScale), int(1680 * d3WidthScale), int(1680 * d3WidthScale), int(1731 * d3WidthScale), int(1731 * d3WidthScale), int(1731 * d3WidthScale), int(1731 * d3WidthScale), int(1731 * d3WidthScale), int(1731 * d3WidthScale), int(1781 * d3WidthScale), int(1781 * d3WidthScale), int(1781 * d3WidthScale), int(1781 * d3WidthScale), int(1781 * d3WidthScale), int(1781 * d3WidthScale), int(1831 * d3WidthScale), int(1831 * d3WidthScale), int(1831 * d3WidthScale), int(1831 * d3WidthScale), int(1831 * d3WidthScale), int(1831 * d3WidthScale), int(1881 * d3WidthScale), int(1881 * d3WidthScale), int(1881 * d3WidthScale), int(1881 * d3WidthScale), int(1881 * d3WidthScale), int(1881 * d3WidthScale) };
+				int			yIventoryArray[60] = { int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale) };
+				int			preloadSalvageSlot[60] = { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 };
+				double		xCubeLeftPage = 583 * d3WidthScale;
+				double		yCubeLeftPage = 840 * d3HeightScale;
+				double		xCubeRightPage = 852 * d3WidthScale;
+				double		yCubeRightPage = 840 * d3HeightScale;
+				int			xForgeWeaponTable = 517 * d3WidthScale;
+				int			yForgeWeaponTable = 223 * d3HeightScale;
+				int			xSalvageTable = 517 * d3WidthScale;
+				int			ySalvageTable = 500 * d3HeightScale;
+				int			xSalvageButton = (int)round(170.0 * d3WidthScale);
+				int			ySalvageButton = (int)round(290.0 * d3HeightScale);
+				int			xRepairTable = 517 * d3WidthScale;
+				int			yRepairTable = 620 * d3HeightScale;
+				int			xRepairButton = 264 * d3WidthScale;
+				int			yRepairButton = 594 * d3HeightScale;
+
+
+				if (d3WidthScale == 1280 && d3Height == 1024)
 				{
-					GetDlgItem(IDC_CTRL5TEXT)->EnableWindow(FALSE);
-					GetDlgItem(IDC_CTRL6TEXT)->EnableWindow(FALSE);
-					GetDlgItem(IDC_CTRL9TEXT)->EnableWindow(FALSE);
-					double		d3Width = d3Rect.right - d3Rect.left;
-					double		d3Height = d3Rect.bottom - d3Rect.top;
-
-					const int	craftDelayTimeInMs = 30;
-					double		d3WidthScale = d3Width / 1920.0;
-					double		d3HeightScale = d3Height / 1080.0;
-					int			xTransmute = (int)round(230.0 * d3WidthScale);
-					int			yTransmute = (int)round(830.0 * d3HeightScale);
-					int			xFill = (int)round(720.0 * d3WidthScale);
-					int			yFill = (int)round(840.0 * d3HeightScale);
-					int			xIventoryArray[60] = { int(1428 * d3WidthScale), int(1428 * d3WidthScale), int(1428 * d3WidthScale), int(1428 * d3WidthScale), int(1428 * d3WidthScale), int(1428 * d3WidthScale), int(1478 * d3WidthScale), int(1478 * d3WidthScale), int(1478 * d3WidthScale), int(1478 * d3WidthScale), int(1478 * d3WidthScale), int(1478 * d3WidthScale), int(1529 * d3WidthScale), int(1529 * d3WidthScale), int(1529 * d3WidthScale), int(1529 * d3WidthScale), int(1529 * d3WidthScale), int(1529 * d3WidthScale), int(1579 * d3WidthScale), int(1579 * d3WidthScale), int(1579 * d3WidthScale), int(1579 * d3WidthScale), int(1579 * d3WidthScale), int(1579 * d3WidthScale), int(1630 * d3WidthScale), int(1630 * d3WidthScale), int(1630 * d3WidthScale), int(1630 * d3WidthScale), int(1630 * d3WidthScale), int(1630 * d3WidthScale), int(1680 * d3WidthScale), int(1680 * d3WidthScale), int(1680 * d3WidthScale), int(1680 * d3WidthScale), int(1680 * d3WidthScale), int(1680 * d3WidthScale), int(1731 * d3WidthScale), int(1731 * d3WidthScale), int(1731 * d3WidthScale), int(1731 * d3WidthScale), int(1731 * d3WidthScale), int(1731 * d3WidthScale), int(1781 * d3WidthScale), int(1781 * d3WidthScale), int(1781 * d3WidthScale), int(1781 * d3WidthScale), int(1781 * d3WidthScale), int(1781 * d3WidthScale), int(1831 * d3WidthScale), int(1831 * d3WidthScale), int(1831 * d3WidthScale), int(1831 * d3WidthScale), int(1831 * d3WidthScale), int(1831 * d3WidthScale), int(1881 * d3WidthScale), int(1881 * d3WidthScale), int(1881 * d3WidthScale), int(1881 * d3WidthScale), int(1881 * d3WidthScale), int(1881 * d3WidthScale) };
-					int			yIventoryArray[60] = { int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale) };
-					int			preloadSalvageSlot[60] = { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 };
-					double		xCubeLeftPage = 583 * d3WidthScale;
-					double		yCubeLeftPage = 840 * d3HeightScale;
-					double		xCubeRightPage = 852 * d3WidthScale;
-					double		yCubeRightPage = 840 * d3HeightScale;
-					int			xForgeWeaponTable = 517 * d3WidthScale;
-					int			yForgeWeaponTable = 223 * d3HeightScale;
-					int			xSalvageTable = 517 * d3WidthScale;
-					int			ySalvageTable = 500 * d3HeightScale;
-					int			xSalvageButton = (int)round(170.0 * d3WidthScale);
-					int			ySalvageButton = (int)round(290.0 * d3HeightScale);
-					int			xRepairTable = 517 * d3WidthScale;
-					int			yRepairTable = 620 * d3HeightScale;
-					int			xRepairButton = 264 * d3WidthScale;
-					int			yRepairButton = 594 * d3HeightScale;
-
-
-					if (d3WidthScale == 1280 && d3Height == 1024)
-					{
-						xTransmute = 222;
-						yTransmute = 789;
-						xFill = 677;
-						yFill = 797;
-						xCubeLeftPage = 552;
-						yCubeLeftPage = 795;
-						xCubeRightPage = 805;
-						yCubeRightPage = 795;
-						xForgeWeaponTable = 484;
-						yForgeWeaponTable = 220;
-						xSalvageButton = 127;
-						ySalvageButton = 276;
-						xSalvageTable = 484;
-						ySalvageTable = 450;
-						xRepairTable = 484;
-						yRepairTable = 580;
-						xRepairButton = 250;
-						yRepairButton = 560;
-					}
-
-
-					/************************************************************************/
-					/* 1 Slot                                                               */
-					/************************************************************************/
-					if (flagOnCtrl5)
-					{
-						PreloadSalvageItem(preloadSalvageSlot, 60);
-						for (int iitem = 0; iitem < 60; iitem++)
-						{
-							if (preloadSalvageSlot[iitem])
-							{
-								if (d3WidthScale == 1280 && d3Height == 1024 && iitem == 0)
-								{
-									iitem = 24;
-								}
-								if (flagOnCtrl5) SetD3Mouse(xIventoryArray[iitem], yIventoryArray[iitem]);
-								if (flagOnCtrl5) SendD3RightMouseClick();
-								if (flagOnCtrl5) Sleep(50 + (rand() % 5));
-
-								if (flagOnCtrl5) SetD3Mouse(xFill, yFill);
-								if (flagOnCtrl5) SendD3LeftMouseClick();
-								if (flagOnCtrl5) Sleep(craftDelayTimeInMs + (rand() % 5));
-
-								if (flagOnCtrl5) SetD3Mouse(xTransmute, yTransmute);
-								if (flagOnCtrl5) SendD3LeftMouseClick();
-								if (flagOnCtrl5) Sleep(craftDelayTimeInMs + (rand() % 5));
-
-								if (flagOnCtrl5) Sleep(250 + (rand() % 10));
-
-								if (flagOnCtrl5) SetD3Mouse(xCubeLeftPage, yCubeLeftPage);
-								if (flagOnCtrl5) SendD3LeftMouseClick();
-								if (flagOnCtrl5) Sleep(craftDelayTimeInMs + (rand() % 5));
-
-								if (flagOnCtrl5) SetD3Mouse(xCubeRightPage, yCubeRightPage);
-								if (flagOnCtrl5) SendD3LeftMouseClick();
-								if (flagOnCtrl5) Sleep(craftDelayTimeInMs + (rand() % 5));
-							}
-						}
-						flagOnCtrl5 = false;
-					}
-
-
-					/************************************************************************/
-					/* 2 Slot                                                               */
-					/************************************************************************/
-					else if (flagOnCtrl6)
-					{
-						PreloadSalvageItem(preloadSalvageSlot, 60);
-						for (int iitem = 0; iitem < 60; iitem += 2)
-						{
-							if (preloadSalvageSlot[iitem] || preloadSalvageSlot[iitem + 1])
-							{
-								if (d3WidthScale == 1280 && d3Height == 1024 && iitem == 0)
-								{
-									iitem = 12;
-								}
-
-								if (flagOnCtrl6) SetD3Mouse(xIventoryArray[iitem], yIventoryArray[iitem]);
-								if (flagOnCtrl6) SendD3RightMouseClick();
-								if (flagOnCtrl6) Sleep(craftDelayTimeInMs + (rand() % 5));
-
-
-								if (flagOnCtrl6) SetD3Mouse(xFill, yFill);
-								if (flagOnCtrl6) SendD3LeftMouseClick();
-								if (flagOnCtrl6) Sleep(craftDelayTimeInMs + (rand() % 5));
-
-								if (flagOnCtrl6) SetD3Mouse(xTransmute, yTransmute);
-								if (flagOnCtrl6) SendD3LeftMouseClick();
-								if (flagOnCtrl6) Sleep(craftDelayTimeInMs + (rand() % 5));
-
-								if (flagOnCtrl6) Sleep(250 + (rand() % 10));
-
-								if (flagOnCtrl6) SetD3Mouse(xCubeLeftPage, yCubeLeftPage);
-								if (flagOnCtrl6) SendD3LeftMouseClick();
-								if (flagOnCtrl6) Sleep(craftDelayTimeInMs + (rand() % 5));
-
-								if (flagOnCtrl6) SetD3Mouse(xCubeRightPage, yCubeRightPage);
-								if (flagOnCtrl6) SendD3LeftMouseClick();
-								if (flagOnCtrl6) Sleep(craftDelayTimeInMs + (rand() % 5));
-							}
-						}
-						flagOnCtrl6 = false;
-					}
-
-
-					/************************************************************************/
-					/*                                                                      */
-					/************************************************************************/
-					else if (flagOnCtrl9)
-					{
-
-						if (flagOnCtrl9) SetD3Mouse(xForgeWeaponTable, yForgeWeaponTable);
-						if (flagOnCtrl9) SendD3LeftMouseClick();
-						if (flagOnCtrl9) SetD3Mouse(xSalvageTable, ySalvageTable);
-						if (flagOnCtrl9) SendD3LeftMouseClick();
-
-						if (flagOnCtrl9) SetD3Mouse(xSalvageButton, ySalvageButton);
-						if (flagOnCtrl9) SendD3LeftMouseClick();
-						if (flagOnCtrl9) Sleep(craftDelayTimeInMs + (rand() % 5));
-
-
-						PreloadSalvageItem(preloadSalvageSlot, 60);
-						for (int iitem = 0; iitem < 60; iitem++)
-						{
-							if (preloadSalvageSlot[iitem])
-							{
-								if (flagOnCtrl9) SetD3Mouse(xIventoryArray[iitem], yIventoryArray[iitem]);
-								if (flagOnCtrl9) SendD3LeftMouseClick();
-								if (flagOnCtrl9) Sleep(craftDelayTimeInMs + (rand() % 5));
-
-								if (flagOnCtrl9) SendD3Key(VK_RETURN);
-								if (flagOnCtrl9) Sleep(craftDelayTimeInMs + (rand() % 5));
-
-								if (flagOnCtrl9) SendD3Key(VK_RETURN);
-								if (flagOnCtrl9) Sleep(craftDelayTimeInMs + (rand() % 5));
-							}
-						}
-
-						if (flagOnCtrl9) SetD3Mouse(xRepairTable, yRepairTable);
-						if (flagOnCtrl9) SendD3LeftMouseClick();
-						if (flagOnCtrl9) Sleep(craftDelayTimeInMs + (rand() % 5));
-						if (flagOnCtrl9) SetD3Mouse(xRepairButton, yRepairButton);
-						if (flagOnCtrl9) SendD3LeftMouseClick();
-						if (flagOnCtrl9) Sleep(craftDelayTimeInMs + (rand() % 5));
-						flagOnCtrl9 = false;
-					}
-
-					GetDlgItem(IDC_CTRL5TEXT)->EnableWindow(TRUE);
-					GetDlgItem(IDC_CTRL6TEXT)->EnableWindow(TRUE);
-					GetDlgItem(IDC_CTRL9TEXT)->EnableWindow(TRUE);
-
-
+					xTransmute = 222;
+					yTransmute = 789;
+					xFill = 677;
+					yFill = 797;
+					xCubeLeftPage = 552;
+					yCubeLeftPage = 795;
+					xCubeRightPage = 805;
+					yCubeRightPage = 795;
+					xForgeWeaponTable = 484;
+					yForgeWeaponTable = 220;
+					xSalvageButton = 127;
+					ySalvageButton = 276;
+					xSalvageTable = 484;
+					ySalvageTable = 450;
+					xRepairTable = 484;
+					yRepairTable = 580;
+					xRepairButton = 250;
+					yRepairButton = 560;
 				}
+
+				/************************************************************************/
+				/* Preload                                                              */
+				/************************************************************************/
+				PreloadSalvageItem(preloadSalvageSlot, 60);
+
+				/************************************************************************/
+				/* 1 Slot                                                               */
+				/************************************************************************/
+				if (flagOnCtrl5)
+				{
+					for (int iitem = 0; iitem < 60; iitem++)
+					{
+						if (preloadSalvageSlot[iitem])
+						{
+							if (d3WidthScale == 1280 && d3Height == 1024 && iitem == 0)
+							{
+								iitem = 24;
+							}
+							if (flagOnCtrl5) SetD3Mouse(xIventoryArray[iitem], yIventoryArray[iitem]);
+							if (flagOnCtrl5) SendD3RightMouseClick();
+							if (flagOnCtrl5) Sleep(50 + (rand() % 5));
+
+							if (flagOnCtrl5) SetD3Mouse(xFill, yFill);
+							if (flagOnCtrl5) SendD3LeftMouseClick();
+							if (flagOnCtrl5) Sleep(craftDelayTimeInMs + (rand() % 5));
+
+							if (flagOnCtrl5) SetD3Mouse(xTransmute, yTransmute);
+							if (flagOnCtrl5) SendD3LeftMouseClick();
+							if (flagOnCtrl5) Sleep(craftDelayTimeInMs + (rand() % 5));
+
+							if (flagOnCtrl5) Sleep(250 + (rand() % 10));
+
+							if (flagOnCtrl5) SetD3Mouse(xCubeLeftPage, yCubeLeftPage);
+							if (flagOnCtrl5) SendD3LeftMouseClick();
+							if (flagOnCtrl5) Sleep(craftDelayTimeInMs + (rand() % 5));
+
+							if (flagOnCtrl5) SetD3Mouse(xCubeRightPage, yCubeRightPage);
+							if (flagOnCtrl5) SendD3LeftMouseClick();
+							if (flagOnCtrl5) Sleep(craftDelayTimeInMs + (rand() % 5));
+						}
+					}
+					flagOnCtrl5 = false;
+				}
+
+
+				/************************************************************************/
+				/* 2 Slot                                                               */
+				/************************************************************************/
+				else if (flagOnCtrl6)
+				{
+					for (int iitem = 0; iitem < 60; iitem += 2)
+					{
+						if (preloadSalvageSlot[iitem] || preloadSalvageSlot[iitem + 1])
+						{
+							if (d3WidthScale == 1280 && d3Height == 1024 && iitem == 0)
+							{
+								iitem = 12;
+							}
+
+							if (flagOnCtrl6) SetD3Mouse(xIventoryArray[iitem], yIventoryArray[iitem]);
+							if (flagOnCtrl6) SendD3RightMouseClick();
+							if (flagOnCtrl6) Sleep(craftDelayTimeInMs + (rand() % 5));
+
+
+							if (flagOnCtrl6) SetD3Mouse(xFill, yFill);
+							if (flagOnCtrl6) SendD3LeftMouseClick();
+							if (flagOnCtrl6) Sleep(craftDelayTimeInMs + (rand() % 5));
+
+							if (flagOnCtrl6) SetD3Mouse(xTransmute, yTransmute);
+							if (flagOnCtrl6) SendD3LeftMouseClick();
+							if (flagOnCtrl6) Sleep(craftDelayTimeInMs + (rand() % 5));
+
+							if (flagOnCtrl6) Sleep(250 + (rand() % 10));
+
+							if (flagOnCtrl6) SetD3Mouse(xCubeLeftPage, yCubeLeftPage);
+							if (flagOnCtrl6) SendD3LeftMouseClick();
+							if (flagOnCtrl6) Sleep(craftDelayTimeInMs + (rand() % 5));
+
+							if (flagOnCtrl6) SetD3Mouse(xCubeRightPage, yCubeRightPage);
+							if (flagOnCtrl6) SendD3LeftMouseClick();
+							if (flagOnCtrl6) Sleep(craftDelayTimeInMs + (rand() % 5));
+						}
+					}
+					flagOnCtrl6 = false;
+				}
+
+
+				/************************************************************************/
+				/*                                                                      */
+				/************************************************************************/
+				else if (flagOnCtrl9)
+				{
+					if (flagOnCtrl9) SetD3Mouse(xForgeWeaponTable, yForgeWeaponTable);
+					if (flagOnCtrl9) SendD3LeftMouseClick();
+					if (flagOnCtrl9) SetD3Mouse(xSalvageTable, ySalvageTable);
+					if (flagOnCtrl9) SendD3LeftMouseClick();
+
+					if (flagOnCtrl9) SetD3Mouse(xSalvageButton, ySalvageButton);
+					if (flagOnCtrl9) SendD3LeftMouseClick();
+					if (flagOnCtrl9) Sleep(craftDelayTimeInMs + (rand() % 5));
+
+
+
+					for (int iitem = 0; iitem < 60; iitem++)
+					{
+						if (preloadSalvageSlot[iitem])
+						{
+							if (flagOnCtrl9) SetD3Mouse(xIventoryArray[iitem], yIventoryArray[iitem]);
+							if (flagOnCtrl9) SendD3LeftMouseClick();
+							if (flagOnCtrl9) Sleep(craftDelayTimeInMs + (rand() % 5));
+
+							if (flagOnCtrl9) SendD3Key(VK_RETURN);
+							if (flagOnCtrl9) Sleep(craftDelayTimeInMs + (rand() % 5));
+
+							if (flagOnCtrl9) SendD3Key(VK_RETURN);
+							if (flagOnCtrl9) Sleep(craftDelayTimeInMs + (rand() % 5));
+						}
+					}
+
+					if (flagOnCtrl9) SetD3Mouse(xRepairTable, yRepairTable);
+					if (flagOnCtrl9) SendD3LeftMouseClick();
+					if (flagOnCtrl9) Sleep(craftDelayTimeInMs + (rand() % 5));
+					if (flagOnCtrl9) SetD3Mouse(xRepairButton, yRepairButton);
+					if (flagOnCtrl9) SendD3LeftMouseClick();
+					if (flagOnCtrl9) Sleep(craftDelayTimeInMs + (rand() % 5));
+					flagOnCtrl9 = false;
+				}
+
+				GetDlgItem(IDC_CTRL5TEXT)->EnableWindow(TRUE);
+				GetDlgItem(IDC_CTRL6TEXT)->EnableWindow(TRUE);
+				GetDlgItem(IDC_CTRL9TEXT)->EnableWindow(TRUE);
+
+
 			}
 			else
 			{
