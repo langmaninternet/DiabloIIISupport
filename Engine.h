@@ -37,7 +37,7 @@ public:
 
 #ifdef _DEBUG
 	void				SaveScreen(const char* filePath = "D:\\Dump.bmp");
-
+	void				DumpSkill04(const char* filePath = "D:\\DumpSkill04.txt", const char* logDumpFolder = "D:\\DumpLogSkill04\\");
 #endif
 
 	/*Desstructor*/		~Win32GDI();
@@ -80,7 +80,7 @@ struct DiabloIIIStatusStruct
 };
 extern		DiabloIIIStatusStruct diabloGameStatus;
 void		GetCurrentDiabloIIStatus(void);
-void		PreloadSalvageItem(int *preloadSalvageSlot, int preloadSalvageSlotSize);
+void		PreloadSalvageItem(int* preloadSalvageSlot, int preloadSalvageSlotSize);
 
 
 /************************************************************************/

@@ -6935,4 +6935,11 @@ void Win32GDI::SaveScreen(const char* filePath /*= "D:\\Dump.bmp"*/)
 		DeleteDC(MemDC);
 	}
 }
+void Win32GDI::DumpSkill04(const char* filePath /*= "D:\\DumpSkill04.txt"*/, const char* logDumpFolder /*= "D:\\DumpLogSkill04\\"*/)
+{
+
+}
+
+
+
 #endif
