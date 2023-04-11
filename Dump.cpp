@@ -9,59 +9,13 @@
 #include <string>
 #include <list>
 #include "Engine.h"
+extern Win32GDI w32gdi;
 
 
 
 
 
 #ifdef _DEBUG
-static HBITMAP		hScreenBitmapObject = NULL;
-static HDC			hScreenMemDC = NULL;
-static RECT			hScreenRect = { 0 };
-
-void				CaptureScreen(void)
-{
-	if (hScreenBitmapObject == NULL || hScreenMemDC == NULL)
-	{
-		HWND		hDesktop = GetDesktopWindow();
-		HDC			hdcDesktop = GetWindowDC(hDesktop);
-		if (hdcDesktop != NULL)
-		{
-			GetWindowRect(hDesktop, &hScreenRect);
-			hScreenMemDC = CreateCompatibleDC(hdcDesktop);
-			if (hScreenMemDC != NULL)
-			{
-				HBITMAP		hBmp = CreateCompatibleBitmap(hdcDesktop, hScreenRect.right, hScreenRect.bottom);
-				if (hBmp != NULL)
-				{
-					SelectObject(hScreenMemDC, hBmp);
-				}
-				else
-				{
-					DeleteDC(hScreenMemDC);
-					hScreenMemDC = NULL;
-				}
-			}
-			ReleaseDC(hDesktop, hdcDesktop);
-		}
-	}
-}
-
-
-
-
-//skill 01 635  1004 - Half 681 1029 
-//skill 02 702  1004 - Half 748 1029 
-//skill 03 768  1004 - Half 814 1029 
-//skill 04 834  1004 - Half 881 1029 
-//left     905  1006 - Half 951 1030
-//right    970  1006 - Half 1016 1030
-
-
-
-
-
-
 
 
 bool		HDCToFile(const char* FilePath, HDC Context, RECT Area, uint16_t BitsPerPixel = 24)
@@ -158,9 +112,9 @@ void		StarPactDumpSkill01(void)
 		BitBlt(hMemDC, 0, 0, rectDesktop.right, rectDesktop.bottom, hdcDesktop, 0, 0, SRCCOPY);
 		ReleaseDC(hDesktop, hdcDesktop);
 
-		FILE* logFile = NULL;
+		FILE *logFile = NULL;
 		fopen_s(&logFile, "D:\\Work\\DumpSkill01.txt", "wb");
-		fprintf(logFile, "bool D3Skill01Is_XXXXXX_AndReady(void)\n{\n");
+		fprintf(logFile, "bool D3Skill01Is????AndReady(void)\n{\n");
 
 
 		//skill 01 635  1004 - Half 681 1029 
@@ -297,9 +251,9 @@ void		StarPactDumpSkill02(void)
 		BitBlt(hMemDC, 0, 0, rectDesktop.right, rectDesktop.bottom, hdcDesktop, 0, 0, SRCCOPY);
 		ReleaseDC(hDesktop, hdcDesktop);
 
-		FILE* logFile = NULL;
+		FILE *logFile = NULL;
 		fopen_s(&logFile, "D:\\Work\\DumpSkill02.txt", "wb");
-		fprintf(logFile, "bool D3Skill02Is_XXXXXX_AndReady(void)\n{\n");
+		fprintf(logFile, "bool D3Skill02Is????AndReady(void)\n{\n");
 
 
 		//skill 02 702  1004 - Half 748 1029 
@@ -435,9 +389,9 @@ void		StarPactDumpSkill03(void)
 		BitBlt(hMemDC, 0, 0, rectDesktop.right, rectDesktop.bottom, hdcDesktop, 0, 0, SRCCOPY);
 		ReleaseDC(hDesktop, hdcDesktop);
 
-		FILE* logFile = NULL;
+		FILE *logFile = NULL;
 		fopen_s(&logFile, "D:\\Work\\DumpSkill03.txt", "wb");
-		fprintf(logFile, "bool D3Skill03Is_XXXXXX_AndReady(void)\n{\n");
+		fprintf(logFile, "bool D3Skill03Is????AndReady(void)\n{\n");
 
 		//skill 03 768  1004 - Half 814 1029 
 		const int			xleft = 768;
@@ -574,9 +528,9 @@ void		StarPactDumpSkill04(void)
 		BitBlt(hMemDC, 0, 0, rectDesktop.right, rectDesktop.bottom, hdcDesktop, 0, 0, SRCCOPY);
 		ReleaseDC(hDesktop, hdcDesktop);
 
-		FILE* logFile = NULL;
+		FILE *logFile = NULL;
 		fopen_s(&logFile, "D:\\Work\\DumpSkill04.txt", "wb");
-		fprintf(logFile, "bool D3Skill04Is_XXXXXX_AndReady(void)\n{\n");
+		fprintf(logFile, "bool D3Skill04Is????AndReady(void)\n{\n");
 
 
 		//skill 04 834  1003 - Half 881 1029 
@@ -712,9 +666,9 @@ void		StarPactDumpSkillLeft(void)
 		BitBlt(hMemDC, 0, 0, rectDesktop.right, rectDesktop.bottom, hdcDesktop, 0, 0, SRCCOPY);
 		ReleaseDC(hDesktop, hdcDesktop);
 
-		FILE* logFile = NULL;
+		FILE *logFile = NULL;
 		fopen_s(&logFile, "D:\\Work\\DumpSkillLeft.txt", "wb");
-		fprintf(logFile, "bool D3SkillLeftMouseIs_XXXXXX_AndReady(void)\n{\n");
+		fprintf(logFile, "bool D3SkillLeftMouseIs????AndReady(void)\n{\n");
 
 
 		//left     905  1006 - Half 951 1030
@@ -850,9 +804,9 @@ void		StarPactDumpSkillRight(void)
 		BitBlt(hMemDC, 0, 0, rectDesktop.right, rectDesktop.bottom, hdcDesktop, 0, 0, SRCCOPY);
 		ReleaseDC(hDesktop, hdcDesktop);
 
-		FILE* logFile = NULL;
+		FILE *logFile = NULL;
 		fopen_s(&logFile, "D:\\Work\\DumpSkillRight.txt", "wb");
-		fprintf(logFile, "bool D3SkillRightMouseIs_XXXXXX_AndReady(void)\n{\n");
+		fprintf(logFile, "bool D3SkillRightMouseIs????AndReady(void)\n{\n");
 
 
 		//right    970  1006 - Half 1016 1030
@@ -939,9 +893,12 @@ void		StarPactDumpSkillRight(void)
 }
 void		QuangBTDumpScreen(void)
 {
-	CaptureScreen();
-
-
+	//skill 01 635  1004 - Half 681 1029 
+	//skill 02 702  1004 - Half 748 1029 
+	//skill 03 768  1004 - Half 814 1029 
+	//skill 04 835  1004 - Half 881 1029 
+	//left     905  1006 - Half 951 1030
+	//right    970  1006 - Half 1016 1030
 
 	StarPactDumpSkill01();
 	StarPactDumpSkill02();
@@ -950,40 +907,101 @@ void		QuangBTDumpScreen(void)
 	StarPactDumpSkillLeft();
 	StarPactDumpSkillRight();
 
+	static HBITMAP		hBmp = NULL;
+	static HDC			hMemDC = NULL;
+	static RECT			rectDesktop;
+	if (hBmp == NULL || hMemDC == NULL)
+	{
+		HWND		hDesktop = GetDesktopWindow();
+		HDC			hdcDesktop = GetWindowDC(hDesktop);
+		if (hdcDesktop != NULL)
+		{
+			GetWindowRect(hDesktop, &rectDesktop);
+			hMemDC = CreateCompatibleDC(hdcDesktop);
+			if (hMemDC != NULL)
+			{
+				HBITMAP		hBmp = CreateCompatibleBitmap(hdcDesktop, rectDesktop.right, rectDesktop.bottom);
+				if (hBmp != NULL)
+				{
+					SelectObject(hMemDC, hBmp);
+				}
+				else
+				{
+					DeleteDC(hMemDC);
+					hMemDC = NULL;
+				}
+			}
+			ReleaseDC(hDesktop, hdcDesktop);
+		}
+	}
 
-	
-
-
-
-	HWND	hDiablo3Window = FindWindowW(L"D3 Main Window Class", L"Diablo III");
+	HWND	d3Wnd = FindWindowW(L"D3 Main Window Class", L"Diablo III");
 	RECT	d3rect;
-	GetClientRect(hDiablo3Window, &d3rect);
-	if (hScreenMemDC != NULL
+	GetClientRect(d3Wnd, &d3rect);
+
+
+	if (hMemDC != NULL
 		&& d3rect.top == 0
 		&& d3rect.left == 0
 		&& d3rect.right == 1920
 		&& d3rect.bottom == 1080
-		&& hScreenRect.top == 0
-		&& hScreenRect.left == 0
-		&& hScreenRect.right == 1920
-		&& hScreenRect.bottom == 1080
+		&& rectDesktop.top == 0
+		&& rectDesktop.left == 0
+		&& rectDesktop.right == 1920
+		&& rectDesktop.bottom == 1080
 		)
 	{
 		HWND		hDesktop = GetDesktopWindow();
 		HDC			hdcDesktop = GetWindowDC(hDesktop);
-		BitBlt(hScreenMemDC, 0, 0, hScreenRect.right, hScreenRect.bottom, hdcDesktop, 0, 0, SRCCOPY);
+		BitBlt(hMemDC, 0, 0, rectDesktop.right, rectDesktop.bottom, hdcDesktop, 0, 0, SRCCOPY);
 		ReleaseDC(hDesktop, hdcDesktop);
 
-		HDCToFile("D:\\Work\\Dump.bmp", hScreenMemDC, hScreenRect);
-		FILE* logFile = NULL;
+		HDCToFile("D:\\Work\\Dump.bmp", hMemDC, rectDesktop);
+		FILE *logFile = NULL;
 		fopen_s(&logFile, "D:\\Work\\Dump.txt", "wb");
 		fprintf(logFile, "bool D3Is????(void)\n{\n");
 
 
+		//				fprintf(logFile, "\n\n\n");
+		//				int xarr[10] = { 1403,1453,1504,1554,1605,1655,1706,1756,1806,1856 };
+		//				int yarr[6] = { 559 , 609, 659, 709, 759, 808 };
+		//				//fprintf(logFile, "int			yIventoryArray[60] = { ");
+		//				std::set<int> primalColor;
+		//				for (int ix = 0; ix < 10; ix++)
+		//				{
+		//					for (int iy = 0; iy < 6; iy++)
+		//					{
+		//						int xdata = xarr[ix] + 25;
+		//						//fprintf(logFile, "int (%d * d3WidthScale), ", xdata);
+		//				
+		//						int ydata = yarr[iy] + 25;
+		//						//fprintf(logFile, "int (%d * d3HeightScale), ", ydata);
+		//				
+		//						//fprintf(logFile, "1,");
+		//				
+		//						primalColor.insert(w32gdi.GetPixel(xdata, ydata));
+		//						primalColor.insert(w32gdi.GetPixel(xdata + 1, ydata + 1));
+		//						primalColor.insert(w32gdi.GetPixel(xdata + 1, ydata - 1));
+		//						primalColor.insert(w32gdi.GetPixel(xdata - 1, ydata + 1));
+		//						primalColor.insert(w32gdi.GetPixel(xdata - 1, ydata - 1));
+		//					}
+		//				}
+		//				
+		//				
+		//				for (auto color : primalColor)
+		//				{
+		//					fprintf(logFile, "0x%X/* R%d G%d B%d*/\n", color, GetRValue(color), GetGValue(color), GetBValue(color));
+		//				}
+		//				
+		//				fprintf(logFile, " };");
+		//				
+		//				
+		//				fprintf(logFile, "\n\n\n");
 
 
 
 
+	
 		// 855 1062
 		// 865 1072
 
@@ -996,7 +1014,7 @@ void		QuangBTDumpScreen(void)
 		{
 			for (int iy = ytop; iy < ybottom; iy++)
 			{
-				int color = GetPixel(hScreenMemDC, ix, iy);
+				int color = GetPixel(hMemDC, ix, iy);
 				bitmapArray[ix - xleft][iy - ytop].insert(color);
 			}
 		}
