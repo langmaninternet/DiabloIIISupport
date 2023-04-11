@@ -18,7 +18,7 @@ private:
 public:
 	/*Constructor*/		Win32GDI(void);
 	void				CaptureDesktop(void);
-	void				BlurSkillSlot04(void);
+	void				BlurRectangle(int xleft, int ytop, int xright, int ybottom);
 	int					GetPixel(int x, int y);
 	bool				ValidMode(void);
 	bool				D3IsViewMap(void);
@@ -35,9 +35,11 @@ public:
 	bool				D3Skill03KeyIsE(void);
 	bool				D3Skill04KeyIsR(void);
 
+
+	bool				D3Skill04Is_Familiar_AndReady(void);
 #ifdef _DEBUG
 	void				SaveScreen(const char* filePath = "D:\\Dump.bmp");
-	void				SaveSubSreen(const char* filePath);
+	void				SaveSubSreen(const char* filePath, int xleft, int ytop, int xright, int ybottom);
 	void				DumpSkill04(const char* filePath = "D:\\DumpSkill04.txt", const char* logDumpFolder = "D:\\DumpLogSkill04\\");
 #endif
 
@@ -84,10 +86,4 @@ void		GetCurrentDiabloIIStatus(void);
 void		PreloadSalvageItem(int* preloadSalvageSlot, int preloadSalvageSlotSize);
 
 
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
-void					CreateOverlay(void);
-void					DestroyOverlay(void);
 #endif

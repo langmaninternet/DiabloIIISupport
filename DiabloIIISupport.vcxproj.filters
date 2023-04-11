@@ -53,6 +53,9 @@
     <ClCompile Include="Win32GDI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Diablo3SkillData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DiabloIIISupport.rc">

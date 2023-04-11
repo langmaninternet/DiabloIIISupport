@@ -1,7 +1,12 @@
 #include "stdafx.h"
 #include <Wingdi.h>
+#include <time.h>
 #include <iostream>
 #include <fstream>
+#include <map>
+#include <set>
+#include <string>
+#include <list>
 #include "Engine.h"
 
 
@@ -20,11 +25,16 @@
 //right    970  1006 - Half 1016 1030
 
 
-//skill 04 834  1003 - Half 881 1029 
+//skill 04 834  1003 - Half 881 1029
 static const int			skill_04_x_left = 834;
 static const int			skill_04_y_top = 1003;
 static const int			skill_04_x_right = 881;
 static const int			skill_04_y_bottom = 1029;
+static int					skill_04_snap_count = 0;
+static std::set<int>		bitmap_skill_04_data[skill_04_x_right - skill_04_x_left][skill_04_y_bottom - skill_04_y_top];
+
+
+
 static const int			blur_coefficient = 32;
 
 
@@ -65,21 +75,16 @@ void				Win32GDI::CaptureDesktop(void)
 	BitBlt(hScreenMemDC, 0, 0, rectDesktop.right, rectDesktop.bottom, hdcDesktop, 0, 0, SRCCOPY);
 	ReleaseDC(hDesktop, hdcDesktop);
 }
-void				Win32GDI::SaveSubSreen(const char* filePath)
+void				Win32GDI::BlurRectangle(int xleft, int ytop, int xright, int ybottom)
 {
-
-}
-void				Win32GDI::BlurSkillSlot04(void)
-{
-	for (int ix = skill_04_x_left; ix < skill_04_x_right; ix++)
+	for (int ix = xleft; ix < xright; ix++)
 	{
-		for (int iy = skill_04_y_top; iy < skill_04_y_bottom; iy++)
+		for (int iy = ytop; iy < ybottom; iy++)
 		{
 			int color = ::GetPixel(hScreenMemDC, ix, iy);
 			int color_r = GetRValue(color);
 			int color_g = GetGValue(color);
 			int color_b = GetBValue(color);
-
 			color_r -= color_r % blur_coefficient;
 			color_g -= color_g % blur_coefficient;
 			color_b -= color_b % blur_coefficient;
@@ -6885,17 +6890,12 @@ bool				Win32GDI::D3Skill04KeyIsR(void)
 
 
 
-
-
-
-
-
 /************************************************************************/
 /* Debug                                                                */
 /************************************************************************/
 #ifdef _DEBUG
-
-void Win32GDI::SaveScreen(const char* filePath /*= "D:\\Dump.bmp"*/)
+bool				IsD3WindowActive(void);
+void				Win32GDI::SaveScreen(const char* filePath /*= "D:\\Dump.bmp"*/)
 {
 	uint16_t BitsPerPixel = 24;
 	uint32_t Width = rectDesktop.right - rectDesktop.left;
@@ -6939,11 +6939,138 @@ void Win32GDI::SaveScreen(const char* filePath /*= "D:\\Dump.bmp"*/)
 		DeleteDC(MemDC);
 	}
 }
-void Win32GDI::DumpSkill04(const char* filePath /*= "D:\\DumpSkill04.txt"*/, const char* logDumpFolder /*= "D:\\DumpLogSkill04\\"*/)
+void				Win32GDI::SaveSubSreen(const char* filePath, int xleft, int ytop, int xright, int ybottom)
 {
-	CreateDirectoryA(logDumpFolder, 0);
+	uint16_t BitsPerPixel = 24;
+	uint32_t Width = xright - xleft;
+	uint32_t Height = ybottom - ytop;
+	BITMAPINFO Info;
+	BITMAPFILEHEADER Header;
+	memset(&Info, 0, sizeof(Info));
+	memset(&Header, 0, sizeof(Header));
+	Info.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+	Info.bmiHeader.biWidth = Width;
+	Info.bmiHeader.biHeight = Height;
+	Info.bmiHeader.biPlanes = 1;
+	Info.bmiHeader.biBitCount = BitsPerPixel;
+	Info.bmiHeader.biCompression = BI_RGB;
+	Info.bmiHeader.biSizeImage = Width * Height * (BitsPerPixel > 24 ? 4 : 3);
+	Header.bfType = 0x4D42;
+	Header.bfOffBits = sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER);
+	char* memPixels = NULL;
+	HDC MemDC = CreateCompatibleDC(hScreenMemDC);
+	if (MemDC != NULL)
+	{
+		HBITMAP hSection = CreateDIBSection(hScreenMemDC, &Info, DIB_RGB_COLORS, (void**)&memPixels, 0, 0);
+		if (hSection != NULL)
+		{
+			HGDIOBJ hgiObject = SelectObject(MemDC, hSection);
+			if (hgiObject != NULL)
+			{
+				BitBlt(MemDC, 0, 0, Width, Height, hScreenMemDC, xleft, ytop, SRCCOPY);
+				std::fstream hFile(filePath, std::ios::out | std::ios::binary);
+				if (hFile.is_open())
+				{
+					hFile.write((char*)&Header, sizeof(Header));
+					hFile.write((char*)&Info.bmiHeader, sizeof(Info.bmiHeader));
+					hFile.write(memPixels, (((BitsPerPixel * Width + 31) & ~31) / 8) * Height);
+					hFile.close();
+				}
+				DeleteObject(hgiObject);
+			}
+			DeleteObject(hSection);
+		}
+		DeleteDC(MemDC);
+	}
+}
+void				Win32GDI::DumpSkill04(const char* filePath /*= "D:\\DumpSkill04.txt"*/, const char* logDumpFolder /*= "D:\\DumpLogSkill04\\"*/)
+{
+	if (IsD3WindowActive())
+	{
+
+		skill_04_snap_count++;
+		CaptureDesktop();
+		BlurRectangle(skill_04_x_left, skill_04_y_top, skill_04_x_right, skill_04_y_bottom);
+		CreateDirectoryA(logDumpFolder, 0);
+
+		char bufferDumpFileName[1000] = { 0 };
+		sprintf_s(bufferDumpFileName, 999, "%s\\D%06d.bmp", logDumpFolder, skill_04_snap_count);
+		SaveSubSreen(bufferDumpFileName, skill_04_x_left, skill_04_y_top, skill_04_x_right, skill_04_y_bottom);
 
 
+		//Copy data to set
+		for (int ix = skill_04_x_left; ix < skill_04_x_right; ix++)
+		{
+			for (int iy = skill_04_y_top; iy < skill_04_y_bottom; iy++)
+			{
+				int color = ::GetPixel(hScreenMemDC, ix, iy);
+				bitmap_skill_04_data[ix - skill_04_x_left][iy - skill_04_y_top].insert(color);
+			}
+		}
+
+		//Write to file
+		FILE* logFile = NULL;
+		fopen_s(&logFile, filePath, "wb");
+		if (logFile != NULL)
+		{
+			fprintf(logFile, "bool D3Skill04Is_XXXXX_AndReady(void)\n{\n");
+
+			for (int isize = 1; isize <= 3; isize++)
+			{
+				for (int ix = skill_04_x_left; ix < skill_04_x_right; ix++)
+				{
+					for (int iy = skill_04_y_top; iy < skill_04_y_bottom; iy++)
+					{
+						if (bitmap_skill_04_data[ix - skill_04_x_left][iy - skill_04_y_top].size() > 1)
+						{
+							fprintf(logFile, "int color = 0;\n");
+							/*soft break*/
+							ix = skill_04_x_right;
+							iy = skill_04_y_bottom;
+						}
+					}
+				}
+			}
+			for (int isize = 1; isize <= 3; isize++)
+			{
+				for (int ix = skill_04_x_left; ix < skill_04_x_right; ix++)
+				{
+					for (int iy = skill_04_y_top; iy < skill_04_y_bottom; iy++)
+					{
+						if (isize == 1 && bitmap_skill_04_data[ix - skill_04_x_left][iy - skill_04_y_top].size() == 1)
+						{
+							fprintf(logFile, "if (GetPixel(%d, %d) != 0X%X) return false;\n", ix, iy, *(bitmap_skill_04_data[ix - skill_04_x_left][iy - skill_04_y_top].begin()));
+						}
+						else if (isize == 2 && bitmap_skill_04_data[ix - skill_04_x_left][iy - skill_04_y_top].size() == 2)
+						{
+							fprintf(logFile, "color = GetPixel(%d, %d);", ix, iy);
+							fprintf(logFile, "if (color != 0X%X && color != 0X%X) return false;\n",
+								*(bitmap_skill_04_data[ix - skill_04_x_left][iy - skill_04_y_top].begin()),
+								*(std::next(bitmap_skill_04_data[ix - skill_04_x_left][iy - skill_04_y_top].begin()))
+							);
+						}
+						else if (bitmap_skill_04_data[ix - skill_04_x_left][iy - skill_04_y_top].size() > 2)
+						{
+							fprintf(logFile, "color = GetPixel(%d, %d);", ix, iy);
+							fprintf(logFile, "if (");
+							for (auto icolor = bitmap_skill_04_data[ix - skill_04_x_left][iy - skill_04_y_top].begin(); icolor != bitmap_skill_04_data[ix - skill_04_x_left][iy - skill_04_y_top].end(); icolor++)
+							{
+								fprintf(logFile, "color != 0X%X", *icolor);
+								if (std::next(icolor) != bitmap_skill_04_data[ix - skill_04_x_left][iy - skill_04_y_top].end())
+								{
+									fprintf(logFile, " && ");
+								}
+							}
+							fprintf(logFile, ") return false;\n");
+						}
+					}
+				}
+			}
+			fprintf(logFile, "\nreturn true;\n}\n");
+			fflush(logFile);
+			fclose(logFile);
+		}
+	}
 }
 
 

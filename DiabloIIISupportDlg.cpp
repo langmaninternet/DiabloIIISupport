@@ -102,8 +102,7 @@ int						skillSlot03Cooldown;
 int						skillSlot04Cooldown;
 HHOOK					hGlobalHook;
 time_t					last_main_timer;
-
-
+extern Win32GDI			w32gdi;
 
 
 /************************************************************************/
@@ -1183,6 +1182,11 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 	}
 	else if (autoCastSkillTimerDelay == nIdEvent)
 	{
+		w32gdi.CaptureDesktop();
+		if (w32gdi.D3Skill04Is_Familiar_AndReady())
+		{
+
+		}
 	}
 }
 void CDiabloIIISupportDlg::OnLoadConfig()

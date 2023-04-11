@@ -18,43 +18,7 @@ extern Win32GDI w32gdi;
 #ifdef _DEBUG
 
 
-bool		HDCToFile(const char* FilePath, HDC Context, RECT Area, uint16_t BitsPerPixel = 24)
-{
-	uint32_t Width = Area.right - Area.left;
-	uint32_t Height = Area.bottom - Area.top;
-	BITMAPINFO Info;
-	BITMAPFILEHEADER Header;
-	memset(&Info, 0, sizeof(Info));
-	memset(&Header, 0, sizeof(Header));
-	Info.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
-	Info.bmiHeader.biWidth = Width;
-	Info.bmiHeader.biHeight = Height;
-	Info.bmiHeader.biPlanes = 1;
-	Info.bmiHeader.biBitCount = BitsPerPixel;
-	Info.bmiHeader.biCompression = BI_RGB;
-	Info.bmiHeader.biSizeImage = Width * Height * (BitsPerPixel > 24 ? 4 : 3);
-	Header.bfType = 0x4D42;
-	Header.bfOffBits = sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER);
-	char* Pixels = NULL;
-	HDC MemDC = CreateCompatibleDC(Context);
-	HBITMAP Section = CreateDIBSection(Context, &Info, DIB_RGB_COLORS, (void**)&Pixels, 0, 0);
-	HGDIOBJ hgiObject = SelectObject(MemDC, Section);
-	DeleteObject(hgiObject);
-	BitBlt(MemDC, 0, 0, Width, Height, Context, Area.left, Area.top, SRCCOPY);
-	DeleteDC(MemDC);
-	std::fstream hFile(FilePath, std::ios::out | std::ios::binary);
-	if (hFile.is_open())
-	{
-		hFile.write((char*)&Header, sizeof(Header));
-		hFile.write((char*)&Info.bmiHeader, sizeof(Info.bmiHeader));
-		hFile.write(Pixels, (((BitsPerPixel * Width + 31) & ~31) / 8) * Height);
-		hFile.close();
-		DeleteObject(Section);
-		return true;
-	}
-	DeleteObject(Section);
-	return false;
-}
+
 
 
 
@@ -475,144 +439,7 @@ void		StarPactDumpSkill03(void)
 	}
 
 }
-void		StarPactDumpSkill04(void)
-{
-	static HBITMAP		hBmp = NULL;
-	static HDC			hMemDC = NULL;
-	static RECT			rectDesktop;
-	if (hBmp == NULL || hMemDC == NULL)
-	{
-		HWND		hDesktop = GetDesktopWindow();
-		HDC			hdcDesktop = GetWindowDC(hDesktop);
-		if (hdcDesktop != NULL)
-		{
-			GetWindowRect(hDesktop, &rectDesktop);
-			hMemDC = CreateCompatibleDC(hdcDesktop);
-			if (hMemDC != NULL)
-			{
-				HBITMAP		hBmp = CreateCompatibleBitmap(hdcDesktop, rectDesktop.right, rectDesktop.bottom);
-				if (hBmp != NULL)
-				{
-					SelectObject(hMemDC, hBmp);
-				}
-				else
-				{
-					DeleteDC(hMemDC);
-					hMemDC = NULL;
-				}
-			}
-			ReleaseDC(hDesktop, hdcDesktop);
-		}
-	}
 
-	HWND	d3Wnd = FindWindowW(L"D3 Main Window Class", L"Diablo III");
-	RECT	d3rect;
-	GetClientRect(d3Wnd, &d3rect);
-
-
-
-
-	if (hMemDC != NULL
-		&& d3rect.top == 0
-		&& d3rect.left == 0
-		&& d3rect.right == 1920
-		&& d3rect.bottom == 1080
-		&& rectDesktop.top == 0
-		&& rectDesktop.left == 0
-		&& rectDesktop.right == 1920
-		&& rectDesktop.bottom == 1080
-		)
-	{
-		HWND		hDesktop = GetDesktopWindow();
-		HDC			hdcDesktop = GetWindowDC(hDesktop);
-		BitBlt(hMemDC, 0, 0, rectDesktop.right, rectDesktop.bottom, hdcDesktop, 0, 0, SRCCOPY);
-		ReleaseDC(hDesktop, hdcDesktop);
-
-		FILE* logFile = NULL;
-		fopen_s(&logFile, "D:\\Work\\DumpSkill04.txt", "wb");
-		fprintf(logFile, "bool D3Skill04Is_XXXXX_AndReady(void)\n{\n");
-
-
-		//skill 04 834  1003 - Half 881 1029 
-		const int			xleft = 834;
-		const int			ytop = 1003;
-		const int			xright = 881;
-		const int			ybottom = 1029;
-
-		static std::set<int>	bitmapArray[xright - xleft][ybottom - ytop];
-		for (int ix = xleft; ix < xright; ix++)
-		{
-			for (int iy = ytop; iy < ybottom; iy++)
-			{
-				int color = GetPixel(hMemDC, ix, iy);
-				bitmapArray[ix - xleft][iy - ytop].insert(color);
-			}
-		}
-		for (int isize = 1; isize <= 3; isize++)
-		{
-			for (int ix = xleft; ix < xright; ix++)
-			{
-				for (int iy = ytop; iy < ybottom; iy++)
-				{
-					if (bitmapArray[ix - xleft][iy - ytop].size() > 1)
-					{
-						fprintf(logFile, "int color = 0;\n");
-						/*soft break*/
-						ix = xright;
-						iy = ybottom;
-					}
-				}
-			}
-		}
-
-		for (int isize = 1; isize <= 3; isize++)
-		{
-			for (int ix = xleft; ix < xright; ix++)
-			{
-				for (int iy = ytop; iy < ybottom; iy++)
-				{
-					if (isize == 1 && bitmapArray[ix - xleft][iy - ytop].size() == 1)
-					{
-						fprintf(logFile, "if (GetPixel(%d, %d) != 0X%X) return false;\n", ix, iy, *(bitmapArray[ix - xleft][iy - ytop].begin()));
-					}
-					else if (isize == 2 && bitmapArray[ix - xleft][iy - ytop].size() == 2)
-					{
-						fprintf(logFile, "color = GetPixel(%d, %d);", ix, iy);
-						fprintf(logFile, "if (color != 0X%X && color != 0X%X) return false;\n",
-							*(bitmapArray[ix - xleft][iy - ytop].begin()),
-							*(std::next(bitmapArray[ix - xleft][iy - ytop].begin()))
-						);
-					}
-					else if (bitmapArray[ix - xleft][iy - ytop].size() > 2)
-					{
-						fprintf(logFile, "color = GetPixel(%d, %d);", ix, iy);
-						fprintf(logFile, "if (");
-						for (auto icolor = bitmapArray[ix - xleft][iy - ytop].begin(); icolor != bitmapArray[ix - xleft][iy - ytop].end(); icolor++)
-						{
-							fprintf(logFile, "color != 0X%X", *icolor);
-							if (std::next(icolor) != bitmapArray[ix - xleft][iy - ytop].end())
-							{
-								fprintf(logFile, " && ");
-							}
-						}
-						fprintf(logFile, ") return false;\n");
-					}
-
-
-
-				}
-			}
-		}
-
-
-
-
-		fprintf(logFile, "\nreturn true;\n}\n");
-		fclose(logFile);
-
-	}
-
-}
 void		StarPactDumpSkillLeft(void)
 {
 	static HBITMAP		hBmp = NULL;
@@ -894,8 +721,10 @@ void		StarPactDumpSkillRight(void)
 void		QuangBTDumpScreen(void)
 {
 	w32gdi.CaptureDesktop();
-	w32gdi.BlurSkillSlot04();
-	w32gdi.SaveScreen();
+	w32gdi.DumpSkill04();
+
+	return;
+	//w32gdi.SaveScreen();
 
 	//skill 01 635  1004 - Half 681 1029 
 	//skill 02 702  1004 - Half 748 1029 
@@ -907,7 +736,6 @@ void		QuangBTDumpScreen(void)
 	StarPactDumpSkill01();
 	StarPactDumpSkill02();
 	StarPactDumpSkill03();
-	StarPactDumpSkill04();
 	StarPactDumpSkillLeft();
 	StarPactDumpSkillRight();
 
