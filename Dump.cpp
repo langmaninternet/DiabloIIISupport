@@ -894,6 +894,7 @@ void		StarPactDumpSkillRight(void)
 void		QuangBTDumpScreen(void)
 {
 	w32gdi.CaptureDesktop();
+	w32gdi.BlurSkillSlot04();
 	w32gdi.SaveScreen();
 
 	//skill 01 635  1004 - Half 681 1029 

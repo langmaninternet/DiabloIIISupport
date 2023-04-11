@@ -18,6 +18,7 @@ private:
 public:
 	/*Constructor*/		Win32GDI(void);
 	void				CaptureDesktop(void);
+	void				BlurSkillSlot04(void);
 	int					GetPixel(int x, int y);
 	bool				ValidMode(void);
 	bool				D3IsViewMap(void);

@@ -5,6 +5,32 @@
 #include "Engine.h"
 
 
+
+/************************************************************************/
+/*                                                                      */
+/************************************************************************/
+
+
+
+//skill 01 635  1004 - Half 681 1029 
+//skill 02 702  1004 - Half 748 1029 
+//skill 03 768  1004 - Half 814 1029 
+
+//left     905  1006 - Half 951 1030
+//right    970  1006 - Half 1016 1030
+
+
+//skill 04 834  1003 - Half 881 1029 
+static const int			skill_04_x_left = 834;
+static const int			skill_04_y_top = 1003;
+static const int			skill_04_x_right = 881;
+static const int			skill_04_y_bottom = 1029;
+static const int			blur_coefficient = 20;
+
+
+/************************************************************************/
+/*                                                                      */
+/************************************************************************/
 /*Constructor*/		Win32GDI::Win32GDI(void)
 {
 	hBitmap = NULL;
@@ -38,6 +64,24 @@ void				Win32GDI::CaptureDesktop(void)
 	HDC			hdcDesktop = GetWindowDC(hDesktop);
 	BitBlt(hScreenMemDC, 0, 0, rectDesktop.right, rectDesktop.bottom, hdcDesktop, 0, 0, SRCCOPY);
 	ReleaseDC(hDesktop, hdcDesktop);
+}
+void				Win32GDI::BlurSkillSlot04(void)
+{
+	for (int ix = skill_04_x_left; ix < skill_04_x_right; ix++)
+	{
+		for (int iy = skill_04_y_top; iy < skill_04_y_bottom; iy++)
+		{
+			int color = ::GetPixel(hScreenMemDC, ix, iy);
+			int color_r = GetRValue(color);
+			int color_g = GetGValue(color);
+			int color_b = GetBValue(color);
+
+			color_r -= color_r % blur_coefficient;
+			color_g -= color_g % blur_coefficient;
+			color_b -= color_b % blur_coefficient;
+			::SetPixel(hScreenMemDC, ix, iy, RGB(color_r, color_g, color_b));
+		}
+	}
 }
 int					Win32GDI::GetPixel(int x, int y)
 {
