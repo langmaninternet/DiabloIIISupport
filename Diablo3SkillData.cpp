@@ -28,7 +28,81 @@ extern Win32GDI w32gdi;
 #endif
 
 
-bool Win32GDI::D3Skill04Is_Familiar_AndReady(void)
+bool				Win32GDI::D3Skill04KeyIs4(void)
+{
+	if (GetPixel(856, 1063) != 0X0) return false;
+	if (GetPixel(856, 1064) != 0X0) return false;
+	if (GetPixel(856, 1065) != 0X0) return false;
+	if (GetPixel(856, 1066) != 0X0) return false;
+	if (GetPixel(856, 1067) != 0X0) return false;
+	if (GetPixel(856, 1068) != 0X0) return false;
+	if (GetPixel(856, 1069) != 0X0) return false;
+	if (GetPixel(856, 1070) != 0X4060) return false;
+	if (GetPixel(856, 1071) != 0X20) return false;
+	if (GetPixel(856, 1072) != 0X0) return false;
+	if (GetPixel(857, 1063) != 0X0) return false;
+	if (GetPixel(857, 1064) != 0X0) return false;
+	if (GetPixel(857, 1065) != 0X0) return false;
+	if (GetPixel(857, 1066) != 0X0) return false;
+	if (GetPixel(857, 1067) != 0X0) return false;
+	if (GetPixel(857, 1068) != 0X2020) return false;
+	if (GetPixel(857, 1069) != 0X60C0) return false;
+	if (GetPixel(857, 1070) != 0XA0E0) return false;
+	if (GetPixel(857, 1071) != 0X2020) return false;
+	if (GetPixel(857, 1072) != 0X0) return false;
+	if (GetPixel(858, 1063) != 0X0) return false;
+	if (GetPixel(858, 1064) != 0X0) return false;
+	if (GetPixel(858, 1065) != 0X0) return false;
+	if (GetPixel(858, 1066) != 0X0) return false;
+	if (GetPixel(858, 1067) != 0X4080) return false;
+	if (GetPixel(858, 1068) != 0X60A0) return false;
+	if (GetPixel(858, 1069) != 0X0) return false;
+	if (GetPixel(858, 1070) != 0X80E0) return false;
+	if (GetPixel(858, 1071) != 0X2020) return false;
+	if (GetPixel(858, 1072) != 0X0) return false;
+	if (GetPixel(859, 1063) != 0X0) return false;
+	if (GetPixel(859, 1064) != 0X0) return false;
+	if (GetPixel(859, 1065) != 0X20) return false;
+	if (GetPixel(859, 1066) != 0X60A0) return false;
+	if (GetPixel(859, 1067) != 0X2040) return false;
+	if (GetPixel(859, 1068) != 0X0) return false;
+	if (GetPixel(859, 1069) != 0X0) return false;
+	if (GetPixel(859, 1070) != 0X80E0) return false;
+	if (GetPixel(859, 1071) != 0X2020) return false;
+	if (GetPixel(859, 1072) != 0X0) return false;
+	if (GetPixel(860, 1063) != 0X0) return false;
+	if (GetPixel(860, 1064) != 0X4060) return false;
+	if (GetPixel(860, 1065) != 0X80C0) return false;
+	if (GetPixel(860, 1066) != 0X2040) return false;
+	if (GetPixel(860, 1067) != 0X2020) return false;
+	if (GetPixel(860, 1068) != 0X2020) return false;
+	if (GetPixel(860, 1069) != 0X2020) return false;
+	if (GetPixel(860, 1070) != 0X80E0) return false;
+	if (GetPixel(860, 1071) != 0X4060) return false;
+	if (GetPixel(860, 1072) != 0X2040) return false;
+	if (GetPixel(861, 1063) != 0X80C0) return false;
+	if (GetPixel(861, 1064) != 0XA0E0) return false;
+	if (GetPixel(861, 1065) != 0XA0E0) return false;
+	if (GetPixel(861, 1066) != 0XA0E0) return false;
+	if (GetPixel(861, 1067) != 0XA0E0) return false;
+	if (GetPixel(861, 1068) != 0XA0E0) return false;
+	if (GetPixel(861, 1069) != 0XA0E0) return false;
+	if (GetPixel(861, 1070) != 0XA0E0) return false;
+	if (GetPixel(861, 1071) != 0XA0E0) return false;
+	if (GetPixel(861, 1072) != 0XA0E0) return false;
+	if (GetPixel(862, 1063) != 0X20) return false;
+	if (GetPixel(862, 1064) != 0X20) return false;
+	if (GetPixel(862, 1065) != 0X20) return false;
+	if (GetPixel(862, 1066) != 0X20) return false;
+	if (GetPixel(862, 1067) != 0X20) return false;
+	if (GetPixel(862, 1068) != 0X20) return false;
+	if (GetPixel(862, 1069) != 0X20) return false;
+	if (GetPixel(862, 1070) != 0X80E0) return false;
+	if (GetPixel(862, 1071) != 0X2040) return false;
+	if (GetPixel(862, 1072) != 0X2020) return false;
+	return true;
+}
+bool				Win32GDI::D3Skill04Is_Familiar_AndReady(void)
 {
 	int color = 0;
 	if (GetPixel(834, 1003) != 0X406060) return false;

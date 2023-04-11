@@ -37,10 +37,6 @@ void		GetCurrentDiabloIIStatus(void)
 	diabloGameStatus.flagIsOpenKadala = false;
 	diabloGameStatus.flagIsOpenUrshi = false;
 	diabloGameStatus.flagIsOpenStash = false;
-	diabloGameStatus.flagSkill01IsReadyToAndNeedAutoPress = false;
-	diabloGameStatus.flagSkill02IsReadyToAndNeedAutoPress = false;
-	diabloGameStatus.flagSkill03IsReadyToAndNeedAutoPress = false;
-	diabloGameStatus.flagSkill04IsReadyToAndNeedAutoPress = false;
 #ifdef _DEBUG
 	diabloGameStatus.getStatusTime = 0;
 	DWORD		startTime = GetTickCount();
@@ -83,17 +79,8 @@ void		GetCurrentDiabloIIStatus(void)
 		//	}
 
 
-		if (w32gdi.D3Skill01KeyIs1()) diabloGameStatus.skill01Key = '1';
-		else if (w32gdi.D3Skill01KeyIsQ()) diabloGameStatus.skill01Key = 'Q';
+		
 
-		if (w32gdi.D3Skill03KeyIs2()) diabloGameStatus.skill02Key = '2';
-		else if (w32gdi.D3Skill02KeyIsW()) diabloGameStatus.skill02Key = 'W';
-
-		if (w32gdi.D3Skill03KeyIs3()) diabloGameStatus.skill03Key = '3';
-		else if (w32gdi.D3Skill03KeyIsE()) diabloGameStatus.skill03Key = 'E';
-
-		if (w32gdi.D3Skill04KeyIs4()) diabloGameStatus.skill04Key = '4';
-		else if (w32gdi.D3Skill04KeyIsR()) diabloGameStatus.skill04Key = 'R';
 
 
 	}

@@ -40,7 +40,11 @@ public:
 #ifdef _DEBUG
 	void				SaveScreen(const char* filePath = "D:\\Dump.bmp");
 	void				SaveSubSreen(const char* filePath, int xleft, int ytop, int xright, int ybottom);
-	void				DumpSkill04(const char* filePath = "D:\\DumpSkill04.txt", const char* logDumpFolder = "D:\\DumpLogSkill04\\");
+	void				DumpRectangle(int xleft, int ytop, int xright, int ybottom);
+	void				DumpSkill01(const char* filePath = "D:\\DumpSkill03.txt", const char* logDumpFolder = "D:\\DumpImage\\");
+	void				DumpSkill02(const char* filePath = "D:\\DumpSkill03.txt", const char* logDumpFolder = "D:\\DumpImage\\");
+	void				DumpSkill03(const char* filePath = "D:\\DumpSkill03.txt", const char* logDumpFolder = "D:\\DumpImage\\");
+	void				DumpSkill04(const char* filePath = "D:\\DumpSkill04.txt", const char* logDumpFolder = "D:\\DumpImage\\");
 #endif
 
 	/*Desstructor*/		~Win32GDI();
@@ -66,16 +70,9 @@ struct DiabloIIIStatusStruct
 	bool	flagIsOpenKadala;
 	bool	flagIsOpenUrshi;
 	bool	flagIsOpenStash;
-	int		skill01Key;
-	int		skill02Key;
-	int		skill03Key;
-	int		skill04Key;
-	int		healingKey;
 
-	bool	flagSkill01IsReadyToAndNeedAutoPress;
-	bool	flagSkill02IsReadyToAndNeedAutoPress;
-	bool	flagSkill03IsReadyToAndNeedAutoPress;
-	bool	flagSkill04IsReadyToAndNeedAutoPress;
+
+
 
 #ifdef _DEBUG
 	int		getStatusTime;

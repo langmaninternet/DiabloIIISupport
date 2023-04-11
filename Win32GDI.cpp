@@ -17,21 +17,27 @@
 
 
 
+
+
+
 //skill 01 635  1004 - Half 681 1029 
 //skill 02 702  1004 - Half 748 1029 
 //skill 03 768  1004 - Half 814 1029 
+//skill 04 834  1003 - Half 881 1029
+
+
+
+
 
 //left     905  1006 - Half 951 1030
 //right    970  1006 - Half 1016 1030
 
 
-//skill 04 834  1003 - Half 881 1029
-static const int			skill_04_x_left = 834;
-static const int			skill_04_y_top = 1003;
-static const int			skill_04_x_right = 881;
-static const int			skill_04_y_bottom = 1029;
-static int					skill_04_snap_count = 0;
-static std::set<int>		bitmap_skill_04_data[skill_04_x_right - skill_04_x_left][skill_04_y_bottom - skill_04_y_top];
+
+
+//left     905  1006 - Half 951 1030
+//right    970  1006 - Half 1016 1030
+
 
 
 
@@ -74,6 +80,12 @@ void				Win32GDI::CaptureDesktop(void)
 	HDC			hdcDesktop = GetWindowDC(hDesktop);
 	BitBlt(hScreenMemDC, 0, 0, rectDesktop.right, rectDesktop.bottom, hdcDesktop, 0, 0, SRCCOPY);
 	ReleaseDC(hDesktop, hdcDesktop);
+
+	//Blur skill 4
+	BlurRectangle(834, 1003, 881, 1029);
+
+	//Blur skill key 4
+	BlurRectangle(856, 1063, 863, 1073);
 }
 void				Win32GDI::BlurRectangle(int xleft, int ytop, int xright, int ybottom)
 {
@@ -4907,1986 +4919,6 @@ bool				Win32GDI::D3IsOpenStash(void)
 
 	return true;
 }
-bool				Win32GDI::D3Skill01KeyIs1(void)
-{
-	if (GetPixel(656, 1062) != 0X0) return false;
-	if (GetPixel(656, 1063) != 0X0) return false;
-	if (GetPixel(656, 1064) != 0X0) return false;
-	if (GetPixel(656, 1065) != 0X0) return false;
-	if (GetPixel(656, 1066) != 0X0) return false;
-	if (GetPixel(656, 1067) != 0X0) return false;
-	if (GetPixel(656, 1068) != 0X0) return false;
-	if (GetPixel(656, 1069) != 0X0) return false;
-	if (GetPixel(656, 1070) != 0X0) return false;
-	if (GetPixel(656, 1071) != 0X131211) return false;
-	if (GetPixel(657, 1062) != 0X0) return false;
-	if (GetPixel(657, 1063) != 0X2A42) return false;
-	if (GetPixel(657, 1064) != 0X0) return false;
-	if (GetPixel(657, 1065) != 0X0) return false;
-	if (GetPixel(657, 1066) != 0X0) return false;
-	if (GetPixel(657, 1067) != 0X0) return false;
-	if (GetPixel(657, 1068) != 0X0) return false;
-	if (GetPixel(657, 1069) != 0X0) return false;
-	if (GetPixel(657, 1070) != 0X0) return false;
-	if (GetPixel(657, 1071) != 0X141211) return false;
-	if (GetPixel(658, 1062) != 0X2D47) return false;
-	if (GetPixel(658, 1063) != 0X5A8D) return false;
-	if (GetPixel(658, 1064) != 0X0) return false;
-	if (GetPixel(658, 1065) != 0X0) return false;
-	if (GetPixel(658, 1066) != 0X0) return false;
-	if (GetPixel(658, 1067) != 0X0) return false;
-	if (GetPixel(658, 1068) != 0X0) return false;
-	if (GetPixel(658, 1069) != 0X0) return false;
-	if (GetPixel(658, 1070) != 0X0) return false;
-	if (GetPixel(658, 1071) != 0X141211) return false;
-	if (GetPixel(659, 1062) != 0X71B0) return false;
-	if (GetPixel(659, 1063) != 0X7BC0) return false;
-	if (GetPixel(659, 1064) != 0X5788) return false;
-	if (GetPixel(659, 1065) != 0X5788) return false;
-	if (GetPixel(659, 1066) != 0X5788) return false;
-	if (GetPixel(659, 1067) != 0X5788) return false;
-	if (GetPixel(659, 1068) != 0X5788) return false;
-	if (GetPixel(659, 1069) != 0X5788) return false;
-	if (GetPixel(659, 1070) != 0X5788) return false;
-	if (GetPixel(659, 1071) != 0X85F90) return false;
-	if (GetPixel(660, 1062) != 0X82CC) return false;
-	if (GetPixel(660, 1063) != 0X85D0) return false;
-	if (GetPixel(660, 1064) != 0X85D0) return false;
-	if (GetPixel(660, 1065) != 0X85D0) return false;
-	if (GetPixel(660, 1066) != 0X85D0) return false;
-	if (GetPixel(660, 1067) != 0X85D0) return false;
-	if (GetPixel(660, 1068) != 0X85D0) return false;
-	if (GetPixel(660, 1069) != 0X85D0) return false;
-	if (GetPixel(660, 1070) != 0X85D0) return false;
-	if (GetPixel(660, 1071) != 0X388D3) return false;
-	if (GetPixel(661, 1062) != 0X0) return false;
-	if (GetPixel(661, 1063) != 0X0) return false;
-	if (GetPixel(661, 1064) != 0X0) return false;
-	if (GetPixel(661, 1065) != 0X0) return false;
-	if (GetPixel(661, 1066) != 0X0) return false;
-	if (GetPixel(661, 1067) != 0X0) return false;
-	if (GetPixel(661, 1068) != 0X0) return false;
-	if (GetPixel(661, 1069) != 0X0) return false;
-	if (GetPixel(661, 1070) != 0X0) return false;
-	if (GetPixel(661, 1071) != 0X111211) return false;
-	return true;
-}
-bool				Win32GDI::D3Skill03KeyIs2(void)
-{
-	if (GetPixel(722, 1062) != 0X508) return false;
-	if (GetPixel(722, 1063) != 0XF18) return false;
-	if (GetPixel(722, 1064) != 0XD14) return false;
-	if (GetPixel(722, 1065) != 0X0) return false;
-	if (GetPixel(722, 1066) != 0X0) return false;
-	if (GetPixel(722, 1067) != 0X0) return false;
-	if (GetPixel(722, 1068) != 0X0) return false;
-	if (GetPixel(722, 1069) != 0X0) return false;
-	if (GetPixel(722, 1070) != 0X0) return false;
-	if (GetPixel(722, 1071) != 0X131211) return false;
-	if (GetPixel(723, 1062) != 0X6197) return false;
-	if (GetPixel(723, 1063) != 0X95E9) return false;
-	if (GetPixel(723, 1064) != 0X6DAB) return false;
-	if (GetPixel(723, 1065) != 0X0) return false;
-	if (GetPixel(723, 1066) != 0X0) return false;
-	if (GetPixel(723, 1067) != 0X0) return false;
-	if (GetPixel(723, 1068) != 0X0) return false;
-	if (GetPixel(723, 1069) != 0X0) return false;
-	if (GetPixel(723, 1070) != 0X0) return false;
-	if (GetPixel(723, 1071) != 0X95F90) return false;
-	if (GetPixel(724, 1062) != 0X7FC6) return false;
-	if (GetPixel(724, 1063) != 0X102) return false;
-	if (GetPixel(724, 1064) != 0X0) return false;
-	if (GetPixel(724, 1065) != 0X0) return false;
-	if (GetPixel(724, 1066) != 0X0) return false;
-	if (GetPixel(724, 1067) != 0X0) return false;
-	if (GetPixel(724, 1068) != 0X0) return false;
-	if (GetPixel(724, 1069) != 0X0) return false;
-	if (GetPixel(724, 1070) != 0X5687) return false;
-	if (GetPixel(724, 1071) != 0X487D0) return false;
-	if (GetPixel(725, 1062) != 0X82CB) return false;
-	if (GetPixel(725, 1063) != 0X0) return false;
-	if (GetPixel(725, 1064) != 0X0) return false;
-	if (GetPixel(725, 1065) != 0X0) return false;
-	if (GetPixel(725, 1066) != 0X0) return false;
-	if (GetPixel(725, 1067) != 0X0) return false;
-	if (GetPixel(725, 1068) != 0X508) return false;
-	if (GetPixel(725, 1069) != 0X67A1) return false;
-	if (GetPixel(725, 1070) != 0X6DAA) return false;
-	if (GetPixel(725, 1071) != 0XF3448) return false;
-	if (GetPixel(726, 1062) != 0X90E2) return false;
-	if (GetPixel(726, 1063) != 0X314C) return false;
-	if (GetPixel(726, 1064) != 0X0) return false;
-	if (GetPixel(726, 1065) != 0X0) return false;
-	if (GetPixel(726, 1066) != 0X305) return false;
-	if (GetPixel(726, 1067) != 0X3959) return false;
-	if (GetPixel(726, 1068) != 0X8CDB) return false;
-	if (GetPixel(726, 1069) != 0X649D) return false;
-	if (GetPixel(726, 1070) != 0X203) return false;
-	if (GetPixel(726, 1071) != 0XD3245) return false;
-	if (GetPixel(727, 1062) != 0X5F94) return false;
-	if (GetPixel(727, 1063) != 0XA3FF) return false;
-	if (GetPixel(727, 1064) != 0X86D1) return false;
-	if (GetPixel(727, 1065) != 0X7FC7) return false;
-	if (GetPixel(727, 1066) != 0X99F0) return false;
-	if (GetPixel(727, 1067) != 0X9FF8) return false;
-	if (GetPixel(727, 1068) != 0X4870) return false;
-	if (GetPixel(727, 1069) != 0X0) return false;
-	if (GetPixel(727, 1070) != 0X0) return false;
-	if (GetPixel(727, 1071) != 0XD3245) return false;
-	if (GetPixel(728, 1062) != 0X70B) return false;
-	if (GetPixel(728, 1063) != 0X649D) return false;
-	if (GetPixel(728, 1064) != 0X93E6) return false;
-	if (GetPixel(728, 1065) != 0X8BD9) return false;
-	if (GetPixel(728, 1066) != 0X5B8F) return false;
-	if (GetPixel(728, 1067) != 0X141F) return false;
-	if (GetPixel(728, 1068) != 0X0) return false;
-	if (GetPixel(728, 1069) != 0X0) return false;
-	if (GetPixel(728, 1070) != 0X0) return false;
-	if (GetPixel(728, 1071) != 0XD3245) return false;
-	return true;
-}
-bool				Win32GDI::D3Skill03KeyIs3(void)
-{
-	if (GetPixel(789, 1062) != 0X1019) return false;
-	if (GetPixel(789, 1063) != 0X2134) return false;
-	if (GetPixel(789, 1064) != 0X2133) return false;
-	if (GetPixel(789, 1065) != 0X0) return false;
-	if (GetPixel(789, 1066) != 0X0) return false;
-	if (GetPixel(789, 1067) != 0X0) return false;
-	if (GetPixel(789, 1068) != 0X0) return false;
-	if (GetPixel(789, 1069) != 0X0) return false;
-	if (GetPixel(789, 1070) != 0X2B44) return false;
-	if (GetPixel(789, 1071) != 0XC4463) return false;
-	if (GetPixel(790, 1062) != 0X6CA9) return false;
-	if (GetPixel(790, 1063) != 0X77BA) return false;
-	if (GetPixel(790, 1064) != 0X5F95) return false;
-	if (GetPixel(790, 1065) != 0X305) return false;
-	if (GetPixel(790, 1066) != 0X0) return false;
-	if (GetPixel(790, 1067) != 0X0) return false;
-	if (GetPixel(790, 1068) != 0X0) return false;
-	if (GetPixel(790, 1069) != 0X0) return false;
-	if (GetPixel(790, 1070) != 0X3D60) return false;
-	if (GetPixel(790, 1071) != 0X770AB) return false;
-	if (GetPixel(791, 1062) != 0X7BC0) return false;
-	if (GetPixel(791, 1063) != 0X0) return false;
-	if (GetPixel(791, 1064) != 0X0) return false;
-	if (GetPixel(791, 1065) != 0X0) return false;
-	if (GetPixel(791, 1066) != 0X0) return false;
-	if (GetPixel(791, 1067) != 0X446B) return false;
-	if (GetPixel(791, 1068) != 0X0) return false;
-	if (GetPixel(791, 1069) != 0X0) return false;
-	if (GetPixel(791, 1070) != 0X0) return false;
-	if (GetPixel(791, 1071) != 0X141211) return false;
-	if (GetPixel(792, 1062) != 0X78BC) return false;
-	if (GetPixel(792, 1063) != 0X0) return false;
-	if (GetPixel(792, 1064) != 0X0) return false;
-	if (GetPixel(792, 1065) != 0X0) return false;
-	if (GetPixel(792, 1066) != 0X60A) return false;
-	if (GetPixel(792, 1067) != 0X8BD9) return false;
-	if (GetPixel(792, 1068) != 0X0) return false;
-	if (GetPixel(792, 1069) != 0X0) return false;
-	if (GetPixel(792, 1070) != 0X0) return false;
-	if (GetPixel(792, 1071) != 0X131211) return false;
-	if (GetPixel(793, 1062) != 0X8BDA) return false;
-	if (GetPixel(793, 1063) != 0X263B) return false;
-	if (GetPixel(793, 1064) != 0X0) return false;
-	if (GetPixel(793, 1065) != 0X80C) return false;
-	if (GetPixel(793, 1066) != 0X6BA7) return false;
-	if (GetPixel(793, 1067) != 0XA0FB) return false;
-	if (GetPixel(793, 1068) != 0X1B2B) return false;
-	if (GetPixel(793, 1069) != 0X0) return false;
-	if (GetPixel(793, 1070) != 0X0) return false;
-	if (GetPixel(793, 1071) != 0X101A1E) return false;
-	if (GetPixel(794, 1062) != 0X5483) return false;
-	if (GetPixel(794, 1063) != 0XA3FF) return false;
-	if (GetPixel(794, 1064) != 0X94E7) return false;
-	if (GetPixel(794, 1065) != 0XA0FB) return false;
-	if (GetPixel(794, 1066) != 0X69A4) return false;
-	if (GetPixel(794, 1067) != 0X75B7) return false;
-	if (GetPixel(794, 1068) != 0X8FDF) return false;
-	if (GetPixel(794, 1069) != 0X4165) return false;
-	if (GetPixel(794, 1070) != 0X3A5B) return false;
-	if (GetPixel(794, 1071) != 0X482C9) return false;
-	if (GetPixel(795, 1062) != 0X305) return false;
-	if (GetPixel(795, 1063) != 0X4F7B) return false;
-	if (GetPixel(795, 1064) != 0X6DAB) return false;
-	if (GetPixel(795, 1065) != 0X4B76) return false;
-	if (GetPixel(795, 1066) != 0X406) return false;
-	if (GetPixel(795, 1067) != 0X1F31) return false;
-	if (GetPixel(795, 1068) != 0X99EF) return false;
-	if (GetPixel(795, 1069) != 0XA3FF) return false;
-	if (GetPixel(795, 1070) != 0XA3FF) return false;
-	if (GetPixel(795, 1071) != 0X387D1) return false;
-	return true;
-}
-bool				Win32GDI::D3Skill04KeyIs4(void)
-{
-	if (GetPixel(834, 1003) != 0X566C6F) return false;
-	if (GetPixel(834, 1004) != 0X2A363B) return false;
-	if (GetPixel(834, 1005) != 0X161D26) return false;
-	if (GetPixel(834, 1006) != 0X161D26) return false;
-	if (GetPixel(834, 1007) != 0X161F25) return false;
-	if (GetPixel(834, 1008) != 0X162025) return false;
-	if (GetPixel(834, 1009) != 0X162025) return false;
-	if (GetPixel(834, 1010) != 0XF1822) return false;
-	if (GetPixel(834, 1011) != 0X131B2A) return false;
-	if (GetPixel(834, 1012) != 0X1A222E) return false;
-	if (GetPixel(834, 1013) != 0X1A222E) return false;
-	if (GetPixel(834, 1014) != 0X1A2332) return false;
-	if (GetPixel(834, 1015) != 0X1A2435) return false;
-	if (GetPixel(834, 1016) != 0X1A2435) return false;
-	if (GetPixel(834, 1017) != 0X1A2435) return false;
-	if (GetPixel(834, 1018) != 0X182139) return false;
-	if (GetPixel(834, 1019) != 0X182139) return false;
-	if (GetPixel(834, 1020) != 0X182139) return false;
-	if (GetPixel(834, 1021) != 0X16213C) return false;
-	if (GetPixel(834, 1022) != 0X122446) return false;
-	if (GetPixel(834, 1023) != 0X122446) return false;
-	if (GetPixel(834, 1024) != 0X122446) return false;
-	if (GetPixel(834, 1025) != 0XD193C) return false;
-	if (GetPixel(834, 1026) != 0XA1336) return false;
-	if (GetPixel(834, 1027) != 0XA1336) return false;
-	if (GetPixel(834, 1028) != 0XA1336) return false;
-	if (GetPixel(835, 1003) != 0X546B6A) return false;
-	if (GetPixel(835, 1004) != 0X2C393C) return false;
-	if (GetPixel(835, 1005) != 0X410) return false;
-	if (GetPixel(835, 1006) != 0X410) return false;
-	if (GetPixel(835, 1007) != 0X716) return false;
-	if (GetPixel(835, 1008) != 0X818) return false;
-	if (GetPixel(835, 1009) != 0X818) return false;
-	if (GetPixel(835, 1010) != 0X819) return false;
-	if (GetPixel(835, 1011) != 0X821) return false;
-	if (GetPixel(835, 1012) != 0X821) return false;
-	if (GetPixel(835, 1013) != 0X821) return false;
-	if (GetPixel(835, 1014) != 0XA29) return false;
-	if (GetPixel(835, 1015) != 0XC31) return false;
-	if (GetPixel(835, 1016) != 0XC31) return false;
-	if (GetPixel(835, 1017) != 0XC31) return false;
-	if (GetPixel(835, 1018) != 0XC38) return false;
-	if (GetPixel(835, 1019) != 0XC39) return false;
-	if (GetPixel(835, 1020) != 0XC39) return false;
-	if (GetPixel(835, 1021) != 0XC39) return false;
-	if (GetPixel(835, 1022) != 0XC39) return false;
-	if (GetPixel(835, 1023) != 0XC39) return false;
-	if (GetPixel(835, 1024) != 0XC39) return false;
-	if (GetPixel(835, 1025) != 0X61138) return false;
-	if (GetPixel(835, 1026) != 0XA1337) return false;
-	if (GetPixel(835, 1027) != 0XA1337) return false;
-	if (GetPixel(835, 1028) != 0XA1337) return false;
-	if (GetPixel(836, 1003) != 0X546B6A) return false;
-	if (GetPixel(836, 1004) != 0X2C393C) return false;
-	if (GetPixel(836, 1005) != 0X410) return false;
-	if (GetPixel(836, 1006) != 0X410) return false;
-	if (GetPixel(836, 1007) != 0X716) return false;
-	if (GetPixel(836, 1008) != 0X818) return false;
-	if (GetPixel(836, 1009) != 0X818) return false;
-	if (GetPixel(836, 1010) != 0X819) return false;
-	if (GetPixel(836, 1011) != 0X821) return false;
-	if (GetPixel(836, 1012) != 0X821) return false;
-	if (GetPixel(836, 1013) != 0X821) return false;
-	if (GetPixel(836, 1014) != 0XA29) return false;
-	if (GetPixel(836, 1015) != 0XC31) return false;
-	if (GetPixel(836, 1016) != 0XC31) return false;
-	if (GetPixel(836, 1017) != 0XC31) return false;
-	if (GetPixel(836, 1018) != 0XC38) return false;
-	if (GetPixel(836, 1019) != 0XC39) return false;
-	if (GetPixel(836, 1020) != 0XC39) return false;
-	if (GetPixel(836, 1021) != 0X20E3A) return false;
-	if (GetPixel(836, 1022) != 0X5123D) return false;
-	if (GetPixel(836, 1023) != 0XC39) return false;
-	if (GetPixel(836, 1024) != 0XC1C42) return false;
-	if (GetPixel(836, 1025) != 0X112B5A) return false;
-	if (GetPixel(836, 1026) != 0XC1E4A) return false;
-	if (GetPixel(836, 1027) != 0XB1942) return false;
-	if (GetPixel(836, 1028) != 0XB1942) return false;
-	if (GetPixel(837, 1003) != 0X556A6B) return false;
-	if (GetPixel(837, 1004) != 0X2F3C43) return false;
-	if (GetPixel(837, 1005) != 0X416) return false;
-	if (GetPixel(837, 1006) != 0X416) return false;
-	if (GetPixel(837, 1007) != 0X518) return false;
-	if (GetPixel(837, 1008) != 0X71C) return false;
-	if (GetPixel(837, 1009) != 0X71D) return false;
-	if (GetPixel(837, 1010) != 0X921) return false;
-	if (GetPixel(837, 1011) != 0X827) return false;
-	if (GetPixel(837, 1012) != 0X929) return false;
-	if (GetPixel(837, 1013) != 0XB2D) return false;
-	if (GetPixel(837, 1014) != 0XC32) return false;
-	if (GetPixel(837, 1015) != 0XC37) return false;
-	if (GetPixel(837, 1016) != 0XF3D) return false;
-	if (GetPixel(837, 1017) != 0X1040) return false;
-	if (GetPixel(837, 1018) != 0X1043) return false;
-	if (GetPixel(837, 1019) != 0X1044) return false;
-	if (GetPixel(837, 1020) != 0X154F) return false;
-	if (GetPixel(837, 1021) != 0X41A50) return false;
-	if (GetPixel(837, 1022) != 0XE204A) return false;
-	if (GetPixel(837, 1023) != 0XE274F) return false;
-	if (GetPixel(837, 1024) != 0X1B5376) return false;
-	if (GetPixel(837, 1025) != 0X226896) return false;
-	if (GetPixel(837, 1026) != 0X236C9E) return false;
-	if (GetPixel(837, 1027) != 0X226B9B) return false;
-	if (GetPixel(837, 1028) != 0X226B9B) return false;
-	if (GetPixel(838, 1003) != 0X556A6B) return false;
-	if (GetPixel(838, 1004) != 0X303C44) return false;
-	if (GetPixel(838, 1005) != 0X418) return false;
-	if (GetPixel(838, 1006) != 0X418) return false;
-	if (GetPixel(838, 1007) != 0X61C) return false;
-	if (GetPixel(838, 1008) != 0X71E) return false;
-	if (GetPixel(838, 1009) != 0X922) return false;
-	if (GetPixel(838, 1010) != 0X923) return false;
-	if (GetPixel(838, 1011) != 0X92A) return false;
-	if (GetPixel(838, 1012) != 0XC30) return false;
-	if (GetPixel(838, 1013) != 0XD34) return false;
-	if (GetPixel(838, 1014) != 0XE38) return false;
-	if (GetPixel(838, 1015) != 0XF3F) return false;
-	if (GetPixel(838, 1016) != 0X1144) return false;
-	if (GetPixel(838, 1017) != 0X154C) return false;
-	if (GetPixel(838, 1018) != 0X1653) return false;
-	if (GetPixel(838, 1019) != 0X1653) return false;
-	if (GetPixel(838, 1020) != 0X1B61) return false;
-	if (GetPixel(838, 1021) != 0X21858) return false;
-	if (GetPixel(838, 1022) != 0XF254C) return false;
-	if (GetPixel(838, 1023) != 0X216A8E) return false;
-	if (GetPixel(838, 1024) != 0X18486E) return false;
-	if (GetPixel(838, 1025) != 0X71128) return false;
-	if (GetPixel(838, 1026) != 0X5101D) return false;
-	if (GetPixel(838, 1027) != 0X5101D) return false;
-	if (GetPixel(838, 1028) != 0X5101D) return false;
-	if (GetPixel(839, 1003) != 0X4A5F61) return false;
-	if (GetPixel(839, 1004) != 0X202B36) return false;
-	if (GetPixel(839, 1005) != 0X418) return false;
-	if (GetPixel(839, 1006) != 0X418) return false;
-	if (GetPixel(839, 1007) != 0X61D) return false;
-	if (GetPixel(839, 1008) != 0X71E) return false;
-	if (GetPixel(839, 1009) != 0X923) return false;
-	if (GetPixel(839, 1010) != 0XC2A) return false;
-	if (GetPixel(839, 1011) != 0XC31) return false;
-	if (GetPixel(839, 1012) != 0XD33) return false;
-	if (GetPixel(839, 1013) != 0X1039) return false;
-	if (GetPixel(839, 1014) != 0X103E) return false;
-	if (GetPixel(839, 1015) != 0X144A) return false;
-	if (GetPixel(839, 1016) != 0X174F) return false;
-	if (GetPixel(839, 1017) != 0X1B58) return false;
-	if (GetPixel(839, 1018) != 0X1C62) return false;
-	if (GetPixel(839, 1019) != 0X1C63) return false;
-	if (GetPixel(839, 1020) != 0X1C63) return false;
-	if (GetPixel(839, 1021) != 0X21858) return false;
-	if (GetPixel(839, 1022) != 0X13325A) return false;
-	if (GetPixel(839, 1023) != 0X24789B) return false;
-	if (GetPixel(839, 1024) != 0X123258) return false;
-	if (GetPixel(839, 1025) != 0XB1D3B) return false;
-	if (GetPixel(839, 1026) != 0X216995) return false;
-	if (GetPixel(839, 1027) != 0X2880B2) return false;
-	if (GetPixel(839, 1028) != 0X2880B2) return false;
-	if (GetPixel(840, 1003) != 0X4A5F61) return false;
-	if (GetPixel(840, 1004) != 0X202B36) return false;
-	if (GetPixel(840, 1005) != 0X418) return false;
-	if (GetPixel(840, 1006) != 0X418) return false;
-	if (GetPixel(840, 1007) != 0X61D) return false;
-	if (GetPixel(840, 1008) != 0X922) return false;
-	if (GetPixel(840, 1009) != 0XC29) return false;
-	if (GetPixel(840, 1010) != 0XC2A) return false;
-	if (GetPixel(840, 1011) != 0XD33) return false;
-	if (GetPixel(840, 1012) != 0X113D) return false;
-	if (GetPixel(840, 1013) != 0X1443) return false;
-	if (GetPixel(840, 1014) != 0X164A) return false;
-	if (GetPixel(840, 1015) != 0X1A56) return false;
-	if (GetPixel(840, 1016) != 0X1C5A) return false;
-	if (GetPixel(840, 1017) != 0X1C5B) return false;
-	if (GetPixel(840, 1018) != 0X1D64) return false;
-	if (GetPixel(840, 1019) != 0X1D65) return false;
-	if (GetPixel(840, 1020) != 0X1D64) return false;
-	if (GetPixel(840, 1021) != 0X72C6B) return false;
-	if (GetPixel(840, 1022) != 0X237093) return false;
-	if (GetPixel(840, 1023) != 0X1C5276) return false;
-	if (GetPixel(840, 1024) != 0X102249) return false;
-	if (GetPixel(840, 1025) != 0X206595) return false;
-	if (GetPixel(840, 1026) != 0X1C5E87) return false;
-	if (GetPixel(840, 1027) != 0X19547A) return false;
-	if (GetPixel(840, 1028) != 0X19547A) return false;
-	if (GetPixel(841, 1003) != 0X4C6263) return false;
-	if (GetPixel(841, 1004) != 0X23303C) return false;
-	if (GetPixel(841, 1005) != 0X418) return false;
-	if (GetPixel(841, 1006) != 0X418) return false;
-	if (GetPixel(841, 1007) != 0X71F) return false;
-	if (GetPixel(841, 1008) != 0X923) return false;
-	if (GetPixel(841, 1009) != 0XC2C) return false;
-	if (GetPixel(841, 1010) != 0XD2F) return false;
-	if (GetPixel(841, 1011) != 0X113D) return false;
-	if (GetPixel(841, 1012) != 0X1649) return false;
-	if (GetPixel(841, 1013) != 0X1850) return false;
-	if (GetPixel(841, 1014) != 0X1A55) return false;
-	if (GetPixel(841, 1015) != 0X1D5B) return false;
-	if (GetPixel(841, 1016) != 0X1D5C) return false;
-	if (GetPixel(841, 1017) != 0X2165) return false;
-	if (GetPixel(841, 1018) != 0X2775) return false;
-	if (GetPixel(841, 1019) != 0X2776) return false;
-	if (GetPixel(841, 1020) != 0X2575) return false;
-	if (GetPixel(841, 1021) != 0XA2D77) return false;
-	if (GetPixel(841, 1022) != 0X2E869F) return false;
-	if (GetPixel(841, 1023) != 0X255562) return false;
-	if (GetPixel(841, 1024) != 0X24515D) return false;
-	if (GetPixel(841, 1025) != 0X1A69A0) return false;
-	if (GetPixel(841, 1026) != 0X52370) return false;
-	if (GetPixel(841, 1027) != 0X42270) return false;
-	if (GetPixel(841, 1028) != 0X52573) return false;
-	if (GetPixel(842, 1003) != 0X556C6C) return false;
-	if (GetPixel(842, 1004) != 0X303E49) return false;
-	if (GetPixel(842, 1005) != 0X418) return false;
-	if (GetPixel(842, 1006) != 0X418) return false;
-	if (GetPixel(842, 1007) != 0X71F) return false;
-	if (GetPixel(842, 1008) != 0XC2B) return false;
-	if (GetPixel(842, 1009) != 0XD2F) return false;
-	if (GetPixel(842, 1010) != 0X113B) return false;
-	if (GetPixel(842, 1011) != 0X1546) return false;
-	if (GetPixel(842, 1012) != 0X184F) return false;
-	if (GetPixel(842, 1013) != 0X1A53) return false;
-	if (GetPixel(842, 1014) != 0X1D5C) return false;
-	if (GetPixel(842, 1015) != 0X2062) return false;
-	if (GetPixel(842, 1016) != 0X2267) return false;
-	if (GetPixel(842, 1017) != 0X266E) return false;
-	if (GetPixel(842, 1018) != 0X2775) return false;
-	if (GetPixel(842, 1019) != 0X2A77) return false;
-	if (GetPixel(842, 1020) != 0X2776) return false;
-	if (GetPixel(842, 1021) != 0XA2D77) return false;
-	if (GetPixel(842, 1022) != 0X2D8098) return false;
-	if (GetPixel(842, 1023) != 0X234B56) return false;
-	if (GetPixel(842, 1024) != 0X255968) return false;
-	if (GetPixel(842, 1025) != 0X185C96) return false;
-	if (GetPixel(842, 1026) != 0X62B78) return false;
-	if (GetPixel(842, 1027) != 0X52573) return false;
-	if (GetPixel(842, 1028) != 0X52573) return false;
-	if (GetPixel(843, 1003) != 0X556C6C) return false;
-	if (GetPixel(843, 1004) != 0X303E49) return false;
-	if (GetPixel(843, 1005) != 0X418) return false;
-	if (GetPixel(843, 1006) != 0X418) return false;
-	if (GetPixel(843, 1007) != 0X822) return false;
-	if (GetPixel(843, 1008) != 0XD2F) return false;
-	if (GetPixel(843, 1009) != 0X1037) return false;
-	if (GetPixel(843, 1010) != 0X1442) return false;
-	if (GetPixel(843, 1011) != 0X1546) return false;
-	if (GetPixel(843, 1012) != 0X1850) return false;
-	if (GetPixel(843, 1013) != 0X1B56) return false;
-	if (GetPixel(843, 1014) != 0X1E60) return false;
-	if (GetPixel(843, 1015) != 0X2268) return false;
-	if (GetPixel(843, 1016) != 0X2771) return false;
-	if (GetPixel(843, 1017) != 0X2974) return false;
-	if (GetPixel(843, 1018) != 0X2A78) return false;
-	if (GetPixel(843, 1019) != 0X307B) return false;
-	if (GetPixel(843, 1020) != 0X2D79) return false;
-	if (GetPixel(843, 1021) != 0XA2D77) return false;
-	if (GetPixel(843, 1022) != 0X2A7288) return false;
-	if (GetPixel(843, 1023) != 0X203B45) return false;
-	if (GetPixel(843, 1024) != 0X2C7690) return false;
-	if (GetPixel(843, 1025) != 0X185B9D) return false;
-	if (GetPixel(843, 1026) != 0X72E7A) return false;
-	if (GetPixel(843, 1027) != 0X7317D) return false;
-	if (GetPixel(843, 1028) != 0X7317D) return false;
-	if (GetPixel(844, 1003) != 0X53696B) return false;
-	if (GetPixel(844, 1004) != 0X2E3D48) return false;
-	if (GetPixel(844, 1005) != 0X61C) return false;
-	if (GetPixel(844, 1006) != 0X61C) return false;
-	if (GetPixel(844, 1007) != 0XB2A) return false;
-	if (GetPixel(844, 1008) != 0XE33) return false;
-	if (GetPixel(844, 1009) != 0XF38) return false;
-	if (GetPixel(844, 1010) != 0X1343) return false;
-	if (GetPixel(844, 1011) != 0X164C) return false;
-	if (GetPixel(844, 1012) != 0X1954) return false;
-	if (GetPixel(844, 1013) != 0X1E5E) return false;
-	if (GetPixel(844, 1014) != 0X2266) return false;
-	if (GetPixel(844, 1015) != 0X266F) return false;
-	if (GetPixel(844, 1016) != 0X2B78) return false;
-	if (GetPixel(844, 1017) != 0X2E7F) return false;
-	if (GetPixel(844, 1018) != 0X23382) return false;
-	if (GetPixel(844, 1019) != 0X23482) return false;
-	if (GetPixel(844, 1020) != 0X23180) return false;
-	if (GetPixel(844, 1021) != 0XC3581) return false;
-	if (GetPixel(844, 1022) != 0X307E9B) return false;
-	if (GetPixel(844, 1023) != 0X1F4351) return false;
-	if (GetPixel(844, 1024) != 0X2F809F) return false;
-	if (GetPixel(844, 1025) != 0X1A60AC) return false;
-	if (GetPixel(844, 1026) != 0X93C95) return false;
-	if (GetPixel(844, 1027) != 0X94098) return false;
-	if (GetPixel(844, 1028) != 0X94098) return false;
-	if (GetPixel(845, 1003) != 0X52666A) return false;
-	if (GetPixel(845, 1004) != 0X2C3C47) return false;
-	if (GetPixel(845, 1005) != 0X821) return false;
-	if (GetPixel(845, 1006) != 0X821) return false;
-	if (GetPixel(845, 1007) != 0XB2D) return false;
-	if (GetPixel(845, 1008) != 0XC31) return false;
-	if (GetPixel(845, 1009) != 0X103E) return false;
-	if (GetPixel(845, 1010) != 0X1348) return false;
-	if (GetPixel(845, 1011) != 0X1953) return false;
-	if (GetPixel(845, 1012) != 0X1C5A) return false;
-	if (GetPixel(845, 1013) != 0X1F61) return false;
-	if (GetPixel(845, 1014) != 0X256D) return false;
-	if (GetPixel(845, 1015) != 0X2976) return false;
-	if (GetPixel(845, 1016) != 0X2C7A) return false;
-	if (GetPixel(845, 1017) != 0X2D7E) return false;
-	if (GetPixel(845, 1018) != 0X53788) return false;
-	if (GetPixel(845, 1019) != 0X53889) return false;
-	if (GetPixel(845, 1020) != 0X43586) return false;
-	if (GetPixel(845, 1021) != 0XF3C8B) return false;
-	if (GetPixel(845, 1022) != 0X358AAD) return false;
-	if (GetPixel(845, 1023) != 0X1B3F4A) return false;
-	if (GetPixel(845, 1024) != 0X307A99) return false;
-	if (GetPixel(845, 1025) != 0X206BC4) return false;
-	if (GetPixel(845, 1026) != 0X104DC2) return false;
-	if (GetPixel(845, 1027) != 0X1250C6) return false;
-	if (GetPixel(845, 1028) != 0XD46B6) return false;
-	if (GetPixel(846, 1003) != 0X52666A) return false;
-	if (GetPixel(846, 1004) != 0X2C3C47) return false;
-	if (GetPixel(846, 1005) != 0X821) return false;
-	if (GetPixel(846, 1006) != 0X821) return false;
-	if (GetPixel(846, 1007) != 0XB2D) return false;
-	if (GetPixel(846, 1008) != 0XE36) return false;
-	if (GetPixel(846, 1009) != 0X1142) return false;
-	if (GetPixel(846, 1010) != 0X144B) return false;
-	if (GetPixel(846, 1011) != 0X1954) return false;
-	if (GetPixel(846, 1012) != 0X1E5F) return false;
-	if (GetPixel(846, 1013) != 0X2266) return false;
-	if (GetPixel(846, 1014) != 0X2770) return false;
-	if (GetPixel(846, 1015) != 0X2F81) return false;
-	if (GetPixel(846, 1016) != 0X3083) return false;
-	if (GetPixel(846, 1017) != 0X2F81) return false;
-	if (GetPixel(846, 1018) != 0X53788) return false;
-	if (GetPixel(846, 1019) != 0X53889) return false;
-	if (GetPixel(846, 1020) != 0X53687) return false;
-	if (GetPixel(846, 1021) != 0X104491) return false;
-	if (GetPixel(846, 1022) != 0X3A97BE) return false;
-	if (GetPixel(846, 1023) != 0X235768) return false;
-	if (GetPixel(846, 1024) != 0X307A99) return false;
-	if (GetPixel(846, 1025) != 0X2677D7) return false;
-	if (GetPixel(846, 1026) != 0X1C64E8) return false;
-	if (GetPixel(846, 1027) != 0X1E69EF) return false;
-	if (GetPixel(846, 1028) != 0X1659D5) return false;
-	if (GetPixel(847, 1003) != 0X52666A) return false;
-	if (GetPixel(847, 1004) != 0X2C3C47) return false;
-	if (GetPixel(847, 1005) != 0X821) return false;
-	if (GetPixel(847, 1006) != 0X821) return false;
-	if (GetPixel(847, 1007) != 0XB2D) return false;
-	if (GetPixel(847, 1008) != 0XF38) return false;
-	if (GetPixel(847, 1009) != 0X1142) return false;
-	if (GetPixel(847, 1010) != 0X144B) return false;
-	if (GetPixel(847, 1011) != 0X1954) return false;
-	if (GetPixel(847, 1012) != 0X1F60) return false;
-	if (GetPixel(847, 1013) != 0X256C) return false;
-	if (GetPixel(847, 1014) != 0X2B7A) return false;
-	if (GetPixel(847, 1015) != 0X3084) return false;
-	if (GetPixel(847, 1016) != 0X3084) return false;
-	if (GetPixel(847, 1017) != 0X3084) return false;
-	if (GetPixel(847, 1018) != 0X22C80) return false;
-	if (GetPixel(847, 1019) != 0X53889) return false;
-	if (GetPixel(847, 1020) != 0X74191) return false;
-	if (GetPixel(847, 1021) != 0XF478D) return false;
-	if (GetPixel(847, 1022) != 0X368FB1) return false;
-	if (GetPixel(847, 1023) != 0X28677D) return false;
-	if (GetPixel(847, 1024) != 0X29677D) return false;
-	if (GetPixel(847, 1025) != 0X2C83EB) return false;
-	if (GetPixel(847, 1026) != 0X206CF6) return false;
-	if (GetPixel(847, 1027) != 0X216DF7) return false;
-	if (GetPixel(847, 1028) != 0X1F6AF2) return false;
-	if (GetPixel(848, 1003) != 0X526869) return false;
-	if (GetPixel(848, 1004) != 0X2C3B49) return false;
-	if (GetPixel(848, 1005) != 0X828) return false;
-	if (GetPixel(848, 1006) != 0X828) return false;
-	if (GetPixel(848, 1007) != 0XC33) return false;
-	if (GetPixel(848, 1008) != 0XD37) return false;
-	if (GetPixel(848, 1009) != 0X1344) return false;
-	if (GetPixel(848, 1010) != 0X1852) return false;
-	if (GetPixel(848, 1011) != 0X1D5C) return false;
-	if (GetPixel(848, 1012) != 0X226B) return false;
-	if (GetPixel(848, 1013) != 0X297A) return false;
-	if (GetPixel(848, 1014) != 0X2C7F) return false;
-	if (GetPixel(848, 1015) != 0X2C7C) return false;
-	if (GetPixel(848, 1016) != 0X2C7C) return false;
-	if (GetPixel(848, 1017) != 0X13288) return false;
-	if (GetPixel(848, 1018) != 0X3A91) return false;
-	if (GetPixel(848, 1019) != 0X13C94) return false;
-	if (GetPixel(848, 1020) != 0XB4FB7) return false;
-	if (GetPixel(848, 1021) != 0XE4BA4) return false;
-	if (GetPixel(848, 1022) != 0X266696) return false;
-	if (GetPixel(848, 1023) != 0X266796) return false;
-	if (GetPixel(848, 1024) != 0X194667) return false;
-	if (GetPixel(848, 1025) != 0X4CAFE3) return false;
-	if (GetPixel(848, 1026) != 0X479FD0) return false;
-	if (GetPixel(848, 1027) != 0X3F90C0) return false;
-	if (GetPixel(848, 1028) != 0X3F90C0) return false;
-	if (GetPixel(849, 1003) != 0X526869) return false;
-	if (GetPixel(849, 1004) != 0X2C3B49) return false;
-	if (GetPixel(849, 1005) != 0X829) return false;
-	if (GetPixel(849, 1006) != 0X829) return false;
-	if (GetPixel(849, 1007) != 0XC34) return false;
-	if (GetPixel(849, 1008) != 0X1242) return false;
-	if (GetPixel(849, 1009) != 0X1344) return false;
-	if (GetPixel(849, 1010) != 0X1853) return false;
-	if (GetPixel(849, 1011) != 0X1D5D) return false;
-	if (GetPixel(849, 1012) != 0X2168) return false;
-	if (GetPixel(849, 1013) != 0X236E) return false;
-	if (GetPixel(849, 1014) != 0X2978) return false;
-	if (GetPixel(849, 1015) != 0X2C7B) return false;
-	if (GetPixel(849, 1016) != 0X2C7B) return false;
-	if (GetPixel(849, 1017) != 0X23389) return false;
-	if (GetPixel(849, 1018) != 0X3B94) return false;
-	if (GetPixel(849, 1019) != 0X3C95) return false;
-	if (GetPixel(849, 1020) != 0X647AC) return false;
-	if (GetPixel(849, 1021) != 0X1661C7) return false;
-	if (GetPixel(849, 1022) != 0X338DCA) return false;
-	if (GetPixel(849, 1023) != 0X2F7FBB) return false;
-	if (GetPixel(849, 1024) != 0XA1E36) return false;
-	if (GetPixel(849, 1025) != 0X3E86A7) return false;
-	if (GetPixel(849, 1026) != 0X63D2FE) return false;
-	if (GetPixel(849, 1027) != 0X489EC6) return false;
-	if (GetPixel(849, 1028) != 0X4294BC) return false;
-	if (GetPixel(850, 1003) != 0X526869) return false;
-	if (GetPixel(850, 1004) != 0X2C3B49) return false;
-	if (GetPixel(850, 1005) != 0X829) return false;
-	if (GetPixel(850, 1006) != 0X829) return false;
-	if (GetPixel(850, 1007) != 0XC35) return false;
-	if (GetPixel(850, 1008) != 0X1243) return false;
-	if (GetPixel(850, 1009) != 0X1852) return false;
-	if (GetPixel(850, 1010) != 0X1853) return false;
-	if (GetPixel(850, 1011) != 0X1D5D) return false;
-	if (GetPixel(850, 1012) != 0X2168) return false;
-	if (GetPixel(850, 1013) != 0X246F) return false;
-	if (GetPixel(850, 1014) != 0X2A7A) return false;
-	if (GetPixel(850, 1015) != 0X13186) return false;
-	if (GetPixel(850, 1016) != 0X2358D) return false;
-	if (GetPixel(850, 1017) != 0X53C9B) return false;
-	if (GetPixel(850, 1018) != 0X646A8) return false;
-	if (GetPixel(850, 1019) != 0X545A7) return false;
-	if (GetPixel(850, 1020) != 0X749AE) return false;
-	if (GetPixel(850, 1021) != 0X1661C7) return false;
-	if (GetPixel(850, 1022) != 0X328BC7) return false;
-	if (GetPixel(850, 1023) != 0X3899DB) return false;
-	if (GetPixel(850, 1024) != 0X174264) return false;
-	if (GetPixel(850, 1025) != 0X132D4F) return false;
-	if (GetPixel(850, 1026) != 0X4BA1CD) return false;
-	if (GetPixel(850, 1027) != 0X62D0FC) return false;
-	if (GetPixel(850, 1028) != 0X63D3FF) return false;
-	if (GetPixel(851, 1003) != 0X526969) return false;
-	if (GetPixel(851, 1004) != 0X2D3C4B) return false;
-	if (GetPixel(851, 1005) != 0X92D) return false;
-	if (GetPixel(851, 1006) != 0X92D) return false;
-	if (GetPixel(851, 1007) != 0X1047) return false;
-	if (GetPixel(851, 1008) != 0X114E) return false;
-	if (GetPixel(851, 1009) != 0X1559) return false;
-	if (GetPixel(851, 1010) != 0X165A) return false;
-	if (GetPixel(851, 1011) != 0X1D62) return false;
-	if (GetPixel(851, 1012) != 0X216E) return false;
-	if (GetPixel(851, 1013) != 0X267A) return false;
-	if (GetPixel(851, 1014) != 0X12D88) return false;
-	if (GetPixel(851, 1015) != 0X33491) return false;
-	if (GetPixel(851, 1016) != 0X63C9E) return false;
-	if (GetPixel(851, 1017) != 0XB47AF) return false;
-	if (GetPixel(851, 1018) != 0XC50BE) return false;
-	if (GetPixel(851, 1019) != 0X749B0) return false;
-	if (GetPixel(851, 1020) != 0XD53C1) return false;
-	if (GetPixel(851, 1021) != 0X1A64CC) return false;
-	if (GetPixel(851, 1022) != 0X2B7DBA) return false;
-	if (GetPixel(851, 1023) != 0X3A97D6) return false;
-	if (GetPixel(851, 1024) != 0X3783B9) return false;
-	if (GetPixel(851, 1025) != 0XF2548) return false;
-	if (GetPixel(851, 1026) != 0X173051) return false;
-	if (GetPixel(851, 1027) != 0X55A5C8) return false;
-	if (GetPixel(851, 1028) != 0X7DDBFD) return false;
-	if (GetPixel(852, 1003) != 0X546A6B) return false;
-	if (GetPixel(852, 1004) != 0X2F4054) return false;
-	if (GetPixel(852, 1005) != 0XC39) return false;
-	if (GetPixel(852, 1006) != 0XC39) return false;
-	if (GetPixel(852, 1007) != 0XC66) return false;
-	if (GetPixel(852, 1008) != 0XC73) return false;
-	if (GetPixel(852, 1009) != 0XC73) return false;
-	if (GetPixel(852, 1010) != 0XD73) return false;
-	if (GetPixel(852, 1011) != 0X1C73) return false;
-	if (GetPixel(852, 1012) != 0X1C73) return false;
-	if (GetPixel(852, 1013) != 0X1C73) return false;
-	if (GetPixel(852, 1014) != 0X2487) return false;
-	if (GetPixel(852, 1015) != 0X534A4) return false;
-	if (GetPixel(852, 1016) != 0XC40B1) return false;
-	if (GetPixel(852, 1017) != 0X144EBF) return false;
-	if (GetPixel(852, 1018) != 0X1055CD) return false;
-	if (GetPixel(852, 1019) != 0X175CD2) return false;
-	if (GetPixel(852, 1020) != 0X195ED2) return false;
-	if (GetPixel(852, 1021) != 0X2770DA) return false;
-	if (GetPixel(852, 1022) != 0X2982DE) return false;
-	if (GetPixel(852, 1023) != 0X459FE4) return false;
-	if (GetPixel(852, 1024) != 0X69C5EC) return false;
-	if (GetPixel(852, 1025) != 0X3E6371) return false;
-	if (GetPixel(852, 1026) != 0X161A17) return false;
-	if (GetPixel(852, 1027) != 0X373E3D) return false;
-	if (GetPixel(852, 1028) != 0XABC3C4) return false;
-	if (GetPixel(853, 1003) != 0X546A6B) return false;
-	if (GetPixel(853, 1004) != 0X2F4054) return false;
-	if (GetPixel(853, 1005) != 0XC39) return false;
-	if (GetPixel(853, 1006) != 0XC39) return false;
-	if (GetPixel(853, 1007) != 0XC66) return false;
-	if (GetPixel(853, 1008) != 0X304597) return false;
-	if (GetPixel(853, 1009) != 0X516AAF) return false;
-	if (GetPixel(853, 1010) != 0X4F69AF) return false;
-	if (GetPixel(853, 1011) != 0X3155A7) return false;
-	if (GetPixel(853, 1012) != 0XD2B81) return false;
-	if (GetPixel(853, 1013) != 0X1C73) return false;
-	if (GetPixel(853, 1014) != 0X2487) return false;
-	if (GetPixel(853, 1015) != 0X534A4) return false;
-	if (GetPixel(853, 1016) != 0X839AA) return false;
-	if (GetPixel(853, 1017) != 0XE45B5) return false;
-	if (GetPixel(853, 1018) != 0X1054CC) return false;
-	if (GetPixel(853, 1019) != 0X266BD9) return false;
-	if (GetPixel(853, 1020) != 0X276CDA) return false;
-	if (GetPixel(853, 1021) != 0X2E78DE) return false;
-	if (GetPixel(853, 1022) != 0X2E87DF) return false;
-	if (GetPixel(853, 1023) != 0X439CE4) return false;
-	if (GetPixel(853, 1024) != 0X6FCCEE) return false;
-	if (GetPixel(853, 1025) != 0X8EBDC1) return false;
-	if (GetPixel(853, 1026) != 0X475050) return false;
-	if (GetPixel(853, 1027) != 0X151915) return false;
-	if (GetPixel(853, 1028) != 0X353C3B) return false;
-	if (GetPixel(854, 1003) != 0X546A6B) return false;
-	if (GetPixel(854, 1004) != 0X2F4054) return false;
-	if (GetPixel(854, 1005) != 0XC39) return false;
-	if (GetPixel(854, 1006) != 0XC39) return false;
-	if (GetPixel(854, 1007) != 0X1A297A) return false;
-	if (GetPixel(854, 1008) != 0X90B5DE) return false;
-	if (GetPixel(854, 1009) != 0X9BC2E6) return false;
-	if (GetPixel(854, 1010) != 0X99C1E9) return false;
-	if (GetPixel(854, 1011) != 0X7CACF7) return false;
-	if (GetPixel(854, 1012) != 0X4E77C6) return false;
-	if (GetPixel(854, 1013) != 0X2F55A5) return false;
-	if (GetPixel(854, 1014) != 0X1E4BAC) return false;
-	if (GetPixel(854, 1015) != 0X738A9) return false;
-	if (GetPixel(854, 1016) != 0X737A8) return false;
-	if (GetPixel(854, 1017) != 0XB3FAF) return false;
-	if (GetPixel(854, 1018) != 0X1053CB) return false;
-	if (GetPixel(854, 1019) != 0X266BD9) return false;
-	if (GetPixel(854, 1020) != 0X347BE0) return false;
-	if (GetPixel(854, 1021) != 0X4591E8) return false;
-	if (GetPixel(854, 1022) != 0X439CE4) return false;
-	if (GetPixel(854, 1023) != 0X58B2E9) return false;
-	if (GetPixel(854, 1024) != 0X6ECBED) return false;
-	if (GetPixel(854, 1025) != 0XB8F0F9) return false;
-	if (GetPixel(854, 1026) != 0XAFC8C8) return false;
-	if (GetPixel(854, 1027) != 0X657672) return false;
-	if (GetPixel(854, 1028) != 0X141814) return false;
-	if (GetPixel(855, 1003) != 0X546B6C) return false;
-	if (GetPixel(855, 1004) != 0X2F4157) return false;
-	if (GetPixel(855, 1005) != 0XC3F) return false;
-	if (GetPixel(855, 1006) != 0XC3F) return false;
-	if (GetPixel(855, 1007) != 0X1E44AA) return false;
-	if (GetPixel(855, 1008) != 0X4F84E6) return false;
-	if (GetPixel(855, 1009) != 0X3352A2) return false;
-	if (GetPixel(855, 1010) != 0X3353A4) return false;
-	if (GetPixel(855, 1011) != 0X3764C6) return false;
-	if (GetPixel(855, 1012) != 0X3462C9) return false;
-	if (GetPixel(855, 1013) != 0X3163D9) return false;
-	if (GetPixel(855, 1014) != 0X2C6EEA) return false;
-	if (GetPixel(855, 1015) != 0X1E69E1) return false;
-	if (GetPixel(855, 1016) != 0X104FCB) return false;
-	if (GetPixel(855, 1017) != 0X43BB9) return false;
-	if (GetPixel(855, 1018) != 0X1350DF) return false;
-	if (GetPixel(855, 1019) != 0X3479EA) return false;
-	if (GetPixel(855, 1020) != 0X3D83EF) return false;
-	if (GetPixel(855, 1021) != 0X4994F3) return false;
-	if (GetPixel(855, 1022) != 0X5CB6F6) return false;
-	if (GetPixel(855, 1023) != 0X6AC2F8) return false;
-	if (GetPixel(855, 1024) != 0X87DAF9) return false;
-	if (GetPixel(855, 1025) != 0XBEEEFA) return false;
-	if (GetPixel(855, 1026) != 0XD9F5FA) return false;
-	if (GetPixel(855, 1027) != 0XC4DEE2) return false;
-	if (GetPixel(855, 1028) != 0X91A3A6) return false;
-	if (GetPixel(856, 1003) != 0X546C6C) return false;
-	if (GetPixel(856, 1004) != 0X2F415A) return false;
-	if (GetPixel(856, 1005) != 0XC42) return false;
-	if (GetPixel(856, 1006) != 0XC42) return false;
-	if (GetPixel(856, 1007) != 0XE37A2) return false;
-	if (GetPixel(856, 1008) != 0X1244BD) return false;
-	if (GetPixel(856, 1009) != 0X82387) return false;
-	if (GetPixel(856, 1010) != 0X82386) return false;
-	if (GetPixel(856, 1011) != 0X32886) return false;
-	if (GetPixel(856, 1012) != 0X62E92) return false;
-	if (GetPixel(856, 1013) != 0XF3CB4) return false;
-	if (GetPixel(856, 1014) != 0XE45C4) return false;
-	if (GetPixel(856, 1015) != 0X1762E2) return false;
-	if (GetPixel(856, 1016) != 0X2174F2) return false;
-	if (GetPixel(856, 1017) != 0X1F70EF) return false;
-	if (GetPixel(856, 1018) != 0X3174F2) return false;
-	if (GetPixel(856, 1019) != 0X3C81F4) return false;
-	if (GetPixel(856, 1020) != 0X3C81F4) return false;
-	if (GetPixel(856, 1021) != 0X458FF6) return false;
-	if (GetPixel(856, 1022) != 0X71C8FF) return false;
-	if (GetPixel(856, 1023) != 0X9CE5FF) return false;
-	if (GetPixel(856, 1024) != 0XA6ECFF) return false;
-	if (GetPixel(856, 1025) != 0XC2ECFA) return false;
-	if (GetPixel(856, 1026) != 0XD6EFF7) return false;
-	if (GetPixel(856, 1027) != 0X87919E) return false;
-	if (GetPixel(856, 1028) != 0X78808D) return false;
-	if (GetPixel(857, 1003) != 0X546C6C) return false;
-	if (GetPixel(857, 1004) != 0X2F415A) return false;
-	if (GetPixel(857, 1005) != 0XC42) return false;
-	if (GetPixel(857, 1006) != 0XC42) return false;
-	if (GetPixel(857, 1007) != 0X7217C) return false;
-	if (GetPixel(857, 1008) != 0XF3BAE) return false;
-	if (GetPixel(857, 1009) != 0X82387) return false;
-	if (GetPixel(857, 1010) != 0X72385) return false;
-	if (GetPixel(857, 1011) != 0X247B) return false;
-	if (GetPixel(857, 1012) != 0X32987) return false;
-	if (GetPixel(857, 1013) != 0XB35A5) return false;
-	if (GetPixel(857, 1014) != 0X536B1) return false;
-	if (GetPixel(857, 1015) != 0X23DC1) return false;
-	if (GetPixel(857, 1016) != 0XE50D3) return false;
-	if (GetPixel(857, 1017) != 0X247AF8) return false;
-	if (GetPixel(857, 1018) != 0X56AEFA) return false;
-	if (GetPixel(857, 1019) != 0X5BB2F9) return false;
-	if (GetPixel(857, 1020) != 0X79DAFD) return false;
-	if (GetPixel(857, 1021) != 0X85E0FE) return false;
-	if (GetPixel(857, 1022) != 0XB2F4FF) return false;
-	if (GetPixel(857, 1023) != 0XBAF9FF) return false;
-	if (GetPixel(857, 1024) != 0XBBF9FF) return false;
-	if (GetPixel(857, 1025) != 0XCBF2FA) return false;
-	if (GetPixel(857, 1026) != 0XAFC4CB) return false;
-	if (GetPixel(857, 1027) != 0X363642) return false;
-	if (GetPixel(857, 1028) != 0X221F2C) return false;
-	if (GetPixel(858, 1003) != 0X546C6C) return false;
-	if (GetPixel(858, 1004) != 0X2F415A) return false;
-	if (GetPixel(858, 1005) != 0XC42) return false;
-	if (GetPixel(858, 1006) != 0XC42) return false;
-	if (GetPixel(858, 1007) != 0XD56) return false;
-	if (GetPixel(858, 1008) != 0XE38A8) return false;
-	if (GetPixel(858, 1009) != 0X82387) return false;
-	if (GetPixel(858, 1010) != 0XF5F) return false;
-	if (GetPixel(858, 1011) != 0X247B) return false;
-	if (GetPixel(858, 1012) != 0X32987) return false;
-	if (GetPixel(858, 1013) != 0XB35A5) return false;
-	if (GetPixel(858, 1014) != 0X536B1) return false;
-	if (GetPixel(858, 1015) != 0X745CA) return false;
-	if (GetPixel(858, 1016) != 0X1661E1) return false;
-	if (GetPixel(858, 1017) != 0X1B6CEA) return false;
-	if (GetPixel(858, 1018) != 0X3B82F3) return false;
-	if (GetPixel(858, 1019) != 0X61BCFA) return false;
-	if (GetPixel(858, 1020) != 0X84EBFF) return false;
-	if (GetPixel(858, 1021) != 0X8AEBFF) return false;
-	if (GetPixel(858, 1022) != 0X97E2FF) return false;
-	if (GetPixel(858, 1023) != 0X84D3FF) return false;
-	if (GetPixel(858, 1024) != 0XA2E8FF) return false;
-	if (GetPixel(858, 1025) != 0XCDF3FA) return false;
-	if (GetPixel(858, 1026) != 0XA7BCC2) return false;
-	if (GetPixel(858, 1027) != 0X2C2B37) return false;
-	if (GetPixel(858, 1028) != 0X181421) return false;
-	if (GetPixel(859, 1003) != 0X54696C) return false;
-	if (GetPixel(859, 1004) != 0X2F435A) return false;
-	if (GetPixel(859, 1005) != 0X1042) return false;
-	if (GetPixel(859, 1006) != 0X1042) return false;
-	if (GetPixel(859, 1007) != 0XD48) return false;
-	if (GetPixel(859, 1008) != 0X19327C) return false;
-	if (GetPixel(859, 1009) != 0X203C89) return false;
-	if (GetPixel(859, 1010) != 0X11050) return false;
-	if (GetPixel(859, 1011) != 0X206B) return false;
-	if (GetPixel(859, 1012) != 0X42776) return false;
-	if (GetPixel(859, 1013) != 0XD3891) return false;
-	if (GetPixel(859, 1014) != 0X63EAB) return false;
-	if (GetPixel(859, 1015) != 0X45C6) return false;
-	if (GetPixel(859, 1016) != 0X175EDD) return false;
-	if (GetPixel(859, 1017) != 0X2169E7) return false;
-	if (GetPixel(859, 1018) != 0X468BEE) return false;
-	if (GetPixel(859, 1019) != 0X609FF4) return false;
-	if (GetPixel(859, 1020) != 0X66A4F6) return false;
-	if (GetPixel(859, 1021) != 0X96CBFF) return false;
-	if (GetPixel(859, 1022) != 0XBDEBFF) return false;
-	if (GetPixel(859, 1023) != 0XBDEBFF) return false;
-	if (GetPixel(859, 1024) != 0XBCE9FD) return false;
-	if (GetPixel(859, 1025) != 0X7887A0) return false;
-	if (GetPixel(859, 1026) != 0X211E3A) return false;
-	if (GetPixel(859, 1027) != 0X4D4C68) return false;
-	if (GetPixel(859, 1028) != 0X9AAAB8) return false;
-	if (GetPixel(860, 1003) != 0X54696C) return false;
-	if (GetPixel(860, 1004) != 0X2F435A) return false;
-	if (GetPixel(860, 1005) != 0X1042) return false;
-	if (GetPixel(860, 1006) != 0X1042) return false;
-	if (GetPixel(860, 1007) != 0XD48) return false;
-	if (GetPixel(860, 1008) != 0XC4A) return false;
-	if (GetPixel(860, 1009) != 0X3664B8) return false;
-	if (GetPixel(860, 1010) != 0X244595) return false;
-	if (GetPixel(860, 1011) != 0X206B) return false;
-	if (GetPixel(860, 1012) != 0X42776) return false;
-	if (GetPixel(860, 1013) != 0XD3891) return false;
-	if (GetPixel(860, 1014) != 0X63EAB) return false;
-	if (GetPixel(860, 1015) != 0X45C6) return false;
-	if (GetPixel(860, 1016) != 0XB50D1) return false;
-	if (GetPixel(860, 1017) != 0X2067E6) return false;
-	if (GetPixel(860, 1018) != 0X478BEE) return false;
-	if (GetPixel(860, 1019) != 0X609FF4) return false;
-	if (GetPixel(860, 1020) != 0X79B5FB) return false;
-	if (GetPixel(860, 1021) != 0X88C1FC) return false;
-	if (GetPixel(860, 1022) != 0XBDEBFF) return false;
-	if (GetPixel(860, 1023) != 0XBDEBFF) return false;
-	if (GetPixel(860, 1024) != 0X9DC1D3) return false;
-	if (GetPixel(860, 1025) != 0X394058) return false;
-	if (GetPixel(860, 1026) != 0X282742) return false;
-	if (GetPixel(860, 1027) != 0X92A1B0) return false;
-	if (GetPixel(860, 1028) != 0XDBF0FC) return false;
-	if (GetPixel(861, 1003) != 0X54696C) return false;
-	if (GetPixel(861, 1004) != 0X2F435A) return false;
-	if (GetPixel(861, 1005) != 0X1042) return false;
-	if (GetPixel(861, 1006) != 0X1042) return false;
-	if (GetPixel(861, 1007) != 0XD48) return false;
-	if (GetPixel(861, 1008) != 0XC4A) return false;
-	if (GetPixel(861, 1009) != 0X162D76) return false;
-	if (GetPixel(861, 1010) != 0X4C87E7) return false;
-	if (GetPixel(861, 1011) != 0X83083) return false;
-	if (GetPixel(861, 1012) != 0X42776) return false;
-	if (GetPixel(861, 1013) != 0XD3891) return false;
-	if (GetPixel(861, 1014) != 0X63EAB) return false;
-	if (GetPixel(861, 1015) != 0X45C6) return false;
-	if (GetPixel(861, 1016) != 0XB50D1) return false;
-	if (GetPixel(861, 1017) != 0X2B72F1) return false;
-	if (GetPixel(861, 1018) != 0X488CF0) return false;
-	if (GetPixel(861, 1019) != 0X61A0F4) return false;
-	if (GetPixel(861, 1020) != 0X8CC3FF) return false;
-	if (GetPixel(861, 1021) != 0X97CCFF) return false;
-	if (GetPixel(861, 1022) != 0XBDEBFF) return false;
-	if (GetPixel(861, 1023) != 0XB3DDF1) return false;
-	if (GetPixel(861, 1024) != 0X67778B) return false;
-	if (GetPixel(861, 1025) != 0X3E3F55) return false;
-	if (GetPixel(861, 1026) != 0XB7C7D6) return false;
-	if (GetPixel(861, 1027) != 0XDEF3FF) return false;
-	if (GetPixel(861, 1028) != 0XDEF3FF) return false;
-	if (GetPixel(862, 1003) != 0X566A6C) return false;
-	if (GetPixel(862, 1004) != 0X31445A) return false;
-	if (GetPixel(862, 1005) != 0X1145) return false;
-	if (GetPixel(862, 1006) != 0X1145) return false;
-	if (GetPixel(862, 1007) != 0X124D) return false;
-	if (GetPixel(862, 1008) != 0X1250) return false;
-	if (GetPixel(862, 1009) != 0X1250) return false;
-	if (GetPixel(862, 1010) != 0X2753A2) return false;
-	if (GetPixel(862, 1011) != 0X2967CC) return false;
-	if (GetPixel(862, 1012) != 0XA3088) return false;
-	if (GetPixel(862, 1013) != 0XD3695) return false;
-	if (GetPixel(862, 1014) != 0XA41B1) return false;
-	if (GetPixel(862, 1015) != 0X44C9) return false;
-	if (GetPixel(862, 1016) != 0X950D7) return false;
-	if (GetPixel(862, 1017) != 0X1E6AF2) return false;
-	if (GetPixel(862, 1018) != 0X4C8CF2) return false;
-	if (GetPixel(862, 1019) != 0X70A8F5) return false;
-	if (GetPixel(862, 1020) != 0X8EC0FC) return false;
-	if (GetPixel(862, 1021) != 0XA9D3FD) return false;
-	if (GetPixel(862, 1022) != 0XCBEEFD) return false;
-	if (GetPixel(862, 1023) != 0X9FBCD2) return false;
-	if (GetPixel(862, 1024) != 0X737E91) return false;
-	if (GetPixel(862, 1025) != 0XBCC8D3) return false;
-	if (GetPixel(862, 1026) != 0XE4F4FF) return false;
-	if (GetPixel(862, 1027) != 0XCBE5FF) return false;
-	if (GetPixel(862, 1028) != 0XC6E2FF) return false;
-	if (GetPixel(863, 1003) != 0X536769) return false;
-	if (GetPixel(863, 1004) != 0X2D3F59) return false;
-	if (GetPixel(863, 1005) != 0X144A) return false;
-	if (GetPixel(863, 1006) != 0X144A) return false;
-	if (GetPixel(863, 1007) != 0X1A56) return false;
-	if (GetPixel(863, 1008) != 0X1C5A) return false;
-	if (GetPixel(863, 1009) != 0X1F5F) return false;
-	if (GetPixel(863, 1010) != 0X32162) return false;
-	if (GetPixel(863, 1011) != 0X255BBC) return false;
-	if (GetPixel(863, 1012) != 0X2D66C5) return false;
-	if (GetPixel(863, 1013) != 0XF369F) return false;
-	if (GetPixel(863, 1014) != 0X83AB3) return false;
-	if (GetPixel(863, 1015) != 0X142D0) return false;
-	if (GetPixel(863, 1016) != 0X34BDC) return false;
-	if (GetPixel(863, 1017) != 0X75AF2) return false;
-	if (GetPixel(863, 1018) != 0X538DF7) return false;
-	if (GetPixel(863, 1019) != 0X75A6F7) return false;
-	if (GetPixel(863, 1020) != 0X92BBF7) return false;
-	if (GetPixel(863, 1021) != 0XC8DFF9) return false;
-	if (GetPixel(863, 1022) != 0XE9F7FC) return false;
-	if (GetPixel(863, 1023) != 0XCEE1EF) return false;
-	if (GetPixel(863, 1024) != 0XD6E7F3) return false;
-	if (GetPixel(863, 1025) != 0XEFF8FF) return false;
-	if (GetPixel(863, 1026) != 0XE1EFFF) return false;
-	if (GetPixel(863, 1027) != 0XA6CBFF) return false;
-	if (GetPixel(863, 1028) != 0X9CC5FF) return false;
-	if (GetPixel(864, 1003) != 0X4C6167) return false;
-	if (GetPixel(864, 1004) != 0X233656) return false;
-	if (GetPixel(864, 1005) != 0X144A) return false;
-	if (GetPixel(864, 1006) != 0X144A) return false;
-	if (GetPixel(864, 1007) != 0X1A56) return false;
-	if (GetPixel(864, 1008) != 0X1F60) return false;
-	if (GetPixel(864, 1009) != 0X2265) return false;
-	if (GetPixel(864, 1010) != 0X246A) return false;
-	if (GetPixel(864, 1011) != 0XE369E) return false;
-	if (GetPixel(864, 1012) != 0X4690E6) return false;
-	if (GetPixel(864, 1013) != 0X2D67C6) return false;
-	if (GetPixel(864, 1014) != 0X93BB4) return false;
-	if (GetPixel(864, 1015) != 0X3FCA) return false;
-	if (GetPixel(864, 1016) != 0X244D3) return false;
-	if (GetPixel(864, 1017) != 0X759F1) return false;
-	if (GetPixel(864, 1018) != 0X538DF7) return false;
-	if (GetPixel(864, 1019) != 0X5B92F7) return false;
-	if (GetPixel(864, 1020) != 0X92BBF7) return false;
-	if (GetPixel(864, 1021) != 0XC8DFF9) return false;
-	if (GetPixel(864, 1022) != 0XEFFBFF) return false;
-	if (GetPixel(864, 1023) != 0XEFFBFF) return false;
-	if (GetPixel(864, 1024) != 0XE5F3FA) return false;
-	if (GetPixel(864, 1025) != 0XCAE1FC) return false;
-	if (GetPixel(864, 1026) != 0XB2D3FF) return false;
-	if (GetPixel(864, 1027) != 0X9FC7FF) return false;
-	if (GetPixel(864, 1028) != 0X9CC5FF) return false;
-	if (GetPixel(865, 1003) != 0X4C6167) return false;
-	if (GetPixel(865, 1004) != 0X233656) return false;
-	if (GetPixel(865, 1005) != 0X144A) return false;
-	if (GetPixel(865, 1006) != 0X144A) return false;
-	if (GetPixel(865, 1007) != 0X1A56) return false;
-	if (GetPixel(865, 1008) != 0X2164) return false;
-	if (GetPixel(865, 1009) != 0X276C) return false;
-	if (GetPixel(865, 1010) != 0X2D79) return false;
-	if (GetPixel(865, 1011) != 0X42691) return false;
-	if (GetPixel(865, 1012) != 0X2860BF) return false;
-	if (GetPixel(865, 1013) != 0X52A1F5) return false;
-	if (GetPixel(865, 1014) != 0X2365D6) return false;
-	if (GetPixel(865, 1015) != 0X140CC) return false;
-	if (GetPixel(865, 1016) != 0X34BDD) return false;
-	if (GetPixel(865, 1017) != 0X75AF3) return false;
-	if (GetPixel(865, 1018) != 0X3579F7) return false;
-	if (GetPixel(865, 1019) != 0X5B92F7) return false;
-	if (GetPixel(865, 1020) != 0X92BBF7) return false;
-	if (GetPixel(865, 1021) != 0XC8DFF9) return false;
-	if (GetPixel(865, 1022) != 0XE8F5FB) return false;
-	if (GetPixel(865, 1023) != 0XD9EAF4) return false;
-	if (GetPixel(865, 1024) != 0XC7DBEB) return false;
-	if (GetPixel(865, 1025) != 0X95BEF5) return false;
-	if (GetPixel(865, 1026) != 0X95C1FF) return false;
-	if (GetPixel(865, 1027) != 0X9CC5FF) return false;
-	if (GetPixel(865, 1028) != 0X82B6FF) return false;
-	if (GetPixel(866, 1003) != 0X4A6167) return false;
-	if (GetPixel(866, 1004) != 0X21395C) return false;
-	if (GetPixel(866, 1005) != 0X1A56) return false;
-	if (GetPixel(866, 1006) != 0X1A56) return false;
-	if (GetPixel(866, 1007) != 0X205F) return false;
-	if (GetPixel(866, 1008) != 0X2363) return false;
-	if (GetPixel(866, 1009) != 0X2970) return false;
-	if (GetPixel(866, 1010) != 0X3082) return false;
-	if (GetPixel(866, 1011) != 0X36B2) return false;
-	if (GetPixel(866, 1012) != 0X63FBA) return false;
-	if (GetPixel(866, 1013) != 0X4484E0) return false;
-	if (GetPixel(866, 1014) != 0X7CB6F8) return false;
-	if (GetPixel(866, 1015) != 0X2B6FF0) return false;
-	if (GetPixel(866, 1016) != 0X151F2) return false;
-	if (GetPixel(866, 1017) != 0X253F6) return false;
-	if (GetPixel(866, 1018) != 0X3177F7) return false;
-	if (GetPixel(866, 1019) != 0X73A0F9) return false;
-	if (GetPixel(866, 1020) != 0XB5D0FC) return false;
-	if (GetPixel(866, 1021) != 0XE1EBFE) return false;
-	if (GetPixel(866, 1022) != 0XBFD7FE) return false;
-	if (GetPixel(866, 1023) != 0XBBD3FB) return false;
-	if (GetPixel(866, 1024) != 0X9FC1F9) return false;
-	if (GetPixel(866, 1025) != 0X68A7FC) return false;
-	if (GetPixel(866, 1026) != 0X5EA6FF) return false;
-	if (GetPixel(866, 1027) != 0X72B9FF) return false;
-	if (GetPixel(866, 1028) != 0X59A4FF) return false;
-	if (GetPixel(867, 1003) != 0X4A6167) return false;
-	if (GetPixel(867, 1004) != 0X203A5D) return false;
-	if (GetPixel(867, 1005) != 0X1C5A) return false;
-	if (GetPixel(867, 1006) != 0X1C5A) return false;
-	if (GetPixel(867, 1007) != 0X2261) return false;
-	if (GetPixel(867, 1008) != 0X2463) return false;
-	if (GetPixel(867, 1009) != 0X2970) return false;
-	if (GetPixel(867, 1010) != 0X3083) return false;
-	if (GetPixel(867, 1011) != 0X3CBD) return false;
-	if (GetPixel(867, 1012) != 0X3CBD) return false;
-	if (GetPixel(867, 1013) != 0X743C0) return false;
-	if (GetPixel(867, 1014) != 0X6D9CE2) return false;
-	if (GetPixel(867, 1015) != 0X97C7FD) return false;
-	if (GetPixel(867, 1016) != 0X236DF9) return false;
-	if (GetPixel(867, 1017) != 0X3075F9) return false;
-	if (GetPixel(867, 1018) != 0X397DF7) return false;
-	if (GetPixel(867, 1019) != 0XB1CCFD) return false;
-	if (GetPixel(867, 1020) != 0XEAEFFF) return false;
-	if (GetPixel(867, 1021) != 0XB2CDFD) return false;
-	if (GetPixel(867, 1022) != 0X93BAFE) return false;
-	if (GetPixel(867, 1023) != 0X9FC1FE) return false;
-	if (GetPixel(867, 1024) != 0X7EADFD) return false;
-	if (GetPixel(867, 1025) != 0X5092FE) return false;
-	if (GetPixel(867, 1026) != 0X3784FF) return false;
-	if (GetPixel(867, 1027) != 0X4E9DFF) return false;
-	if (GetPixel(867, 1028) != 0X67B6FF) return false;
-	if (GetPixel(868, 1003) != 0X556A68) return false;
-	if (GetPixel(868, 1004) != 0X30475F) return false;
-	if (GetPixel(868, 1005) != 0X1C5A) return false;
-	if (GetPixel(868, 1006) != 0X1C5A) return false;
-	if (GetPixel(868, 1007) != 0X2261) return false;
-	if (GetPixel(868, 1008) != 0X286E) return false;
-	if (GetPixel(868, 1009) != 0X2F7E) return false;
-	if (GetPixel(868, 1010) != 0X3590) return false;
-	if (GetPixel(868, 1011) != 0X3CBD) return false;
-	if (GetPixel(868, 1012) != 0X3CBD) return false;
-	if (GetPixel(868, 1013) != 0X3CBD) return false;
-	if (GetPixel(868, 1014) != 0X248DA) return false;
-	if (GetPixel(868, 1015) != 0X7DB1FC) return false;
-	if (GetPixel(868, 1016) != 0X9BCAFE) return false;
-	if (GetPixel(868, 1017) != 0X1A66F8) return false;
-	if (GetPixel(868, 1018) != 0XA6C5FC) return false;
-	if (GetPixel(868, 1019) != 0XF4F5FF) return false;
-	if (GetPixel(868, 1020) != 0X7BA4FA) return false;
-	if (GetPixel(868, 1021) != 0X7AA5FB) return false;
-	if (GetPixel(868, 1022) != 0X7BABFD) return false;
-	if (GetPixel(868, 1023) != 0X639AFC) return false;
-	if (GetPixel(868, 1024) != 0X246FF8) return false;
-	if (GetPixel(868, 1025) != 0X2474FC) return false;
-	if (GetPixel(868, 1026) != 0X4897FF) return false;
-	if (GetPixel(868, 1027) != 0X4F9FFF) return false;
-	if (GetPixel(868, 1028) != 0X4F9FFF) return false;
-	if (GetPixel(869, 1003) != 0X556A68) return false;
-	if (GetPixel(869, 1004) != 0X30475F) return false;
-	if (GetPixel(869, 1005) != 0X1D5B) return false;
-	if (GetPixel(869, 1006) != 0X1D5B) return false;
-	if (GetPixel(869, 1007) != 0X266B) return false;
-	if (GetPixel(869, 1008) != 0X2970) return false;
-	if (GetPixel(869, 1009) != 0X2F7F) return false;
-	if (GetPixel(869, 1010) != 0X3590) return false;
-	if (GetPixel(869, 1011) != 0X3CBD) return false;
-	if (GetPixel(869, 1012) != 0X3DBF) return false;
-	if (GetPixel(869, 1013) != 0X3EC1) return false;
-	if (GetPixel(869, 1014) != 0X349DC) return false;
-	if (GetPixel(869, 1015) != 0X286CF9) return false;
-	if (GetPixel(869, 1016) != 0XA0CAFD) return false;
-	if (GetPixel(869, 1017) != 0XCEEEFF) return false;
-	if (GetPixel(869, 1018) != 0XE9F1FF) return false;
-	if (GetPixel(869, 1019) != 0X729FFA) return false;
-	if (GetPixel(869, 1020) != 0X397DF7) return false;
-	if (GetPixel(869, 1021) != 0X3A7DF8) return false;
-	if (GetPixel(869, 1022) != 0X3D7EFA) return false;
-	if (GetPixel(869, 1023) != 0X266FF8) return false;
-	if (GetPixel(869, 1024) != 0X75BF5) return false;
-	if (GetPixel(869, 1025) != 0X1160F9) return false;
-	if (GetPixel(869, 1026) != 0X2B77FE) return false;
-	if (GetPixel(869, 1027) != 0X4696FF) return false;
-	if (GetPixel(869, 1028) != 0X327FFD) return false;
-	if (GetPixel(870, 1003) != 0X516669) return false;
-	if (GetPixel(870, 1004) != 0X2A4564) return false;
-	if (GetPixel(870, 1005) != 0X2463) return false;
-	if (GetPixel(870, 1006) != 0X2463) return false;
-	if (GetPixel(870, 1007) != 0X2A6F) return false;
-	if (GetPixel(870, 1008) != 0X2C73) return false;
-	if (GetPixel(870, 1009) != 0X3489) return false;
-	if (GetPixel(870, 1010) != 0X358D) return false;
-	if (GetPixel(870, 1011) != 0X3EB9) return false;
-	if (GetPixel(870, 1012) != 0X4AD2) return false;
-	if (GetPixel(870, 1013) != 0X55E7) return false;
-	if (GetPixel(870, 1014) != 0X1E5BF0) return false;
-	if (GetPixel(870, 1015) != 0X204AF8) return false;
-	if (GetPixel(870, 1016) != 0X7798FC) return false;
-	if (GetPixel(870, 1017) != 0XC7DCFE) return false;
-	if (GetPixel(870, 1018) != 0X80C4FD) return false;
-	if (GetPixel(870, 1019) != 0X4184FB) return false;
-	if (GetPixel(870, 1020) != 0X2C6FF9) return false;
-	if (GetPixel(870, 1021) != 0X246CFA) return false;
-	if (GetPixel(870, 1022) != 0X65CF8) return false;
-	if (GetPixel(870, 1023) != 0X353EA) return false;
-	if (GetPixel(870, 1024) != 0X14ADE) return false;
-	if (GetPixel(870, 1025) != 0X54ED9) return false;
-	if (GetPixel(870, 1026) != 0X1364F2) return false;
-	if (GetPixel(870, 1027) != 0X166AFB) return false;
-	if (GetPixel(870, 1028) != 0XF5EE9) return false;
-	if (GetPixel(871, 1003) != 0X516669) return false;
-	if (GetPixel(871, 1004) != 0X2A4564) return false;
-	if (GetPixel(871, 1005) != 0X2463) return false;
-	if (GetPixel(871, 1006) != 0X2463) return false;
-	if (GetPixel(871, 1007) != 0X2A6F) return false;
-	if (GetPixel(871, 1008) != 0X2C73) return false;
-	if (GetPixel(871, 1009) != 0X3489) return false;
-	if (GetPixel(871, 1010) != 0X3793) return false;
-	if (GetPixel(871, 1011) != 0X43C3) return false;
-	if (GetPixel(871, 1012) != 0X4FD9) return false;
-	if (GetPixel(871, 1013) != 0X52E0) return false;
-	if (GetPixel(871, 1014) != 0XB49EB) return false;
-	if (GetPixel(871, 1015) != 0X4F72FA) return false;
-	if (GetPixel(871, 1016) != 0XB0C7FE) return false;
-	if (GetPixel(871, 1017) != 0X7B9CFC) return false;
-	if (GetPixel(871, 1018) != 0X82C4FD) return false;
-	if (GetPixel(871, 1019) != 0X7CC4FD) return false;
-	if (GetPixel(871, 1020) != 0XE52F8) return false;
-	if (GetPixel(871, 1021) != 0X149F5) return false;
-	if (GetPixel(871, 1022) != 0X353EB) return false;
-	if (GetPixel(871, 1023) != 0X24EE4) return false;
-	if (GetPixel(871, 1024) != 0X24EE4) return false;
-	if (GetPixel(871, 1025) != 0X44ED9) return false;
-	if (GetPixel(871, 1026) != 0XC58E1) return false;
-	if (GetPixel(871, 1027) != 0XE5CE6) return false;
-	if (GetPixel(871, 1028) != 0X852DA) return false;
-	if (GetPixel(872, 1003) != 0X516669) return false;
-	if (GetPixel(872, 1004) != 0X2A4564) return false;
-	if (GetPixel(872, 1005) != 0X2463) return false;
-	if (GetPixel(872, 1006) != 0X2463) return false;
-	if (GetPixel(872, 1007) != 0X2A6F) return false;
-	if (GetPixel(872, 1008) != 0X2F7B) return false;
-	if (GetPixel(872, 1009) != 0X3791) return false;
-	if (GetPixel(872, 1010) != 0X41AC) return false;
-	if (GetPixel(872, 1011) != 0X4CD5) return false;
-	if (GetPixel(872, 1012) != 0X48CE) return false;
-	if (GetPixel(872, 1013) != 0X48CD) return false;
-	if (GetPixel(872, 1014) != 0X4275E8) return false;
-	if (GetPixel(872, 1015) != 0XA9C1FD) return false;
-	if (GetPixel(872, 1016) != 0X7799FC) return false;
-	if (GetPixel(872, 1017) != 0X2852F9) return false;
-	if (GetPixel(872, 1018) != 0X2162F9) return false;
-	if (GetPixel(872, 1019) != 0X63A9FC) return false;
-	if (GetPixel(872, 1020) != 0X498EFB) return false;
-	if (GetPixel(872, 1021) != 0X2269F3) return false;
-	if (GetPixel(872, 1022) != 0X14CE0) return false;
-	if (GetPixel(872, 1023) != 0X24EE4) return false;
-	if (GetPixel(872, 1024) != 0X24CE1) return false;
-	if (GetPixel(872, 1025) != 0X47CF) return false;
-	if (GetPixel(872, 1026) != 0X44BCE) return false;
-	if (GetPixel(872, 1027) != 0X54DD1) return false;
-	if (GetPixel(872, 1028) != 0X54DD1) return false;
-	if (GetPixel(873, 1003) != 0X516669) return false;
-	if (GetPixel(873, 1004) != 0X2B4565) return false;
-	if (GetPixel(873, 1005) != 0X2463) return false;
-	if (GetPixel(873, 1006) != 0X2463) return false;
-	if (GetPixel(873, 1007) != 0X2C73) return false;
-	if (GetPixel(873, 1008) != 0X3389) return false;
-	if (GetPixel(873, 1009) != 0X3AA0) return false;
-	if (GetPixel(873, 1010) != 0X41B8) return false;
-	if (GetPixel(873, 1011) != 0X46D4) return false;
-	if (GetPixel(873, 1012) != 0X41CC) return false;
-	if (GetPixel(873, 1013) != 0X2662D8) return false;
-	if (GetPixel(873, 1014) != 0X7BAEF9) return false;
-	if (GetPixel(873, 1015) != 0X6996F4) return false;
-	if (GetPixel(873, 1016) != 0X2054EF) return false;
-	if (GetPixel(873, 1017) != 0X376BF6) return false;
-	if (GetPixel(873, 1018) != 0X1358E9) return false;
-	if (GetPixel(873, 1019) != 0X144DF) return false;
-	if (GetPixel(873, 1020) != 0X3D83E5) return false;
-	if (GetPixel(873, 1021) != 0X53A5FA) return false;
-	if (GetPixel(873, 1022) != 0X135EE4) return false;
-	if (GetPixel(873, 1023) != 0X94AD6) return false;
-	if (GetPixel(873, 1024) != 0X848D2) return false;
-	if (GetPixel(873, 1025) != 0X340BC) return false;
-	if (GetPixel(873, 1026) != 0X3CB1) return false;
-	if (GetPixel(873, 1027) != 0X744BE) return false;
-	if (GetPixel(873, 1028) != 0X845C0) return false;
-	if (GetPixel(874, 1003) != 0X52666A) return false;
-	if (GetPixel(874, 1004) != 0X2C4566) return false;
-	if (GetPixel(874, 1005) != 0X2463) return false;
-	if (GetPixel(874, 1006) != 0X2463) return false;
-	if (GetPixel(874, 1007) != 0X2D76) return false;
-	if (GetPixel(874, 1008) != 0X338D) return false;
-	if (GetPixel(874, 1009) != 0X3696) return false;
-	if (GetPixel(874, 1010) != 0X3AAD) return false;
-	if (GetPixel(874, 1011) != 0X41D6) return false;
-	if (GetPixel(874, 1012) != 0X215CDD) return false;
-	if (GetPixel(874, 1013) != 0X81ABF2) return false;
-	if (GetPixel(874, 1014) != 0X5C90F1) return false;
-	if (GetPixel(874, 1015) != 0X1756E7) return false;
-	if (GetPixel(874, 1016) != 0X1856E8) return false;
-	if (GetPixel(874, 1017) != 0X2464ED) return false;
-	if (GetPixel(874, 1018) != 0XE52D0) return false;
-	if (GetPixel(874, 1019) != 0X41C6) return false;
-	if (GetPixel(874, 1020) != 0X446C9) return false;
-	if (GetPixel(874, 1021) != 0X2571E1) return false;
-	if (GetPixel(874, 1022) != 0X236FE8) return false;
-	if (GetPixel(874, 1023) != 0X1653D2) return false;
-	if (GetPixel(874, 1024) != 0XB3DBF) return false;
-	if (GetPixel(874, 1025) != 0X234A6) return false;
-	if (GetPixel(874, 1026) != 0X349C) return false;
-	if (GetPixel(874, 1027) != 0X53AA6) return false;
-	if (GetPixel(874, 1028) != 0X63BA8) return false;
-	if (GetPixel(875, 1003) != 0X52666A) return false;
-	if (GetPixel(875, 1004) != 0X2C4566) return false;
-	if (GetPixel(875, 1005) != 0X2463) return false;
-	if (GetPixel(875, 1006) != 0X2463) return false;
-	if (GetPixel(875, 1007) != 0X2D76) return false;
-	if (GetPixel(875, 1008) != 0X338D) return false;
-	if (GetPixel(875, 1009) != 0X379C) return false;
-	if (GetPixel(875, 1010) != 0X39A6) return false;
-	if (GetPixel(875, 1011) != 0X1A56DC) return false;
-	if (GetPixel(875, 1012) != 0X89B1F4) return false;
-	if (GetPixel(875, 1013) != 0X6696EC) return false;
-	if (GetPixel(875, 1014) != 0X1C59E2) return false;
-	if (GetPixel(875, 1015) != 0X1856E8) return false;
-	if (GetPixel(875, 1016) != 0X1B59E9) return false;
-	if (GetPixel(875, 1017) != 0XC48E3) return false;
-	if (GetPixel(875, 1018) != 0X141C8) return false;
-	if (GetPixel(875, 1019) != 0X41C6) return false;
-	if (GetPixel(875, 1020) != 0X41C6) return false;
-	if (GetPixel(875, 1021) != 0X545C8) return false;
-	if (GetPixel(875, 1022) != 0X195AD7) return false;
-	if (GetPixel(875, 1023) != 0X2470E9) return false;
-	if (GetPixel(875, 1024) != 0X1858D6) return false;
-	if (GetPixel(875, 1025) != 0X438A9) return false;
-	if (GetPixel(875, 1026) != 0X349C) return false;
-	if (GetPixel(875, 1027) != 0X349C) return false;
-	if (GetPixel(875, 1028) != 0X349C) return false;
-	if (GetPixel(876, 1003) != 0X52666A) return false;
-	if (GetPixel(876, 1004) != 0X2C4566) return false;
-	if (GetPixel(876, 1005) != 0X2463) return false;
-	if (GetPixel(876, 1006) != 0X2463) return false;
-	if (GetPixel(876, 1007) != 0X2D76) return false;
-	if (GetPixel(876, 1008) != 0X369A) return false;
-	if (GetPixel(876, 1009) != 0X38A2) return false;
-	if (GetPixel(876, 1010) != 0XD47B7) return false;
-	if (GetPixel(876, 1011) != 0X96BBF7) return false;
-	if (GetPixel(876, 1012) != 0X6998ED) return false;
-	if (GetPixel(876, 1013) != 0XE4DD9) return false;
-	if (GetPixel(876, 1014) != 0XD4DDF) return false;
-	if (GetPixel(876, 1015) != 0X1B59E9) return false;
-	if (GetPixel(876, 1016) != 0XC48E3) return false;
-	if (GetPixel(876, 1017) != 0X13DDE) return false;
-	if (GetPixel(876, 1018) != 0X41C8) return false;
-	if (GetPixel(876, 1019) != 0X41C6) return false;
-	if (GetPixel(876, 1020) != 0X41C6) return false;
-	if (GetPixel(876, 1021) != 0X442C6) return false;
-	if (GetPixel(876, 1022) != 0XD41C3) return false;
-	if (GetPixel(876, 1023) != 0XD42C3) return false;
-	if (GetPixel(876, 1024) != 0X1A5DD9) return false;
-	if (GetPixel(876, 1025) != 0X2461E3) return false;
-	if (GetPixel(876, 1026) != 0X1449C1) return false;
-	if (GetPixel(876, 1027) != 0X236A0) return false;
-	if (GetPixel(876, 1028) != 0X349C) return false;
-	if (GetPixel(877, 1003) != 0X53686B) return false;
-	if (GetPixel(877, 1004) != 0X2D4971) return false;
-	if (GetPixel(877, 1005) != 0X2879) return false;
-	if (GetPixel(877, 1006) != 0X2879) return false;
-	if (GetPixel(877, 1007) != 0X2EA4) return false;
-	if (GetPixel(877, 1008) != 0X31B3) return false;
-	if (GetPixel(877, 1009) != 0X31B3) return false;
-	if (GetPixel(877, 1010) != 0X769FE5) return false;
-	if (GetPixel(877, 1011) != 0X7DA9F9) return false;
-	if (GetPixel(877, 1012) != 0X853DF) return false;
-	if (GetPixel(877, 1013) != 0X4CDD) return false;
-	if (GetPixel(877, 1014) != 0X151E2) return false;
-	if (GetPixel(877, 1015) != 0X250D5) return false;
-	if (GetPixel(877, 1016) != 0X142B3) return false;
-	if (GetPixel(877, 1017) != 0X3691) return false;
-	if (GetPixel(877, 1018) != 0X368C) return false;
-	if (GetPixel(877, 1019) != 0X3C9E) return false;
-	if (GetPixel(877, 1020) != 0X3DA0) return false;
-	if (GetPixel(877, 1021) != 0X40AE) return false;
-	if (GetPixel(877, 1022) != 0X13AA1) return false;
-	if (GetPixel(877, 1023) != 0X13085) return false;
-	if (GetPixel(877, 1024) != 0X22C74) return false;
-	if (GetPixel(877, 1025) != 0X2755AD) return false;
-	if (GetPixel(877, 1026) != 0X3969C8) return false;
-	if (GetPixel(877, 1027) != 0X4E85EF) return false;
-	if (GetPixel(877, 1028) != 0X528AF6) return false;
-	if (GetPixel(878, 1003) != 0X53686B) return false;
-	if (GetPixel(878, 1004) != 0X2D4972) return false;
-	if (GetPixel(878, 1005) != 0X287B) return false;
-	if (GetPixel(878, 1006) != 0X287B) return false;
-	if (GetPixel(878, 1007) != 0X2EA8) return false;
-	if (GetPixel(878, 1008) != 0X232B6) return false;
-	if (GetPixel(878, 1009) != 0X7DA4E7) return false;
-	if (GetPixel(878, 1010) != 0XAACCFB) return false;
-	if (GetPixel(878, 1011) != 0X4DDE) return false;
-	if (GetPixel(878, 1012) != 0X4DDE) return false;
-	if (GetPixel(878, 1013) != 0X4DDE) return false;
-	if (GetPixel(878, 1014) != 0X4CD2) return false;
-	if (GetPixel(878, 1015) != 0X43B2) return false;
-	if (GetPixel(878, 1016) != 0X378E) return false;
-	if (GetPixel(878, 1017) != 0X3484) return false;
-	if (GetPixel(878, 1018) != 0X3585) return false;
-	if (GetPixel(878, 1019) != 0X3586) return false;
-	if (GetPixel(878, 1020) != 0X3688) return false;
-	if (GetPixel(878, 1021) != 0X3B98) return false;
-	if (GetPixel(878, 1022) != 0X338B) return false;
-	if (GetPixel(878, 1023) != 0X2E7E) return false;
-	if (GetPixel(878, 1024) != 0X2B74) return false;
-	if (GetPixel(878, 1025) != 0X1E60) return false;
-	if (GetPixel(878, 1026) != 0X185A) return false;
-	if (GetPixel(878, 1027) != 0X325EB5) return false;
-	if (GetPixel(878, 1028) != 0X578EFA) return false;
-	if (GetPixel(879, 1003) != 0X53686B) return false;
-	if (GetPixel(879, 1004) != 0X2D4972) return false;
-	if (GetPixel(879, 1005) != 0X287B) return false;
-	if (GetPixel(879, 1006) != 0X287B) return false;
-	if (GetPixel(879, 1007) != 0XC39AD) return false;
-	if (GetPixel(879, 1008) != 0X779EE4) return false;
-	if (GetPixel(879, 1009) != 0XA5C5F6) return false;
-	if (GetPixel(879, 1010) != 0X32B8) return false;
-	if (GetPixel(879, 1011) != 0X4DDE) return false;
-	if (GetPixel(879, 1012) != 0X4DDE) return false;
-	if (GetPixel(879, 1013) != 0X4DDE) return false;
-	if (GetPixel(879, 1014) != 0X45BF) return false;
-	if (GetPixel(879, 1015) != 0X3790) return false;
-	if (GetPixel(879, 1016) != 0X3484) return false;
-	if (GetPixel(879, 1017) != 0X3484) return false;
-	if (GetPixel(879, 1018) != 0X3074) return false;
-	if (GetPixel(879, 1019) != 0X3073) return false;
-	if (GetPixel(879, 1020) != 0X3484) return false;
-	if (GetPixel(879, 1021) != 0X3382) return false;
-	if (GetPixel(879, 1022) != 0X2D7C) return false;
-	if (GetPixel(879, 1023) != 0X2B74) return false;
-	if (GetPixel(879, 1024) != 0X286B) return false;
-	if (GetPixel(879, 1025) != 0X1E60) return false;
-	if (GetPixel(879, 1026) != 0X185A) return false;
-	if (GetPixel(879, 1027) != 0X185A) return false;
-	if (GetPixel(879, 1028) != 0X185A) return false;
-	if (GetPixel(880, 1003) != 0X52676E) return false;
-	if (GetPixel(880, 1004) != 0X2F4974) return false;
-	if (GetPixel(880, 1005) != 0X52874) return false;
-	if (GetPixel(880, 1006) != 0X153B84) return false;
-	if (GetPixel(880, 1007) != 0X789DD7) return false;
-	if (GetPixel(880, 1008) != 0X96B8E9) return false;
-	if (GetPixel(880, 1009) != 0X636B0) return false;
-	if (GetPixel(880, 1010) != 0X336B3) return false;
-	if (GetPixel(880, 1011) != 0X4ADC) return false;
-	if (GetPixel(880, 1012) != 0X14AD9) return false;
-	if (GetPixel(880, 1013) != 0X44ACE) return false;
-	if (GetPixel(880, 1014) != 0X33EA4) return false;
-	if (GetPixel(880, 1015) != 0X317E) return false;
-	if (GetPixel(880, 1016) != 0X317E) return false;
-	if (GetPixel(880, 1017) != 0X317E) return false;
-	if (GetPixel(880, 1018) != 0X2E6F) return false;
-	if (GetPixel(880, 1019) != 0X2D6D) return false;
-	if (GetPixel(880, 1020) != 0X2D6D) return false;
-	if (GetPixel(880, 1021) != 0X12C6C) return false;
-	if (GetPixel(880, 1022) != 0X42965) return false;
-	if (GetPixel(880, 1023) != 0X22765) return false;
-	if (GetPixel(880, 1024) != 0X2565) return false;
-	if (GetPixel(880, 1025) != 0X1C5B) return false;
-	if (GetPixel(880, 1026) != 0X1755) return false;
-	if (GetPixel(880, 1027) != 0X1755) return false;
-	if (GetPixel(880, 1028) != 0X1755) return false;
-
-	return true;
-}
-bool				Win32GDI::D3Skill01KeyIsQ(void)
-{
-	if (GetPixel(654, 1062) != 0X0) return false;
-	if (GetPixel(654, 1063) != 0X0) return false;
-	if (GetPixel(654, 1064) != 0X0) return false;
-	if (GetPixel(654, 1065) != 0XA10) return false;
-	if (GetPixel(654, 1066) != 0X2F4A) return false;
-	if (GetPixel(654, 1067) != 0X3C5E) return false;
-	if (GetPixel(654, 1068) != 0X314D) return false;
-	if (GetPixel(654, 1069) != 0XC12) return false;
-	if (GetPixel(654, 1070) != 0X0) return false;
-	if (GetPixel(654, 1071) != 0X141211) return false;
-	if (GetPixel(654, 1072) != 0X181715) return false;
-	if (GetPixel(654, 1073) != 0X191816) return false;
-	if (GetPixel(654, 1074) != 0X1B1B19) return false;
-	if (GetPixel(655, 1062) != 0X0) return false;
-	if (GetPixel(655, 1063) != 0X407) return false;
-	if (GetPixel(655, 1064) != 0X5B8E) return false;
-	if (GetPixel(655, 1065) != 0X9FF9) return false;
-	if (GetPixel(655, 1066) != 0XA3FF) return false;
-	if (GetPixel(655, 1067) != 0XA3FF) return false;
-	if (GetPixel(655, 1068) != 0XA3FF) return false;
-	if (GetPixel(655, 1069) != 0XA0FA) return false;
-	if (GetPixel(655, 1070) != 0X5D91) return false;
-	if (GetPixel(655, 1071) != 0X131618) return false;
-	if (GetPixel(655, 1072) != 0X181715) return false;
-	if (GetPixel(655, 1073) != 0X1A1917) return false;
-	if (GetPixel(655, 1074) != 0X1B1B19) return false;
-	if (GetPixel(656, 1062) != 0X203) return false;
-	if (GetPixel(656, 1063) != 0X75B7) return false;
-	if (GetPixel(656, 1064) != 0X87D3) return false;
-	if (GetPixel(656, 1065) != 0X4268) return false;
-	if (GetPixel(656, 1066) != 0X2235) return false;
-	if (GetPixel(656, 1067) != 0X1D2D) return false;
-	if (GetPixel(656, 1068) != 0X2F49) return false;
-	if (GetPixel(656, 1069) != 0X5D91) return false;
-	if (GetPixel(656, 1070) != 0X9CF4) return false;
-	if (GetPixel(656, 1071) != 0X57BBD) return false;
-	if (GetPixel(656, 1072) != 0X171818) return false;
-	if (GetPixel(656, 1073) != 0X191816) return false;
-	if (GetPixel(656, 1074) != 0X1C1B19) return false;
-	if (GetPixel(657, 1062) != 0X4064) return false;
-	if (GetPixel(657, 1063) != 0X6BA8) return false;
-	if (GetPixel(657, 1064) != 0X305) return false;
-	if (GetPixel(657, 1065) != 0X0) return false;
-	if (GetPixel(657, 1066) != 0X0) return false;
-	if (GetPixel(657, 1067) != 0X0) return false;
-	if (GetPixel(657, 1068) != 0X0) return false;
-	if (GetPixel(657, 1069) != 0X0) return false;
-	if (GetPixel(657, 1070) != 0X1521) return false;
-	if (GetPixel(657, 1071) != 0X38CDA) return false;
-	if (GetPixel(657, 1072) != 0XE4F73) return false;
-	if (GetPixel(657, 1073) != 0X1B1A18) return false;
-	if (GetPixel(657, 1074) != 0X1C1B19) return false;
-	if (GetPixel(658, 1062) != 0X75B7) return false;
-	if (GetPixel(658, 1063) != 0X80D) return false;
-	if (GetPixel(658, 1064) != 0X0) return false;
-	if (GetPixel(658, 1065) != 0X0) return false;
-	if (GetPixel(658, 1066) != 0X0) return false;
-	if (GetPixel(658, 1067) != 0X0) return false;
-	if (GetPixel(658, 1068) != 0X0) return false;
-	if (GetPixel(658, 1069) != 0X0) return false;
-	if (GetPixel(658, 1070) != 0X0) return false;
-	if (GetPixel(658, 1071) != 0X112834) return false;
-	if (GetPixel(658, 1072) != 0X682C7) return false;
-	if (GetPixel(658, 1073) != 0X1B1A18) return false;
-	if (GetPixel(658, 1074) != 0X1D1C1A) return false;
-	if (GetPixel(659, 1062) != 0X71B0) return false;
-	if (GetPixel(659, 1063) != 0X0) return false;
-	if (GetPixel(659, 1064) != 0X0) return false;
-	if (GetPixel(659, 1065) != 0X0) return false;
-	if (GetPixel(659, 1066) != 0X0) return false;
-	if (GetPixel(659, 1067) != 0X0) return false;
-	if (GetPixel(659, 1068) != 0X0) return false;
-	if (GetPixel(659, 1069) != 0X0) return false;
-	if (GetPixel(659, 1070) != 0X0) return false;
-	if (GetPixel(659, 1071) != 0X121211) return false;
-	if (GetPixel(659, 1072) != 0X778B7) return false;
-	if (GetPixel(659, 1073) != 0X181716) return false;
-	if (GetPixel(659, 1074) != 0X1C1B1A) return false;
-	if (GetPixel(660, 1062) != 0X79BE) return false;
-	if (GetPixel(660, 1063) != 0X0) return false;
-	if (GetPixel(660, 1064) != 0X0) return false;
-	if (GetPixel(660, 1065) != 0X0) return false;
-	if (GetPixel(660, 1066) != 0X0) return false;
-	if (GetPixel(660, 1067) != 0X0) return false;
-	if (GetPixel(660, 1068) != 0X0) return false;
-	if (GetPixel(660, 1069) != 0X0) return false;
-	if (GetPixel(660, 1070) != 0X0) return false;
-	if (GetPixel(660, 1071) != 0X111211) return false;
-	if (GetPixel(660, 1072) != 0X872AE) return false;
-	if (GetPixel(660, 1073) != 0X171615) return false;
-	if (GetPixel(660, 1074) != 0X1B1A19) return false;
-	if (GetPixel(661, 1062) != 0X84CF) return false;
-	if (GetPixel(661, 1063) != 0X131E) return false;
-	if (GetPixel(661, 1064) != 0X0) return false;
-	if (GetPixel(661, 1065) != 0X0) return false;
-	if (GetPixel(661, 1066) != 0X0) return false;
-	if (GetPixel(661, 1067) != 0X0) return false;
-	if (GetPixel(661, 1068) != 0X0) return false;
-	if (GetPixel(661, 1069) != 0X0) return false;
-	if (GetPixel(661, 1070) != 0X0) return false;
-	if (GetPixel(661, 1071) != 0X111211) return false;
-	if (GetPixel(661, 1072) != 0X48CD9) return false;
-	if (GetPixel(661, 1073) != 0XF4F72) return false;
-	if (GetPixel(661, 1074) != 0X1B1C19) return false;
-	if (GetPixel(662, 1062) != 0X517F) return false;
-	if (GetPixel(662, 1063) != 0X80C9) return false;
-	if (GetPixel(662, 1064) != 0XC13) return false;
-	if (GetPixel(662, 1065) != 0X0) return false;
-	if (GetPixel(662, 1066) != 0X0) return false;
-	if (GetPixel(662, 1067) != 0X0) return false;
-	if (GetPixel(662, 1068) != 0X0) return false;
-	if (GetPixel(662, 1069) != 0X0) return false;
-	if (GetPixel(662, 1070) != 0X0) return false;
-	if (GetPixel(662, 1071) != 0X9537B) return false;
-	if (GetPixel(662, 1072) != 0X96CA4) return false;
-	if (GetPixel(662, 1073) != 0X19FF8) return false;
-	if (GetPixel(662, 1074) != 0X18333F) return false;
-	if (GetPixel(663, 1062) != 0X70B) return false;
-	if (GetPixel(663, 1063) != 0X88D5) return false;
-	if (GetPixel(663, 1064) != 0X96EA) return false;
-	if (GetPixel(663, 1065) != 0X4E7A) return false;
-	if (GetPixel(663, 1066) != 0X2133) return false;
-	if (GetPixel(663, 1067) != 0XE16) return false;
-	if (GetPixel(663, 1068) != 0X1825) return false;
-	if (GetPixel(663, 1069) != 0X314D) return false;
-	if (GetPixel(663, 1070) != 0X74B6) return false;
-	if (GetPixel(663, 1071) != 0X480C5) return false;
-	if (GetPixel(663, 1072) != 0X171615) return false;
-	if (GetPixel(663, 1073) != 0X876B3) return false;
-	if (GetPixel(663, 1074) != 0X881C4) return false;
-	if (GetPixel(664, 1062) != 0X0) return false;
-	if (GetPixel(664, 1063) != 0XD14) return false;
-	if (GetPixel(664, 1064) != 0X73B4) return false;
-	if (GetPixel(664, 1065) != 0XA3FF) return false;
-	if (GetPixel(664, 1066) != 0XA3FF) return false;
-	if (GetPixel(664, 1067) != 0XA3FF) return false;
-	if (GetPixel(664, 1068) != 0XA3FF) return false;
-	if (GetPixel(664, 1069) != 0XA2FE) return false;
-	if (GetPixel(664, 1070) != 0X6DAA) return false;
-	if (GetPixel(664, 1071) != 0XE1619) return false;
-	if (GetPixel(664, 1072) != 0X141312) return false;
-	if (GetPixel(664, 1073) != 0X16313F) return false;
-	if (GetPixel(664, 1074) != 0XA3FF) return false;
-	if (GetPixel(665, 1062) != 0X0) return false;
-	if (GetPixel(665, 1063) != 0X0) return false;
-	if (GetPixel(665, 1064) != 0X0) return false;
-	if (GetPixel(665, 1065) != 0X1A29) return false;
-	if (GetPixel(665, 1066) != 0X4064) return false;
-	if (GetPixel(665, 1067) != 0X4A74) return false;
-	if (GetPixel(665, 1068) != 0X3B5C) return false;
-	if (GetPixel(665, 1069) != 0X1623) return false;
-	if (GetPixel(665, 1070) != 0X0) return false;
-	if (GetPixel(665, 1071) != 0XF0F0E) return false;
-	if (GetPixel(665, 1072) != 0X171615) return false;
-	if (GetPixel(665, 1073) != 0X1B1B18) return false;
-	if (GetPixel(665, 1074) != 0X687D0) return false;
-	if (GetPixel(666, 1062) != 0X0) return false;
-	if (GetPixel(666, 1063) != 0X0) return false;
-	if (GetPixel(666, 1064) != 0X0) return false;
-	if (GetPixel(666, 1065) != 0X0) return false;
-	if (GetPixel(666, 1066) != 0X0) return false;
-	if (GetPixel(666, 1067) != 0X0) return false;
-	if (GetPixel(666, 1068) != 0X0) return false;
-	if (GetPixel(666, 1069) != 0X0) return false;
-	if (GetPixel(666, 1070) != 0X0) return false;
-	if (GetPixel(666, 1071) != 0XE0F0E) return false;
-	if (GetPixel(666, 1072) != 0X171614) return false;
-	if (GetPixel(666, 1073) != 0X1B1B18) return false;
-	if (GetPixel(666, 1074) != 0XC699D) return false;
-	if (GetPixel(667, 1062) != 0X0) return false;
-	if (GetPixel(667, 1063) != 0X0) return false;
-	if (GetPixel(667, 1064) != 0X0) return false;
-	if (GetPixel(667, 1065) != 0X0) return false;
-	if (GetPixel(667, 1066) != 0X0) return false;
-	if (GetPixel(667, 1067) != 0X0) return false;
-	if (GetPixel(667, 1068) != 0X0) return false;
-	if (GetPixel(667, 1069) != 0X0) return false;
-	if (GetPixel(667, 1070) != 0X0) return false;
-	if (GetPixel(667, 1071) != 0XC0E0E) return false;
-	if (GetPixel(667, 1072) != 0X161514) return false;
-	if (GetPixel(667, 1073) != 0X1A1A18) return false;
-	if (GetPixel(667, 1074) != 0XC6495) return false;
-	return true;
-}
-bool				Win32GDI::D3Skill02KeyIsW(void)
-{
-	if (GetPixel(718, 1062) != 0X4F7B) return false;
-	if (GetPixel(718, 1063) != 0X0) return false;
-	if (GetPixel(718, 1064) != 0X0) return false;
-	if (GetPixel(718, 1065) != 0X0) return false;
-	if (GetPixel(718, 1066) != 0X0) return false;
-	if (GetPixel(718, 1067) != 0X0) return false;
-	if (GetPixel(718, 1068) != 0X0) return false;
-	if (GetPixel(718, 1069) != 0X0) return false;
-	if (GetPixel(718, 1070) != 0X0) return false;
-	if (GetPixel(718, 1071) != 0XE0E0E) return false;
-	if (GetPixel(719, 1062) != 0X7FC6) return false;
-	if (GetPixel(719, 1063) != 0X131E) return false;
-	if (GetPixel(719, 1064) != 0X0) return false;
-	if (GetPixel(719, 1065) != 0X0) return false;
-	if (GetPixel(719, 1066) != 0X0) return false;
-	if (GetPixel(719, 1067) != 0X0) return false;
-	if (GetPixel(719, 1068) != 0X0) return false;
-	if (GetPixel(719, 1069) != 0X0) return false;
-	if (GetPixel(719, 1070) != 0X0) return false;
-	if (GetPixel(719, 1071) != 0X10100F) return false;
-	if (GetPixel(720, 1062) != 0XA3FF) return false;
-	if (GetPixel(720, 1063) != 0XA2FE) return false;
-	if (GetPixel(720, 1064) != 0X7BC0) return false;
-	if (GetPixel(720, 1065) != 0X4064) return false;
-	if (GetPixel(720, 1066) != 0XA0F) return false;
-	if (GetPixel(720, 1067) != 0X0) return false;
-	if (GetPixel(720, 1068) != 0X0) return false;
-	if (GetPixel(720, 1069) != 0X0) return false;
-	if (GetPixel(720, 1070) != 0X0) return false;
-	if (GetPixel(720, 1071) != 0X141312) return false;
-	if (GetPixel(721, 1062) != 0X6EAC) return false;
-	if (GetPixel(721, 1063) != 0X3756) return false;
-	if (GetPixel(721, 1064) != 0X72B2) return false;
-	if (GetPixel(721, 1065) != 0XA0FA) return false;
-	if (GetPixel(721, 1066) != 0X9FF8) return false;
-	if (GetPixel(721, 1067) != 0X6DAB) return false;
-	if (GetPixel(721, 1068) != 0X324F) return false;
-	if (GetPixel(721, 1069) != 0X305) return false;
-	if (GetPixel(721, 1070) != 0X0) return false;
-	if (GetPixel(721, 1071) != 0X141211) return false;
-	if (GetPixel(722, 1062) != 0X263C) return false;
-	if (GetPixel(722, 1063) != 0X0) return false;
-	if (GetPixel(722, 1064) != 0X0) return false;
-	if (GetPixel(722, 1065) != 0XD14) return false;
-	if (GetPixel(722, 1066) != 0X446B) return false;
-	if (GetPixel(722, 1067) != 0X80C8) return false;
-	if (GetPixel(722, 1068) != 0XA3FF) return false;
-	if (GetPixel(722, 1069) != 0X97ED) return false;
-	if (GetPixel(722, 1070) != 0X6197) return false;
-	if (GetPixel(722, 1071) != 0XF3347) return false;
-	if (GetPixel(723, 1062) != 0X1826) return false;
-	if (GetPixel(723, 1063) != 0X0) return false;
-	if (GetPixel(723, 1064) != 0X0) return false;
-	if (GetPixel(723, 1065) != 0X0) return false;
-	if (GetPixel(723, 1066) != 0X0) return false;
-	if (GetPixel(723, 1067) != 0X0) return false;
-	if (GetPixel(723, 1068) != 0X1724) return false;
-	if (GetPixel(723, 1069) != 0X5281) return false;
-	if (GetPixel(723, 1070) != 0X8EDE) return false;
-	if (GetPixel(723, 1071) != 0XA3FF) return false;
-	if (GetPixel(724, 1062) != 0X659E) return false;
-	if (GetPixel(724, 1063) != 0X0) return false;
-	if (GetPixel(724, 1064) != 0X0) return false;
-	if (GetPixel(724, 1065) != 0X0) return false;
-	if (GetPixel(724, 1066) != 0X0) return false;
-	if (GetPixel(724, 1067) != 0X0) return false;
-	if (GetPixel(724, 1068) != 0X263C) return false;
-	if (GetPixel(724, 1069) != 0X6096) return false;
-	if (GetPixel(724, 1070) != 0X6BA8) return false;
-	if (GetPixel(724, 1071) != 0XD4564) return false;
-	if (GetPixel(725, 1062) != 0X99F0) return false;
-	if (GetPixel(725, 1063) != 0X6096) return false;
-	if (GetPixel(725, 1064) != 0X273D) return false;
-	if (GetPixel(725, 1065) != 0X1927) return false;
-	if (GetPixel(725, 1066) != 0X5382) return false;
-	if (GetPixel(725, 1067) != 0X73B4) return false;
-	if (GetPixel(725, 1068) != 0X4C77) return false;
-	if (GetPixel(725, 1069) != 0X111B) return false;
-	if (GetPixel(725, 1070) != 0X0) return false;
-	if (GetPixel(725, 1071) != 0X141211) return false;
-	if (GetPixel(726, 1062) != 0X90E1) return false;
-	if (GetPixel(726, 1063) != 0X8DDD) return false;
-	if (GetPixel(726, 1064) != 0XA3FF) return false;
-	if (GetPixel(726, 1065) != 0XA3FF) return false;
-	if (GetPixel(726, 1066) != 0X7DC3) return false;
-	if (GetPixel(726, 1067) != 0X2337) return false;
-	if (GetPixel(726, 1068) != 0X0) return false;
-	if (GetPixel(726, 1069) != 0X0) return false;
-	if (GetPixel(726, 1070) != 0X0) return false;
-	if (GetPixel(726, 1071) != 0X111211) return false;
-	if (GetPixel(727, 1062) != 0X5F95) return false;
-	if (GetPixel(727, 1063) != 0X0) return false;
-	if (GetPixel(727, 1064) != 0X2235) return false;
-	if (GetPixel(727, 1065) != 0X5A8D) return false;
-	if (GetPixel(727, 1066) != 0X91E3) return false;
-	if (GetPixel(727, 1067) != 0XA3FF) return false;
-	if (GetPixel(727, 1068) != 0X8DDD) return false;
-	if (GetPixel(727, 1069) != 0X5484) return false;
-	if (GetPixel(727, 1070) != 0X1B2B) return false;
-	if (GetPixel(727, 1071) != 0X111211) return false;
-	if (GetPixel(728, 1062) != 0X0) return false;
-	if (GetPixel(728, 1063) != 0X0) return false;
-	if (GetPixel(728, 1064) != 0X0) return false;
-	if (GetPixel(728, 1065) != 0X0) return false;
-	if (GetPixel(728, 1066) != 0X0) return false;
-	if (GetPixel(728, 1067) != 0X263B) return false;
-	if (GetPixel(728, 1068) != 0X5E93) return false;
-	if (GetPixel(728, 1069) != 0X94E7) return false;
-	if (GetPixel(728, 1070) != 0XA3FF) return false;
-	if (GetPixel(728, 1071) != 0X389D5) return false;
-	if (GetPixel(729, 1062) != 0X0) return false;
-	if (GetPixel(729, 1063) != 0X0) return false;
-	if (GetPixel(729, 1064) != 0X0) return false;
-	if (GetPixel(729, 1065) != 0X0) return false;
-	if (GetPixel(729, 1066) != 0X0) return false;
-	if (GetPixel(729, 1067) != 0X0) return false;
-	if (GetPixel(729, 1068) != 0X0) return false;
-	if (GetPixel(729, 1069) != 0X2438) return false;
-	if (GetPixel(729, 1070) != 0X83CD) return false;
-	if (GetPixel(729, 1071) != 0X384CC) return false;
-	if (GetPixel(730, 1062) != 0XA10) return false;
-	if (GetPixel(730, 1063) != 0X0) return false;
-	if (GetPixel(730, 1064) != 0X0) return false;
-	if (GetPixel(730, 1065) != 0X0) return false;
-	if (GetPixel(730, 1066) != 0X1623) return false;
-	if (GetPixel(730, 1067) != 0X517F) return false;
-	if (GetPixel(730, 1068) != 0X78BC) return false;
-	if (GetPixel(730, 1069) != 0X5686) return false;
-	if (GetPixel(730, 1070) != 0X1927) return false;
-	if (GetPixel(730, 1071) != 0XF0F0E) return false;
-	if (GetPixel(731, 1062) != 0X629A) return false;
-	if (GetPixel(731, 1063) != 0XD15) return false;
-	if (GetPixel(731, 1064) != 0X456C) return false;
-	if (GetPixel(731, 1065) != 0X78BC) return false;
-	if (GetPixel(731, 1066) != 0X67A1) return false;
-	if (GetPixel(731, 1067) != 0X2B43) return false;
-	if (GetPixel(731, 1068) != 0X102) return false;
-	if (GetPixel(731, 1069) != 0X0) return false;
-	if (GetPixel(731, 1070) != 0X0) return false;
-	if (GetPixel(731, 1071) != 0XF0F0E) return false;
-	if (GetPixel(732, 1062) != 0X99EF) return false;
-	if (GetPixel(732, 1063) != 0X76B8) return false;
-	if (GetPixel(732, 1064) != 0X3D5F) return false;
-	if (GetPixel(732, 1065) != 0X80C) return false;
-	if (GetPixel(732, 1066) != 0X0) return false;
-	if (GetPixel(732, 1067) != 0X0) return false;
-	if (GetPixel(732, 1068) != 0X0) return false;
-	if (GetPixel(732, 1069) != 0X0) return false;
-	if (GetPixel(732, 1070) != 0X0) return false;
-	if (GetPixel(732, 1071) != 0XF0F0E) return false;
-	if (GetPixel(733, 1062) != 0X69A4) return false;
-	if (GetPixel(733, 1063) != 0X0) return false;
-	if (GetPixel(733, 1064) != 0X0) return false;
-	if (GetPixel(733, 1065) != 0X0) return false;
-	if (GetPixel(733, 1066) != 0X0) return false;
-	if (GetPixel(733, 1067) != 0X0) return false;
-	if (GetPixel(733, 1068) != 0X0) return false;
-	if (GetPixel(733, 1069) != 0X0) return false;
-	if (GetPixel(733, 1070) != 0X0) return false;
-	if (GetPixel(733, 1071) != 0XD0E0E) return false;
-
-	return true;
-}
-bool				Win32GDI::D3Skill03KeyIsE(void)
-{
-	if (GetPixel(789, 1062) != 0X273D) return false;
-	if (GetPixel(789, 1063) != 0X0) return false;
-	if (GetPixel(789, 1064) != 0X0) return false;
-	if (GetPixel(789, 1065) != 0X0) return false;
-	if (GetPixel(789, 1066) != 0X0) return false;
-	if (GetPixel(789, 1067) != 0X0) return false;
-	if (GetPixel(789, 1068) != 0X0) return false;
-	if (GetPixel(789, 1069) != 0X0) return false;
-	if (GetPixel(789, 1070) != 0X0) return false;
-	if (GetPixel(789, 1071) != 0X131211) return false;
-	if (GetPixel(790, 1062) != 0X6CA9) return false;
-	if (GetPixel(790, 1063) != 0X0) return false;
-	if (GetPixel(790, 1064) != 0X0) return false;
-	if (GetPixel(790, 1065) != 0X0) return false;
-	if (GetPixel(790, 1066) != 0X0) return false;
-	if (GetPixel(790, 1067) != 0X0) return false;
-	if (GetPixel(790, 1068) != 0X0) return false;
-	if (GetPixel(790, 1069) != 0X0) return false;
-	if (GetPixel(790, 1070) != 0X0) return false;
-	if (GetPixel(790, 1071) != 0X141211) return false;
-	if (GetPixel(791, 1062) != 0X9EF7) return false;
-	if (GetPixel(791, 1063) != 0X92E4) return false;
-	if (GetPixel(791, 1064) != 0X92E4) return false;
-	if (GetPixel(791, 1065) != 0X92E4) return false;
-	if (GetPixel(791, 1066) != 0X92E4) return false;
-	if (GetPixel(791, 1067) != 0X92E4) return false;
-	if (GetPixel(791, 1068) != 0X92E4) return false;
-	if (GetPixel(791, 1069) != 0X92E4) return false;
-	if (GetPixel(791, 1070) != 0X92E4) return false;
-	if (GetPixel(791, 1071) != 0X294E6) return false;
-	if (GetPixel(792, 1062) != 0X8CDB) return false;
-	if (GetPixel(792, 1063) != 0X5484) return false;
-	if (GetPixel(792, 1064) != 0X5484) return false;
-	if (GetPixel(792, 1065) != 0X5484) return false;
-	if (GetPixel(792, 1066) != 0X5484) return false;
-	if (GetPixel(792, 1067) != 0X8BDA) return false;
-	if (GetPixel(792, 1068) != 0X5484) return false;
-	if (GetPixel(792, 1069) != 0X5484) return false;
-	if (GetPixel(792, 1070) != 0X5484) return false;
-	if (GetPixel(792, 1071) != 0X95D8C) return false;
-	if (GetPixel(793, 1062) != 0X73B4) return false;
-	if (GetPixel(793, 1063) != 0X0) return false;
-	if (GetPixel(793, 1064) != 0X0) return false;
-	if (GetPixel(793, 1065) != 0X0) return false;
-	if (GetPixel(793, 1066) != 0X0) return false;
-	if (GetPixel(793, 1067) != 0X71B0) return false;
-	if (GetPixel(793, 1068) != 0X0) return false;
-	if (GetPixel(793, 1069) != 0X0) return false;
-	if (GetPixel(793, 1070) != 0X0) return false;
-	if (GetPixel(793, 1071) != 0X111211) return false;
-	if (GetPixel(794, 1062) != 0X73B4) return false;
-	if (GetPixel(794, 1063) != 0X0) return false;
-	if (GetPixel(794, 1064) != 0X0) return false;
-	if (GetPixel(794, 1065) != 0X0) return false;
-	if (GetPixel(794, 1066) != 0X60A) return false;
-	if (GetPixel(794, 1067) != 0X77BA) return false;
-	if (GetPixel(794, 1068) != 0XB11) return false;
-	if (GetPixel(794, 1069) != 0X0) return false;
-	if (GetPixel(794, 1070) != 0X0) return false;
-	if (GetPixel(794, 1071) != 0X111211) return false;
-	if (GetPixel(795, 1062) != 0X73B4) return false;
-	if (GetPixel(795, 1063) != 0X0) return false;
-	if (GetPixel(795, 1064) != 0X0) return false;
-	if (GetPixel(795, 1065) != 0X0) return false;
-	if (GetPixel(795, 1066) != 0X649D) return false;
-	if (GetPixel(795, 1067) != 0X66A0) return false;
-	if (GetPixel(795, 1068) != 0X66A0) return false;
-	if (GetPixel(795, 1069) != 0X3756) return false;
-	if (GetPixel(795, 1070) != 0X0) return false;
-	if (GetPixel(795, 1071) != 0X111211) return false;
-	if (GetPixel(796, 1062) != 0X93E6) return false;
-	if (GetPixel(796, 1063) != 0X5D91) return false;
-	if (GetPixel(796, 1064) != 0X446B) return false;
-	if (GetPixel(796, 1065) != 0X406) return false;
-	if (GetPixel(796, 1066) != 0X0) return false;
-	if (GetPixel(796, 1067) != 0X0) return false;
-	if (GetPixel(796, 1068) != 0X0) return false;
-	if (GetPixel(796, 1069) != 0X0) return false;
-	if (GetPixel(796, 1070) != 0XC12) return false;
-	if (GetPixel(796, 1071) != 0XA3C57) return false;
-
-	return true;
-}
-bool				Win32GDI::D3Skill04KeyIsR(void)
-{
-	if (GetPixel(855, 1062) != 0X273D) return false;
-	if (GetPixel(855, 1063) != 0X0) return false;
-	if (GetPixel(855, 1064) != 0X0) return false;
-	if (GetPixel(855, 1065) != 0X0) return false;
-	if (GetPixel(855, 1066) != 0X0) return false;
-	if (GetPixel(855, 1067) != 0X0) return false;
-	if (GetPixel(855, 1068) != 0X0) return false;
-	if (GetPixel(855, 1069) != 0X0) return false;
-	if (GetPixel(855, 1070) != 0X0) return false;
-	if (GetPixel(855, 1071) != 0X141211) return false;
-	if (GetPixel(856, 1062) != 0X6CA9) return false;
-	if (GetPixel(856, 1063) != 0X0) return false;
-	if (GetPixel(856, 1064) != 0X0) return false;
-	if (GetPixel(856, 1065) != 0X0) return false;
-	if (GetPixel(856, 1066) != 0X0) return false;
-	if (GetPixel(856, 1067) != 0X0) return false;
-	if (GetPixel(856, 1068) != 0X0) return false;
-	if (GetPixel(856, 1069) != 0X0) return false;
-	if (GetPixel(856, 1070) != 0X0) return false;
-	if (GetPixel(856, 1071) != 0X131211) return false;
-	if (GetPixel(857, 1062) != 0X9FF8) return false;
-	if (GetPixel(857, 1063) != 0X92E4) return false;
-	if (GetPixel(857, 1064) != 0X92E4) return false;
-	if (GetPixel(857, 1065) != 0X92E4) return false;
-	if (GetPixel(857, 1066) != 0X92E4) return false;
-	if (GetPixel(857, 1067) != 0X92E4) return false;
-	if (GetPixel(857, 1068) != 0X92E4) return false;
-	if (GetPixel(857, 1069) != 0X92E4) return false;
-	if (GetPixel(857, 1070) != 0X92E4) return false;
-	if (GetPixel(857, 1071) != 0X294E6) return false;
-	if (GetPixel(858, 1062) != 0X8DDD) return false;
-	if (GetPixel(858, 1063) != 0X5788) return false;
-	if (GetPixel(858, 1064) != 0X5788) return false;
-	if (GetPixel(858, 1065) != 0X5788) return false;
-	if (GetPixel(858, 1066) != 0X5788) return false;
-	if (GetPixel(858, 1067) != 0X8BDA) return false;
-	if (GetPixel(858, 1068) != 0X5788) return false;
-	if (GetPixel(858, 1069) != 0X5788) return false;
-	if (GetPixel(858, 1070) != 0X5788) return false;
-	if (GetPixel(858, 1071) != 0X95F90) return false;
-	if (GetPixel(859, 1062) != 0X78BC) return false;
-	if (GetPixel(859, 1063) != 0X0) return false;
-	if (GetPixel(859, 1064) != 0X0) return false;
-	if (GetPixel(859, 1065) != 0X0) return false;
-	if (GetPixel(859, 1066) != 0X0) return false;
-	if (GetPixel(859, 1067) != 0X83CD) return false;
-	if (GetPixel(859, 1068) != 0X70B) return false;
-	if (GetPixel(859, 1069) != 0X0) return false;
-	if (GetPixel(859, 1070) != 0X0) return false;
-	if (GetPixel(859, 1071) != 0X111211) return false;
-	if (GetPixel(860, 1062) != 0X88D4) return false;
-	if (GetPixel(860, 1063) != 0X102) return false;
-	if (GetPixel(860, 1064) != 0X0) return false;
-	if (GetPixel(860, 1065) != 0X0) return false;
-	if (GetPixel(860, 1066) != 0X203) return false;
-	if (GetPixel(860, 1067) != 0X9BF3) return false;
-	if (GetPixel(860, 1068) != 0X6BA8) return false;
-	if (GetPixel(860, 1069) != 0X407) return false;
-	if (GetPixel(860, 1070) != 0X0) return false;
-	if (GetPixel(860, 1071) != 0X111211) return false;
-	if (GetPixel(861, 1062) != 0X7BC0) return false;
-	if (GetPixel(861, 1063) != 0X5280) return false;
-	if (GetPixel(861, 1064) != 0X203) return false;
-	if (GetPixel(861, 1065) != 0X304) return false;
-	if (GetPixel(861, 1066) != 0X5483) return false;
-	if (GetPixel(861, 1067) != 0X68A2) return false;
-	if (GetPixel(861, 1068) != 0X97EC) return false;
-	if (GetPixel(861, 1069) != 0X8DDD) return false;
-	if (GetPixel(861, 1070) != 0X3E61) return false;
-	if (GetPixel(861, 1071) != 0X111517) return false;
-	if (GetPixel(862, 1062) != 0X3654) return false;
-	if (GetPixel(862, 1063) != 0XA3FF) return false;
-	if (GetPixel(862, 1064) != 0X9DF6) return false;
-	if (GetPixel(862, 1065) != 0X9DF5) return false;
-	if (GetPixel(862, 1066) != 0X96EA) return false;
-	if (GetPixel(862, 1067) != 0XF18) return false;
-	if (GetPixel(862, 1068) != 0X131E) return false;
-	if (GetPixel(862, 1069) != 0X70AF) return false;
-	if (GetPixel(862, 1070) != 0XA3FF) return false;
-	if (GetPixel(862, 1071) != 0X294E6) return false;
-	if (GetPixel(863, 1062) != 0X0) return false;
-	if (GetPixel(863, 1063) != 0X3452) return false;
-	if (GetPixel(863, 1064) != 0X69A5) return false;
-	if (GetPixel(863, 1065) != 0X5D92) return false;
-	if (GetPixel(863, 1066) != 0X1724) return false;
-	if (GetPixel(863, 1067) != 0X0) return false;
-	if (GetPixel(863, 1068) != 0X0) return false;
-	if (GetPixel(863, 1069) != 0X0) return false;
-	if (GetPixel(863, 1070) != 0X2134) return false;
-	if (GetPixel(863, 1071) != 0X477B8) return false;
-	if (GetPixel(864, 1062) != 0X0) return false;
-	if (GetPixel(864, 1063) != 0X0) return false;
-	if (GetPixel(864, 1064) != 0X0) return false;
-	if (GetPixel(864, 1065) != 0X0) return false;
-	if (GetPixel(864, 1066) != 0X0) return false;
-	if (GetPixel(864, 1067) != 0X0) return false;
-	if (GetPixel(864, 1068) != 0X0) return false;
-	if (GetPixel(864, 1069) != 0X0) return false;
-	if (GetPixel(864, 1070) != 0X0) return false;
-	if (GetPixel(864, 1071) != 0XF0F0E) return false;
-
-	return true;
-}
 
 
 
@@ -6983,18 +5015,398 @@ void				Win32GDI::SaveSubSreen(const char* filePath, int xleft, int ytop, int xr
 		DeleteDC(MemDC);
 	}
 }
-void				Win32GDI::DumpSkill04(const char* filePath /*= "D:\\DumpSkill04.txt"*/, const char* logDumpFolder /*= "D:\\DumpLogSkill04\\"*/)
+void				Win32GDI::DumpRectangle(int xleft, int ytop, int xright, int ybottom)
 {
+	const char* filePath = "D:\\DumpRectangle.txt";
+	const char* logDumpFolder = "D:\\DumpImage\\";
 	if (IsD3WindowActive())
 	{
+		static int					snap_count = 0;
+		static std::set<int>		bitmap_data[1000][1000];
 
+		snap_count++;
+		CaptureDesktop();
+		BlurRectangle(xleft, ytop, xright, ybottom);
+		CreateDirectoryA(logDumpFolder, 0);
+
+		char bufferDumpFileName[1000] = { 0 };
+		sprintf_s(bufferDumpFileName, 999, "%s\\DS_04_%06d.bmp", logDumpFolder, snap_count);
+		SaveSubSreen(bufferDumpFileName, xleft, ytop, xright, ybottom);
+
+
+		//Copy data to set
+		for (int ix = xleft; ix < xright; ix++)
+		{
+			for (int iy = ytop; iy < ybottom; iy++)
+			{
+				int color = ::GetPixel(hScreenMemDC, ix, iy);
+				bitmap_data[ix - xleft][iy - ytop].insert(color);
+			}
+		}
+
+		//Write to file
+		FILE* logFile = NULL;
+		fopen_s(&logFile, filePath, "wb");
+		if (logFile != NULL)
+		{
+			fprintf(logFile, "bool D3_XXXXX_Is_YYYY(void)\n{\n");
+
+			for (int isize = 1; isize <= 3; isize++)
+			{
+				for (int ix = xleft; ix < xright; ix++)
+				{
+					for (int iy = ytop; iy < ybottom; iy++)
+					{
+						if (bitmap_data[ix - xleft][iy - ytop].size() > 1)
+						{
+							fprintf(logFile, "int color = 0;\n");
+							/*soft break*/
+							ix = xright;
+							iy = ybottom;
+						}
+					}
+				}
+			}
+			for (int isize = 1; isize <= 3; isize++)
+			{
+				for (int ix = xleft; ix < xright; ix++)
+				{
+					for (int iy = ytop; iy < ybottom; iy++)
+					{
+						if (isize == 1 && bitmap_data[ix - xleft][iy - ytop].size() == 1)
+						{
+							fprintf(logFile, "if (GetPixel(%d, %d) != 0X%X) return false;\n", ix, iy, *(bitmap_data[ix - xleft][iy - ytop].begin()));
+						}
+						else if (isize == 2 && bitmap_data[ix - xleft][iy - ytop].size() == 2)
+						{
+							fprintf(logFile, "color = GetPixel(%d, %d);", ix, iy);
+							fprintf(logFile, "if (color != 0X%X && color != 0X%X) return false;\n",
+								*(bitmap_data[ix - xleft][iy - ytop].begin()),
+								*(std::next(bitmap_data[ix - xleft][iy - ytop].begin()))
+							);
+						}
+						else if (bitmap_data[ix - xleft][iy - ytop].size() > 2)
+						{
+							fprintf(logFile, "color = GetPixel(%d, %d);", ix, iy);
+							fprintf(logFile, "if (");
+							for (auto icolor = bitmap_data[ix - xleft][iy - ytop].begin(); icolor != bitmap_data[ix - xleft][iy - ytop].end(); icolor++)
+							{
+								fprintf(logFile, "color != 0X%X", *icolor);
+								if (std::next(icolor) != bitmap_data[ix - xleft][iy - ytop].end())
+								{
+									fprintf(logFile, " && ");
+								}
+							}
+							fprintf(logFile, ") return false;\n");
+						}
+					}
+				}
+			}
+			fprintf(logFile, "\nreturn true;\n}\n");
+			fflush(logFile);
+			fclose(logFile);
+		}
+	}
+}
+void				Win32GDI::DumpSkill01(const char* filePath /*= "D:\\DumpSkill01.txt"*/, const char* logDumpFolder /*= "D:\\DumpImage\\"*/)
+{
+	const int				skill_01_x_left = 635;
+	const int				skill_01_y_top = 1004;
+	const int				skill_01_x_right = 681;
+	const int				skill_01_y_bottom = 1029;
+	static int				skill_01_snap_count = 0;
+	static std::set<int>	bitmap_skill_01_data[skill_01_x_right - skill_01_x_left][skill_01_y_bottom - skill_01_y_top];
+	if (IsD3WindowActive())
+	{
+		skill_01_snap_count++;
+		CaptureDesktop();
+		BlurRectangle(skill_01_x_left, skill_01_y_top, skill_01_x_right, skill_01_y_bottom);
+		CreateDirectoryA(logDumpFolder, 0);
+
+		char bufferDumpFileName[1000] = { 0 };
+		sprintf_s(bufferDumpFileName, 999, "%s\\DS_01_%06d.bmp", logDumpFolder, skill_01_snap_count);
+		SaveSubSreen(bufferDumpFileName, skill_01_x_left, skill_01_y_top, skill_01_x_right, skill_01_y_bottom);
+
+
+		//Copy data to set
+		for (int ix = skill_01_x_left; ix < skill_01_x_right; ix++)
+		{
+			for (int iy = skill_01_y_top; iy < skill_01_y_bottom; iy++)
+			{
+				int color = ::GetPixel(hScreenMemDC, ix, iy);
+				bitmap_skill_01_data[ix - skill_01_x_left][iy - skill_01_y_top].insert(color);
+			}
+		}
+
+		//Write to file
+		FILE* logFile = NULL;
+		fopen_s(&logFile, filePath, "wb");
+		if (logFile != NULL)
+		{
+			fprintf(logFile, "bool D3Skill01Is_XXXXX_AndReady(void)\n{\n");
+
+			for (int isize = 1; isize <= 3; isize++)
+			{
+				for (int ix = skill_01_x_left; ix < skill_01_x_right; ix++)
+				{
+					for (int iy = skill_01_y_top; iy < skill_01_y_bottom; iy++)
+					{
+						if (bitmap_skill_01_data[ix - skill_01_x_left][iy - skill_01_y_top].size() > 1)
+						{
+							fprintf(logFile, "int color = 0;\n");
+							/*soft break*/
+							ix = skill_01_x_right;
+							iy = skill_01_y_bottom;
+						}
+					}
+				}
+			}
+			for (int isize = 1; isize <= 3; isize++)
+			{
+				for (int ix = skill_01_x_left; ix < skill_01_x_right; ix++)
+				{
+					for (int iy = skill_01_y_top; iy < skill_01_y_bottom; iy++)
+					{
+						if (isize == 1 && bitmap_skill_01_data[ix - skill_01_x_left][iy - skill_01_y_top].size() == 1)
+						{
+							fprintf(logFile, "if (GetPixel(%d, %d) != 0X%X) return false;\n", ix, iy, *(bitmap_skill_01_data[ix - skill_01_x_left][iy - skill_01_y_top].begin()));
+						}
+						else if (isize == 2 && bitmap_skill_01_data[ix - skill_01_x_left][iy - skill_01_y_top].size() == 2)
+						{
+							fprintf(logFile, "color = GetPixel(%d, %d);", ix, iy);
+							fprintf(logFile, "if (color != 0X%X && color != 0X%X) return false;\n",
+								*(bitmap_skill_01_data[ix - skill_01_x_left][iy - skill_01_y_top].begin()),
+								*(std::next(bitmap_skill_01_data[ix - skill_01_x_left][iy - skill_01_y_top].begin()))
+							);
+						}
+						else if (bitmap_skill_01_data[ix - skill_01_x_left][iy - skill_01_y_top].size() > 2)
+						{
+							fprintf(logFile, "color = GetPixel(%d, %d);", ix, iy);
+							fprintf(logFile, "if (");
+							for (auto icolor = bitmap_skill_01_data[ix - skill_01_x_left][iy - skill_01_y_top].begin(); icolor != bitmap_skill_01_data[ix - skill_01_x_left][iy - skill_01_y_top].end(); icolor++)
+							{
+								fprintf(logFile, "color != 0X%X", *icolor);
+								if (std::next(icolor) != bitmap_skill_01_data[ix - skill_01_x_left][iy - skill_01_y_top].end())
+								{
+									fprintf(logFile, " && ");
+								}
+							}
+							fprintf(logFile, ") return false;\n");
+						}
+					}
+				}
+			}
+			fprintf(logFile, "\nreturn true;\n}\n");
+			fflush(logFile);
+			fclose(logFile);
+		}
+	}
+}
+void				Win32GDI::DumpSkill02(const char* filePath /*= "D:\\DumpSkill02.txt"*/, const char* logDumpFolder /*= "D:\\DumpImage\\"*/)
+{
+	const int				skill_02_x_left = 702;
+	const int				skill_02_y_top = 1004;
+	const int				skill_02_x_right = 748;
+	const int				skill_02_y_bottom = 1029;
+	static int				skill_02_snap_count = 0;
+	static std::set<int>	bitmap_skill_02_data[skill_02_x_right - skill_02_x_left][skill_02_y_bottom - skill_02_y_top];
+	if (IsD3WindowActive())
+	{
+		skill_02_snap_count++;
+		CaptureDesktop();
+		BlurRectangle(skill_02_x_left, skill_02_y_top, skill_02_x_right, skill_02_y_bottom);
+		CreateDirectoryA(logDumpFolder, 0);
+
+		char bufferDumpFileName[1000] = { 0 };
+		sprintf_s(bufferDumpFileName, 999, "%s\\DS_02_%06d.bmp", logDumpFolder, skill_02_snap_count);
+		SaveSubSreen(bufferDumpFileName, skill_02_x_left, skill_02_y_top, skill_02_x_right, skill_02_y_bottom);
+
+
+		//Copy data to set
+		for (int ix = skill_02_x_left; ix < skill_02_x_right; ix++)
+		{
+			for (int iy = skill_02_y_top; iy < skill_02_y_bottom; iy++)
+			{
+				int color = ::GetPixel(hScreenMemDC, ix, iy);
+				bitmap_skill_02_data[ix - skill_02_x_left][iy - skill_02_y_top].insert(color);
+			}
+		}
+
+		//Write to file
+		FILE* logFile = NULL;
+		fopen_s(&logFile, filePath, "wb");
+		if (logFile != NULL)
+		{
+			fprintf(logFile, "bool D3Skill02Is_XXXXX_AndReady(void)\n{\n");
+
+			for (int isize = 1; isize <= 3; isize++)
+			{
+				for (int ix = skill_02_x_left; ix < skill_02_x_right; ix++)
+				{
+					for (int iy = skill_02_y_top; iy < skill_02_y_bottom; iy++)
+					{
+						if (bitmap_skill_02_data[ix - skill_02_x_left][iy - skill_02_y_top].size() > 1)
+						{
+							fprintf(logFile, "int color = 0;\n");
+							/*soft break*/
+							ix = skill_02_x_right;
+							iy = skill_02_y_bottom;
+						}
+					}
+				}
+			}
+			for (int isize = 1; isize <= 3; isize++)
+			{
+				for (int ix = skill_02_x_left; ix < skill_02_x_right; ix++)
+				{
+					for (int iy = skill_02_y_top; iy < skill_02_y_bottom; iy++)
+					{
+						if (isize == 1 && bitmap_skill_02_data[ix - skill_02_x_left][iy - skill_02_y_top].size() == 1)
+						{
+							fprintf(logFile, "if (GetPixel(%d, %d) != 0X%X) return false;\n", ix, iy, *(bitmap_skill_02_data[ix - skill_02_x_left][iy - skill_02_y_top].begin()));
+						}
+						else if (isize == 2 && bitmap_skill_02_data[ix - skill_02_x_left][iy - skill_02_y_top].size() == 2)
+						{
+							fprintf(logFile, "color = GetPixel(%d, %d);", ix, iy);
+							fprintf(logFile, "if (color != 0X%X && color != 0X%X) return false;\n",
+								*(bitmap_skill_02_data[ix - skill_02_x_left][iy - skill_02_y_top].begin()),
+								*(std::next(bitmap_skill_02_data[ix - skill_02_x_left][iy - skill_02_y_top].begin()))
+							);
+						}
+						else if (bitmap_skill_02_data[ix - skill_02_x_left][iy - skill_02_y_top].size() > 2)
+						{
+							fprintf(logFile, "color = GetPixel(%d, %d);", ix, iy);
+							fprintf(logFile, "if (");
+							for (auto icolor = bitmap_skill_02_data[ix - skill_02_x_left][iy - skill_02_y_top].begin(); icolor != bitmap_skill_02_data[ix - skill_02_x_left][iy - skill_02_y_top].end(); icolor++)
+							{
+								fprintf(logFile, "color != 0X%X", *icolor);
+								if (std::next(icolor) != bitmap_skill_02_data[ix - skill_02_x_left][iy - skill_02_y_top].end())
+								{
+									fprintf(logFile, " && ");
+								}
+							}
+							fprintf(logFile, ") return false;\n");
+						}
+					}
+				}
+			}
+			fprintf(logFile, "\nreturn true;\n}\n");
+			fflush(logFile);
+			fclose(logFile);
+		}
+	}
+}
+void				Win32GDI::DumpSkill03(const char* filePath /*= "D:\\DumpSkill03.txt"*/, const char* logDumpFolder /*= "D:\\DumpImage\\"*/)
+{
+	const int				skill_03_x_left = 768;
+	const int				skill_03_y_top = 1004;
+	const int				skill_03_x_right = 814;
+	const int				skill_03_y_bottom = 1029;
+	static int				skill_03_snap_count = 0;
+	static std::set<int>	bitmap_skill_03_data[skill_03_x_right - skill_03_x_left][skill_03_y_bottom - skill_03_y_top];
+	if (IsD3WindowActive())
+	{
+		skill_03_snap_count++;
+		CaptureDesktop();
+		BlurRectangle(skill_03_x_left, skill_03_y_top, skill_03_x_right, skill_03_y_bottom);
+		CreateDirectoryA(logDumpFolder, 0);
+
+		char bufferDumpFileName[1000] = { 0 };
+		sprintf_s(bufferDumpFileName, 999, "%s\\DS_03_%06d.bmp", logDumpFolder, skill_03_snap_count);
+		SaveSubSreen(bufferDumpFileName, skill_03_x_left, skill_03_y_top, skill_03_x_right, skill_03_y_bottom);
+
+
+		//Copy data to set
+		for (int ix = skill_03_x_left; ix < skill_03_x_right; ix++)
+		{
+			for (int iy = skill_03_y_top; iy < skill_03_y_bottom; iy++)
+			{
+				int color = ::GetPixel(hScreenMemDC, ix, iy);
+				bitmap_skill_03_data[ix - skill_03_x_left][iy - skill_03_y_top].insert(color);
+			}
+		}
+
+		//Write to file
+		FILE* logFile = NULL;
+		fopen_s(&logFile, filePath, "wb");
+		if (logFile != NULL)
+		{
+			fprintf(logFile, "bool D3Skill03Is_XXXXX_AndReady(void)\n{\n");
+
+			for (int isize = 1; isize <= 3; isize++)
+			{
+				for (int ix = skill_03_x_left; ix < skill_03_x_right; ix++)
+				{
+					for (int iy = skill_03_y_top; iy < skill_03_y_bottom; iy++)
+					{
+						if (bitmap_skill_03_data[ix - skill_03_x_left][iy - skill_03_y_top].size() > 1)
+						{
+							fprintf(logFile, "int color = 0;\n");
+							/*soft break*/
+							ix = skill_03_x_right;
+							iy = skill_03_y_bottom;
+						}
+					}
+				}
+			}
+			for (int isize = 1; isize <= 3; isize++)
+			{
+				for (int ix = skill_03_x_left; ix < skill_03_x_right; ix++)
+				{
+					for (int iy = skill_03_y_top; iy < skill_03_y_bottom; iy++)
+					{
+						if (isize == 1 && bitmap_skill_03_data[ix - skill_03_x_left][iy - skill_03_y_top].size() == 1)
+						{
+							fprintf(logFile, "if (GetPixel(%d, %d) != 0X%X) return false;\n", ix, iy, *(bitmap_skill_03_data[ix - skill_03_x_left][iy - skill_03_y_top].begin()));
+						}
+						else if (isize == 2 && bitmap_skill_03_data[ix - skill_03_x_left][iy - skill_03_y_top].size() == 2)
+						{
+							fprintf(logFile, "color = GetPixel(%d, %d);", ix, iy);
+							fprintf(logFile, "if (color != 0X%X && color != 0X%X) return false;\n",
+								*(bitmap_skill_03_data[ix - skill_03_x_left][iy - skill_03_y_top].begin()),
+								*(std::next(bitmap_skill_03_data[ix - skill_03_x_left][iy - skill_03_y_top].begin()))
+							);
+						}
+						else if (bitmap_skill_03_data[ix - skill_03_x_left][iy - skill_03_y_top].size() > 2)
+						{
+							fprintf(logFile, "color = GetPixel(%d, %d);", ix, iy);
+							fprintf(logFile, "if (");
+							for (auto icolor = bitmap_skill_03_data[ix - skill_03_x_left][iy - skill_03_y_top].begin(); icolor != bitmap_skill_03_data[ix - skill_03_x_left][iy - skill_03_y_top].end(); icolor++)
+							{
+								fprintf(logFile, "color != 0X%X", *icolor);
+								if (std::next(icolor) != bitmap_skill_03_data[ix - skill_03_x_left][iy - skill_03_y_top].end())
+								{
+									fprintf(logFile, " && ");
+								}
+							}
+							fprintf(logFile, ") return false;\n");
+						}
+					}
+				}
+			}
+			fprintf(logFile, "\nreturn true;\n}\n");
+			fflush(logFile);
+			fclose(logFile);
+		}
+	}
+}
+void				Win32GDI::DumpSkill04(const char* filePath /*= "D:\\DumpSkill04.txt"*/, const char* logDumpFolder /*= "D:\\DumpImage\\"*/)
+{
+	const int				skill_04_x_left = 834;
+	const int				skill_04_y_top = 1003;
+	const int				skill_04_x_right = 881;
+	const int				skill_04_y_bottom = 1029;
+	static int				skill_04_snap_count = 0;
+	static std::set<int>	bitmap_skill_04_data[skill_04_x_right - skill_04_x_left][skill_04_y_bottom - skill_04_y_top];
+	if (IsD3WindowActive())
+	{
 		skill_04_snap_count++;
 		CaptureDesktop();
 		BlurRectangle(skill_04_x_left, skill_04_y_top, skill_04_x_right, skill_04_y_bottom);
 		CreateDirectoryA(logDumpFolder, 0);
 
 		char bufferDumpFileName[1000] = { 0 };
-		sprintf_s(bufferDumpFileName, 999, "%s\\D%06d.bmp", logDumpFolder, skill_04_snap_count);
+		sprintf_s(bufferDumpFileName, 999, "%s\\DS_04_%06d.bmp", logDumpFolder, skill_04_snap_count);
 		SaveSubSreen(bufferDumpFileName, skill_04_x_left, skill_04_y_top, skill_04_x_right, skill_04_y_bottom);
 
 
@@ -7072,6 +5484,27 @@ void				Win32GDI::DumpSkill04(const char* filePath /*= "D:\\DumpSkill04.txt"*/, 
 		}
 	}
 }
+
+
+
+
+
+
+extern Win32GDI w32gdi;
+void		QuangBTDumpScreen(void)
+{
+	w32gdi.CaptureDesktop();
+	//w32gdi.SaveScreen();
+
+
+	//left     905  1006 - Half 951 1030
+	//right    970  1006 - Half 1016 1030
+
+
+	//Key 4 for skill 4 856 1063 863 1073
+	w32gdi.DumpRectangle(856, 1063, 863, 1073);
+}
+
 
 
 

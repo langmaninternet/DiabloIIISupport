@@ -618,6 +618,7 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 
 	// TODO: Add extra initialization here
 	mainTimerID = CDialogEx::SetTimer(1, mainTimerDelay, NULL);
+	autoCastSkillTimerID = CDialogEx::SetTimer(2, autoCastSkillTimerDelay, NULL);
 
 	if (configSavePath[0] == 0)
 	{
@@ -1180,12 +1181,15 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			flagOnProcess = false;
 		}
 	}
-	else if (autoCastSkillTimerDelay == nIdEvent)
+	else if (autoCastSkillTimerID == nIdEvent)
 	{
 		w32gdi.CaptureDesktop();
 		if (w32gdi.D3Skill04Is_Familiar_AndReady())
 		{
-
+			if (w32gdi.D3Skill04KeyIs4()) 
+			{
+				SendD3Key('4');
+			}
 		}
 	}
 }

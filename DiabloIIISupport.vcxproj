@@ -205,7 +205,6 @@
     <ClCompile Include="Diablo3SkillData.cpp" />
     <ClCompile Include="DiabloIIISupport.cpp" />
     <ClCompile Include="DiabloIIISupportDlg.cpp" />
-    <ClCompile Include="Dump.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
