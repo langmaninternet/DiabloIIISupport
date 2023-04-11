@@ -774,9 +774,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 		if (flagOnProcess == false)
 		{
 			flagOnProcess = true;
-
-
-			if (d3GameStatus.flagIsOpenUrshi)
+			if (diabloGameStatus.flagIsOpenUrshi)
 			{
 				flagOnF1 = false;
 				flagOnF2 = false;
@@ -784,13 +782,13 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			}
 
 			WCHAR bufferActive[100] = L"Found";
-			if (d3GameStatus.flagInAttackMode)
+			if (diabloGameStatus.flagInAttackMode)
 			{
 				swprintf_s(bufferActive, L" AttackMode");
 			}
 
 #ifdef _DEBUG
-			swprintf_s(bufferActive, L"%d %d %d", d3GameStatus.flagInAttackMode, d3GameStatus.flagPotionReady, d3GameStatus.getStatusTime);
+			swprintf_s(bufferActive, L"%d %d %d", diabloGameStatus.flagInAttackMode, diabloGameStatus.flagPotionReady, diabloGameStatus.getStatusTime);
 #endif 
 			HWND d3Wnd = GetD3Windows();
 			RECT d3Rect = { 0 };
@@ -838,19 +836,19 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			/************************************************************************/
 			/* Skill Press                                                          */
 			/************************************************************************/
-			if (d3GameStatus.flagIsOpenMap == false
-				&& d3GameStatus.flagIsOpenSkillTable == false
-				&& d3GameStatus.flagIsOpenUrshi == false
+			if (diabloGameStatus.flagIsOpenMap == false
+				&& diabloGameStatus.flagIsOpenSkillTable == false
+				&& diabloGameStatus.flagIsOpenUrshi == false
+				&& diabloGameStatus.flagIsOpenKadala == false
+				&& diabloGameStatus.flagIsOpenStash == false
 				)
 			{
-
-
 
 				/************************************************************************/
 				/* Use custom                                                           */
 				/************************************************************************/
 				if (flagOnF2) GetDlgItem(IDC_F2BIGFRAME)->SetWindowTextW(L"Skill (Hotkey F2) - Running");
-				if (flagOnF2 && d3GameStatus.flagIsOpenKadala == false)
+				if (flagOnF2)
 				{
 					GetDlgItem(IDC_SKILL01TIME)->EnableWindow(FALSE);
 					GetDlgItem(IDC_SKILL02TIME)->EnableWindow(FALSE);
@@ -862,57 +860,47 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 					GetDlgItem(IDC_SKILL04CHECK)->EnableWindow(FALSE);
 					GetDlgItem(IDC_HEALINGCHECK)->EnableWindow(FALSE);
 
-
-					if (d3Config.skill01Enable && d3Wnd != 0) overlayString.AppendFormat(L"Skill 01: %dms\n", skillSlot01Cooldown);
-					if (d3Config.skill02Enable && d3Wnd != 0) overlayString.AppendFormat(L"Skill 02: %dms\n", skillSlot01Cooldown);
-					if (d3Config.skill03Enable && d3Wnd != 0) overlayString.AppendFormat(L"Skill 03: %dms\n", skillSlot01Cooldown);
-					if (d3Config.skill04Enable && d3Wnd != 0) overlayString.AppendFormat(L"Skill 04: %dms\n", skillSlot01Cooldown);
-					if (d3Config.healingEnable && d3GameStatus.flagPotionReady)  overlayString.AppendFormat(L"Healing!\n");
-
-					if (d3Wnd != 0)
+					if (d3Config.skill01Enable)
 					{
-
-						if (d3Config.skill01Enable)
+						skillSlot01Cooldown += mainTimerDelay + elapsed_time;
+						if (skillSlot01Cooldown >= d3Config.skillSlot01Time)
 						{
-							skillSlot01Cooldown += mainTimerDelay + elapsed_time;
-							if (skillSlot01Cooldown >= d3Config.skillSlot01Time)
-							{
-								SendD3Key(d3Config.keySKill01);
-								skillSlot01Cooldown = 0;
-							}
-						}
-						if (d3Config.skill02Enable)
-						{
-							skillSlot02Cooldown += mainTimerDelay + elapsed_time;
-							if (skillSlot02Cooldown >= d3Config.skillSlot02Time)
-							{
-								SendD3Key(d3Config.keySKill02);
-								skillSlot02Cooldown = 0;
-							}
-						}
-						if (d3Config.skill03Enable)
-						{
-							skillSlot03Cooldown += mainTimerDelay + elapsed_time;
-							if (skillSlot03Cooldown >= d3Config.skillSlot03Time)
-							{
-								SendD3Key(d3Config.keySKill03);
-								skillSlot03Cooldown = 0;
-							}
-						}
-						if (d3Config.skill04Enable)
-						{
-							skillSlot04Cooldown += mainTimerDelay + elapsed_time;
-							if (skillSlot04Cooldown >= d3Config.skillSlot04Time)
-							{
-								SendD3Key(d3Config.keySKill04);
-								skillSlot04Cooldown = 0;
-							}
-						}
-						if (d3Config.healingEnable && d3GameStatus.flagPotionReady)
-						{
-							SendD3Key(d3Config.keyHealing);
+							SendD3Key(d3Config.keySKill01);
+							skillSlot01Cooldown = 0;
 						}
 					}
+					if (d3Config.skill02Enable)
+					{
+						skillSlot02Cooldown += mainTimerDelay + elapsed_time;
+						if (skillSlot02Cooldown >= d3Config.skillSlot02Time)
+						{
+							SendD3Key(d3Config.keySKill02);
+							skillSlot02Cooldown = 0;
+						}
+					}
+					if (d3Config.skill03Enable)
+					{
+						skillSlot03Cooldown += mainTimerDelay + elapsed_time;
+						if (skillSlot03Cooldown >= d3Config.skillSlot03Time)
+						{
+							SendD3Key(d3Config.keySKill03);
+							skillSlot03Cooldown = 0;
+						}
+					}
+					if (d3Config.skill04Enable)
+					{
+						skillSlot04Cooldown += mainTimerDelay + elapsed_time;
+						if (skillSlot04Cooldown >= d3Config.skillSlot04Time)
+						{
+							SendD3Key(d3Config.keySKill04);
+							skillSlot04Cooldown = 0;
+						}
+					}
+					if (d3Config.healingEnable && diabloGameStatus.flagPotionReady)
+					{
+						SendD3Key(d3Config.keyHealing);
+					}
+
 				}
 				else
 				{
@@ -929,7 +917,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				}
 
 				if (flagOnF1) GetDlgItem(IDC_LEFTMOUSETEXT)->SetWindowText(L"Left mouse (Hotkey F1): \r\n	Running");
-				if (flagOnF1 && d3GameStatus.flagIsOpenKadala == false && d3GameStatus.flagIsOpenStash == false)
+				if (flagOnF1)
 				{
 					GetDlgItem(IDC_LEFTMOUSETEXT)->EnableWindow(FALSE);
 					GetDlgItem(IDC_LEFTMOUSETEXTMS)->EnableWindow(FALSE);
@@ -954,7 +942,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 
 				if (flagOnF3) GetDlgItem(IDC_RIGHTMOUSETEXT)->SetWindowText(L"Right Mouse (Hotkey F2): \r\n	F3-Running");
-				if (flagOnF3 && (d3GameStatus.flagIsOpenKadala || d3GameStatus.flagIsOpenStash == false))
+				if (flagOnF3)
 				{
 					GetDlgItem(IDC_RIGHTMOUSETEXT)->EnableWindow(FALSE);
 					GetDlgItem(IDC_RIGHTMOUSETEXTMS)->EnableWindow(FALSE);

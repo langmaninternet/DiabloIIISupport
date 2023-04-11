@@ -14,7 +14,7 @@
 
 
 Win32GDI					w32gdi;
-DiabloIIIStatusStruct		d3GameStatus;
+DiabloIIIStatusStruct		diabloGameStatus;
 
 
 
@@ -30,23 +30,19 @@ void		GetCurrentDiabloIIStatus(void)
 	/************************************************************************/
 	/* Giá trị mặc định , cần để bảo đảm tool vẫn chạy trong trường hợp xấu */
 	/************************************************************************/
-	d3GameStatus.flagInAttackMode = true;
-	d3GameStatus.flagPotionReady = true;
-	d3GameStatus.flagIsOpenMap = false;
-	d3GameStatus.flagIsOpenSkillTable = false;
-	d3GameStatus.flagIsOpenKadala = false;
-	d3GameStatus.flagIsOpenUrshi = false;
-	d3GameStatus.flagIsOpenStash = false;
-	d3GameStatus.flagIsWizard = false;
-	d3GameStatus.flagIsDemonHunter = false;
-	d3GameStatus.flagIsMonk = false;
-	d3GameStatus.flagInArchonMode = false;
-	d3GameStatus.flagSkill01IsReadyToAndNeedAutoPress = false;
-	d3GameStatus.flagSkill02IsReadyToAndNeedAutoPress = false;
-	d3GameStatus.flagSkill03IsReadyToAndNeedAutoPress = false;
-	d3GameStatus.flagSkill04IsReadyToAndNeedAutoPress = false;
+	diabloGameStatus.flagInAttackMode = true;
+	diabloGameStatus.flagPotionReady = true;
+	diabloGameStatus.flagIsOpenMap = false;
+	diabloGameStatus.flagIsOpenSkillTable = false;
+	diabloGameStatus.flagIsOpenKadala = false;
+	diabloGameStatus.flagIsOpenUrshi = false;
+	diabloGameStatus.flagIsOpenStash = false;
+	diabloGameStatus.flagSkill01IsReadyToAndNeedAutoPress = false;
+	diabloGameStatus.flagSkill02IsReadyToAndNeedAutoPress = false;
+	diabloGameStatus.flagSkill03IsReadyToAndNeedAutoPress = false;
+	diabloGameStatus.flagSkill04IsReadyToAndNeedAutoPress = false;
 #ifdef _DEBUG
-	d3GameStatus.getStatusTime = 0;
+	diabloGameStatus.getStatusTime = 0;
 	DWORD		startTime = GetTickCount();
 #endif
 
@@ -54,22 +50,22 @@ void		GetCurrentDiabloIIStatus(void)
 	if (w32gdi.ValidMode())
 	{
 		w32gdi.CaptureDesktop();
-		d3GameStatus.flagIsOpenMap = w32gdi.D3IsViewMap();
-		d3GameStatus.flagIsOpenSkillTable = w32gdi.D3IsOpenSkillTable();
-		d3GameStatus.flagIsOpenKadala = w32gdi.D3IsOpenKadala();
-		d3GameStatus.flagIsOpenUrshi = w32gdi.D3IsOpenUrshi();
-		d3GameStatus.flagIsOpenStash = w32gdi.D3IsOpenStash();
+		diabloGameStatus.flagIsOpenMap = w32gdi.D3IsViewMap();
+		diabloGameStatus.flagIsOpenSkillTable = w32gdi.D3IsOpenSkillTable();
+		diabloGameStatus.flagIsOpenKadala = w32gdi.D3IsOpenKadala();
+		diabloGameStatus.flagIsOpenUrshi = w32gdi.D3IsOpenUrshi();
+		diabloGameStatus.flagIsOpenStash = w32gdi.D3IsOpenStash();
 
 
 		//tọa độ cây kiếm 1155 1022
 		//đứng im == 0x297EB1
 		//đánh nhau == 0x16435E
-		if (w32gdi.GetPixel(1155, 1022) == 0x297EB1 || d3GameStatus.flagIsOpenSkillTable) d3GameStatus.flagInAttackMode = false;
+		if (w32gdi.GetPixel(1155, 1022) == 0x297EB1 || diabloGameStatus.flagIsOpenSkillTable) diabloGameStatus.flagInAttackMode = false;
 
 		//tọa độ bình máu
 		//sẵn sàng 0x080808
 		//cool down 0x020202
-		if (w32gdi.GetPixel(1062, 1001) == 0x020202) d3GameStatus.flagPotionReady = false;
+		if (w32gdi.GetPixel(1062, 1001) == 0x020202) diabloGameStatus.flagPotionReady = false;
 
 
 
@@ -87,22 +83,22 @@ void		GetCurrentDiabloIIStatus(void)
 		//	}
 
 
-		if (w32gdi.D3Skill01KeyIs1()) d3GameStatus.skill01Key = '1';
-		else if (w32gdi.D3Skill01KeyIsQ()) d3GameStatus.skill01Key = 'Q';
+		if (w32gdi.D3Skill01KeyIs1()) diabloGameStatus.skill01Key = '1';
+		else if (w32gdi.D3Skill01KeyIsQ()) diabloGameStatus.skill01Key = 'Q';
 
-		if (w32gdi.D3Skill03KeyIs2()) d3GameStatus.skill02Key = '2';
-		else if (w32gdi.D3Skill02KeyIsW()) d3GameStatus.skill02Key = 'W';
+		if (w32gdi.D3Skill03KeyIs2()) diabloGameStatus.skill02Key = '2';
+		else if (w32gdi.D3Skill02KeyIsW()) diabloGameStatus.skill02Key = 'W';
 
-		if (w32gdi.D3Skill03KeyIs3()) d3GameStatus.skill03Key = '3';
-		else if (w32gdi.D3Skill03KeyIsE()) d3GameStatus.skill03Key = 'E';
+		if (w32gdi.D3Skill03KeyIs3()) diabloGameStatus.skill03Key = '3';
+		else if (w32gdi.D3Skill03KeyIsE()) diabloGameStatus.skill03Key = 'E';
 
-		if (w32gdi.D3Skill04KeyIs4()) d3GameStatus.skill04Key = '4';
-		else if (w32gdi.D3Skill04KeyIsR()) d3GameStatus.skill04Key = 'R';
+		if (w32gdi.D3Skill04KeyIs4()) diabloGameStatus.skill04Key = '4';
+		else if (w32gdi.D3Skill04KeyIsR()) diabloGameStatus.skill04Key = 'R';
 
 
 	}
 #ifdef _DEBUG
-	d3GameStatus.getStatusTime = GetTickCount() - startTime;
+	diabloGameStatus.getStatusTime = GetTickCount() - startTime;
 #endif
 }
 void		PreloadSalvageItem(int * preloadSalvageSlot, int preloadSalvageSlotSize)

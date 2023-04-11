@@ -56,25 +56,22 @@ struct DiabloIIIStatusStruct
 	bool	flagIsOpenKadala;
 	bool	flagIsOpenUrshi;
 	bool	flagIsOpenStash;
-	bool	flagIsWizard;
-	bool	flagIsDemonHunter;
-	bool	flagIsMonk;
-	bool	flagInArchonMode;
-	bool	flagSkill01IsReadyToAndNeedAutoPress;
-	bool	flagSkill02IsReadyToAndNeedAutoPress;
-	bool	flagSkill03IsReadyToAndNeedAutoPress;
-	bool	flagSkill04IsReadyToAndNeedAutoPress;
 	int		skill01Key;
 	int		skill02Key;
 	int		skill03Key;
 	int		skill04Key;
 	int		healingKey;
 
+	bool	flagSkill01IsReadyToAndNeedAutoPress;
+	bool	flagSkill02IsReadyToAndNeedAutoPress;
+	bool	flagSkill03IsReadyToAndNeedAutoPress;
+	bool	flagSkill04IsReadyToAndNeedAutoPress;
+
 #ifdef _DEBUG
 	int		getStatusTime;
 #endif
 };
-extern		DiabloIIIStatusStruct d3GameStatus;
+extern		DiabloIIIStatusStruct diabloGameStatus;
 void		GetCurrentDiabloIIStatus(void);
 void		PreloadSalvageItem(int *preloadSalvageSlot, int preloadSalvageSlotSize);
 
