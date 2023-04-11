@@ -37,6 +37,7 @@ public:
 
 #ifdef _DEBUG
 	void				SaveScreen(const char* filePath = "D:\\Dump.bmp");
+	void				SaveSubSreen(const char* filePath);
 	void				DumpSkill04(const char* filePath = "D:\\DumpSkill04.txt", const char* logDumpFolder = "D:\\DumpLogSkill04\\");
 #endif
 

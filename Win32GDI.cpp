@@ -25,7 +25,7 @@ static const int			skill_04_x_left = 834;
 static const int			skill_04_y_top = 1003;
 static const int			skill_04_x_right = 881;
 static const int			skill_04_y_bottom = 1029;
-static const int			blur_coefficient = 20;
+static const int			blur_coefficient = 32;
 
 
 /************************************************************************/
@@ -64,6 +64,10 @@ void				Win32GDI::CaptureDesktop(void)
 	HDC			hdcDesktop = GetWindowDC(hDesktop);
 	BitBlt(hScreenMemDC, 0, 0, rectDesktop.right, rectDesktop.bottom, hdcDesktop, 0, 0, SRCCOPY);
 	ReleaseDC(hDesktop, hdcDesktop);
+}
+void				Win32GDI::SaveSubSreen(const char* filePath)
+{
+
 }
 void				Win32GDI::BlurSkillSlot04(void)
 {
@@ -6937,6 +6941,8 @@ void Win32GDI::SaveScreen(const char* filePath /*= "D:\\Dump.bmp"*/)
 }
 void Win32GDI::DumpSkill04(const char* filePath /*= "D:\\DumpSkill04.txt"*/, const char* logDumpFolder /*= "D:\\DumpLogSkill04\\"*/)
 {
+	CreateDirectoryA(logDumpFolder, 0);
+
 
 }
 
