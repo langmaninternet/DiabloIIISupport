@@ -79,7 +79,7 @@ void		GetCurrentDiabloIIStatus(void)
 		//	}
 
 
-		
+
 
 
 
@@ -88,7 +88,7 @@ void		GetCurrentDiabloIIStatus(void)
 	diabloGameStatus.getStatusTime = GetTickCount() - startTime;
 #endif
 }
-void		PreloadSalvageItem(int * preloadSalvageSlot, int preloadSalvageSlotSize)
+void		PreloadSalvageItem(int* preloadSalvageSlot, int preloadSalvageSlotSize)
 {
 	if (w32gdi.ValidMode())
 	{
@@ -115,11 +115,6 @@ void		PreloadSalvageItem(int * preloadSalvageSlot, int preloadSalvageSlotSize)
 		}
 	}
 }
-
-
-
-
-
 
 
 

@@ -1184,12 +1184,21 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 	else if (autoCastSkillTimerID == nIdEvent)
 	{
 		w32gdi.CaptureDesktop();
+
+		if (w32gdi.D3Skill02Is_Storm_Armor_AndReady())
+		{
+			if (w32gdi.D3Skill02KeyIs2())  SendD3Key('2');
+		}
+
+
+		if (w32gdi.D3Skill03Is_Magic_Weapon_AndReady())
+		{
+			if (w32gdi.D3Skill03KeyIs3())  SendD3Key('3');
+		}
+
 		if (w32gdi.D3Skill04Is_Familiar_AndReady())
 		{
-			if (w32gdi.D3Skill04KeyIs4()) 
-			{
-				SendD3Key('4');
-			}
+			if (w32gdi.D3Skill04KeyIs4())  SendD3Key('4');
 		}
 	}
 }

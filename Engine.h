@@ -27,15 +27,14 @@ public:
 	bool				D3IsOpenUrshi(void);
 	bool				D3IsOpenStash(void);
 	bool				D3Skill01KeyIs1(void);
-	bool				D3Skill03KeyIs2(void);
+	bool				D3Skill02KeyIs2(void);
 	bool				D3Skill03KeyIs3(void);
 	bool				D3Skill04KeyIs4(void);
-	bool				D3Skill01KeyIsQ(void);
-	bool				D3Skill02KeyIsW(void);
-	bool				D3Skill03KeyIsE(void);
-	bool				D3Skill04KeyIsR(void);
 
+	
 
+	bool				D3Skill02Is_Storm_Armor_AndReady(void);
+	bool				D3Skill03Is_Magic_Weapon_AndReady(void);
 	bool				D3Skill04Is_Familiar_AndReady(void);
 #ifdef _DEBUG
 	void				SaveScreen(const char* filePath = "D:\\Dump.bmp");
