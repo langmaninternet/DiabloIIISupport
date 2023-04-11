@@ -39,8 +39,7 @@ int					Win32GDI::GetPixel(int x, int y)
 {
 	if (hMemDC != NULL)
 	{
-		int color = 0;
-		color = ::GetPixel(hMemDC, x, y);
+		int color = int(::GetPixel(hMemDC, x, y));
 		return color;
 	}
 	return 0;

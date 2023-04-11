@@ -472,10 +472,8 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK HookProc(int nCode, WPARAM wPa
 				break;
 
 #ifdef _DEBUG
-			case VK_F5:
-				StarPactDumpData();
-
-				//skill 01 635 1005 - 682 1502 - 682 1029
+			case VK_F5:				
+				QuangBTDumpScreen();
 				break;
 #endif
 

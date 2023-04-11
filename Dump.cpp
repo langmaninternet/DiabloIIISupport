@@ -38,7 +38,8 @@ bool		HDCToFile(const char* FilePath, HDC Context, RECT Area, uint16_t BitsPerPi
 	char* Pixels = NULL;
 	HDC MemDC = CreateCompatibleDC(Context);
 	HBITMAP Section = CreateDIBSection(Context, &Info, DIB_RGB_COLORS, (void**)&Pixels, 0, 0);
-	DeleteObject(SelectObject(MemDC, Section));
+	HGDIOBJ hgiObject = SelectObject(MemDC, Section);
+	DeleteObject(hgiObject);
 	BitBlt(MemDC, 0, 0, Width, Height, Context, Area.left, Area.top, SRCCOPY);
 	DeleteDC(MemDC);
 	std::fstream hFile(FilePath, std::ios::out | std::ios::binary);
@@ -890,7 +891,7 @@ void		StarPactDumpSkillRight(void)
 	}
 
 }
-void		StarPactDumpData(void)
+void		QuangBTDumpScreen(void)
 {
 	//skill 01 635  1004 - Half 681 1029 
 	//skill 02 702  1004 - Half 748 1029 
