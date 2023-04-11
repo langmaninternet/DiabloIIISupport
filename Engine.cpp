@@ -57,6 +57,9 @@ void		GetCurrentDiabloIIStatus(void)
 		//đứng im == 0x297EB1
 		//đánh nhau == 0x16435E
 		if (w32gdi.GetPixel(1155, 1022) == 0x297EB1 || diabloGameStatus.flagIsOpenSkillTable) diabloGameStatus.flagInAttackMode = false;
+		//1146 1004 1164 1054
+
+
 
 		//tọa độ bình máu
 		//sẵn sàng 0x080808
