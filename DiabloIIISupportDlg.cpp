@@ -843,34 +843,6 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				&& d3GameStatus.flagIsOpenUrshi == false
 				)
 			{
-				/************************************************************************/
-				/* Auto press                                                           */
-				/************************************************************************/
-				CString overlayString;
-				if (flagOnF1 || flagOnF2 || flagOnF3)
-				{
-					if (d3GameStatus.flagSkill01IsReadyToAndNeedAutoPress && d3GameStatus.skill01Key && (d3GameStatus.flagInAttackMode || d3GameStatus.flagInArchonMode))
-					{
-						SendD3Key(d3GameStatus.skill01Key);
-						overlayString += L"Auto press skill 1\n";
-					}
-					if (d3GameStatus.flagSkill02IsReadyToAndNeedAutoPress && d3GameStatus.skill02Key && (d3GameStatus.flagInAttackMode || d3GameStatus.flagInArchonMode))
-					{
-						SendD3Key(d3GameStatus.skill02Key);
-						overlayString += L"Auto press skill 2\n";
-					}
-					if (d3GameStatus.flagSkill03IsReadyToAndNeedAutoPress && d3GameStatus.skill03Key && d3GameStatus.flagInAttackMode)
-					{
-						SendD3Key(d3GameStatus.skill03Key);
-						overlayString += L"Auto press skill 4\n";
-					}
-					if (d3GameStatus.flagSkill04IsReadyToAndNeedAutoPress && d3GameStatus.skill04Key && d3GameStatus.flagInAttackMode)
-					{
-						SendD3Key(d3GameStatus.skill04Key);
-						overlayString += L"Auto press skill 4\n";
-					}
-
-				}
 
 
 
