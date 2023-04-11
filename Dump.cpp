@@ -893,6 +893,9 @@ void		StarPactDumpSkillRight(void)
 }
 void		QuangBTDumpScreen(void)
 {
+	w32gdi.CaptureDesktop();
+	w32gdi.SaveScreen();
+
 	//skill 01 635  1004 - Half 681 1029 
 	//skill 02 702  1004 - Half 748 1029 
 	//skill 03 768  1004 - Half 814 1029 
@@ -956,7 +959,7 @@ void		QuangBTDumpScreen(void)
 		BitBlt(hMemDC, 0, 0, rectDesktop.right, rectDesktop.bottom, hdcDesktop, 0, 0, SRCCOPY);
 		ReleaseDC(hDesktop, hdcDesktop);
 
-		HDCToFile("D:\\Dump.bmp", hMemDC, rectDesktop);
+		//	HDCToFile("D:\\Dump.bmp", hMemDC, rectDesktop);
 		FILE* logFile = NULL;
 		fopen_s(&logFile, "D:\\Dump.txt", "wb");
 		fprintf(logFile, "bool D3Is_XXXXXXXX(void)\n{\n");

@@ -1,29 +1,32 @@
 #include "stdafx.h"
+#include <Wingdi.h>
+#include <iostream>
+#include <fstream>
 #include "Engine.h"
 
 
 /*Constructor*/		Win32GDI::Win32GDI(void)
 {
 	hBitmap = NULL;
-	hMemDC = NULL;
+	hScreenMemDC = NULL;
 	rectDesktop = { 0 };
 	HWND		hDesktop = GetDesktopWindow();
 	HDC			hdcDesktop = GetWindowDC(hDesktop);
 	if (hdcDesktop != NULL)
 	{
 		GetWindowRect(hDesktop, &rectDesktop);
-		hMemDC = CreateCompatibleDC(hdcDesktop);
-		if (hMemDC != NULL)
+		hScreenMemDC = CreateCompatibleDC(hdcDesktop);
+		if (hScreenMemDC != NULL)
 		{
 			hBitmap = CreateCompatibleBitmap(hdcDesktop, rectDesktop.right, rectDesktop.bottom);
 			if (hBitmap != NULL)
 			{
-				SelectObject(hMemDC, hBitmap);
+				SelectObject(hScreenMemDC, hBitmap);
 			}
 			else
 			{
-				DeleteDC(hMemDC);
-				hMemDC = NULL;
+				DeleteDC(hScreenMemDC);
+				hScreenMemDC = NULL;
 			}
 		}
 		ReleaseDC(hDesktop, hdcDesktop);
@@ -33,14 +36,14 @@ void				Win32GDI::CaptureDesktop(void)
 {
 	HWND		hDesktop = GetDesktopWindow();
 	HDC			hdcDesktop = GetWindowDC(hDesktop);
-	BitBlt(hMemDC, 0, 0, rectDesktop.right, rectDesktop.bottom, hdcDesktop, 0, 0, SRCCOPY);
+	BitBlt(hScreenMemDC, 0, 0, rectDesktop.right, rectDesktop.bottom, hdcDesktop, 0, 0, SRCCOPY);
 	ReleaseDC(hDesktop, hdcDesktop);
 }
 int					Win32GDI::GetPixel(int x, int y)
 {
-	if (hMemDC != NULL)
+	if (hScreenMemDC != NULL)
 	{
-		int color = int(::GetPixel(hMemDC, x, y));
+		int color = int(::GetPixel(hScreenMemDC, x, y));
 		return color;
 	}
 	return 0;
@@ -51,7 +54,7 @@ bool				Win32GDI::ValidMode(void)
 	RECT	d3rect;
 	GetClientRect(d3Wnd, &d3rect);
 
-	return (hMemDC != NULL
+	return (hScreenMemDC != NULL
 		&& d3rect.top == 0
 		&& d3rect.left == 0
 		&& d3rect.right == 1920
@@ -65,7 +68,7 @@ bool				Win32GDI::ValidMode(void)
 /*Desstructor*/		Win32GDI::~Win32GDI()
 {
 	if (hBitmap != NULL) DeleteObject(hBitmap);
-	if (hMemDC != NULL) DeleteDC(hMemDC);
+	if (hScreenMemDC != NULL) DeleteDC(hScreenMemDC);
 }
 
 
@@ -6834,3 +6837,58 @@ bool				Win32GDI::D3Skill04KeyIsR(void)
 
 
 
+
+
+
+
+
+/************************************************************************/
+/* Debug                                                                */
+/************************************************************************/
+#ifdef _DEBUG
+
+void Win32GDI::SaveScreen(const char* filePath /*= "D:\\Dump.bmp"*/)
+{
+	uint16_t BitsPerPixel = 24;
+	uint32_t Width = rectDesktop.right - rectDesktop.left;
+	uint32_t Height = rectDesktop.bottom - rectDesktop.top;
+	BITMAPINFO Info;
+	BITMAPFILEHEADER Header;
+	memset(&Info, 0, sizeof(Info));
+	memset(&Header, 0, sizeof(Header));
+	Info.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+	Info.bmiHeader.biWidth = Width;
+	Info.bmiHeader.biHeight = Height;
+	Info.bmiHeader.biPlanes = 1;
+	Info.bmiHeader.biBitCount = BitsPerPixel;
+	Info.bmiHeader.biCompression = BI_RGB;
+	Info.bmiHeader.biSizeImage = Width * Height * (BitsPerPixel > 24 ? 4 : 3);
+	Header.bfType = 0x4D42;
+	Header.bfOffBits = sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER);
+	char* memPixels = NULL;
+	HDC MemDC = CreateCompatibleDC(hScreenMemDC);
+	if (MemDC != NULL)
+	{
+		HBITMAP hSection = CreateDIBSection(hScreenMemDC, &Info, DIB_RGB_COLORS, (void**)&memPixels, 0, 0);
+		if (hSection != NULL)
+		{
+			HGDIOBJ hgiObject = SelectObject(MemDC, hSection);
+			if (hgiObject != NULL)
+			{
+				BitBlt(MemDC, 0, 0, Width, Height, hScreenMemDC, rectDesktop.left, rectDesktop.top, SRCCOPY);
+				std::fstream hFile(filePath, std::ios::out | std::ios::binary);
+				if (hFile.is_open())
+				{
+					hFile.write((char*)&Header, sizeof(Header));
+					hFile.write((char*)&Info.bmiHeader, sizeof(Info.bmiHeader));
+					hFile.write(memPixels, (((BitsPerPixel * Width + 31) & ~31) / 8) * Height);
+					hFile.close();
+				}
+				DeleteObject(hgiObject);
+			}
+			DeleteObject(hSection);
+		}
+		DeleteDC(MemDC);
+	}
+}
+#endif

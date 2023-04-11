@@ -13,7 +13,7 @@ class Win32GDI
 protected:
 private:
 	HBITMAP		hBitmap;
-	HDC			hMemDC;
+	HDC			hScreenMemDC;
 	RECT		rectDesktop;
 public:
 	/*Constructor*/		Win32GDI(void);
@@ -33,6 +33,12 @@ public:
 	bool				D3Skill02KeyIsW(void);
 	bool				D3Skill03KeyIsE(void);
 	bool				D3Skill04KeyIsR(void);
+
+#ifdef _DEBUG
+	void				SaveScreen(const char* filePath = "D:\\Dump.bmp");
+
+#endif
+
 	/*Desstructor*/		~Win32GDI();
 };
 
