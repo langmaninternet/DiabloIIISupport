@@ -11,7 +11,7 @@
 
 
 
-const double DiabloIIISupportVersion = 2.00;
+const double DiabloIIISupportVersion = 2.28;
 /************************************************************************/
 /* Struct                                                               */
 /************************************************************************/
@@ -654,7 +654,7 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 	GetDlgItem(IDC_SKILL04TIME)->SetWindowText(buffer);
 
 
-	swprintf_s(buffer, L"Diablo III Support Version %0.2lf", DiabloIIISupportVersion);
+	swprintf_s(buffer, L"Diablo III Support Version %0.2lf - Season 28", DiabloIIISupportVersion);
 	SetWindowTextW(buffer);
 
 
@@ -1187,12 +1187,30 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 		if (w32gdi.D3Skill02Is_Storm_Armor_AndReady())
 		{
-			if (w32gdi.D3Skill02KeyIs2())  
+			if (w32gdi.D3Skill02KeyIs2())
 			{
 				SendD3Key('2');
 				skillSlot02Cooldown -= 600000;
 			}
 		}
+		else if (w32gdi.D3Skill02Is_Magic_Weapon_AndReady())
+		{
+			if (w32gdi.D3Skill02KeyIs2())
+			{
+				SendD3Key('2');
+				skillSlot02Cooldown -= 600000;
+			}
+		}
+		else if (w32gdi.D3Skill02Is_Familiar_AndReady())
+		{
+			if (w32gdi.D3Skill02KeyIs2())
+			{
+				SendD3Key('2');
+				skillSlot02Cooldown -= 600000;
+			}
+		}
+
+
 
 
 		if (w32gdi.D3Skill03Is_Magic_Weapon_AndReady())
@@ -1203,6 +1221,25 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				skillSlot03Cooldown -= 600000;
 			}
 		}
+		else if (w32gdi.D3Skill03Is_Familiar_AndReady())
+		{
+			if (w32gdi.D3Skill03KeyIs3())
+			{
+				SendD3Key('3');
+				skillSlot03Cooldown -= 600000;
+			}
+		}
+		else if (w32gdi.D3Skill03Is_Storm_Armor_AndReady())
+		{
+			if (w32gdi.D3Skill03KeyIs3())
+			{
+				SendD3Key('3');
+				skillSlot03Cooldown -= 600000;
+			}
+		}
+
+
+
 
 		if (w32gdi.D3Skill04Is_Familiar_AndReady())
 		{
@@ -1212,6 +1249,27 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				skillSlot04Cooldown -= 600000;
 			}
 		}
+		else if (w32gdi.D3Skill04Is_Storm_Armor_AndReady())
+		{
+			if (w32gdi.D3Skill04KeyIs4())
+			{
+				SendD3Key('4');
+				skillSlot04Cooldown -= 600000;
+			}
+		}
+		else if (w32gdi.D3Skill04Is_Magic_Weapon_AndReady())
+		{
+			if (w32gdi.D3Skill04KeyIs4())
+			{
+				SendD3Key('4');
+				skillSlot04Cooldown -= 600000;
+			}
+		}
+
+
+
+
+
 	}
 }
 void CDiabloIIISupportDlg::OnLoadConfig()

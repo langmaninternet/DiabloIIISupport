@@ -60,7 +60,7 @@ Only work on
 
 Screenshot
 ------------
-![](FinalRelease/Screen06.png)
+![](FinalRelease/Screen07.png)
 ![](FinalRelease/Cube02.png)
 ![](FinalRelease/Cube03.png)
 ![](FinalRelease/Cube04.png)

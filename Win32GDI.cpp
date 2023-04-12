@@ -5072,6 +5072,7 @@ void				Win32GDI::DumpRectangle(int xleft, int ytop, int xright, int ybottom)
 							/*soft break*/
 							ix = xright;
 							iy = ybottom;
+							isize = 9;
 						}
 					}
 				}
@@ -5111,7 +5112,7 @@ void				Win32GDI::DumpRectangle(int xleft, int ytop, int xright, int ybottom)
 					}
 				}
 			}
-			fprintf(logFile, "\nreturn true;\n}\n");
+			fprintf(logFile, "return true;\n}\n");
 			fflush(logFile);
 			fclose(logFile);
 		}
@@ -5166,6 +5167,7 @@ void				Win32GDI::DumpSkill01(const char* filePath /*= "D:\\DumpSkill01.txt"*/, 
 							/*soft break*/
 							ix = skill_01_x_right;
 							iy = skill_01_y_bottom;
+							isize = 9;
 						}
 					}
 				}
@@ -5205,7 +5207,7 @@ void				Win32GDI::DumpSkill01(const char* filePath /*= "D:\\DumpSkill01.txt"*/, 
 					}
 				}
 			}
-			fprintf(logFile, "\nreturn true;\n}\n");
+			fprintf(logFile, "return true;\n}\n");
 			fflush(logFile);
 			fclose(logFile);
 		}
@@ -5260,6 +5262,7 @@ void				Win32GDI::DumpSkill02(const char* filePath /*= "D:\\DumpSkill02.txt"*/, 
 							/*soft break*/
 							ix = skill_02_x_right;
 							iy = skill_02_y_bottom;
+							isize = 9;
 						}
 					}
 				}
@@ -5299,7 +5302,7 @@ void				Win32GDI::DumpSkill02(const char* filePath /*= "D:\\DumpSkill02.txt"*/, 
 					}
 				}
 			}
-			fprintf(logFile, "\nreturn true;\n}\n");
+			fprintf(logFile, "return true;\n}\n");
 			fflush(logFile);
 			fclose(logFile);
 		}
@@ -5354,6 +5357,7 @@ void				Win32GDI::DumpSkill03(const char* filePath /*= "D:\\DumpSkill03.txt"*/, 
 							/*soft break*/
 							ix = skill_03_x_right;
 							iy = skill_03_y_bottom;
+							isize = 9;
 						}
 					}
 				}
@@ -5393,7 +5397,7 @@ void				Win32GDI::DumpSkill03(const char* filePath /*= "D:\\DumpSkill03.txt"*/, 
 					}
 				}
 			}
-			fprintf(logFile, "\nreturn true;\n}\n");
+			fprintf(logFile, "return true;\n}\n");
 			fflush(logFile);
 			fclose(logFile);
 		}
@@ -5448,6 +5452,7 @@ void				Win32GDI::DumpSkill04(const char* filePath /*= "D:\\DumpSkill04.txt"*/, 
 							/*soft break*/
 							ix = skill_04_x_right;
 							iy = skill_04_y_bottom;
+							isize = 9;
 						}
 					}
 				}
@@ -5487,7 +5492,7 @@ void				Win32GDI::DumpSkill04(const char* filePath /*= "D:\\DumpSkill04.txt"*/, 
 					}
 				}
 			}
-			fprintf(logFile, "\nreturn true;\n}\n");
+			fprintf(logFile, "return true;\n}\n");
 			fflush(logFile);
 			fclose(logFile);
 		}
@@ -5510,7 +5515,8 @@ void		QuangBTDumpScreen(void)
 	//right    970  1006 - Half 1016 1030
 
 
-	//w32gdi.DumpSkill02();
+	w32gdi.DumpSkill02();
+	w32gdi.DumpSkill03();
 	w32gdi.DumpSkill04();
 }
 
