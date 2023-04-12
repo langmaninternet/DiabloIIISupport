@@ -53,7 +53,7 @@ S-Cycle more better than Full-Cycle, can work at ping 200-300
 
 
 Only work on
-+ Resolution is 1920x 1080 
++ Resolution is 1920 × 1080 
 + Game is Fullscreen or Fullscreen Windows Mode
 
 
