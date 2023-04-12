@@ -43,13 +43,9 @@ CTRL + 9 if you want to clear the Inventory at the Blacksmith
 ESC or SPACE to Stop 
 
 
-Features : Wizard LoN32 Archon Macro
+Features : Wizard Season 28 Tal Rasha support
 ------------
-Use 1 hotkey to call cycle of StarPact
-
-S-Cycle more better than Full-Cycle, can work at ping 200-300
-
-
+Auto press for Storm Armor, Magic Weapon, Familiar
 
 
 Only work on
