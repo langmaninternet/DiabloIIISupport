@@ -41,7 +41,7 @@
 
 
 
-static const int			blur_coefficient = 32;
+
 
 
 /************************************************************************/
@@ -98,18 +98,24 @@ void				Win32GDI::CaptureDesktop(void)
 }
 void				Win32GDI::BlurRectangle(int xleft, int ytop, int xright, int ybottom)
 {
+	static const int			blur_coefficient = 32;
 	for (int ix = xleft; ix < xright; ix++)
 	{
 		for (int iy = ytop; iy < ybottom; iy++)
 		{
+			//	int color = ::GetPixel(hScreenMemDC, ix, iy);
+			//	int color_r = GetRValue(color);
+			//	int color_g = GetGValue(color);
+			//	int color_b = GetBValue(color);
+			//	color_r -= color_r % blur_coefficient;
+			//	color_g -= color_g % blur_coefficient;
+			//	color_b -= color_b % blur_coefficient;
+			//	::SetPixel(hScreenMemDC, ix, iy, RGB(color_r, color_g, color_b));
+
 			int color = ::GetPixel(hScreenMemDC, ix, iy);
-			int color_r = GetRValue(color);
-			int color_g = GetGValue(color);
-			int color_b = GetBValue(color);
-			color_r -= color_r % blur_coefficient;
-			color_g -= color_g % blur_coefficient;
-			color_b -= color_b % blur_coefficient;
-			::SetPixel(hScreenMemDC, ix, iy, RGB(color_r, color_g, color_b));
+			color &= 0xE0E0E0;
+			::SetPixel(hScreenMemDC, ix, iy, color);
+
 		}
 	}
 }
@@ -5517,7 +5523,8 @@ void		QuangBTDumpScreen(void)
 
 	//w32gdi.DumpSkill02();
 	//w32gdi.DumpSkill03();
-	w32gdi.DumpSkill04();
+	//w32gdi.DumpSkill04();
+	w32gdi.DumpRectangle(657, 1062, 662, 1072);
 }
 
 

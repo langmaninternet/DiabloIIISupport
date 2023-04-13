@@ -32,6 +32,7 @@ public:
 	bool				D3Skill04KeyIs4(void);
 
 	
+	bool				D3Skill01Is_ArchonBlast_AndReady(void);
 
 	bool				D3Skill02Is_Storm_Armor_AndReady(void);
 	bool				D3Skill02Is_Magic_Weapon_AndReady(void);
