@@ -5515,8 +5515,8 @@ void		QuangBTDumpScreen(void)
 	//right    970  1006 - Half 1016 1030
 
 
-	w32gdi.DumpSkill02();
-	w32gdi.DumpSkill03();
+	//w32gdi.DumpSkill02();
+	//w32gdi.DumpSkill03();
 	w32gdi.DumpSkill04();
 }
 

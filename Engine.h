@@ -44,6 +44,10 @@ public:
 	bool				D3Skill04Is_Familiar_AndReady(void);
 	bool				D3Skill04Is_Storm_Armor_AndReady(void);
 	bool				D3Skill04Is_Magic_Weapon_AndReady(void);
+	bool				D3Skill04Is_Vengeance_AndReady(void);
+
+
+
 #ifdef _DEBUG
 	void				SaveScreen(const char* filePath = "D:\\Dump.bmp");
 	void				SaveSubSreen(const char* filePath, int xleft, int ytop, int xright, int ybottom);
