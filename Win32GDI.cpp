@@ -82,6 +82,11 @@ void				Win32GDI::CaptureDesktop(void)
 	ReleaseDC(hDesktop, hdcDesktop);
 
 
+	//Blur skill 1 and key
+	BlurRectangle(635, 1004, 681, 1029);
+	BlurRectangle(657, 1062, 662, 1072);
+
+
 	//Blur skill 2 and key
 	BlurRectangle(702, 1004, 748, 1029);
 	BlurRectangle(722, 1062, 729, 1072);
@@ -95,6 +100,8 @@ void				Win32GDI::CaptureDesktop(void)
 	//Blur skill 4 and key
 	BlurRectangle(834, 1003, 881, 1029);
 	BlurRectangle(856, 1063, 863, 1073);
+
+	
 }
 void				Win32GDI::BlurRectangle(int xleft, int ytop, int xright, int ybottom)
 {
@@ -139,10 +146,6 @@ bool				Win32GDI::ValidMode(void)
 		&& d3rect.left == 0
 		&& d3rect.right == 1920
 		&& d3rect.bottom == 1080
-		&& rectDesktop.top == 0
-		&& rectDesktop.left == 0
-		&& rectDesktop.right == 1920
-		&& rectDesktop.bottom == 1080
 		);
 }
 /*Desstructor*/		Win32GDI::~Win32GDI()
@@ -5513,8 +5516,8 @@ void				Win32GDI::DumpSkill04(const char* filePath /*= "D:\\DumpSkill04.txt"*/, 
 extern Win32GDI w32gdi;
 void		QuangBTDumpScreen(void)
 {
-	//w32gdi.CaptureDesktop();
-	//w32gdi.SaveScreen();
+	w32gdi.CaptureDesktop();
+	w32gdi.SaveScreen();
 
 
 	//left     905  1006 - Half 951 1030
@@ -5524,7 +5527,7 @@ void		QuangBTDumpScreen(void)
 	//w32gdi.DumpSkill02();
 	//w32gdi.DumpSkill03();
 	//w32gdi.DumpSkill04();
-	w32gdi.DumpRectangle(657, 1062, 662, 1072);
+	w32gdi.DumpRectangle(301, 273, 336, 308);
 }
 
 

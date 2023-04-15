@@ -1008,6 +1008,9 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				int			yRepairTable = 620 * d3HeightScale;
 				int			xRepairButton = 264 * d3WidthScale;
 				int			yRepairButton = 594 * d3HeightScale;
+				int			xSalvageBlue = 318 * d3WidthScale;
+				int			ySalvageBlue = 292 * d3HeightScale;
+
 
 
 				if (d3WidthScale == 1280 && d3Height == 1024)
@@ -1036,6 +1039,9 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				/* Preload                                                              */
 				/************************************************************************/
 				PreloadSalvageItem(preloadSalvageSlot, 60);
+				if (w32gdi.ValidMode())
+				{
+				}
 
 				/************************************************************************/
 				/* 1 Slot                                                               */
@@ -1129,6 +1135,12 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 					if (flagOnCtrl9) SetD3Mouse(xSalvageTable, ySalvageTable);
 					if (flagOnCtrl9) SendD3LeftMouseClick();
 
+					if (flagOnCtrl9) SetD3Mouse(xSalvageBlue, ySalvageBlue);
+					if (flagOnCtrl9) SendD3LeftMouseClick();
+					if (flagOnCtrl9) SendD3LeftMouseClick();
+					if (flagOnCtrl9) Sleep(craftDelayTimeInMs + (rand() % 10));
+
+
 					if (flagOnCtrl9) SetD3Mouse(xSalvageButton, ySalvageButton);
 					if (flagOnCtrl9) SendD3LeftMouseClick();
 					if (flagOnCtrl9) Sleep(craftDelayTimeInMs + (rand() % 5));
@@ -1184,6 +1196,16 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 	else if (autoCastSkillTimerID == nIdEvent)
 	{
 		w32gdi.CaptureDesktop();
+
+		if (w32gdi.D3Skill01Is_ArchonBlast_AndReady())
+		{
+			if (w32gdi.D3Skill01KeyIs1())
+			{
+				SendD3Key('1');
+			}
+		}
+
+
 
 		if (w32gdi.D3Skill02Is_Storm_Armor_AndReady())
 		{
