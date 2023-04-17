@@ -1287,14 +1287,14 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				skillSlot04Cooldown -= 600000;
 			}
 		}
-		else if (w32gdi.D3Skill04Is_Vengeance_AndReady())
-		{
-			if (w32gdi.D3Skill04KeyIs4())
-			{
-				SendD3Key('4');
-				skillSlot04Cooldown -= 600000;
-			}
-		}
+		//	else if (w32gdi.D3Skill04Is_Vengeance_AndReady())
+		//	{
+		//		if (w32gdi.D3Skill04KeyIs4())
+		//		{
+		//			SendD3Key('4');
+		//			skillSlot04Cooldown -= 600000;
+		//		}
+		//	}
 
 
 
