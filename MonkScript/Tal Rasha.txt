@@ -49,3 +49,13 @@ Meteor - Elite - Density - Already Buff
 Meteor - Elite - On [Power] or [Conduit] + Already Buff
 (IsBuffActive(0, Pages_Buff_Damage) | IsBuffActive(0, Pages_Buff_Electrified_TieredRift))
 &(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
+
+
+
+
+
+Meteor - On [Power + Infinite Casting] + Already Buff
+IsBuffActive(0, Pages_Buff_Infinite_Casting) & IsBuffActive(0, Pages_Buff_Damage)
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
+
+
