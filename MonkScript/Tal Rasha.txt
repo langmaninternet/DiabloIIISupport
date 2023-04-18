@@ -90,18 +90,45 @@ Rune(Wizard_Meteor) == 2 & (BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 
 
 
 
+Diamond Skin - On [CoE Cold Cycle]
+Rune(Wizard_Meteor) == 2 & (BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000))
+
+
+
+
+
+Meteor - Rift Guardian - Already Buff
+Meteor - On [Power + Infinite Casting] + Already Buff
+Meteor - On [Power + Conduit] + Already Buff
+
+
+
+
+
+((Health() < 40%) | (!IsBuffActive(4, P2_ItemPassive_Unique_Ring_028))) 
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 
 
 
 
 
 
+Meteor - Rift Guardian - On [Buff Season 28] + Already Buff
+
+
+(BuffTimeLeft(1,Community_Buff_DarkAlchemy) > 0 
+| BuffTimeLeft(2,Community_Buff_DarkAlchemy) > 0 
+| BuffTimeLeft(3,Community_Buff_DarkAlchemy) > 0
+| BuffTimeLeft(4,Community_Buff_DarkAlchemy) > 0 
+| BuffTimeLeft(5,Community_Buff_DarkAlchemy) > 0 
+| BuffTimeLeft(6,Community_Buff_DarkAlchemy) > 0 
+| BuffTimeLeft(7,Community_Buff_DarkAlchemy) > 0 
+| BuffTimeLeft(8,Community_Buff_DarkAlchemy) > 0 
+| BuffTimeLeft(9,Community_Buff_DarkAlchemy) > 0)
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 
 
 
-
-
-
-
-
+BuffTimeLeft(8,Community_Buff_DarkAlchemy) >0 --> màu xanh blue là cool down
+| BuffTimeLeft(5,Community_Buff_DarkAlchemy) > 0 --> màu xanh green nhẹ là resouce
 
