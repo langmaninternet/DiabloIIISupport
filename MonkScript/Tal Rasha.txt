@@ -120,3 +120,18 @@ Rune(Wizard_Meteor) == 2 & (BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)>0|Bu
 
 
 Meteor - Elite - Near Cycle 500ms - On [CoE Cold Cycle] + Already Buff
+
+
+
+
+
+
+
+
+
+IsBuffActive(3, Enchantress_CheatDeath_Passive) --> có mang theo Enchantress hay không
+
+IsBuffActive(1, Enchantress_CheatDeath_Passive) --> False là đang sẵn sàng
+
+
+IsBuffActive(1, Enchantress_CheatDeath_Passive) --> True là đã proc
