@@ -2,6 +2,18 @@
 (BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 
 
+
+Health() < 40%
+
+
+Health() > 2%
+
+
+
+
+
+
+
 On [Invisible after death]
 (BuffTimeLeft(0,Wizard_Familiar)==0&BuffTimeLeft(0,Wizard_MagicWeapon)==0&BuffTimeLeft(3,Wizard_StormArmor)==0)
 
@@ -42,7 +54,7 @@ Meteor - Rift Guardian - Already Buff
 (BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 
 
-Meteor - Elite - Density - Already Buff
+Meteor - Elite - Main - Already Buff
 (BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 
 
@@ -85,27 +97,15 @@ Rune(Wizard_Meteor) == 2 & (BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 
 
 
 
+Meteor - On [CoE Cold Cycle + Oculus] + Already Buff
+Rune(Wizard_Meteor) == 2 & (BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000)) & BuffTimeLeft(0,ItemPassive_Unique_Ring_922_x1)>0 & BuffTimeLeft(2,ItemPassive_Unique_Ring_922_x1)>0 & BuffTimeLeft(3,ItemPassive_Unique_Ring_922_x1)>0
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 
 
 
 
-
-Diamond Skin - On [CoE Cold Cycle]
-Rune(Wizard_Meteor) == 2 & (BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000))
-
-
-
-
-
-Meteor - Rift Guardian - Already Buff
-Meteor - On [Power + Infinite Casting] + Already Buff
-Meteor - On [Power + Conduit] + Already Buff
-
-
-
-
-
-((Health() < 40%) | (!IsBuffActive(4, P2_ItemPassive_Unique_Ring_028))) 
+Meteor - Proc [Tal Rasha] + Already Buff
+BuffStackCount(5, P2_ItemPassive_Unique_Ring_028) < 3
 &(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 
 
@@ -113,43 +113,10 @@ Meteor - On [Power + Conduit] + Already Buff
 
 
 
-Meteor - Rift Guardian - On [Triune of Love Season 28] + Already Buff
-BuffTimeLeft(2,Community_Buff_DarkAlchemy) > 0
+Meteor - Elite - Near Cycle 2000ms - On [CoE Fire Holy Lightning Physical Poison Cycle] + Already Buff
+
+Rune(Wizard_Meteor) == 2 & (BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(4, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(5, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(6, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(7, P2_ItemPassive_Unique_Ring_038)>0)
 &(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 
 
-
-
-
-Meteor - Elite - On [Triune of Love Season 28] + Already Buff
-BuffTimeLeft(2,Community_Buff_DarkAlchemy) > 0
-&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
-
-
-
-
-
-Meteor - On [CoE Cold Cycle + Triune of Love Season 28] + Already Buff
-Rune(Wizard_Meteor) == 2 & (BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000)) 
-& BuffTimeLeft(2,Community_Buff_DarkAlchemy) > 0
-&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
-
-
-
-
-Meteor - In Battle - Near - On [CoE Cold Cycle] + Already Buff
-Rune(Wizard_Meteor) == 2 & (BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000)) 
-&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
-
-
-
-Triune of Creation, (CDR)
-BuffTimeLeft(8,Community_Buff_DarkAlchemy) >0  --> màu xanh blue là cool down
-
-
-Triune of Determination (RCR)
-| BuffTimeLeft(5,Community_Buff_DarkAlchemy) > 0 --> màu xanh green nhẹ là resouce
-
-
-Triune of Love (Power)
-BuffTimeLeft(2,Community_Buff_DarkAlchemy) > 0
+Meteor - Elite - Near Cycle 500ms - On [CoE Cold Cycle] + Already Buff
