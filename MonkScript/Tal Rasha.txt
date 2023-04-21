@@ -12,6 +12,21 @@ Bolas - Proc [Wraps of Clarity]
 
 
 
+Hatred - Grenade
+Doors - Grenade
+
+
+
+
+
+Multishot - Rift Guardian - On [Oculus] + Already Buff
+BuffTimeLeft(0,ItemPassive_Unique_Ring_922_x1)>0 & BuffTimeLeft(2,ItemPassive_Unique_Ring_922_x1)>0 & BuffTimeLeft(3,ItemPassive_Unique_Ring_922_x1)>0 
+
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
+
+
+
+X1_DemonHunter_Vengeance
 
 
 
