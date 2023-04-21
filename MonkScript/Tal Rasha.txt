@@ -26,11 +26,11 @@ BuffTimeLeft(0,ItemPassive_Unique_Ring_922_x1)>0 & BuffTimeLeft(2,ItemPassive_Un
 
 
 
-X1_DemonHunter_Vengeance
+
+BuffTimeLeft(4,X1_DemonHunter_Vengeance)>1000
 
 
-
-
+DemonHunter
 
 
 (BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
