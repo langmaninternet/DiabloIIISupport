@@ -1,4 +1,23 @@
 
+
+
+
+Preparation - Proc [Battle Scars]
+
+
+
+Evasive Fire - Proc [Wraps of Clarity]
+Bolas - Proc [Wraps of Clarity]
+
+
+
+
+
+
+
+
+
+
 (BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 
 
@@ -123,15 +142,3 @@ Meteor - Elite - Near Cycle 500ms - On [CoE Cold Cycle] + Already Buff
 
 
 
-
-
-
-
-
-
-IsBuffActive(3, Enchantress_CheatDeath_Passive) --> có mang theo Enchantress hay không
-
-IsBuffActive(1, Enchantress_CheatDeath_Passive) --> False là đang sẵn sàng
-
-
-IsBuffActive(1, Enchantress_CheatDeath_Passive) --> True là đã proc
