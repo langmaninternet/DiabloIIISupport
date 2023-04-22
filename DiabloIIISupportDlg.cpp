@@ -1140,6 +1140,12 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 					if (flagOnCtrl9) SendD3LeftMouseClick();
 					if (flagOnCtrl9) Sleep(craftDelayTimeInMs + (rand() % 10));
 
+					if (flagOnCtrl9) SendD3Key(VK_RETURN);
+					if (flagOnCtrl9) Sleep(craftDelayTimeInMs + (rand() % 5));
+
+					if (flagOnCtrl9) SendD3Key(VK_RETURN);
+					if (flagOnCtrl9) Sleep(craftDelayTimeInMs + (rand() % 5));
+
 
 					if (flagOnCtrl9) SetD3Mouse(xSalvageButton, ySalvageButton);
 					if (flagOnCtrl9) SendD3LeftMouseClick();
