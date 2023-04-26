@@ -1,5 +1,48 @@
 
 
+& BuffTimeLeft(1,Wizard_Teleport)<400
+
+
+
+
+Teleport [Safe Passage] - Near 5 yards - On [Wait for CoE Cold Cycle]
+Teleport [Safe Passage] - Near 10 yards - On [Wait for CoE Cold Cycle]
+Teleport [Safe Passage] - Near 15 yards - On [Wait for CoE Cold Cycle]
+Teleport [Safe Passage] - Near 20 yards - On [Wait for CoE Cold Cycle]
+Rune(Wizard_Meteor)==2 & Rune(Wizard_Teleport)==2 & BuffTimeLeft(1,Wizard_Teleport)<400
+&(BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(4, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(5, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(6, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(7, P2_ItemPassive_Unique_Ring_038)>0)
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
+
+
+
+
+
+
+
+
+
+
+Meteor - On [CoE Cold Cycle + Proc Enchantress Cheat Death] + Already Buff
+BuffTimeLeft(1,Enchantress_CheatDeath_Passive)>0 & Rune(Wizard_Meteor) == 2 
+&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000))
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
+
+
+
+
+Teleport - Proc [Enchantress Cheat Death] + HP 60%
+Rune(Wizard_Teleport) == 2 & BuffTimeLeft(1,Enchantress_CheatDeath_Passive)>0 & BuffTimeLeft(1,Wizard_Teleport)<1000
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
+
+
+
+
+
+Meteor - Rift Guardian [0-60 yards] - On [CoE Cold Cycle] + Already Buff + HP 99%
+Rune(Wizard_Meteor) == 2 
+&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000)) 
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
+
 
 
 Teleport [Safe Passage] - Near 5 yards - Just in Time [Prepare CoE Cold Cycle]
@@ -19,6 +62,13 @@ Rune(Wizard_Meteor) == 2 & BuffTimeLeft(1,Wizard_Teleport)<4000
 
 
 
+Teleport - Best position in 5 yards - On [Wait for CoE Cold Cycle] 
+Rune(Wizard_Meteor) == 2 & BuffTimeLeft(1,Wizard_Teleport)<400
+&(BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(4, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(5, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(6, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(7, P2_ItemPassive_Unique_Ring_038)>0)
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
+
+
+
 
 Elite - Teleport [Safe Passage] - Near 5 yards - On [Wait for CoE Cold Cycle]
 Rune(Wizard_Meteor) == 2 & Rune(Wizard_Teleport) == 2
@@ -28,8 +78,8 @@ Rune(Wizard_Meteor) == 2 & Rune(Wizard_Teleport) == 2
 
 
 
-
-
+[CoE Fire Holy Lightning Physical Poison Cycle]
+[Wait for CoE Cold Cycle]
 
 
 BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000
