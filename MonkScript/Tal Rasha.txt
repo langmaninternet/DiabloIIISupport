@@ -1,6 +1,11 @@
 
 
-& BuffTimeLeft(1,Wizard_Teleport)<400
+
+
+Teleport - Proc [Tal Rasha]
+BuffStackCount(5, P2_ItemPassive_Unique_Ring_028) ==3
+
+
 
 
 
@@ -17,9 +22,9 @@ Rune(Wizard_Meteor)==2 & Rune(Wizard_Teleport)==2 & BuffTimeLeft(1,Wizard_Telepo
 
 
 
+Meteor - On [CoE Cold Cycle + Power] + Already Buff
 
-
-
+BuffStackCount(5, P2_ItemPassive_Unique_Ring_028) ==3
 
 
 Meteor - On [CoE Cold Cycle + Proc Enchantress Cheat Death] + Already Buff
