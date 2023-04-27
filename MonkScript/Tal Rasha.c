@@ -35,11 +35,29 @@ Rune(Wizard_Teleport)==0
 //		5. Lightning
 //		6. Physical
 //		7. Poison
+//		Wizard : Cold -> Fire -> Lightning -> Arcane -> Cold -> Fire -> Lightning -> Arcane
+
+
+
+//		Tal Rasha's Set
+//		Power name: P2_ItemPassive_Unique_Ring_028
+//		Have 6 set effect: IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)
+
+//Đã có elements cold
+IsBuffActive(2,P2_ItemPassive_Unique_Ring_028)
+BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_028)>1000
+
+
+//Đã có elements Arcane
+IsBuffActive(1,P2_ItemPassive_Unique_Ring_028)
+BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)>1000
 
 
 
 
-Wizard : Cold -> Fire -> Lightning -> Arcane -> Cold -> Fire -> Lightning -> Arcane
+
+
+
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
@@ -49,7 +67,7 @@ Wizard : Cold -> Fire -> Lightning -> Arcane -> Cold -> Fire -> Lightning -> Arc
 //	Teleport [Safe Passage][Calamity] - Safe in 20 yards - Just in Time [Prepare CoE Cycle]
 
 ((Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)<4000)
-|(Rune(Wizard_Teleport)==0&IsBuffActive(2,P2_ItemPassive_Unique_Ring_028)&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<4000))
+|(Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<4000))
 &
 ((Rune(Wizard_Meteor)==0&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)
 |(Rune(Wizard_Meteor)==1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)
@@ -66,35 +84,6 @@ Wizard : Cold -> Fire -> Lightning -> Arcane -> Cold -> Fire -> Lightning -> Arc
 
 
 
-
-
-
-
-
-
-//P2_ItemPassive_Unique_Ring_028
-
-
-IsBuffActive(2,P2_ItemPassive_Unique_Ring_028)
-
-
-// Test 
-IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)
-
-//
-BuffStackCount(5, P2_ItemPassive_Unique_Ring_028) == 1
-
-//Cold 
-BuffStackCount(5, P2_ItemPassive_Unique_Ring_028) == 1
-
-
-//Đã có elements cold
-IsBuffActive(2,P2_ItemPassive_Unique_Ring_028)
-BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_028)>1000
-
-//Đã có elements Arcane
-IsBuffActive(1,P2_ItemPassive_Unique_Ring_028)
-BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)>1000
 
 
 
