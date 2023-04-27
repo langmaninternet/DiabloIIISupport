@@ -2,6 +2,111 @@
 
 
 
+//Meteor Fire
+Rune(Wizard_Meteor)==0
+Rune(Wizard_Meteor)==1
+
+//Meteor Cold
+Rune(Wizard_Meteor)==2
+
+//Meteor Arcane
+Rune(Wizard_Meteor)==3
+
+//Meteor Lightning
+Rune(Wizard_Meteor)==4
+
+
+
+
+
+//		Convention of Elements
+//		Power name: P2_ItemPassive_Unique_Ring_038
+//		The sequence of elements w.r.t. their bucket number is as follows:
+//		1. Arcane
+//		2. Cold
+//		3. Fire
+//		4. Holy
+//		5. Lightning
+//		6. Physical
+//		7. Poison
+
+
+
+
+Wizard : Cold -> Fire -> Lightning -> Arcane -> Cold -> Fire -> Lightning -> Arcane
+
+
+
+//	Teleport [Safe Passage] - Safe in 5 yards - Just in Time [Prepare CoE Cycle]
+//	Teleport [Safe Passage] - Safe in 10 yards - Just in Time [Prepare CoE Cycle]
+//	Teleport [Safe Passage] - Safe in 15 yards - Just in Time [Prepare CoE Cycle]
+//	Teleport [Safe Passage] - Safe in 20 yards - Just in Time [Prepare CoE Cycle]
+
+Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)<4000&
+((Rune(Wizard_Meteor)==0&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)
+|(Rune(Wizard_Meteor)==1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)
+|(Rune(Wizard_Meteor)==2&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<3000)
+|(Rune(Wizard_Meteor)==3&BuffTimeLeft(6,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(6,P2_ItemPassive_Unique_Ring_038)<3000)
+|(Rune(Wizard_Meteor)==4&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<3000))
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
+
+
+
+
+
+(Rune(Wizard_Meteor)==1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Teleport - Proc [Tal Rasha]
 BuffStackCount(5, P2_ItemPassive_Unique_Ring_028) ==3
 
