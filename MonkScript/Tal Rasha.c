@@ -54,7 +54,29 @@ Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)<4000&
 
 
 
+//P2_ItemPassive_Unique_Ring_028
+
+
+IsBuffActive(2,P2_ItemPassive_Unique_Ring_028)
+
+
+// Test 
+IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)
+
 //
+BuffStackCount(5, P2_ItemPassive_Unique_Ring_028) == 1
+
+//Cold 
+BuffStackCount(5, P2_ItemPassive_Unique_Ring_028) == 1
+
+
+//Đã có elements cold
+IsBuffActive(2,P2_ItemPassive_Unique_Ring_028)
+BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_028)>1000
+
+//Đã có elements Arcane
+IsBuffActive(1,P2_ItemPassive_Unique_Ring_028)
+BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)>1000
 
 
 
@@ -62,12 +84,25 @@ Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)<4000&
 
 
 
+Buff, 		1, 		0, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
+Buff, 		1, 		0, 			P2_ItemPassive_Unique_Ring_036, 
 
 
 
+//Cold 
+Buff, 		1, 		5, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
+Buff, 		1, 		2, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
+EndTick, 	426, 		5, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
+EndTick, 	426, 		2, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
+Buff, 		1, 		0, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
 
 
-
+//Arcane
+Buff, 		1, 		5, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
+Buff, 		1, 		1, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
+EndTick, 	419, 		5, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
+EndTick, 	419, 		1, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
+Buff, 		1, 		0, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
 
 
 
