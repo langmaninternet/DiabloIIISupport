@@ -54,13 +54,7 @@ Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)<4000&
 
 
 
-(Rune(Wizard_Meteor)==1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)
-
-
-
-
-
-
+//
 
 
 
