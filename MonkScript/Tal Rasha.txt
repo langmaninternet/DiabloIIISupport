@@ -8,6 +8,29 @@ BuffStackCount(5, P2_ItemPassive_Unique_Ring_028) ==3
 
 
 
+Meteor - Buff - Near - Waiting [Teleport] + Already Buff
+Cooldown(Wizard_Teleport) > 1550 & (BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
+
+
+
+
+
+Meteor - Elite - Main - Already Buff
+Elite - Meteor - [30-45 yards]
+Meteor - Elite - Cycle 1000ms + Already Buff
+
+
+
+
+Meteor - On [CoE Cold Cycle]
+Rune(Wizard_Meteor) == 2 
+&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000)) 
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
+
+
+
+
+
 
 
 Teleport [Safe Passage] - Near 5 yards - On [Wait for CoE Cold Cycle]
