@@ -16,6 +16,12 @@ Rune(Wizard_Meteor)==3
 Rune(Wizard_Meteor)==4
 
 
+//Teleport [Safe Passage]
+Rune(Wizard_Teleport)==2
+
+
+//	Teleport [Calamity]
+Rune(Wizard_Teleport)==0
 
 
 
@@ -36,19 +42,31 @@ Rune(Wizard_Meteor)==4
 Wizard : Cold -> Fire -> Lightning -> Arcane -> Cold -> Fire -> Lightning -> Arcane
 
 
+//----------------------------------------------------------------------------------------------------------------------------------------
+//	Teleport [Safe Passage][Calamity] - Safe in 5 yards - Just in Time [Prepare CoE Cycle]
+//	Teleport [Safe Passage][Calamity] - Safe in 10 yards - Just in Time [Prepare CoE Cycle]
+//	Teleport [Safe Passage][Calamity] - Safe in 15 yards - Just in Time [Prepare CoE Cycle]
+//	Teleport [Safe Passage][Calamity] - Safe in 20 yards - Just in Time [Prepare CoE Cycle]
 
-//	Teleport [Safe Passage] - Safe in 5 yards - Just in Time [Prepare CoE Cycle]
-//	Teleport [Safe Passage] - Safe in 10 yards - Just in Time [Prepare CoE Cycle]
-//	Teleport [Safe Passage] - Safe in 15 yards - Just in Time [Prepare CoE Cycle]
-//	Teleport [Safe Passage] - Safe in 20 yards - Just in Time [Prepare CoE Cycle]
-
-Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)<4000&
+((Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)<4000)
+|(Rune(Wizard_Teleport)==0&IsBuffActive(2,P2_ItemPassive_Unique_Ring_028)&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<4000))
+&
 ((Rune(Wizard_Meteor)==0&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)
 |(Rune(Wizard_Meteor)==1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)
 |(Rune(Wizard_Meteor)==2&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<3000)
 |(Rune(Wizard_Meteor)==3&BuffTimeLeft(6,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(6,P2_ItemPassive_Unique_Ring_038)<3000)
 |(Rune(Wizard_Meteor)==4&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<3000))
+
 &(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
+
+//----------------------------------------------------------------------------------------------------------------------------------------//
+
+
+
+
+
+
+
 
 
 
@@ -106,8 +124,14 @@ Buff, 		1, 		0, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
 
 
 
-
-
+//Cold +fire
+Buff, 		2, 		5, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
+Buff, 		1, 		3, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
+Buff, 		1, 		2, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
+EndTick, 	436, 		5, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
+EndTick, 	436, 		3, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
+EndTick, 	430, 		2, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
+Buff, 		1, 		0, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
 
 
 
