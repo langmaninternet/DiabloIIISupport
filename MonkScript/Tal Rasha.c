@@ -36,7 +36,7 @@ Rune(Wizard_Teleport)==0
 //		6. Physical
 //		7. Poison
 //		Wizard : Cold -> Fire -> Lightning -> Arcane -> Cold -> Fire -> Lightning -> Arcane
-//		Wizard : 2    -> 3    -> 5         -> 1      -> 2    -> 3    -> 5         -> 1
+//		Wizard : 2 -> 3 -> 5 -> 1 -> 2 -> 3 -> 5 -> 1
 
 
 //		Tal Rasha's Set
@@ -93,22 +93,30 @@ BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)>1000
 
 //----------------------------------------------------------------------------------------------------------------------------------------
 //	Teleport [Safe Passage|Calamity] - Best position in 5 yards - On [Wait for CoE Cycle]
+//	Teleport [Safe Passage|Calamity] - Best position in 10 yards - On [Wait for CoE Cycle]
+//	Teleport [Safe Passage|Calamity] - Best position in 15 yards - On [Wait for CoE Cycle]
+//	Teleport [Safe Passage|Calamity] - Best position in 20 yards - On [Wait for CoE Cycle]
+//	Teleport [Safe Passage|Calamity] - Near 5 yards - On [Wait for CoE Cycle]
+//	Teleport [Safe Passage|Calamity] - Near 10 yards - On [Wait for CoE Cycle]
+//	Teleport [Safe Passage|Calamity] - Near 15 yards - On [Wait for CoE Cycle]
+//	Teleport [Safe Passage|Calamity] - Near 20 yards - On [Wait for CoE Cycle]
+
 ((Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)<500)
 |(Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<1000))
-&(
-(Rune(Wizard_Meteor)==2&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0))
-
-)
+&
+((Rune(Wizard_Meteor)==0&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>0))
+|(Rune(Wizard_Meteor)==1&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>0))
+|(Rune(Wizard_Meteor)==2&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0))
+|(Rune(Wizard_Meteor)==3&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>0))
+|(Rune(Wizard_Meteor)==4&(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>0)))
 &
 (BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
 
 
 
 
-Rune(Wizard_Meteor) == 2 & Rune(Wizard_Teleport) == 2 & BuffTimeLeft(1,Wizard_Teleport)<400 
-&(BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(5, P2_ItemPassive_Unique_Ring_038)>0) 
-&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 
 
 
@@ -117,7 +125,7 @@ Rune(Wizard_Meteor) == 2 & Rune(Wizard_Teleport) == 2 & BuffTimeLeft(1,Wizard_Te
 
 
 
-(Rune(Wizard_Meteor)==2&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0))
+(Rune(Wizard_Meteor)==1&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>0))
 
 //		1. Arcane
 //		2. Cold
@@ -127,7 +135,7 @@ Rune(Wizard_Meteor) == 2 & Rune(Wizard_Teleport) == 2 & BuffTimeLeft(1,Wizard_Te
 //		6. Physical
 //		7. Poison
 //		Wizard : Cold -> Fire -> Lightning -> Arcane -> Cold -> Fire -> Lightning -> Arcane
-//		Wizard : 2    -> 3    -> 5         -> 1      -> 2    -> 3    -> 5         -> 1
+//		Wizard : 2 -> 3 -> 5 -> 1 -> 2 -> 3 -> 5 -> 1
 
 
 //Meteor Fire
