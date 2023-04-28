@@ -144,10 +144,9 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-//Meteor - Near 10 yards - Maintain [Tal Rasha's Elements] 
-//Meteor - Near 20 yards - Maintain [Tal Rasha's Elements] 
-//Meteor - Near 30 yards - Maintain [Tal Rasha's Elements] 
-
+// Meteor - Near 10 yards - Maintain [Tal Rasha's Elements]
+// Meteor - Near 20 yards - Maintain [Tal Rasha's Elements]
+// Meteor - Near 30 yards - Maintain [Tal Rasha's Elements]
 
 BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)==4
 &
@@ -226,8 +225,10 @@ Buff, 		1, 		0, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
 
 
 
-
-
+//Cold + Lightning
+Buff, 		2, 		5, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
+Buff, 		1, 		4, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
+Buff, 		1, 		2, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
 
 
 
