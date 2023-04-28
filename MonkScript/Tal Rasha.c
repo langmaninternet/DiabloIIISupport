@@ -124,9 +124,7 @@ BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)>1000
 //----------------------------------------------------------------------------------------------------------------------------------------
 // Teleport [Calamity] - Near 25 yards - Proc [Tal Rasha's Elements - Arcane] - Just in Time [Prepare CoE Cycle]
 
-Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)
-&BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)<4
-&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<2000
+Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)<4&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<2000
 &
 ((Rune(Wizard_Meteor)==0&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)
 |(Rune(Wizard_Meteor)==1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)
