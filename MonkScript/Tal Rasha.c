@@ -179,9 +179,9 @@ BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)>1000
 
 //----------------------------------------------------------------------------------------------------------------------------------------
 //	Rift Guardian - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love]
-//  Elite - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love] - 15 yards Cycle 500ms
-//  Elite - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love] - 15 yards Cycle 500ms
-//  Elite - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love] - 60 yards Cycle 50ms
+//  Elite - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love] - 10 yards Cycle 500ms
+//  Elite - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love] - 30 yards Cycle 250ms
+//  Elite - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love] - 50 yards Cycle 50ms
 
 ((Rune(Wizard_Meteor)==0&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
 |(Rune(Wizard_Meteor)==1&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
@@ -200,8 +200,8 @@ BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)>1000
 
 
 
-
-Meteor - Elite - Near Cycle 500ms - On [CoE Cold Cycle] + Already Buff
+Health 40% - Meteor - Near 5 yards 50ms
+Elite - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love] - 15 yards Cycle 500ms
 
 
 
