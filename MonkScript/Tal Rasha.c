@@ -145,15 +145,18 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 
 //----------------------------------------------------------------------------------------------------------------------------------------
 //Meteor - Near 10 yards - Maintain [Tal Rasha's Elements] 
+//Meteor - Near 20 yards - Maintain [Tal Rasha's Elements] 
 //Meteor - Near 30 yards - Maintain [Tal Rasha's Elements] 
-//Meteor - Near 50 yards - Maintain [Tal Rasha's Elements] 
 
 
 BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)==4
 &
-(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<2000
-|BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_028)<2000
-|BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_028)<2000)
+((Rune(Wizard_Meteor)==0&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_028)<2000)
+|(Rune(Wizard_Meteor)==1&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_028)<2000)
+|(Rune(Wizard_Meteor)==2&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_028)<2000)
+|(Rune(Wizard_Meteor)==3&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<2000)
+
+)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------//
