@@ -210,9 +210,9 @@ BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)>1000
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-// Meteor - Near 10 yards - Maintain [Tal Rasha's Elements]
-// Meteor - Near 20 yards - Maintain [Tal Rasha's Elements]
-// Meteor - Near 30 yards - Maintain [Tal Rasha's Elements]
+// Meteor - Maintain [Tal Rasha's Elements] - 10 yards Cycle 2000ms
+// Meteor - Maintain [Tal Rasha's Elements] - 20 yards Cycle 2000ms
+// Meteor - Maintain [Tal Rasha's Elements] - 30 yards Cycle 2000ms
 
 BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)==4
 &
@@ -223,13 +223,7 @@ BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)==4
 |(Rune(Wizard_Meteor)==4&BuffTimeLeft(4,P2_ItemPassive_Unique_Ring_028)<2000)
 )
 
-
 //----------------------------------------------------------------------------------------------------------------------------------------//
-
-
-
-
-Meteor - On [CoE Cycle + Power] 
 
 
 
