@@ -200,12 +200,23 @@ BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)>1000
 
 
 
-Health 40% - Meteor - Near 5 yards 50ms
-Elite - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love] - 15 yards Cycle 500ms
 
 
+//----------------------------------------------------------------------------------------------------------------------------------------
+//	Elite - Meteor - On [Wait for CoE Cycle] - 10 yards Cycle 1000ms
+//	Elite - Meteor - On [Wait for CoE Cycle] - 30 yards Cycle 2000ms
+//	Elite - Meteor - On [Wait for CoE Cycle] - 50 yards Cycle 3000ms
 
 
+((Rune(Wizard_Meteor)==0&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>0))
+|(Rune(Wizard_Meteor)==1&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>0))
+|(Rune(Wizard_Meteor)==2&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0))
+|(Rune(Wizard_Meteor)==3&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>0))
+|(Rune(Wizard_Meteor)==4&(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>0)))
+&
+(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
 
 
 
@@ -229,8 +240,6 @@ BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)==4
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------//
-
-
 
 
 
@@ -304,15 +313,6 @@ Buff, 		1, 		0, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
 Buff, 		2, 		5, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
 Buff, 		1, 		4, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
 Buff, 		1, 		2, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
-
-
-
-
-
-
-
-
-
 
 
 
