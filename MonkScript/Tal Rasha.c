@@ -123,6 +123,7 @@ BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)>1000
 
 //----------------------------------------------------------------------------------------------------------------------------------------
 // Teleport [Calamity] - Near 25 yards - Proc [Tal Rasha's Elements - Arcane] - Just in Time [Prepare CoE Cycle]
+// Teleport [Calamity] - Near 30 yards - Proc [Tal Rasha's Elements - Arcane] - Just in Time [Prepare CoE Cycle]
 
 Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)<4&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<2000
 &
@@ -142,15 +143,17 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 
 
 
+//----------------------------------------------------------------------------------------------------------------------------------------
+//Meteor - Near 10 yards - Maintain [Tal Rasha's Elements] 
+//Meteor - Near 25 yards - Maintain [Tal Rasha's Elements] 
+//Meteor - Near 50 yards - Maintain [Tal Rasha's Elements] 
 
 
-
-
-
-
-
-
-
+BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)==4
+&
+(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<2000
+|BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_028)<2000
+|BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_028)<2000)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------//
