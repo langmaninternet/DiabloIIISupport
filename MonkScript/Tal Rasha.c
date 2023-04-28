@@ -233,6 +233,30 @@ BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)==4
 
 
 
+//----------------------------------------------------------------------------------------------------------------------------------------
+// Meteor - On [CoE Cycle] + [Power|Conduit|Oculus|Triune of Love Season 28]
+
+((Rune(Wizard_Meteor)==0&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==1&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==2&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==3&(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==4&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>1000|(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<1250))))
+&
+(IsBuffActive(0,Pages_Buff_Damage)
+|IsBuffActive(0,Pages_Buff_Electrified_TieredRift)
+|IsBuffActive(2,ItemPassive_Unique_Ring_922_x1)
+|BuffTimeLeft(2,Community_Buff_DarkAlchemy)>0)
+&
+(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
+
+//----------------------------------------------------------------------------------------------------------------------------------------//
+
+
+
+
+
+
+
 
 
 //		1. Arcane
@@ -299,6 +323,27 @@ Buff, 		1, 		0, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
 Buff, 		2, 		5, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
 Buff, 		1, 		4, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
 Buff, 		1, 		2, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
+
+
+
+
+
+
+Meteor - On [CoE Cold Cycle + Power] + Already Buff
+Meteor - On [CoE Cold Cycle + Conduit] + Already Buff
+Rune(Wizard_Meteor) == 2 
+& (BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000)) 
+& IsBuffActive(0,Pages_Buff_Electrified_TieredRift) 
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
+Meteor - On [CoE Cold Cycle + Oculus] + Already Buff
+
+
+
+
+
+
+
+
 
 
 
