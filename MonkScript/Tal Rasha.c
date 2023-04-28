@@ -234,7 +234,7 @@ BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)==4
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-// Meteor - On [CoE Cycle] + [Power|Conduit|Oculus|Triune of Love Season 28]
+// Meteor - On [CoE Cycle] + [Power|Conduit|Oculus|Triune of Love]
 
 ((Rune(Wizard_Meteor)==0&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
 |(Rune(Wizard_Meteor)==1&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
