@@ -155,7 +155,7 @@ BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)==4
 |(Rune(Wizard_Meteor)==1&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_028)<2000)
 |(Rune(Wizard_Meteor)==2&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_028)<2000)
 |(Rune(Wizard_Meteor)==3&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<2000)
-
+|(Rune(Wizard_Meteor)==4&BuffTimeLeft(4,P2_ItemPassive_Unique_Ring_028)<2000)
 )
 
 
