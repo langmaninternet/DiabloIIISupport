@@ -92,10 +92,11 @@ BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)>1000
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-//	Teleport [Safe Passage|Calamity] - Best position in 5 yards - On [Wait for CoE Cycle]
-//	Teleport [Safe Passage|Calamity] - Best position in 10 yards - On [Wait for CoE Cycle]
-//	Teleport [Safe Passage|Calamity] - Best position in 15 yards - On [Wait for CoE Cycle]
-//	Teleport [Safe Passage|Calamity] - Best position in 20 yards - On [Wait for CoE Cycle]
+//	Teleport [Safe Passage|Calamity] - Safe in 5 yards - On [Wait for CoE Cycle]
+//	Teleport [Safe Passage|Calamity] - Safe in 10 yards - On [Wait for CoE Cycle]
+//	Teleport [Safe Passage|Calamity] - Safe in 15 yards - On [Wait for CoE Cycle]
+//	Teleport [Safe Passage|Calamity] - Safe in 20 yards - On [Wait for CoE Cycle]
+//
 //	Teleport [Safe Passage|Calamity] - Near 5 yards - On [Wait for CoE Cycle]
 //	Teleport [Safe Passage|Calamity] - Near 10 yards - On [Wait for CoE Cycle]
 //	Teleport [Safe Passage|Calamity] - Near 15 yards - On [Wait for CoE Cycle]
