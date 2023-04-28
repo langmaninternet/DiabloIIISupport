@@ -70,6 +70,7 @@ BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)>1000
 //	Teleport [Safe Passage|Calamity] - Near 10 yards - Just in Time [Prepare CoE Cycle]
 //	Teleport [Safe Passage|Calamity] - Near 15 yards - Just in Time [Prepare CoE Cycle]
 //	Teleport [Safe Passage|Calamity] - Near 20 yards - Just in Time [Prepare CoE Cycle]
+//	Teleport [Safe Passage|Calamity] - Near 25 yards - Just in Time [Prepare CoE Cycle]
 
 ((Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)<4000)
 |(Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<4000))
