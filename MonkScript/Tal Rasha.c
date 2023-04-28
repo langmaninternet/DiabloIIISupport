@@ -90,6 +90,56 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 
 
 
+//----------------------------------------------------------------------------------------------------------------------------------------
+//	Rift Guardian - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love]
+//  Elite - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love] - 10 yards Cycle 500ms
+//  Elite - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love] - 30 yards Cycle 250ms
+//  Elite - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love] - 50 yards Cycle 50ms
+//  Battle - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love]
+
+((Rune(Wizard_Meteor)==0&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==1&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==2&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==3&(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==4&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>1000|(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<1250)))
+|IsBuffActive(2,ItemPassive_Unique_Ring_922_x1)
+|IsBuffActive(0,Pages_Buff_Damage)
+|BuffTimeLeft(2,Community_Buff_DarkAlchemy)>0
+)
+&
+(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+//	Elite - Meteor - On [Wait for CoE Cycle] - 10 yards Cycle 1000ms
+//	Elite - Meteor - On [Wait for CoE Cycle] - 30 yards Cycle 2000ms
+//	Elite - Meteor - On [Wait for CoE Cycle] - 50 yards Cycle 3000ms
+
+((Rune(Wizard_Meteor)==0&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>0))
+|(Rune(Wizard_Meteor)==1&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>0))
+|(Rune(Wizard_Meteor)==2&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0))
+|(Rune(Wizard_Meteor)==3&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>0))
+|(Rune(Wizard_Meteor)==4&(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>0)))
+&
+(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+
 
 
 
@@ -157,52 +207,6 @@ BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)>1000
 
 
 
-//----------------------------------------------------------------------------------------------------------------------------------------
-//	Rift Guardian - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love]
-//  Elite - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love] - 10 yards Cycle 500ms
-//  Elite - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love] - 30 yards Cycle 250ms
-//  Elite - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love] - 50 yards Cycle 50ms
-//  Battle - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love]
-
-((Rune(Wizard_Meteor)==0&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
-|(Rune(Wizard_Meteor)==1&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
-|(Rune(Wizard_Meteor)==2&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<3000)))
-|(Rune(Wizard_Meteor)==3&(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)<3000)))
-|(Rune(Wizard_Meteor)==4&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>1000|(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<1250)))
-|IsBuffActive(2,ItemPassive_Unique_Ring_922_x1)
-|IsBuffActive(0,Pages_Buff_Damage)
-|BuffTimeLeft(2,Community_Buff_DarkAlchemy)>0
-)
-&
-(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
-
-//\\----------------------------------------------------------------------------------------------------------------------------------------////
-
-
-
-
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------
-//	Elite - Meteor - On [Wait for CoE Cycle] - 10 yards Cycle 1000ms
-//	Elite - Meteor - On [Wait for CoE Cycle] - 30 yards Cycle 2000ms
-//	Elite - Meteor - On [Wait for CoE Cycle] - 50 yards Cycle 3000ms
-
-
-((Rune(Wizard_Meteor)==0&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>0))
-|(Rune(Wizard_Meteor)==1&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>0))
-|(Rune(Wizard_Meteor)==2&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0))
-|(Rune(Wizard_Meteor)==3&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>0))
-|(Rune(Wizard_Meteor)==4&(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>0)))
-&
-(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
-
-//\\----------------------------------------------------------------------------------------------------------------------------------------////
-
-
-
-
-
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
@@ -225,7 +229,7 @@ BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)==4
 
 
 
-
+Meteor - On [CoE Cycle + Power] 
 
 
 
