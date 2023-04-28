@@ -1,65 +1,6 @@
 
 
 
-
-//Meteor Fire
-Rune(Wizard_Meteor)==0
-Rune(Wizard_Meteor)==1
-
-//Meteor Cold
-Rune(Wizard_Meteor)==2
-
-//Meteor Arcane
-Rune(Wizard_Meteor)==3
-
-//Meteor Lightning
-Rune(Wizard_Meteor)==4
-
-
-//Teleport [Safe Passage]
-Rune(Wizard_Teleport)==2
-
-
-//	Teleport [Calamity]
-Rune(Wizard_Teleport)==0
-
-
-
-//		Convention of Elements
-//		Power name: P2_ItemPassive_Unique_Ring_038
-//		The sequence of elements w.r.t. their bucket number is as follows:
-//		1. Arcane
-//		2. Cold
-//		3. Fire
-//		4. Holy
-//		5. Lightning
-//		6. Physical
-//		7. Poison
-//		Wizard : Cold -> Fire -> Lightning -> Arcane -> Cold -> Fire -> Lightning -> Arcane
-//		Wizard : 2 -> 3 -> 5 -> 1 -> 2 -> 3 -> 5 -> 1
-
-
-//		Tal Rasha's Set
-//		Power name: P2_ItemPassive_Unique_Ring_028
-//		Have 6 set effect: IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)
-
-//Đã có elements cold
-IsBuffActive(2,P2_ItemPassive_Unique_Ring_028)
-BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_028)>1000
-
-
-//Đã có elements Arcane
-IsBuffActive(1,P2_ItemPassive_Unique_Ring_028)
-BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)>1000
-
-
-
-
-
-
-
-
-
 ////----------------------------------------------------------------------------------------------------------------------------------------\\\\
 //	Teleport [Safe Passage|Calamity] - Safe in 5 yards - Just in Time [Prepare CoE Cycle]
 //	Teleport [Safe Passage|Calamity] - Safe in 10 yards - Just in Time [Prepare CoE Cycle]
@@ -135,8 +76,123 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 &
 (BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Meteor Fire
+Rune(Wizard_Meteor)==0
+Rune(Wizard_Meteor)==1
+
+//Meteor Cold
+Rune(Wizard_Meteor)==2
+
+//Meteor Arcane
+Rune(Wizard_Meteor)==3
+
+//Meteor Lightning
+Rune(Wizard_Meteor)==4
+
+
+//Teleport [Safe Passage]
+Rune(Wizard_Teleport)==2
+
+
+//	Teleport [Calamity]
+Rune(Wizard_Teleport)==0
+
+
+
+//		Convention of Elements
+//		Power name: P2_ItemPassive_Unique_Ring_038
+//		The sequence of elements w.r.t. their bucket number is as follows:
+//		1. Arcane
+//		2. Cold
+//		3. Fire
+//		4. Holy
+//		5. Lightning
+//		6. Physical
+//		7. Poison
+//		Wizard : Cold -> Fire -> Lightning -> Arcane -> Cold -> Fire -> Lightning -> Arcane
+//		Wizard : 2 -> 3 -> 5 -> 1 -> 2 -> 3 -> 5 -> 1
+
+
+//		Tal Rasha's Set
+//		Power name: P2_ItemPassive_Unique_Ring_028
+//		Have 6 set effect: IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)
+
+//Đã có elements cold
+IsBuffActive(2,P2_ItemPassive_Unique_Ring_028)
+BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_028)>1000
+
+
+//Đã có elements Arcane
+IsBuffActive(1,P2_ItemPassive_Unique_Ring_028)
+BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)>1000
+
+
+
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+//	Rift Guardian - Meteor - On [CoE Cold Cycle] 
+
+
+
+
+
+(Rune(Wizard_Meteor)==2&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000|(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<2500)))
+
+
+
+&
+(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+
+(Rune(Wizard_Meteor)==3&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1000|(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<2000)))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -159,6 +215,11 @@ BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)==4
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------//
+
+
+
+
+
 
 
 
