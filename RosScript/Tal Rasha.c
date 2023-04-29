@@ -234,7 +234,7 @@ BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)==4
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-// Meteor - On [CoE Cycle] + [Power|Conduit|Oculus|Triune of Love]
+// Meteor - On [CoE Cycle + Power|Conduit|Oculus|Triune of Love]
 
 ((Rune(Wizard_Meteor)==0&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
 |(Rune(Wizard_Meteor)==1&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
@@ -252,6 +252,35 @@ BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)==4
 //----------------------------------------------------------------------------------------------------------------------------------------//
 
 
+
+
+
+
+
+
+
+
+
+
+
+Meteor - On [Power + Conduit] - 25 yards Cycle 50ms
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+// Meteor - On [Power + Conduit|Oculus|Triune of Love]
+
+IsBuffActive(0,Pages_Buff_Damage)
+&
+(IsBuffActive(0,Pages_Buff_Electrified_TieredRift)
+|IsBuffActive(2,ItemPassive_Unique_Ring_922_x1)
+|BuffTimeLeft(2,Community_Buff_DarkAlchemy)>0)
+&
+(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
+
+//----------------------------------------------------------------------------------------------------------------------------------------//
 
 
 
