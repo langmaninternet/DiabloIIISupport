@@ -56,7 +56,7 @@ IsBuffActive(0,P3_ItemPassive_Unique_Ring_038)
 //	Hungering Arrow - Proc [Focus]
 
 IsBuffActive(0,ItemPassive_Unique_Ring_735_x1)
-&BuffTimeLeft(1,ItemPassive_Unique_Ring_735_x1)<1000
+&BuffTimeLeft(1,ItemPassive_Unique_Ring_735_x1)<2000
 
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
 
