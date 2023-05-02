@@ -29,12 +29,13 @@ IsBuffActive(0,P69_ItemPassive_Unique_Ring_010)
 
 IsBuffActive(0,P69_ItemPassive_Unique_Ring_010)
 &BuffStackCount(10, P69_ItemPassive_Unique_Ring_010)<20
+&(BuffTimeLeft(0,X1_DemonHunter_Vengeance)>1000|BuffTimeLeft(1,DemonHunter_ShadowPower)>1000|IsBuffActive(0,DemonHunter_SmokeScreen))
 
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
 
 
 
-
+IsBuffActive(0,DemonHunter_SmokeScreen)
 
 
 
@@ -75,3 +76,7 @@ BuffTimeLeft(0,Pages_Buff_Infinite_Casting) > 4000
 
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
 
+
+
+
+IsBuffActive(0, ItemPassive_Unique_Gem_013_x1)
