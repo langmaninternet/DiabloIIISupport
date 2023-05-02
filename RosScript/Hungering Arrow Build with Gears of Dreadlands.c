@@ -60,3 +60,18 @@ IsBuffActive(0,ItemPassive_Unique_Ring_735_x1)
 
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
 
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+//	Vengeance - Buff in [Infinite Casting]
+//	Shadow Power - Buff in [Infinite Casting]
+//	Smoke Screen - Buff in [Infinite Casting]
+//	Companion - Buff in [Infinite Casting]
+//	Fan of Knives - Buff in [Infinite Casting]
+
+BuffTimeLeft(0,Pages_Buff_Infinite_Casting) > 4000
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
