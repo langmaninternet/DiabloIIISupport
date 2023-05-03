@@ -163,6 +163,11 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 //	Elite - Meteor - 3x yards Cycle 100ms
 //	Elite - Meteor - 4x yards Cycle 500ms
 //	Elite - Meteor - 5x yards Cycle 1000ms
+//
+//	Health 40% - Meteor - Near 5 yards 50ms
+//	Health 50% - Meteor - Near 10 yards 100ms
+//	Health 60% - Meteor - Near 15 yards 150ms
+//	Health 70% - Meteor - Near 20 yards 200ms
 
 (BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 
