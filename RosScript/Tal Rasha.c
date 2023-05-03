@@ -16,6 +16,21 @@
 
 
 
+/************************************************************************/
+/* Fixed monster negative density                                       */
+/*                                                                      */
+/*  Elite weight: -5                                                     */
+/*  Minion weight: -3                                                    */
+/*  Big guy weight: -5                                                   */
+/*  Goblin weight: 0                                                    */
+/*  Normal monster weight: -3                                            */
+/*                                                                      */
+/************************************************************************/
+
+
+
+
+
 
 
 
@@ -79,7 +94,11 @@ Normal monster weight: 1
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1
-//		Fixed monster positive density
+//		Elite weight: 5                   
+//		Minion weight: 1                  
+//		Big guy weight: 5                 
+//		Goblin weight: 1                  
+//		Normal monster weight: 1          
 
 
 
