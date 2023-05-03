@@ -32,6 +32,8 @@
 
 
 
+
+
 //----------------------------------------------------------------------------------------------------------------------------------------
 //	Teleport [Safe Passage|Calamity] - Safe in 5 yards - On [Wait for CoE Cycle]
 //	Teleport [Safe Passage|Calamity] - Safe in 10 yards - On [Wait for CoE Cycle]
@@ -55,6 +57,10 @@
 (BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
 
 
 
@@ -166,6 +172,81 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 
 
 
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+// Maintain [Tal Rasha's Elements] - Meteor - Near 10 yards
+// Maintain [Tal Rasha's Elements] - Meteor - Near 20 yards
+// Maintain [Tal Rasha's Elements] - Meteor - Near 30 yards
+
+BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)==4
+&
+((Rune(Wizard_Meteor)==0&BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_028)<2000)
+|(Rune(Wizard_Meteor)==1&BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_028)<2000)
+|(Rune(Wizard_Meteor)==2&BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_028)<2000)
+|(Rune(Wizard_Meteor)==3&BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_028)<2000)
+|(Rune(Wizard_Meteor)==4&BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_028)<2000)
+)
+
+//----------------------------------------------------------------------------------------------------------------------------------------//
+
+
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+// Meteor - On [CoE Cycle + Power|Conduit|Oculus|Triune of Love]
+
+((Rune(Wizard_Meteor)==0&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==1&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==2&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==3&(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==4&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>1000|(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<1250))))
+&
+(IsBuffActive(0,Pages_Buff_Damage)
+|IsBuffActive(0,Pages_Buff_Electrified_TieredRift)
+|IsBuffActive(2,ItemPassive_Unique_Ring_922_x1)
+|BuffTimeLeft(2,Community_Buff_DarkAlchemy)>0)
+&
+(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
+
+//----------------------------------------------------------------------------------------------------------------------------------------//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Meteor Fire
 Rune(Wizard_Meteor)==0
 Rune(Wizard_Meteor)==1
@@ -220,56 +301,6 @@ BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)>1000
 
 
 
-
-
-
-
-
-
-
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------
-// Maintain [Tal Rasha's Elements] - Meteor - Near 10 yards
-// Maintain [Tal Rasha's Elements] - Meteor - Near 20 yards
-// Maintain [Tal Rasha's Elements] - Meteor - Near 30 yards
-
-BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)==4
-&
-((Rune(Wizard_Meteor)==0&BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_028)<2000)
-|(Rune(Wizard_Meteor)==1&BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_028)<2000)
-|(Rune(Wizard_Meteor)==2&BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_028)<2000)
-|(Rune(Wizard_Meteor)==3&BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_028)<2000)
-|(Rune(Wizard_Meteor)==4&BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_028)<2000)
-)
-
-//----------------------------------------------------------------------------------------------------------------------------------------//
-
-
-
-BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_028)>1000
-
-
-
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------
-// Meteor - On [CoE Cycle + Power|Conduit|Oculus|Triune of Love]
-
-((Rune(Wizard_Meteor)==0&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
-|(Rune(Wizard_Meteor)==1&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
-|(Rune(Wizard_Meteor)==2&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<3000)))
-|(Rune(Wizard_Meteor)==3&(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)<3000)))
-|(Rune(Wizard_Meteor)==4&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>1000|(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<1250))))
-&
-(IsBuffActive(0,Pages_Buff_Damage)
-|IsBuffActive(0,Pages_Buff_Electrified_TieredRift)
-|IsBuffActive(2,ItemPassive_Unique_Ring_922_x1)
-|BuffTimeLeft(2,Community_Buff_DarkAlchemy)>0)
-&
-(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
-
-//----------------------------------------------------------------------------------------------------------------------------------------//
 
 
 
