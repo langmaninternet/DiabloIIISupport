@@ -156,6 +156,9 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
+//	Elite - Meteor - 5 yard 10 Monster Cycle 100ms 
+//	Elite - Meteor - 10 yard 20 Monster Cycle 100ms 
+//
 //	Elite - Meteor - In 30 yards Cycle 100ms
 //	Elite - Meteor - 3x yards Cycle 100ms
 //	Elite - Meteor - 4x yards Cycle 500ms
@@ -164,9 +167,6 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 (BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
-
-
-
 
 
 
@@ -222,10 +222,6 @@ BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)==4
 (BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 
 //----------------------------------------------------------------------------------------------------------------------------------------//
-
-
-
-
 
 
 
