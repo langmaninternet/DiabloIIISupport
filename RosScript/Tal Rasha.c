@@ -28,6 +28,9 @@ Normal monster weight: 1
 
 
 
+Teleport [Safe Passage|Calamity] - Near 5 yards - Just in Time [Prepare CoE Cycle]
+
+
 
 
 
