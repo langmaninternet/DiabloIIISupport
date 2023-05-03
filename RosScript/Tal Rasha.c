@@ -14,7 +14,7 @@
 //		Distance Max: ***
 //		Calculation min param: -100
 //		Calculation max param: 10
-//		Attack limit: -10 for 5 yards, -20 for 10 yards, -30 for 15 yards, -40 for 15 yards, 
+//		Attack limit: -10 for 5 yards, -20 for 10 yards, -30 for 15 yards, -40 for 20 yards, 
 //		Elite weight: -5
 //		Minion weight: -3
 //		Big guy weight: -5
@@ -78,18 +78,25 @@
 
 
 
-
-
-
-
-
-
-
 //----------------------------------------------------------------------------------------------------------------------------------------
 //	Teleport [Safe Passage|Calamity] - Safe in 5 yards - On [Wait for CoE Cycle]
 //	Teleport [Safe Passage|Calamity] - Safe in 10 yards - On [Wait for CoE Cycle]
 //	Teleport [Safe Passage|Calamity] - Safe in 15 yards - On [Wait for CoE Cycle]
 //	Teleport [Safe Passage|Calamity] - Safe in 20 yards - On [Wait for CoE Cycle]
+//
+//
+//		Distance Min: 0
+//		Distance Max: ***
+//		Calculation min param: -100
+//		Calculation max param: 10
+//		Attack limit: -10 for 5 yards, -20 for 10 yards, -30 for 15 yards, -40 for 20 yards, 
+//		Elite weight: -10
+//		Minion weight: -5
+//		Big guy weight: -10
+//		Goblin weight: 0
+//		Normal monster weight: -5
+//
+//
 //
 //	Teleport [Safe Passage|Calamity] - Near 5 yards - On [Wait for CoE Cycle]
 //	Teleport [Safe Passage|Calamity] - Near 10 yards - On [Wait for CoE Cycle]
