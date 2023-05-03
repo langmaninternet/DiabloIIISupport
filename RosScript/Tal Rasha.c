@@ -2,12 +2,18 @@
 
 
 
-Attack limit: 5
-Elite weight: 5
-Minion weight: 1
-Big guy weight: 5
-Goblin weight: 5
-Normal monster weight: 1
+/************************************************************************/
+/* Fixed monster positive density                                       */
+/*                                                                      */
+/*  Elite weight: 5                                                     */
+/*  Minion weight: 1                                                    */
+/*  Big guy weight: 5                                                   */
+/*  Goblin weight: 1                                                    */
+/*  Normal monster weight: 1                                            */
+/*                                                                      */
+/************************************************************************/
+
+
 
 
 
@@ -28,11 +34,6 @@ Normal monster weight: 1
 
 
 
-Teleport [Safe Passage|Calamity] - Near 5 yards - Just in Time [Prepare CoE Cycle]
-Teleport [Safe Passage|Calamity] - Near 10 yards - Just in Time [Prepare CoE Cycle]
-Teleport [Safe Passage|Calamity] - Near 15 yards - Just in Time [Prepare CoE Cycle]
-Teleport [Safe Passage|Calamity] - Near 20 yards - Just in Time [Prepare CoE Cycle]
-Teleport [Safe Passage|Calamity] - Near 25 yards - Just in Time [Prepare CoE Cycle]
 
 
 
@@ -80,11 +81,6 @@ Teleport [Safe Passage|Calamity] - Near 25 yards - Just in Time [Prepare CoE Cyc
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1
-//		Elite weight: 5
-//		Minion weight: 1
-//		Big guy weight: 5
-//		Goblin weight: 1
-//		Normal monster weight: 1
 
 
 
