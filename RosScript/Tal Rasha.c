@@ -75,12 +75,14 @@ Normal monster weight: 1
 //	Teleport [Safe Passage|Calamity] - Near 10 yards - Just in Time [Prepare CoE Cycle]
 //	Teleport [Safe Passage|Calamity] - Near 15 yards - Just in Time [Prepare CoE Cycle]
 //	Teleport [Safe Passage|Calamity] - Near 20 yards - Just in Time [Prepare CoE Cycle]
+//	Teleport [Safe Passage|Calamity] - Near 25 yards - Just in Time [Prepare CoE Cycle]
 //
 //		Distance Min: 0
 //		Distance Max: *** 
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1
+//		Fixed monster positive density
 
 
 
