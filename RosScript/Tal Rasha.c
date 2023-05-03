@@ -17,12 +17,12 @@ Diamond Skin - Buff in density
 Distance Min: 0
 Distance Max: 50
 Calculation min param: 0
-Calculation max param: 10
+Calculation max param: 5
 Attack limit: 5
 Elite weight: 5
 Minion weight: 1
 Big guy weight: 5
-Goblin weight: 5
+Goblin weight: 1
 Normal monster weight: 1
 
 
