@@ -29,9 +29,10 @@ Normal monster weight: 1
 
 
 Teleport [Safe Passage|Calamity] - Near 5 yards - Just in Time [Prepare CoE Cycle]
-
-
-
+Teleport [Safe Passage|Calamity] - Near 10 yards - Just in Time [Prepare CoE Cycle]
+Teleport [Safe Passage|Calamity] - Near 15 yards - Just in Time [Prepare CoE Cycle]
+Teleport [Safe Passage|Calamity] - Near 20 yards - Just in Time [Prepare CoE Cycle]
+Teleport [Safe Passage|Calamity] - Near 25 yards - Just in Time [Prepare CoE Cycle]
 
 
 
@@ -58,6 +59,57 @@ Teleport [Safe Passage|Calamity] - Near 5 yards - Just in Time [Prepare CoE Cycl
 (BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+
+
+
+
+
+////----------------------------------------------------------------------------------------------------------------------------------------\\\\
+//
+//	Teleport [Safe Passage|Calamity] - Near 5 yards - Just in Time [Prepare CoE Cycle]
+//	Teleport [Safe Passage|Calamity] - Near 10 yards - Just in Time [Prepare CoE Cycle]
+//	Teleport [Safe Passage|Calamity] - Near 15 yards - Just in Time [Prepare CoE Cycle]
+//	Teleport [Safe Passage|Calamity] - Near 20 yards - Just in Time [Prepare CoE Cycle]
+//
+//		Distance Min: 0
+//		Distance Max: *** 
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1
+//		Elite weight: 5
+//		Minion weight: 1
+//		Big guy weight: 5
+//		Goblin weight: 1
+//		Normal monster weight: 1
+
+
+
+((Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)<4000&BuffTimeLeft(0,Pages_Buff_Invulnerable)<6000)
+|(Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<4000))
+&
+((Rune(Wizard_Meteor)==0&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)
+|(Rune(Wizard_Meteor)==1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)
+|(Rune(Wizard_Meteor)==2&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<3000)
+|(Rune(Wizard_Meteor)==3&BuffTimeLeft(6,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(6,P2_ItemPassive_Unique_Ring_038)<3000)
+|(Rune(Wizard_Meteor)==4&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<3000))
+&
+(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+
+
+
+
+
+
 
 
 
