@@ -1,6 +1,18 @@
 
 
 
+
+Attack limit: 5
+Elite weight: 5
+Minion weight: 1
+Big guy weight: 5
+Goblin weight: 5
+Normal monster weight: 1
+
+
+
+
+
 ////----------------------------------------------------------------------------------------------------------------------------------------\\\\
 //	Teleport [Safe Passage|Calamity] - Safe in 5 yards - Just in Time [Prepare CoE Cycle]
 //	Teleport [Safe Passage|Calamity] - Safe in 10 yards - Just in Time [Prepare CoE Cycle]
