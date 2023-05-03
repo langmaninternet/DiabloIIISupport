@@ -43,7 +43,7 @@
 //	Teleport [Safe Passage|Calamity] - Near 15 yards - On [Wait for CoE Cycle]
 //	Teleport [Safe Passage|Calamity] - Near 20 yards - On [Wait for CoE Cycle]
 
-((Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)<1000)
+((Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)<1000&BuffTimeLeft(0,Pages_Buff_Invulnerable)<5000)
 |(Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<1000))
 &
 ((Rune(Wizard_Meteor)==0&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>0))
