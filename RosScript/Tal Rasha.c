@@ -3,7 +3,7 @@
 
 
 /************************************************************************/
-/* Fixed monster positive density                                       */
+/* Refer monster positive density                                       */
 /*                                                                      */
 /*  Elite weight: 5                                                     */
 /*  Minion weight: 1                                                    */
@@ -17,7 +17,7 @@
 
 
 /************************************************************************/
-/* Fixed monster negative density                                       */
+/* Refer monster negative density                                       */
 /*                                                                      */
 /*  Elite weight: -5                                                     */
 /*  Minion weight: -3                                                    */
@@ -34,22 +34,6 @@
 
 
 
-Diamond Skin - Buff in density
-Distance Min: 0
-Distance Max: 50
-Calculation min param: 0
-Calculation max param: 5
-Attack limit: 5
-Elite weight: 5
-Minion weight: 1
-Big guy weight: 5
-Goblin weight: 1
-Normal monster weight: 1
-
-
-
-
-
 
 
 ////----------------------------------------------------------------------------------------------------------------------------------------\\\\
@@ -58,30 +42,22 @@ Normal monster weight: 1
 //	Teleport [Safe Passage|Calamity] - Safe in 15 yards - Just in Time [Prepare CoE Cycle]
 //	Teleport [Safe Passage|Calamity] - Safe in 20 yards - Just in Time [Prepare CoE Cycle]
 //
-
-
-((Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)<4000&BuffTimeLeft(0,Pages_Buff_Invulnerable)<6000)
-|(Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<4000))
-&
-((Rune(Wizard_Meteor)==0&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)
-|(Rune(Wizard_Meteor)==1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)
-|(Rune(Wizard_Meteor)==2&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<3000)
-|(Rune(Wizard_Meteor)==3&BuffTimeLeft(6,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(6,P2_ItemPassive_Unique_Ring_038)<3000)
-|(Rune(Wizard_Meteor)==4&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<3000))
-&
-(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
-
-//\\----------------------------------------------------------------------------------------------------------------------------------------////
-
-
-
-
-
-
-
-
-
-////----------------------------------------------------------------------------------------------------------------------------------------\\\\
+//		Distance Min: 0
+//		Distance Max: ***
+//		Calculation min param: -100
+//		Calculation max param: 10
+//		Attack limit: -10 for 5 yards, -20 for 10 yards, -30 for 15 yards, -40 for 15 yards, 
+//		Elite weight: -5
+//		Minion weight: -3
+//		Big guy weight: -5
+//		Goblin weight: 0
+//		Normal monster weight: -3
+//
+//
+//
+//
+//
+//
 //
 //	Teleport [Safe Passage|Calamity] - Near 5 yards - Just in Time [Prepare CoE Cycle]
 //	Teleport [Safe Passage|Calamity] - Near 10 yards - Just in Time [Prepare CoE Cycle]
@@ -90,15 +66,15 @@ Normal monster weight: 1
 //	Teleport [Safe Passage|Calamity] - Near 25 yards - Just in Time [Prepare CoE Cycle]
 //
 //		Distance Min: 0
-//		Distance Max: *** 
+//		Distance Max: ***
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1
-//		Elite weight: 5                   
-//		Minion weight: 1                  
-//		Big guy weight: 5                 
-//		Goblin weight: 1                  
-//		Normal monster weight: 1          
+//		Elite weight: 5
+//		Minion weight: 1
+//		Big guy weight: 5
+//		Goblin weight: 1
+//		Normal monster weight: 1
 
 
 
@@ -114,6 +90,13 @@ Normal monster weight: 1
 (BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+
+
+
 
 
 
@@ -256,8 +239,8 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-//	Elite - Meteor - 5 yard 10 Monster Cycle 100ms 
-//	Elite - Meteor - 10 yard 20 Monster Cycle 100ms 
+//	Elite - Meteor - 5 yard 10 Monster Cycle 100ms
+//	Elite - Meteor - 10 yard 20 Monster Cycle 100ms
 //
 //	Elite - Meteor - In 30 yards Cycle 100ms
 //	Elite - Meteor - 3x yards Cycle 100ms
@@ -468,11 +451,11 @@ Rune(Wizard_Meteor)==4
 
 
 Buff, 		1, 		0, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
-Buff, 		1, 		0, 			P2_ItemPassive_Unique_Ring_036, 
+Buff, 		1, 		0, 			P2_ItemPassive_Unique_Ring_036,
 
 
 
-//Cold 
+//Cold
 Buff, 		1, 		5, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
 Buff, 		1, 		2, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
 EndTick, 	426, 		5, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
@@ -512,9 +495,9 @@ Buff, 		1, 		2, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
 
 Meteor - On [CoE Cold Cycle + Power] + Already Buff
 Meteor - On [CoE Cold Cycle + Conduit] + Already Buff
-Rune(Wizard_Meteor) == 2 
-& (BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000)) 
-& IsBuffActive(0,Pages_Buff_Electrified_TieredRift) 
+Rune(Wizard_Meteor) == 2
+& (BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000))
+& IsBuffActive(0,Pages_Buff_Electrified_TieredRift)
 &(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 Meteor - On [CoE Cold Cycle + Oculus] + Already Buff
 
@@ -560,8 +543,8 @@ Meteor - Elite - Cycle 1000ms + Already Buff
 
 
 Meteor - On [CoE Cold Cycle]
-Rune(Wizard_Meteor) == 2 
-&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000)) 
+Rune(Wizard_Meteor) == 2
+&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000))
 &(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 
 
@@ -588,7 +571,7 @@ BuffStackCount(5, P2_ItemPassive_Unique_Ring_028) ==3
 
 
 Meteor - On [CoE Cold Cycle + Proc Enchantress Cheat Death] + Already Buff
-BuffTimeLeft(1,Enchantress_CheatDeath_Passive)>0 & Rune(Wizard_Meteor) == 2 
+BuffTimeLeft(1,Enchantress_CheatDeath_Passive)>0 & Rune(Wizard_Meteor) == 2
 &(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000))
 &(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 
@@ -604,8 +587,8 @@ Rune(Wizard_Teleport) == 2 & BuffTimeLeft(1,Enchantress_CheatDeath_Passive)>0 & 
 
 
 Meteor - Rift Guardian [0-60 yards] - On [CoE Cold Cycle] + Already Buff + HP 99%
-Rune(Wizard_Meteor) == 2 
-&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000)) 
+Rune(Wizard_Meteor) == 2
+&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000))
 &(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 
 
@@ -627,7 +610,7 @@ Rune(Wizard_Meteor) == 2 & BuffTimeLeft(1,Wizard_Teleport)<4000
 
 
 
-Teleport - Best position in 5 yards - On [Wait for CoE Cold Cycle] 
+Teleport - Best position in 5 yards - On [Wait for CoE Cold Cycle]
 Rune(Wizard_Meteor) == 2 & BuffTimeLeft(1,Wizard_Teleport)<400
 &(BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(4, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(5, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(6, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(7, P2_ItemPassive_Unique_Ring_038)>0)
 &(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
@@ -661,9 +644,9 @@ BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|Buf
 
 Teleport - Elite - Proc [Safe Passage] On [CoE Fire Holy Lightning Physical Poison Cycle]
 
-Buffed resource: 
+Buffed resource:
 Health
-Minimum resource level: 
+Minimum resource level:
 40.00% for health, absolute value for resources
 
 
@@ -687,7 +670,7 @@ Doors - Grenade
 
 
 Multishot - Rift Guardian - On [Oculus] + Already Buff
-BuffTimeLeft(0,ItemPassive_Unique_Ring_922_x1)>0 & BuffTimeLeft(2,ItemPassive_Unique_Ring_922_x1)>0 & BuffTimeLeft(3,ItemPassive_Unique_Ring_922_x1)>0 
+BuffTimeLeft(0,ItemPassive_Unique_Ring_922_x1)>0 & BuffTimeLeft(2,ItemPassive_Unique_Ring_922_x1)>0 & BuffTimeLeft(3,ItemPassive_Unique_Ring_922_x1)>0
 
 &(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 
@@ -727,7 +710,7 @@ Already Buff
 
 
 Meteor - Rift Guardian - On [CoE Cold Cycle] + Already Buff
-Rune(Wizard_Meteor) == 2 & (BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000)) 
+Rune(Wizard_Meteor) == 2 & (BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000))
 &(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 
 
