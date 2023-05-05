@@ -367,6 +367,43 @@ BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)>1000
 
 
 
+//----------------------------------------------------------------------------------------------------------------------------------------
+//  Elite - Meteor - [Zei's Stone of Vengeance]
+
+IsBuffActive(0,ItemPassive_Unique_Gem_012_x1)
+&Health()==100%
+&
+(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
