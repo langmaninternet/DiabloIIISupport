@@ -372,7 +372,7 @@ BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)>1000
 
 IsBuffActive(0,ItemPassive_Unique_Gem_012_x1)
 &Health()==100%
-&BuffTimeLeft(1,Enchantress_CheatDeath_Passive)==0
+&IsBuffActive(3,Enchantress_CheatDeath_Passive)&BuffTimeLeft(1,Enchantress_CheatDeath_Passive)==0
 &
 (BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 
@@ -380,13 +380,9 @@ IsBuffActive(0,ItemPassive_Unique_Gem_012_x1)
 
 
 
-Rune(Wizard_Teleport) == 2 & BuffTimeLeft(1,Enchantress_CheatDeath_Passive)>0 & BuffTimeLeft(1,Wizard_Teleport)<1000
-
-
-
+BuffTimeLeft(1,Templar_CheatDeath_Passive)==0
 IsBuffActive(3,Enchantress_CheatDeath_Passive)
 IsBuffActive(3,Templar_CheatDeath_Passive)
-
 IsBuffActive(3,Scoundrel_CheatDeath_Passive)
 
 
