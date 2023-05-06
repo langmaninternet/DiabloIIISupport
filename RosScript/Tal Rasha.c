@@ -356,34 +356,6 @@ BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)==4
 
 
 
-//----------------------------------------------------------------------------------------------------------------------------------------
-//  Rift Guardian - Meteor - Proc [Zei's Stone of Vengeance]
-//
-//		Distance Min: 40
-//		Distance Max: 60
-//		Calculation min param: 0
-//		Calculation max param: 10
-//		Attack limit: 1 
-//		Elite weight: 0
-//		Minion weight: 0
-//		Big guy weight: 2
-//		Goblin weight: 0
-//		Normal monster weight: 0
-//
-//
-IsBuffActive(0,ItemPassive_Unique_Gem_012_x1)
-&Health()==100%
-&IsBuffActive(3,Enchantress_CheatDeath_Passive)&BuffTimeLeft(1,Enchantress_CheatDeath_Passive)==0
-&(IsBuffActive(2,Wizard_Passive_GalvanizingWard)|IsBuffActive(0,Pages_Buff_Invulnerable)|(Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)>2000))
-&
-(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
-
-//\\----------------------------------------------------------------------------------------------------------------------------------------////
-
-
-
-
-
 
 
 
