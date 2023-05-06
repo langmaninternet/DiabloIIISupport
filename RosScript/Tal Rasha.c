@@ -168,6 +168,7 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 IsBuffActive(0,ItemPassive_Unique_Gem_012_x1)
 &Health()==100%
 &IsBuffActive(3,Enchantress_CheatDeath_Passive)&BuffTimeLeft(1,Enchantress_CheatDeath_Passive)==0
+&(IsBuffActive(2,Wizard_Passive_GalvanizingWard)|IsBuffActive(0,Pages_Buff_Invulnerable)|(Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)>2000))
 &
 (BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
 
@@ -402,10 +403,17 @@ BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)>1000
 
 
 
+//Có sheild - IsBuffActive(2,Wizard_Passive_GalvanizingWard)
+Buff, 		1, 		0, 			Wizard_Passive_GalvanizingWard, Galvanizing Ward
+Buff, 		1, 		2, 			Wizard_Passive_GalvanizingWard, Galvanizing Ward
 
 
 
 
+// No sheild
+Buff, 		1, 		0, 			Wizard_Passive_GalvanizingWard, Galvanizing Ward
+EndTick, 	247, 		1, 			Wizard_Passive_GalvanizingWard, Galvanizing Ward
+Buff, 		1, 		1, 			Wizard_Passive_GalvanizingWard, Galvanizing Ward
 
 
 
@@ -436,7 +444,7 @@ IsBuffActive(3,Scoundrel_CheatDeath_Passive)
 
 
 
-
+IsBuffActive(2,Wizard_Passive_GalvanizingWard)
 
 
 
