@@ -156,7 +156,7 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 //		Distance Min: 40
 //		Distance Max: 60
 //		Calculation min param: 0
-//		Calculation max param: 1
+//		Calculation max param: 10
 //		Attack limit: 1 
 //		Elite weight: 0
 //		Minion weight: 0
@@ -184,7 +184,7 @@ IsBuffActive(0,ItemPassive_Unique_Gem_012_x1)
 //		Distance Min: 35
 //		Distance Max: 60
 //		Calculation min param: 0
-//		Calculation max param: 1
+//		Calculation max param: 10
 //		Attack limit: 1 
 //		Elite weight: 0
 //		Minion weight: 0
@@ -362,7 +362,7 @@ BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)==4
 //		Distance Min: 40
 //		Distance Max: 60
 //		Calculation min param: 0
-//		Calculation max param: 1
+//		Calculation max param: 10
 //		Attack limit: 1 
 //		Elite weight: 0
 //		Minion weight: 0
@@ -396,7 +396,7 @@ IsBuffActive(0,ItemPassive_Unique_Gem_012_x1)
 //		Distance Min: 40
 //		Distance Max: 60
 //		Calculation min param: 0
-//		Calculation max param: 1
+//		Calculation max param: 10
 //		Attack limit: 1 
 //		Elite weight: 2
 //		Minion weight: 0
@@ -430,7 +430,7 @@ IsBuffActive(0,ItemPassive_Unique_Gem_012_x1)
 //		Distance Min: 35
 //		Distance Max: 60
 //		Calculation min param: 0
-//		Calculation max param: 1
+//		Calculation max param: 10
 //		Attack limit: 1 
 //		Elite weight: 2
 //		Minion weight: 0
