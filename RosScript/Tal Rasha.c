@@ -432,7 +432,7 @@ IsBuffActive(0,ItemPassive_Unique_Gem_012_x1)
 //		Calculation min param: 0
 //		Calculation max param: 1
 //		Attack limit: 1 
-//		Elite weight: 0
+//		Elite weight: 2
 //		Minion weight: 0
 //		Big guy weight: 2
 //		Goblin weight: 0
