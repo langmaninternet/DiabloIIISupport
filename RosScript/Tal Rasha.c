@@ -207,6 +207,31 @@ IsBuffActive(0,Wizard_Passive_PowerHungry)
 
 
 
+//----------------------------------------------------------------------------------------------------------------------------------------
+//  Elite - Meteor - Proc [Tal Rasha] - Fresh start - 10 yard
+//  Elite - Meteor - Proc [Tal Rasha] - Fresh start - 20 yard
+//
+//		Distance Min: 0
+//		Distance Max: ***
+//		Calculation min param: 0
+//		Calculation max param: 30
+//		Attack limit: 1 
+//		Elite weight: 1
+//		Minion weight: 1
+//		Big guy weight: 1
+//		Goblin weight: 1
+//		Normal monster weight: 1
+//
+//
+IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)<4
+&
+(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
 
 
 
