@@ -413,7 +413,6 @@ IsBuffActive(0,ItemPassive_Unique_Gem_012_x1)
 |(IsBuffActive(0,Pages_Buff_Invulnerable)&BuffStackCount(1,x1_Wizard_Passive_ArcaneAegis)==10)
 |(IsBuffActive(0,Pages_Buff_Invulnerable)&Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)>2000))
 |(IsBuffActive(2,Wizard_Passive_GalvanizingWard)&BuffStackCount(1,x1_Wizard_Passive_ArcaneAegis)==10)
-
 )
 &
 (BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
@@ -421,12 +420,40 @@ IsBuffActive(0,ItemPassive_Unique_Gem_012_x1)
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
 
 
-(IsBuffActive(2,Wizard_Passive_GalvanizingWard)&BuffStackCount(1,x1_Wizard_Passive_ArcaneAegis)==10)
 
 
 
 
-BuffStackCount(1,x1_Wizard_Passive_ArcaneAegis)>0
+//----------------------------------------------------------------------------------------------------------------------------------------
+//  Elite - Meteor - Proc [Power Hungry]
+//
+//		Distance Min: 35
+//		Distance Max: 60
+//		Calculation min param: 0
+//		Calculation max param: 1
+//		Attack limit: 1 
+//		Elite weight: 0
+//		Minion weight: 0
+//		Big guy weight: 2
+//		Goblin weight: 0
+//		Normal monster weight: 0
+//
+//
+IsBuffActive(0,Wizard_Passive_PowerHungry)
+&Health()==100%
+&IsBuffActive(3,Enchantress_CheatDeath_Passive)&BuffTimeLeft(1,Enchantress_CheatDeath_Passive)==0
+&(
+(IsBuffActive(0,Pages_Buff_Invulnerable)&IsBuffActive(2,Wizard_Passive_GalvanizingWard))
+|(IsBuffActive(0,Pages_Buff_Invulnerable)&BuffStackCount(1,x1_Wizard_Passive_ArcaneAegis)==10)
+|(IsBuffActive(0,Pages_Buff_Invulnerable)&Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)>2000))
+|(IsBuffActive(2,Wizard_Passive_GalvanizingWard)&BuffStackCount(1,x1_Wizard_Passive_ArcaneAegis)==10)
+)
+&
+(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
 
 
 
