@@ -150,6 +150,35 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 
 
 
+//----------------------------------------------------------------------------------------------------------------------------------------
+//  Rift Guardian - Meteor - Proc [Zei's Stone of Vengeance]
+//
+//		Distance Min: 40
+//		Distance Max: 60
+//		Calculation min param: 0
+//		Calculation max param: 1
+//		Attack limit: 1 
+//		Elite weight: 0
+//		Minion weight: 0
+//		Big guy weight: 2
+//		Goblin weight: 0
+//		Normal monster weight: 0
+//
+//
+IsBuffActive(0,ItemPassive_Unique_Gem_012_x1)
+&Health()==100%
+&IsBuffActive(3,Enchantress_CheatDeath_Passive)&BuffTimeLeft(1,Enchantress_CheatDeath_Passive)==0
+&
+(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+
+
+
 
 
 
@@ -294,6 +323,21 @@ BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)==4
 
 
 
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+//  Elite - Meteor - [Zei's Stone of Vengeance]
+
+IsBuffActive(0,ItemPassive_Unique_Gem_012_x1)
+&Health()==100%
+&IsBuffActive(3,Enchantress_CheatDeath_Passive)&BuffTimeLeft(1,Enchantress_CheatDeath_Passive)==0
+&
+(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000)
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
 
 
 
