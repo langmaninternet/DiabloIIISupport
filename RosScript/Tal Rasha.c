@@ -118,11 +118,6 @@
 
 
 
-(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
-
-
-
-
 
 
 
@@ -445,6 +440,35 @@ IsBuffActive(0,Wizard_Passive_PowerHungry)
 |(IsBuffActive(0,Pages_Buff_Invulnerable)&Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)>2000)
 |(IsBuffActive(2,Wizard_Passive_GalvanizingWard)&BuffStackCount(1,x1_Wizard_Passive_ArcaneAegis)==10)
 )
+&
+(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+//  Elite - Meteor - Proc [Dominance] - 5 yards Cycle 1000ms
+//
+//		Distance Min: 0
+//		Distance Max: 5
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1 
+//		Elite weight: 2
+//		Minion weight: 1
+//		Big guy weight: 2
+//		Goblin weight: 1
+//		Normal monster weight: 1
+//
+//
+BuffStackCount(1,x1_Wizard_Passive_ArcaneAegis)<1
 &
 (BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
 
