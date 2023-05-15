@@ -535,6 +535,63 @@ BuffStackCount(1,x1_Wizard_Passive_ArcaneAegis)<3
 
 
 
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+//  Elite - Meteor - [Zei's Stone of Vengeance]
+
+IsBuffActive(0,ItemPassive_Unique_Gem_012_x1)
+&Health()==100%
+&IsBuffActive(3,Enchantress_CheatDeath_Passive)&BuffTimeLeft(1,Enchantress_CheatDeath_Passive)==0
+&
+(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+// Walk - Teleport [Safe Passage]
+
+Rune(Wizard_Teleport)==2 
+&(!IsBuffActive(0,Pages_Buff_Run_Speed_Knockback_Cast))
+
+//----------------------------------------------------------------------------------------------------------------------------------------//
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+// Meteor - On [Power + Conduit|Oculus|Triune of Love]
+
+IsBuffActive(0,Pages_Buff_Damage)
+&
+(IsBuffActive(0,Pages_Buff_Electrified_TieredRift)
+|IsBuffActive(2,ItemPassive_Unique_Ring_922_x1)
+|BuffTimeLeft(2,Community_Buff_DarkAlchemy)>0)
+&
+(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+//----------------------------------------------------------------------------------------------------------------------------------------//
+
+
+
+
+
+
+
+
 //Meteor Fire
 Rune(Wizard_Meteor)==0
 Rune(Wizard_Meteor)==1
@@ -594,62 +651,6 @@ Buff, 		1, 		2, 			Wizard_Passive_GalvanizingWard, Galvanizing Ward
 
 
 
-// No sheild
-Buff, 		1, 		0, 			Wizard_Passive_GalvanizingWard, Galvanizing Ward
-EndTick, 	247, 		1, 			Wizard_Passive_GalvanizingWard, Galvanizing Ward
-Buff, 		1, 		1, 			Wizard_Passive_GalvanizingWard, Galvanizing Ward
-
-
-
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------
-//  Elite - Meteor - [Zei's Stone of Vengeance]
-
-IsBuffActive(0,ItemPassive_Unique_Gem_012_x1)
-&Health()==100%
-&IsBuffActive(3,Enchantress_CheatDeath_Passive)&BuffTimeLeft(1,Enchantress_CheatDeath_Passive)==0
-&
-(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
-
-//\\----------------------------------------------------------------------------------------------------------------------------------------////
-
-
-
-BuffTimeLeft(1,Templar_CheatDeath_Passive)==0
-IsBuffActive(3,Enchantress_CheatDeath_Passive)
-IsBuffActive(3,Templar_CheatDeath_Passive)
-IsBuffActive(3,Scoundrel_CheatDeath_Passive)
-
-
-
-
-
-IsBuffActive(2,Wizard_Passive_GalvanizingWard)
-
-
-
-
-
-
-Meteor - On [Power + Conduit] - 25 yards Cycle 50ms
-
-
-
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------
-// Meteor - On [Power + Conduit|Oculus|Triune of Love]
-
-IsBuffActive(0,Pages_Buff_Damage)
-&
-(IsBuffActive(0,Pages_Buff_Electrified_TieredRift)
-|IsBuffActive(2,ItemPassive_Unique_Ring_922_x1)
-|BuffTimeLeft(2,Community_Buff_DarkAlchemy)>0)
-&
-(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
-
-//----------------------------------------------------------------------------------------------------------------------------------------//
 
 
 
@@ -657,70 +658,20 @@ IsBuffActive(0,Pages_Buff_Damage)
 
 
 
-//		1. Arcane
-//		2. Cold
-//		3. Fire
-//		4. Holy
-//		5. Lightning
-//		6. Physical
-//		7. Poison
-//		Wizard : Cold -> Fire -> Lightning -> Arcane -> Cold -> Fire -> Lightning -> Arcane
-//		Wizard : 2 -> 3 -> 5 -> 1 -> 2 -> 3 -> 5 -> 1
-
-
-//Meteor Fire
-Rune(Wizard_Meteor)==0
-Rune(Wizard_Meteor)==1
-
-//Meteor Cold
-Rune(Wizard_Meteor)==2
-
-//Meteor Arcane
-Rune(Wizard_Meteor)==3
-
-//Meteor Lightning
-Rune(Wizard_Meteor)==4
 
 
 
 
-Buff, 		1, 		0, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
-Buff, 		1, 		0, 			P2_ItemPassive_Unique_Ring_036,
 
 
 
-//Cold
-Buff, 		1, 		5, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
-Buff, 		1, 		2, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
-EndTick, 	426, 		5, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
-EndTick, 	426, 		2, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
-Buff, 		1, 		0, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
-
-
-//Arcane
-Buff, 		1, 		5, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
-Buff, 		1, 		1, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
-EndTick, 	419, 		5, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
-EndTick, 	419, 		1, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
-Buff, 		1, 		0, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
 
 
 
-//Cold +fire
-Buff, 		2, 		5, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
-Buff, 		1, 		3, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
-Buff, 		1, 		2, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
-EndTick, 	436, 		5, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
-EndTick, 	436, 		3, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
-EndTick, 	430, 		2, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
-Buff, 		1, 		0, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
 
 
 
-//Cold + Lightning
-Buff, 		2, 		5, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
-Buff, 		1, 		4, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
-Buff, 		1, 		2, 			P2_ItemPassive_Unique_Ring_028, Tal Rasha's Elements
+
 
 
 
