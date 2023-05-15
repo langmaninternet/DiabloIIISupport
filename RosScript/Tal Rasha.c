@@ -560,7 +560,7 @@ IsBuffActive(0,ItemPassive_Unique_Gem_012_x1)
 //----------------------------------------------------------------------------------------------------------------------------------------
 // Walk - Teleport [Safe Passage]
 
-Rune(Wizard_Teleport)==2 
+Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)<500
 &(!IsBuffActive(0,Pages_Buff_Run_Speed_Knockback_Cast))
 
 //----------------------------------------------------------------------------------------------------------------------------------------//
