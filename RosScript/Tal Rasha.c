@@ -992,3 +992,11 @@ Meteor - Elite - Near Cycle 500ms - On [CoE Cold Cycle] + Already Buff
 
 
 
+
+
+
+
+
+////
+IsBuffActive(0,Wizard_Passive_ArcaneDynamo)
+BuffStackCount(1,Wizard_Passive_ArcaneDynamo)<5
