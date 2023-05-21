@@ -6,7 +6,8 @@
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-//	Hungering Arrow - Proc [Gear of Dreadlands - 4 pieces]
+//	Hungering Arrow - Attack - Proc [Gear of Dreadlands - 4 pieces]
+//	Hungering Arrow - Buff - Proc [Gear of Dreadlands - 4 pieces]
 
 IsBuffActive(0,P69_ItemPassive_Unique_Ring_011)
 &(!IsBuffActive(4,P69_ItemPassive_Unique_Ring_010))
@@ -16,7 +17,8 @@ IsBuffActive(0,P69_ItemPassive_Unique_Ring_011)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-//	Hungering Arrow - Maintain [Gear of Dreadlands - Momentum]
+//	Hungering Arrow - Attack - Maintain [Gear of Dreadlands - Momentum]
+//	Hungering Arrow - Buff - Maintain [Gear of Dreadlands - Momentum]
 
 IsBuffActive(0,P69_ItemPassive_Unique_Ring_010)
 &BuffTimeLeft(10,P69_ItemPassive_Unique_Ring_010)<2000
@@ -25,7 +27,8 @@ IsBuffActive(0,P69_ItemPassive_Unique_Ring_010)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-//	Hungering Arrow - Increase [Gear of Dreadlands - Momentum]
+//	Hungering Arrow - Attack - Increase [Gear of Dreadlands - Momentum]
+//	Hungering Arrow - Buff - Increase [Gear of Dreadlands - Momentum]
 
 IsBuffActive(0,P69_ItemPassive_Unique_Ring_010)
 &BuffStackCount(10, P69_ItemPassive_Unique_Ring_010)<17
@@ -40,7 +43,8 @@ IsBuffActive(0,DemonHunter_SmokeScreen)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-//	Hungering Arrow - Maintain [Wraps of Clarity]
+//	Hungering Arrow - Attack - Maintain [Wraps of Clarity]
+//	Hungering Arrow - Buff - Maintain [Wraps of Clarity]
 
 IsBuffActive(0,P3_ItemPassive_Unique_Ring_038)
 &BuffTimeLeft(1,P3_ItemPassive_Unique_Ring_038)<1000
