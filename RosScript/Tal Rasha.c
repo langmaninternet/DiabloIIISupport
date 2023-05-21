@@ -653,6 +653,31 @@ ActorCount(P1_LR_TieredRift_Nephalem) == 1 & (!WorldIsGreaterRiftNotFinished())
 
 
 
+//----------------------------------------------------------------------------------------------------------------------------------------
+//  Elite - Typhon Hydra - First 5 Head
+//
+//		Distance Min: 35
+//		Distance Max: 60
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1 
+//		Elite weight: 2
+//		Minion weight: 0
+//		Big guy weight: 2
+//		Goblin weight: 0
+//		Normal monster weight: 0
+//
+//
+
+IsBuffActive(0,P68_ItemPassive_Unique_Ring_007)
+&(!IsBuffActive(0,Wizard_Passive_ArcaneDynamo)|BuffStackCount(1,Wizard_Passive_ArcaneDynamo)==5)
+&BuffStackCount(7,Wizard_Hydra)<5
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+
 
 
 
@@ -1076,10 +1101,18 @@ IsBuffActive(0,Wizard_Passive_ArcaneDynamo)&BuffStackCount(1,Wizard_Passive_Arca
 
 
 
-// Hydra
+
+
+// 
+
+BuffStackCount(7,Wizard_Hydra)<5
+
 
 // Typhon - six pc 
 IsBuffActive(0,P68_ItemPassive_Unique_Ring_007)
+
+//full stack dynamo
+(!IsBuffActive(0,Wizard_Passive_ArcaneDynamo)|BuffStackCount(1,Wizard_Passive_ArcaneDynamo)==5)
 
 
 

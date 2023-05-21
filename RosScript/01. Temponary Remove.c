@@ -1,0 +1,440 @@
+
+
+
+
+
+
+Elites - Mystic Ally - Infinite Casting + Shenlong's Spirit
+BuffTimeLeft(0, Pages_Buff_Infinite_Casting) > 4000 & Rune(X1_Monk_MysticAlly_v2)==0 
+& ((!IsBuffActive(0, P3_ItemPassive_Unique_Ring_026)) | IsBuffActive(1, P3_ItemPassive_Unique_Ring_026) | Primary() > 70%)
+
+
+
+Elites - Fire Mystic Ally - (Fire CoE Cycle + Shenlong's Spirit + Assimilation) - Very Good Situation 01
+Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) > 2000 & (IsBuffActive(1, P3_ItemPassive_Unique_Ring_026) | Primary() > 70%) & BuffStackCount(4, Monk_WayOfTheHundredFists) > 0 & ( MonkAlliesCount() >= 10 | (MonkAlliesCount() >= 9 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 3600) | (MonkAlliesCount() >= 8 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 3200) | (MonkAlliesCount() >= 7 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 2800) | (MonkAlliesCount() >= 6 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 2400))
+
+
+
+Elites - Fire Mystic Ally - (Fire CoE Cycle + Shenlong's Spirit + [Dregs of Lies]) - Very Good Situation 02
+Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) > 2000 & (IsBuffActive(1, P3_ItemPassive_Unique_Ring_026) | Primary() > 70%) & ( (MonkAlliesCount() >= 10 & ((!IsBuffActive(0, P72_ItemPassive_Soulshard_002)) | BuffStackCount(2, P72_ItemPassive_Soulshard_002) > 60)) | (MonkAlliesCount() >= 9 & ((!IsBuffActive(0, P72_ItemPassive_Soulshard_002)) | BuffStackCount(2, P72_ItemPassive_Soulshard_002) > 50) & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 3600) | (MonkAlliesCount() >= 8 & ((!IsBuffActive(0, P72_ItemPassive_Soulshard_002)) | BuffStackCount(2, P72_ItemPassive_Soulshard_002) > 40) & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 3200) | (MonkAlliesCount() >= 7 & ((!IsBuffActive(0, P72_ItemPassive_Soulshard_002)) | BuffStackCount(2, P72_ItemPassive_Soulshard_002) > 30) & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 2800) | (MonkAlliesCount() >= 6 & ((!IsBuffActive(0, P72_ItemPassive_Soulshard_002)) | BuffStackCount(2, P72_ItemPassive_Soulshard_002) > 20) & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 2400))
+
+
+
+
+
+
+
+Elites - Fire Mystic Ally - (Fire CoE Cycle + Shenlong's Spirit) - Good Situation
+Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) > 1900 & IsBuffActive(1, P3_ItemPassive_Unique_Ring_026) & (MonkAlliesCount() > 9 | (MonkAlliesCount() > 8 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 3600) | (MonkAlliesCount() > 7 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 3200) | (MonkAlliesCount() > 6 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 2800) | (MonkAlliesCount() > 5 & BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 2400) | BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038) < 2201)
+
+
+
+Elites - Buff - Inner Sanctuary - Proc [Sliver of Terror]
+Cooldown(X1_Monk_MysticAlly_v2) < 1000 | MonkAlliesCount() > 10
+
+
+
+
+
+
+//Meteor Fire
+Rune(Wizard_Meteor)==0
+Rune(Wizard_Meteor)==1
+
+//Meteor Cold
+Rune(Wizard_Meteor)==2
+
+//Meteor Arcane
+Rune(Wizard_Meteor)==3
+
+//Meteor Lightning
+Rune(Wizard_Meteor)==4
+
+
+//Teleport [Safe Passage]
+Rune(Wizard_Teleport)==2
+
+
+//	Teleport [Calamity]
+Rune(Wizard_Teleport)==0
+
+
+
+//		Convention of Elements
+//		Power name: P2_ItemPassive_Unique_Ring_038
+//		The sequence of elements w.r.t. their bucket number is as follows:
+//		1. Arcane
+//		2. Cold
+//		3. Fire
+//		4. Holy
+//		5. Lightning
+//		6. Physical
+//		7. Poison
+//		Wizard : Cold -> Fire -> Lightning -> Arcane -> Cold -> Fire -> Lightning -> Arcane
+//		Wizard : 2    -> 3    -> 5         -> 1      -> 2    -> 3    -> 5         -> 1
+
+
+//		Tal Rasha's Set
+//		Power name: P2_ItemPassive_Unique_Ring_028
+//		Have 6 set effect: IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)
+
+//Đã có elements cold
+IsBuffActive(2,P2_ItemPassive_Unique_Ring_028)
+BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_028)>1000
+
+
+//Đã có elements Arcane
+IsBuffActive(1,P2_ItemPassive_Unique_Ring_028)
+BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)>1000
+
+
+
+//Có sheild - IsBuffActive(2,Wizard_Passive_GalvanizingWard)
+Buff, 		1, 		0, 			Wizard_Passive_GalvanizingWard, Galvanizing Ward
+Buff, 		1, 		2, 			Wizard_Passive_GalvanizingWard, Galvanizing Ward
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Meteor - On [CoE Cold Cycle + Power] + Already Buff
+Meteor - On [CoE Cold Cycle + Conduit] + Already Buff
+Rune(Wizard_Meteor) == 2
+& (BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000))
+& IsBuffActive(0,Pages_Buff_Electrified_TieredRift)
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+Meteor - On [CoE Cold Cycle + Oculus] + Already Buff
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Teleport - Proc [Tal Rasha]
+BuffStackCount(5, P2_ItemPassive_Unique_Ring_028) ==3
+
+
+
+
+Meteor - Buff - Near - Waiting [Teleport] + Already Buff
+Cooldown(Wizard_Teleport) > 1550 & (BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+
+
+
+Meteor - Elite - Main - Already Buff
+Elite - Meteor - [30-45 yards]
+Meteor - Elite - Cycle 1000ms + Already Buff
+
+
+
+
+Meteor - On [CoE Cold Cycle]
+Rune(Wizard_Meteor) == 2
+&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000))
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+
+
+
+
+
+Teleport [Safe Passage] - Near 5 yards - On [Wait for CoE Cold Cycle]
+Teleport [Safe Passage] - Near 10 yards - On [Wait for CoE Cold Cycle]
+Teleport [Safe Passage] - Near 15 yards - On [Wait for CoE Cold Cycle]
+Teleport [Safe Passage] - Near 20 yards - On [Wait for CoE Cold Cycle]
+Rune(Wizard_Meteor)==2 & Rune(Wizard_Teleport)==2 & BuffTimeLeft(1,Wizard_Teleport)<400
+&(BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(4, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(5, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(6, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(7, P2_ItemPassive_Unique_Ring_038)>0)
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+
+
+
+Meteor - On [CoE Cold Cycle + Power] + Already Buff
+
+BuffStackCount(5, P2_ItemPassive_Unique_Ring_028) ==3
+
+
+Meteor - On [CoE Cold Cycle + Proc Enchantress Cheat Death] + Already Buff
+BuffTimeLeft(1,Enchantress_CheatDeath_Passive)>0 & Rune(Wizard_Meteor) == 2
+&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000))
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+
+
+Teleport - Proc [Enchantress Cheat Death] + HP 60%
+Rune(Wizard_Teleport) == 2 & BuffTimeLeft(1,Enchantress_CheatDeath_Passive)>0 & BuffTimeLeft(1,Wizard_Teleport)<1000
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+
+
+
+Meteor - Rift Guardian [0-60 yards] - On [CoE Cold Cycle] + Already Buff + HP 99%
+Rune(Wizard_Meteor) == 2
+&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000))
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+
+Teleport [Safe Passage] - Near 5 yards - Just in Time [Prepare CoE Cold Cycle]
+Rune(Wizard_Meteor) == 2 & Rune(Wizard_Teleport) == 2 & BuffTimeLeft(1,Wizard_Teleport)<4000
+& BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1000 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<3000
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+
+
+
+Teleport - Best position in 5 yards - Just in Time [Prepare CoE Cold Cycle]
+Rune(Wizard_Meteor) == 2 & BuffTimeLeft(1,Wizard_Teleport)<4000
+& BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1000 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<3000
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+
+
+Teleport - Best position in 5 yards - On [Wait for CoE Cold Cycle]
+Rune(Wizard_Meteor) == 2 & BuffTimeLeft(1,Wizard_Teleport)<400
+&(BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(4, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(5, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(6, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(7, P2_ItemPassive_Unique_Ring_038)>0)
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+
+
+Elite - Teleport [Safe Passage] - Near 5 yards - On [Wait for CoE Cold Cycle]
+Rune(Wizard_Meteor) == 2 & Rune(Wizard_Teleport) == 2
+&(BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(4, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(5, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(6, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(7, P2_ItemPassive_Unique_Ring_038)>0)
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+
+
+[CoE Fire Holy Lightning Physical Poison Cycle]
+[Wait for CoE Cold Cycle]
+
+
+BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000
+
+
+
+
+
+
+
+
+
+
+
+Teleport - Elite - Proc [Safe Passage] On [CoE Fire Holy Lightning Physical Poison Cycle]
+
+Buffed resource:
+Health
+Minimum resource level:
+40.00% for health, absolute value for resources
+
+
+
+
+Preparation - Proc [Battle Scars]
+
+
+
+Evasive Fire - Proc [Wraps of Clarity]
+Bolas - Proc [Wraps of Clarity]
+
+
+
+
+Hatred - Grenade
+Doors - Grenade
+
+
+
+
+
+Multishot - Rift Guardian - On [Oculus] + Already Buff
+BuffTimeLeft(0,ItemPassive_Unique_Ring_922_x1)>0 & BuffTimeLeft(2,ItemPassive_Unique_Ring_922_x1)>0 & BuffTimeLeft(3,ItemPassive_Unique_Ring_922_x1)>0
+
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+
+
+BuffTimeLeft(4,X1_DemonHunter_Vengeance)>1000
+
+
+DemonHunter
+
+
+(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+
+Health() < 40%
+
+
+Health() > 2%
+
+
+
+
+
+
+
+On [Invisible after death]
+(BuffTimeLeft(0,Wizard_Familiar)==0&BuffTimeLeft(0,Wizard_MagicWeapon)==0&BuffTimeLeft(3,Wizard_StormArmor)==0)
+
+
+
+Already Buff
+(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+
+
+Meteor - Rift Guardian - On [CoE Cold Cycle] + Already Buff
+Rune(Wizard_Meteor) == 2 & (BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000))
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+
+
+Meteor - Rift Guardian - On [Oculus] + Already Buff
+BuffTimeLeft(0,ItemPassive_Unique_Ring_922_x1)>0 & BuffTimeLeft(2,ItemPassive_Unique_Ring_922_x1)>0 & BuffTimeLeft(3,ItemPassive_Unique_Ring_922_x1)>0
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+
+Meteor - Elite - On [Oculus] + Already Buff
+BuffTimeLeft(0,ItemPassive_Unique_Ring_922_x1)>0 & BuffTimeLeft(2,ItemPassive_Unique_Ring_922_x1)>0 & BuffTimeLeft(3,ItemPassive_Unique_Ring_922_x1)>0
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+
+Meteor - Elite - On [CoE Cold Cycle] + Already Buff
+Rune(Wizard_Meteor) == 2 & (BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000))
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+
+Meteor - Rift Guardian - Already Buff
+(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+Meteor - Elite - Main - Already Buff
+(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+Meteor - Elite - On [Power] or [Conduit] + Already Buff
+(IsBuffActive(0, Pages_Buff_Damage) | IsBuffActive(0, Pages_Buff_Electrified_TieredRift))
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+
+
+
+Meteor - On [Power + Infinite Casting] + Already Buff
+IsBuffActive(0, Pages_Buff_Infinite_Casting) & IsBuffActive(0, Pages_Buff_Damage)
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+
+
+Meteor - On [Power + Conduit] + Already Buff
+IsBuffActive(0, Pages_Buff_Electrified_TieredRift) & IsBuffActive(0, Pages_Buff_Damage)
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+
+Meteor - On [CoE Cold Cycle + Power] + Already Buff
+Rune(Wizard_Meteor) == 2 & (BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000)) & IsBuffActive(0, Pages_Buff_Damage)
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+
+Meteor - On [CoE Cold Cycle + Conduit] + Already Buff
+
+
+
+Rune(Wizard_Meteor) == 2 & (BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000)) & IsBuffActive(0, Pages_Buff_Electrified_TieredRift)
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+
+
+
+
+Meteor - On [CoE Cold Cycle + Oculus] + Already Buff
+Rune(Wizard_Meteor) == 2 & (BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000 |(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1 & BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<1000)) & BuffTimeLeft(0,ItemPassive_Unique_Ring_922_x1)>0 & BuffTimeLeft(2,ItemPassive_Unique_Ring_922_x1)>0 & BuffTimeLeft(3,ItemPassive_Unique_Ring_922_x1)>0
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+
+
+Meteor - Proc [Tal Rasha] + Already Buff
+BuffStackCount(5, P2_ItemPassive_Unique_Ring_028) < 3
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+
+
+
+
+Meteor - Elite - Near Cycle 2000ms - On [CoE Fire Holy Lightning Physical Poison Cycle] + Already Buff
+
+Rune(Wizard_Meteor) == 2 & (BuffTimeLeft(3, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(4, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(5, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(6, P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(7, P2_ItemPassive_Unique_Ring_038)>0)
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+Meteor - Elite - Near Cycle 500ms - On [CoE Cold Cycle] + Already Buff
+
+
+
+
