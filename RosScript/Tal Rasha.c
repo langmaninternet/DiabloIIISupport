@@ -592,6 +592,54 @@ IsBuffActive(0,Pages_Buff_Damage)
 
 
 
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+//	Blizzard After Teleport [Safe Passage]
+//
+//		Do not use during fast mode: true
+//		Minimum resource level: 50.00
+//		Distance Min: 0
+//		Distance Max: 30
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1
+//		Elite weight: 5
+//		Minion weight: 1
+//		Big guy weight: 5
+//		Goblin weight: 5
+//		Normal monster weight: 1
+//
+//
+
+Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)>4000
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Meteor Fire
 Rune(Wizard_Meteor)==0
 Rune(Wizard_Meteor)==1
@@ -998,5 +1046,41 @@ Meteor - Elite - Near Cycle 500ms - On [CoE Cold Cycle] + Already Buff
 
 
 ////
-IsBuffActive(0,Wizard_Passive_ArcaneDynamo)
-BuffStackCount(1,Wizard_Passive_ArcaneDynamo)<5
+IsBuffActive(0,Wizard_Passive_ArcaneDynamo)&BuffStackCount(1,Wizard_Passive_ArcaneDynamo)<5
+
+
+
+
+
+// Hydra
+
+// Typhon - six pc 
+IsBuffActive(0,P68_ItemPassive_Unique_Ring_007)
+
+
+
+
+ItemPassive_Unique_Ring_604_x1		Frost Hydra now periodically casts Frost Nova.	
+ItemPassive_Unique_Ring_510_x1		You may have one extra Hydra active at a time.	
+
+
+//5 đầu
+Rune, 		1, 		1, 			Wizard_Blizzard, Blizzard
+EndTick, 	1746, 		1, 			Wizard_Hydra, The Typhon's Veil
+Rune, 		1, 		0, 			Wizard_Hydra, Hydra
+Buff, 		5, 		7, 			Wizard_Hydra, The Typhon's Veil
+Buff, 		1, 		1, 			Wizard_Hydra, The Typhon's Veil
+
+
+
+//10 đầu
+Rune, 		1, 		1, 			Wizard_Blizzard, Blizzard
+EndTick, 	1744, 		1, 			Wizard_Hydra, The Typhon's Veil
+Rune, 		1, 		0, 			Wizard_Hydra, Hydra
+Buff, 		10, 		7, 			Wizard_Hydra, The Typhon's Veil
+Buff, 		2, 		1, 			Wizard_Hydra, The Typhon's Veil
+
+
+
+
+Rune, 		1, 		0, 			Wizard_Hydra, Hydra
