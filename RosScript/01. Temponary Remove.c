@@ -438,3 +438,127 @@ Meteor - Elite - Near Cycle 500ms - On [CoE Cold Cycle] + Already Buff
 
 
 
+
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+//  Elite - Typhon Hydra
+//
+//		Distance Min: 0
+//		Distance Max: ***
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1 
+//		Elite weight: 2
+//		Minion weight: 0
+//		Big guy weight: 2
+//		Goblin weight: 2
+//		Normal monster weight: 0
+//
+//
+
+IsBuffActive(0,P68_ItemPassive_Unique_Ring_007)
+&
+(BuffStackCount(7,Wizard_Hydra)<5
+|((IsBuffActive(0,ItemPassive_Unique_Ring_510_x1))&BuffStackCount(7,Wizard_Hydra)<10)
+)
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+//  Elite - Typhon Hydra - Next 5 Head - 30 yards
+//  Elite - Typhon Hydra - Next 5 Head - 60 yards
+//  Typhon Hydra - Next 5 Head - 30 yards
+//
+//		Distance Min: 0
+//		Distance Max: ***
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1 
+//		Elite weight: 2
+//		Minion weight: 0
+//		Big guy weight: 2
+//		Goblin weight: 2
+//		Normal monster weight: 0
+//
+//
+
+IsBuffActive(0,P68_ItemPassive_Unique_Ring_007)
+&IsBuffActive(0,ItemPassive_Unique_Ring_510_x1)
+&(!IsBuffActive(0,Wizard_Passive_ArcaneDynamo)|BuffStackCount(1,Wizard_Passive_ArcaneDynamo)==5)
+&BuffStackCount(7,Wizard_Hydra)<10
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+
+
+
+ItemPassive_Unique_Ring_510_x1		You may have one extra Hydra active at a time.	
+
+
+IsBuffActive(0,ItemPassive_Unique_Gem_018_x1)
+
+ItemPassive_Unique_Gem_018U_x1
+
+
+
+
+////
+IsBuffActive(0,Wizard_Passive_ArcaneDynamo)&BuffStackCount(1,Wizard_Passive_ArcaneDynamo)<5
+
+
+
+Rune(Wizard_Hydra)==0
+
+
+
+// 
+
+BuffStackCount(7,Wizard_Hydra)<5
+
+
+// Typhon - six pc 
+IsBuffActive(0,P68_ItemPassive_Unique_Ring_007)
+
+//full stack dynamo
+(!IsBuffActive(0,Wizard_Passive_ArcaneDynamo)|BuffStackCount(1,Wizard_Passive_ArcaneDynamo)==5)
+
+
+
+
+ItemPassive_Unique_Ring_604_x1		Frost Hydra now periodically casts Frost Nova.	
+ItemPassive_Unique_Ring_510_x1		You may have one extra Hydra active at a time.	
+
+
+//5 đầu
+Rune, 		1, 		1, 			Wizard_Blizzard, Blizzard
+EndTick, 	1746, 		1, 			Wizard_Hydra, The Typhon's Veil
+Rune, 		1, 		0, 			Wizard_Hydra, Hydra
+Buff, 		5, 		7, 			Wizard_Hydra, The Typhon's Veil
+Buff, 		1, 		1, 			Wizard_Hydra, The Typhon's Veil
+
+
+
+//10 đầu
+Rune, 		1, 		1, 			Wizard_Blizzard, Blizzard
+EndTick, 	1744, 		1, 			Wizard_Hydra, The Typhon's Veil
+Rune, 		1, 		0, 			Wizard_Hydra, Hydra
+Buff, 		10, 		7, 			Wizard_Hydra, The Typhon's Veil
+Buff, 		2, 		1, 			Wizard_Hydra, The Typhon's Veil
+
+
+
+
+Rune, 		1, 		0, 			Wizard_Hydra, Hydra
+Rune(Wizard_Hydra)==1
