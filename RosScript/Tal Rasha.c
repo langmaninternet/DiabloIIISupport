@@ -623,6 +623,30 @@ Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)>4000
 
 
 
+//----------------------------------------------------------------------------------------------------------------------------------------
+//	Urshi - Black Hole
+//
+//		Do not use during fast mode: true
+//		Minimum resource level: 50.00
+//		Distance Min: 0
+//		Distance Max: 40
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1
+//		Elite weight: 5
+//		Minion weight: 1
+//		Big guy weight: 5
+//		Goblin weight: 5
+//		Normal monster weight: 1
+//
+//
+
+ActorCount(P1_LR_TieredRift_Nephalem) == 1 & (!WorldIsGreaterRiftNotFinished())
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
 
 
 
