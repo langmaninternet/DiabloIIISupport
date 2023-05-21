@@ -656,9 +656,10 @@ ActorCount(P1_LR_TieredRift_Nephalem) == 1 & (!WorldIsGreaterRiftNotFinished())
 //----------------------------------------------------------------------------------------------------------------------------------------
 //  Elite - Typhon Hydra - First 5 Head - 30 yards
 //  Elite - Typhon Hydra - First 5 Head - 60 yards
+//  Typhon Hydra - First 5 Head - 30 yards
 //
 //		Distance Min: 0
-//		Distance Max: 60
+//		Distance Max: ***
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1 
@@ -682,6 +683,37 @@ IsBuffActive(0,P68_ItemPassive_Unique_Ring_007)
 
 
 
+//----------------------------------------------------------------------------------------------------------------------------------------
+//  Elite - Typhon Hydra - Next 5 Head - 30 yards
+//  Elite - Typhon Hydra - Next 5 Head - 60 yards
+//  Typhon Hydra - Next 5 Head - 30 yards
+//
+//		Distance Min: 0
+//		Distance Max: ***
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1 
+//		Elite weight: 2
+//		Minion weight: 0
+//		Big guy weight: 2
+//		Goblin weight: 2
+//		Normal monster weight: 0
+//
+//
+
+IsBuffActive(0,P68_ItemPassive_Unique_Ring_007)
+&IsBuffActive(0,ItemPassive_Unique_Ring_510_x1)
+&(!IsBuffActive(0,Wizard_Passive_ArcaneDynamo)|BuffStackCount(1,Wizard_Passive_ArcaneDynamo)==5)
+&BuffStackCount(7,Wizard_Hydra)<10
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+
+
+
+ItemPassive_Unique_Ring_510_x1		You may have one extra Hydra active at a time.	
 
 
 
