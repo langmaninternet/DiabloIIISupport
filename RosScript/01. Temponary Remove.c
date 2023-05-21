@@ -562,3 +562,89 @@ Buff, 		2, 		1, 			Wizard_Hydra, The Typhon's Veil
 
 Rune, 		1, 		0, 			Wizard_Hydra, Hydra
 Rune(Wizard_Hydra)==1
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+//	Blizzard - Buff in battle
+//	Black Hole - Elite - 30 yards 500ms
+//	Black Hole - Elite - 50 yards 500ms
+//
+
+(
+(IsBuffActive(0,P68_ItemPassive_Unique_Ring_007)&BuffStackCount(1,Wizard_Passive_ArcaneDynamo)==0)
+|BuffStackCount(7,Wizard_Hydra)==10
+|((!IsBuffActive(0,ItemPassive_Unique_Ring_510_x1))&BuffStackCount(7,Wizard_Hydra)==5)
+)
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+//	Urshi - Black Hole
+//
+//		Do not use during fast mode: true
+//		Minimum resource level: 50.00
+//		Distance Min: 0
+//		Distance Max: 40
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1
+//		Elite weight: 5
+//		Minion weight: 1
+//		Big guy weight: 5
+//		Goblin weight: 5
+//		Normal monster weight: 1
+//
+//
+
+ActorCount(P1_LR_TieredRift_Nephalem) == 1 & (!WorldIsGreaterRiftNotFinished())
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+//	Blizzard After Teleport [Safe Passage]
+//
+//		Do not use during fast mode: true
+//		Minimum resource level: 50.00
+//		Distance Min: 0
+//		Distance Max: 30
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1
+//		Elite weight: 5
+//		Minion weight: 1
+//		Big guy weight: 5
+//		Goblin weight: 5
+//		Normal monster weight: 1
+//
+//
+
+Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)>4000
+&(
+(IsBuffActive(0,P68_ItemPassive_Unique_Ring_007)&BuffStackCount(1,Wizard_Passive_ArcaneDynamo)==0)
+|BuffStackCount(7,Wizard_Hydra)==10
+|((!IsBuffActive(0,ItemPassive_Unique_Ring_510_x1))&BuffStackCount(7,Wizard_Hydra)==5)
+)
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
