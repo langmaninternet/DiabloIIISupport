@@ -719,9 +719,9 @@ IsBuffActive(0,P68_ItemPassive_Unique_Ring_007)
 ItemPassive_Unique_Ring_510_x1		You may have one extra Hydra active at a time.	
 
 
+IsBuffActive(0,ItemPassive_Unique_Gem_018_x1)
 
-
-
+ItemPassive_Unique_Gem_018U_x1
 
 
 
