@@ -619,7 +619,7 @@ IsBuffActive(0,Pages_Buff_Damage)
 
 Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)>4000
 &(
-BuffStackCount(1,Wizard_Passive_ArcaneDynamo)==0
+(IsBuffActive(0,P68_ItemPassive_Unique_Ring_007)&BuffStackCount(1,Wizard_Passive_ArcaneDynamo)==0)
 |BuffStackCount(7,Wizard_Hydra)==10
 |((!IsBuffActive(0,ItemPassive_Unique_Ring_510_x1))&BuffStackCount(7,Wizard_Hydra)==5)
 )
