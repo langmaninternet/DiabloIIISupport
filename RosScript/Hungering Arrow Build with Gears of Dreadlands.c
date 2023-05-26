@@ -1,6 +1,30 @@
 
 
 
+//----------------------------------------------------------------------------------------------------------------------------------------
+//			Hungering Arrow - Buff - Momentum
+//
+//		Distance Min: 0
+//		Distance Max: 40
+//		Calculation min param: -10
+//		Calculation max param: 30
+//		Attack limit: 0
+//		Elite weight: -1
+//		Minion weight: 0
+//		Big guy weight: -1
+//		Goblin weight: -1
+//		Normal monster weight: 0
+//
+IsBuffActive(0,P69_ItemPassive_Unique_Ring_010)
+&(BuffTimeLeft(10,P69_ItemPassive_Unique_Ring_010)<2000|BuffStackCount(10, P69_ItemPassive_Unique_Ring_010)<17)
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+
+
 
 
 
