@@ -4,10 +4,11 @@
 //----------------------------------------------------------------------------------------------------------------------------------------
 //			Hungering Arrow - Buff - Momentum
 //
+//		Stand still: true
 //		Distance Min: 0
 //		Distance Max: 40
 //		Calculation min param: -10
-//		Calculation max param: 30
+//		Calculation max param: 10
 //		Attack limit: 0
 //		Elite weight: -1
 //		Minion weight: 0
@@ -24,6 +25,25 @@ IsBuffActive(0,P69_ItemPassive_Unique_Ring_010)
 
 
 
+//----------------------------------------------------------------------------------------------------------------------------------------
+//			Hungering Arrow - Attack - Momentum
+//
+//		Stand still: true
+//		Distance Min: 0
+//		Distance Max: 40
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1
+//		Elite weight: 2
+//		Minion weight: 0
+//		Big guy weight: 2
+//		Goblin weight: 2
+//		Normal monster weight: 0
+//
+IsBuffActive(0,P69_ItemPassive_Unique_Ring_010)
+&(BuffTimeLeft(10,P69_ItemPassive_Unique_Ring_010)<2000|BuffStackCount(10, P69_ItemPassive_Unique_Ring_010)<17)
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
 
 
 
