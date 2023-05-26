@@ -95,15 +95,6 @@ IsBuffActive(0,DemonHunter_SmokeScreen)
 
 
 
-//----------------------------------------------------------------------------------------------------------------------------------------
-//	Hungering Arrow - Attack - Maintain [Wraps of Clarity]
-//	Hungering Arrow - Buff - Maintain [Wraps of Clarity]
-
-IsBuffActive(0,P3_ItemPassive_Unique_Ring_038)
-&BuffTimeLeft(1,P3_ItemPassive_Unique_Ring_038)<1000
-
-//\\----------------------------------------------------------------------------------------------------------------------------------------////
-
 
 
 
