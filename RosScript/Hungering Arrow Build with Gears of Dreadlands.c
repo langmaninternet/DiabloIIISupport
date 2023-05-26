@@ -2,7 +2,7 @@
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-//			Hungering Arrow - Buff - Momentum
+//			Hungering Arrow - Buff - Momentum|Wraps of Clarity
 //
 //		Stand still: true
 //		Force recast: true
@@ -17,8 +17,11 @@
 //		Goblin weight: -1
 //		Normal monster weight: 0
 //
-IsBuffActive(0,P69_ItemPassive_Unique_Ring_010)
-&(BuffTimeLeft(10,P69_ItemPassive_Unique_Ring_010)<2000|BuffStackCount(10, P69_ItemPassive_Unique_Ring_010)<17)
+(
+(IsBuffActive(0,P69_ItemPassive_Unique_Ring_010)&(BuffTimeLeft(10,P69_ItemPassive_Unique_Ring_010)<2000|BuffStackCount(10, P69_ItemPassive_Unique_Ring_010)<17))
+|(IsBuffActive(0,P3_ItemPassive_Unique_Ring_038)&BuffTimeLeft(1,P3_ItemPassive_Unique_Ring_038)<1000)
+)
+
 
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
 
@@ -27,7 +30,7 @@ IsBuffActive(0,P69_ItemPassive_Unique_Ring_010)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-//			Hungering Arrow - Attack - Momentum
+//			Hungering Arrow - Attack - Momentum|Wraps of Clarity
 //
 //		Stand still: true
 //		Force recast: true
@@ -42,9 +45,10 @@ IsBuffActive(0,P69_ItemPassive_Unique_Ring_010)
 //		Goblin weight: 2
 //		Normal monster weight: 0
 //
-IsBuffActive(0,P69_ItemPassive_Unique_Ring_010)
-&(BuffTimeLeft(10,P69_ItemPassive_Unique_Ring_010)<2000|BuffStackCount(10, P69_ItemPassive_Unique_Ring_010)<17)
-
+(
+(IsBuffActive(0,P69_ItemPassive_Unique_Ring_010)&(BuffTimeLeft(10,P69_ItemPassive_Unique_Ring_010)<2000|BuffStackCount(10, P69_ItemPassive_Unique_Ring_010)<17))
+|(IsBuffActive(0,P3_ItemPassive_Unique_Ring_038)&BuffTimeLeft(1,P3_ItemPassive_Unique_Ring_038)<1000)
+)
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
 
 
