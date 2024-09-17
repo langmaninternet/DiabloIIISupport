@@ -593,7 +593,7 @@ IsBuffActive(0,Pages_Buff_Damage)
 // Spectar Blade - Proc ArcaneDynamo
 // Dont use during fast mode
 // Stand still
-// 50ms
+// 100ms
 
 IsBuffActive(0,Wizard_Passive_ArcaneDynamo) & BuffStackCount(1,Wizard_Passive_ArcaneDynamo) < 5
 
