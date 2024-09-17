@@ -1,4 +1,6 @@
 
+// Spectar Blade
+IsBuffActive(0,Wizard_Passive_ArcaneDynamo) & BuffStackCount(1,Wizard_Passive_ArcaneDynamo) < 5
 
 
 
