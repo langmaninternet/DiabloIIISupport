@@ -172,7 +172,8 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-//  #8.1 Rift Guardian - Meteor - Far - Proc [Zei's Stone of Vengeance|Power Hungry|CoE Cycle|Oculus|Power|Triune of Love]
+//  #8.1 Rift Guardian - Meteor - Far 
+//  Note: Proc [Zei's Stone of Vengeance|Power Hungry|CoE Cycle|Oculus|Power|Triune of Love]
 // 	Force Recast
 //	Attack + Density
 //	50ms
@@ -308,7 +309,6 @@ Health()>95%&(
 
 
 
-
 //----------------------------------------------------------------------------------------------------------------------------------------
 //  #9.1 Elite - Meteor - Proc [Zei's Stone of Vengeance|Power Hungry]
 // 	Force Recast
@@ -330,11 +330,12 @@ Health()>95%&(
 //
 //
 //
-(IsBuffActive(0,ItemPassive_Unique_Gem_012_x1)&Health()>95%
+Health()>95%&(
+(IsBuffActive(0,ItemPassive_Unique_Gem_012_x1)
 &IsBuffActive(3,Enchantress_CheatDeath_Passive)&BuffTimeLeft(1,Enchantress_CheatDeath_Passive)==0
 &(IsBuffActive(0,Pages_Buff_Invulnerable)|IsBuffActive(2,Wizard_Passive_GalvanizingWard)|BuffStackCount(1,x1_Wizard_Passive_ArcaneAegis)==10|(Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)>2000))
 &(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast)))
-|(IsBuffActive(0,Wizard_Passive_PowerHungry)&Health()>95%
+|(IsBuffActive(0,Wizard_Passive_PowerHungry)
 &IsBuffActive(3,Enchantress_CheatDeath_Passive)&BuffTimeLeft(1,Enchantress_CheatDeath_Passive)==0
 &(IsBuffActive(0,Pages_Buff_Invulnerable)|IsBuffActive(2,Wizard_Passive_GalvanizingWard)|BuffStackCount(1,x1_Wizard_Passive_ArcaneAegis)==10|(Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)>2000))
 &(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast)))
@@ -347,6 +348,7 @@ Health()>95%&(
 |IsBuffActive(0,Pages_Buff_Damage)
 |BuffTimeLeft(2,Community_Buff_DarkAlchemy)>0)
 &(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast)))
+)
 
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
 
