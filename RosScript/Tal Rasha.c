@@ -28,7 +28,7 @@
 // 	Force Recast
 //	Attack + Density
 //	50ms
-//		Attack Distance [25,20,15,10,5]
+//		Attack Distance: [25,20,15,10,5]
 //		Distance Min: 0
 //		Distance Max: [25,20,15,10,5]
 //		Calculation min param: 1
@@ -71,7 +71,7 @@
 // 	Force Recast
 //	Attack + Density
 //	50ms
-//		Attack Distance [25,20,15,10,5]
+//		Attack Distance: [25,20,15,10,5]
 //		Distance Min: 0
 //		Distance Max: [25,20,15,10,5]
 //		Calculation min param: 1
@@ -111,7 +111,7 @@
 // 	Force Recast
 //	Attack + Density
 //	50ms
-//		Attack Distance [25,30]
+//		Attack Distance: [25,30]
 //		Distance Min: 0
 //		Distance Max: [25,30]
 //		Calculation min param: 1
@@ -151,7 +151,7 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 // 	Force Recast
 //	Attack + Density
 //	3000ms
-//		Attack Distance 50
+//		Attack Distance: 50
 //		Distance Min: 0
 //		Distance Max: 50
 //		Calculation min param: 1
@@ -189,6 +189,7 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 // 	Force Recast
 //	Attack + Density
 //	50ms
+//		Attack Distance: 60
 //		Distance Min: 40
 //		Distance Max: 60
 //		Calculation min param: 0
@@ -197,7 +198,7 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 //		Elite weight: 0
 //		Minion weight: 0
 //		Big guy weight: 2
-//		Goblin weight: 0
+//		Goblin weight: 1
 //		Normal monster weight: 0
 //
 //
@@ -212,6 +213,66 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 &(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast)))
 
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+//  #8.2 Rift Guardian - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love]
+// 	Force Recast
+//	Attack + Density
+//	50ms
+//		Attack Distance: 60
+//		Distance Min: 0
+//		Distance Max: 60
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1 
+//		Elite weight: 0
+//		Minion weight: 0
+//		Big guy weight: 2
+//		Goblin weight: 1
+//		Normal monster weight: 0
+//
+//
+//
+
+((Rune(Wizard_Meteor)==0&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==1&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==2&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==3&(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==4&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>1000|(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<1250)))
+|IsBuffActive(2,ItemPassive_Unique_Ring_922_x1)
+|IsBuffActive(0,Pages_Buff_Damage)
+|BuffTimeLeft(2,Community_Buff_DarkAlchemy)>0
+)
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+//	Rift Guardian - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love]
+//  Elite - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love] - 10 yards Cycle 500ms
+//  Elite - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love] - 30 yards Cycle 250ms
+//  Elite - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love] - 50 yards Cycle 50ms
+//  Battle - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love]
+
+((Rune(Wizard_Meteor)==0&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==1&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==2&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==3&(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==4&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>1000|(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<1250)))
+|IsBuffActive(2,ItemPassive_Unique_Ring_922_x1)
+|IsBuffActive(0,Pages_Buff_Damage)
+|BuffTimeLeft(2,Community_Buff_DarkAlchemy)>0
+)
+&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
 
 
 
