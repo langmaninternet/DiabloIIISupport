@@ -266,7 +266,7 @@ Primary()>90
 //	Attack + Density
 //	50ms
 //		Attack Distance: 60
-//		Distance Min: 40
+//		Distance Min: 0
 //		Distance Max: 60
 //		Calculation min param: 0
 //		Calculation max param: 10
@@ -407,7 +407,7 @@ Primary()>40
 //	Attack + Density
 //	50ms
 //		Attack Distance: 60
-//		Distance Min: 40
+//		Distance Min: 0
 //		Distance Max: 60
 //		Calculation min param: 0
 //		Calculation max param: 10
@@ -496,7 +496,7 @@ Primary()>40&(
 //	Attack + Density
 //	50ms
 //		Attack Distance: 60
-//		Distance Min: 40
+//		Distance Min: 0
 //		Distance Max: 60
 //		Calculation min param: 0
 //		Calculation max param: 10
@@ -796,7 +796,7 @@ Primary()>40
 //	Attack + Buff
 //	200ms
 //		Attack Distance: 60
-//		Distance Min: 40
+//		Distance Min: 0
 //		Distance Max: 60
 //		Calculation min param: 0
 //		Calculation max param: 10
@@ -890,7 +890,7 @@ Primary()>40&(
 //	Attack + Density
 //	200ms
 //		Attack Distance: 60
-//		Distance Min: 40
+//		Distance Min: 0
 //		Distance Max: 60
 //		Calculation min param: 0
 //		Calculation max param: 10
