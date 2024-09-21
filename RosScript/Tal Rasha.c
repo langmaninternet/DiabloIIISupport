@@ -244,7 +244,7 @@ Primary()>90
 //
 //
 //
-Health()>95%&Primary()>40&(
+Health()>=95%&Primary()>40&(
 (IsBuffActive(0,ItemPassive_Unique_Gem_012_x1)
 &IsBuffActive(3,Enchantress_CheatDeath_Passive)&BuffTimeLeft(1,Enchantress_CheatDeath_Passive)==0
 &(IsBuffActive(0,Pages_Buff_Invulnerable)|IsBuffActive(2,Wizard_Passive_GalvanizingWard)|BuffStackCount(1,x1_Wizard_Passive_ArcaneAegis)==10|(Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)>2000))
@@ -386,7 +386,7 @@ Primary()>40
 //
 //
 //
-Health()>95%&Primary()>40&(
+Health()>=95%&Primary()>40&(
 (IsBuffActive(0,ItemPassive_Unique_Gem_012_x1)
 &IsBuffActive(3,Enchantress_CheatDeath_Passive)&BuffTimeLeft(1,Enchantress_CheatDeath_Passive)==0
 &(IsBuffActive(0,Pages_Buff_Invulnerable)|IsBuffActive(2,Wizard_Passive_GalvanizingWard)|BuffStackCount(1,x1_Wizard_Passive_ArcaneAegis)==10|(Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)>2000))
@@ -583,6 +583,83 @@ Primary()>40&
 
 
 
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+//  #9.7 Elite - Meteor - Near 30 yards
+// 	Force Recast
+//	Attack + Density
+//	50ms
+//		Attack Distance: 30
+//		Distance Min: 0
+//		Distance Max: 30
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1 
+//
+//		Elite weight: 2
+//		Minion weight: 0
+//		Normal monster weight: 0
+//		Big guy weight: 2
+//		Goblin weight: 2
+//
+//
+//  Note: On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love] or Health()<80%
+//
+Primary()>40&
+(Health()<80%
+|
+(((Rune(Wizard_Meteor)==0&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==1&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==2&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==3&(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==4&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>1000|(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<1250)))
+|IsBuffActive(2,ItemPassive_Unique_Ring_922_x1)
+|IsBuffActive(0,Pages_Buff_Damage)
+|BuffTimeLeft(2,Community_Buff_DarkAlchemy)>0
+)&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast)))
+)
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+//  #9.8 Elite - Meteor - Near 40 yards
+// 	Force Recast
+//	Attack + Density
+//	50ms
+//		Attack Distance: 40
+//		Distance Min: 0
+//		Distance Max: 40
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1 
+//
+//		Elite weight: 2
+//		Minion weight: 0
+//		Normal monster weight: 0
+//		Big guy weight: 2
+//		Goblin weight: 2
+//
+//
+//  Note: On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love] or Health()<80%
+//
+Primary()>40&
+(Health()<95%
+|
+(((Rune(Wizard_Meteor)==0&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==1&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==2&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==3&(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==4&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>1000|(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<1250)))
+|IsBuffActive(2,ItemPassive_Unique_Ring_922_x1)
+|IsBuffActive(0,Pages_Buff_Damage)
+|BuffTimeLeft(2,Community_Buff_DarkAlchemy)>0
+)&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast)))
+)
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
 
 
 
