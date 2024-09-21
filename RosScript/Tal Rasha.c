@@ -61,23 +61,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //----------------------------------------------------------------------------------------------------------------------------------------
 //	#5.1 Teleport [Safe Passage|Calamity] - Safe in 25 yards - On [Wait for CoE Cycle]
 //	#5.2 Teleport [Safe Passage|Calamity] - Safe in 20 yards - On [Wait for CoE Cycle]
@@ -86,7 +69,6 @@
 //	#5.5 Teleport [Safe Passage|Calamity] - Safe in 5 yards - On [Wait for CoE Cycle]
 // 	Force Recast
 //	Attack + Density
-
 //		Attack Distance [25,20,15,10,5]
 //		Distance Min: 0
 //		Distance Max: [25,20,15,10,5]
@@ -103,10 +85,6 @@
 //		Big guy weight: 1
 //		Goblin weight: 5
 //
-//	Teleport [Safe Passage|Calamity] - Near 5 yards - On [Wait for CoE Cycle]
-//	Teleport [Safe Passage|Calamity] - Near 10 yards - On [Wait for CoE Cycle]
-//	Teleport [Safe Passage|Calamity] - Near 15 yards - On [Wait for CoE Cycle]
-//	Teleport [Safe Passage|Calamity] - Near 20 yards - On [Wait for CoE Cycle]
 
 ((Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)<1000&BuffTimeLeft(0,Pages_Buff_Invulnerable)<5000)
 |(Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<1000))
@@ -121,6 +99,12 @@
 (BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
 
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+
+
 
 
 
