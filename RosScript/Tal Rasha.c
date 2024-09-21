@@ -1,26 +1,31 @@
 
+//#1//
+//// Storm Armor -----------------------------------------------------------------------------------------------------------------------------------------\\\\
+// Buff
+// 100ms
 
 
 
-// Storm Armor
-// Force Recast when 8 second left
-
-(Rune(Wizard_StormArmor)==3&BuffTimeLeft(3,Wizard_StormArmor)<8000)
-|(Rune(Wizard_StormArmor)==0&BuffTimeLeft(0,Wizard_StormArmor)<8000)
-|(Rune(Wizard_StormArmor)==1&BuffTimeLeft(0,Wizard_StormArmor)<8000)
-|(Rune(Wizard_StormArmor)==2&BuffTimeLeft(0,Wizard_StormArmor)<8000)
-|(Rune(Wizard_StormArmor)==4&BuffTimeLeft(0,Wizard_StormArmor)<8000)
-|(Rune(Wizard_StormArmor)==5&BuffTimeLeft(0,Wizard_StormArmor)<8000)
+//#2//
+//// Magic Weapon  -----------------------------------------------------------------------------------------------------------------------------------------\\\\
+// Buff
+// 100ms
 
 
+//#3//
+//// Familiar  -----------------------------------------------------------------------------------------------------------------------------------------\\\\
+// Buff
+// 100ms
 
 
 
 ////----------------------------------------------------------------------------------------------------------------------------------------\\\\
-//	Teleport [Safe Passage|Calamity] - Safe in 5 yards - Just in Time [Prepare CoE Cycle]
-//	Teleport [Safe Passage|Calamity] - Safe in 10 yards - Just in Time [Prepare CoE Cycle]
-//	Teleport [Safe Passage|Calamity] - Safe in 15 yards - Just in Time [Prepare CoE Cycle]
-//	Teleport [Safe Passage|Calamity] - Safe in 20 yards - Just in Time [Prepare CoE Cycle]
+//	#4 Teleport [Safe Passage|Calamity] - Safe in 5 yards - Just in Time [Prepare CoE Cycle]
+//	#4 Teleport [Safe Passage|Calamity] - Safe in 10 yards - Just in Time [Prepare CoE Cycle]
+//	#4 Teleport [Safe Passage|Calamity] - Safe in 15 yards - Just in Time [Prepare CoE Cycle]
+//	#4 Teleport [Safe Passage|Calamity] - Safe in 20 yards - Just in Time [Prepare CoE Cycle]
+// 	Force Recast
+//	Attack + Density
 //
 //		Distance Min: 0
 //		Distance Max: ***
@@ -32,6 +37,27 @@
 //		Big guy weight: -5
 //		Goblin weight: 0
 //		Normal monster weight: -3
+((Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)<4000&BuffTimeLeft(0,Pages_Buff_Invulnerable)<6000)
+|(Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<4000))
+&
+((Rune(Wizard_Meteor)==0&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)
+|(Rune(Wizard_Meteor)==1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)
+|(Rune(Wizard_Meteor)==2&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<3000)
+|(Rune(Wizard_Meteor)==3&BuffTimeLeft(6,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(6,P2_ItemPassive_Unique_Ring_038)<3000)
+|(Rune(Wizard_Meteor)==4&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<3000)
+)
+&
+(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+
+
+
+
+
+
+
+
+
 //
 //
 //
