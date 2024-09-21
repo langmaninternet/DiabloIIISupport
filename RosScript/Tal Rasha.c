@@ -223,7 +223,6 @@ Primary()>90
 
 //----------------------------------------------------------------------------------------------------------------------------------------
 //  #8.1 Rift Guardian - Meteor - Far 
-//  Note: Proc [Zei's Stone of Vengeance|Power Hungry|CoE Cycle|Oculus|Power|Triune of Love]
 // 	Force Recast
 //	Attack + Density
 //	50ms
@@ -240,7 +239,10 @@ Primary()>90
 //		Big guy weight: 2
 //		Goblin weight: 1
 //
-// 
+//
+//  Note: Proc [Zei's Stone of Vengeance|Power Hungry|CoE Cycle|Oculus|Power|Triune of Love]
+//
+//
 //
 Health()>95%&Primary()>40&(
 (IsBuffActive(0,ItemPassive_Unique_Gem_012_x1)
@@ -362,7 +364,6 @@ Primary()>40
 
 //----------------------------------------------------------------------------------------------------------------------------------------
 //  #9.1 Elite - Meteor - Far
-//  Note: Proc [Zei's Stone of Vengeance|Power Hungry|CoE Cycle|Oculus|Power|Triune of Love]
 // 	Force Recast
 //	Attack + Density
 //	50ms
@@ -379,6 +380,9 @@ Primary()>40
 //		Big guy weight: 2
 //		Goblin weight: 2
 //
+//
+//
+//  Note: Proc [Zei's Stone of Vengeance|Power Hungry|CoE Cycle|Oculus|Power|Triune of Love]
 //
 //
 //
@@ -501,9 +505,59 @@ Primary()>40
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
+//  #9.5 Elite - Meteor - Near 10 yards
+// 	Force Recast
+//	Attack + Density
+//	50ms
+//		Attack Distance: 60
+//		Distance Min: 0
+//		Distance Max: 60
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1 
+//
+//		Elite weight: 2
+//		Minion weight: 0
+//		Normal monster weight: 0
+//		Big guy weight: 2
+//		Goblin weight: 2
+//
+//
+//  Note: On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love]
+//
+Primary()>40&
+(Health()<40%
+|
+(((Rune(Wizard_Meteor)==0&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==1&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==2&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==3&(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==4&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>1000|(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<1250)))
+|IsBuffActive(2,ItemPassive_Unique_Ring_922_x1)
+|IsBuffActive(0,Pages_Buff_Damage)
+|BuffTimeLeft(2,Community_Buff_DarkAlchemy)>0
+)&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast)))
+)
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
 //  #10.1 Meteor - Proc [Tal Rasha] - Fresh start
 // 	Force Recast
-//  Do not use in fast mode
+//  Don't use in fast mode
 //	Attack + Buff
 //	2000ms
 //		Attack Distance: 60
