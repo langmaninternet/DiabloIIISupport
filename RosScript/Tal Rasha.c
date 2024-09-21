@@ -665,6 +665,30 @@ Primary()>40&
 
 
 
+//----------------------------------------------------------------------------------------------------------------------------------------
+//  #9.9 Elite - Meteor
+// 	Force Recast
+//	Attack + Density
+//	50ms
+//		Attack Distance: 60
+//		Distance Min: 0
+//		Distance Max: 60
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1 
+//
+//		Elite weight: 2
+//		Minion weight: 0
+//		Normal monster weight: 0
+//		Big guy weight: 2
+//		Goblin weight: 2
+//
+//
+//
+Primary()>40
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
 
 
 
