@@ -1,6 +1,21 @@
 
 
 
+
+// Storm Armor
+// Force Recast when 8 second left
+
+(Rune(Wizard_StormArmor)==3&BuffTimeLeft(3,Wizard_StormArmor)<8000)
+|(Rune(Wizard_StormArmor)==0&BuffTimeLeft(0,Wizard_StormArmor)<8000)
+|(Rune(Wizard_StormArmor)==1&BuffTimeLeft(0,Wizard_StormArmor)<8000)
+|(Rune(Wizard_StormArmor)==2&BuffTimeLeft(0,Wizard_StormArmor)<8000)
+|(Rune(Wizard_StormArmor)==4&BuffTimeLeft(0,Wizard_StormArmor)<8000)
+|(Rune(Wizard_StormArmor)==5&BuffTimeLeft(0,Wizard_StormArmor)<8000)
+
+
+
+
+
 ////----------------------------------------------------------------------------------------------------------------------------------------\\\\
 //	Teleport [Safe Passage|Calamity] - Safe in 5 yards - Just in Time [Prepare CoE Cycle]
 //	Teleport [Safe Passage|Calamity] - Safe in 10 yards - Just in Time [Prepare CoE Cycle]
