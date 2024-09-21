@@ -265,9 +265,9 @@ Primary()>90
 // 	Force Recast
 //	Attack + Density
 //	50ms
-//		Attack Distance: 60
+//		Attack Distance: 50
 //		Distance Min: 0
-//		Distance Max: 60
+//		Distance Max: 50
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1 
@@ -313,9 +313,9 @@ Health()>=95%&Primary()>40&(
 // 	Force Recast
 //	Attack + Density
 //	50ms
-//		Attack Distance: 60
+//		Attack Distance: 50
 //		Distance Min: 0
-//		Distance Max: 60
+//		Distance Max: 50
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1 
@@ -351,9 +351,9 @@ Primary()>40&(
 // 	Force Recast
 //	Attack + Density
 //	50ms
-//		Attack Distance: 60
+//		Attack Distance: 50
 //		Distance Min: 40
-//		Distance Max: 60
+//		Distance Max: 50
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1 
@@ -377,9 +377,9 @@ Primary()>40
 // 	Force Recast
 //	Attack + Density
 //	2000ms
-//		Attack Distance: 60
+//		Attack Distance: 50
 //		Distance Min: 0
-//		Distance Max: 60
+//		Distance Max: 50
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1 
@@ -406,9 +406,9 @@ Primary()>40
 // 	Force Recast
 //	Attack + Density
 //	50ms
-//		Attack Distance: 60
+//		Attack Distance: 50
 //		Distance Min: 0
-//		Distance Max: 60
+//		Distance Max: 50
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1 
@@ -456,9 +456,9 @@ Health()>=95%&Primary()>40&(
 // 	Force Recast
 //	Attack + Density
 //	50ms
-//		Attack Distance: 60
+//		Attack Distance: 50
 //		Distance Min: 0
-//		Distance Max: 60
+//		Distance Max: 50
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1 
@@ -495,9 +495,9 @@ Primary()>40&(
 // 	Force Recast
 //	Attack + Density
 //	50ms
-//		Attack Distance: 60
+//		Attack Distance: 50
 //		Distance Min: 0
-//		Distance Max: 60
+//		Distance Max: 50
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1 
@@ -522,9 +522,9 @@ Primary()>40
 // 	Force Recast
 //	Attack + Density
 //	2000ms
-//		Attack Distance: 60
+//		Attack Distance: 50
 //		Distance Min: 0
-//		Distance Max: 60
+//		Distance Max: 50
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1 
@@ -709,9 +709,9 @@ Primary()>40&
 // 	Force Recast
 //	Attack + Density
 //	50ms
-//		Attack Distance: 60
+//		Attack Distance: 50
 //		Distance Min: 0
-//		Distance Max: 60
+//		Distance Max: 50
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1 
@@ -732,14 +732,14 @@ Primary()>40
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-//  #10.1 Meteor - Proc [Tal Rasha] - Fresh start
+//  #10 Meteor - Proc [Tal Rasha] - Fresh start
 // 	Force Recast
 //  Don't use in fast mode
 //	Attack + Buff
 //	2000ms
-//		Attack Distance: 60
+//		Attack Distance: 50
 //		Distance Min: 0
-//		Distance Max: 60
+//		Distance Max: 50
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1 
@@ -759,45 +759,15 @@ Primary()>40
 
 
 
-
-
-
-
-
-//		//----------------------------------------------------------------------------------------------------------------------------------------
-//		//  #10.2 Teleport - Move - On [Wait for CoE Cycle|Infinite Casting] 
-//		// 	Force Recast
-//		//	Move
-//		//	1000ms
-//		//
-//		//  Note: On [Wait for CoE Cycle|Infinite Casting] 
-//		//
-//		BuffTimeLeft(0, Pages_Buff_Infinite_Casting) > 4000 | 
-//		(((Rune(Wizard_Meteor)==0&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>0))
-//		|(Rune(Wizard_Meteor)==1&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>0))
-//		|(Rune(Wizard_Meteor)==2&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0))
-//		|(Rune(Wizard_Meteor)==3&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>0))
-//		|(Rune(Wizard_Meteor)==4&(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>0)))
-//		&
-//		(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast)))
-//		//\\----------------------------------------------------------------------------------------------------------------------------------------////
-
-
-
-
-
-
-
-
 //----------------------------------------------------------------------------------------------------------------------------------------
-//  #11.1 Battle - Meteor - Far
+//  #11 Battle - Meteor
 // 	Force Recast
 //  Don't use in fast mode
-//	Attack + Buff
+//	Attack 
 //	200ms
-//		Attack Distance: 60
+//		Attack Distance: 50
 //		Distance Min: 0
-//		Distance Max: 60
+//		Distance Max: 50
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 2 
@@ -816,25 +786,7 @@ Primary()>40
 //
 //
 //
-Health()>=95%&Primary()>40&(
-(IsBuffActive(0,ItemPassive_Unique_Gem_012_x1)
-&IsBuffActive(3,Enchantress_CheatDeath_Passive)&BuffTimeLeft(1,Enchantress_CheatDeath_Passive)==0
-&(IsBuffActive(0,Pages_Buff_Invulnerable)|IsBuffActive(2,Wizard_Passive_GalvanizingWard)|BuffStackCount(1,x1_Wizard_Passive_ArcaneAegis)==10|(Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)>2000))
-&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast)))
-|(IsBuffActive(0,Wizard_Passive_PowerHungry)
-&IsBuffActive(3,Enchantress_CheatDeath_Passive)&BuffTimeLeft(1,Enchantress_CheatDeath_Passive)==0
-&(IsBuffActive(0,Pages_Buff_Invulnerable)|IsBuffActive(2,Wizard_Passive_GalvanizingWard)|BuffStackCount(1,x1_Wizard_Passive_ArcaneAegis)==10|(Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)>2000))
-&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast)))
-|(((Rune(Wizard_Meteor)==0&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
-|(Rune(Wizard_Meteor)==1&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
-|(Rune(Wizard_Meteor)==2&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<3000)))
-|(Rune(Wizard_Meteor)==3&(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)<3000)))
-|(Rune(Wizard_Meteor)==4&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>1000|(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<1250)))
-|IsBuffActive(2,ItemPassive_Unique_Ring_922_x1)
-|IsBuffActive(0,Pages_Buff_Damage)
-|BuffTimeLeft(2,Community_Buff_DarkAlchemy)>0)
-&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast)))
-)
+Primary()>40
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
 
 
@@ -847,9 +799,9 @@ Health()>=95%&Primary()>40&(
 //  Don't use in fast mode
 //	Attack + Density
 //	200ms
-//		Attack Distance: 60
+//		Attack Distance: 50
 //		Distance Min: 0
-//		Distance Max: 60
+//		Distance Max: 50
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1 
@@ -889,9 +841,9 @@ Primary()>40&(
 //  Don't use in fast mode
 //	Attack + Density
 //	200ms
-//		Attack Distance: 60
+//		Attack Distance: 50
 //		Distance Min: 0
-//		Distance Max: 60
+//		Distance Max: 50
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1 
@@ -917,9 +869,9 @@ Primary()>40
 //  Don't use in fast mode
 //	Attack + Density
 //	2000ms
-//		Attack Distance: 60
+//		Attack Distance: 50
 //		Distance Min: 0
-//		Distance Max: 60
+//		Distance Max: 50
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1 
