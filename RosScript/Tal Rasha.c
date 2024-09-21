@@ -166,19 +166,6 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 //
 
 
-
-//		Distance Min: 0
-//		Distance Max: 40
-//		Calculation min param: 0
-//		Calculation max param: 10
-//		Attack limit: 1 
-//		Elite weight: 0
-//		Minion weight: 0
-//		Big guy weight: 2
-//		Goblin weight: 0
-//		Normal monster weight: 0
-//
-//
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
 
 
@@ -195,11 +182,12 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1 
+
 //		Elite weight: 0
 //		Minion weight: 0
+//		Normal monster weight: 0
 //		Big guy weight: 2
 //		Goblin weight: 1
-//		Normal monster weight: 0
 //
 //
 //
@@ -228,11 +216,12 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1 
+//
 //		Elite weight: 0
 //		Minion weight: 0
+//		Normal monster weight: 0
 //		Big guy weight: 2
 //		Goblin weight: 1
-//		Normal monster weight: 0
 //
 //
 //
