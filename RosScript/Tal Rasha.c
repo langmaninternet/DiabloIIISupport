@@ -65,7 +65,7 @@ Primary()>40&Health()<50%
 //	#4.4 Teleport [Safe Passage|Calamity] - Safe in 10 yards - Just in Time [Prepare CoE Cycle]
 //	#4.5 Teleport [Safe Passage|Calamity] - Safe in 05 yards - Just in Time [Prepare CoE Cycle]
 // 	Force Recast
-//	Attack + Density
+//	Attack + Density + Buff
 //	50ms
 //		Attack Distance: [25,20,15,10,5]
 //		Distance Min: 0
@@ -108,7 +108,7 @@ Primary()>40&Health()<50%
 //	#5.4 Teleport [Safe Passage|Calamity] - Safe in 10 yards - On [Wait for CoE Cycle]
 //	#5.5 Teleport [Safe Passage|Calamity] - Safe in 5 yards - On [Wait for CoE Cycle]
 // 	Force Recast
-//	Attack + Density
+//	Attack + Density + Buff
 //	50ms
 //		Attack Distance: [25,20,15,10,5]
 //		Distance Min: 0
@@ -148,7 +148,7 @@ Primary()>40&Health()<50%
 // #6.1 Teleport [Calamity] - Near 25 yards - Proc [Tal Rasha's Elements - Arcane] - Just in Time [Prepare CoE Cycle]
 // #6.2 Teleport [Calamity] - Near 30 yards - Proc [Tal Rasha's Elements - Arcane] - Just in Time [Prepare CoE Cycle]
 // 	Force Recast
-//	Attack + Density
+//	Attack + Density + Buff
 //	50ms
 //		Attack Distance: [25,30]
 //		Distance Min: 0
@@ -188,7 +188,7 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 //----------------------------------------------------------------------------------------------------------------------------------------
 //  #7.1 Black Hole - Rift Guardian
 // 	Force Recast
-//	Attack + Density
+//	Attack + Density + Buff
 //	2000ms
 //		Attack Distance: 50
 //		Distance Min: 0
@@ -213,7 +213,7 @@ Primary()>30
 //----------------------------------------------------------------------------------------------------------------------------------------
 //  #7.2 Black Hole - Rift Elite
 // 	Force Recast
-//	Attack + Density
+//	Attack + Density + Buff
 //	3000ms
 //		Attack Distance: 50
 //		Distance Min: 0
@@ -238,7 +238,7 @@ Primary()>60
 //----------------------------------------------------------------------------------------------------------------------------------------
 //  #7.3 Black Hole
 // 	Force Recast
-//	Attack + Density
+//	Attack + Density + Buff
 //	4000ms
 //		Attack Distance: 50
 //		Distance Min: 0
