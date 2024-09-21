@@ -282,8 +282,9 @@ Primary()>40
 //
 //
 Primary()>40
-& IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)<4
-&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)
+&BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)<4
+
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
 
 
