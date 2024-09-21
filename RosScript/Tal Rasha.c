@@ -281,7 +281,7 @@ Health()>95%&(
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-//  #8.3 Rift Guardian - Meteor - 2000ms
+//  #8.4 Rift Guardian - Meteor - 2000ms
 // 	Force Recast
 //	Attack + Density
 //	2000ms
@@ -419,6 +419,30 @@ Health()>95%&(
 
 
 
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+//  #9.4 Elite - Meteor - 2000ms
+// 	Force Recast
+//	Attack + Density
+//	2000ms
+//		Attack Distance: 60
+//		Distance Min: 0
+//		Distance Max: 60
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1 
+//
+//		Elite weight: 2
+//		Minion weight: 0
+//		Normal monster weight: 0
+//		Big guy weight: 2
+//		Goblin weight: 2
+//
+//
+//
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
 
 
 
