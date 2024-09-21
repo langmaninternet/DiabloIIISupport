@@ -146,6 +146,61 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 
 
 
+//----------------------------------------------------------------------------------------------------------------------------------------
+//  #7.1 Black Hole
+// 	Force Recast
+//	Attack + Density
+//	3000ms
+//		Attack Distance 50
+//		Distance Min: 0
+//		Distance Max: 50
+//		Calculation min param: 1
+//		Calculation max param: 10
+//		Attack limit: 1, 
+//
+//		Elite weight: 1
+//		Minion weight: 1
+//		Normal monster weight:1
+//		Big guy weight: 1
+//		Goblin weight: 1
+//
+
+
+
+//		Distance Min: 0
+//		Distance Max: 40
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1 
+//		Elite weight: 0
+//		Minion weight: 0
+//		Big guy weight: 2
+//		Goblin weight: 0
+//		Normal monster weight: 0
+//
+//
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+//  #8.1 Rift Guardian - Meteor - Proc [Zei's Stone of Vengeance]
+// 	Force Recast
+//	Attack + Density
+//	50ms
+//		Distance Min: 40
+//		Distance Max: 60
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1 
+//		Elite weight: 0
+//		Minion weight: 0
+//		Big guy weight: 2
+//		Goblin weight: 0
+//		Normal monster weight: 0
+//
+//
 
 
 
@@ -157,7 +212,7 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-//  Rift Guardian - Meteor - Proc [Zei's Stone of Vengeance]
+//  #8.1 Rift Guardian - Meteor - Proc [Zei's Stone of Vengeance]
 //
 //		Distance Min: 40
 //		Distance Max: 60
