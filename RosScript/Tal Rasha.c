@@ -243,6 +243,65 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
+//  #8.3 Rift Guardian - Meteor - Main
+// 	Force Recast
+//	Attack + Density
+//	50ms
+//		Attack Distance: 60
+//		Distance Min: 40
+//		Distance Max: 60
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1 
+//
+//		Elite weight: 0
+//		Minion weight: 0
+//		Normal monster weight: 0
+//		Big guy weight: 2
+//		Goblin weight: 1
+//
+//
+//
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+//  #8.3 Rift Guardian - Meteor - 2000ms
+// 	Force Recast
+//	Attack + Density
+//	2000ms
+//		Attack Distance: 60
+//		Distance Min: 0
+//		Distance Max: 60
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1 
+//
+//		Elite weight: 0
+//		Minion weight: 0
+//		Normal monster weight: 0
+//		Big guy weight: 2
+//		Goblin weight: 1
+//
+//
+//
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
 //	Rift Guardian - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love]
 //  Elite - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love] - 10 yards Cycle 500ms
 //  Elite - Meteor - On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love] - 30 yards Cycle 250ms
