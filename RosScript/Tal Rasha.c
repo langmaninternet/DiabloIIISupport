@@ -57,7 +57,7 @@ Primary()>40&Health()<50%
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-//	#3 Teleport [Safe Passage|Calamity] - 25 yards
+//	#3 Teleport - 25 yards
 // 	Force Recast
 //	Attack + Density + Buff
 //	50ms
@@ -76,30 +76,21 @@ Primary()>40&Health()<50%
 //
 //		Case 01: Safe in 25 yards - Just in Time [Prepare CoE Cycle]
 //		Case 02: Safe in 25 yards - On [Wait for CoE Cycle]
-//		Case 02: Proc [Tal Rasha's Elements - Arcane] - Just in Time [Prepare CoE Cycle]
+//		Case 03: Proc [Tal Rasha's Elements - Arcane] - Just in Time [Prepare CoE Cycle]
 
 (
-(((Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)<1000&BuffTimeLeft(0,Pages_Buff_Invulnerable)<5000)
-|(Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<1000))
-&
 ((Rune(Wizard_Meteor)==0&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>0))
 |(Rune(Wizard_Meteor)==1&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>0))
 |(Rune(Wizard_Meteor)==2&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0))
 |(Rune(Wizard_Meteor)==3&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>0))
-|(Rune(Wizard_Meteor)==4&(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>0))))
+|(Rune(Wizard_Meteor)==4&(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>0)))
 |
-((
-(Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)<4&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<2000)
-|(Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<4000)
-|(Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)<4000&BuffTimeLeft(0,Pages_Buff_Invulnerable)<6000))
-&
 ((Rune(Wizard_Meteor)==0&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)
 |(Rune(Wizard_Meteor)==1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)
 |(Rune(Wizard_Meteor)==2&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<3000)
 |(Rune(Wizard_Meteor)==3&BuffTimeLeft(6,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(6,P2_ItemPassive_Unique_Ring_038)<3000)
 |(Rune(Wizard_Meteor)==4&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<3000)
-)))
-&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast)))
+))
 
 
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
