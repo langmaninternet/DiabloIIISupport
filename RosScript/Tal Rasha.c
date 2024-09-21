@@ -411,9 +411,9 @@ Primary()>40
 // 	Force Recast
 //	Attack + Density
 //	50ms
-//		Attack Distance: [10,20,30,40]
+//		Attack Distance: [10,20,30]
 //		Distance Min: 0
-//		Distance Max: [10,20,30,40]
+//		Distance Max: [10,20,30]
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1 
@@ -487,9 +487,9 @@ Primary()>40&
 // 	Force Recast
 //	Attack + Density
 //	50ms
-//		Attack Distance: 50
+//		Attack Distance: 60
 //		Distance Min: 0
-//		Distance Max: 50
+//		Distance Max: 60
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1 
@@ -515,9 +515,9 @@ Primary()>40
 //  Don't use in fast mode
 //	Attack + Buff
 //	2000ms
-//		Attack Distance: 50
+//		Attack Distance: 60
 //		Distance Min: 0
-//		Distance Max: 50
+//		Distance Max: 60
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1 
@@ -543,9 +543,9 @@ Primary()>40
 //  Don't use in fast mode
 //	Attack 
 //	200ms
-//		Attack Distance: 50
+//		Attack Distance: 60
 //		Distance Min: 0
-//		Distance Max: 50
+//		Distance Max: 60
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 2 
