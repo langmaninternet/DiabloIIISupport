@@ -259,38 +259,8 @@ Primary()>40
 
 
 
-
 //----------------------------------------------------------------------------------------------------------------------------------------
-//  #8 Meteor - Proc [Tal Rasha] - Fresh start
-// 	Force Recast
-//  Don't use in fast mode
-//	Attack + Buff
-//	2000ms
-//		Attack Distance: 60
-//		Distance Min: 0
-//		Distance Max: 60
-//		Calculation min param: 0
-//		Calculation max param: 10
-//		Attack limit: 1 
-//
-//		Elite weight: 2
-//		Minion weight: 1
-//		Normal monster weight: 1
-//		Big guy weight: 2
-//		Goblin weight: 2
-//
-//
-//
-Primary()>40
-&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)
-&BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)<4
-
-//\\----------------------------------------------------------------------------------------------------------------------------------------////
-
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------
-//  #9 Battle - Meteor
+//  #8 Battle - Meteor
 // 	Force Recast
 //  Don't use in fast mode
 //	Attack 
