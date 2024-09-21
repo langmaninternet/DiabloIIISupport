@@ -38,6 +38,7 @@
 //		Attack limit: 15 yards - 15, 
 //		Attack limit: 10 yards - 10, 
 //		Attack limit:  5 yards -  5, 
+//
 //		Elite weight: 1
 //		Minion weight: 5
 //		Normal monster weight:5
@@ -69,6 +70,7 @@
 //	#5.5 Teleport [Safe Passage|Calamity] - Safe in 5 yards - On [Wait for CoE Cycle]
 // 	Force Recast
 //	Attack + Density
+//	50ms
 //		Attack Distance [25,20,15,10,5]
 //		Distance Min: 0
 //		Distance Max: [25,20,15,10,5]
@@ -79,6 +81,7 @@
 //		Attack limit: 15 yards - 15, 
 //		Attack limit: 10 yards - 10, 
 //		Attack limit:  5 yards -  5, 
+//
 //		Elite weight: 1
 //		Minion weight: 5
 //		Normal monster weight:5
@@ -102,18 +105,27 @@
 
 
 
-
-
-
-
-
-
-
-
-
 //----------------------------------------------------------------------------------------------------------------------------------------
-// Teleport [Calamity] - Near 25 yards - Proc [Tal Rasha's Elements - Arcane] - Just in Time [Prepare CoE Cycle]
-// Teleport [Calamity] - Near 30 yards - Proc [Tal Rasha's Elements - Arcane] - Just in Time [Prepare CoE Cycle]
+// #6.1 Teleport [Calamity] - Near 25 yards - Proc [Tal Rasha's Elements - Arcane] - Just in Time [Prepare CoE Cycle]
+// #6.2 Teleport [Calamity] - Near 30 yards - Proc [Tal Rasha's Elements - Arcane] - Just in Time [Prepare CoE Cycle]
+// 	Force Recast
+//	Attack + Density
+//	50ms
+//		Attack Distance [25,30]
+//		Distance Min: 0
+//		Distance Max: [25,30]
+//		Calculation min param: 1
+//		Calculation max param: 10
+//		Attack limit: 1, 
+//
+//		Elite weight: 1
+//		Minion weight: 5
+//		Normal monster weight:5
+//		Big guy weight: 1
+//		Goblin weight: 5
+//
+
+
 
 Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)<4&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<2000
 &
@@ -127,6 +139,14 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 (BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
 
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+
+
+
+
 
 
 
