@@ -150,7 +150,7 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 //  #7.1 Black Hole - Rift Guardian
 // 	Force Recast
 //	Attack + Density
-//	3000ms
+//	2000ms
 //		Attack Distance: 50
 //		Distance Min: 0
 //		Distance Max: 50
@@ -198,7 +198,7 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 //  #7.3 Black Hole
 // 	Force Recast
 //	Attack + Density
-//	3000ms
+//	4000ms
 //		Attack Distance: 50
 //		Distance Min: 0
 //		Distance Max: 50
