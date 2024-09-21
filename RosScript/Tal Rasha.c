@@ -509,9 +509,9 @@ Primary()>40
 // 	Force Recast
 //	Attack + Density
 //	50ms
-//		Attack Distance: 60
+//		Attack Distance: 10
 //		Distance Min: 0
-//		Distance Max: 60
+//		Distance Max: 10
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1 
@@ -523,7 +523,7 @@ Primary()>40
 //		Goblin weight: 2
 //
 //
-//  Note: On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love]
+//  Note: On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love] or Health()<40%
 //
 Primary()>40&
 (Health()<40%
@@ -542,6 +542,43 @@ Primary()>40&
 
 
 
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+//  #9.6 Elite - Meteor - Near 20 yards
+// 	Force Recast
+//	Attack + Density
+//	50ms
+//		Attack Distance: 20
+//		Distance Min: 0
+//		Distance Max: 20
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1 
+//
+//		Elite weight: 2
+//		Minion weight: 0
+//		Normal monster weight: 0
+//		Big guy weight: 2
+//		Goblin weight: 2
+//
+//
+//  Note: On [CoE Cycle] or [Oculus] or [Power] or [Triune of Love] or Health()<60%
+//
+Primary()>40&
+(Health()<60%
+|
+(((Rune(Wizard_Meteor)==0&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==1&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==2&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==3&(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)<3000)))
+|(Rune(Wizard_Meteor)==4&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>1000|(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<1250)))
+|IsBuffActive(2,ItemPassive_Unique_Ring_922_x1)
+|IsBuffActive(0,Pages_Buff_Damage)
+|BuffTimeLeft(2,Community_Buff_DarkAlchemy)>0
+)&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast)))
+)
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
 
 
 
