@@ -20,23 +20,30 @@
 
 
 ////----------------------------------------------------------------------------------------------------------------------------------------\\\\
-//	#4 Teleport [Safe Passage|Calamity] - Safe in 5 yards - Just in Time [Prepare CoE Cycle]
-//	#4 Teleport [Safe Passage|Calamity] - Safe in 10 yards - Just in Time [Prepare CoE Cycle]
-//	#4 Teleport [Safe Passage|Calamity] - Safe in 15 yards - Just in Time [Prepare CoE Cycle]
-//	#4 Teleport [Safe Passage|Calamity] - Safe in 20 yards - Just in Time [Prepare CoE Cycle]
+//	#4.1 Teleport [Safe Passage|Calamity] - Safe in 25 yards - Just in Time [Prepare CoE Cycle]
+//	#4.2 Teleport [Safe Passage|Calamity] - Safe in 20 yards - Just in Time [Prepare CoE Cycle]
+//	#4.3 Teleport [Safe Passage|Calamity] - Safe in 15 yards - Just in Time [Prepare CoE Cycle]
+//	#4.4 Teleport [Safe Passage|Calamity] - Safe in 10 yards - Just in Time [Prepare CoE Cycle]
+//	#4.5 Teleport [Safe Passage|Calamity] - Safe in 05 yards - Just in Time [Prepare CoE Cycle]
 // 	Force Recast
 //	Attack + Density
-//
+//		Attack Distance [25,20,15,10,5]
 //		Distance Min: 0
-//		Distance Max: ***
-//		Calculation min param: -100
-//		Calculation max param: 10
-//		Attack limit: -10 for 5 yards, -20 for 10 yards, -30 for 15 yards, -40 for 20 yards, 
-//		Elite weight: -5
-//		Minion weight: -3
-//		Big guy weight: -5
-//		Goblin weight: 0
-//		Normal monster weight: -3
+//		Distance Max: [25,20,15,10,5]
+//		Calculation min param: 1
+//		Calculation max param: 30
+//		Attack limit: 25 yards - 25, 
+//		Attack limit: 20 yards - 20, 
+//		Attack limit: 15 yards - 15, 
+//		Attack limit: 10 yards - 10, 
+//		Attack limit:  5 yards -  5, 
+//		Elite weight: 1
+//		Minion weight: 5
+//		Normal monster weight:5
+//		Big guy weight: 1
+//		Goblin weight: 5
+
+
 ((Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)<4000&BuffTimeLeft(0,Pages_Buff_Invulnerable)<6000)
 |(Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<4000))
 &
@@ -51,7 +58,16 @@
 
 
 
-
+//		Distance Min: 0
+//		Distance Max: ***
+//		Calculation min param: -100
+//		Calculation max param: 10
+//		Attack limit: -10 for 5 yards, -20 for 10 yards, -30 for 15 yards, -40 for 20 yards, 
+//		Elite weight: -5
+//		Minion weight: -3
+//		Big guy weight: -5
+//		Goblin weight: 0
+//		Normal monster weight: -3
 
 
 
