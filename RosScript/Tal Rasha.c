@@ -56,48 +56,8 @@ Primary()>40&Health()<50%
 
 
 
-
-
-////----------------------------------------------------------------------------------------------------------------------------------------\\\\
-//	#4 Teleport [Safe Passage|Calamity] - Safe in 25 yards - Just in Time [Prepare CoE Cycle]
-// 	Force Recast
-//	Attack + Density + Buff
-//	50ms
-//		Attack Distance: 25
-//		Distance Min: 0
-//		Distance Max: 25
-//		Calculation min param: 1
-//		Calculation max param: 30
-//		Attack limit: 25 yards - 25, 
-//		Attack limit: 20 yards - 20, 
-//		Attack limit: 15 yards - 15, 
-//		Attack limit: 10 yards - 10, 
-//		Attack limit:  5 yards -  5, 
-//
-//		Elite weight: 1
-//		Minion weight: 5
-//		Normal monster weight:5
-//		Big guy weight: 1
-//		Goblin weight: 5
-
-
-((Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)<4000&BuffTimeLeft(0,Pages_Buff_Invulnerable)<6000)
-|(Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<4000))
-&
-((Rune(Wizard_Meteor)==0&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)
-|(Rune(Wizard_Meteor)==1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)
-|(Rune(Wizard_Meteor)==2&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<3000)
-|(Rune(Wizard_Meteor)==3&BuffTimeLeft(6,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(6,P2_ItemPassive_Unique_Ring_038)<3000)
-|(Rune(Wizard_Meteor)==4&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<3000)
-)
-&(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
-
-//\\----------------------------------------------------------------------------------------------------------------------------------------////
-
-
-
 //----------------------------------------------------------------------------------------------------------------------------------------
-//	#5 Teleport [Safe Passage|Calamity] - 25 yards
+//	#3 Teleport [Safe Passage|Calamity] - 25 yards
 // 	Force Recast
 //	Attack + Density + Buff
 //	50ms
@@ -151,7 +111,7 @@ Primary()>40&Health()<50%
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-//  #7 Black Hole
+//  #4 Black Hole
 // 	Force Recast
 //	Attack + Density + Buff
 //	2000ms
@@ -177,7 +137,7 @@ Primary()>30
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-//  #8 Rift Guardian - Meteor
+//  #5 Rift Guardian - Meteor
 // 	Force Recast
 //	Attack + Density
 //	50ms
@@ -209,9 +169,9 @@ Primary()>40
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-//  #9.1 Elite - Meteor - Near 10 yards
-//  #9.2 Elite - Meteor - Near 20 yards
-//  #9.3 Elite - Meteor - Near 30 yards
+//  #6.1 Elite - Meteor - Near 10 yards
+//  #6.2 Elite - Meteor - Near 20 yards
+//  #6.3 Elite - Meteor - Near 30 yards
 // 	Force Recast
 //	Attack + Density
 //	50ms
@@ -287,7 +247,7 @@ Primary()>40&
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-//  #9.9 Elite - Meteor
+//  #7 Elite - Meteor
 // 	Force Recast
 //	Attack + Density
 //	50ms
@@ -314,7 +274,7 @@ Primary()>40
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-//  #10 Meteor - Proc [Tal Rasha] - Fresh start
+//  #8 Meteor - Proc [Tal Rasha] - Fresh start
 // 	Force Recast
 //  Don't use in fast mode
 //	Attack + Buff
@@ -342,7 +302,7 @@ Primary()>40
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-//  #11 Battle - Meteor
+//  #9 Battle - Meteor
 // 	Force Recast
 //  Don't use in fast mode
 //	Attack 
