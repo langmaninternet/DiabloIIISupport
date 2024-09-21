@@ -201,33 +201,9 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 //		Normal monster weight: 0
 //
 //
-
-
-
-
-
-
-
-
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------
-//  #8.1 Rift Guardian - Meteor - Proc [Zei's Stone of Vengeance]
-//
-//		Distance Min: 40
-//		Distance Max: 60
-//		Calculation min param: 0
-//		Calculation max param: 10
-//		Attack limit: 1 
-//		Elite weight: 0
-//		Minion weight: 0
-//		Big guy weight: 2
-//		Goblin weight: 0
-//		Normal monster weight: 0
-//
 //
 IsBuffActive(0,ItemPassive_Unique_Gem_012_x1)
-&Health()==100%
+&Health()>95%
 &IsBuffActive(3,Enchantress_CheatDeath_Passive)&BuffTimeLeft(1,Enchantress_CheatDeath_Passive)==0
 &(IsBuffActive(0,Pages_Buff_Invulnerable)|IsBuffActive(2,Wizard_Passive_GalvanizingWard)|BuffStackCount(1,x1_Wizard_Passive_ArcaneAegis)==10|(Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)>2000))
 &
