@@ -186,7 +186,7 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-//  #7.1 Black Hole - Rift Guardian
+//  #7.1 Black Hole - Rift Guardian + Elite
 // 	Force Recast
 //	Attack + Density + Buff
 //	2000ms
@@ -197,7 +197,7 @@ Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStac
 //		Calculation max param: 10
 //		Attack limit: 1, 
 //
-//		Elite weight: 0
+//		Elite weight: 1
 //		Minion weight: 0
 //		Normal monster weight:0
 //		Big guy weight: 2
@@ -209,37 +209,11 @@ Primary()>30
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
 
 
-
 //----------------------------------------------------------------------------------------------------------------------------------------
-//  #7.2 Black Hole - Rift Elite
+//  #7.2 Black Hole
 // 	Force Recast
 //	Attack + Density + Buff
 //	3000ms
-//		Attack Distance: 50
-//		Distance Min: 0
-//		Distance Max: 50
-//		Calculation min param: 1
-//		Calculation max param: 10
-//		Attack limit: 1, 
-//
-//		Elite weight: 2
-//		Minion weight: 0
-//		Normal monster weight:0
-//		Big guy weight: 2
-//		Goblin weight: 2
-//
-
-Primary()>60
-
-//\\----------------------------------------------------------------------------------------------------------------------------------------////
-
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------
-//  #7.3 Black Hole
-// 	Force Recast
-//	Attack + Density + Buff
-//	4000ms
 //		Attack Distance: 50
 //		Distance Min: 0
 //		Distance Max: 50
