@@ -1,4 +1,148 @@
 
+
+
+////----------------------------------------------------------------------------------------------------------------------------------------\\\\
+//	#4.1 Teleport [Safe Passage|Calamity] - Safe in 25 yards - Just in Time [Prepare CoE Cycle]
+//	#4.2 Teleport [Safe Passage|Calamity] - Safe in 20 yards - Just in Time [Prepare CoE Cycle]
+//	#4.3 Teleport [Safe Passage|Calamity] - Safe in 15 yards - Just in Time [Prepare CoE Cycle]
+//	#4.4 Teleport [Safe Passage|Calamity] - Safe in 10 yards - Just in Time [Prepare CoE Cycle]
+//	#4.5 Teleport [Safe Passage|Calamity] - Safe in 05 yards - Just in Time [Prepare CoE Cycle]
+// 	Force Recast
+//	Attack + Density
+//	50ms
+//		Attack Distance: [25,20,15,10,5]
+//		Distance Min: 0
+//		Distance Max: [25,20,15,10,5]
+//		Calculation min param: 1
+//		Calculation max param: 30
+//		Attack limit: 25 yards - 25, 
+//		Attack limit: 20 yards - 20, 
+//		Attack limit: 15 yards - 15, 
+//		Attack limit: 10 yards - 10, 
+//		Attack limit:  5 yards -  5, 
+//
+//		Elite weight: 1
+//		Minion weight: 5
+//		Normal monster weight:5
+//		Big guy weight: 1
+//		Goblin weight: 5
+
+
+((Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)<4000&BuffTimeLeft(0,Pages_Buff_Invulnerable)<6000)
+|(Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<4000))
+&
+((Rune(Wizard_Meteor)==0&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)
+|(Rune(Wizard_Meteor)==1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)
+|(Rune(Wizard_Meteor)==2&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<3000)
+|(Rune(Wizard_Meteor)==3&BuffTimeLeft(6,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(6,P2_ItemPassive_Unique_Ring_038)<3000)
+|(Rune(Wizard_Meteor)==4&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<3000)
+)
+&
+(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+//	#5.1 Teleport [Safe Passage|Calamity] - Safe in 25 yards - On [Wait for CoE Cycle]
+//	#5.2 Teleport [Safe Passage|Calamity] - Safe in 20 yards - On [Wait for CoE Cycle]
+//	#5.3 Teleport [Safe Passage|Calamity] - Safe in 15 yards - On [Wait for CoE Cycle]
+//	#5.4 Teleport [Safe Passage|Calamity] - Safe in 10 yards - On [Wait for CoE Cycle]
+//	#5.5 Teleport [Safe Passage|Calamity] - Safe in 5 yards - On [Wait for CoE Cycle]
+// 	Force Recast
+//	Attack + Density
+//	50ms
+//		Attack Distance: [25,20,15,10,5]
+//		Distance Min: 0
+//		Distance Max: [25,20,15,10,5]
+//		Calculation min param: 1
+//		Calculation max param: 30
+//		Attack limit: 25 yards - 25, 
+//		Attack limit: 20 yards - 20, 
+//		Attack limit: 15 yards - 15, 
+//		Attack limit: 10 yards - 10, 
+//		Attack limit:  5 yards -  5, 
+//
+//		Elite weight: 1
+//		Minion weight: 5
+//		Normal monster weight:5
+//		Big guy weight: 1
+//		Goblin weight: 5
+//
+
+((Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)<1000&BuffTimeLeft(0,Pages_Buff_Invulnerable)<5000)
+|(Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<1000))
+&
+((Rune(Wizard_Meteor)==0&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>0))
+|(Rune(Wizard_Meteor)==1&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>0))
+|(Rune(Wizard_Meteor)==2&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0))
+|(Rune(Wizard_Meteor)==3&(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>0))
+|(Rune(Wizard_Meteor)==4&(BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>0))
+)
+&
+(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+// #6.1 Teleport [Calamity] - Near 25 yards - Proc [Tal Rasha's Elements - Arcane] - Just in Time [Prepare CoE Cycle]
+// #6.2 Teleport [Calamity] - Near 30 yards - Proc [Tal Rasha's Elements - Arcane] - Just in Time [Prepare CoE Cycle]
+// 	Force Recast
+//	Attack + Density
+//	50ms
+//		Attack Distance: [25,30]
+//		Distance Min: 0
+//		Distance Max: [25,30]
+//		Calculation min param: 1
+//		Calculation max param: 10
+//		Attack limit: 1, 
+//
+//		Elite weight: 1
+//		Minion weight: 5
+//		Normal monster weight:5
+//		Big guy weight: 1
+//		Goblin weight: 5
+//
+
+
+
+Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffStackCount(5, P2_ItemPassive_Unique_Ring_028)<4&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<2000
+&
+((Rune(Wizard_Meteor)==0&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)
+|(Rune(Wizard_Meteor)==1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)
+|(Rune(Wizard_Meteor)==2&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)<3000)
+|(Rune(Wizard_Meteor)==3&BuffTimeLeft(6,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(6,P2_ItemPassive_Unique_Ring_038)<3000)
+|(Rune(Wizard_Meteor)==4&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<3000)
+)
+&
+(BuffTimeLeft(0,Wizard_Familiar)>1000|BuffTimeLeft(0,Wizard_MagicWeapon)>1000|BuffTimeLeft(3,Wizard_StormArmor)>1000|IsBuffActive(0, Pages_Buff_Run_Speed_Knockback_Cast))
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //----------------------------------------------------------------------------------------------------------------------------------------
 //  #8.1 Rift Guardian - Meteor - Far 
 // 	Force Recast
