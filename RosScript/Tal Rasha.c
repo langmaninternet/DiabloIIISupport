@@ -78,7 +78,7 @@ Primary()>40&Health()<50%
 //		Case 02: Safe in 25 yards - On [Wait for CoE Cycle]
 //		Case 03: Proc [Tal Rasha's Elements - Arcane] - Just in Time [Prepare CoE Cycle]
 
-(
+
 (Rune(Wizard_Meteor)==0&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>0))
 |(Rune(Wizard_Meteor)==1&(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_038)>0))
 |(Rune(Wizard_Meteor)==2&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>0|BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)>0))
@@ -90,7 +90,7 @@ Primary()>40&Health()<50%
 |(Rune(Wizard_Meteor)==3&BuffTimeLeft(6,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(6,P2_ItemPassive_Unique_Ring_038)<3000)
 |(Rune(Wizard_Meteor)==4&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1000&BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<3000)
 |(Rune(Wizard_Teleport)==2&BuffTimeLeft(1,Wizard_Teleport)<2000&BuffTimeLeft(0,Pages_Buff_Infinite_Casting)>5000)
-)
+
 
 
 //|(Rune(Wizard_Teleport)==0&IsBuffActive(0,P2_ItemPassive_Unique_Ring_028)&BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_028)<4000))
