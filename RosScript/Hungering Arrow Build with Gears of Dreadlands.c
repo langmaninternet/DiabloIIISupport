@@ -85,7 +85,7 @@ Primary()>20
 
 // #4.1 Strafe - Move
 // #4.2 Strafe - Evade
-// #4.3 Strafe - Evade
+// #4.3 Strafe - Approach
 // 50ms
 // Usage: None
 // Move Setting: Walk, Evade, Approach
