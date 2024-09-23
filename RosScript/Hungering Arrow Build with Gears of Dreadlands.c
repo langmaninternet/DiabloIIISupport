@@ -1,23 +1,23 @@
 
 
-// #1 Vengeance
+// #1.1 Vengeance
 // Buff
 // 1000ms
 // Force Recast
 
 
-// #2 Shadow Power
+// #1.2 Shadow Power
 // Buff
 // 50ms
 Secondary()>15&Health()<90%
 
 
-// #3 Smoke Screen
+// #1.3 Smoke Screen
 // Buff
 // 50ms
 
 
-// #4 Fan of Knives
+// #1.4 Fan of Knives
 // Attack+Buff
 // 50ms
 //		Attack Distance: 30
@@ -37,10 +37,12 @@ Secondary()>15&Health()<90%
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-//		#5 Hungering Arrow - Buff - Momentum|Wraps of Clarity
+// #2 Hungering Arrow - Buff - Momentum|Wraps of Clarity
 // 50ms
-//		Stand still: true
-//		Force recast: true
+//	Stand still: true
+// 	Force Recast
+//	Attack + Density
+//
 //		Attack Distance: 40
 //		Distance Min: 0
 //		Distance Max: 40
@@ -67,6 +69,16 @@ Secondary()>15&Health()<90%
 
 
 
+// #3 Strafe - Channeling
+// Attack
+// Resouce : 
+//			Primary 20
+//			Channeling
+//			Max Channeling Distance: 50
+//			Min Resouce level 20
+//
+// 50ms
+Primary()>20
 
 
 
