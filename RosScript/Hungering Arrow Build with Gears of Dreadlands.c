@@ -70,15 +70,16 @@ Secondary()>15&Health()<90%
 
 
 // #3 Strafe - Channeling
-// Attack
+// Attack+Buff
+// Ignore Position caculation
 // Resouce : 
 //			Primary 20
 //			Channeling
-//			Max Channeling Distance: 50
-//			Min Resouce level 20
+//			Max Channeling Distance: 100
+//			Min Resouce level 15
 //
 // 50ms
-Primary()>20
+
 
 
 
