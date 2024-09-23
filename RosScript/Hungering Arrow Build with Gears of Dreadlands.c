@@ -83,6 +83,20 @@ Primary()>20
 
 
 
+// #4.1 Strafe - Move
+// #4.2 Strafe - Evade
+// #4.3 Strafe - Evade
+// 50ms
+// Usage: None
+// Move Setting: Walk, Evade, Approach
+// Resouce : 
+//			Primary 20
+//			Channeling
+//			Max Channeling Distance: 50
+//			Min Resouce level 20
+//
+
+Primary()>20
 
 
 
@@ -92,32 +106,8 @@ Primary()>20
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-//	Vengeance - Buff in [Infinite Casting]
-//	Shadow Power - Buff in [Infinite Casting]
-//	Smoke Screen - Buff in [Infinite Casting]
-//	Companion - Buff in [Infinite Casting]
-//	Fan of Knives - Buff in [Infinite Casting]
-
-BuffTimeLeft(0,Pages_Buff_Infinite_Casting) > 4000
-
-//\\----------------------------------------------------------------------------------------------------------------------------------------////
-
-
-
-
-
-
-
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------
-//	Move - Strafe - On [Momentum]
-
-BuffStackCount(10, P69_ItemPassive_Unique_Ring_010)>10&Primary()>70
-
-//\\------------------------------------------
-
-
-
-
+// #2 Hungering Arrow
+// 50ms
+//	Attack
+//	Attack Distance: 50
 
