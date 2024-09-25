@@ -103,8 +103,8 @@ Secondary()>15&Health()<90%
 //		Attack limit: 15, 
 //
 //		Elite weight: 15
-//		Minion weight: 10
-//		Normal monster weight:5
+//		Minion weight: 15
+//		Normal monster weight:15
 //		Big guy weight: 15
 //		Goblin weight: 15
 
