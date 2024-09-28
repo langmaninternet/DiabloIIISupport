@@ -49,6 +49,9 @@ public:
 
 
 
+
+	bool				IsRolling(void);
+
 	bool				D3IsRollSelecting(void);
 	bool				D3IsRollWaiting(void);
 
@@ -77,9 +80,31 @@ public:
 
 
 
-	//Hunter
+	//Hunter - Hungering Arrow
 	bool				IsRollingGalvanizedVest(void);
+	bool				IsRollingColdCathodeTrousers(void);
 
+
+	bool				RollingIsHungeringArrow13P(int, int);
+
+
+	bool				RollingOption03IsHungeringArrow14P(void);
+
+
+
+	bool				RollingOption01IsHungeringArrow15P(void);
+
+	bool				RollingOption01IsHungeringArrow13P(void);
+	bool				RollingOption02IsHungeringArrow13P(void);
+	bool				RollingOption03IsHungeringArrow13P(void);
+
+	bool				RollingOption02IsHungeringArrow11P(void);
+
+	bool				RollingOption01IsHungeringArrow10P(void);
+	bool				RollingOption02IsHungeringArrow10P(void);
+	bool				RollingOption03IsHungeringArrow10P(void);
+
+	
 
 
 #ifdef _DEBUG
@@ -93,6 +118,9 @@ public:
 
 
 	void				DumpRollItem01(const char* filePath = "D:\\DumpRollItem01.txt", const char* logDumpFolder = "D:\\DumpImage\\");
+	void				DumpRollItem01Ex(const char* filePath = "D:\\DumpRollItem01.txt", const char* logDumpFolder = "D:\\DumpImage\\");
+
+
 	void				DumpRollItem02(const char* filePath = "D:\\DumpRollItem02.txt", const char* logDumpFolder = "D:\\DumpImage\\");
 	void				DumpRollItem02Ex(const char* filePath = "D:\\DumpRollItem02.txt", const char* logDumpFolder = "D:\\DumpImage\\");
 	void				DumpRollItem03(const char* filePath = "D:\\DumpRollItem03.txt", const char* logDumpFolder = "D:\\DumpImage\\");
