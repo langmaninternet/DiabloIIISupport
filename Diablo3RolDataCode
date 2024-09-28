@@ -20280,6 +20280,8 @@ return true;
 
 
 
+
+
 bool Win32GDI::D3Rol02Is_PoisonResiance(int offet)
 {
 int color = 0;

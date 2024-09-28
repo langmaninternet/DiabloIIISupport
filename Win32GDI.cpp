@@ -48,25 +48,20 @@
 //12_MaxDiscipline
 
 const int				rol_01_x_left = 81;
-const int				rol_01_y_top = 388;
+const int				rol_01_y_top = 388/*Fixed*/;
 const int				rol_01_x_right = 185;
-const int				rol_01_y_bottom = 399;
-
-
-const int				rol_03_x_left = 81;
-const int				rol_03_y_top = 475;
-const int				rol_03_x_right = 403;
-const int				rol_03_y_bottom = 486;
-
+const int				rol_01_y_bottom = 399/*Fixed*/;
 
 
 const int				rol_02_x_left = 81;
-const int				rol_02_y_top = 432;
+const int				rol_02_y_top = 432/*Fixed*/;
 const int				rol_02_x_right = 403;
-const int				rol_02_y_bottom = 443;
+const int				rol_02_y_bottom = 443/*Fixed*/;
 
-
-const int				rol_02_y_bottom = 445;
+const int				rol_03_x_left = 121;
+const int				rol_03_y_top = 475/*Fixed*/;
+const int				rol_03_x_right = 263;
+const int				rol_03_y_bottom = 486/*Fixed*/;
 
 
 extern Win32GDI w32gdi;
@@ -86,8 +81,9 @@ void		QuangBTDumpScreen(void)
 
 
 	//w32gdi.DumpRollItem01();
-	w32gdi.DumpRollItem02Ex();
+	//w32gdi.DumpRollItem02Ex();
 	//w32gdi.DumpRollItem03();
+	w32gdi.DumpRollItem03Ex();
 
 	//w32gdi.DumpRectangle(246, 46, 282, 87,false);
 }
@@ -1150,6 +1146,96 @@ void				Win32GDI::DumpRollItem02Ex(const char* filePath, const char* logDumpFold
 							{
 								fprintf(logFile, "color != 0X%X", *icolor);
 								if (std::next(icolor) != bitmap_skill_02_data[ix - rol_02_x_left][iy - rol_02_y_top].end())
+								{
+									fprintf(logFile, " && ");
+								}
+							}
+							fprintf(logFile, ") return false;\n");
+						}
+					}
+				}
+			}
+			fprintf(logFile, "return true;\n}\n\n\n\n");
+			fflush(logFile);
+			fclose(logFile);
+		}
+	}
+}
+void				Win32GDI::DumpRollItem03Ex(const char* filePath, const char* logDumpFolder)
+{
+	static int				skill_03_snap_count = 0;
+	static std::set<int>	bitmap_skill_03_data[rol_03_x_right - rol_03_x_left][rol_03_y_bottom - rol_03_y_top];
+	if (IsD3WindowActive())
+	{
+		skill_03_snap_count++;
+		CaptureDesktop();
+		CreateDirectoryA(logDumpFolder, 0);
+
+		char bufferDumpFileName[1000] = { 0 };
+		sprintf_s(bufferDumpFileName, 999, "%s\\DS_03EX_%06d.bmp", logDumpFolder, skill_03_snap_count);
+		SaveSubSreen(bufferDumpFileName, rol_03_x_left, rol_03_y_top, rol_03_x_right, rol_03_y_bottom);
+
+
+		//Copy data to set
+		for (int ix = rol_03_x_left; ix < rol_03_x_right; ix++)
+		{
+			for (int iy = rol_03_y_top; iy < rol_03_y_bottom; iy++)
+			{
+				int color = ::GetPixel(hScreenMemDC, ix, iy);
+				bitmap_skill_03_data[ix - rol_03_x_left][iy - rol_03_y_top].insert(color);
+			}
+		}
+
+		//Write to file
+		FILE* logFile = NULL;
+		fopen_s(&logFile, filePath, "wb");
+		if (logFile != NULL)
+		{
+			fprintf(logFile, "bool Win32GDI::D3Rol03Is_XXXXX_Ex(int offet)\n{\n");
+
+			for (int isize = 1; isize <= 3; isize++)
+			{
+				for (int ix = rol_03_x_left; ix < rol_03_x_right; ix++)
+				{
+					for (int iy = rol_03_y_top; iy < rol_03_y_bottom; iy++)
+					{
+						if (bitmap_skill_03_data[ix - rol_03_x_left][iy - rol_03_y_top].size() > 1)
+						{
+							fprintf(logFile, "int color = 0;\n");
+							/*soft break*/
+							ix = rol_03_x_right;
+							iy = rol_03_y_bottom;
+							isize = 9;
+						}
+					}
+				}
+			}
+			for (int isize = 1; isize <= 3; isize++)
+			{
+				for (int ix = rol_03_x_left; ix < rol_03_x_right; ix++)
+				{
+					for (int iy = rol_03_y_top; iy < rol_03_y_bottom; iy++)
+					{
+						if (isize == 1 && bitmap_skill_03_data[ix - rol_03_x_left][iy - rol_03_y_top].size() == 1)
+						{
+							fprintf(logFile, "if (GetPixel(%d+offet, %d) != 0X%X) return false;\n", ix, iy, *(bitmap_skill_03_data[ix - rol_03_x_left][iy - rol_03_y_top].begin()));
+						}
+						else if (isize == 2 && bitmap_skill_03_data[ix - rol_03_x_left][iy - rol_03_y_top].size() == 2)
+						{
+							fprintf(logFile, "color = GetPixel(%d+offet, %d);", ix, iy);
+							fprintf(logFile, "if (color != 0X%X && color != 0X%X) return false;\n",
+								*(bitmap_skill_03_data[ix - rol_03_x_left][iy - rol_03_y_top].begin()),
+								*(std::next(bitmap_skill_03_data[ix - rol_03_x_left][iy - rol_03_y_top].begin()))
+							);
+						}
+						else if (bitmap_skill_03_data[ix - rol_03_x_left][iy - rol_03_y_top].size() > 2)
+						{
+							fprintf(logFile, "color = GetPixel(%d+offet, %d);", ix, iy);
+							fprintf(logFile, "if (");
+							for (auto icolor = bitmap_skill_03_data[ix - rol_03_x_left][iy - rol_03_y_top].begin(); icolor != bitmap_skill_03_data[ix - rol_03_x_left][iy - rol_03_y_top].end(); icolor++)
+							{
+								fprintf(logFile, "color != 0X%X", *icolor);
+								if (std::next(icolor) != bitmap_skill_03_data[ix - rol_03_x_left][iy - rol_03_y_top].end())
 								{
 									fprintf(logFile, " && ");
 								}
