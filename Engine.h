@@ -101,6 +101,8 @@ public:
 	bool				RollingOption02IsHungeringArrow13P(void);
 	bool				RollingOption03IsHungeringArrow13P(void);
 
+	bool				RollingOption01IsHungeringArrow12P(void);
+
 	bool				RollingOption01IsHungeringArrow11P(void);
 	bool				RollingOption02IsHungeringArrow11P(void);
 

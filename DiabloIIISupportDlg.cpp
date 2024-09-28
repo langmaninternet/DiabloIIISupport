@@ -1374,6 +1374,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			roll_text += L"Option 01: ";
 			if (w32gdi.RollingOption01IsHungeringArrow15P()) option_01 = ROLL_OPTION_HUNGERING_ARROW_15P;
 			else if (w32gdi.RollingOption01IsHungeringArrow13P()) option_01 = ROLL_OPTION_HUNGERING_ARROW_13P;
+			else if (w32gdi.RollingOption01IsHungeringArrow12P()) option_01 = ROLL_OPTION_HUNGERING_ARROW_12P;
 			else if (w32gdi.RollingOption01IsHungeringArrow10P()) option_01 = ROLL_OPTION_HUNGERING_ARROW_10P;
 			else if (w32gdi.D3Rol01Is_RedueRangedDamge7P()) option_01 = ROLL_OPTION_REDUCE_RANGED_DAMGE_7_PERCENT;
 			else if (w32gdi.D3Rol01Is_GoldPickup()) option_01 = ROLL_OPTION_GOLD_PICKUP;
