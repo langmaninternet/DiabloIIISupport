@@ -87,6 +87,7 @@ wchar_t					configSavePath[3000] = { 0 };
 
 const int				mainTimerDelay = 30/*ms*/;
 const int				autoCastSkillTimerDelay = 100/*ms*/;
+const int				autoRerollTimerDelay = 200/*ms*/;
 
 bool					flagOnF1 = false;
 bool					flagOnF2 = false;
@@ -583,6 +584,8 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 	// TODO: Add extra initialization here
 	mainTimerID = CDialogEx::SetTimer(1, mainTimerDelay, NULL);
 	autoCastSkillTimerID = CDialogEx::SetTimer(2, autoCastSkillTimerDelay, NULL);
+
+
 
 	if (configSavePath[0] == 0)
 	{
@@ -1159,46 +1162,6 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 
 
-			/************************************************************************/
-			/* Auto Reroll support                                                  */
-			/************************************************************************/
-			if (d3Wnd != 0 && IsD3WindowActive() && (!(flagOnCtrl5 || flagOnCtrl6 || flagOnCtrl9)))
-			{
-				CString roll_text = L"Option 01: ";
-				enum ROLL_OPTION
-				{
-					OPTION_UNKNOW = 0,
-					OPTION_EXP = 1,
-				};
-				int rol01opt = OPTION_UNKNOW;
-				int rol02opt = OPTION_UNKNOW;
-				int rol03opt = OPTION_UNKNOW;
-
-				if (w32gdi.D3Rol01Is_MonsterExp())
-				{
-					rol01opt = OPTION_EXP;
-					roll_text.Append(L"Exp\r\n");
-				}
-				else roll_text.Append(L"-\r\n");
-
-				roll_text += L"Option 02: ";
-				if (w32gdi.D3Rol02Is_MonsterExp())
-				{
-					rol02opt = OPTION_EXP;
-				}
-				else roll_text.Append(L"-\r\n");
-
-
-				roll_text += L"Option 03: ";
-				roll_text.Append(L"-\r\n");
-
-
-				if (rol01opt + rol02opt + rol03opt > 0)
-				{
-					GetDlgItem(IDC_REROL_SUPPORT_DETAIL)->SetWindowTextW(roll_text);
-				}
-			}
-
 
 
 			flagOnProcess = false;
@@ -1309,7 +1272,40 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 
 
+		/************************************************************************/
+		/* Auto Reroll support                                                  */
+		/************************************************************************/
+		if (IsD3WindowActive() && d3Config.enableRerollSupport
+			&& (!(flagOnF1 || flagOnF2 || flagOnF3 || flagOnCtrl5 || flagOnCtrl6 || flagOnCtrl9))
+			&& w32gdi.D3Rol01IsRolling())
+		{
+			//w32gdi.CaptureDesktop();
 
+			CString roll_text = L"Option 01: ";
+			enum ROLL_OPTION
+			{
+				OPTION_UNKNOW = 0,
+				OPTION_EXP = 1,
+			};
+			int rol01opt = OPTION_UNKNOW;
+			int rol02opt = OPTION_UNKNOW;
+			int rol03opt = OPTION_UNKNOW;
+
+			roll_text += L"Option 01: ";
+			roll_text.Append(L"-\r\n");
+
+			roll_text += L"Option 02: ";
+			roll_text.Append(L"-\r\n");
+
+			roll_text += L"Option 03: ";
+			roll_text.Append(L"-\r\n");
+
+
+			if (rol01opt + rol02opt + rol03opt > 0)
+			{
+				GetDlgItem(IDC_REROL_SUPPORT_DETAIL)->SetWindowTextW(roll_text);
+			}
+		}
 
 	}
 }

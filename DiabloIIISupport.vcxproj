@@ -202,7 +202,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Diablo3SkillData.cpp" />
+    <ClCompile Include="Diablo3ReadScreenData.cpp" />
     <ClCompile Include="DiabloIIISupport.cpp" />
     <ClCompile Include="DiabloIIISupportDlg.cpp" />
     <ClCompile Include="Engine.cpp" />

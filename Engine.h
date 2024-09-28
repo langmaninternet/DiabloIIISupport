@@ -48,18 +48,10 @@ public:
 	bool				D3Skill04Is_Vengeance_AndReady(void);
 
 
-	bool				D3Rol01Is_12_MaxDiscipline(void);
-
-
-	bool				D3Rol02Is_11_MaxDiscipline(void);
-	bool				D3Rol02Is_12_MaxDiscipline(void);
+	bool				D3Rol01IsRolling(void);
 
 
 
-	bool				D3Rol01Is_MonsterExp(void);
-	bool				D3Rol02Is_MonsterExp(void);
-
-	bool				D3Rol03Is_ExtraGold(void);
 
 #ifdef _DEBUG
 	void				SaveScreen(const char* filePath = "D:\\Dump.bmp");

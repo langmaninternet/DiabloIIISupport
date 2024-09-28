@@ -50,7 +50,7 @@
     <ClCompile Include="Win32GDI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Diablo3SkillData.cpp">
+    <ClCompile Include="Diablo3ReadScreenData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
