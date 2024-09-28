@@ -51,7 +51,7 @@ public:
 	bool				D3IsRolling(void);
 
 
-
+	bool				D3Rol02Is_RedueMeleeDamge7P(void);
 	bool				D3Rol03Is_RedueMeleeDamge6P(void);
 
 	bool				D3Rol01Is_RedueRangedDamge7P(void);

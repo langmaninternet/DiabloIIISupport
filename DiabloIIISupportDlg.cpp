@@ -1317,7 +1317,6 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 
 			roll_text += L"Option 01: ";
-
 			if (w32gdi.D3Rol01Is_RedueRangedDamge7P()) rol01opt = OPTION_REDUE_RANGED_DAMGE_7_PERCENT;
 			else if (w32gdi.D3Rol01Is_GoldPickup()) rol01opt = OPTION_GOLD_PICKUP;
 			else if (w32gdi.D3Rol01Is_Exp()) rol01opt = OPTION_EXP;
@@ -1328,7 +1327,8 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 
 			roll_text += L"Option 02: ";
-			if (w32gdi.D3Rol02Is_GoldPickup()) rol02opt = OPTION_GOLD_PICKUP;
+			if (w32gdi.D3Rol02Is_RedueMeleeDamge7P()) rol02opt = OPTION_REDUE_MELEE_DAMGE_7_PERCENT;
+			else if (w32gdi.D3Rol02Is_GoldPickup()) rol02opt = OPTION_GOLD_PICKUP;
 			else if (w32gdi.D3Rol02Is_Exp()) rol02opt = OPTION_EXP;
 			roll_text += opt_dict[rol02opt];
 
