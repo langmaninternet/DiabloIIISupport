@@ -77,6 +77,10 @@ public:
 
 
 
+	//Hunter
+	bool				IsRollingGalvanizedVest(void);
+
+
 
 #ifdef _DEBUG
 	void				SaveScreen(const char* filePath = "D:\\Dump.bmp");

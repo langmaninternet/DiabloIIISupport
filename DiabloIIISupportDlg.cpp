@@ -1416,12 +1416,13 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				}
 
 
-				//exp to resistance
-				if (rol01opt == ROLL_OPTION_EXP && rol02opt == ROLL_OPTION_RESITANCE && rol03opt == ROLL_OPTION_EXP)
+				//exp to resistance - Option 02
+				else if (rol01opt == ROLL_OPTION_EXP && rol02opt == ROLL_OPTION_RESITANCE && rol03opt == ROLL_OPTION_EXP)
 				{
 					finalDecision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
 				}
-				if (rol01opt == ROLL_OPTION_EXP && rol02opt == ROLL_OPTION_EXP && rol03opt == ROLL_OPTION_RESITANCE)
+				//exp to resistance - Option 03
+				else if (rol01opt == ROLL_OPTION_EXP && rol02opt == ROLL_OPTION_EXP && rol03opt == ROLL_OPTION_RESITANCE)
 				{
 					finalDecision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
 				}

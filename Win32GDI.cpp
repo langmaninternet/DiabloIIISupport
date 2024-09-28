@@ -86,7 +86,7 @@ void		QuangBTDumpScreen(void)
 	//w32gdi.DumpRollItem03();
 	//w32gdi.DumpRollItem03Ex();
 
-	w32gdi.DumpRectangle(118, 445, 393, 472, false);
+	w32gdi.DumpRectangle(240, 198, 292, 307, false);
 
 	//w32gdi.DumpRectangle(215, 776, 314, 786,false);
 }
