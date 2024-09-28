@@ -58,9 +58,9 @@ const int				rol_02_y_top = 434/*Fixed*/;
 const int				rol_02_x_right = 274;
 const int				rol_02_y_bottom = 445/*Fixed*/;
 
-const int				rol_03_x_left = 154;
+const int				rol_03_x_left = 365;
 const int				rol_03_y_top = 477/*Fixed*/;
-const int				rol_03_x_right = 274;
+const int				rol_03_x_right = 486;
 const int				rol_03_y_bottom = 488/*Fixed*/;
 
 
@@ -85,13 +85,13 @@ void		QuangBTDumpScreen(void)
 	//w32gdi.DumpRollItem01Ex();
 	//w32gdi.DumpRollItem02();
 	//w32gdi.DumpRollItem02Ex();
-	w32gdi.DumpRollItem03();
-	//w32gdi.DumpRollItem03Ex();
+	//w32gdi.DumpRollItem03();
+	w32gdi.DumpRollItem03Ex();
 
 	//Roll item
 	//w32gdi.DumpRectangle(240, 198, 292, 307, false);
 
-	//w32gdi.DumpRectangle(240, 240, 290, 268, false);
+	//w32gdi.DumpRollItem03Ex(240, 240, 290, 268, false);
 
 	// Enchange
 	//w32gdi.DumpRectangle(219, 130, 315, 141,false);
@@ -1210,6 +1210,10 @@ void				Win32GDI::DumpRollItem03(const char* filePath, const char* logDumpFolder
 		if (logFile != NULL)
 		{
 			fprintf(logFile, "bool Win32GDI::D3Rol03Is_XXXXX(void)\n{\n");
+			fprintf(logFile, "//const int				rol_03_x_left = %d;\n", rol_03_x_left);
+			fprintf(logFile, "//const int				rol_03_y_top = %d/*Fixed*/;\n", rol_03_y_top);
+			fprintf(logFile, "//const int				rol_03_x_right = %d;\n", rol_03_x_right);
+			fprintf(logFile, "//const int				rol_03_y_bottom = %d/*Fixed*/;\n", rol_03_y_bottom);
 
 			for (int isize = 1; isize <= 3; isize++)
 			{
@@ -1301,6 +1305,11 @@ void				Win32GDI::DumpRollItem03Ex(const char* filePath, const char* logDumpFold
 		if (logFile != NULL)
 		{
 			fprintf(logFile, "bool Win32GDI::D3Rol03Is_XXXXX_Ex(int offset)\n{\n");
+			fprintf(logFile, "//const int				rol_03_x_left = %d;\n", rol_03_x_left);
+			fprintf(logFile, "//const int				rol_03_y_top = %d/*Fixed*/;\n", rol_03_y_top);
+			fprintf(logFile, "//const int				rol_03_x_right = %d;\n", rol_03_x_right);
+			fprintf(logFile, "//const int				rol_03_y_bottom = %d/*Fixed*/;\n", rol_03_y_bottom);
+
 
 			for (int isize = 1; isize <= 3; isize++)
 			{
