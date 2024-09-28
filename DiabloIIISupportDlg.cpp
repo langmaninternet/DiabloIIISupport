@@ -1385,7 +1385,8 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 
 			roll_text += L"Option 02: ";
-			if (w32gdi.RollingOption02IsHungeringArrow13P()) option_02 = ROLL_OPTION_HUNGERING_ARROW_13P;
+			if (w32gdi.RollingOption02IsHungeringArrow15P()) option_02 = ROLL_OPTION_HUNGERING_ARROW_15P;
+			else if (w32gdi.RollingOption02IsHungeringArrow13P()) option_02 = ROLL_OPTION_HUNGERING_ARROW_13P;
 			else if (w32gdi.RollingOption02IsHungeringArrow11P()) option_02 = ROLL_OPTION_HUNGERING_ARROW_11P;
 			else if (w32gdi.RollingOption02IsHungeringArrow10P()) option_02 = ROLL_OPTION_HUNGERING_ARROW_10P;
 			else if (w32gdi.D3Rol02Is_RedueMeleeDamge7P()) option_02 = ROLL_OPTION_REDUCE_MELEE_DAMGE_7_PERCENT;
@@ -1406,7 +1407,8 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 
 			roll_text += L"Option 03: ";
-			if (w32gdi.RollingOption03IsHungeringArrow14P()) option_03 = ROLL_OPTION_HUNGERING_ARROW_14P;
+			if (w32gdi.RollingOption03IsHungeringArrow15P()) option_03 = ROLL_OPTION_HUNGERING_ARROW_15P;
+			else if (w32gdi.RollingOption03IsHungeringArrow14P()) option_03 = ROLL_OPTION_HUNGERING_ARROW_14P;
 			else if (w32gdi.RollingOption03IsHungeringArrow13P()) option_03 = ROLL_OPTION_HUNGERING_ARROW_13P;
 			else if (w32gdi.RollingOption03IsHungeringArrow10P()) option_03 = ROLL_OPTION_HUNGERING_ARROW_10P;
 			else if (w32gdi.D3Rol03Is_RedueMeleeDamge6P()) option_03 = ROLL_OPTION_REDUCE_MELEE_DAMGE_6_PERCENT;
