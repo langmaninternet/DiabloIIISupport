@@ -1283,6 +1283,9 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			{
 				OPTION_UNKNOW = 0,
 
+				OPTION_REDUE_MELEE_DAMGE_7_PERCENT,
+				OPTION_REDUE_MELEE_DAMGE_6_PERCENT,
+
 				OPTION_REDUE_RANGED_DAMGE_7_PERCENT,
 				OPTION_REDUE_RANGED_DAMGE_6_PERCENT,
 
@@ -1293,6 +1296,9 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			};
 
 			std::map<int, CString> opt_dict;
+
+			opt_dict[OPTION_REDUE_MELEE_DAMGE_7_PERCENT] = L" Redure melee damge 7%\r\n";
+			opt_dict[OPTION_REDUE_MELEE_DAMGE_6_PERCENT] = L" Redure melee damge 6%\r\n";
 
 			opt_dict[OPTION_REDUE_RANGED_DAMGE_7_PERCENT] = L" Redure ranged damge 7%\r\n";
 			opt_dict[OPTION_REDUE_RANGED_DAMGE_6_PERCENT] = L" Redure ranged damge 6%\r\n";
@@ -1322,7 +1328,8 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 
 			roll_text += L"Option 02: ";
-			if (w32gdi.D3Rol02Is_Exp()) rol02opt = OPTION_EXP;
+			if (w32gdi.D3Rol02Is_GoldPickup()) rol02opt = OPTION_GOLD_PICKUP;
+			else if (w32gdi.D3Rol02Is_Exp()) rol02opt = OPTION_EXP;
 			roll_text += opt_dict[rol02opt];
 
 
@@ -1330,11 +1337,13 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 
 			roll_text += L"Option 03: ";
-			if (w32gdi.D3Rol03Is_RedueRangedDamge6P()) rol03opt = OPTION_REDUE_RANGED_DAMGE_6_PERCENT;
+			if (w32gdi.D3Rol03Is_RedueMeleeDamge6P()) rol03opt = OPTION_REDUE_MELEE_DAMGE_6_PERCENT;
+			else if (w32gdi.D3Rol03Is_RedueRangedDamge6P()) rol03opt = OPTION_REDUE_RANGED_DAMGE_6_PERCENT;
 			else if (w32gdi.D3Rol03Is_HealingGlobe()) rol03opt = OPTION_HEALING_GLOBE;
 			else if (w32gdi.D3Rol03Is_GoldPickup()) rol03opt = OPTION_GOLD_PICKUP;
 			else if (w32gdi.D3Rol03Is_Exp()) rol03opt = OPTION_EXP;
 			roll_text += opt_dict[rol03opt];
+
 
 
 			if (rol01opt + rol02opt + rol03opt > 0)
