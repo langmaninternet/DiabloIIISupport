@@ -1,4 +1,4 @@
-#ifndef QBT_STARPACT_HEADER
+﻿#ifndef QBT_STARPACT_HEADER
 #define QBT_STARPACT_HEADER
 #include <Windows.h>
 
@@ -52,9 +52,9 @@ public:
 
 
 
-	bool				IsRolling(void);
-	bool				D3IsRollSelecting(void);
-	bool				D3IsRollWaiting(void);
+	/************************************************************************/
+	/* Code chuẩn                                                           */
+	/************************************************************************/
 
 
 	bool				RollingOption01Is15Percent(int);
@@ -63,6 +63,23 @@ public:
 	bool				RollingOption02Is15Percent(void);
 	bool				RollingOption03Is15Percent(int);
 	bool				RollingOption03Is15Percent(void);
+
+
+
+	bool				RollingOption01IsHungeringArrow(void);
+	bool				RollingOption02IsHungeringArrow(void);
+	bool				RollingOption03IsHungeringArrow(void);
+
+
+
+
+
+	/************************************************************************/
+	/* Code đầu tiên                                                        */
+	/************************************************************************/
+	bool				IsRolling(void);
+	bool				D3IsRollSelecting(void);
+	bool				D3IsRollWaiting(void);
 
 
 
@@ -96,10 +113,6 @@ public:
 
 	//Hunter - Hungering Arrow
 	bool				IsRollingHuntersWrath(void);
-
-	bool				RollingOption01IsHungeringArrow(void);
-	bool				RollingOption02IsHungeringArrow(void);
-	bool				RollingOption03IsHungeringArrow(void);
 
 
 
