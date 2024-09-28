@@ -58,10 +58,12 @@ public:
 	bool				D3Rol03Is_RedueRangedDamge6P(void);
 
 
-	bool				D3Rol02Is_PoisonResiance(int offset);
+
+	bool				D3Rol02Is_Resistance(int offset);
+	bool				D3Rol03Is_Resistance(int offset);
 
 
-
+	bool				D3Rol02Is_HealingGlobe(void);
 	bool				D3Rol03Is_HealingGlobe(void);
 
 	bool				D3Rol01Is_GoldPickup(void);

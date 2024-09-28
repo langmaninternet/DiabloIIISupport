@@ -91,6 +91,7 @@ enum ROLL_OPTION
 
 	OPTION_PHYSICAL_RESIANCE,
 	OPTION_POISON_RESIANCE,
+	OPTION_RESITANCE,
 
 	OPTION_HEALING_GLOBE,
 	OPTION_GOLD_PICKUP,
@@ -1315,7 +1316,8 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			opt_dict[OPTION_REDUCE_RANGED_DAMGE_7_PERCENT] = L" Reduce ranged damage 7%\r\n";
 			opt_dict[OPTION_REDUCE_RANGED_DAMGE_6_PERCENT] = L" Reduce ranged damage 6%\r\n";
 
-			opt_dict[OPTION_POISON_RESIANCE] = L" Poison Resistance\r\n";
+			opt_dict[OPTION_RESITANCE] = L" Resistance\r\n";
+
 			opt_dict[OPTION_HEALING_GLOBE] = L" Healing Globe\r\n";
 			opt_dict[OPTION_GOLD_PICKUP] = L" Gold Pickup\r\n";
 			opt_dict[OPTION_EXP] = L" Exp after kill\r\n";
@@ -1342,20 +1344,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 			roll_text += L"Option 02: ";
 			if (w32gdi.D3Rol02Is_RedueMeleeDamge7P()) rol02opt = OPTION_REDUCE_MELEE_DAMGE_7_PERCENT;
-			else if (w32gdi.D3Rol02Is_PoisonResiance(0)) rol02opt = OPTION_POISON_RESIANCE;
-			else if (w32gdi.D3Rol02Is_PoisonResiance(1)) rol02opt = OPTION_POISON_RESIANCE;
-			else if (w32gdi.D3Rol02Is_PoisonResiance(-1)) rol02opt = OPTION_POISON_RESIANCE;
-			else if (w32gdi.D3Rol02Is_PoisonResiance(2)) rol02opt = OPTION_POISON_RESIANCE;
-			else if (w32gdi.D3Rol02Is_PoisonResiance(-2)) rol02opt = OPTION_POISON_RESIANCE;
-			else if (w32gdi.D3Rol02Is_PoisonResiance(3)) rol02opt = OPTION_POISON_RESIANCE;
-			else if (w32gdi.D3Rol02Is_PoisonResiance(-3)) rol02opt = OPTION_POISON_RESIANCE;
-			else if (w32gdi.D3Rol02Is_PoisonResiance(4)) rol02opt = OPTION_POISON_RESIANCE;
-			else if (w32gdi.D3Rol02Is_PoisonResiance(-4)) rol02opt = OPTION_POISON_RESIANCE;
-			else if (w32gdi.D3Rol02Is_PoisonResiance(5)) rol02opt = OPTION_POISON_RESIANCE;
-			else if (w32gdi.D3Rol02Is_PoisonResiance(-5)) rol02opt = OPTION_POISON_RESIANCE;
-			else if (w32gdi.D3Rol02Is_PoisonResiance(-6)) rol02opt = OPTION_POISON_RESIANCE;
-			else if (w32gdi.D3Rol02Is_PoisonResiance(-7)) rol02opt = OPTION_POISON_RESIANCE;
-			else if (w32gdi.D3Rol02Is_PoisonResiance(-8)) rol02opt = OPTION_POISON_RESIANCE;
+			else if (w32gdi.D3Rol02Is_HealingGlobe()) rol02opt = OPTION_HEALING_GLOBE;
 			else if (w32gdi.D3Rol02Is_GoldPickup()) rol02opt = OPTION_GOLD_PICKUP;
 			else if (w32gdi.D3Rol02Is_Exp()) rol02opt = OPTION_EXP;
 			roll_text += opt_dict[rol02opt];
@@ -1370,6 +1359,14 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			else if (w32gdi.D3Rol03Is_HealingGlobe()) rol03opt = OPTION_HEALING_GLOBE;
 			else if (w32gdi.D3Rol03Is_GoldPickup()) rol03opt = OPTION_GOLD_PICKUP;
 			else if (w32gdi.D3Rol03Is_Exp()) rol03opt = OPTION_EXP;
+			for (int i_abs_offset=0;i_abs_offset<60 && rol03opt == OPTION_UNKNOW; i_abs_offset++)
+			{
+				if (w32gdi.D3Rol03Is_Resistance(i_abs_offset) || w32gdi.D3Rol03Is_Resistance(-i_abs_offset))
+				{
+					rol03opt = OPTION_RESITANCE;
+				}
+			}
+
 			roll_text += opt_dict[rol03opt];
 
 
