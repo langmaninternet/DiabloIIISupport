@@ -57,6 +57,8 @@ public:
 
 
 	bool				D3Rol01Is_MonsterExp(void);
+	bool				D3Rol02Is_MonsterExp(void);
+
 	bool				D3Rol03Is_ExtraGold(void);
 
 #ifdef _DEBUG
