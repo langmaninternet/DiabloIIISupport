@@ -81,36 +81,42 @@ struct DiabloIIISupportConfig
 
 enum ROLL_OPTION
 {
-	OPTION_UNKNOW = 0,
+	ROLL_OPTION_UNKNOW = 0,
 
-	OPTION_REDUCE_MELEE_DAMGE_7_PERCENT,
-	OPTION_REDUCE_MELEE_DAMGE_6_PERCENT,
+	ROLL_OPTION_REDUCE_MELEE_DAMGE_7_PERCENT,
+	ROLL_OPTION_REDUCE_MELEE_DAMGE_6_PERCENT,
 
-	OPTION_REDUCE_RANGED_DAMGE_7_PERCENT,
-	OPTION_REDUCE_RANGED_DAMGE_6_PERCENT,
+	ROLL_OPTION_REDUCE_RANGED_DAMGE_7_PERCENT,
+	ROLL_OPTION_REDUCE_RANGED_DAMGE_6_PERCENT,
 
-	OPTION_PHYSICAL_RESIANCE,
-	OPTION_POISON_RESIANCE,
-	OPTION_RESITANCE,
+	ROLL_OPTION_RESITANCE,
 
-	OPTION_HEALING_GLOBE,
-	OPTION_GOLD_PICKUP,
-	OPTION_EXP
+	ROLL_OPTION_HEALING_GLOBE,
+	ROLL_OPTION_GOLD_PICKUP,
+	ROLL_OPTION_EXP
 };
 bool roll_is_reduce_damage(ROLL_OPTION x)
 {
-	return (x == OPTION_REDUCE_MELEE_DAMGE_7_PERCENT || x == OPTION_REDUCE_MELEE_DAMGE_6_PERCENT || x == OPTION_REDUCE_RANGED_DAMGE_7_PERCENT || x == OPTION_REDUCE_RANGED_DAMGE_6_PERCENT);
+	return (x == ROLL_OPTION_REDUCE_MELEE_DAMGE_7_PERCENT
+		|| x == ROLL_OPTION_REDUCE_MELEE_DAMGE_6_PERCENT
+		|| x == ROLL_OPTION_REDUCE_RANGED_DAMGE_7_PERCENT
+		|| x == ROLL_OPTION_REDUCE_RANGED_DAMGE_6_PERCENT);
 }
 
 
 bool roll_is_normal(ROLL_OPTION x)
 {
-	return (x == OPTION_HEALING_GLOBE || x == OPTION_GOLD_PICKUP || x == OPTION_EXP);
+	return (x == ROLL_OPTION_HEALING_GLOBE
+		|| x == ROLL_OPTION_GOLD_PICKUP
+		|| x == ROLL_OPTION_EXP);
 }
 
 bool roll_is_normal_or_resistance(ROLL_OPTION x)
 {
-	return (x == OPTION_HEALING_GLOBE || x == OPTION_GOLD_PICKUP || x == OPTION_EXP || x == OPTION_RESITANCE);
+	return (x == ROLL_OPTION_HEALING_GLOBE
+		|| x == ROLL_OPTION_GOLD_PICKUP
+		|| x == ROLL_OPTION_EXP
+		|| x == ROLL_OPTION_RESITANCE);
 }
 
 
@@ -1317,31 +1323,31 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 			std::map<int, CString> opt_dict;
 
-			opt_dict[OPTION_REDUCE_MELEE_DAMGE_7_PERCENT] = L" Reduce melee damage 7%\r\n";
-			opt_dict[OPTION_REDUCE_MELEE_DAMGE_6_PERCENT] = L" Reduce melee damage 6%\r\n";
-			opt_dict[OPTION_REDUCE_RANGED_DAMGE_7_PERCENT] = L" Reduce ranged damage 7%\r\n";
-			opt_dict[OPTION_REDUCE_RANGED_DAMGE_6_PERCENT] = L" Reduce ranged damage 6%\r\n";
+			opt_dict[ROLL_OPTION_REDUCE_MELEE_DAMGE_7_PERCENT] = L" Reduce melee damage 7%\r\n";
+			opt_dict[ROLL_OPTION_REDUCE_MELEE_DAMGE_6_PERCENT] = L" Reduce melee damage 6%\r\n";
+			opt_dict[ROLL_OPTION_REDUCE_RANGED_DAMGE_7_PERCENT] = L" Reduce ranged damage 7%\r\n";
+			opt_dict[ROLL_OPTION_REDUCE_RANGED_DAMGE_6_PERCENT] = L" Reduce ranged damage 6%\r\n";
 
-			opt_dict[OPTION_RESITANCE] = L" Resistance\r\n";
+			opt_dict[ROLL_OPTION_RESITANCE] = L" Resistance\r\n";
 
-			opt_dict[OPTION_HEALING_GLOBE] = L" Healing Globe\r\n";
-			opt_dict[OPTION_GOLD_PICKUP] = L" Gold Pickup\r\n";
-			opt_dict[OPTION_EXP] = L" Exp after kill\r\n";
+			opt_dict[ROLL_OPTION_HEALING_GLOBE] = L" Healing Globe\r\n";
+			opt_dict[ROLL_OPTION_GOLD_PICKUP] = L" Gold Pickup\r\n";
+			opt_dict[ROLL_OPTION_EXP] = L" Exp after kill\r\n";
 
-			opt_dict[OPTION_UNKNOW] = L"-\r\n";
+			opt_dict[ROLL_OPTION_UNKNOW] = L"-\r\n";
 
 
 
-			ROLL_OPTION rol01opt = OPTION_UNKNOW;
-			ROLL_OPTION rol02opt = OPTION_UNKNOW;
-			ROLL_OPTION rol03opt = OPTION_UNKNOW;
+			ROLL_OPTION rol01opt = ROLL_OPTION_UNKNOW;
+			ROLL_OPTION rol02opt = ROLL_OPTION_UNKNOW;
+			ROLL_OPTION rol03opt = ROLL_OPTION_UNKNOW;
 
 
 
 			roll_text += L"Option 01: ";
-			if (w32gdi.D3Rol01Is_RedueRangedDamge7P()) rol01opt = OPTION_REDUCE_RANGED_DAMGE_7_PERCENT;
-			else if (w32gdi.D3Rol01Is_GoldPickup()) rol01opt = OPTION_GOLD_PICKUP;
-			else if (w32gdi.D3Rol01Is_Exp()) rol01opt = OPTION_EXP;
+			if (w32gdi.D3Rol01Is_RedueRangedDamge7P()) rol01opt = ROLL_OPTION_REDUCE_RANGED_DAMGE_7_PERCENT;
+			else if (w32gdi.D3Rol01Is_GoldPickup()) rol01opt = ROLL_OPTION_GOLD_PICKUP;
+			else if (w32gdi.D3Rol01Is_Exp()) rol01opt = ROLL_OPTION_EXP;
 			roll_text += opt_dict[rol01opt];
 
 
@@ -1349,15 +1355,15 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 
 			roll_text += L"Option 02: ";
-			if (w32gdi.D3Rol02Is_RedueMeleeDamge7P()) rol02opt = OPTION_REDUCE_MELEE_DAMGE_7_PERCENT;
-			else if (w32gdi.D3Rol02Is_HealingGlobe()) rol02opt = OPTION_HEALING_GLOBE;
-			else if (w32gdi.D3Rol02Is_GoldPickup()) rol02opt = OPTION_GOLD_PICKUP;
-			else if (w32gdi.D3Rol02Is_Exp()) rol02opt = OPTION_EXP;
-			for (int i_abs_offset = 0; i_abs_offset < 100 && rol02opt == OPTION_UNKNOW; i_abs_offset++)
+			if (w32gdi.D3Rol02Is_RedueMeleeDamge7P()) rol02opt = ROLL_OPTION_REDUCE_MELEE_DAMGE_7_PERCENT;
+			else if (w32gdi.D3Rol02Is_HealingGlobe()) rol02opt = ROLL_OPTION_HEALING_GLOBE;
+			else if (w32gdi.D3Rol02Is_GoldPickup()) rol02opt = ROLL_OPTION_GOLD_PICKUP;
+			else if (w32gdi.D3Rol02Is_Exp()) rol02opt = ROLL_OPTION_EXP;
+			for (int i_abs_offset = 0; i_abs_offset < 100 && rol02opt == ROLL_OPTION_UNKNOW; i_abs_offset++)
 			{
 				if (w32gdi.D3Rol02Is_Resistance(i_abs_offset) || w32gdi.D3Rol02Is_Resistance(-i_abs_offset))
 				{
-					rol02opt = OPTION_RESITANCE;
+					rol02opt = ROLL_OPTION_RESITANCE;
 				}
 			}
 			roll_text += opt_dict[rol02opt];
@@ -1367,16 +1373,16 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 
 			roll_text += L"Option 03: ";
-			if (w32gdi.D3Rol03Is_RedueMeleeDamge6P()) rol03opt = OPTION_REDUCE_MELEE_DAMGE_6_PERCENT;
-			else if (w32gdi.D3Rol03Is_RedueRangedDamge6P()) rol03opt = OPTION_REDUCE_RANGED_DAMGE_6_PERCENT;
-			else if (w32gdi.D3Rol03Is_HealingGlobe()) rol03opt = OPTION_HEALING_GLOBE;
-			else if (w32gdi.D3Rol03Is_GoldPickup()) rol03opt = OPTION_GOLD_PICKUP;
-			else if (w32gdi.D3Rol03Is_Exp()) rol03opt = OPTION_EXP;
-			for (int i_abs_offset = 0; i_abs_offset < 60 && rol03opt == OPTION_UNKNOW; i_abs_offset++)
+			if (w32gdi.D3Rol03Is_RedueMeleeDamge6P()) rol03opt = ROLL_OPTION_REDUCE_MELEE_DAMGE_6_PERCENT;
+			else if (w32gdi.D3Rol03Is_RedueRangedDamge6P()) rol03opt = ROLL_OPTION_REDUCE_RANGED_DAMGE_6_PERCENT;
+			else if (w32gdi.D3Rol03Is_HealingGlobe()) rol03opt = ROLL_OPTION_HEALING_GLOBE;
+			else if (w32gdi.D3Rol03Is_GoldPickup()) rol03opt = ROLL_OPTION_GOLD_PICKUP;
+			else if (w32gdi.D3Rol03Is_Exp()) rol03opt = ROLL_OPTION_EXP;
+			for (int i_abs_offset = 0; i_abs_offset < 60 && rol03opt == ROLL_OPTION_UNKNOW; i_abs_offset++)
 			{
 				if (w32gdi.D3Rol03Is_Resistance(i_abs_offset) || w32gdi.D3Rol03Is_Resistance(-i_abs_offset))
 				{
-					rol03opt = OPTION_RESITANCE;
+					rol03opt = ROLL_OPTION_RESITANCE;
 				}
 			}
 
@@ -1391,8 +1397,10 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				{
 					DESCISION_NOTHING = 0,
 					DESCISION_NEXT_ROL,
+					DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT,
 					DESCISION_SELECT_OPTION_02_AND_STOP_ROLL,
 					DESCISION_SELECT_OPTION_03_AND_STOP_ROLL,
+					DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT,
 				};
 
 				int finalDecision = DESCISION_NOTHING;
@@ -1409,58 +1417,99 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 
 				//exp to resistance
-
+				if (rol01opt == ROLL_OPTION_EXP && rol02opt == ROLL_OPTION_RESITANCE && rol03opt == ROLL_OPTION_EXP)
+				{
+					finalDecision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
+				}
+				if (rol01opt == ROLL_OPTION_EXP && rol02opt == ROLL_OPTION_EXP && rol03opt == ROLL_OPTION_RESITANCE)
+				{
+					finalDecision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
+				}
 
 
 				/************************************************************************/
 				/* Action                                                               */
 				/************************************************************************/
-
 				if (finalDecision == DESCISION_SELECT_OPTION_02_AND_STOP_ROLL)
 				{
 					//Chọn dòng 2
 					SetD3Mouse(180, 440);
 					SendD3LeftMouseClick();
-					Sleep(200);
+					Sleep(50 + (rand() % 5));
 					SendD3LeftMouseClick();
 					// Chọn nút select
 					w32gdi.CaptureDesktop();
 					if (w32gdi.D3IsRollSelecting())
 					{
 						SetD3Mouse(256, 780);
-						Sleep(200);
+						Sleep(50 + (rand() % 5));
 						SendD3LeftMouseClick();
-						Sleep(200);
+						Sleep(50 + (rand() % 5));
 					}
 					// Move chuột ra chỗ khác
 					SetD3Mouse(256, 730);
 					Sleep(50 + (rand() % 5));
-					Sleep(1000);
+				}
+				else if (finalDecision == DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT)
+				{
+					//Chọn dòng 2
+					SetD3Mouse(180, 440);
+					SendD3LeftMouseClick();
+					Sleep(50 + (rand() % 5));
+					SendD3LeftMouseClick();
+					// Chọn nút select
+					w32gdi.CaptureDesktop();
+					if (w32gdi.D3IsRollSelecting())
+					{
+						SetD3Mouse(256, 780);
+						Sleep(50 + (rand() % 5));
+						SendD3LeftMouseClick();
+						Sleep(50 + (rand() % 5));
+					}
 				}
 				else if (finalDecision == DESCISION_SELECT_OPTION_03_AND_STOP_ROLL)
 				{
 					//Chọn dòng 3
 					SetD3Mouse(180, 480);
 					SendD3LeftMouseClick();
-					Sleep(200);
+					Sleep(50 + (rand() % 5));
 					SendD3LeftMouseClick();
 					// Chọn nút select
 					w32gdi.CaptureDesktop();
 					if (w32gdi.D3IsRollSelecting())
 					{
 						SetD3Mouse(256, 780);
-						Sleep(200);
+						Sleep(50 + (rand() % 5));
 						SendD3LeftMouseClick();
-						Sleep(200);
+						Sleep(50 + (rand() % 5));
 					}
 					// Move chuột ra chỗ khác
 					SetD3Mouse(256, 730);
 					Sleep(50 + (rand() % 5));
-					Sleep(1000);
 				}
+				else if (finalDecision == DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT)
+				{
+					//Chọn dòng 3
+					SetD3Mouse(180, 480);
+					SendD3LeftMouseClick();
+					Sleep(50 + (rand() % 5));
+					SendD3LeftMouseClick();
+					// Chọn nút select
+					w32gdi.CaptureDesktop();
+					if (w32gdi.D3IsRollSelecting())
+					{
+						SetD3Mouse(256, 780);
+						Sleep(50 + (rand() % 5));
+						SendD3LeftMouseClick();
+						Sleep(50 + (rand() % 5));
+					}
+				}
+
+
+
 			}
 
-
+			Sleep(500);
 			flagOnRollingProcess = false;
 		}
 
