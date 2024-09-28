@@ -16,6 +16,7 @@
 #define IDC_SKILL03CHECK                1016
 #define IDC_SKILL04TIME                 1017
 #define IDC_SKILL04CHECK                1018
+#define IDC_ENABLE_REROLL_SUPPORT       1019
 #define IDC_HEALINGCHECK                1020
 #define IDC_F2BIGFRAME                  1021
 #define IDC_SKILL01TEXT                 1022
@@ -56,6 +57,8 @@
 #define IDC_HEALINGKEY                  1063
 #define IDC_FORCESTANDTEXT              1068
 #define IDC_FORCESTANDKEY               1069
+#define IDC_AUTO_REROLL_SUPPORT_FRAME   1090
+#define IDC_REROL_SUPPORT_DETAIL        1091
 
 // Next default values for new objects
 // 
@@ -63,7 +66,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        132
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1090
+#define _APS_NEXT_CONTROL_VALUE         1092
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

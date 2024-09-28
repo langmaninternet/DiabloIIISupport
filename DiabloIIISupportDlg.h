@@ -86,4 +86,7 @@ public:
 	afx_msg void OnBnClickedProfile09();
 	afx_msg void OnBnClickedProfile10();
 
+
+	afx_msg void OnClickedRerollSupportCheck();
+
 };

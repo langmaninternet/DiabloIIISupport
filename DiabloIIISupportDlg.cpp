@@ -11,7 +11,7 @@
 
 
 
-const double DiabloIIISupportVersion = 2.28;
+const double DiabloIIISupportVersion = 3.0;
 /************************************************************************/
 /* Struct                                                               */
 /************************************************************************/
@@ -74,6 +74,7 @@ struct DiabloIIISupportConfig
 
 
 	double	saveDiabloIIISupportVersion;
+	int		enableRerollSupport;
 };
 
 
@@ -295,7 +296,7 @@ bool		PointInRect(POINT point, int rLeft, int rRight, int rTop, int rBottom)
 	{
 		MessageBox(0, L"D3 Engine Error!!", L"(rLeft <= rRight || rTop <= rBottom)", MB_OK);
 	}
-	return (point.x > rLeft && point.x < rRight&& point.y > rTop && point.y < rBottom);
+	return (point.x > rLeft && point.x < rRight && point.y > rTop && point.y < rBottom);
 }
 bool		ValidToSendD3Click(void)
 {
@@ -357,47 +358,7 @@ bool		ValidToSendD3Click(void)
 						}
 					}
 
-					// 					else
-					// 					{
-					// 						double xScale = (d3Rect.bottom - d3Rect.top) / 1080.0;
-					// 						double yScale = (d3Rect.bottom - d3Rect.top) / 1080.0;
-					// 						//chat button
-					// 						if (PointInRect(point, d3Rect.left + xScale * 10, d3Rect.left + xScale * 80, d3Rect.top + yScale * 980, d3Rect.top + yScale * 1044))
-					// 						{
-					// 							return false;
-					// 						}
-					// 
-					// 						//Skill, Inventory,...
-					// 						if (PointInRect(point, d3Rect.left + xScale * 1089, d3Rect.left + xScale * 1284, d3Rect.top + yScale * 995, d3Rect.top + yScale * 1062))
-					// 						{
-					// 							return false;
-					// 						}
-					// 
-					// 						//Friend Button
-					// 						if (PointInRect(point, d3Rect.left + xScale * 1764, d3Rect.left + xScale * 1904, d3Rect.top + yScale * 979, d3Rect.top + yScale * 1044))
-					// 						{
-					// 							return false;
-					// 						}
-					// 
-					// 						//Small chat box
-					// 						if (PointInRect(point, d3Rect.left + xScale * 32, d3Rect.left + xScale * 346, d3Rect.top + yScale * 738, d3Rect.top + yScale * 877))
-					// 						{
-					// 							return false;
-					// 						}
-					// 
-					// 						//Objectives Object
-					// 						if (PointInRect(point, d3Rect.left + xScale * 1862, d3Rect.left + xScale * 1893, d3Rect.top + yScale * 367, d3Rect.top + yScale * 391))
-					// 						{
-					// 							return false;
-					// 						}
-					// 
-					// 						//Main-Player
-					// 						if (PointInRect(point, d3Rect.left + xScale * 28, d3Rect.left + xScale * 93, d3Rect.top + yScale * 47, d3Rect.top + yScale * 149))
-					// 						{
-					// 							return false;
-					// 						}
-					// 
-					// 					}
+
 					return true;
 				}
 			}
@@ -579,6 +540,9 @@ BEGIN_MESSAGE_MAP(CDiabloIIISupportDlg, CDialogEx)
 	ON_EN_KILLFOCUS(IDC_SKILLKEY04, &CDiabloIIISupportDlg::OnKillFocusSkillKey04)
 	ON_EN_KILLFOCUS(IDC_HEALINGKEY, &CDiabloIIISupportDlg::OnKillfocusHealingKey)
 	ON_EN_KILLFOCUS(IDC_FORCESTANDKEY, &CDiabloIIISupportDlg::OnKillFocusForceStandKey)
+
+	ON_BN_CLICKED(IDC_ENABLE_REROLL_SUPPORT, &CDiabloIIISupportDlg::OnClickedRerollSupportCheck)
+
 END_MESSAGE_MAP()
 
 BOOL		CDiabloIIISupportDlg::OnInitDialog()
@@ -678,6 +642,9 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 	((CButton*)GetDlgItem(IDC_SKILL03CHECK))->SetCheck(d3Config.skill03Enable);
 	((CButton*)GetDlgItem(IDC_SKILL04CHECK))->SetCheck(d3Config.skill04Enable);
 	((CButton*)GetDlgItem(IDC_HEALINGCHECK))->SetCheck(d3Config.healingEnable);
+	((CButton*)GetDlgItem(IDC_ENABLE_REROLL_SUPPORT))->SetCheck(d3Config.enableRerollSupport);
+	GetDlgItem(IDC_REROL_SUPPORT_DETAIL)->EnableWindow(d3Config.enableRerollSupport);
+
 
 
 
@@ -1192,6 +1159,45 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 
 
+			/************************************************************************/
+			/* Auto Reroll support                                                  */
+			/************************************************************************/
+			if (d3Wnd != 0 && IsD3WindowActive() && (!(flagOnCtrl5 || flagOnCtrl6 || flagOnCtrl9)))
+			{
+				CString roll_text = L"Option 01: ";
+				enum ROLL_OPTION
+				{
+					OPTION_UNKNOW = 0,
+					OPTION_EXP = 1,
+				};
+				int rol01opt = OPTION_UNKNOW;
+				int rol02opt = OPTION_UNKNOW;
+				int rol03opt = OPTION_UNKNOW;
+
+				if (w32gdi.D3Rol01Is_MonsterExp())
+				{
+					rol01opt = OPTION_EXP;
+					roll_text.Append(L"Exp\r\n");
+				}
+				else roll_text.Append(L"-\r\n");
+
+				roll_text += L"Option 02: ";
+				if (w32gdi.D3Rol02Is_MonsterExp())
+				{
+					rol02opt = OPTION_EXP;
+				}
+				else roll_text.Append(L"-\r\n");
+
+
+				roll_text += L"Option 03: ";
+				roll_text.Append(L"-\r\n");
+
+
+				if (rol01opt + rol02opt + rol03opt > 0)
+				{
+					GetDlgItem(IDC_REROL_SUPPORT_DETAIL)->SetWindowTextW(roll_text);
+				}
+			}
 
 
 
@@ -1772,4 +1778,16 @@ void CDiabloIIISupportDlg::OnBnClickedProfile10()
 	GetDlgItem(profileID[d3Config.currentProfile])->SetWindowTextW(d3Config.profileName[d3Config.currentProfile]);
 	d3Config.currentProfile = 9;
 	OnBnClickedProfile();
+}
+
+
+
+
+
+
+void CDiabloIIISupportDlg::OnClickedRerollSupportCheck()
+{
+	d3Config.enableRerollSupport = !d3Config.enableRerollSupport;
+	GetDlgItem(IDC_REROL_SUPPORT_DETAIL)->EnableWindow(d3Config.enableRerollSupport);
+	OnSaveConfig();
 }
