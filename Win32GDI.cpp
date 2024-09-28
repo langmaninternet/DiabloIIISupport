@@ -54,7 +54,7 @@ const int				rol_01_y_bottom = 399;
 
 const int				rol_02_x_left = 81;
 const int				rol_02_y_top = 432;
-const int				rol_02_x_right = 208;
+const int				rol_02_x_right = 185;
 const int				rol_02_y_bottom = 443;
 
 
@@ -80,8 +80,8 @@ void		QuangBTDumpScreen(void)
 	//w32gdi.DumpSkill04();
 
 
-	w32gdi.DumpRollItem01();
-	//w32gdi.DumpRollItem02();
+	//w32gdi.DumpRollItem01();
+	w32gdi.DumpRollItem02();
 	//w32gdi.DumpRollItem03();
 
 	//w32gdi.DumpRectangle(246, 46, 282, 87,false);

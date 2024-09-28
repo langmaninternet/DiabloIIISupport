@@ -57,7 +57,6 @@ public:
 	bool				D3Rol03Is_HealingGlobe(void);
 
 	bool				D3Rol01Is_GoldPickup(void);
-	bool				D3Rol02Is_GoldPickup(void);
 	bool				D3Rol03Is_GoldPickup(void);
 
 	bool				D3Rol01Is_Exp(void);
