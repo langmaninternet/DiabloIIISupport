@@ -51,6 +51,10 @@ public:
 	bool				D3Rol01Is_12_MaxDiscipline(void);
 
 
+	bool				D3Rol02Is_11_MaxDiscipline(void);
+	bool				D3Rol02Is_12_MaxDiscipline(void);
+
+
 
 	bool				D3Rol01Is_MonsterExp(void);
 	bool				D3Rol03Is_ExtraGold(void);

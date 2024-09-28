@@ -52,7 +52,7 @@ const int				rol_01_y_top = 388;
 const int				rol_01_x_right = 208;
 const int				rol_01_y_bottom = 399;
 
-const int				rol_02_x_left = 112;
+const int				rol_02_x_left = 90;
 const int				rol_02_y_top = 432;
 const int				rol_02_x_right = 253;
 const int				rol_02_y_bottom = 443;
@@ -81,9 +81,9 @@ void		QuangBTDumpScreen(void)
 
 
 
-	w32gdi.DumpRollItem01();
+	//w32gdi.DumpRollItem01();
 	w32gdi.DumpRollItem02();
-	w32gdi.DumpRollItem03();
+	//w32gdi.DumpRollItem03();
 }
 
 
@@ -5680,7 +5680,7 @@ void				Win32GDI::DumpRollItem02(const char* filePath, const char* logDumpFolder
 		fopen_s(&logFile, filePath, "wb");
 		if (logFile != NULL)
 		{
-			fprintf(logFile, "bool Win32GDI::D3Rol03Is_XXXXX(void)\n{\n");
+			fprintf(logFile, "bool Win32GDI::D3Rol02Is_XXXXX(void)\n{\n");
 
 			for (int isize = 1; isize <= 3; isize++)
 			{
