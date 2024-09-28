@@ -5542,7 +5542,7 @@ void				Win32GDI::DumpRollItem01(const char* filePath, const char* logDumpFolder
 		fopen_s(&logFile, filePath, "wb");
 		if (logFile != NULL)
 		{
-			fprintf(logFile, "bool D3Rol01Is_XXXXX(void)\n{\n");
+			fprintf(logFile, "bool Win32GDI::D3Rol01Is_XXXXX(void)\n{\n");
 
 			for (int isize = 1; isize <= 3; isize++)
 			{
@@ -5639,7 +5639,7 @@ void				Win32GDI::DumpRollItem02(const char* filePath, const char* logDumpFolder
 		fopen_s(&logFile, filePath, "wb");
 		if (logFile != NULL)
 		{
-			fprintf(logFile, "bool D3Rol02Is_XXXXX(void)\n{\n");
+			fprintf(logFile, "bool Win32GDI::D3Rol01Is_XXXXX(void)\n{\n");
 
 			for (int isize = 1; isize <= 3; isize++)
 			{
@@ -5737,7 +5737,7 @@ void				Win32GDI::DumpRollItem03(const char* filePath, const char* logDumpFolder
 		fopen_s(&logFile, filePath, "wb");
 		if (logFile != NULL)
 		{
-			fprintf(logFile, "bool D3Rol03Is_XXXXX(void)\n{\n");
+			fprintf(logFile, "bool Win32GDI::D3Rol01Is_XXXXX(void)\n{\n");
 
 			for (int isize = 1; isize <= 3; isize++)
 			{

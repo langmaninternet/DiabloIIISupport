@@ -28,3 +28,4 @@ extern Win32GDI w32gdi;
 #endif
 
 #include "Diablo3SkillDataCode"
+#include "Diablo3RolDataCode"

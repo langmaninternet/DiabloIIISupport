@@ -48,6 +48,9 @@ public:
 	bool				D3Skill04Is_Vengeance_AndReady(void);
 
 
+	bool				D3Rol01Is_12_MaxDiscipline(void);
+
+
 
 #ifdef _DEBUG
 	void				SaveScreen(const char* filePath = "D:\\Dump.bmp");
