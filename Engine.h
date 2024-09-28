@@ -48,15 +48,26 @@ public:
 	bool				D3Skill04Is_Vengeance_AndReady(void);
 
 
-	bool				D3Rol01IsRolling(void);
+	bool				D3IsRolling(void);
+
+	bool				D3Rol01Is_RedueRangedDamge7P(void);
+	
+
+	bool				D3Rol03Is_RedueRangedDamge6P(void);
+	bool				D3Rol03Is_HealingGlobe(void);
+	bool				D3Rol03Is_GoldPickup(void);
 
 
+
+	bool				D3Rol01Is_Exp(void);
+	bool				D3Rol02Is_Exp(void);
+	bool				D3Rol03Is_Exp(void);
 
 
 #ifdef _DEBUG
 	void				SaveScreen(const char* filePath = "D:\\Dump.bmp");
 	void				SaveSubSreen(const char* filePath, int xleft, int ytop, int xright, int ybottom);
-	void				DumpRectangle(int xleft, int ytop, int xright, int ybottom);
+	void				DumpRectangle(int xleft, int ytop, int xright, int ybottom,bool blur=false);
 	void				DumpSkill01(const char* filePath = "D:\\DumpSkill01.txt", const char* logDumpFolder = "D:\\DumpImage\\");
 	void				DumpSkill02(const char* filePath = "D:\\DumpSkill02.txt", const char* logDumpFolder = "D:\\DumpImage\\");
 	void				DumpSkill03(const char* filePath = "D:\\DumpSkill03.txt", const char* logDumpFolder = "D:\\DumpImage\\");

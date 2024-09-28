@@ -1261,50 +1261,88 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				skillSlot04Cooldown -= 600000;
 			}
 		}
-		//	else if (w32gdi.D3Skill04Is_Vengeance_AndReady())
-		//	{
-		//		if (w32gdi.D3Skill04KeyIs4())
-		//		{
-		//			SendD3Key('4');
-		//			skillSlot04Cooldown -= 600000;
-		//		}
-		//	}
+
 
 
 
 		/************************************************************************/
 		/* Auto Reroll support                                                  */
 		/************************************************************************/
-		if (IsD3WindowActive() && d3Config.enableRerollSupport
+		if (IsD3WindowActive()
+			&& d3Config.enableRerollSupport
 			&& (!(flagOnF1 || flagOnF2 || flagOnF3 || flagOnCtrl5 || flagOnCtrl6 || flagOnCtrl9))
-			&& w32gdi.D3Rol01IsRolling())
+			//&& w32gdi.D3IsRolling()
+			)
 		{
 			//w32gdi.CaptureDesktop();
 
-			CString roll_text = L"Option 01: ";
+			CString roll_text;
 			enum ROLL_OPTION
 			{
 				OPTION_UNKNOW = 0,
-				OPTION_EXP = 1,
+				OPTION_EXP,
+				OPTION_HEALING_GLOBE,
+				OPTION_GOLD_PICKUP,
+
+
+				OPTION_REDUE_RANGED_DAMGE_6_PERCENT,
+				OPTION_REDUE_RANGED_DAMGE_7_PERCENT,
 			};
 			int rol01opt = OPTION_UNKNOW;
 			int rol02opt = OPTION_UNKNOW;
 			int rol03opt = OPTION_UNKNOW;
 
 			roll_text += L"Option 01: ";
-			roll_text.Append(L"-\r\n");
+
+			if (w32gdi.D3Rol01Is_RedueRangedDamge7P())
+			{
+				rol01opt = OPTION_REDUE_RANGED_DAMGE_7_PERCENT;
+				roll_text.Append(L" Redure ranged damge 7%\r\n");
+			}
+			else if (w32gdi.D3Rol01Is_Exp())
+			{
+				rol01opt = OPTION_EXP;
+				roll_text.Append(L" Exp after kill\r\n");
+			}
+			else roll_text.Append(L"-\r\n");
 
 			roll_text += L"Option 02: ";
-			roll_text.Append(L"-\r\n");
+			if (w32gdi.D3Rol02Is_Exp())
+			{
+				rol02opt = OPTION_EXP;
+				roll_text.Append(L" Exp after kill\r\n");
+			}
+			else roll_text.Append(L"-\r\n");
+
+
+
 
 			roll_text += L"Option 03: ";
-			roll_text.Append(L"-\r\n");
+
+
+			if (w32gdi.D3Rol03Is_RedueRangedDamge6P())
+			{
+				rol03opt = OPTION_REDUE_RANGED_DAMGE_6_PERCENT;
+				roll_text.Append(L" Redure ranged damge 6%\r\n");
+			}
+			else if (w32gdi.D3Rol03Is_HealingGlobe())
+			{
+				rol03opt = OPTION_HEALING_GLOBE;
+				roll_text.Append(L" Healing Globe\r\n");
+			}
+			else if (w32gdi.D3Rol03Is_GoldPickup())
+			{
+				rol03opt = OPTION_GOLD_PICKUP;
+				roll_text.Append(L" Gold Pickup\r\n");
+			}
+			else roll_text.Append(L"-\r\n");
 
 
 			if (rol01opt + rol02opt + rol03opt > 0)
 			{
 				GetDlgItem(IDC_REROL_SUPPORT_DETAIL)->SetWindowTextW(roll_text);
 			}
+
 		}
 
 	}

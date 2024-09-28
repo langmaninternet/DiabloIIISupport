@@ -49,7 +49,7 @@
 
 const int				rol_01_x_left = 81;
 const int				rol_01_y_top = 388;
-const int				rol_01_x_right = 208;
+const int				rol_01_x_right = 412;
 const int				rol_01_y_bottom = 399;
 
 const int				rol_02_x_left = 81;
@@ -60,7 +60,7 @@ const int				rol_02_y_bottom = 443;
 
 const int				rol_03_x_left = 81;
 const int				rol_03_y_top = 475;
-const int				rol_03_x_right = 412;
+const int				rol_03_x_right = 280;
 const int				rol_03_y_bottom = 486;
 
 
@@ -80,13 +80,11 @@ void		QuangBTDumpScreen(void)
 	//w32gdi.DumpSkill04();
 
 
-
 	//w32gdi.DumpRollItem01();
 	//w32gdi.DumpRollItem02();
-	//w32gdi.DumpRollItem03();
+	w32gdi.DumpRollItem03();
 
-
-	w32gdi.DumpRectangle(246, 46, 282, 87);
+	//w32gdi.DumpRectangle(246, 46, 282, 87,false);
 }
 
 
@@ -315,7 +313,7 @@ void				Win32GDI::SaveSubSreen(const char* filePath, int xleft, int ytop, int xr
 		DeleteDC(MemDC);
 	}
 }
-void				Win32GDI::DumpRectangle(int xleft, int ytop, int xright, int ybottom)
+void				Win32GDI::DumpRectangle(int xleft, int ytop, int xright, int ybottom, bool blur)
 {
 	const char* filePath = "D:\\DumpRectangle.txt";
 	const char* logDumpFolder = "D:\\DumpImage\\";
@@ -326,7 +324,7 @@ void				Win32GDI::DumpRectangle(int xleft, int ytop, int xright, int ybottom)
 
 		snap_count++;
 		CaptureDesktop();
-		BlurRectangle(xleft, ytop, xright, ybottom);
+		if (blur) BlurRectangle(xleft, ytop, xright, ybottom);
 		CreateDirectoryA(logDumpFolder, 0);
 
 		char bufferDumpFileName[1000] = { 0 };
@@ -350,7 +348,7 @@ void				Win32GDI::DumpRectangle(int xleft, int ytop, int xright, int ybottom)
 		if (logFile != NULL)
 		{
 			fprintf(logFile, "bool Win32GDI::D3_XXXXX_Is_YYYY(void)\n{\n");
-			fprintf(logFile, "BlurRectangle(%d,%d,%d,%d);\n", xleft, ytop, xright, ybottom);
+			if (blur) fprintf(logFile, "BlurRectangle(%d,%d,%d,%d);\n", xleft, ytop, xright, ybottom);
 			for (int isize = 1; isize <= 3; isize++)
 			{
 				for (int ix = xleft; ix < xright; ix++)
@@ -445,7 +443,7 @@ void				Win32GDI::DumpSkill01(const char* filePath /*= "D:\\DumpSkill01.txt"*/, 
 		if (logFile != NULL)
 		{
 			fprintf(logFile, "bool D3Skill01Is_XXXXX_AndReady(void)\n{\n");
-
+			fprintf(logFile, "BlurRectangle(%d,%d,%d,%d);\n", skill_01_x_left, skill_01_y_top, skill_01_x_right, skill_01_y_bottom);
 			for (int isize = 1; isize <= 3; isize++)
 			{
 				for (int ix = skill_01_x_left; ix < skill_01_x_right; ix++)
