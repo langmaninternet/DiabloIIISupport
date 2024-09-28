@@ -57,6 +57,12 @@ public:
 	void				DumpSkill02(const char* filePath = "D:\\DumpSkill02.txt", const char* logDumpFolder = "D:\\DumpImage\\");
 	void				DumpSkill03(const char* filePath = "D:\\DumpSkill03.txt", const char* logDumpFolder = "D:\\DumpImage\\");
 	void				DumpSkill04(const char* filePath = "D:\\DumpSkill04.txt", const char* logDumpFolder = "D:\\DumpImage\\");
+
+
+	void				DumpRollItem01(const char* filePath = "D:\\DumpRollItem01.txt", const char* logDumpFolder = "D:\\DumpImage\\");
+	void				DumpRollItem02(const char* filePath = "D:\\DumpRollItem02.txt", const char* logDumpFolder = "D:\\DumpImage\\");
+	void				DumpRollItem03(const char* filePath = "D:\\DumpRollItem03.txt", const char* logDumpFolder = "D:\\DumpImage\\");
+
 #endif
 
 	/*Desstructor*/		~Win32GDI();
