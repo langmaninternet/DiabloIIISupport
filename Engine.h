@@ -48,7 +48,8 @@ public:
 	bool				D3Skill04Is_Vengeance_AndReady(void);
 
 
-	bool				D3IsRolling(void);
+
+	bool				D3IsRollSelecting(void);
 
 
 	bool				D3Rol02Is_RedueMeleeDamge7P(void);

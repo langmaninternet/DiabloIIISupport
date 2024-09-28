@@ -1308,7 +1308,6 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 		if (IsD3WindowActive()
 			&& d3Config.enableRerollSupport
 			&& (!(flagOnF1 || flagOnF2 || flagOnF3 || flagOnCtrl5 || flagOnCtrl6 || flagOnCtrl9))
-			//&& w32gdi.D3IsRolling()
 			)
 		{
 			//w32gdi.CaptureDesktop();
@@ -1353,7 +1352,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			else if (w32gdi.D3Rol02Is_HealingGlobe()) rol02opt = OPTION_HEALING_GLOBE;
 			else if (w32gdi.D3Rol02Is_GoldPickup()) rol02opt = OPTION_GOLD_PICKUP;
 			else if (w32gdi.D3Rol02Is_Exp()) rol02opt = OPTION_EXP;
-			for (int i_abs_offset = 0; i_abs_offset < 60 && rol02opt == OPTION_UNKNOW; i_abs_offset++)
+			for (int i_abs_offset = 0; i_abs_offset < 100 && rol02opt == OPTION_UNKNOW; i_abs_offset++)
 			{
 				if (w32gdi.D3Rol02Is_Resistance(i_abs_offset) || w32gdi.D3Rol02Is_Resistance(-i_abs_offset))
 				{
@@ -1381,7 +1380,6 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			}
 
 			roll_text += opt_dict[rol03opt];
-
 
 
 			if (rol01opt + rol02opt + rol03opt > 0)
@@ -1416,24 +1414,35 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				/************************************************************************/
 				/* Action                                                               */
 				/************************************************************************/
+				finalDecision = DESCISION_SELECT_OPTION_02;
 				if (finalDecision == DESCISION_SELECT_OPTION_02)
 				{
 					SetD3Mouse(180, 440);
 					SendD3LeftMouseClick();
 					Sleep(50 + (rand() % 5));
 					SetD3Mouse(256, 640);
-					SendD3LeftMouseClick();
 					Sleep(50 + (rand() % 5));
+					SendD3LeftMouseClick();
+
+					w32gdi.CaptureDesktop();
+					if (w32gdi.D3IsRollSelecting())
+					{
+						SetD3Mouse(256, 780);
+						Sleep(50 + (rand() % 5));
+						SendD3LeftMouseClick();
+
+					}
+
 				}
-				else if (finalDecision == DESCISION_SELECT_OPTION_03)
-				{
-					SetD3Mouse(180, 480);
-					SendD3LeftMouseClick();
-					Sleep(50 + (rand() % 5));
-					SetD3Mouse(256, 640);
-					SendD3LeftMouseClick();
-					Sleep(50 + (rand() % 5));
-				}
+				//else if (finalDecision == DESCISION_SELECT_OPTION_03)
+				//{
+				//	SetD3Mouse(180, 480);
+				//	SendD3LeftMouseClick();
+				//	Sleep(50 + (rand() % 5));
+				//	SetD3Mouse(256, 640);
+				//	SendD3LeftMouseClick();
+				//	Sleep(50 + (rand() % 5));
+				//}
 			}
 
 		}
