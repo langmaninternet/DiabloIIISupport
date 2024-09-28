@@ -1289,6 +1289,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				OPTION_REDUE_RANGED_DAMGE_7_PERCENT,
 				OPTION_REDUE_RANGED_DAMGE_6_PERCENT,
 
+				OPTION_POISON_RESIANCE,
 
 				OPTION_HEALING_GLOBE,
 				OPTION_GOLD_PICKUP,
@@ -1302,6 +1303,8 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 			opt_dict[OPTION_REDUE_RANGED_DAMGE_7_PERCENT] = L" Redure ranged damge 7%\r\n";
 			opt_dict[OPTION_REDUE_RANGED_DAMGE_6_PERCENT] = L" Redure ranged damge 6%\r\n";
+
+			opt_dict[OPTION_POISON_RESIANCE] = L" Poison Resiance\r\n";
 
 			opt_dict[OPTION_HEALING_GLOBE] = L" Healing Globe\r\n";
 			opt_dict[OPTION_GOLD_PICKUP] = L" Gold Pickup\r\n";
@@ -1328,6 +1331,20 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 			roll_text += L"Option 02: ";
 			if (w32gdi.D3Rol02Is_RedueMeleeDamge7P()) rol02opt = OPTION_REDUE_MELEE_DAMGE_7_PERCENT;
+			else if (w32gdi.D3Rol02Is_PoisonResiance(0)) rol02opt = OPTION_POISON_RESIANCE;
+			else if (w32gdi.D3Rol02Is_PoisonResiance(1)) rol02opt = OPTION_POISON_RESIANCE;
+			else if (w32gdi.D3Rol02Is_PoisonResiance(-1)) rol02opt = OPTION_POISON_RESIANCE;
+			else if (w32gdi.D3Rol02Is_PoisonResiance(2)) rol02opt = OPTION_POISON_RESIANCE;
+			else if (w32gdi.D3Rol02Is_PoisonResiance(-2)) rol02opt = OPTION_POISON_RESIANCE;
+			else if (w32gdi.D3Rol02Is_PoisonResiance(3)) rol02opt = OPTION_POISON_RESIANCE;
+			else if (w32gdi.D3Rol02Is_PoisonResiance(-3)) rol02opt = OPTION_POISON_RESIANCE;
+			else if (w32gdi.D3Rol02Is_PoisonResiance(4)) rol02opt = OPTION_POISON_RESIANCE;
+			else if (w32gdi.D3Rol02Is_PoisonResiance(-4)) rol02opt = OPTION_POISON_RESIANCE;
+			else if (w32gdi.D3Rol02Is_PoisonResiance(5)) rol02opt = OPTION_POISON_RESIANCE;
+			else if (w32gdi.D3Rol02Is_PoisonResiance(-5)) rol02opt = OPTION_POISON_RESIANCE;
+			else if (w32gdi.D3Rol02Is_PoisonResiance(-6)) rol02opt = OPTION_POISON_RESIANCE;
+			else if (w32gdi.D3Rol02Is_PoisonResiance(-7)) rol02opt = OPTION_POISON_RESIANCE;
+			else if (w32gdi.D3Rol02Is_PoisonResiance(-8)) rol02opt = OPTION_POISON_RESIANCE;
 			else if (w32gdi.D3Rol02Is_GoldPickup()) rol02opt = OPTION_GOLD_PICKUP;
 			else if (w32gdi.D3Rol02Is_Exp()) rol02opt = OPTION_EXP;
 			roll_text += opt_dict[rol02opt];

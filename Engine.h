@@ -57,7 +57,7 @@ public:
 	bool				D3Rol01Is_RedueRangedDamge7P(void);
 	bool				D3Rol03Is_RedueRangedDamge6P(void);
 
-	
+	bool				D3Rol02Is_PoisonResiance(int offset);
 
 
 	bool				D3Rol03Is_HealingGlobe(void);
@@ -85,6 +85,7 @@ public:
 
 	void				DumpRollItem01(const char* filePath = "D:\\DumpRollItem01.txt", const char* logDumpFolder = "D:\\DumpImage\\");
 	void				DumpRollItem02(const char* filePath = "D:\\DumpRollItem02.txt", const char* logDumpFolder = "D:\\DumpImage\\");
+	void				DumpRollItem02Ex(const char* filePath = "D:\\DumpRollItem02.txt", const char* logDumpFolder = "D:\\DumpImage\\");
 	void				DumpRollItem03(const char* filePath = "D:\\DumpRollItem03.txt", const char* logDumpFolder = "D:\\DumpImage\\");
 
 #endif
