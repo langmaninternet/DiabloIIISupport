@@ -108,6 +108,12 @@ bool roll_is_normal(ROLL_OPTION x)
 	return (x == OPTION_HEALING_GLOBE || x == OPTION_GOLD_PICKUP || x == OPTION_EXP);
 }
 
+bool roll_is_normal_or_resistance(ROLL_OPTION x)
+{
+	return (x == OPTION_HEALING_GLOBE || x == OPTION_GOLD_PICKUP || x == OPTION_EXP || x == OPTION_RESITANCE);
+}
+
+
 
 
 /************************************************************************/
@@ -1347,6 +1353,13 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			else if (w32gdi.D3Rol02Is_HealingGlobe()) rol02opt = OPTION_HEALING_GLOBE;
 			else if (w32gdi.D3Rol02Is_GoldPickup()) rol02opt = OPTION_GOLD_PICKUP;
 			else if (w32gdi.D3Rol02Is_Exp()) rol02opt = OPTION_EXP;
+			for (int i_abs_offset = 0; i_abs_offset < 60 && rol02opt == OPTION_UNKNOW; i_abs_offset++)
+			{
+				if (w32gdi.D3Rol02Is_Resistance(i_abs_offset) || w32gdi.D3Rol02Is_Resistance(-i_abs_offset))
+				{
+					rol02opt = OPTION_RESITANCE;
+				}
+			}
 			roll_text += opt_dict[rol02opt];
 
 
@@ -1359,7 +1372,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			else if (w32gdi.D3Rol03Is_HealingGlobe()) rol03opt = OPTION_HEALING_GLOBE;
 			else if (w32gdi.D3Rol03Is_GoldPickup()) rol03opt = OPTION_GOLD_PICKUP;
 			else if (w32gdi.D3Rol03Is_Exp()) rol03opt = OPTION_EXP;
-			for (int i_abs_offset=0;i_abs_offset<60 && rol03opt == OPTION_UNKNOW; i_abs_offset++)
+			for (int i_abs_offset = 0; i_abs_offset < 60 && rol03opt == OPTION_UNKNOW; i_abs_offset++)
 			{
 				if (w32gdi.D3Rol03Is_Resistance(i_abs_offset) || w32gdi.D3Rol03Is_Resistance(-i_abs_offset))
 				{
@@ -1386,24 +1399,17 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				int finalDecision = DESCISION_NOTHING;
 
 
-				if (roll_is_normal(rol01opt)
-					&& roll_is_reduce_damage(rol02opt)
-					&& roll_is_normal(rol03opt)
-					)
-				{
+				if (roll_is_normal_or_resistance(rol01opt) && roll_is_reduce_damage(rol02opt) && roll_is_normal_or_resistance(rol03opt))
+				{// Reduce at Option 02
 					finalDecision = DESCISION_SELECT_OPTION_02;
 				}
-				else if (roll_is_normal(rol01opt)
-					&& roll_is_normal(rol02opt)
-					&& roll_is_reduce_damage(rol03opt)
-
-					)
-				{
+				else if (roll_is_normal_or_resistance(rol01opt) && roll_is_normal_or_resistance(rol02opt) && roll_is_reduce_damage(rol03opt))
+				{// Reduce at Option 03
 					finalDecision = DESCISION_SELECT_OPTION_03;
 				}
 
 
-
+				//exp to resistance
 
 
 
