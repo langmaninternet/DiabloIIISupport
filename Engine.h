@@ -52,6 +52,9 @@ public:
 
 
 
+
+	bool				D3Rol03Is_ExtraGold(void);
+
 #ifdef _DEBUG
 	void				SaveScreen(const char* filePath = "D:\\Dump.bmp");
 	void				SaveSubSreen(const char* filePath, int xleft, int ytop, int xright, int ybottom);
