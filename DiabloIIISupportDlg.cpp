@@ -9,6 +9,8 @@
 #include "Engine.h"
 
 
+#include "map"
+
 
 
 const double DiabloIIISupportVersion = 3.0;
@@ -1280,67 +1282,87 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			enum ROLL_OPTION
 			{
 				OPTION_UNKNOW = 0,
-				OPTION_EXP,
+
+				OPTION_REDUE_RANGED_DAMGE_7_PERCENT,
+				OPTION_REDUE_RANGED_DAMGE_6_PERCENT,
+
+
 				OPTION_HEALING_GLOBE,
 				OPTION_GOLD_PICKUP,
-
-
-				OPTION_REDUE_RANGED_DAMGE_6_PERCENT,
-				OPTION_REDUE_RANGED_DAMGE_7_PERCENT,
+				OPTION_EXP
 			};
+
+			std::map<int, CString> opt_dict;
+
+			opt_dict[OPTION_REDUE_RANGED_DAMGE_7_PERCENT] = L" Redure ranged damge 7%\r\n";
+			opt_dict[OPTION_REDUE_RANGED_DAMGE_6_PERCENT] = L" Redure ranged damge 6%\r\n";
+
+			opt_dict[OPTION_HEALING_GLOBE] = L" Healing Globe\r\n";
+			opt_dict[OPTION_GOLD_PICKUP] = L" Gold Pickup\r\n";
+			opt_dict[OPTION_EXP] = L" Exp after kill\r\n";
+			opt_dict[OPTION_UNKNOW] = L"-\r\n";
+
+
+
 			int rol01opt = OPTION_UNKNOW;
 			int rol02opt = OPTION_UNKNOW;
 			int rol03opt = OPTION_UNKNOW;
 
+
+
 			roll_text += L"Option 01: ";
 
-			if (w32gdi.D3Rol01Is_RedueRangedDamge7P())
-			{
-				rol01opt = OPTION_REDUE_RANGED_DAMGE_7_PERCENT;
-				roll_text.Append(L" Redure ranged damge 7%\r\n");
-			}
-			else if (w32gdi.D3Rol01Is_Exp())
-			{
-				rol01opt = OPTION_EXP;
-				roll_text.Append(L" Exp after kill\r\n");
-			}
-			else roll_text.Append(L"-\r\n");
+			if (w32gdi.D3Rol01Is_RedueRangedDamge7P()) rol01opt = OPTION_REDUE_RANGED_DAMGE_7_PERCENT;
+			else if (w32gdi.D3Rol01Is_GoldPickup()) rol01opt = OPTION_GOLD_PICKUP;
+			else if (w32gdi.D3Rol01Is_Exp()) rol01opt = OPTION_EXP;
+			roll_text += opt_dict[rol01opt];
+
+
+
+
 
 			roll_text += L"Option 02: ";
-			if (w32gdi.D3Rol02Is_Exp())
-			{
-				rol02opt = OPTION_EXP;
-				roll_text.Append(L" Exp after kill\r\n");
-			}
-			else roll_text.Append(L"-\r\n");
+			if (w32gdi.D3Rol02Is_Exp()) rol02opt = OPTION_EXP;
+			roll_text += opt_dict[rol02opt];
+
 
 
 
 
 			roll_text += L"Option 03: ";
-
-
-			if (w32gdi.D3Rol03Is_RedueRangedDamge6P())
-			{
-				rol03opt = OPTION_REDUE_RANGED_DAMGE_6_PERCENT;
-				roll_text.Append(L" Redure ranged damge 6%\r\n");
-			}
-			else if (w32gdi.D3Rol03Is_HealingGlobe())
-			{
-				rol03opt = OPTION_HEALING_GLOBE;
-				roll_text.Append(L" Healing Globe\r\n");
-			}
-			else if (w32gdi.D3Rol03Is_GoldPickup())
-			{
-				rol03opt = OPTION_GOLD_PICKUP;
-				roll_text.Append(L" Gold Pickup\r\n");
-			}
-			else roll_text.Append(L"-\r\n");
+			if (w32gdi.D3Rol03Is_RedueRangedDamge6P()) rol03opt = OPTION_REDUE_RANGED_DAMGE_6_PERCENT;
+			else if (w32gdi.D3Rol03Is_HealingGlobe()) rol03opt = OPTION_HEALING_GLOBE;
+			else if (w32gdi.D3Rol03Is_GoldPickup()) rol03opt = OPTION_GOLD_PICKUP;
+			else if (w32gdi.D3Rol03Is_Exp()) rol03opt = OPTION_EXP;
+			roll_text += opt_dict[rol03opt];
 
 
 			if (rol01opt + rol02opt + rol03opt > 0)
 			{
 				GetDlgItem(IDC_REROL_SUPPORT_DETAIL)->SetWindowTextW(roll_text);
+
+				enum DESCISION_ENUM
+				{
+					DESCISION_NOTHING = 0,
+					DESCISION_NEXT_ROL,
+				};
+
+				int finalDecision = DESCISION_NOTHING;
+				if (rol01opt == OPTION_EXP && rol02opt == OPTION_EXP && rol02opt == OPTION_EXP)
+				{
+					finalDecision = DESCISION_NEXT_ROL;
+				}
+
+				if (finalDecision == DESCISION_NEXT_ROL)
+				{
+					SetD3Mouse(256, 780);
+					SendD3LeftMouseClick();
+					Sleep(50 + (rand() % 5));
+					SetD3Mouse(256, 640);
+
+					SendD3LeftMouseClick();
+					Sleep(50 + (rand() % 5));
+				}
 			}
 
 		}
