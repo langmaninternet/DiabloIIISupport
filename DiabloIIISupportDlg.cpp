@@ -81,14 +81,9 @@ struct DiabloIIISupportConfig
 
 enum ROLL_OPTION
 {
-	ROLL_OPTION_UNKNOW = 0,
+	ROLL_OPTION_UNKNOWN = 0,
 
-	ROLL_OPTION_HUNGERING_ARROW_15P,
-	ROLL_OPTION_HUNGERING_ARROW_14P,
-	ROLL_OPTION_HUNGERING_ARROW_13P,
-	ROLL_OPTION_HUNGERING_ARROW_12P,
-	ROLL_OPTION_HUNGERING_ARROW_11P,
-	ROLL_OPTION_HUNGERING_ARROW_10P,
+	ROLL_OPTION_HUNGERING_ARROW,
 
 
 
@@ -107,6 +102,21 @@ enum ROLL_OPTION
 	ROLL_OPTION_GOLD_PICKUP,
 	ROLL_OPTION_EXP
 };
+
+enum ROLL_PARAMETER
+{
+	ROLL_PARAMETER_UNKNOWN = 0,
+
+	ROLL_PARAMETER_15_PERCENT,
+
+};
+
+
+
+
+
+
+
 bool roll_is_reduce_damage(ROLL_OPTION x)
 {
 	return (x == ROLL_OPTION_REDUCE_MELEE_DAMGE_7_PERCENT
@@ -137,6 +147,7 @@ enum ROLL_ITEM
 	ROLL_ITEM_UNKNOWN,
 	ROLL_ITEM_GALVANIZED_VEST,
 	ROLL_ITEM_COLD_CATHODE_TROUSERS,
+	ROLL_ITEM_HUNTERS_WRATH,
 };
 
 
@@ -1340,84 +1351,83 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			flagOnRollingProcess = true;
 			CString roll_text;
 
-			std::map<int, CString> opt_dict;
+			std::map<int, CString> roll_option_dict;
+			std::map<int, CString> roll_parameter_dict;
 
 
-			opt_dict[ROLL_OPTION_HUNGERING_ARROW_15P] = L" Hungering Arrow 15%\r\n";
-			opt_dict[ROLL_OPTION_HUNGERING_ARROW_14P] = L" Hungering Arrow 14%\r\n";
-			opt_dict[ROLL_OPTION_HUNGERING_ARROW_13P] = L" Hungering Arrow 13%\r\n";
-			opt_dict[ROLL_OPTION_HUNGERING_ARROW_12P] = L" Hungering Arrow 12%\r\n";
-			opt_dict[ROLL_OPTION_HUNGERING_ARROW_11P] = L" Hungering Arrow 11%\r\n";
-			opt_dict[ROLL_OPTION_HUNGERING_ARROW_10P] = L" Hungering Arrow 10%\r\n";
+			roll_option_dict[ROLL_OPTION_HUNGERING_ARROW] = L" Hungering Arrow\r\n";
 
-			opt_dict[ROLL_OPTION_REDUCE_MELEE_DAMGE_7_PERCENT] = L" Reduce melee damage 7%\r\n";
-			opt_dict[ROLL_OPTION_REDUCE_MELEE_DAMGE_6_PERCENT] = L" Reduce melee damage 6%\r\n";
-			opt_dict[ROLL_OPTION_REDUCE_RANGED_DAMGE_7_PERCENT] = L" Reduce ranged damage 7%\r\n";
-			opt_dict[ROLL_OPTION_REDUCE_RANGED_DAMGE_6_PERCENT] = L" Reduce ranged damage 6%\r\n";
+			roll_option_dict[ROLL_OPTION_REDUCE_MELEE_DAMGE_7_PERCENT] = L" Reduce melee damage 7%\r\n";
+			roll_option_dict[ROLL_OPTION_REDUCE_MELEE_DAMGE_6_PERCENT] = L" Reduce melee damage 6%\r\n";
+			roll_option_dict[ROLL_OPTION_REDUCE_RANGED_DAMGE_7_PERCENT] = L" Reduce ranged damage 7%\r\n";
+			roll_option_dict[ROLL_OPTION_REDUCE_RANGED_DAMGE_6_PERCENT] = L" Reduce ranged damage 6%\r\n";
 
-			opt_dict[ROLL_OPTION_RESITANCE] = L" Resistance\r\n";
+			roll_option_dict[ROLL_OPTION_RESITANCE] = L" Resistance\r\n";
 
-			opt_dict[ROLL_OPTION_HEALING_GLOBE] = L" Healing Globe\r\n";
-			opt_dict[ROLL_OPTION_GOLD_PICKUP] = L" Gold Pickup\r\n";
-			opt_dict[ROLL_OPTION_EXP] = L" Exp after kill\r\n";
+			roll_option_dict[ROLL_OPTION_HEALING_GLOBE] = L" Healing Globe\r\n";
+			roll_option_dict[ROLL_OPTION_GOLD_PICKUP] = L" Gold Pickup\r\n";
+			roll_option_dict[ROLL_OPTION_EXP] = L" Exp after kill\r\n";
 
-			opt_dict[ROLL_OPTION_UNKNOW] = L"-\r\n";
+			roll_option_dict[ROLL_OPTION_UNKNOWN] = L"-\r\n";
+
+
+			roll_parameter_dict[ROLL_PARAMETER_UNKNOWN] = L"Parameter: -\r\n";
+			roll_parameter_dict[ROLL_PARAMETER_15_PERCENT] = L"Parameter: 15%\r\n";
 
 
 			ROLL_ITEM item = ROLL_ITEM_UNKNOWN;
-			ROLL_OPTION option_01 = ROLL_OPTION_UNKNOW;
-			ROLL_OPTION option_02 = ROLL_OPTION_UNKNOW;
-			ROLL_OPTION option_03 = ROLL_OPTION_UNKNOW;
-
+			ROLL_OPTION option_01 = ROLL_OPTION_UNKNOWN;
+			ROLL_OPTION option_02 = ROLL_OPTION_UNKNOWN;
+			ROLL_OPTION option_03 = ROLL_OPTION_UNKNOWN;
+			
+			ROLL_PARAMETER parameter_01 = ROLL_PARAMETER_UNKNOWN;
+			ROLL_PARAMETER parameter_02 = ROLL_PARAMETER_UNKNOWN;
+			ROLL_PARAMETER parameter_03 = ROLL_PARAMETER_UNKNOWN;
 
 
 			roll_text += L"Option 01: ";
-			if (w32gdi.RollingOption01IsHungeringArrow15P()) option_01 = ROLL_OPTION_HUNGERING_ARROW_15P;
-			else if (w32gdi.RollingOption01IsHungeringArrow13P()) option_01 = ROLL_OPTION_HUNGERING_ARROW_13P;
-			else if (w32gdi.RollingOption01IsHungeringArrow12P()) option_01 = ROLL_OPTION_HUNGERING_ARROW_12P;
-			else if (w32gdi.RollingOption01IsHungeringArrow10P()) option_01 = ROLL_OPTION_HUNGERING_ARROW_10P;
+			if (w32gdi.RollingOption01IsHungeringArrow()) option_01 = ROLL_OPTION_HUNGERING_ARROW;
 			else if (w32gdi.D3Rol01Is_RedueRangedDamge7P()) option_01 = ROLL_OPTION_REDUCE_RANGED_DAMGE_7_PERCENT;
 			else if (w32gdi.D3Rol01Is_GoldPickup()) option_01 = ROLL_OPTION_GOLD_PICKUP;
 			else if (w32gdi.D3Rol01Is_Exp()) option_01 = ROLL_OPTION_EXP;
-			roll_text += opt_dict[option_01];
+	
 
-
-
+			if (w32gdi.RollingOption01Is15Percent()) parameter_01 = ROLL_PARAMETER_15_PERCENT;
+			roll_text += roll_option_dict[option_01];
+			roll_text += roll_parameter_dict[parameter_01];
 
 
 			roll_text += L"Option 02: ";
-			if (w32gdi.RollingOption02IsHungeringArrow15P()) option_02 = ROLL_OPTION_HUNGERING_ARROW_15P;
-			else if (w32gdi.RollingOption02IsHungeringArrow13P()) option_02 = ROLL_OPTION_HUNGERING_ARROW_13P;
-			else if (w32gdi.RollingOption02IsHungeringArrow11P()) option_02 = ROLL_OPTION_HUNGERING_ARROW_11P;
-			else if (w32gdi.RollingOption02IsHungeringArrow10P()) option_02 = ROLL_OPTION_HUNGERING_ARROW_10P;
+			if (w32gdi.RollingOption02IsHungeringArrow()) option_02 = ROLL_OPTION_HUNGERING_ARROW;
 			else if (w32gdi.D3Rol02Is_RedueMeleeDamge7P()) option_02 = ROLL_OPTION_REDUCE_MELEE_DAMGE_7_PERCENT;
 			else if (w32gdi.D3Rol02Is_HealingGlobe()) option_02 = ROLL_OPTION_HEALING_GLOBE;
 			else if (w32gdi.D3Rol02Is_GoldPickup()) option_02 = ROLL_OPTION_GOLD_PICKUP;
 			else if (w32gdi.D3Rol02Is_Exp()) option_02 = ROLL_OPTION_EXP;
-			for (int i_abs_offset = 0; i_abs_offset < 100 && option_02 == ROLL_OPTION_UNKNOW; i_abs_offset++)
+			for (int i_abs_offset = 0; i_abs_offset < 100 && option_02 == ROLL_OPTION_UNKNOWN; i_abs_offset++)
 			{
 				if (w32gdi.D3Rol02Is_Resistance(i_abs_offset) || w32gdi.D3Rol02Is_Resistance(-i_abs_offset))
 				{
 					option_02 = ROLL_OPTION_RESITANCE;
 				}
 			}
-			roll_text += opt_dict[option_02];
 
+			if (w32gdi.RollingOption02Is15Percent()) parameter_02 = ROLL_PARAMETER_15_PERCENT;
+			roll_text += roll_option_dict[option_02];
+			roll_text += roll_parameter_dict[parameter_02];
+
+			
 
 
 
 
 			roll_text += L"Option 03: ";
-			if (w32gdi.RollingOption03IsHungeringArrow15P()) option_03 = ROLL_OPTION_HUNGERING_ARROW_15P;
-			else if (w32gdi.RollingOption03IsHungeringArrow14P()) option_03 = ROLL_OPTION_HUNGERING_ARROW_14P;
-			else if (w32gdi.RollingOption03IsHungeringArrow13P()) option_03 = ROLL_OPTION_HUNGERING_ARROW_13P;
-			else if (w32gdi.RollingOption03IsHungeringArrow10P()) option_03 = ROLL_OPTION_HUNGERING_ARROW_10P;
+			if (w32gdi.RollingOption03IsHungeringArrow()) option_03 = ROLL_OPTION_HUNGERING_ARROW;
 			else if (w32gdi.D3Rol03Is_RedueMeleeDamge6P()) option_03 = ROLL_OPTION_REDUCE_MELEE_DAMGE_6_PERCENT;
 			else if (w32gdi.D3Rol03Is_RedueRangedDamge6P()) option_03 = ROLL_OPTION_REDUCE_RANGED_DAMGE_6_PERCENT;
 			else if (w32gdi.D3Rol03Is_HealingGlobe()) option_03 = ROLL_OPTION_HEALING_GLOBE;
 			else if (w32gdi.D3Rol03Is_GoldPickup()) option_03 = ROLL_OPTION_GOLD_PICKUP;
 			else if (w32gdi.D3Rol03Is_Exp()) option_03 = ROLL_OPTION_EXP;
-			for (int i_abs_offset = 0; i_abs_offset < 60 && option_03 == ROLL_OPTION_UNKNOW; i_abs_offset++)
+			for (int i_abs_offset = 0; i_abs_offset < 60 && option_03 == ROLL_OPTION_UNKNOWN; i_abs_offset++)
 			{
 				if (w32gdi.D3Rol03Is_Resistance(i_abs_offset) || w32gdi.D3Rol03Is_Resistance(-i_abs_offset))
 				{
@@ -1425,23 +1435,21 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				}
 			}
 
-			roll_text += opt_dict[option_03];
+			if (w32gdi.RollingOption03Is15Percent()) parameter_03 = ROLL_PARAMETER_15_PERCENT;
+			roll_text += roll_option_dict[option_03];
+			roll_text += roll_parameter_dict[parameter_03];
 
 
-
-
-
-			if (option_01 + option_02 + option_03 > 0 && w32gdi.D3IsRollWaiting() == false)
+			if (option_01 + option_02 + option_03 + parameter_01 + parameter_02 + parameter_03 > 0)
 			{
-				if (w32gdi.IsRollingGalvanizedVest())
+				GetDlgItem(IDC_REROL_SUPPORT_DETAIL)->SetWindowTextW(roll_text);
+			}
+			if (option_01 + option_02 + option_03 + parameter_01 + parameter_02 + parameter_03 > 0 && w32gdi.D3IsRollWaiting() == false)
+			{
+				if (w32gdi.IsRollingHuntersWrath())
 				{
-					item = ROLL_ITEM_GALVANIZED_VEST;
-					roll_text.Append(L"Item: Galvanized Vest\r\n");
-				}
-				else if (w32gdi.IsRollingColdCathodeTrousers())
-				{
-					item = ROLL_ITEM_COLD_CATHODE_TROUSERS;
-					roll_text.Append(L"Item: Cold Cathode Trousers\r\n");
+					item = ROLL_ITEM_HUNTERS_WRATH;
+					roll_text.Append(L"Item: Hunter's Wrath\r\n");
 				}
 
 				GetDlgItem(IDC_REROL_SUPPORT_DETAIL)->SetWindowTextW(roll_text);
@@ -1459,24 +1467,24 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 				int finalDecision = DESCISION_NOTHING;
 
-				//COLD_CATHODE_TROUSERS
-				if (item == ROLL_ITEM_COLD_CATHODE_TROUSERS
-					&& (option_01 == ROLL_OPTION_HUNGERING_ARROW_10P || option_01 == ROLL_OPTION_HUNGERING_ARROW_11P || option_01 == ROLL_OPTION_HUNGERING_ARROW_12P || option_01 == ROLL_OPTION_HUNGERING_ARROW_13P || option_01 == ROLL_OPTION_HUNGERING_ARROW_14P)
-					&& option_02 == ROLL_OPTION_HUNGERING_ARROW_15P)
-				{// Reduce at Option 02
-					finalDecision = DESCISION_SELECT_OPTION_02_AND_STOP_ROLL;
-				}
-				else if (item == ROLL_ITEM_COLD_CATHODE_TROUSERS
-					&& (option_01 == ROLL_OPTION_HUNGERING_ARROW_10P || option_01 == ROLL_OPTION_HUNGERING_ARROW_11P || option_01 == ROLL_OPTION_HUNGERING_ARROW_12P || option_01 == ROLL_OPTION_HUNGERING_ARROW_13P || option_01 == ROLL_OPTION_HUNGERING_ARROW_14P)
-					&& option_03 == ROLL_OPTION_HUNGERING_ARROW_15P)
-				{// Reduce at Option 02
-					finalDecision = DESCISION_SELECT_OPTION_03_AND_STOP_ROLL;
-				}
+				////Hunter's Wrath
+				//if (item == ROLL_ITEM_COLD_CATHODE_TROUSERS
+				//	&& (option_01 == ROLL_OPTION_HUNGERING_ARROW_10P || option_01 == ROLL_OPTION_HUNGERING_ARROW_11P || option_01 == ROLL_OPTION_HUNGERING_ARROW_12P || option_01 == ROLL_OPTION_HUNGERING_ARROW_13P || option_01 == ROLL_OPTION_HUNGERING_ARROW_14P)
+				//	&& option_02 == ROLL_OPTION_HUNGERING_ARROW_15P)
+				//{// Reduce at Option 02
+				//	finalDecision = DESCISION_SELECT_OPTION_02_AND_STOP_ROLL;
+				//}
+				//else if (item == ROLL_ITEM_COLD_CATHODE_TROUSERS
+				//	&& (option_01 == ROLL_OPTION_HUNGERING_ARROW_10P || option_01 == ROLL_OPTION_HUNGERING_ARROW_11P || option_01 == ROLL_OPTION_HUNGERING_ARROW_12P || option_01 == ROLL_OPTION_HUNGERING_ARROW_13P || option_01 == ROLL_OPTION_HUNGERING_ARROW_14P)
+				//	&& option_03 == ROLL_OPTION_HUNGERING_ARROW_15P)
+				//{// Reduce at Option 02
+				//	finalDecision = DESCISION_SELECT_OPTION_03_AND_STOP_ROLL;
+				//}
 
 
 
 
-				else if (roll_is_normal_or_resistance(option_01) && roll_is_reduce_damage(option_02) && roll_is_normal_or_resistance(option_03))
+				if (roll_is_normal_or_resistance(option_01) && roll_is_reduce_damage(option_02) && roll_is_normal_or_resistance(option_03))
 				{// Reduce at Option 02
 					finalDecision = DESCISION_SELECT_OPTION_02_AND_STOP_ROLL;
 				}

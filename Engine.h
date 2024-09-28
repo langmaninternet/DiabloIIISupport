@@ -50,10 +50,23 @@ public:
 
 
 
-	bool				IsRolling(void);
 
+
+	bool				IsRolling(void);
 	bool				D3IsRollSelecting(void);
 	bool				D3IsRollWaiting(void);
+
+
+	bool				RollingOption01Is15Percent(int);
+	bool				RollingOption01Is15Percent(void);
+	bool				RollingOption02Is15Percent(int);
+	bool				RollingOption02Is15Percent(void);
+	bool				RollingOption03Is15Percent(int);
+	bool				RollingOption03Is15Percent(void);
+
+
+
+
 
 	bool				D3Rol02Is_RedueMeleeDamge7P(void);
 	bool				D3Rol03Is_RedueMeleeDamge6P(void);
@@ -80,9 +93,22 @@ public:
 
 
 
+
 	//Hunter - Hungering Arrow
+	bool				IsRollingHuntersWrath(void);
+
+	bool				RollingOption01IsHungeringArrow(void);
+	bool				RollingOption02IsHungeringArrow(void);
+	bool				RollingOption03IsHungeringArrow(void);
+
+
+
+
+
+
 	bool				IsRollingGalvanizedVest(void);
 	bool				IsRollingColdCathodeTrousers(void);
+
 
 
 	bool				RollingIsHungeringArrow13P(int, int);
@@ -92,25 +118,10 @@ public:
 
 
 
-	bool				RollingOption01IsHungeringArrow15P(void);
-	bool				RollingOption02IsHungeringArrow15P(void);
-	bool				RollingOption03IsHungeringArrow15P(void);
 
 
-	bool				RollingOption01IsHungeringArrow13P(void);
-	bool				RollingOption02IsHungeringArrow13P(void);
-	bool				RollingOption03IsHungeringArrow13P(void);
 
-	bool				RollingOption01IsHungeringArrow12P(void);
 
-	bool				RollingOption01IsHungeringArrow11P(void);
-	bool				RollingOption02IsHungeringArrow11P(void);
-
-	bool				RollingOption01IsHungeringArrow10P(void);
-	bool				RollingOption02IsHungeringArrow10P(void);
-	bool				RollingOption03IsHungeringArrow10P(void);
-
-	
 
 
 #ifdef _DEBUG
