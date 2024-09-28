@@ -132,7 +132,10 @@ bool					flagOnF3 = false;
 bool					flagOnCtrl5 = false;
 bool					flagOnCtrl6 = false;
 bool					flagOnCtrl9 = false;
-bool					flagOnProcess = false;
+bool					flagOnMainProcess = false;
+bool					flagOnRollingProcess = false;
+
+
 int						leftMouseCooldown;
 int						rightMouseCooldown;
 int						skillSlot01Cooldown;
@@ -778,9 +781,9 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 		int elapsed_time = (difftime(current_timer, last_main_timer) * 1000);
 		last_main_timer = current_timer;
 
-		if (flagOnProcess == false)
+		if (flagOnMainProcess == false)
 		{
-			flagOnProcess = true;
+			flagOnMainProcess = true;
 			if (diabloGameStatus.flagIsOpenUrshi)
 			{
 				flagOnF1 = false;
@@ -1201,7 +1204,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 
 
-			flagOnProcess = false;
+			flagOnMainProcess = false;
 		}
 	}
 	else if (autoCastSkillTimerID == nIdEvent)
@@ -1305,13 +1308,11 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 		/************************************************************************/
 		/* Auto Reroll support                                                  */
 		/************************************************************************/
-		if (IsD3WindowActive()
-			&& d3Config.enableRerollSupport
-			&& (!(flagOnF1 || flagOnF2 || flagOnF3 || flagOnCtrl5 || flagOnCtrl6 || flagOnCtrl9))
-			)
+		if (IsD3WindowActive() && d3Config.enableRerollSupport
+			&& (!(flagOnF1 || flagOnF2 || flagOnF3 || flagOnCtrl5 || flagOnCtrl6 || flagOnCtrl9 || flagOnRollingProcess))
+			&& w32gdi.D3IsRollWaiting() == false)
 		{
-			//w32gdi.CaptureDesktop();
-
+			flagOnRollingProcess = true;
 			CString roll_text;
 
 			std::map<int, CString> opt_dict;
@@ -1390,8 +1391,8 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				{
 					DESCISION_NOTHING = 0,
 					DESCISION_NEXT_ROL,
-					DESCISION_SELECT_OPTION_02,
-					DESCISION_SELECT_OPTION_03,
+					DESCISION_SELECT_OPTION_02_AND_STOP_ROLL,
+					DESCISION_SELECT_OPTION_03_AND_STOP_ROLL,
 				};
 
 				int finalDecision = DESCISION_NOTHING;
@@ -1399,11 +1400,11 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 				if (roll_is_normal_or_resistance(rol01opt) && roll_is_reduce_damage(rol02opt) && roll_is_normal_or_resistance(rol03opt))
 				{// Reduce at Option 02
-					finalDecision = DESCISION_SELECT_OPTION_02;
+					finalDecision = DESCISION_SELECT_OPTION_02_AND_STOP_ROLL;
 				}
 				else if (roll_is_normal_or_resistance(rol01opt) && roll_is_normal_or_resistance(rol02opt) && roll_is_reduce_damage(rol03opt))
 				{// Reduce at Option 03
-					finalDecision = DESCISION_SELECT_OPTION_03;
+					finalDecision = DESCISION_SELECT_OPTION_03_AND_STOP_ROLL;
 				}
 
 
@@ -1414,37 +1415,53 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				/************************************************************************/
 				/* Action                                                               */
 				/************************************************************************/
-				finalDecision = DESCISION_SELECT_OPTION_02;
-				if (finalDecision == DESCISION_SELECT_OPTION_02)
+
+				if (finalDecision == DESCISION_SELECT_OPTION_02_AND_STOP_ROLL)
 				{
+					//Chọn dòng 2
 					SetD3Mouse(180, 440);
 					SendD3LeftMouseClick();
-					Sleep(50 + (rand() % 5));
-					SetD3Mouse(256, 640);
-					Sleep(50 + (rand() % 5));
+					Sleep(200);
 					SendD3LeftMouseClick();
-
+					// Chọn nút select
 					w32gdi.CaptureDesktop();
 					if (w32gdi.D3IsRollSelecting())
 					{
 						SetD3Mouse(256, 780);
-						Sleep(50 + (rand() % 5));
+						Sleep(200);
 						SendD3LeftMouseClick();
-
+						Sleep(200);
 					}
-
+					// Move chuột ra chỗ khác
+					SetD3Mouse(256, 730);
+					Sleep(50 + (rand() % 5));
+					Sleep(1000);
 				}
-				//else if (finalDecision == DESCISION_SELECT_OPTION_03)
-				//{
-				//	SetD3Mouse(180, 480);
-				//	SendD3LeftMouseClick();
-				//	Sleep(50 + (rand() % 5));
-				//	SetD3Mouse(256, 640);
-				//	SendD3LeftMouseClick();
-				//	Sleep(50 + (rand() % 5));
-				//}
+				else if (finalDecision == DESCISION_SELECT_OPTION_03_AND_STOP_ROLL)
+				{
+					//Chọn dòng 3
+					SetD3Mouse(180, 480);
+					SendD3LeftMouseClick();
+					Sleep(200);
+					SendD3LeftMouseClick();
+					// Chọn nút select
+					w32gdi.CaptureDesktop();
+					if (w32gdi.D3IsRollSelecting())
+					{
+						SetD3Mouse(256, 780);
+						Sleep(200);
+						SendD3LeftMouseClick();
+						Sleep(200);
+					}
+					// Move chuột ra chỗ khác
+					SetD3Mouse(256, 730);
+					Sleep(50 + (rand() % 5));
+					Sleep(1000);
+				}
 			}
 
+
+			flagOnRollingProcess = false;
 		}
 
 	}

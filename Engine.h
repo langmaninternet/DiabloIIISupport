@@ -50,7 +50,7 @@ public:
 
 
 	bool				D3IsRollSelecting(void);
-
+	bool				D3IsRollWaiting(void);
 
 	bool				D3Rol02Is_RedueMeleeDamge7P(void);
 	bool				D3Rol03Is_RedueMeleeDamge6P(void);
