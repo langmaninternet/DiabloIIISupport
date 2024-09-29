@@ -154,7 +154,7 @@ ROLL_PARAMETER get_roll_parameter_01(void)
 {
 	if (w32gdi.RollingOption01Is15Percent()) return ROLL_PARAMETER_15_PERCENT;
 	if (w32gdi.RollingOption01Is14Percent()) return ROLL_PARAMETER_14_PERCENT;
-	//if (w32gdi.RollingOption01Is13Percent()) return ROLL_PARAMETER_13_PERCENT;
+	if (w32gdi.RollingOption01Is13Percent()) return ROLL_PARAMETER_13_PERCENT;
 	//if (w32gdi.RollingOption01Is12Percent()) return ROLL_PARAMETER_12_PERCENT;
 	//if (w32gdi.RollingOption01Is11Percent()) return ROLL_PARAMETER_11_PERCENT;
 	//if (w32gdi.RollingOption01Is10Percent()) return ROLL_PARAMETER_10_PERCENT;
@@ -169,7 +169,7 @@ ROLL_PARAMETER get_roll_parameter_02(void)
 	//if (w32gdi.RollingOption02Is13Percent()) return ROLL_PARAMETER_13_PERCENT;
 	//if (w32gdi.RollingOption02Is12Percent()) return ROLL_PARAMETER_12_PERCENT;
 	//if (w32gdi.RollingOption02Is11Percent()) return ROLL_PARAMETER_11_PERCENT;
-	//if (w32gdi.RollingOption02Is10Percent()) return ROLL_PARAMETER_10_PERCENT;
+	if (w32gdi.RollingOption02Is10Percent()) return ROLL_PARAMETER_10_PERCENT;
 	//if (w32gdi.RollingOption02Is07Percent()) return ROLL_PARAMETER_07_PERCENT;
 	//if (w32gdi.RollingOption02Is06Percent()) return ROLL_PARAMETER_06_PERCENT;
 	return ROLL_PARAMETER_UNKNOWN;
@@ -248,7 +248,17 @@ void do_roll(ROLL_ITEM item,
 					final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
 				}
 
-				//
+				//Chỉ có 2 dòng HUNGERING_ARROW
+				else if (option_01 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+					&& option_02 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+					&& option_03 != ROLL_OPTION_UNKNOWN && option_03 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+					&& parameter_01!= ROLL_PARAMETER_UNKNOWN
+					&& parameter_02 != ROLL_PARAMETER_UNKNOWN
+					)
+				{
+					//final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+				}
+
 			}
 		}
 
