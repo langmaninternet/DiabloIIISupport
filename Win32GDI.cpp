@@ -94,7 +94,7 @@ void		QuangBTDumpScreen(void)
 		wFolder += L"*.bmp";
 		WIN32_FIND_DATAW		fd;
 		HANDLE hFind = FindFirstFileW(wFolder.c_str(), &fd);
-		if (hFind == INVALID_HANDLE_VALUE) return;
+		if (hFind == INVALID_HANDLE_VALUE) {};
 		do
 		{
 			if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
