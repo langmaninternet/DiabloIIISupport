@@ -41,6 +41,15 @@ enum ROLL_ITEM
 	ROLL_ITEM_HUNTERS_WRATH,
 };
 
+enum ROLL_DESCISION
+{
+	DESCISION_NOTHING = 0,
+	DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT,
+	DESCISION_SELECT_OPTION_02_AND_STOP_ROLL,
+	DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT,
+	DESCISION_SELECT_OPTION_03_AND_STOP_ROLL,
+};
+
 
 wchar_t* get_roll_name(ROLL_OPTION);
 wchar_t* get_parameter_name(ROLL_PARAMETER);
@@ -52,5 +61,16 @@ ROLL_OPTION get_roll_option_03(void);
 ROLL_PARAMETER get_roll_parameter_01(void);
 ROLL_PARAMETER get_roll_parameter_02(void);
 ROLL_PARAMETER get_roll_parameter_03(void);
+
+ROLL_ITEM get_roll_item(void);
+
+
+
+void do_roll(ROLL_ITEM item, ROLL_OPTION option_01, ROLL_PARAMETER parameter_01,
+	ROLL_OPTION option_02, ROLL_PARAMETER parameter_02,
+	ROLL_OPTION option_03, ROLL_PARAMETER parameter_03);
+
+
+
 
 #endif

@@ -1,6 +1,8 @@
-#include "Roll.h"
+﻿#include "Roll.h"
 #include "Engine.h"
 extern Win32GDI w32gdi;
+void		SetD3Mouse(int x, int y);
+void		SendD3LeftMouseClick();
 
 
 wchar_t* get_roll_name(ROLL_OPTION x)
@@ -149,3 +151,124 @@ ROLL_PARAMETER get_roll_parameter_03(void)
 	//if (w32gdi.RollingOption03Is06Percent()) return ROLL_PARAMETER_06_PERCENT;
 	return ROLL_PARAMETER_UNKNOWN;
 }
+
+ROLL_ITEM get_roll_item(void)
+{
+	if (w32gdi.IsRollingHuntersWrath()) return ROLL_ITEM_HUNTERS_WRATH;
+	return ROLL_ITEM_UNKNOWN;
+}
+
+void do_roll(ROLL_ITEM item,
+	ROLL_OPTION option_01, ROLL_PARAMETER parameter_01, 
+	ROLL_OPTION option_02, ROLL_PARAMETER parameter_02, 
+	ROLL_OPTION option_03, ROLL_PARAMETER parameter_03)
+{
+
+
+
+
+	if (option_01 + option_02 + option_03 + parameter_01 + parameter_02 + parameter_03 > 0 && w32gdi.D3IsRollWaiting() == false)
+	{
+		int final_decision = DESCISION_NOTHING;
+
+		////Hunter's Wrath
+		//if (item == ROLL_ITEM_COLD_CATHODE_TROUSERS
+		//	&& (option_01 == ROLL_OPTION_HUNGERING_ARROW_10P || option_01 == ROLL_OPTION_HUNGERING_ARROW_11P || option_01 == ROLL_OPTION_HUNGERING_ARROW_12P || option_01 == ROLL_OPTION_HUNGERING_ARROW_13P || option_01 == ROLL_OPTION_HUNGERING_ARROW_14P)
+		//	&& option_02 == ROLL_OPTION_HUNGERING_ARROW_15P)
+		//{// Reduce at Option 02
+		//	finalDecision = DESCISION_SELECT_OPTION_02_AND_STOP_ROLL;
+		//}
+		//else if (item == ROLL_ITEM_COLD_CATHODE_TROUSERS
+		//	&& (option_01 == ROLL_OPTION_HUNGERING_ARROW_10P || option_01 == ROLL_OPTION_HUNGERING_ARROW_11P || option_01 == ROLL_OPTION_HUNGERING_ARROW_12P || option_01 == ROLL_OPTION_HUNGERING_ARROW_13P || option_01 == ROLL_OPTION_HUNGERING_ARROW_14P)
+		//	&& option_03 == ROLL_OPTION_HUNGERING_ARROW_15P)
+		//{// Reduce at Option 02
+		//	finalDecision = DESCISION_SELECT_OPTION_03_AND_STOP_ROLL;
+		//}
+
+
+
+
+
+
+
+		/************************************************************************/
+		/* Action                                                               */
+		/************************************************************************/
+		if (final_decision == DESCISION_SELECT_OPTION_02_AND_STOP_ROLL)
+		{
+			//Chọn dòng 2
+			SetD3Mouse(180, 440);
+			SendD3LeftMouseClick();
+			Sleep(50 + (rand() % 5));
+			SendD3LeftMouseClick();
+			// Chọn nút select
+			w32gdi.CaptureDesktop();
+			if (w32gdi.D3IsRollSelecting())
+			{
+				SetD3Mouse(256, 780);
+				Sleep(50 + (rand() % 5));
+				SendD3LeftMouseClick();
+				Sleep(50 + (rand() % 5));
+			}
+			// Move chuột ra chỗ khác
+			SetD3Mouse(256, 730);
+			Sleep(50 + (rand() % 5));
+		}
+		else if (final_decision == DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT)
+		{
+			//Chọn dòng 2
+			SetD3Mouse(180, 440);
+			SendD3LeftMouseClick();
+			Sleep(50 + (rand() % 5));
+			SendD3LeftMouseClick();
+			// Chọn nút select
+			w32gdi.CaptureDesktop();
+			if (w32gdi.D3IsRollSelecting())
+			{
+				SetD3Mouse(256, 780);
+				Sleep(50 + (rand() % 5));
+				SendD3LeftMouseClick();
+				Sleep(50 + (rand() % 5));
+			}
+		}
+		else if (final_decision == DESCISION_SELECT_OPTION_03_AND_STOP_ROLL)
+		{
+			//Chọn dòng 3
+			SetD3Mouse(180, 480);
+			SendD3LeftMouseClick();
+			Sleep(50 + (rand() % 5));
+			SendD3LeftMouseClick();
+			// Chọn nút select
+			w32gdi.CaptureDesktop();
+			if (w32gdi.D3IsRollSelecting())
+			{
+				SetD3Mouse(256, 780);
+				Sleep(50 + (rand() % 5));
+				SendD3LeftMouseClick();
+				Sleep(50 + (rand() % 5));
+			}
+			// Move chuột ra chỗ khác
+			SetD3Mouse(256, 730);
+			Sleep(50 + (rand() % 5));
+		}
+		else if (final_decision == DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT)
+		{
+			//Chọn dòng 3
+			SetD3Mouse(180, 480);
+			SendD3LeftMouseClick();
+			Sleep(50 + (rand() % 5));
+			SendD3LeftMouseClick();
+			// Chọn nút select
+			w32gdi.CaptureDesktop();
+			if (w32gdi.D3IsRollSelecting())
+			{
+				SetD3Mouse(256, 780);
+				Sleep(50 + (rand() % 5));
+				SendD3LeftMouseClick();
+				Sleep(50 + (rand() % 5));
+			}
+		}
+
+}
+
+

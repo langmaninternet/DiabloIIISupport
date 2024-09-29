@@ -83,30 +83,6 @@ struct DiabloIIISupportConfig
 
 
 
-bool roll_is_reduce_damage(ROLL_OPTION x)
-{
-	return (x == ROLL_OPTION_REDUCE_MELEE_DAMGE_7_PERCENT
-		|| x == ROLL_OPTION_REDUCE_MELEE_DAMGE_6_PERCENT
-		|| x == ROLL_OPTION_REDUCE_RANGED_DAMGE_7_PERCENT
-		|| x == ROLL_OPTION_REDUCE_RANGED_DAMGE_6_PERCENT);
-}
-
-
-bool roll_is_normal(ROLL_OPTION x)
-{
-	return (x == ROLL_OPTION_HEALING_GLOBE
-		|| x == ROLL_OPTION_GOLD_PICKUP
-		|| x == ROLL_OPTION_EXP);
-}
-
-bool roll_is_normal_or_resistance(ROLL_OPTION x)
-{
-	return (x == ROLL_OPTION_HEALING_GLOBE
-		|| x == ROLL_OPTION_GOLD_PICKUP
-		|| x == ROLL_OPTION_EXP
-		|| x == ROLL_OPTION_RESITANCE);
-}
-
 
 
 /************************************************************************/
@@ -1308,23 +1284,8 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			flagOnRollingProcess = true;
 			CString roll_text;
 
-			std::map<int, CString> roll_parameter_dict;
 
-
-	
-
-			roll_parameter_dict[ROLL_PARAMETER_UNKNOWN] = L"Parameter: -\r\n";
-			roll_parameter_dict[ROLL_PARAMETER_15_PERCENT] = L"Parameter: 15%\r\n";
-			roll_parameter_dict[ROLL_PARAMETER_14_PERCENT] = L"Parameter: 14%\r\n";
-			roll_parameter_dict[ROLL_PARAMETER_13_PERCENT] = L"Parameter: 13%\r\n";
-			roll_parameter_dict[ROLL_PARAMETER_12_PERCENT] = L"Parameter: 12%\r\n";
-			roll_parameter_dict[ROLL_PARAMETER_11_PERCENT] = L"Parameter: 11%\r\n";
-			roll_parameter_dict[ROLL_PARAMETER_10_PERCENT] = L"Parameter: 10%\r\n";
-			roll_parameter_dict[ROLL_PARAMETER_07_PERCENT] = L"Parameter: 7%\r\n";
-
-
-
-			ROLL_ITEM item = ROLL_ITEM_UNKNOWN;
+			ROLL_ITEM item = get_roll_item();
 			ROLL_OPTION option_01 = get_roll_option_01();
 			ROLL_OPTION option_02 = get_roll_option_02();
 			ROLL_OPTION option_03 = get_roll_option_03();
@@ -1337,179 +1298,24 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			roll_text += L"Option 01: ";
 			roll_text += get_roll_name(option_01);
 			roll_text += L"\r\n";
-			roll_text += roll_parameter_dict[parameter_01];
-
+			roll_text += get_parameter_name(parameter_01);
 
 
 			roll_text += L"Option 02: ";
 			roll_text += get_roll_name(option_02);
 			roll_text += L"\r\n";
-			roll_text += roll_parameter_dict[parameter_02];
-
-			
-
-
-
+			roll_text += get_parameter_name(parameter_02);
 
 			roll_text += L"Option 03: ";
 			roll_text += get_roll_name(option_03);
 			roll_text += L"\r\n";
-			roll_text += roll_parameter_dict[parameter_03];
-
-
-
-
-
+			roll_text += get_parameter_name(parameter_03);
 
 			if (option_01 + option_02 + option_03 + parameter_01 + parameter_02 + parameter_03 > 0)
 			{
 				GetDlgItem(IDC_REROL_SUPPORT_DETAIL)->SetWindowTextW(roll_text);
+				do_roll(item, option_01, parameter_01, option_02, parameter_02, option_03, parameter_03);
 			}
-			if (option_01 + option_02 + option_03 + parameter_01 + parameter_02 + parameter_03 > 0 && w32gdi.D3IsRollWaiting() == false)
-			{
-				if (w32gdi.IsRollingHuntersWrath())
-				{
-					item = ROLL_ITEM_HUNTERS_WRATH;
-					roll_text.Append(L"Item: Hunter's Wrath\r\n");
-				}
-
-				GetDlgItem(IDC_REROL_SUPPORT_DETAIL)->SetWindowTextW(roll_text);
-
-				enum DESCISION_ENUM
-				{
-					DESCISION_NOTHING = 0,
-					DESCISION_NEXT_ROL,
-					DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT,
-					DESCISION_SELECT_OPTION_02_AND_STOP_ROLL,
-					DESCISION_SELECT_OPTION_03_AND_STOP_ROLL,
-					DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT,
-
-				};
-
-				int finalDecision = DESCISION_NOTHING;
-
-				////Hunter's Wrath
-				//if (item == ROLL_ITEM_COLD_CATHODE_TROUSERS
-				//	&& (option_01 == ROLL_OPTION_HUNGERING_ARROW_10P || option_01 == ROLL_OPTION_HUNGERING_ARROW_11P || option_01 == ROLL_OPTION_HUNGERING_ARROW_12P || option_01 == ROLL_OPTION_HUNGERING_ARROW_13P || option_01 == ROLL_OPTION_HUNGERING_ARROW_14P)
-				//	&& option_02 == ROLL_OPTION_HUNGERING_ARROW_15P)
-				//{// Reduce at Option 02
-				//	finalDecision = DESCISION_SELECT_OPTION_02_AND_STOP_ROLL;
-				//}
-				//else if (item == ROLL_ITEM_COLD_CATHODE_TROUSERS
-				//	&& (option_01 == ROLL_OPTION_HUNGERING_ARROW_10P || option_01 == ROLL_OPTION_HUNGERING_ARROW_11P || option_01 == ROLL_OPTION_HUNGERING_ARROW_12P || option_01 == ROLL_OPTION_HUNGERING_ARROW_13P || option_01 == ROLL_OPTION_HUNGERING_ARROW_14P)
-				//	&& option_03 == ROLL_OPTION_HUNGERING_ARROW_15P)
-				//{// Reduce at Option 02
-				//	finalDecision = DESCISION_SELECT_OPTION_03_AND_STOP_ROLL;
-				//}
-
-
-
-
-				if (roll_is_normal_or_resistance(option_01) && roll_is_reduce_damage(option_02) && roll_is_normal_or_resistance(option_03))
-				{// Reduce at Option 02
-					finalDecision = DESCISION_SELECT_OPTION_02_AND_STOP_ROLL;
-				}
-				else if (roll_is_normal_or_resistance(option_01) && roll_is_normal_or_resistance(option_02) && roll_is_reduce_damage(option_03))
-				{// Reduce at Option 03
-					finalDecision = DESCISION_SELECT_OPTION_03_AND_STOP_ROLL;
-				}
-
-
-				//exp to resistance - Option 02
-				else if (option_01 == ROLL_OPTION_EXP && option_02 == ROLL_OPTION_RESITANCE && option_03 == ROLL_OPTION_EXP)
-				{
-					finalDecision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
-				}
-				//exp to resistance - Option 03
-				else if (option_01 == ROLL_OPTION_EXP && option_02 == ROLL_OPTION_EXP && option_03 == ROLL_OPTION_RESITANCE)
-				{
-					finalDecision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
-				}
-
-
-				/************************************************************************/
-				/* Action                                                               */
-				/************************************************************************/
-				if (finalDecision == DESCISION_SELECT_OPTION_02_AND_STOP_ROLL)
-				{
-					//Chọn dòng 2
-					SetD3Mouse(180, 440);
-					SendD3LeftMouseClick();
-					Sleep(50 + (rand() % 5));
-					SendD3LeftMouseClick();
-					// Chọn nút select
-					w32gdi.CaptureDesktop();
-					if (w32gdi.D3IsRollSelecting())
-					{
-						SetD3Mouse(256, 780);
-						Sleep(50 + (rand() % 5));
-						SendD3LeftMouseClick();
-						Sleep(50 + (rand() % 5));
-					}
-					// Move chuột ra chỗ khác
-					SetD3Mouse(256, 730);
-					Sleep(50 + (rand() % 5));
-				}
-				else if (finalDecision == DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT)
-				{
-					//Chọn dòng 2
-					SetD3Mouse(180, 440);
-					SendD3LeftMouseClick();
-					Sleep(50 + (rand() % 5));
-					SendD3LeftMouseClick();
-					// Chọn nút select
-					w32gdi.CaptureDesktop();
-					if (w32gdi.D3IsRollSelecting())
-					{
-						SetD3Mouse(256, 780);
-						Sleep(50 + (rand() % 5));
-						SendD3LeftMouseClick();
-						Sleep(50 + (rand() % 5));
-					}
-				}
-				else if (finalDecision == DESCISION_SELECT_OPTION_03_AND_STOP_ROLL)
-				{
-					//Chọn dòng 3
-					SetD3Mouse(180, 480);
-					SendD3LeftMouseClick();
-					Sleep(50 + (rand() % 5));
-					SendD3LeftMouseClick();
-					// Chọn nút select
-					w32gdi.CaptureDesktop();
-					if (w32gdi.D3IsRollSelecting())
-					{
-						SetD3Mouse(256, 780);
-						Sleep(50 + (rand() % 5));
-						SendD3LeftMouseClick();
-						Sleep(50 + (rand() % 5));
-					}
-					// Move chuột ra chỗ khác
-					SetD3Mouse(256, 730);
-					Sleep(50 + (rand() % 5));
-				}
-				else if (finalDecision == DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT)
-				{
-					//Chọn dòng 3
-					SetD3Mouse(180, 480);
-					SendD3LeftMouseClick();
-					Sleep(50 + (rand() % 5));
-					SendD3LeftMouseClick();
-					// Chọn nút select
-					w32gdi.CaptureDesktop();
-					if (w32gdi.D3IsRollSelecting())
-					{
-						SetD3Mouse(256, 780);
-						Sleep(50 + (rand() % 5));
-						SendD3LeftMouseClick();
-						Sleep(50 + (rand() % 5));
-					}
-				}
-
-
-
-			}
-
-			Sleep(500);
 			flagOnRollingProcess = false;
 		}
 
