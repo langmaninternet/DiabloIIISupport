@@ -55,7 +55,7 @@ public:
 	/************************************************************************/
 	/* Code chuẩn                                                           */
 	/************************************************************************/
-
+	bool				IsRolling(void);
 
 	bool				RollingOption01Is15Percent(int);
 	bool				RollingOption01Is15Percent(void);
@@ -64,20 +64,25 @@ public:
 	bool				RollingOption03Is15Percent(int);
 	bool				RollingOption03Is15Percent(void);
 
-
+	bool				RollingOption01Is14Percent(int);
+	bool				RollingOption01Is14Percent(void);
 
 	bool				RollingOption01IsHungeringArrow(void);
 	bool				RollingOption02IsHungeringArrow(void);
 	bool				RollingOption03IsHungeringArrow(void);
 
 
+	bool				RollingOption03IsRegenHP(void);
 
+	bool				RollingOption01IsHealingGlobe(void);
+	//bool				RollingOption02IsHealingGlobe(void);
+	bool				RollingOption03IsHealingGlobe(void);
 
 
 	/************************************************************************/
 	/* Code đầu tiên                                                        */
 	/************************************************************************/
-	bool				IsRolling(void);
+
 	bool				D3IsRollSelecting(void);
 	bool				D3IsRollWaiting(void);
 
@@ -98,7 +103,6 @@ public:
 
 
 	bool				D3Rol02Is_HealingGlobe(void);
-	bool				D3Rol03Is_HealingGlobe(void);
 
 	bool				D3Rol01Is_GoldPickup(void);
 	bool				D3Rol02Is_GoldPickup(void);
@@ -149,8 +153,6 @@ public:
 
 	void				DumpRollItem01(const char* filePath = "D:\\DumpRollItem01.txt", const char* logDumpFolder = "D:\\DumpImage\\");
 	void				DumpRollItem01Ex(const char* filePath = "D:\\DumpRollItem01.txt", const char* logDumpFolder = "D:\\DumpImage\\");
-
-
 	void				DumpRollItem02(const char* filePath = "D:\\DumpRollItem02.txt", const char* logDumpFolder = "D:\\DumpImage\\");
 	void				DumpRollItem02Ex(const char* filePath = "D:\\DumpRollItem02.txt", const char* logDumpFolder = "D:\\DumpImage\\");
 	void				DumpRollItem03(const char* filePath = "D:\\DumpRollItem03.txt", const char* logDumpFolder = "D:\\DumpImage\\");

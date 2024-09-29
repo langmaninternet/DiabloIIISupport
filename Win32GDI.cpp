@@ -54,9 +54,10 @@
 //const int				rol_01_y_bottom = 399/*Fixed*/;
 
 
-const int				rol_01_x_left = 365;
+
+const int				rol_01_x_left = 81;
 const int				rol_01_y_top = 388/*Fixed*/;
-const int				rol_01_x_right = 395;
+const int				rol_01_x_right = 180;
 const int				rol_01_y_bottom = 399/*Fixed*/;
 
 //const int				rol_02_x_left = 154;
@@ -72,20 +73,56 @@ const int				rol_02_x_right = 395;
 const int				rol_02_y_bottom = 445/*Fixed*/;
 
 
-const int				rol_03_x_left = 365;
+//const int				rol_03_x_left = 365;
+//const int				rol_03_y_top = 476/*Fixed*/;
+//const int				rol_03_x_right = 395;
+//const int				rol_03_y_bottom = 488/*Fixed*/;
+
+
+const int				rol_03_x_left = 81;
 const int				rol_03_y_top = 476/*Fixed*/;
-const int				rol_03_x_right = 395;
+const int				rol_03_x_right = 170;
 const int				rol_03_y_bottom = 488/*Fixed*/;
 
-
 extern Win32GDI w32gdi;
+
+void ScanFile(void)
+{
+
+}
+
 void		QuangBTDumpScreen(void)
 {
 	w32gdi.CaptureDesktop();
 	w32gdi.SaveScreen();
 
 
+	static bool needCleanFolder = true;
+	if (needCleanFolder)
+	{
+		std::wstring		wFolder = L"D:\\DumpImage";
+		if (wFolder.size() && wFolder[wFolder.size() - 1] != L'\\') wFolder += L'\\';
+		wFolder += L"*.bmp";
+		WIN32_FIND_DATAW		fd;
+		HANDLE hFind = FindFirstFileW(wFolder.c_str(), &fd);
+		if (hFind == INVALID_HANDLE_VALUE) return;
+		do
+		{
+			if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+			{//là thư mục
+			}
+			else
+			{//là file
+				std::wstring filePath = L"D:\\DumpImage";
+				if (filePath.size() && filePath[filePath.size() - 1] != L'\\') filePath += L'\\';
+				filePath += fd.cFileName;
+				DeleteFileW(filePath.c_str());
+			}
+		} while (FindNextFileW(hFind, &fd));
+		FindClose(hFind);
 
+		needCleanFolder = false;
+	}
 
 	//left     905  1006 - Half 951 1030
 	//right    970  1006 - Half 1016 1030
@@ -95,11 +132,12 @@ void		QuangBTDumpScreen(void)
 	//w32gdi.DumpSkill03();
 	//w32gdi.DumpSkill04();
 
+
 	//w32gdi.DumpRollItem01();
 	//w32gdi.DumpRollItem01Ex();
 	//w32gdi.DumpRollItem02();
-	w32gdi.DumpRollItem02Ex();
-	//w32gdi.DumpRollItem03();
+	//w32gdi.DumpRollItem02Ex();
+	w32gdi.DumpRollItem03();
 	//w32gdi.DumpRollItem03Ex();
 
 	//Roll item
@@ -108,7 +146,7 @@ void		QuangBTDumpScreen(void)
 	//w32gdi.DumpRollItem03Ex(240, 240, 290, 268);
 
 	// Enchange
-	//w32gdi.DumpRectangle(219, 130, 315, 141,false);
+	//w32gdi.DumpRectangle(492, 174, 542, 220);
 }
 
 
@@ -372,7 +410,7 @@ void				Win32GDI::DumpRectangle(int xleft, int ytop, int xright, int ybottom)
 		if (logFile != NULL)
 		{
 			fprintf(logFile, "bool Win32GDI::D3_XXXXX_Is_YYYY(void)\n{\n");
-			fprintf(logFile, "DumpRectangle(%d,%d,%d,%d);\n", xleft, ytop, xright, ybottom);
+			//fprintf(logFile, "DumpRectangle(%d,%d,%d,%d);\n", xleft, ytop, xright, ybottom);
 			for (int isize = 1; isize <= 3; isize++)
 			{
 				for (int ix = xleft; ix < xright; ix++)

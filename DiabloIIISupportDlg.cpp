@@ -108,6 +108,11 @@ enum ROLL_PARAMETER
 	ROLL_PARAMETER_UNKNOWN = 0,
 
 	ROLL_PARAMETER_15_PERCENT,
+	ROLL_PARAMETER_14_PERCENT,
+	ROLL_PARAMETER_13_PERCENT,
+	ROLL_PARAMETER_12_PERCENT,
+	ROLL_PARAMETER_11_PERCENT,
+	ROLL_PARAMETER_10_PERCENT,
 
 };
 
@@ -1373,6 +1378,12 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 			roll_parameter_dict[ROLL_PARAMETER_UNKNOWN] = L"Parameter: -\r\n";
 			roll_parameter_dict[ROLL_PARAMETER_15_PERCENT] = L"Parameter: 15%\r\n";
+			roll_parameter_dict[ROLL_PARAMETER_14_PERCENT] = L"Parameter: 14%\r\n";
+			roll_parameter_dict[ROLL_PARAMETER_13_PERCENT] = L"Parameter: 13%\r\n";
+			roll_parameter_dict[ROLL_PARAMETER_12_PERCENT] = L"Parameter: 12%\r\n";
+			roll_parameter_dict[ROLL_PARAMETER_11_PERCENT] = L"Parameter: 11%\r\n";
+			roll_parameter_dict[ROLL_PARAMETER_10_PERCENT] = L"Parameter: 10%\r\n";
+
 
 
 			ROLL_ITEM item = ROLL_ITEM_UNKNOWN;
@@ -1387,12 +1398,15 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 			roll_text += L"Option 01: ";
 			if (w32gdi.RollingOption01IsHungeringArrow()) option_01 = ROLL_OPTION_HUNGERING_ARROW;
+			else if (w32gdi.RollingOption01IsHealingGlobe()) option_01 = ROLL_OPTION_HEALING_GLOBE;
+
 			else if (w32gdi.D3Rol01Is_RedueRangedDamge7P()) option_01 = ROLL_OPTION_REDUCE_RANGED_DAMGE_7_PERCENT;
 			else if (w32gdi.D3Rol01Is_GoldPickup()) option_01 = ROLL_OPTION_GOLD_PICKUP;
 			else if (w32gdi.D3Rol01Is_Exp()) option_01 = ROLL_OPTION_EXP;
 	
 
 			if (w32gdi.RollingOption01Is15Percent()) parameter_01 = ROLL_PARAMETER_15_PERCENT;
+			else if (w32gdi.RollingOption01Is14Percent()) parameter_01 = ROLL_PARAMETER_14_PERCENT;
 			roll_text += roll_option_dict[option_01];
 			roll_text += roll_parameter_dict[parameter_01];
 
@@ -1424,7 +1438,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			if (w32gdi.RollingOption03IsHungeringArrow()) option_03 = ROLL_OPTION_HUNGERING_ARROW;
 			else if (w32gdi.D3Rol03Is_RedueMeleeDamge6P()) option_03 = ROLL_OPTION_REDUCE_MELEE_DAMGE_6_PERCENT;
 			else if (w32gdi.D3Rol03Is_RedueRangedDamge6P()) option_03 = ROLL_OPTION_REDUCE_RANGED_DAMGE_6_PERCENT;
-			else if (w32gdi.D3Rol03Is_HealingGlobe()) option_03 = ROLL_OPTION_HEALING_GLOBE;
+			else if (w32gdi.RollingOption03IsHealingGlobe()) option_03 = ROLL_OPTION_HEALING_GLOBE;
 			else if (w32gdi.D3Rol03Is_GoldPickup()) option_03 = ROLL_OPTION_GOLD_PICKUP;
 			else if (w32gdi.D3Rol03Is_Exp()) option_03 = ROLL_OPTION_EXP;
 			for (int i_abs_offset = 0; i_abs_offset < 60 && option_03 == ROLL_OPTION_UNKNOWN; i_abs_offset++)
