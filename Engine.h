@@ -63,16 +63,10 @@ public:
 	bool				RollingOption02Is15Percent(void);
 	bool				RollingOption03Is15Percent(int);
 	bool				RollingOption03Is15Percent(void);
-
 	bool				RollingOption01Is14Percent(int);
 	bool				RollingOption01Is14Percent(void);
-
-
 	bool				RollingOption01Is07Percent(int);
 	bool				RollingOption01Is07Percent(void);
-
-
-	bool				RollingOption01IsRedueRangedDamge(void);
 
 
 	bool				RollingOption01IsHungeringArrow(void);
@@ -80,11 +74,25 @@ public:
 	bool				RollingOption03IsHungeringArrow(void);
 
 
+
+
+
+
+	bool				RollingOption01IsRedueRangedDamge(void);
+
+
 	bool				RollingOption03IsRegenHP(void);
 
 	bool				RollingOption01IsHealingGlobe(void);
 	//bool				RollingOption02IsHealingGlobe(void);
 	bool				RollingOption03IsHealingGlobe(void);
+
+	bool				RollingOption02IsPoisonResistance(int);
+	bool				RollingOption02IsPoisonResistance(void);
+
+
+	bool				RollingOption03IsColdResistance(int);
+	bool				RollingOption03IsColdResistance(void);
 
 	bool				RollingOption02IsThornDamage(int);
 	bool				RollingOption02IsThornDamage(void);
