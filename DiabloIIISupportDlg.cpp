@@ -1285,7 +1285,6 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			CString roll_text;
 
 
-			ROLL_ITEM item = get_roll_item();
 			ROLL_OPTION option_01 = get_roll_option_01();
 			ROLL_OPTION option_02 = get_roll_option_02();
 			ROLL_OPTION option_03 = get_roll_option_03();
@@ -1311,8 +1310,11 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			roll_text += L"\r\n";
 			roll_text += get_parameter_name(parameter_03);
 
-			if (option_01 + option_02 + option_03 + parameter_01 + parameter_02 + parameter_03 > 0)
+			if (option_01 + option_02 + option_03 + parameter_01 + parameter_02 + parameter_03 > 0 && w32gdi.HaveNoOption04and05())
 			{
+				ROLL_ITEM item = get_roll_item();
+				roll_text += L"Item: ";
+				roll_text += get_item_name(item);
 				GetDlgItem(IDC_REROL_SUPPORT_DETAIL)->SetWindowTextW(roll_text);
 				do_roll(item, option_01, parameter_01, option_02, parameter_02, option_03, parameter_03);
 			}
@@ -1360,10 +1362,10 @@ void CDiabloIIISupportDlg::OnKillFocusLeftMouseTime()
 	wchar_t bufferText[1000] = { 0 };
 	GetDlgItem(IDC_LEFTMOUSETIME)->GetWindowTextW(bufferText, 999);
 	int newValue = 0;
-	swscanf(bufferText, L"%d", &newValue);
+	swscanf_s(bufferText, L"%d", &newValue);
 	newValue = int(round(newValue / (double)(mainTimerDelay)) * mainTimerDelay);
 	if (newValue < mainTimerDelay) newValue = mainTimerDelay;
-	swprintf(bufferText, L"%d", newValue);
+	swprintf_s(bufferText, L"%d", newValue);
 	GetDlgItem(IDC_LEFTMOUSETIME)->SetWindowTextW(bufferText);
 	if (newValue != d3Config.leftMouseTime)
 	{
@@ -1377,7 +1379,7 @@ void CDiabloIIISupportDlg::OnKillFocusRightMouseTime()
 	wchar_t bufferText[1000] = { 0 };
 	GetDlgItem(IDC_RIGHTMOUSETIME)->GetWindowTextW(bufferText, 999);
 	int newValue = 0;
-	swscanf(bufferText, L"%d", &newValue);
+	swscanf_s(bufferText, L"%d", &newValue);
 	newValue = int(round(newValue / (double)(mainTimerDelay)) * mainTimerDelay);
 	if (newValue < mainTimerDelay) newValue = mainTimerDelay;
 	swprintf(bufferText, L"%d", newValue);
@@ -1394,7 +1396,7 @@ void CDiabloIIISupportDlg::OnKillFocusSkill01Time()
 	wchar_t bufferText[1000] = { 0 };
 	GetDlgItem(IDC_SKILL01TIME)->GetWindowTextW(bufferText, 999);
 	int newValue = 0;
-	swscanf(bufferText, L"%d", &newValue);
+	swscanf_s(bufferText, L"%d", &newValue);
 	newValue = int(round(newValue / (double)(mainTimerDelay)) * mainTimerDelay);
 	if (newValue < mainTimerDelay) newValue = mainTimerDelay;
 	swprintf(bufferText, L"%d", newValue);
@@ -1411,7 +1413,7 @@ void CDiabloIIISupportDlg::OnKillFocusSkill02Time()
 	wchar_t bufferText[1000] = { 0 };
 	GetDlgItem(IDC_SKILL02TIME)->GetWindowTextW(bufferText, 999);
 	int newValue = 0;
-	swscanf(bufferText, L"%d", &newValue);
+	swscanf_s(bufferText, L"%d", &newValue);
 	newValue = int(round(newValue / (double)(mainTimerDelay)) * mainTimerDelay);
 	if (newValue < mainTimerDelay) newValue = mainTimerDelay;
 	swprintf(bufferText, L"%d", newValue);
@@ -1428,7 +1430,7 @@ void CDiabloIIISupportDlg::OnKillFocusSkill03Time()
 	wchar_t bufferText[1000] = { 0 };
 	GetDlgItem(IDC_SKILL03TIME)->GetWindowTextW(bufferText, 999);
 	int newValue = 0;
-	swscanf(bufferText, L"%d", &newValue);
+	swscanf_s(bufferText, L"%d", &newValue);
 	newValue = int(round(newValue / (double)(mainTimerDelay)) * mainTimerDelay);
 	if (newValue < mainTimerDelay) newValue = mainTimerDelay;
 	swprintf(bufferText, L"%d", newValue);
@@ -1445,7 +1447,7 @@ void CDiabloIIISupportDlg::OnKillFocusSkill04Time()
 	wchar_t bufferText[1000] = { 0 };
 	GetDlgItem(IDC_SKILL04TIME)->GetWindowTextW(bufferText, 999);
 	int newValue = 0;
-	swscanf(bufferText, L"%d", &newValue);
+	swscanf_s(bufferText, L"%d", &newValue);
 	newValue = int(round(newValue / (double)(mainTimerDelay)) * mainTimerDelay);
 	if (newValue < mainTimerDelay) newValue = mainTimerDelay;
 	swprintf(bufferText, L"%d", newValue);

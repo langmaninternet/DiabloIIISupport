@@ -21,6 +21,9 @@ wchar_t* get_roll_name(ROLL_OPTION x)
 	case ROLL_OPTION_REDUCE_RANGED_DAMAGE:
 		return L"Reduce ranged damage";
 		break;
+	case ROLL_OPTION_REGEN_LIFE:
+		return L"Regenerate life";
+		break;
 	case ROLL_OPTION_THORN_DAMAGE:
 		return L"Thorn damage";
 		break;
@@ -75,6 +78,21 @@ wchar_t* get_parameter_name(ROLL_PARAMETER x)
 	return L"-";
 }
 
+wchar_t* get_item_name(ROLL_ITEM x)
+{
+	switch (x)
+	{
+	case ROLL_ITEM_UNKNOWN:
+		return L"-";
+		break;
+	case ROLL_ITEM_HUNTERS_WRATH:
+		return L"Hunter's Wrath";
+		break;
+	default:
+		break;
+	}
+	return L"-";
+}
 
 
 
@@ -82,7 +100,7 @@ wchar_t* get_parameter_name(ROLL_PARAMETER x)
 ROLL_OPTION get_roll_option_01(void)
 {
 	if (w32gdi.RollingOption01IsHungeringArrow()) return ROLL_OPTION_HUNGERING_ARROW;
-
+	if (w32gdi.RollingOption01IsRegenHP()) return ROLL_OPTION_REGEN_LIFE;
 
 
 
@@ -93,7 +111,7 @@ ROLL_OPTION get_roll_option_01(void)
 ROLL_OPTION get_roll_option_02(void)
 {
 	if (w32gdi.RollingOption02IsHungeringArrow()) return ROLL_OPTION_HUNGERING_ARROW;
-
+	if (w32gdi.RollingOption02IsRegenHP()) return ROLL_OPTION_REGEN_LIFE;
 
 
 
@@ -103,7 +121,7 @@ ROLL_OPTION get_roll_option_02(void)
 ROLL_OPTION get_roll_option_03(void)
 {
 	if (w32gdi.RollingOption03IsHungeringArrow()) return ROLL_OPTION_HUNGERING_ARROW;
-
+	if (w32gdi.RollingOption03IsRegenHP()) return ROLL_OPTION_REGEN_LIFE;
 
 
 
@@ -158,9 +176,17 @@ ROLL_ITEM get_roll_item(void)
 	return ROLL_ITEM_UNKNOWN;
 }
 
+/************************************************************************/
+/* Action                                                               */
+/************************************************************************/
+void do_decision(ROLL_DESCISION final_decision)
+{
+
+}
+
 void do_roll(ROLL_ITEM item,
-	ROLL_OPTION option_01, ROLL_PARAMETER parameter_01, 
-	ROLL_OPTION option_02, ROLL_PARAMETER parameter_02, 
+	ROLL_OPTION option_01, ROLL_PARAMETER parameter_01,
+	ROLL_OPTION option_02, ROLL_PARAMETER parameter_02,
 	ROLL_OPTION option_03, ROLL_PARAMETER parameter_03)
 {
 
@@ -169,31 +195,38 @@ void do_roll(ROLL_ITEM item,
 
 	if (option_01 + option_02 + option_03 + parameter_01 + parameter_02 + parameter_03 > 0 && w32gdi.D3IsRollWaiting() == false)
 	{
-		int final_decision = DESCISION_NOTHING;
+		ROLL_DESCISION final_decision = DESCISION_NOTHING;
 
-		////Hunter's Wrath
-		//if (item == ROLL_ITEM_COLD_CATHODE_TROUSERS
-		//	&& (option_01 == ROLL_OPTION_HUNGERING_ARROW_10P || option_01 == ROLL_OPTION_HUNGERING_ARROW_11P || option_01 == ROLL_OPTION_HUNGERING_ARROW_12P || option_01 == ROLL_OPTION_HUNGERING_ARROW_13P || option_01 == ROLL_OPTION_HUNGERING_ARROW_14P)
-		//	&& option_02 == ROLL_OPTION_HUNGERING_ARROW_15P)
-		//{// Reduce at Option 02
-		//	finalDecision = DESCISION_SELECT_OPTION_02_AND_STOP_ROLL;
-		//}
-		//else if (item == ROLL_ITEM_COLD_CATHODE_TROUSERS
-		//	&& (option_01 == ROLL_OPTION_HUNGERING_ARROW_10P || option_01 == ROLL_OPTION_HUNGERING_ARROW_11P || option_01 == ROLL_OPTION_HUNGERING_ARROW_12P || option_01 == ROLL_OPTION_HUNGERING_ARROW_13P || option_01 == ROLL_OPTION_HUNGERING_ARROW_14P)
-		//	&& option_03 == ROLL_OPTION_HUNGERING_ARROW_15P)
-		//{// Reduce at Option 02
-		//	finalDecision = DESCISION_SELECT_OPTION_03_AND_STOP_ROLL;
-		//}
+		if (item == ROLL_ITEM_HUNTERS_WRATH)
+		{
+			if (option_01 == ROLL_OPTION_HUNGERING_ARROW || option_02 == ROLL_OPTION_HUNGERING_ARROW || option_03 == ROLL_OPTION_HUNGERING_ARROW)
+			{// Need HUNGERING_ARROW
+				if (option_01 == ROLL_OPTION_HUNGERING_ARROW && parameter_01 == ROLL_PARAMETER_15_PERCENT)
+				{
+					final_decision = DESCISION_STAY_IN_OPTION_01;
+				}
+				else if (option_02 == ROLL_OPTION_HUNGERING_ARROW && parameter_02 == ROLL_PARAMETER_15_PERCENT)
+				{
+					final_decision = DESCISION_SELECT_OPTION_02_AND_STOP_ROLL;
+					do_decision(final_decision);
+					final_decision = DESCISION_STAY_IN_OPTION_01;
+				}
+				else if (option_03 == ROLL_OPTION_HUNGERING_ARROW && parameter_03 == ROLL_PARAMETER_15_PERCENT)
+				{
+					final_decision = DESCISION_SELECT_OPTION_03_AND_STOP_ROLL;
+					do_decision(final_decision);
+					final_decision = DESCISION_STAY_IN_OPTION_01;
+				}
+				else
+				{
+
+				}
+
+			}
+		}
 
 
 
-
-
-
-
-		/************************************************************************/
-		/* Action                                                               */
-		/************************************************************************/
 		if (final_decision == DESCISION_SELECT_OPTION_02_AND_STOP_ROLL)
 		{
 			//Chọn dòng 2
@@ -269,6 +302,13 @@ void do_roll(ROLL_ITEM item,
 			}
 		}
 
+
+
+
+
+
+
+	}
+
+
 }
-
-

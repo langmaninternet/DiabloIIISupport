@@ -56,6 +56,7 @@ public:
 	/* Code chuẩn                                                           */
 	/************************************************************************/
 	bool				IsRolling(void);
+	bool				HaveNoOption04and05(void);
 
 	bool				RollingOption01Is15Percent(int);
 	bool				RollingOption01Is15Percent(void);
@@ -81,6 +82,8 @@ public:
 	bool				RollingOption01IsRedueRangedDamge(void);
 
 
+	bool				RollingOption01IsRegenHP(void);
+	bool				RollingOption02IsRegenHP(void);
 	bool				RollingOption03IsRegenHP(void);
 
 	bool				RollingOption01IsHealingGlobe(void);
