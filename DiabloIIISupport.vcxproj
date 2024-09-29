@@ -122,7 +122,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -198,6 +198,7 @@
     <ClInclude Include="DiabloIIISupportDlg.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Engine.h" />
+    <ClInclude Include="Roll.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -206,6 +207,7 @@
     <ClCompile Include="DiabloIIISupport.cpp" />
     <ClCompile Include="DiabloIIISupportDlg.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="Roll.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

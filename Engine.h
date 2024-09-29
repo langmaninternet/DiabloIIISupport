@@ -133,16 +133,6 @@ public:
 
 
 
-	bool				IsRollingGalvanizedVest(void);
-	bool				IsRollingColdCathodeTrousers(void);
-
-
-
-	bool				RollingIsHungeringArrow13P(int, int);
-
-
-	bool				RollingOption03IsHungeringArrow14P(void);
-
 
 
 
