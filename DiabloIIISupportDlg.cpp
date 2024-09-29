@@ -1298,23 +1298,27 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			roll_text += get_roll_name(option_01);
 			roll_text += L"\r\n";
 			roll_text += get_parameter_name(parameter_01);
+			roll_text += L"\r\n";
 
 
 			roll_text += L"Option 02: ";
 			roll_text += get_roll_name(option_02);
 			roll_text += L"\r\n";
 			roll_text += get_parameter_name(parameter_02);
+			roll_text += L"\r\n";
 
 			roll_text += L"Option 03: ";
 			roll_text += get_roll_name(option_03);
 			roll_text += L"\r\n";
 			roll_text += get_parameter_name(parameter_03);
+			roll_text += L"\r\n";
 
 			if (option_01 + option_02 + option_03 + parameter_01 + parameter_02 + parameter_03 > 0 && w32gdi.HaveNoOption04and05())
 			{
 				ROLL_ITEM item = get_roll_item();
 				roll_text += L"Item: ";
 				roll_text += get_item_name(item);
+				roll_text += L"\r\n";
 				GetDlgItem(IDC_REROL_SUPPORT_DETAIL)->SetWindowTextW(roll_text);
 				do_roll(item, option_01, parameter_01, option_02, parameter_02, option_03, parameter_03);
 			}

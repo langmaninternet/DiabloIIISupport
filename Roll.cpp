@@ -179,11 +179,6 @@ ROLL_ITEM get_roll_item(void)
 /************************************************************************/
 /* Action                                                               */
 /************************************************************************/
-void do_decision(ROLL_DESCISION final_decision)
-{
-
-}
-
 void do_roll(ROLL_ITEM item,
 	ROLL_OPTION option_01, ROLL_PARAMETER parameter_01,
 	ROLL_OPTION option_02, ROLL_PARAMETER parameter_02,
@@ -201,6 +196,8 @@ void do_roll(ROLL_ITEM item,
 		{
 			if (option_01 == ROLL_OPTION_HUNGERING_ARROW || option_02 == ROLL_OPTION_HUNGERING_ARROW || option_03 == ROLL_OPTION_HUNGERING_ARROW)
 			{// Need HUNGERING_ARROW
+
+				// HUNGERING_ARROW 15% - kết thúc 
 				if (option_01 == ROLL_OPTION_HUNGERING_ARROW && parameter_01 == ROLL_PARAMETER_15_PERCENT)
 				{
 					final_decision = DESCISION_STAY_IN_OPTION_01;
@@ -208,26 +205,54 @@ void do_roll(ROLL_ITEM item,
 				else if (option_02 == ROLL_OPTION_HUNGERING_ARROW && parameter_02 == ROLL_PARAMETER_15_PERCENT)
 				{
 					final_decision = DESCISION_SELECT_OPTION_02_AND_STOP_ROLL;
-					do_decision(final_decision);
-					final_decision = DESCISION_STAY_IN_OPTION_01;
 				}
 				else if (option_03 == ROLL_OPTION_HUNGERING_ARROW && parameter_03 == ROLL_PARAMETER_15_PERCENT)
 				{
 					final_decision = DESCISION_SELECT_OPTION_03_AND_STOP_ROLL;
-					do_decision(final_decision);
-					final_decision = DESCISION_STAY_IN_OPTION_01;
 				}
-				else
+
+				// Chỉ có 1 dòng HUNGERING_ARROW
+				else if (option_01 == ROLL_OPTION_HUNGERING_ARROW
+					&& option_02 != ROLL_OPTION_UNKNOWN && option_02 != ROLL_OPTION_HUNGERING_ARROW
+					&& option_03 != ROLL_OPTION_UNKNOWN && option_03 != ROLL_OPTION_HUNGERING_ARROW)
 				{
-
+					final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+				}
+				else if (option_01!= ROLL_OPTION_UNKNOWN && option_01!= ROLL_OPTION_HUNGERING_ARROW
+					&& option_02 == ROLL_OPTION_HUNGERING_ARROW
+					&& option_03 != ROLL_OPTION_UNKNOWN && option_03 != ROLL_OPTION_HUNGERING_ARROW)
+				{
+					final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
+				}
+				else if (option_01 != ROLL_OPTION_UNKNOWN && option_01 != ROLL_OPTION_HUNGERING_ARROW
+					&& option_02 != ROLL_OPTION_UNKNOWN && option_02 != ROLL_OPTION_HUNGERING_ARROW
+					&& option_03 == ROLL_OPTION_HUNGERING_ARROW)
+				{
+					final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
 				}
 
+				//
 			}
 		}
 
-
-
-		if (final_decision == DESCISION_SELECT_OPTION_02_AND_STOP_ROLL)
+		if (final_decision == DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT)
+		{
+			//Chọn dòng 1
+			SetD3Mouse(180, 394);
+			SendD3LeftMouseClick();
+			Sleep(50 + (rand() % 5));
+			SendD3LeftMouseClick();
+			// Chọn nút select
+			w32gdi.CaptureDesktop();
+			if (w32gdi.D3IsRollSelecting())
+			{
+				SetD3Mouse(256, 780);
+				Sleep(50 + (rand() % 5));
+				SendD3LeftMouseClick();
+				Sleep(50 + (rand() % 5));
+			}
+		}
+		else if (final_decision == DESCISION_SELECT_OPTION_02_AND_STOP_ROLL)
 		{
 			//Chọn dòng 2
 			SetD3Mouse(180, 440);
