@@ -74,13 +74,16 @@ public:
 	bool				RollingOption02IsHungeringArrow(void);
 	bool				RollingOption03IsHungeringArrow(void);
 
-
-
-
+	bool				RollingOption02IsBolas(void);
+	bool				RollingOption02IsGrenade(void);
+	bool				RollingOption02IsEntanglingShot(void);
 
 
 	bool				RollingOption01IsRedueRangedDamge(void);
 
+
+	bool				RollingOption03IsLifePercent(int);
+	bool				RollingOption03IsLifePercent(void);
 
 	bool				RollingOption01IsRegenHP(void);
 	bool				RollingOption02IsRegenHP(void);

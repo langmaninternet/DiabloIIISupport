@@ -12,14 +12,26 @@ wchar_t* get_roll_name(ROLL_OPTION x)
 	case ROLL_OPTION_UNKNOWN:
 		return L"-";
 		break;
-	case ROLL_OPTION_HUNGERING_ARROW:
-		return L"Hungering Arrow";
+	case ROLL_OPTION_DHSKILL_HUNGERING_ARROW:
+		return L"DH - Hungering Arrow";
+		break;
+	case ROLL_OPTION_DHSKILL_BOLAS:
+		return L"DH - Bolas";
+		break;
+	case ROLL_OPTION_DHSKILL_GRENADE:
+		return L"DH - Grenade";
+		break;
+	case ROLL_OPTION_DHSKILL_ENTANGLING_SHOT:
+		return L"DH - Entangling Shot";
 		break;
 	case ROLL_OPTION_REDUCE_MELEE_DAMAGE:
 		return L"Reduce melee damage";
 		break;
 	case ROLL_OPTION_REDUCE_RANGED_DAMAGE:
 		return L"Reduce ranged damage";
+		break;
+	case ROLL_OPTION_LIFE_PERCENT:
+		return L"+% life";
 		break;
 	case ROLL_OPTION_REGEN_LIFE:
 		return L"Regenerate life";
@@ -99,7 +111,7 @@ wchar_t* get_item_name(ROLL_ITEM x)
 
 ROLL_OPTION get_roll_option_01(void)
 {
-	if (w32gdi.RollingOption01IsHungeringArrow()) return ROLL_OPTION_HUNGERING_ARROW;
+	if (w32gdi.RollingOption01IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
 	if (w32gdi.RollingOption01IsRegenHP()) return ROLL_OPTION_REGEN_LIFE;
 
 
@@ -110,8 +122,12 @@ ROLL_OPTION get_roll_option_01(void)
 
 ROLL_OPTION get_roll_option_02(void)
 {
-	if (w32gdi.RollingOption02IsHungeringArrow()) return ROLL_OPTION_HUNGERING_ARROW;
+	if (w32gdi.RollingOption02IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
+	if (w32gdi.RollingOption02IsBolas()) return ROLL_OPTION_DHSKILL_BOLAS;
+	if (w32gdi.RollingOption02IsGrenade()) return ROLL_OPTION_DHSKILL_GRENADE;
+	if (w32gdi.RollingOption02IsEntanglingShot()) return ROLL_OPTION_DHSKILL_ENTANGLING_SHOT;
 	if (w32gdi.RollingOption02IsRegenHP()) return ROLL_OPTION_REGEN_LIFE;
+	
 
 
 
@@ -120,8 +136,9 @@ ROLL_OPTION get_roll_option_02(void)
 
 ROLL_OPTION get_roll_option_03(void)
 {
-	if (w32gdi.RollingOption03IsHungeringArrow()) return ROLL_OPTION_HUNGERING_ARROW;
+	if (w32gdi.RollingOption03IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
 	if (w32gdi.RollingOption03IsRegenHP()) return ROLL_OPTION_REGEN_LIFE;
+	if (w32gdi.RollingOption03IsLifePercent()) return ROLL_OPTION_LIFE_PERCENT;
 
 
 
@@ -194,39 +211,39 @@ void do_roll(ROLL_ITEM item,
 
 		if (item == ROLL_ITEM_HUNTERS_WRATH)
 		{
-			if (option_01 == ROLL_OPTION_HUNGERING_ARROW || option_02 == ROLL_OPTION_HUNGERING_ARROW || option_03 == ROLL_OPTION_HUNGERING_ARROW)
+			if (option_01 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW || option_02 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW || option_03 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW)
 			{// Need HUNGERING_ARROW
 
 				// HUNGERING_ARROW 15% - kết thúc 
-				if (option_01 == ROLL_OPTION_HUNGERING_ARROW && parameter_01 == ROLL_PARAMETER_15_PERCENT)
+				if (option_01 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW && parameter_01 == ROLL_PARAMETER_15_PERCENT)
 				{
 					final_decision = DESCISION_STAY_IN_OPTION_01;
 				}
-				else if (option_02 == ROLL_OPTION_HUNGERING_ARROW && parameter_02 == ROLL_PARAMETER_15_PERCENT)
+				else if (option_02 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW && parameter_02 == ROLL_PARAMETER_15_PERCENT)
 				{
 					final_decision = DESCISION_SELECT_OPTION_02_AND_STOP_ROLL;
 				}
-				else if (option_03 == ROLL_OPTION_HUNGERING_ARROW && parameter_03 == ROLL_PARAMETER_15_PERCENT)
+				else if (option_03 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW && parameter_03 == ROLL_PARAMETER_15_PERCENT)
 				{
 					final_decision = DESCISION_SELECT_OPTION_03_AND_STOP_ROLL;
 				}
 
 				// Chỉ có 1 dòng HUNGERING_ARROW
-				else if (option_01 == ROLL_OPTION_HUNGERING_ARROW
-					&& option_02 != ROLL_OPTION_UNKNOWN && option_02 != ROLL_OPTION_HUNGERING_ARROW
-					&& option_03 != ROLL_OPTION_UNKNOWN && option_03 != ROLL_OPTION_HUNGERING_ARROW)
+				else if (option_01 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+					&& option_02 != ROLL_OPTION_UNKNOWN && option_02 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+					&& option_03 != ROLL_OPTION_UNKNOWN && option_03 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW)
 				{
 					final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
 				}
-				else if (option_01!= ROLL_OPTION_UNKNOWN && option_01!= ROLL_OPTION_HUNGERING_ARROW
-					&& option_02 == ROLL_OPTION_HUNGERING_ARROW
-					&& option_03 != ROLL_OPTION_UNKNOWN && option_03 != ROLL_OPTION_HUNGERING_ARROW)
+				else if (option_01!= ROLL_OPTION_UNKNOWN && option_01!= ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+					&& option_02 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+					&& option_03 != ROLL_OPTION_UNKNOWN && option_03 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW)
 				{
 					final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
 				}
-				else if (option_01 != ROLL_OPTION_UNKNOWN && option_01 != ROLL_OPTION_HUNGERING_ARROW
-					&& option_02 != ROLL_OPTION_UNKNOWN && option_02 != ROLL_OPTION_HUNGERING_ARROW
-					&& option_03 == ROLL_OPTION_HUNGERING_ARROW)
+				else if (option_01 != ROLL_OPTION_UNKNOWN && option_01 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+					&& option_02 != ROLL_OPTION_UNKNOWN && option_02 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+					&& option_03 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW)
 				{
 					final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
 				}
@@ -251,6 +268,7 @@ void do_roll(ROLL_ITEM item,
 				SendD3LeftMouseClick();
 				Sleep(50 + (rand() % 5));
 			}
+			Sleep(500 + (rand() % 5));
 		}
 		else if (final_decision == DESCISION_SELECT_OPTION_02_AND_STOP_ROLL)
 		{
@@ -271,6 +289,7 @@ void do_roll(ROLL_ITEM item,
 			// Move chuột ra chỗ khác
 			SetD3Mouse(256, 730);
 			Sleep(50 + (rand() % 5));
+			Sleep(500 + (rand() % 5));
 		}
 		else if (final_decision == DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT)
 		{
@@ -288,6 +307,7 @@ void do_roll(ROLL_ITEM item,
 				SendD3LeftMouseClick();
 				Sleep(50 + (rand() % 5));
 			}
+			Sleep(500 + (rand() % 5));
 		}
 		else if (final_decision == DESCISION_SELECT_OPTION_03_AND_STOP_ROLL)
 		{
@@ -308,6 +328,7 @@ void do_roll(ROLL_ITEM item,
 			// Move chuột ra chỗ khác
 			SetD3Mouse(256, 730);
 			Sleep(50 + (rand() % 5));
+			Sleep(500 + (rand() % 5));
 		}
 		else if (final_decision == DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT)
 		{
@@ -325,8 +346,9 @@ void do_roll(ROLL_ITEM item,
 				SendD3LeftMouseClick();
 				Sleep(50 + (rand() % 5));
 			}
+			Sleep(500 + (rand() % 5));
 		}
-
+		
 
 
 
