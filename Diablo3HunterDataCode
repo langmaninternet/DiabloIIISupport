@@ -2812,16 +2812,6 @@ color = (GetPixel(268, 391)&0xE0E0E0);if (color != 0X806040 && color != 0X806060
 color = (GetPixel(273, 391)&0xE0E0E0);if (color != 0X202000 && color != 0X202020 && color != 0X402040) return false;
 return true;
 }
-
-
-
-
-
-
-
-
-
-
 bool Win32GDI::RollingOption02IsHungeringArrow(void)
 {
 int color = 0;
@@ -5887,16 +5877,6 @@ color = GetPixel(273, 443);if (color != 0X0 && color != 0X10003 && color != 0X27
 color = GetPixel(273, 444);if (color != 0X0 && color != 0X10105 && color != 0X2A1225) return false;
 return true;
 }
-
-
-
-
-
-
-
-
-
-
 bool Win32GDI::RollingOption03IsHungeringArrow(void)
 {
 int color = 0;
@@ -7258,10 +7238,5 @@ color = (GetPixel(259, 486)&0xE0E0E0);if (color != 0X402020 && color != 0X602020
 color = (GetPixel(271, 478)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
 return true;
 }
-
-
-
-
-
 
 
