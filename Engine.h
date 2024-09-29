@@ -67,6 +67,14 @@ public:
 	bool				RollingOption01Is14Percent(int);
 	bool				RollingOption01Is14Percent(void);
 
+
+	bool				RollingOption01Is07Percent(int);
+	bool				RollingOption01Is07Percent(void);
+
+
+	bool				RollingOption01IsRedueRangedDamge(void);
+
+
 	bool				RollingOption01IsHungeringArrow(void);
 	bool				RollingOption02IsHungeringArrow(void);
 	bool				RollingOption03IsHungeringArrow(void);
@@ -78,6 +86,8 @@ public:
 	//bool				RollingOption02IsHealingGlobe(void);
 	bool				RollingOption03IsHealingGlobe(void);
 
+	bool				RollingOption02IsThornDamage(int);
+	bool				RollingOption02IsThornDamage(void);
 
 	/************************************************************************/
 	/* Code đầu tiên                                                        */
