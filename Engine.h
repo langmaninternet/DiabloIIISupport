@@ -78,7 +78,8 @@ public:
 	bool				RollingOption01Is13Percent(int);
 	bool				RollingOption01Is13Percent(void);
 
-
+	bool				RollingOption02Is12Percent(int);
+	bool				RollingOption02Is12Percent(void);
 	bool				RollingOption03Is12Percent(int);
 	bool				RollingOption03Is12Percent(void);
 
@@ -97,7 +98,8 @@ public:
 	bool				RollingOption03IsHungeringArrow(void);
 
 	bool				RollingOption01IsGrenade(void);
-
+	bool				RollingOption02IsGrenade(void);
+	bool				RollingOption03IsGrenade(void);
 
 	bool				RollingOption01IsEvasiveFire(void);
 	bool				RollingOption02IsEvasiveFire(void);
@@ -106,7 +108,6 @@ public:
 	bool				RollingOption02IsBolas(void);
 	bool				RollingOption03IsBolas(void);
 
-	bool				RollingOption02IsGrenade(void);
 
 
 	bool				RollingOption02IsEntanglingShot(void);
