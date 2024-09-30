@@ -37,7 +37,7 @@ wchar_t* get_roll_name(ROLL_OPTION x)
 		return L"+% life";
 		break;
 	case ROLL_OPTION_REGEN_LIFE:
-		return L"Regenerate life";
+		return L"Life per second";
 		break;
 	case ROLL_OPTION_ARMOR:
 		return L"Armor";
@@ -66,34 +66,34 @@ wchar_t* get_parameter_name(ROLL_PARAMETER x)
 	switch (x)
 	{
 	case ROLL_PARAMETER_UNKNOWN:
-		return L"-";
+		return L"";
 		break;
 	case ROLL_PARAMETER_15_PERCENT:
-		return L"Parameter: 15%";
+		return L" + 15%";
 		break;
 	case ROLL_PARAMETER_14_PERCENT:
-		return L"Parameter: 14%";
+		return L" + 14%";
 		break;
 	case ROLL_PARAMETER_13_PERCENT:
-		return L"Parameter: 13%";
+		return L" + 13%";
 		break;
 	case ROLL_PARAMETER_12_PERCENT:
-		return L"Parameter: 12%";
+		return L" + 12%";
 		break;
 	case ROLL_PARAMETER_11_PERCENT:
-		return L"Parameter: 11%";
+		return L" + 11%";
 		break;
 	case ROLL_PARAMETER_10_PERCENT:
-		return L"Parameter: 10%";
+		return L" + 10%";
 		break;
 	case ROLL_PARAMETER_07_PERCENT:
-		return L"Parameter: 7%";
+		return L" + 7%";
 		break;
 	default:
-		return L"-";
+		return L"";
 		break;
 	}
-	return L"-";
+	return L"";
 }
 
 wchar_t* get_item_name(ROLL_ITEM x)
@@ -118,9 +118,10 @@ wchar_t* get_item_name(ROLL_ITEM x)
 ROLL_OPTION get_roll_option_01(void)
 {
 	if (w32gdi.RollingOption01IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
+	if (w32gdi.RollingOption01IsGrenade()) return ROLL_OPTION_DHSKILL_GRENADE;
 	if (w32gdi.RollingOption01IsEvasiveFire()) return ROLL_OPTION_DHSKILL_EVASIVE_FIRE;
 	if (w32gdi.RollingOption01IsRegenHP()) return ROLL_OPTION_REGEN_LIFE;
-
+	if (w32gdi.RollingOption01IsLifePercent()) return ROLL_OPTION_LIFE_PERCENT;
 
 
 	return ROLL_OPTION_UNKNOWN;
@@ -135,7 +136,7 @@ ROLL_OPTION get_roll_option_02(void)
 	if (w32gdi.RollingOption02IsEntanglingShot()) return ROLL_OPTION_DHSKILL_ENTANGLING_SHOT;
 	if (w32gdi.RollingOption02IsEvasiveFire()) return ROLL_OPTION_DHSKILL_EVASIVE_FIRE;
 	if (w32gdi.RollingOption02IsRegenHP()) return ROLL_OPTION_REGEN_LIFE;
-	
+	if (w32gdi.RollingOption02IsLifePercent()) return ROLL_OPTION_LIFE_PERCENT;
 
 
 
@@ -147,7 +148,6 @@ ROLL_OPTION get_roll_option_03(void)
 	if (w32gdi.RollingOption03IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
 	if (w32gdi.RollingOption03IsRegenHP()) return ROLL_OPTION_REGEN_LIFE;
 	if (w32gdi.RollingOption03IsLifePercent()) return ROLL_OPTION_LIFE_PERCENT;
-
 	if (w32gdi.RollingOption03IsArmor()) return ROLL_OPTION_ARMOR;
 
 	return ROLL_OPTION_UNKNOWN;
@@ -187,7 +187,7 @@ ROLL_PARAMETER get_roll_parameter_03(void)
 	if (w32gdi.RollingOption03Is15Percent()) return ROLL_PARAMETER_15_PERCENT;
 	//if (w32gdi.RollingOption03Is14Percent()) return ROLL_PARAMETER_14_PERCENT;
 	//if (w32gdi.RollingOption03Is13Percent()) return ROLL_PARAMETER_13_PERCENT;
-	//if (w32gdi.RollingOption03Is12Percent()) return ROLL_PARAMETER_12_PERCENT;
+	if (w32gdi.RollingOption03Is12Percent()) return ROLL_PARAMETER_12_PERCENT;
 	//if (w32gdi.RollingOption03Is11Percent()) return ROLL_PARAMETER_11_PERCENT;
 	//if (w32gdi.RollingOption03Is10Percent()) return ROLL_PARAMETER_10_PERCENT;
 	//if (w32gdi.RollingOption03Is07Percent()) return ROLL_PARAMETER_07_PERCENT;

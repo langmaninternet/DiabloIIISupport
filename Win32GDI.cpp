@@ -55,22 +55,22 @@
 
 
 
-const int				rol_01_x_left = 154;
+const int				rol_01_x_left = 107;
 const int				rol_01_y_top = 388/*Fixed*/;
-const int				rol_01_x_right = 240;
+const int				rol_01_x_right = 149;
 const int				rol_01_y_bottom = 399/*Fixed*/;
 
 
-const int				rol_02_x_left = 154;
+const int				rol_02_x_left = 107;
 const int				rol_02_y_top = 434/*Fixed*/;
-const int				rol_02_x_right = 240;
+const int				rol_02_x_right = 149;
 const int				rol_02_y_bottom = 445/*Fixed*/;
 
 
 
-const int				rol_03_x_left = 120;
+const int				rol_03_x_left = 366;
 const int				rol_03_y_top = 476/*Fixed*/;
-const int				rol_03_x_right = 162;
+const int				rol_03_x_right = 395;
 const int				rol_03_y_bottom = 488/*Fixed*/;
 
 extern Win32GDI w32gdi;
@@ -120,11 +120,11 @@ void		QuangBTDumpScreen(void)
 
 
 	//w32gdi.DumpRollItem01();
-	//w32gdi.DumpRollItem01Ex();
+	w32gdi.DumpRollItem01Ex();
 	//w32gdi.DumpRollItem02();
 	//w32gdi.DumpRollItem02Ex();
 	//w32gdi.DumpRollItem03();
-	w32gdi.DumpRollItem03Ex();
+	//w32gdi.DumpRollItem03Ex();
 
 	//Roll item
 	//w32gdi.DumpRectangle(240, 198, 292, 307);
