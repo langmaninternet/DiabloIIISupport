@@ -35,11 +35,13 @@ extern Win32GDI w32gdi;
 #include "Diablo3Roll"
 #include "Diablo3RollBase"
 #include "Diablo3RollCriticalHit"
+#include "Diablo3RollCooldown"
 #include "Diablo3RollLife"
 #include "Diablo3RollResistance"
 #include "Diablo3RollPercent"
 #include "Diablo3RollArmor"
 #include "Diablo3RollRing"
+
 
 #include "Diablo3RollDemonHuner"
 

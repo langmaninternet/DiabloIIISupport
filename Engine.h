@@ -114,35 +114,33 @@ public:
 	bool				RollingOption02IsCriticalHitChance(void);
 	bool				RollingOption03IsCriticalHitChance(void);
 
-	bool				RollingOption01IsCriticalHitDamage(void);
-	bool				RollingOption02IsCriticalHitDamage(void);
 
+	//bool				RollingOption01IsCriticalHitDamage(void);
+	//bool				RollingOption02IsCriticalHitDamage(void);
+	//bool				RollingOption03IsCriticalHitDamage(void);
 
 	bool				RollingOption03IsDexterity(int);
 	bool				RollingOption03IsDexterity(void);
+
 	bool				RollingOption01IsBaseDamage(int);
 	bool				RollingOption01IsBaseDamage(void);
 
-
+	bool				RollingOption03IsCooldown(void);
 
 
 
 	bool				RollingOption01IsHungeringArrow(void);
 	bool				RollingOption02IsHungeringArrow(void);
 	bool				RollingOption03IsHungeringArrow(void);
-
 	bool				RollingOption01IsGrenade(void);
 	bool				RollingOption02IsGrenade(void);
 	bool				RollingOption03IsGrenade(void);
-
 	bool				RollingOption01IsEvasiveFire(void);
 	bool				RollingOption02IsEvasiveFire(void);
 	bool				RollingOption03IsEvasiveFire(void);
 
 	bool				RollingOption02IsBolas(void);
 	bool				RollingOption03IsBolas(void);
-
-
 
 	bool				RollingOption02IsEntanglingShot(void);
 	bool				RollingOption03IsEntanglingShot(void);

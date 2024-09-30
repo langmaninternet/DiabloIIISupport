@@ -33,6 +33,21 @@ wchar_t* get_roll_name(ROLL_OPTION x)
 	case ROLL_OPTION_BASE_DAMAGE:
 		return L"Base Damage";
 		break;
+
+
+
+	case ROLL_OPTION_REDUCE_MELEE_DAMAGE:
+		return L"Reduce melee damage";
+		break;
+	case ROLL_OPTION_REDUCE_RANGED_DAMAGE:
+		return L"Reduce ranged damage";
+		break;
+	case ROLL_OPTION_REDUCE_COOLDOWN:
+		return L"Reduce cooldown";
+		break;
+
+
+
 	case ROLL_OPTION_DHSKILL_HUNGERING_ARROW:
 		return L"DH - Hungering Arrow";
 		break;
@@ -48,12 +63,7 @@ wchar_t* get_roll_name(ROLL_OPTION x)
 	case ROLL_OPTION_DHSKILL_EVASIVE_FIRE:
 		return L"DH - Evasive Fire";
 		break;
-	case ROLL_OPTION_REDUCE_MELEE_DAMAGE:
-		return L"Reduce melee damage";
-		break;
-	case ROLL_OPTION_REDUCE_RANGED_DAMAGE:
-		return L"Reduce ranged damage";
-		break;
+
 	case ROLL_OPTION_LIFE_PERCENT:
 		return L"+% life";
 		break;
@@ -141,6 +151,9 @@ wchar_t* get_item_name(ROLL_ITEM x)
 	case ROLL_ITEM_UNKNOWN:
 		return L"-";
 		break;
+	case ROLL_ITEM_FOCUS:
+		return L"Focus";
+		break;
 	case ROLL_ITEM_HUNTERS_WRATH:
 		return L"Hunter's Wrath";
 		break;
@@ -186,6 +199,7 @@ ROLL_OPTION get_roll_option_03(void)
 {
 	if (w32gdi.RollingOption03IsCriticalHitChance()) return ROLL_OPTION_CRITICAL_HIT_CHANCE;
 	if (w32gdi.RollingOption03IsDexterity()) return ROLL_OPTION_DEXTERITY;
+	if (w32gdi.RollingOption03IsCooldown()) return ROLL_OPTION_REDUCE_COOLDOWN;
 	if (w32gdi.RollingOption03IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
 	if (w32gdi.RollingOption03IsBolas()) return ROLL_OPTION_DHSKILL_BOLAS;
 	if (w32gdi.RollingOption03IsGrenade()) return ROLL_OPTION_DHSKILL_GRENADE;
@@ -214,6 +228,7 @@ ROLL_PARAMETER get_roll_parameter_01(void)
 	//if (w32gdi.RollingOption01Is10Percent()) return ROLL_PARAMETER_10_PERCENT;
 	if (w32gdi.RollingOption01Is07Percent()) return ROLL_PARAMETER_07_PERCENT;
 	//if (w32gdi.RollingOption01Is06Percent()) return ROLL_PARAMETER_06_PERCENT;
+	if (w32gdi.RollingOption01Is05Percent()) return ROLL_PARAMETER_05_PERCENT;
 	if (w32gdi.RollingOption01Is04d5Percent()) return ROLL_PARAMETER_04_D_5_PERCENT;
 	return ROLL_PARAMETER_UNKNOWN;
 }
@@ -246,6 +261,7 @@ ROLL_PARAMETER get_roll_parameter_03(void)
 
 ROLL_ITEM get_roll_item(void)
 {
+	if (w32gdi.RollingItemIsFocus()) return ROLL_ITEM_FOCUS;
 	if (w32gdi.RollingItemIsHuntersWrath()) return ROLL_ITEM_HUNTERS_WRATH;
 	return ROLL_ITEM_UNKNOWN;
 }
