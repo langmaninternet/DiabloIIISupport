@@ -187,11 +187,28 @@ ROLL_PARAMETER get_roll_parameter_03(void)
 	return ROLL_PARAMETER_UNKNOWN;
 }
 
-RESOURCE_STATUS get_resouce_status(void)
+RESOURCE_STATUS get_resource_status(void)
 {
 	if (w32gdi.IsFullResourceForClothes()) return RESOURCE_STATUS_FULL_FOR_CLOTHES;
 
 	return RESOURCE_STATUS();
+}
+
+wchar_t* get_resource_info(RESOURCE_STATUS x)
+{
+	switch (x)
+	{
+	case RESOURCE_STATUS_UNKNOWN:
+		return L"-";
+		break;
+	case RESOURCE_STATUS_FULL_FOR_CLOTHES:
+		return L"Full for clothes";
+		break;
+	default:
+		return L"-";
+		break;
+	}
+	return L"-";
 }
 
 ROLL_ITEM get_roll_item(void)
@@ -206,7 +223,8 @@ ROLL_ITEM get_roll_item(void)
 void do_roll(ROLL_ITEM item,
 	ROLL_OPTION option_01, ROLL_PARAMETER parameter_01,
 	ROLL_OPTION option_02, ROLL_PARAMETER parameter_02,
-	ROLL_OPTION option_03, ROLL_PARAMETER parameter_03)
+	ROLL_OPTION option_03, ROLL_PARAMETER parameter_03,
+	RESOURCE_STATUS resource_status)
 {
 
 
