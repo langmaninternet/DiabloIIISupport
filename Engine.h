@@ -99,6 +99,16 @@ public:
 	bool				RollingOption01Is07Percent(void);
 
 
+
+	bool				RollingOption01Is04d5Percent(int);
+	bool				RollingOption01Is04d5Percent(void);
+
+	bool				RollingOption01IsCriticalHitChance(void);
+
+
+
+
+
 	bool				RollingOption01IsHungeringArrow(void);
 	bool				RollingOption02IsHungeringArrow(void);
 	bool				RollingOption03IsHungeringArrow(void);
@@ -130,10 +140,19 @@ public:
 	bool				RollingOption03IsLifePercent(int);
 	bool				RollingOption03IsLifePercent(void);
 
-	bool				RollingOption01IsRegenHP(void);
-	bool				RollingOption02IsRegenHP(void);
+	bool				RollingOption01IsLifePerSecond(void);
+	bool				RollingOption02IsLifePerSecond(void);
 	bool				RollingOption03IsRegenHP(int);
 	bool				RollingOption03IsRegenHP(void);
+
+
+	bool				RollingOption02IsLifePerHit(int);
+	bool				RollingOption02IsLifePerHit(void);
+
+
+
+
+
 
 
 	bool				RollingOption02IsArmor(int);
@@ -160,10 +179,8 @@ public:
 
 
 
-
-	//Hunter - Hungering Arrow
+	bool				RollingItemIsFocus(void);
 	bool				RollingItemIsHuntersWrath(void);
-
 
 
 
