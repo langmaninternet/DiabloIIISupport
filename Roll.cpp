@@ -12,11 +12,26 @@ wchar_t* get_roll_name(ROLL_OPTION x)
 	case ROLL_OPTION_UNKNOWN:
 		return L"-";
 		break;
-	case ROLL_OPTION_DHSKILL_CRITICAL_HIT_CHANCE:
+	case ROLL_OPTION_CRITICAL_HIT_CHANCE:
 		return L"Critical Hit Chance";
 		break;
-	case ROLL_OPTION_DHSKILL_CRITICAL_HIT_DAMAGE:
+	case ROLL_OPTION_CRITICAL_HIT_DAMAGE:
 		return L"Critical Hit Damage";
+		break;
+	case ROLL_OPTION_STRENGTH:
+		return L"Strength";
+		break;
+	case ROLL_OPTION_DEXTERITY:
+		return L"Dexterity";
+		break;
+	case ROLL_OPTION_INTELLIGENCE:
+		return L"Intelligence";
+		break;
+	case ROLL_OPTION_VITALITY:
+		return L"Vitality";
+		break;
+	case ROLL_OPTION_BASE_DAMAGE:
+		return L"Base Damage";
 		break;
 	case ROLL_OPTION_DHSKILL_HUNGERING_ARROW:
 		return L"DH - Hungering Arrow";
@@ -140,7 +155,7 @@ wchar_t* get_item_name(ROLL_ITEM x)
 
 ROLL_OPTION get_roll_option_01(void)
 {
-	if (w32gdi.RollingOption01IsCriticalHitChance()) return ROLL_OPTION_DHSKILL_CRITICAL_HIT_CHANCE;
+	if (w32gdi.RollingOption01IsCriticalHitChance()) return ROLL_OPTION_CRITICAL_HIT_CHANCE;
 	if (w32gdi.RollingOption01IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
 	if (w32gdi.RollingOption01IsGrenade()) return ROLL_OPTION_DHSKILL_GRENADE;
 	if (w32gdi.RollingOption01IsEvasiveFire()) return ROLL_OPTION_DHSKILL_EVASIVE_FIRE;
@@ -154,6 +169,7 @@ ROLL_OPTION get_roll_option_01(void)
 
 ROLL_OPTION get_roll_option_02(void)
 {
+	if (w32gdi.RollingOption02IsCriticalHitChance()) return ROLL_OPTION_CRITICAL_HIT_CHANCE;
 	if (w32gdi.RollingOption02IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
 	if (w32gdi.RollingOption02IsBolas()) return ROLL_OPTION_DHSKILL_BOLAS;
 	if (w32gdi.RollingOption02IsGrenade()) return ROLL_OPTION_DHSKILL_GRENADE;
@@ -168,14 +184,16 @@ ROLL_OPTION get_roll_option_02(void)
 
 ROLL_OPTION get_roll_option_03(void)
 {
+	if (w32gdi.RollingOption03IsDexterity()) return ROLL_OPTION_DEXTERITY;
 	if (w32gdi.RollingOption03IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
 	if (w32gdi.RollingOption03IsBolas()) return ROLL_OPTION_DHSKILL_BOLAS;
 	if (w32gdi.RollingOption03IsGrenade()) return ROLL_OPTION_DHSKILL_GRENADE;
 	if (w32gdi.RollingOption03IsEntanglingShot()) return ROLL_OPTION_DHSKILL_ENTANGLING_SHOT;
 	if (w32gdi.RollingOption03IsEvasiveFire()) return ROLL_OPTION_DHSKILL_EVASIVE_FIRE;
-	if (w32gdi.RollingOption03IsRegenHP()) return ROLL_OPTION_LIFE_PER_SECOND;
+	if (w32gdi.RollingOption03IsLifePerSecond()) return ROLL_OPTION_LIFE_PER_SECOND;
 	if (w32gdi.RollingOption03IsLifePercent()) return ROLL_OPTION_LIFE_PERCENT;
 	if (w32gdi.RollingOption03IsArmor()) return ROLL_OPTION_ARMOR;
+
 
 	return ROLL_OPTION_UNKNOWN;
 }
@@ -208,6 +226,7 @@ ROLL_PARAMETER get_roll_parameter_02(void)
 	if (w32gdi.RollingOption02Is10Percent()) return ROLL_PARAMETER_10_PERCENT;
 	//if (w32gdi.RollingOption02Is07Percent()) return ROLL_PARAMETER_07_PERCENT;
 	//if (w32gdi.RollingOption02Is06Percent()) return ROLL_PARAMETER_06_PERCENT;
+	if (w32gdi.RollingOption02Is04d5Percent()) return ROLL_PARAMETER_04_D_5_PERCENT;
 	return ROLL_PARAMETER_UNKNOWN;
 }
 ROLL_PARAMETER get_roll_parameter_03(void)

@@ -4310,7 +4310,7 @@ return true;
 }
 
 
-bool Win32GDI::RollingOption03IsRegenHP(int offset)
+bool Win32GDI::RollingOption03IsLifePerSecond(int offset)
 {
 //const int				rol_03_x_left = 217;
 //const int				rol_03_y_top = 476/*Fixed*/;
@@ -5669,12 +5669,12 @@ color = (GetPixel(317+offset, 479)&0xE0E0E0);if (color != 0X802020 && color != 0
 color = (GetPixel(324+offset, 485)&0xE0E0E0);if (color != 0X802020 && color != 0X802040 && color != 0XA0A0A0) return false;
 return true;
 }
-bool Win32GDI::RollingOption03IsRegenHP(void)
+bool Win32GDI::RollingOption03IsLifePerSecond(void)
 {
 	int right_limit = 50;
 	for (int i = 0; i < right_limit; i++)
 	{
-		if (RollingOption03IsRegenHP(i) || RollingOption03IsRegenHP(-i))
+		if (RollingOption03IsLifePerSecond(i) || RollingOption03IsLifePerSecond(-i))
 		{
 			return true;
 		}
