@@ -1,7 +1,7 @@
 /************************************************************************/
 /* Item                                                                 */
 /************************************************************************/
-bool Win32GDI::IsRollingHuntersWrath(void)
+bool Win32GDI::RollingItemIsHuntersWrath(void)
 {
 if ((GetPixel(239, 241)&0xE0E0E0) != 0X0) return false;
 if ((GetPixel(239, 242)&0xE0E0E0) != 0X0) return false;

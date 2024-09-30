@@ -200,7 +200,7 @@ ROLL_PARAMETER get_roll_parameter_03(void)
 
 ROLL_ITEM get_roll_item(void)
 {
-	if (w32gdi.IsRollingHuntersWrath()) return ROLL_ITEM_HUNTERS_WRATH;
+	if (w32gdi.RollingItemIsHuntersWrath()) return ROLL_ITEM_HUNTERS_WRATH;
 	return ROLL_ITEM_UNKNOWN;
 }
 

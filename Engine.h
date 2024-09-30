@@ -156,6 +156,20 @@ public:
 	bool				RollingOption02IsThornDamage(int);
 	bool				RollingOption02IsThornDamage(void);
 
+
+
+
+
+
+	//Hunter - Hungering Arrow
+	bool				RollingItemIsHuntersWrath(void);
+
+
+
+
+
+
+
 	/************************************************************************/
 	/* Code đầu tiên                                                        */
 	/************************************************************************/
@@ -188,13 +202,6 @@ public:
 	bool				D3Rol01Is_Exp(void);
 	bool				D3Rol02Is_Exp(void);
 	bool				D3Rol03Is_Exp(void);
-
-
-
-
-	//Hunter - Hungering Arrow
-	bool				IsRollingHuntersWrath(void);
-
 
 
 
