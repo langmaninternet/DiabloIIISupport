@@ -97,8 +97,11 @@ public:
 	bool				RollingOption03IsHungeringArrow(void);
 
 	bool				RollingOption01IsGrenade(void);
+
+
 	bool				RollingOption01IsEvasiveFire(void);
 	bool				RollingOption02IsEvasiveFire(void);
+	bool				RollingOption03IsEvasiveFire(void);
 
 	bool				RollingOption02IsBolas(void);
 	bool				RollingOption03IsBolas(void);
