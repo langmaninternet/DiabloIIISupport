@@ -56,7 +56,7 @@ public:
 	/* Code chuẩn                                                           */
 	/************************************************************************/
 	bool				IsRolling(void);
-	bool				IsEnoughResourceForClothes(void);
+	bool				IsFullResourceForClothes(void);
 
 	bool				IsEnoughGold7Digit(int);
 	bool				IsEnoughGold7Digit(void);

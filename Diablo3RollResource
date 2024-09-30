@@ -1,4 +1,4 @@
-bool Win32GDI::IsEnoughResourceForClothes(void)
+bool Win32GDI::IsFullResourceForClothes(void)
 {
 if ((GetPixel(109, 685)&0xE0E0E0) != 0X204040) return false;
 if ((GetPixel(109, 686)&0xE0E0E0) != 0X20) return false;

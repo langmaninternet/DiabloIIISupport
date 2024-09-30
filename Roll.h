@@ -75,6 +75,8 @@ ROLL_PARAMETER get_roll_parameter_03(void);
 wchar_t* get_parameter_name(ROLL_PARAMETER);
 
 
+RESOURCE_STATUS get_resouce_status(void);
+
 ROLL_ITEM get_roll_item(void);
 wchar_t* get_item_name(ROLL_ITEM);
 

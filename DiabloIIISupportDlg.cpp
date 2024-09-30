@@ -1293,10 +1293,13 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			ROLL_PARAMETER parameter_02 = get_roll_parameter_02();
 			ROLL_PARAMETER parameter_03 = get_roll_parameter_03();
 
+			RESOURCE_STATUS resource_status = RESOURCE_STATUS_UNKNOWN;
+
 
 			roll_text += L"Option 01: ";
 			roll_text += get_roll_name(option_01);
 			roll_text += L"\r\n";
+			roll_text += L"Parameter 01: ";
 			roll_text += get_parameter_name(parameter_01);
 			roll_text += L"\r\n";
 
@@ -1304,12 +1307,14 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			roll_text += L"Option 02: ";
 			roll_text += get_roll_name(option_02);
 			roll_text += L"\r\n";
+			roll_text += L"Parameter 02: ";
 			roll_text += get_parameter_name(parameter_02);
 			roll_text += L"\r\n";
 
 			roll_text += L"Option 03: ";
 			roll_text += get_roll_name(option_03);
 			roll_text += L"\r\n";
+			roll_text += L"Parameter 03: ";
 			roll_text += get_parameter_name(parameter_03);
 			roll_text += L"\r\n";
 

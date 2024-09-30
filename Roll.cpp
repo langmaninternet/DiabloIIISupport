@@ -187,6 +187,13 @@ ROLL_PARAMETER get_roll_parameter_03(void)
 	return ROLL_PARAMETER_UNKNOWN;
 }
 
+RESOURCE_STATUS get_resouce_status(void)
+{
+	if (w32gdi.IsFullResourceForClothes()) return RESOURCE_STATUS_FULL_FOR_CLOTHES;
+
+	return RESOURCE_STATUS();
+}
+
 ROLL_ITEM get_roll_item(void)
 {
 	if (w32gdi.IsRollingHuntersWrath()) return ROLL_ITEM_HUNTERS_WRATH;
