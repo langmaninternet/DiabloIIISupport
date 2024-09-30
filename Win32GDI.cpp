@@ -129,7 +129,7 @@ void		QuangBTDumpScreen(void)
 	//Roll item
 	//w32gdi.DumpRectangle(240, 198, 292, 307);
 
-	w32gdi.DumpRectangle(109, 685, 343, 753);
+	w32gdi.DumpRectangle(171, 776, 283, 786);
 
 	// Enchange
 	//w32gdi.DumpRectangle(492, 174, 542, 220);
