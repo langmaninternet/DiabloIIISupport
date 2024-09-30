@@ -184,6 +184,7 @@ ROLL_OPTION get_roll_option_02(void)
 
 ROLL_OPTION get_roll_option_03(void)
 {
+	if (w32gdi.RollingOption03IsCriticalHitChance()) return ROLL_OPTION_CRITICAL_HIT_CHANCE;
 	if (w32gdi.RollingOption03IsDexterity()) return ROLL_OPTION_DEXTERITY;
 	if (w32gdi.RollingOption03IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
 	if (w32gdi.RollingOption03IsBolas()) return ROLL_OPTION_DHSKILL_BOLAS;
@@ -239,6 +240,7 @@ ROLL_PARAMETER get_roll_parameter_03(void)
 	//if (w32gdi.RollingOption03Is10Percent()) return ROLL_PARAMETER_10_PERCENT;
 	//if (w32gdi.RollingOption03Is07Percent()) return ROLL_PARAMETER_07_PERCENT;
 	//if (w32gdi.RollingOption03Is06Percent()) return ROLL_PARAMETER_06_PERCENT;
+	if (w32gdi.RollingOption03Is05Percent()) return ROLL_PARAMETER_05_PERCENT;
 	return ROLL_PARAMETER_UNKNOWN;
 }
 
