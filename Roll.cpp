@@ -24,6 +24,9 @@ wchar_t* get_roll_name(ROLL_OPTION x)
 	case ROLL_OPTION_DHSKILL_ENTANGLING_SHOT:
 		return L"DH - Entangling Shot";
 		break;
+	case ROLL_OPTION_DHSKILL_EVASIVE_FIRE:
+		return L"DH - Evasive Fire";
+		break;
 	case ROLL_OPTION_REDUCE_MELEE_DAMAGE:
 		return L"Reduce melee damage";
 		break;
@@ -35,6 +38,9 @@ wchar_t* get_roll_name(ROLL_OPTION x)
 		break;
 	case ROLL_OPTION_REGEN_LIFE:
 		return L"Regenerate life";
+		break;
+	case ROLL_OPTION_ARMOR:
+		return L"Armor";
 		break;
 	case ROLL_OPTION_THORN_DAMAGE:
 		return L"Thorn damage";
@@ -112,6 +118,7 @@ wchar_t* get_item_name(ROLL_ITEM x)
 ROLL_OPTION get_roll_option_01(void)
 {
 	if (w32gdi.RollingOption01IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
+	if (w32gdi.RollingOption01IsEvasiveFire()) return ROLL_OPTION_DHSKILL_EVASIVE_FIRE;
 	if (w32gdi.RollingOption01IsRegenHP()) return ROLL_OPTION_REGEN_LIFE;
 
 
@@ -126,6 +133,7 @@ ROLL_OPTION get_roll_option_02(void)
 	if (w32gdi.RollingOption02IsBolas()) return ROLL_OPTION_DHSKILL_BOLAS;
 	if (w32gdi.RollingOption02IsGrenade()) return ROLL_OPTION_DHSKILL_GRENADE;
 	if (w32gdi.RollingOption02IsEntanglingShot()) return ROLL_OPTION_DHSKILL_ENTANGLING_SHOT;
+	if (w32gdi.RollingOption02IsEvasiveFire()) return ROLL_OPTION_DHSKILL_EVASIVE_FIRE;
 	if (w32gdi.RollingOption02IsRegenHP()) return ROLL_OPTION_REGEN_LIFE;
 	
 
@@ -140,7 +148,7 @@ ROLL_OPTION get_roll_option_03(void)
 	if (w32gdi.RollingOption03IsRegenHP()) return ROLL_OPTION_REGEN_LIFE;
 	if (w32gdi.RollingOption03IsLifePercent()) return ROLL_OPTION_LIFE_PERCENT;
 
-
+	if (w32gdi.RollingOption03IsArmor()) return ROLL_OPTION_ARMOR;
 
 	return ROLL_OPTION_UNKNOWN;
 }

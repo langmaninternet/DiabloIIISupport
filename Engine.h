@@ -104,6 +104,10 @@ public:
 	bool				RollingOption02IsRegenHP(void);
 	bool				RollingOption03IsRegenHP(void);
 
+	bool				RollingOption03IsArmor(int);
+	bool				RollingOption03IsArmor(void);
+
+
 	bool				RollingOption01IsHealingGlobe(void);
 	//bool				RollingOption02IsHealingGlobe(void);
 	bool				RollingOption03IsHealingGlobe(void);
