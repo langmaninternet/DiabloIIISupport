@@ -291,7 +291,7 @@ void do_roll(ROLL_ITEM item,
 			w32gdi.CaptureDesktop();
 			if (w32gdi.D3IsRollSelecting())
 			{
-				SetD3Mouse(256, 780);
+				SetD3Mouse(350, 780);
 				Sleep(50 + (rand() % 5));
 				SendD3LeftMouseClick();
 				Sleep(50 + (rand() % 5));
@@ -312,7 +312,7 @@ void do_roll(ROLL_ITEM item,
 			w32gdi.CaptureDesktop();
 			if (w32gdi.D3IsRollSelecting())
 			{
-				SetD3Mouse(256, 780);
+				SetD3Mouse(350, 780);
 				Sleep(50 + (rand() % 5));
 				SendD3LeftMouseClick();
 				Sleep(50 + (rand() % 5));
@@ -330,7 +330,7 @@ void do_roll(ROLL_ITEM item,
 			w32gdi.CaptureDesktop();
 			if (w32gdi.D3IsRollSelecting())
 			{
-				SetD3Mouse(256, 780);
+				SetD3Mouse(350, 780);
 				Sleep(50 + (rand() % 5));
 				SendD3LeftMouseClick();
 				Sleep(50 + (rand() % 5));
@@ -351,7 +351,7 @@ void do_roll(ROLL_ITEM item,
 			w32gdi.CaptureDesktop();
 			if (w32gdi.D3IsRollSelecting())
 			{
-				SetD3Mouse(256, 780);
+				SetD3Mouse(350, 780);
 				Sleep(50 + (rand() % 5));
 				SendD3LeftMouseClick();
 				Sleep(50 + (rand() % 5));
