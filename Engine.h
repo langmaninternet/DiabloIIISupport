@@ -56,6 +56,8 @@ public:
 	/* Code chuẩn                                                           */
 	/************************************************************************/
 	bool				IsRolling(void);
+	bool				IsEnoughResourceForBelt(void);
+
 	bool				HaveNoOption04and05(void);
 
 	bool				RollingOption01Is15Percent(int);
