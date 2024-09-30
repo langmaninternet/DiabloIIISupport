@@ -1293,7 +1293,6 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			ROLL_PARAMETER parameter_02 = get_roll_parameter_02();
 			ROLL_PARAMETER parameter_03 = get_roll_parameter_03();
 
-			RESOURCE_STATUS resource_status = RESOURCE_STATUS_UNKNOWN;
 
 
 			roll_text += L"Option 01: ";
@@ -1324,8 +1323,13 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				roll_text += get_resource_info(resource_status);
 				roll_text += L"\r\n\r\n";
 
+				GOLD_STATUS gold_status = get_gold_status();
+				roll_text += L"Gold: ";
+				roll_text += get_gold_info(gold_status);
+				roll_text += L"\r\n\r\n";
+
 				GetDlgItem(IDC_REROL_SUPPORT_DETAIL)->SetWindowTextW(roll_text);
-				do_roll(item, option_01, parameter_01, option_02, parameter_02, option_03, parameter_03, resource_status);
+				do_roll(item, option_01, parameter_01, option_02, parameter_02, option_03, parameter_03, resource_status, gold_status);
 			}
 			flagOnRollingProcess = false;
 		}

@@ -32,7 +32,7 @@ extern Win32GDI w32gdi;
 #include "Diablo3ScreenDataCode"
 
 
-#include "Diablo3RollResource"
+#include "Diablo3Roll"
 #include "Diablo3RollLife"
 #include "Diablo3RollRegen"
 #include "Diablo3RollResistance"

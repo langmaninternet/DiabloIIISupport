@@ -58,6 +58,10 @@ public:
 	bool				IsRolling(void);
 	bool				IsFullResourceForClothes(void);
 
+	bool				IsEnoughGold5Digit(int);
+	bool				IsEnoughGold5Digit(void);
+	bool				IsEnoughGold6Digit(int);
+	bool				IsEnoughGold6Digit(void);
 	bool				IsEnoughGold7Digit(int);
 	bool				IsEnoughGold7Digit(void);
 
@@ -78,6 +82,9 @@ public:
 	bool				RollingOption03Is12Percent(int);
 	bool				RollingOption03Is12Percent(void);
 
+	bool				RollingOption03Is11Percent(int);
+	bool				RollingOption03Is11Percent(void);
+
 	bool				RollingOption02Is10Percent(int);
 	bool				RollingOption02Is10Percent(void);
 
@@ -94,8 +101,13 @@ public:
 	bool				RollingOption02IsEvasiveFire(void);
 
 	bool				RollingOption02IsBolas(void);
+	bool				RollingOption03IsBolas(void);
+
 	bool				RollingOption02IsGrenade(void);
+
+
 	bool				RollingOption02IsEntanglingShot(void);
+	bool				RollingOption03IsEntanglingShot(void);
 
 
 	bool				RollingOption01IsRedueRangedDamge(void);
@@ -113,6 +125,9 @@ public:
 	bool				RollingOption03IsRegenHP(int);
 	bool				RollingOption03IsRegenHP(void);
 
+
+	bool				RollingOption02IsArmor(int);
+	bool				RollingOption02IsArmor(void);
 	bool				RollingOption03IsArmor(int);
 	bool				RollingOption03IsArmor(void);
 

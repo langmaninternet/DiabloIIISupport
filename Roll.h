@@ -53,6 +53,12 @@ enum RESOURCE_STATUS
 	RESOURCE_STATUS_FULL_FOR_CLOTHES,
 };
 
+enum GOLD_STATUS
+{
+	GOLD_STATUS_UNKNOWN,
+	GOLD_STATUS_FULL_FOR_ROLLING,
+};
+
 enum ROLL_DESCISION
 {
 	DESCISION_NOTHING = 0,
@@ -78,18 +84,23 @@ ROLL_PARAMETER get_roll_parameter_03(void);
 wchar_t* get_parameter_name(ROLL_PARAMETER);
 
 
+ROLL_ITEM get_roll_item(void);
+wchar_t* get_item_name(ROLL_ITEM);
+
+
 RESOURCE_STATUS get_resource_status(void);
 wchar_t* get_resource_info(RESOURCE_STATUS);
 
-ROLL_ITEM get_roll_item(void);
-wchar_t* get_item_name(ROLL_ITEM);
+GOLD_STATUS get_gold_status(void);
+wchar_t* get_gold_info(GOLD_STATUS);
 
 
 void do_roll(ROLL_ITEM item,
 	ROLL_OPTION option_01, ROLL_PARAMETER parameter_01,
 	ROLL_OPTION option_02, ROLL_PARAMETER parameter_02,
 	ROLL_OPTION option_03, ROLL_PARAMETER parameter_03,
-	RESOURCE_STATUS resource_status);
+	RESOURCE_STATUS resource_status,
+	GOLD_STATUS gold_status);
 
 
 
