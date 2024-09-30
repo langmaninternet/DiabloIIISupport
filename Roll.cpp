@@ -279,6 +279,14 @@ bool is_10_to_14_percent(ROLL_PARAMETER x)
 		|| x == ROLL_PARAMETER_11_PERCENT
 		|| x == ROLL_PARAMETER_12_PERCENT
 		|| x == ROLL_PARAMETER_13_PERCENT
+		|| x == ROLL_PARAMETER_14_PERCENT);
+}
+bool is_10_to_15_percent(ROLL_PARAMETER x)
+{
+	return (x == ROLL_PARAMETER_10_PERCENT
+		|| x == ROLL_PARAMETER_11_PERCENT
+		|| x == ROLL_PARAMETER_12_PERCENT
+		|| x == ROLL_PARAMETER_13_PERCENT
 		|| x == ROLL_PARAMETER_14_PERCENT
 		|| x == ROLL_PARAMETER_15_PERCENT);
 }
@@ -405,19 +413,19 @@ void do_roll(ROLL_ITEM item,
 			else if (option_01 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
 				&& option_02 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
 				&& option_03 != ROLL_OPTION_UNKNOWN && option_03 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
-				&& parameter_01 != ROLL_PARAMETER_UNKNOWN
-				&& parameter_02 != ROLL_PARAMETER_UNKNOWN
+				&& is_10_to_15_percent(parameter_01)
+				&& is_10_to_15_percent(parameter_02)
 				)
 			{
-				//final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+				if (parameter_01 >= parameter_02) final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+				else final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
 			}
-
 			//Chỉ có HUNGERING_ARROW ở dòng 1 và dòng 3
 			else if (option_01 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
 				&& option_02 != ROLL_OPTION_UNKNOWN && option_02 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
 				&& option_03 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
-				&& parameter_01 >= ROLL_PARAMETER_10_PERCENT && parameter_01 <= ROLL_PARAMETER_15_PERCENT
-				&& parameter_03 >= ROLL_PARAMETER_10_PERCENT && parameter_03 <= ROLL_PARAMETER_15_PERCENT
+				&& is_10_to_15_percent(parameter_01)
+				&& is_10_to_15_percent(parameter_03)
 				)
 			{
 				if (parameter_01 >= parameter_03) final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
