@@ -179,7 +179,7 @@ ROLL_PARAMETER get_roll_parameter_02(void)
 	//if (w32gdi.RollingOption02Is14Percent()) return ROLL_PARAMETER_14_PERCENT;
 	//if (w32gdi.RollingOption02Is13Percent()) return ROLL_PARAMETER_13_PERCENT;
 	if (w32gdi.RollingOption02Is12Percent()) return ROLL_PARAMETER_12_PERCENT;
-	//if (w32gdi.RollingOption02Is11Percent()) return ROLL_PARAMETER_11_PERCENT;
+	if (w32gdi.RollingOption02Is11Percent()) return ROLL_PARAMETER_11_PERCENT;
 	if (w32gdi.RollingOption02Is10Percent()) return ROLL_PARAMETER_10_PERCENT;
 	//if (w32gdi.RollingOption02Is07Percent()) return ROLL_PARAMETER_07_PERCENT;
 	//if (w32gdi.RollingOption02Is06Percent()) return ROLL_PARAMETER_06_PERCENT;
@@ -350,6 +350,10 @@ void select_option_03(void)
 		Sleep(50 + (rand() % 5));
 	}
 }
+void wait_after_roll(void)
+{
+	Sleep(500 + (rand() % 5));
+}
 void stop_roll(void)
 {
 	// Move chuột ra chỗ khác
@@ -437,10 +441,12 @@ void do_roll(ROLL_ITEM item,
 		if (final_decision == DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT)
 		{
 			select_option_01();
+			wait_after_roll();
 		}
 		else if (final_decision == DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT)
 		{
 			select_option_02();
+			wait_after_roll();
 		}
 		else if (final_decision == DESCISION_SELECT_OPTION_02_AND_STOP_ROLL)
 		{
@@ -450,6 +456,7 @@ void do_roll(ROLL_ITEM item,
 		else if (final_decision == DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT)
 		{
 			select_option_03();
+			wait_after_roll();
 		}
 		else if (final_decision == DESCISION_SELECT_OPTION_03_AND_STOP_ROLL)
 		{
