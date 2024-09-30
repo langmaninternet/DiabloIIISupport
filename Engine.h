@@ -56,7 +56,10 @@ public:
 	/* Code chuẩn                                                           */
 	/************************************************************************/
 	bool				IsRolling(void);
-	bool				IsEnoughResourceForBelt(void);
+	bool				IsEnoughResourceForOther(void);
+
+	bool				IsEnoughGold7Digit(int);
+	bool				IsEnoughGold7Digit(void);
 
 	bool				HaveNoOption04and05(void);
 
@@ -168,6 +171,7 @@ public:
 	void				SaveScreen(const char* filePath = "D:\\Dump.bmp");
 	void				SaveSubSreen(const char* filePath, int xleft, int ytop, int xright, int ybottom);
 	void				DumpRectangle(int xleft, int ytop, int xright, int ybottom);
+	void				DumpRectangleEx(int xleft, int ytop, int xright, int ybottom);
 	void				DumpSkill01(const char* filePath = "D:\\DumpSkill01.txt", const char* logDumpFolder = "D:\\DumpImage\\");
 	void				DumpSkill02(const char* filePath = "D:\\DumpSkill02.txt", const char* logDumpFolder = "D:\\DumpImage\\");
 	void				DumpSkill03(const char* filePath = "D:\\DumpSkill03.txt", const char* logDumpFolder = "D:\\DumpImage\\");
