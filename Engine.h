@@ -110,6 +110,7 @@ public:
 	bool				RollingOption02Is04d5Percent(void);
 
 
+	// 1. CriticalHit
 	bool				RollingOption01IsCriticalHitChance(void);	
 	bool				RollingOption02IsCriticalHitChance(void);
 	bool				RollingOption03IsCriticalHitChance(void);
@@ -119,26 +120,48 @@ public:
 	//bool				RollingOption02IsCriticalHitDamage(void);
 	//bool				RollingOption03IsCriticalHitDamage(void);
 
+
+
+
+	// 2. Socket
+	bool				RollingOption02IsOneSocket(void);
+	bool				RollingOption03IsOneSocket(void);
+
+
+
+
+
+	// 3. Damage
+	bool				RollingOption01IsBaseDamage(int);
+	bool				RollingOption01IsBaseDamage(void);
+
+
+	bool				RollingOption01IsAreaDamage(int);
+	bool				RollingOption01IsAreaDamage(void);
+	bool				RollingOption02IsAreaDamage(int);
+	bool				RollingOption02IsAreaDamage(void);
+	bool				RollingOption03IsAreaDamage(int);
+	bool				RollingOption03IsAreaDamage(void);
+
+	
+	// 4. Stats
 	bool				RollingOption03IsDexterity(int);
 	bool				RollingOption03IsDexterity(void);
 	
 	bool				RollingOption02IsIntelligence(int);
 	bool				RollingOption02IsIntelligence(void);
 
-	bool				RollingOption01IsBaseDamage(int);
-	bool				RollingOption01IsBaseDamage(void);
 
 
-	bool				RollingOption02IsAreaDamage(int);
-	bool				RollingOption02IsAreaDamage(void);
-	bool				RollingOption03IsAreaDamage(int);
-	bool				RollingOption03IsAreaDamage(void);
 
 
+
+	// 5. Reduce
 	bool				RollingOption03IsCooldown(void);
 
-	bool				RollingOption02IsOneSocket(void);
-	bool				RollingOption03IsOneSocket(void);
+	bool				RollingOption01IsReduceResource(void);
+	bool				RollingOption03IsReduceResource(void);
+
 
 
 	bool				RollingOption01IsHungeringArrow(void);

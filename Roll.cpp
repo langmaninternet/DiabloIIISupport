@@ -12,12 +12,39 @@ wchar_t* get_roll_name(ROLL_OPTION x)
 	case ROLL_OPTION_UNKNOWN:
 		return L"-";
 		break;
+
+		// 1. CriticalHit
 	case ROLL_OPTION_CRITICAL_HIT_CHANCE:
 		return L"Critical Hit Chance";
 		break;
 	case ROLL_OPTION_CRITICAL_HIT_DAMAGE:
 		return L"Critical Hit Damage";
 		break;
+
+
+		// 2. Socket
+
+	case ROLL_OPTION_ONE_SOCKET:
+		return L"Socket (1)";
+		break;
+	case ROLL_OPTION_TWO_SOCKET:
+		return L"Socket (2)";
+		break;
+	case ROLL_OPTION_THREE_SOCKET:
+		return L"Socket (3)";
+		break;
+
+
+		// 3. Damage
+	case ROLL_OPTION_BASE_DAMAGE:
+		return L"Base Damage";
+		break;
+	case ROLL_OPTION_AREA_DAMAGE:
+		return L"Area Damage";
+		break;
+
+
+		//4. Stats
 	case ROLL_OPTION_STRENGTH:
 		return L"Strength";
 		break;
@@ -32,25 +59,10 @@ wchar_t* get_roll_name(ROLL_OPTION x)
 		break;
 
 
-	case ROLL_OPTION_BASE_DAMAGE:
-		return L"Base Damage";
-		break;
-	case ROLL_OPTION_AREA_DAMAGE:
-		return L"Area Damage";
-		break;
 
 
-	case ROLL_OPTION_ONE_SOCKET:
-		return L"Socket (1)";
-		break;
-	case ROLL_OPTION_TWO_SOCKET:
-		return L"Socket (2)";
-		break;
-	case ROLL_OPTION_THREE_SOCKET:
-		return L"Socket (3)";
-		break;
 
-
+		// 5. Reduce
 	case ROLL_OPTION_REDUCE_MELEE_DAMAGE:
 		return L"Reduce melee damage";
 		break;
@@ -60,7 +72,9 @@ wchar_t* get_roll_name(ROLL_OPTION x)
 	case ROLL_OPTION_REDUCE_COOLDOWN:
 		return L"Reduce cooldown";
 		break;
-
+	case ROLL_OPTION_REDUCE_RESOURCE:
+		return L"Reduce resource cost";
+		break;
 
 
 	case ROLL_OPTION_DHSKILL_HUNGERING_ARROW:
@@ -183,7 +197,12 @@ wchar_t* get_item_name(ROLL_ITEM x)
 
 ROLL_OPTION get_roll_option_01(void)
 {
+	// 1. CriticalHit
 	if (w32gdi.RollingOption01IsCriticalHitChance()) return ROLL_OPTION_CRITICAL_HIT_CHANCE;
+
+	// 2. Damage
+	if (w32gdi.RollingOption01IsAreaDamage()) return ROLL_OPTION_AREA_DAMAGE;
+
 	if (w32gdi.RollingOption01IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
 	if (w32gdi.RollingOption01IsGrenade()) return ROLL_OPTION_DHSKILL_GRENADE;
 	if (w32gdi.RollingOption01IsEvasiveFire()) return ROLL_OPTION_DHSKILL_EVASIVE_FIRE;
@@ -197,12 +216,22 @@ ROLL_OPTION get_roll_option_01(void)
 
 ROLL_OPTION get_roll_option_02(void)
 {
+	// 1. CriticalHit
 	if (w32gdi.RollingOption02IsCriticalHitChance()) return ROLL_OPTION_CRITICAL_HIT_CHANCE;
 
+	// 2. Socket
+	if (w32gdi.RollingOption02IsOneSocket()) return ROLL_OPTION_ONE_SOCKET;
+
+	// 3. Damage
 	if (w32gdi.RollingOption02IsAreaDamage()) return ROLL_OPTION_AREA_DAMAGE;
 
+
+
+	//4. Stats
 	if (w32gdi.RollingOption02IsIntelligence()) return ROLL_OPTION_INTELLIGENCE;
-	if (w32gdi.RollingOption02IsOneSocket()) return ROLL_OPTION_ONE_SOCKET;
+	
+
+	// 5. Reduce
 
 
 	if (w32gdi.RollingOption02IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
@@ -219,11 +248,23 @@ ROLL_OPTION get_roll_option_02(void)
 
 ROLL_OPTION get_roll_option_03(void)
 {
+	// 1. CriticalHit
 	if (w32gdi.RollingOption03IsCriticalHitChance()) return ROLL_OPTION_CRITICAL_HIT_CHANCE;
-	if (w32gdi.RollingOption03IsAreaDamage()) return ROLL_OPTION_AREA_DAMAGE;
-	if (w32gdi.RollingOption03IsDexterity()) return ROLL_OPTION_DEXTERITY;
+
+	// 2. Socket
 	if (w32gdi.RollingOption03IsOneSocket()) return ROLL_OPTION_ONE_SOCKET;
+	 
+	// 3. Damage
+	if (w32gdi.RollingOption03IsAreaDamage()) return ROLL_OPTION_AREA_DAMAGE;
+
+	//4. Stats
+	if (w32gdi.RollingOption03IsDexterity()) return ROLL_OPTION_DEXTERITY;
+
+	// 5. Reduce	
 	if (w32gdi.RollingOption03IsCooldown()) return ROLL_OPTION_REDUCE_COOLDOWN;
+	if (w32gdi.RollingOption03IsReduceResource()) return ROLL_OPTION_REDUCE_RESOURCE;
+
+
 	if (w32gdi.RollingOption03IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
 	if (w32gdi.RollingOption03IsBolas()) return ROLL_OPTION_DHSKILL_BOLAS;
 	if (w32gdi.RollingOption03IsGrenade()) return ROLL_OPTION_DHSKILL_GRENADE;
