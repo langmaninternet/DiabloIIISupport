@@ -310,7 +310,7 @@ ROLL_PARAMETER get_roll_parameter_01(void)
 	if (w32gdi.RollingOption01Is15Percent()) return ROLL_PARAMETER_15_PERCENT;
 	if (w32gdi.RollingOption01Is14Percent()) return ROLL_PARAMETER_14_PERCENT;
 	if (w32gdi.RollingOption01Is13Percent()) return ROLL_PARAMETER_13_PERCENT;
-	//if (w32gdi.RollingOption01Is12Percent()) return ROLL_PARAMETER_12_PERCENT;
+	if (w32gdi.RollingOption01Is12Percent()) return ROLL_PARAMETER_12_PERCENT;
 	//if (w32gdi.RollingOption01Is11Percent()) return ROLL_PARAMETER_11_PERCENT;
 	//if (w32gdi.RollingOption01Is10Percent()) return ROLL_PARAMETER_10_PERCENT;
 	if (w32gdi.RollingOption01Is07Percent()) return ROLL_PARAMETER_07_PERCENT;
@@ -559,7 +559,7 @@ void do_roll(ROLL_ITEM item,
 	{
 		ROLL_DESCISION final_decision = DESCISION_NOTHING;
 
-		if (item == ROLL_ITEM_HUNTERS_WRATH && (is_dh_skill(option_01) || is_dh_skill(option_02) || is_dh_skill(option_03)))
+		if (item == ROLL_ITEM_HUNTERS_WRATH && (is_dh_skill(option_01) || is_dh_skill(option_02) || is_dh_skill(option_03)) && false)
 		{// Need HUNGERING_ARROW
 
 			// HUNGERING_ARROW 15% - kết thúc 
