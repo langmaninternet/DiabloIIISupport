@@ -135,6 +135,8 @@ public:
 	bool				RollingOption01IsBaseDamage(int);
 	bool				RollingOption01IsBaseDamage(void);
 
+	bool				RollingOption03IsBaseDamage(int);
+	bool				RollingOption03IsBaseDamage(void);
 
 	bool				RollingOption01IsAreaDamage(int);
 	bool				RollingOption01IsAreaDamage(void);
