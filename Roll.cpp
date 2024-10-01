@@ -30,10 +30,25 @@ wchar_t* get_roll_name(ROLL_OPTION x)
 	case ROLL_OPTION_VITALITY:
 		return L"Vitality";
 		break;
+
+
 	case ROLL_OPTION_BASE_DAMAGE:
 		return L"Base Damage";
 		break;
+	case ROLL_OPTION_AREA_DAMAGE:
+		return L"Area Damage";
+		break;
 
+
+	case ROLL_OPTION_ONE_SOCKET:
+		return L"Socket (1)";
+		break;
+	case ROLL_OPTION_TWO_SOCKET:
+		return L"Socket (2)";
+		break;
+	case ROLL_OPTION_THREE_SOCKET:
+		return L"Socket (3)";
+		break;
 
 
 	case ROLL_OPTION_REDUCE_MELEE_DAMAGE:
@@ -183,6 +198,13 @@ ROLL_OPTION get_roll_option_01(void)
 ROLL_OPTION get_roll_option_02(void)
 {
 	if (w32gdi.RollingOption02IsCriticalHitChance()) return ROLL_OPTION_CRITICAL_HIT_CHANCE;
+
+	if (w32gdi.RollingOption02IsAreaDamage()) return ROLL_OPTION_AREA_DAMAGE;
+
+	if (w32gdi.RollingOption02IsIntelligence()) return ROLL_OPTION_INTELLIGENCE;
+	if (w32gdi.RollingOption02IsOneSocket()) return ROLL_OPTION_ONE_SOCKET;
+
+
 	if (w32gdi.RollingOption02IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
 	if (w32gdi.RollingOption02IsBolas()) return ROLL_OPTION_DHSKILL_BOLAS;
 	if (w32gdi.RollingOption02IsGrenade()) return ROLL_OPTION_DHSKILL_GRENADE;
@@ -198,7 +220,9 @@ ROLL_OPTION get_roll_option_02(void)
 ROLL_OPTION get_roll_option_03(void)
 {
 	if (w32gdi.RollingOption03IsCriticalHitChance()) return ROLL_OPTION_CRITICAL_HIT_CHANCE;
+	if (w32gdi.RollingOption03IsAreaDamage()) return ROLL_OPTION_AREA_DAMAGE;
 	if (w32gdi.RollingOption03IsDexterity()) return ROLL_OPTION_DEXTERITY;
+	if (w32gdi.RollingOption03IsOneSocket()) return ROLL_OPTION_ONE_SOCKET;
 	if (w32gdi.RollingOption03IsCooldown()) return ROLL_OPTION_REDUCE_COOLDOWN;
 	if (w32gdi.RollingOption03IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
 	if (w32gdi.RollingOption03IsBolas()) return ROLL_OPTION_DHSKILL_BOLAS;

@@ -121,12 +121,24 @@ public:
 
 	bool				RollingOption03IsDexterity(int);
 	bool				RollingOption03IsDexterity(void);
+	
+	bool				RollingOption02IsIntelligence(int);
+	bool				RollingOption02IsIntelligence(void);
 
 	bool				RollingOption01IsBaseDamage(int);
 	bool				RollingOption01IsBaseDamage(void);
 
+
+	bool				RollingOption02IsAreaDamage(int);
+	bool				RollingOption02IsAreaDamage(void);
+	bool				RollingOption03IsAreaDamage(int);
+	bool				RollingOption03IsAreaDamage(void);
+
+
 	bool				RollingOption03IsCooldown(void);
 
+	bool				RollingOption02IsOneSocket(void);
+	bool				RollingOption03IsOneSocket(void);
 
 
 	bool				RollingOption01IsHungeringArrow(void);
