@@ -279,6 +279,8 @@ ROLL_OPTION get_roll_option_03(void)
 	//4. Stats
 	if (w32gdi.RollingOption03IsDexterity()) return ROLL_OPTION_DEXTERITY;
 
+	if (w32gdi.RollingOption03IsVitality()) return ROLL_OPTION_VITALITY;
+
 	// 5. Reduce	
 	if (w32gdi.RollingOption03IsCooldown()) return ROLL_OPTION_REDUCE_COOLDOWN;
 	if (w32gdi.RollingOption03IsReduceResource()) return ROLL_OPTION_REDUCE_RESOURCE;
@@ -311,7 +313,7 @@ ROLL_PARAMETER get_roll_parameter_01(void)
 	//if (w32gdi.RollingOption01Is11Percent()) return ROLL_PARAMETER_11_PERCENT;
 	//if (w32gdi.RollingOption01Is10Percent()) return ROLL_PARAMETER_10_PERCENT;
 	if (w32gdi.RollingOption01Is07Percent()) return ROLL_PARAMETER_07_PERCENT;
-	//if (w32gdi.RollingOption01Is06Percent()) return ROLL_PARAMETER_06_PERCENT;
+	if (w32gdi.RollingOption01Is06Percent()) return ROLL_PARAMETER_06_PERCENT;
 	if (w32gdi.RollingOption01Is05Percent()) return ROLL_PARAMETER_05_PERCENT;
 	if (w32gdi.RollingOption01Is04d5Percent()) return ROLL_PARAMETER_04_D_5_PERCENT;
 	return ROLL_PARAMETER_UNKNOWN;

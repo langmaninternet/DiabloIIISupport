@@ -98,6 +98,9 @@ public:
 	bool				RollingOption01Is07Percent(int);
 	bool				RollingOption01Is07Percent(void);
 
+	bool				RollingOption01Is06Percent(int);
+	bool				RollingOption01Is06Percent(void);
+
 	bool				RollingOption01Is05Percent(int);
 	bool				RollingOption01Is05Percent(void);
 
@@ -155,8 +158,8 @@ public:
 	bool				RollingOption02IsIntelligence(void);
 
 
-
-
+	bool				RollingOption03IsVitality(int);
+	bool				RollingOption03IsVitality(void);
 
 
 	// 5. Reduce
