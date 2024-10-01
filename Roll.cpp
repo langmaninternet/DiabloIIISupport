@@ -200,8 +200,16 @@ ROLL_OPTION get_roll_option_01(void)
 	// 1. CriticalHit
 	if (w32gdi.RollingOption01IsCriticalHitChance()) return ROLL_OPTION_CRITICAL_HIT_CHANCE;
 
-	// 2. Damage
+	// 2. Socket
+	 
+	// 3. Damage
 	if (w32gdi.RollingOption01IsAreaDamage()) return ROLL_OPTION_AREA_DAMAGE;
+
+
+	//4. Stats
+
+	// 5. Reduce
+	if (w32gdi.RollingOption01IsReduceResource()) return ROLL_OPTION_REDUCE_RESOURCE;
 
 	if (w32gdi.RollingOption01IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
 	if (w32gdi.RollingOption01IsGrenade()) return ROLL_OPTION_DHSKILL_GRENADE;
@@ -232,7 +240,7 @@ ROLL_OPTION get_roll_option_02(void)
 	
 
 	// 5. Reduce
-
+	if (w32gdi.RollingOption02IsReduceResource()) return ROLL_OPTION_REDUCE_RESOURCE;
 
 	if (w32gdi.RollingOption02IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
 	if (w32gdi.RollingOption02IsBolas()) return ROLL_OPTION_DHSKILL_BOLAS;

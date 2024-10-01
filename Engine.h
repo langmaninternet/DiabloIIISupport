@@ -160,6 +160,7 @@ public:
 	bool				RollingOption03IsCooldown(void);
 
 	bool				RollingOption01IsReduceResource(void);
+	bool				RollingOption02IsReduceResource(void);
 	bool				RollingOption03IsReduceResource(void);
 
 
