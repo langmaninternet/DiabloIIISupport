@@ -5686,8 +5686,6 @@ bool Win32GDI::RollingOption03IsLifePerSecond(void)
 
 
 
-
-
 bool Win32GDI::RollingOption02IsLifePerHit(int offset)
 {
 //const int				rol_02_x_left = 130;
@@ -6544,7 +6542,7 @@ return true;
 }
 bool Win32GDI::RollingOption02IsLifePerHit(void)
 {
-	int right_limit = 40;
+	int right_limit = 50;
 	for (int i = 0; i < right_limit; i++)
 	{
 		if (RollingOption02IsLifePerHit(i) || RollingOption02IsLifePerHit(-i))

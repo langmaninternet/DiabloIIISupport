@@ -99,6 +99,9 @@ wchar_t* get_roll_name(ROLL_OPTION x)
 	case ROLL_OPTION_LIFE_PER_SECOND:
 		return L"Life per second";
 		break;
+	case ROLL_OPTION_LIFE_HIT:
+		return L"Life per hit";
+		break;
 	case ROLL_OPTION_ARMOR:
 		return L"Armor";
 		break;
@@ -244,13 +247,18 @@ ROLL_OPTION get_roll_option_02(void)
 	// 5. Reduce
 	if (w32gdi.RollingOption02IsReduceResource()) return ROLL_OPTION_REDUCE_RESOURCE;
 
+
+	// 6. life
+	if (w32gdi.RollingOption02IsLifePercent()) return ROLL_OPTION_LIFE_PERCENT;
+	if (w32gdi.RollingOption02IsLifePerSecond()) return ROLL_OPTION_LIFE_PER_SECOND;
+	if (w32gdi.RollingOption02IsLifePerHit()) return ROLL_OPTION_LIFE_HIT;
+
+
 	if (w32gdi.RollingOption02IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
 	if (w32gdi.RollingOption02IsBolas()) return ROLL_OPTION_DHSKILL_BOLAS;
 	if (w32gdi.RollingOption02IsGrenade()) return ROLL_OPTION_DHSKILL_GRENADE;
 	if (w32gdi.RollingOption02IsEntanglingShot()) return ROLL_OPTION_DHSKILL_ENTANGLING_SHOT;
 	if (w32gdi.RollingOption02IsEvasiveFire()) return ROLL_OPTION_DHSKILL_EVASIVE_FIRE;
-	if (w32gdi.RollingOption02IsLifePerSecond()) return ROLL_OPTION_LIFE_PER_SECOND;
-	if (w32gdi.RollingOption02IsLifePercent()) return ROLL_OPTION_LIFE_PERCENT;
 	if (w32gdi.RollingOption02IsArmor()) return ROLL_OPTION_ARMOR;
 
 	return ROLL_OPTION_UNKNOWN;
@@ -403,6 +411,26 @@ wchar_t* get_gold_info(GOLD_STATUS x)
 /************************************************************************/
 /* Action                                                               */
 /************************************************************************/
+bool is_dps_ring(ROLL_ITEM x)
+{
+	return (x == ROLL_ITEM_FOCUS);
+}
+
+bool is_critical_hit_option(ROLL_OPTION x)
+{
+	return (x == ROLL_OPTION_CRITICAL_HIT_CHANCE
+		|| x == ROLL_OPTION_CRITICAL_HIT_DAMAGE);
+}
+
+
+bool is_life_option(ROLL_OPTION x)
+{
+	return (x == ROLL_OPTION_LIFE_PERCENT
+		|| x == ROLL_OPTION_LIFE_PER_SECOND
+		|| x == ROLL_OPTION_LIFE_HIT);
+}
+
+
 bool is_dh_skill(ROLL_OPTION x)
 {
 	return (x == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
@@ -575,6 +603,15 @@ void do_roll(ROLL_ITEM item,
 			}
 
 		}
+		else if (is_dps_ring(item))
+		{
+			if (is_critical_hit_option(option_01) && is_life_option(option_02) && is_life_option(option_03))
+			{
+				final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+			}
+		}
+
+
 
 		if (final_decision == DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT)
 		{

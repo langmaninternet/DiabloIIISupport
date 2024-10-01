@@ -53,17 +53,12 @@ const int				rol_01_x_right = 224;
 const int				rol_01_y_bottom = 399/*Fixed*/;
 
 
-
-const int				rol_02_x_left = 144;
+const int				rol_02_x_left = 130;
 const int				rol_02_y_top = 434/*Fixed*/;
-const int				rol_02_x_right = 224;
+const int				rol_02_x_right = 205;
 const int				rol_02_y_bottom = 445/*Fixed*/;
 
 
-//const int				rol_03_x_left = 144;
-//const int				rol_03_y_top = 476/*Fixed*/;
-//const int				rol_03_x_right = 224;
-//const int				rol_03_y_bottom = 488/*Fixed*/;
 const int				rol_03_x_left = 144;
 const int				rol_03_y_top = 476/*Fixed*/;
 const int				rol_03_x_right = 224;
