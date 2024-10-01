@@ -216,6 +216,7 @@ ROLL_OPTION get_roll_option_01(void)
 	if (w32gdi.RollingOption01IsReduceResource()) return ROLL_OPTION_REDUCE_RESOURCE;
 
 	if (w32gdi.RollingOption01IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
+	if (w32gdi.RollingOption01IsBolas()) return ROLL_OPTION_DHSKILL_BOLAS;
 	if (w32gdi.RollingOption01IsGrenade()) return ROLL_OPTION_DHSKILL_GRENADE;
 	if (w32gdi.RollingOption01IsEntanglingShot()) return ROLL_OPTION_DHSKILL_ENTANGLING_SHOT;
 	if (w32gdi.RollingOption01IsEvasiveFire()) return ROLL_OPTION_DHSKILL_EVASIVE_FIRE;
@@ -559,7 +560,7 @@ void do_roll(ROLL_ITEM item,
 	{
 		ROLL_DESCISION final_decision = DESCISION_NOTHING;
 
-		if (item == ROLL_ITEM_HUNTERS_WRATH && (is_dh_skill(option_01) || is_dh_skill(option_02) || is_dh_skill(option_03)) && false)
+		if (item == ROLL_ITEM_HUNTERS_WRATH && (is_dh_skill(option_01) || is_dh_skill(option_02) || is_dh_skill(option_03)))
 		{// Need HUNGERING_ARROW
 
 			// HUNGERING_ARROW 15% - kết thúc 
@@ -635,9 +636,9 @@ void do_roll(ROLL_ITEM item,
 
 
 			//không có HUNGERING_ARROW ở dòng nào, nhưng có skill
-			else if (option_01 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
-				&& option_02 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
-				&& option_03 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+			else if (option_01 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW && option_01 != ROLL_OPTION_UNKNOWN
+				&& option_02 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW && option_02 != ROLL_OPTION_UNKNOWN
+				&& option_03 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW && option_03 != ROLL_OPTION_UNKNOWN
 				&& (is_dh_skill(option_01) || is_dh_skill(option_02) || is_dh_skill(option_03))
 				)
 			{

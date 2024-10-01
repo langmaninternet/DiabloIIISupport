@@ -89,8 +89,6 @@ public:
 
 	bool				RollingOption02Is11Percent(int);
 	bool				RollingOption02Is11Percent(void);
-
-
 	bool				RollingOption03Is11Percent(int);
 	bool				RollingOption03Is11Percent(void);
 
@@ -182,10 +180,9 @@ public:
 	bool				RollingOption01IsEvasiveFire(void);
 	bool				RollingOption02IsEvasiveFire(void);
 	bool				RollingOption03IsEvasiveFire(void);
-
+	bool				RollingOption01IsBolas(void);
 	bool				RollingOption02IsBolas(void);
 	bool				RollingOption03IsBolas(void);
-
 	bool				RollingOption01IsEntanglingShot(void);
 	bool				RollingOption02IsEntanglingShot(void);
 	bool				RollingOption03IsEntanglingShot(void);

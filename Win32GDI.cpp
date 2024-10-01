@@ -40,10 +40,6 @@
 
 
 
-// Khung rol đồ : 
-// ô 1: 80 380 430 400
-// ô 2: 80 430 430 450
-// ô 3: 80 480 430 500
 //const int				rol_02_x_left = 366;
 //const int				rol_02_y_top = 434/*Fixed*/;
 //const int				rol_02_x_right = 395;
