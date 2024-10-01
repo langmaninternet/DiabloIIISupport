@@ -203,6 +203,7 @@ ROLL_OPTION get_roll_option_01(void)
 	// 2. Socket
 	 
 	// 3. Damage
+	if (w32gdi.RollingOption01IsBaseDamage()) return ROLL_OPTION_BASE_DAMAGE;
 	if (w32gdi.RollingOption01IsAreaDamage()) return ROLL_OPTION_AREA_DAMAGE;
 
 
@@ -231,6 +232,7 @@ ROLL_OPTION get_roll_option_02(void)
 	if (w32gdi.RollingOption02IsOneSocket()) return ROLL_OPTION_ONE_SOCKET;
 
 	// 3. Damage
+	if (w32gdi.RollingOption02IsBaseDamage()) return ROLL_OPTION_BASE_DAMAGE;
 	if (w32gdi.RollingOption02IsAreaDamage()) return ROLL_OPTION_AREA_DAMAGE;
 
 
@@ -263,6 +265,7 @@ ROLL_OPTION get_roll_option_03(void)
 	if (w32gdi.RollingOption03IsOneSocket()) return ROLL_OPTION_ONE_SOCKET;
 	 
 	// 3. Damage
+	if (w32gdi.RollingOption03IsBaseDamage()) return ROLL_OPTION_BASE_DAMAGE;
 	if (w32gdi.RollingOption03IsAreaDamage()) return ROLL_OPTION_AREA_DAMAGE;
 
 	//4. Stats
