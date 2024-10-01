@@ -217,6 +217,7 @@ ROLL_OPTION get_roll_option_01(void)
 
 	if (w32gdi.RollingOption01IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
 	if (w32gdi.RollingOption01IsGrenade()) return ROLL_OPTION_DHSKILL_GRENADE;
+	if (w32gdi.RollingOption01IsEntanglingShot()) return ROLL_OPTION_DHSKILL_ENTANGLING_SHOT;
 	if (w32gdi.RollingOption01IsEvasiveFire()) return ROLL_OPTION_DHSKILL_EVASIVE_FIRE;
 	if (w32gdi.RollingOption01IsLifePerSecond()) return ROLL_OPTION_LIFE_PER_SECOND;
 	if (w32gdi.RollingOption01IsLifePercent()) return ROLL_OPTION_LIFE_PERCENT;
@@ -595,7 +596,7 @@ void do_roll(ROLL_ITEM item,
 				final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
 			}
 
-			//Chỉ có HUNGERING_ARROW ở dòng 1 và dòng 2
+			//Có HUNGERING_ARROW ở dòng 1 và dòng 2
 			else if (option_01 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
 				&& option_02 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
 				&& option_03 != ROLL_OPTION_UNKNOWN && option_03 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
@@ -606,7 +607,7 @@ void do_roll(ROLL_ITEM item,
 				if (parameter_01 >= parameter_02) final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
 				else final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
 			}
-			//Chỉ có HUNGERING_ARROW ở dòng 1 và dòng 3
+			//Có HUNGERING_ARROW ở dòng 1 và dòng 3
 			else if (option_01 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
 				&& option_02 != ROLL_OPTION_UNKNOWN && option_02 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
 				&& option_03 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
@@ -616,6 +617,49 @@ void do_roll(ROLL_ITEM item,
 			{
 				if (parameter_01 >= parameter_03) final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
 				else final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
+			}
+			//Có HUNGERING_ARROW ở dòng 2 và dòng 3
+			else if (option_01 != ROLL_OPTION_UNKNOWN && option_01 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+				&& option_02 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+				&& option_03 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+				&& is_10_to_15_percent(parameter_02)
+				&& is_10_to_15_percent(parameter_03)
+				)
+			{
+				if (parameter_02 >= parameter_03) final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
+				else final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
+			}
+
+
+
+
+
+			//không có HUNGERING_ARROW ở dòng nào, nhưng có skill
+			else if (option_01 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+				&& option_02 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+				&& option_03 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+				&& (is_dh_skill(option_01) || is_dh_skill(option_02) || is_dh_skill(option_03))
+				)
+			{
+				if (is_dh_skill(option_01) && parameter_01 == ROLL_PARAMETER_15_PERCENT) final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+				else if (is_dh_skill(option_02) && parameter_02 == ROLL_PARAMETER_15_PERCENT) final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
+				else if (is_dh_skill(option_03) && parameter_03 == ROLL_PARAMETER_15_PERCENT) final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
+				else if (is_dh_skill(option_01) && is_10_to_15_percent(parameter_01) && parameter_01 >= parameter_02 && parameter_01 >= parameter_03)
+				{
+					final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+				}
+				else if (is_dh_skill(option_02) && is_10_to_15_percent(parameter_02) && parameter_02 >= parameter_01 && parameter_02 >= parameter_03)
+				{
+					final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
+				}
+				else if (is_dh_skill(option_03) && is_10_to_15_percent(parameter_03) && parameter_03 >= parameter_01 && parameter_03 >= parameter_02)
+				{
+					final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
+				}
+				else if (is_dh_skill(option_01)) final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+				else if (is_dh_skill(option_02)) final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
+				else if (is_dh_skill(option_03)) final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
+				else  final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
 			}
 
 		}
@@ -668,7 +712,7 @@ void do_roll(ROLL_ITEM item,
 		}
 	}
 	else if (item == ROLL_ITEM_HUNTERS_WRATH && is_dh_skill(option_01)
-		&& is_10_to_14_percent(parameter_01)
+		&& (is_10_to_14_percent(parameter_01) || option_01 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW)
 		&& w32gdi.D3IsRollWaiting()
 		&& resource_status == RESOURCE_STATUS_FULL_FOR_CLOTHES
 		&& gold_status == GOLD_STATUS_FULL_FOR_ROLLING

@@ -184,11 +184,12 @@ public:
 	bool				RollingOption02IsBolas(void);
 	bool				RollingOption03IsBolas(void);
 
+	bool				RollingOption01IsEntanglingShot(void);
 	bool				RollingOption02IsEntanglingShot(void);
 	bool				RollingOption03IsEntanglingShot(void);
 
 
-	bool				RollingOption01IsRedueRangedDamge(void);
+	bool				RollingOption01IsReduceRangedDamage(void);
 
 
 	bool				RollingOption01IsLifePercent(int);

@@ -10222,7 +10222,7 @@ bool Win32GDI::RollingOption03IsVitality(void)
 /************************************************************************/
 /* RedueRangedDamge                                                     */
 /************************************************************************/
-bool Win32GDI::RollingOption01IsRedueRangedDamge(void)
+bool Win32GDI::RollingOption01IsReduceRangedDamage(void)
 {
 //const int				rol_01_x_left = 81;
 //const int				rol_01_y_top = 388/*Fixed*/;
