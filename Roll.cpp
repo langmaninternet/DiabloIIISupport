@@ -416,29 +416,33 @@ bool is_dps_ring(ROLL_ITEM x)
 	return (x == ROLL_ITEM_FOCUS);
 }
 
+
 bool is_critical_hit_option(ROLL_OPTION x)
 {
 	return (x == ROLL_OPTION_CRITICAL_HIT_CHANCE
 		|| x == ROLL_OPTION_CRITICAL_HIT_DAMAGE);
 }
-
+bool is_critical_hit_or_socket_option(ROLL_OPTION x)
+{
+	return (x == ROLL_OPTION_CRITICAL_HIT_CHANCE
+		|| x == ROLL_OPTION_CRITICAL_HIT_DAMAGE
+		|| x == ROLL_OPTION_ONE_SOCKET);
+}
 bool is_not_critical_hit_or_socket_option(ROLL_OPTION x)
 {
 	return (x != ROLL_OPTION_UNKNOWN
 		&& x != ROLL_OPTION_CRITICAL_HIT_CHANCE
 		&& x != ROLL_OPTION_CRITICAL_HIT_DAMAGE
-		&& x != ROLL_OPTION_ONE_SOCKET
-		&& x != ROLL_OPTION_TWO_SOCKET
-		&& x != ROLL_OPTION_THREE_SOCKET);
+		&& x != ROLL_OPTION_ONE_SOCKET);
 }
-
-
 bool is_life_option(ROLL_OPTION x)
 {
 	return (x == ROLL_OPTION_LIFE_PERCENT
 		|| x == ROLL_OPTION_LIFE_PER_SECOND
 		|| x == ROLL_OPTION_LIFE_HIT);
 }
+
+
 
 
 bool is_dh_skill(ROLL_OPTION x)
@@ -615,19 +619,22 @@ void do_roll(ROLL_ITEM item,
 		}
 		else if (is_dps_ring(item))
 		{
-			if (is_critical_hit_option(option_01) && is_not_critical_hit_or_socket_option(option_02) && is_not_critical_hit_or_socket_option(option_03))
+			//chỉ có 1 dòng critical hit hoặc 
+			if (is_critical_hit_or_socket_option(option_01) && is_not_critical_hit_or_socket_option(option_02) && is_not_critical_hit_or_socket_option(option_03))
 			{
 				final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
 			}
-			else if (is_not_critical_hit_or_socket_option(option_01) && is_critical_hit_option(option_02) && is_not_critical_hit_or_socket_option(option_03))
+			else if (is_not_critical_hit_or_socket_option(option_01) && is_critical_hit_or_socket_option(option_02) && is_not_critical_hit_or_socket_option(option_03))
 			{
 				final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
 			}
-			else if (is_not_critical_hit_or_socket_option(option_01) && is_not_critical_hit_or_socket_option(option_02) && is_critical_hit_option(option_03))
+			else if (is_not_critical_hit_or_socket_option(option_01) && is_not_critical_hit_or_socket_option(option_02) && is_critical_hit_or_socket_option(option_03))
 			{
 				final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
 			}
 
+
+			//
 		}
 
 
