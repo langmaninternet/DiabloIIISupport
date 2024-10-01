@@ -204,7 +204,7 @@ ROLL_OPTION get_roll_option_01(void)
 	if (w32gdi.RollingOption01IsCriticalHitChance()) return ROLL_OPTION_CRITICAL_HIT_CHANCE;
 
 	// 2. Socket
-	 
+
 	// 3. Damage
 	if (w32gdi.RollingOption01IsBaseDamage()) return ROLL_OPTION_BASE_DAMAGE;
 	if (w32gdi.RollingOption01IsAreaDamage()) return ROLL_OPTION_AREA_DAMAGE;
@@ -242,7 +242,7 @@ ROLL_OPTION get_roll_option_02(void)
 
 	//4. Stats
 	if (w32gdi.RollingOption02IsIntelligence()) return ROLL_OPTION_INTELLIGENCE;
-	
+
 
 	// 5. Reduce
 	if (w32gdi.RollingOption02IsReduceResource()) return ROLL_OPTION_REDUCE_RESOURCE;
@@ -271,7 +271,7 @@ ROLL_OPTION get_roll_option_03(void)
 
 	// 2. Socket
 	if (w32gdi.RollingOption03IsOneSocket()) return ROLL_OPTION_ONE_SOCKET;
-	 
+
 	// 3. Damage
 	if (w32gdi.RollingOption03IsBaseDamage()) return ROLL_OPTION_BASE_DAMAGE;
 	if (w32gdi.RollingOption03IsAreaDamage()) return ROLL_OPTION_AREA_DAMAGE;
@@ -609,6 +609,16 @@ void do_roll(ROLL_ITEM item,
 			{
 				final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
 			}
+			else if (is_life_option(option_01) && is_critical_hit_option(option_02) && is_life_option(option_03))
+			{
+				final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
+			}
+
+			else if (is_life_option(option_01) && is_life_option(option_02) && is_critical_hit_option(option_03))
+			{
+				final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
+			}
+
 		}
 
 
