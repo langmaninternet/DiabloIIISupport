@@ -77,6 +77,11 @@ wchar_t* get_roll_name(ROLL_OPTION x)
 		break;
 
 
+	// 6. Attack speed
+	case ROLL_OPTION_ATTACK_SPEED:
+		return L"Attack speed";
+		break;
+
 	case ROLL_OPTION_DHSKILL_HUNGERING_ARROW:
 		return L"DH - Hungering Arrow";
 		break;
@@ -429,7 +434,6 @@ wchar_t* get_parameter_name(ROLL_PARAMETER x)
 	}
 	return L"";
 }
-
 wchar_t* get_item_name(ROLL_ITEM x)
 {
 	switch (x)
@@ -499,6 +503,7 @@ ROLL_OPTION get_roll_option_02(void)
 
 
 	//4. Stats
+	if (w32gdi.RollingOption02IsDexterity()) return ROLL_OPTION_DEXTERITY;
 	if (w32gdi.RollingOption02IsIntelligence()) return ROLL_OPTION_INTELLIGENCE;
 
 

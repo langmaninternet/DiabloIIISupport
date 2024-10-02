@@ -177,6 +177,9 @@ public:
 
 
 	// 4. Stats
+
+	bool				RollingOption02IsDexterity(int);
+	bool				RollingOption02IsDexterity(void);
 	bool				RollingOption03IsDexterity(int);
 	bool				RollingOption03IsDexterity(void);
 
@@ -194,6 +197,10 @@ public:
 	bool				RollingOption01IsReduceResource(void);
 	bool				RollingOption02IsReduceResource(void);
 	bool				RollingOption03IsReduceResource(void);
+
+	
+	//6. Attack Speed
+	bool				RollingOption03IsAttackSpeed(void);
 
 
 
