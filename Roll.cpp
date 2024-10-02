@@ -487,6 +487,7 @@ ROLL_OPTION get_roll_option_02(void)
 {
 	// 1. CriticalHit
 	if (w32gdi.RollingOption02IsCriticalHitChance()) return ROLL_OPTION_CRITICAL_HIT_CHANCE;
+	if (w32gdi.RollingOption02IsCriticalHitDamage()) return ROLL_OPTION_CRITICAL_HIT_DAMAGE;
 
 	// 2. Socket
 	if (w32gdi.RollingOption02IsOneSocket()) return ROLL_OPTION_ONE_SOCKET;
@@ -657,6 +658,7 @@ ROLL_PARAMETER get_roll_parameter_01(void)
 	if (w32gdi.RollingOption01Is10Percent()) return ROLL_PARAMETER_10_PERCENT;
 	if (w32gdi.RollingOption01Is07Percent()) return ROLL_PARAMETER_07_PERCENT;
 	if (w32gdi.RollingOption01Is06Percent()) return ROLL_PARAMETER_06_PERCENT;
+	if (w32gdi.RollingOption01Is05d5Percent()) return ROLL_PARAMETER_05_D_5_PERCENT;
 	if (w32gdi.RollingOption01Is05Percent()) return ROLL_PARAMETER_05_PERCENT;
 	if (w32gdi.RollingOption01Is04d5Percent()) return ROLL_PARAMETER_04_D_5_PERCENT;
 	return ROLL_PARAMETER_UNKNOWN;
@@ -755,7 +757,7 @@ ROLL_PARAMETER get_roll_parameter_02(void)
 	if (w32gdi.RollingOption02Is11Percent()) return ROLL_PARAMETER_11_PERCENT;
 	if (w32gdi.RollingOption02Is10Percent()) return ROLL_PARAMETER_10_PERCENT;
 	//if (w32gdi.RollingOption02Is07Percent()) return ROLL_PARAMETER_07_PERCENT;
-	//if (w32gdi.RollingOption02Is06Percent()) return ROLL_PARAMETER_06_PERCENT;
+	if (w32gdi.RollingOption02Is06Percent()) return ROLL_PARAMETER_06_PERCENT;
 	if (w32gdi.RollingOption02Is04d5Percent()) return ROLL_PARAMETER_04_D_5_PERCENT;
 	return ROLL_PARAMETER_UNKNOWN;
 }
@@ -854,6 +856,7 @@ ROLL_PARAMETER get_roll_parameter_03(void)
 	//if (w32gdi.RollingOption03Is10Percent()) return ROLL_PARAMETER_10_PERCENT;
 	//if (w32gdi.RollingOption03Is07Percent()) return ROLL_PARAMETER_07_PERCENT;
 	if (w32gdi.RollingOption03Is06Percent()) return ROLL_PARAMETER_06_PERCENT;
+	if (w32gdi.RollingOption03Is05d5Percent()) return ROLL_PARAMETER_05_D_5_PERCENT;
 	if (w32gdi.RollingOption03Is05Percent()) return ROLL_PARAMETER_05_PERCENT;
 	return ROLL_PARAMETER_UNKNOWN;
 }

@@ -113,15 +113,16 @@ public:
 
 	bool				RollingOption01Is06Percent(int);
 	bool				RollingOption01Is06Percent(void);
-
+	bool				RollingOption02Is06Percent(int);
+	bool				RollingOption02Is06Percent(void);
 	bool				RollingOption03Is06Percent(int);
 	bool				RollingOption03Is06Percent(void);
-
-
 
 	bool				RollingOption01Is05Percent(int);
 	bool				RollingOption01Is05Percent(void);
 
+	bool				RollingOption01Is05d5Percent(int);
+	bool				RollingOption01Is05d5Percent(void);
 
 	bool				RollingOption03Is05d5Percent(int);
 	bool				RollingOption03Is05d5Percent(void);
@@ -136,11 +137,11 @@ public:
 
 
 	// 1. CriticalHit
-	bool				RollingOption01IsCriticalHitChance(void);	
+	bool				RollingOption01IsCriticalHitChance(void);
 	bool				RollingOption02IsCriticalHitChance(void);
 	bool				RollingOption03IsCriticalHitChance(void);
-
 	bool				RollingOption01IsCriticalHitDamage(void);
+	bool				RollingOption02IsCriticalHitDamage(void);
 	bool				RollingOption03IsCriticalHitDamage(void);
 
 
@@ -174,11 +175,11 @@ public:
 	bool				RollingOption03IsAreaDamage(int);
 	bool				RollingOption03IsAreaDamage(void);
 
-	
+
 	// 4. Stats
 	bool				RollingOption03IsDexterity(int);
 	bool				RollingOption03IsDexterity(void);
-	
+
 	bool				RollingOption02IsIntelligence(int);
 	bool				RollingOption02IsIntelligence(void);
 
