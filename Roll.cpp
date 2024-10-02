@@ -1229,7 +1229,14 @@ void do_roll(ROLL_ITEM item,
 				if (parameter_02 > parameter_01) final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
 				else final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
 			}
-
+			//option 2 == option 3
+			else if (is_not_critical_hit_or_socket_option(option_01)
+				&& is_critical_hit_or_socket_option(option_02) && option_02 == option_03
+				&& is_04_to_06_percent(parameter_02) && is_04_to_06_percent(parameter_03))
+			{
+				if (parameter_02 > parameter_03) final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
+				else final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
+			}
 		}
 
 
