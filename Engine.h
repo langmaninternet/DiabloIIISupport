@@ -241,9 +241,8 @@ public:
 
 	bool				RollingOption02IsLifePerHit(int);
 	bool				RollingOption02IsLifePerHit(void);
-
-
-
+	bool				RollingOption03IsLifePerHit(int);
+	bool				RollingOption03IsLifePerHit(void);
 
 
 
