@@ -192,7 +192,8 @@ public:
 
 
 	// 5. Reduce
-	bool				RollingOption03IsCooldown(void);
+	bool				RollingOption02IsReduceCooldown(void);
+	bool				RollingOption03IsReduceCooldown(void);
 
 	bool				RollingOption01IsReduceResource(void);
 	bool				RollingOption02IsReduceResource(void);
@@ -201,6 +202,7 @@ public:
 	
 	//6. Attack Speed
 	bool				RollingOption03IsAttackSpeed(void);
+
 
 
 

@@ -511,6 +511,10 @@ ROLL_OPTION get_roll_option_02(void)
 	if (w32gdi.RollingOption02IsReduceResource()) return ROLL_OPTION_REDUCE_RESOURCE;
 
 
+	// 6. Attack Speed
+	if (w32gdi.RollingOption03IsAttackSpeed()) return ROLL_OPTION_ATTACK_SPEED;
+
+
 	// 6. life
 	if (w32gdi.RollingOption02IsLifePercent()) return ROLL_OPTION_LIFE_PERCENT;
 	if (w32gdi.RollingOption02IsLifePerSecond()) return ROLL_OPTION_LIFE_PER_SECOND;
@@ -546,9 +550,11 @@ ROLL_OPTION get_roll_option_03(void)
 	if (w32gdi.RollingOption03IsVitality()) return ROLL_OPTION_VITALITY;
 
 	// 5. Reduce	
-	if (w32gdi.RollingOption03IsCooldown()) return ROLL_OPTION_REDUCE_COOLDOWN;
+	if (w32gdi.RollingOption03IsReduceCooldown()) return ROLL_OPTION_REDUCE_COOLDOWN;
 	if (w32gdi.RollingOption03IsReduceResource()) return ROLL_OPTION_REDUCE_RESOURCE;
 
+	// 6. Attack Speed
+	if (w32gdi.RollingOption03IsAttackSpeed()) return ROLL_OPTION_ATTACK_SPEED;
 
 	if (w32gdi.RollingOption03IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
 	if (w32gdi.RollingOption03IsBolas()) return ROLL_OPTION_DHSKILL_BOLAS;
