@@ -77,7 +77,7 @@ wchar_t* get_roll_name(ROLL_OPTION x)
 		break;
 
 
-	// 6. Attack speed
+		// 6. Attack speed
 	case ROLL_OPTION_ATTACK_SPEED:
 		return L"Attack speed";
 		break;
@@ -980,7 +980,14 @@ bool is_life_option(ROLL_OPTION x)
 		|| x == ROLL_OPTION_LIFE_HIT);
 }
 
-
+bool is_04_to_06_percent(ROLL_PARAMETER x)
+{
+	return (x == ROLL_PARAMETER_04_PERCENT
+		|| x == ROLL_PARAMETER_04_D_5_PERCENT
+		|| x == ROLL_PARAMETER_05_PERCENT
+		|| x == ROLL_PARAMETER_05_D_5_PERCENT
+		|| x == ROLL_PARAMETER_06_PERCENT);
+}
 
 
 bool is_dh_skill(ROLL_OPTION x)
@@ -1215,7 +1222,14 @@ void do_roll(ROLL_ITEM item,
 			}
 
 
-			//
+			//option 1 == option 2
+			else if (is_critical_hit_or_socket_option(option_01) && option_01 == option_02 && is_not_critical_hit_or_socket_option(option_03)
+				&& is_04_to_06_percent(parameter_01) && is_04_to_06_percent(parameter_02))
+			{
+				if (parameter_02 > parameter_01) final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
+				else final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+			}
+
 		}
 
 
