@@ -67,6 +67,11 @@ public:
 
 	bool				HaveNoOption04and05(void);
 
+
+	bool				RollingOption03Is46Percent(int);
+	bool				RollingOption03Is46Percent(void);
+
+
 	bool				RollingOption01Is15Percent(int);
 	bool				RollingOption01Is15Percent(void);
 	bool				RollingOption02Is15Percent(int);
@@ -104,6 +109,11 @@ public:
 	bool				RollingOption01Is06Percent(int);
 	bool				RollingOption01Is06Percent(void);
 
+	bool				RollingOption03Is06Percent(int);
+	bool				RollingOption03Is06Percent(void);
+
+
+
 	bool				RollingOption01Is05Percent(int);
 	bool				RollingOption01Is05Percent(void);
 
@@ -120,6 +130,8 @@ public:
 	bool				RollingOption01IsCriticalHitChance(void);	
 	bool				RollingOption02IsCriticalHitChance(void);
 	bool				RollingOption03IsCriticalHitChance(void);
+
+	bool				RollingOption03IsCriticalHitDamage(void);
 
 
 	//bool				RollingOption01IsCriticalHitDamage(void);
