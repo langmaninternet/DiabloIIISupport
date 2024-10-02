@@ -167,7 +167,261 @@ wchar_t* get_parameter_name(ROLL_PARAMETER x)
 	case ROLL_PARAMETER_15_PERCENT:
 		return L" + 15%";
 		break;
-
+	case ROLL_PARAMETER_16_PERCENT:
+		return L" + 16%";
+		break;
+	case ROLL_PARAMETER_17_PERCENT:
+		return L" + 17%";
+		break;
+	case ROLL_PARAMETER_18_PERCENT:
+		return L" + 18%";
+		break;
+	case ROLL_PARAMETER_19_PERCENT:
+		return L" + 19%";
+		break;
+	case ROLL_PARAMETER_20_PERCENT:
+		return L" + 20%";
+		break;
+	case ROLL_PARAMETER_21_PERCENT:
+		return L" + 21%";
+		break;
+	case ROLL_PARAMETER_22_PERCENT:
+		return L" + 22%";
+		break;
+	case ROLL_PARAMETER_23_PERCENT:
+		return L" + 23%";
+		break;
+	case ROLL_PARAMETER_24_PERCENT:
+		return L" + 24%";
+		break;
+	case ROLL_PARAMETER_25_PERCENT:
+		return L" + 25%";
+		break;
+	case ROLL_PARAMETER_26_PERCENT:
+		return L" + 26%";
+		break;
+	case ROLL_PARAMETER_27_PERCENT:
+		return L" + 27%";
+		break;
+	case ROLL_PARAMETER_28_PERCENT:
+		return L" + 28%";
+		break;
+	case ROLL_PARAMETER_29_PERCENT:
+		return L" + 29%";
+		break;
+	case ROLL_PARAMETER_30_PERCENT:
+		return L" + 30%";
+		break;
+	case ROLL_PARAMETER_31_PERCENT:
+		return L" + 31%";
+		break;
+	case ROLL_PARAMETER_32_PERCENT:
+		return L" + 32%";
+		break;
+	case ROLL_PARAMETER_33_PERCENT:
+		return L" + 33%";
+		break;
+	case ROLL_PARAMETER_34_PERCENT:
+		return L" + 34%";
+		break;
+	case ROLL_PARAMETER_35_PERCENT:
+		return L" + 35%";
+		break;
+	case ROLL_PARAMETER_36_PERCENT:
+		return L" + 36%";
+		break;
+	case ROLL_PARAMETER_37_PERCENT:
+		return L" + 37%";
+		break;
+	case ROLL_PARAMETER_38_PERCENT:
+		return L" + 38%";
+		break;
+	case ROLL_PARAMETER_39_PERCENT:
+		return L" + 39%";
+		break;
+	case ROLL_PARAMETER_40_PERCENT:
+		return L" + 40%";
+		break;
+	case ROLL_PARAMETER_41_PERCENT:
+		return L" + 41%";
+		break;
+	case ROLL_PARAMETER_42_PERCENT:
+		return L" + 42%";
+		break;
+	case ROLL_PARAMETER_43_PERCENT:
+		return L" + 43%";
+		break;
+	case ROLL_PARAMETER_44_PERCENT:
+		return L" + 44%";
+		break;
+	case ROLL_PARAMETER_45_PERCENT:
+		return L" + 45%";
+		break;
+	case ROLL_PARAMETER_46_PERCENT:
+		return L" + 46%";
+		break;
+	case ROLL_PARAMETER_47_PERCENT:
+		return L" + 47%";
+		break;
+	case ROLL_PARAMETER_48_PERCENT:
+		return L" + 48%";
+		break;
+	case ROLL_PARAMETER_49_PERCENT:
+		return L" + 49%";
+		break;
+	case ROLL_PARAMETER_50_PERCENT:
+		return L" + 50%";
+		break;
+	case ROLL_PARAMETER_51_PERCENT:
+		return L" + 51%";
+		break;
+	case ROLL_PARAMETER_52_PERCENT:
+		return L" + 52%";
+		break;
+	case ROLL_PARAMETER_53_PERCENT:
+		return L" + 53%";
+		break;
+	case ROLL_PARAMETER_54_PERCENT:
+		return L" + 54%";
+		break;
+	case ROLL_PARAMETER_55_PERCENT:
+		return L" + 55%";
+		break;
+	case ROLL_PARAMETER_56_PERCENT:
+		return L" + 56%";
+		break;
+	case ROLL_PARAMETER_57_PERCENT:
+		return L" + 57%";
+		break;
+	case ROLL_PARAMETER_58_PERCENT:
+		return L" + 58%";
+		break;
+	case ROLL_PARAMETER_59_PERCENT:
+		return L" + 59%";
+		break;
+	case ROLL_PARAMETER_60_PERCENT:
+		return L" + 60%";
+		break;
+	case ROLL_PARAMETER_61_PERCENT:
+		return L" + 61%";
+		break;
+	case ROLL_PARAMETER_62_PERCENT:
+		return L" + 62%";
+		break;
+	case ROLL_PARAMETER_63_PERCENT:
+		return L" + 63%";
+		break;
+	case ROLL_PARAMETER_64_PERCENT:
+		return L" + 64%";
+		break;
+	case ROLL_PARAMETER_65_PERCENT:
+		return L" + 65%";
+		break;
+	case ROLL_PARAMETER_66_PERCENT:
+		return L" + 66%";
+		break;
+	case ROLL_PARAMETER_67_PERCENT:
+		return L" + 67%";
+		break;
+	case ROLL_PARAMETER_68_PERCENT:
+		return L" + 68%";
+		break;
+	case ROLL_PARAMETER_69_PERCENT:
+		return L" + 69%";
+		break;
+	case ROLL_PARAMETER_70_PERCENT:
+		return L" + 70%";
+		break;
+	case ROLL_PARAMETER_71_PERCENT:
+		return L" + 71%";
+		break;
+	case ROLL_PARAMETER_72_PERCENT:
+		return L" + 72%";
+		break;
+	case ROLL_PARAMETER_73_PERCENT:
+		return L" + 73%";
+		break;
+	case ROLL_PARAMETER_74_PERCENT:
+		return L" + 74%";
+		break;
+	case ROLL_PARAMETER_75_PERCENT:
+		return L" + 75%";
+		break;
+	case ROLL_PARAMETER_76_PERCENT:
+		return L" + 76%";
+		break;
+	case ROLL_PARAMETER_77_PERCENT:
+		return L" + 77%";
+		break;
+	case ROLL_PARAMETER_78_PERCENT:
+		return L" + 78%";
+		break;
+	case ROLL_PARAMETER_79_PERCENT:
+		return L" + 79%";
+		break;
+	case ROLL_PARAMETER_80_PERCENT:
+		return L" + 80%";
+		break;
+	case ROLL_PARAMETER_81_PERCENT:
+		return L" + 81%";
+		break;
+	case ROLL_PARAMETER_82_PERCENT:
+		return L" + 82%";
+		break;
+	case ROLL_PARAMETER_83_PERCENT:
+		return L" + 83%";
+		break;
+	case ROLL_PARAMETER_84_PERCENT:
+		return L" + 84%";
+		break;
+	case ROLL_PARAMETER_85_PERCENT:
+		return L" + 85%";
+		break;
+	case ROLL_PARAMETER_86_PERCENT:
+		return L" + 86%";
+		break;
+	case ROLL_PARAMETER_87_PERCENT:
+		return L" + 87%";
+		break;
+	case ROLL_PARAMETER_88_PERCENT:
+		return L" + 88%";
+		break;
+	case ROLL_PARAMETER_89_PERCENT:
+		return L" + 89%";
+		break;
+	case ROLL_PARAMETER_90_PERCENT:
+		return L" + 90%";
+		break;
+	case ROLL_PARAMETER_91_PERCENT:
+		return L" + 91%";
+		break;
+	case ROLL_PARAMETER_92_PERCENT:
+		return L" + 92%";
+		break;
+	case ROLL_PARAMETER_93_PERCENT:
+		return L" + 93%";
+		break;
+	case ROLL_PARAMETER_94_PERCENT:
+		return L" + 94%";
+		break;
+	case ROLL_PARAMETER_95_PERCENT:
+		return L" + 95%";
+		break;
+	case ROLL_PARAMETER_96_PERCENT:
+		return L" + 96%";
+		break;
+	case ROLL_PARAMETER_97_PERCENT:
+		return L" + 97%";
+		break;
+	case ROLL_PARAMETER_98_PERCENT:
+		return L" + 98%";
+		break;
+	case ROLL_PARAMETER_99_PERCENT:
+		return L" + 99%";
+		break;
+	case ROLL_PARAMETER_100_PERCENT:
+		return L" + 100%";
+		break;
 
 	default:
 		return L"";
@@ -202,6 +456,7 @@ ROLL_OPTION get_roll_option_01(void)
 {
 	// 1. CriticalHit
 	if (w32gdi.RollingOption01IsCriticalHitChance()) return ROLL_OPTION_CRITICAL_HIT_CHANCE;
+	if (w32gdi.RollingOption01IsCriticalHitDamage()) return ROLL_OPTION_CRITICAL_HIT_CHANCE;
 
 	// 2. Socket
 
@@ -309,6 +564,91 @@ ROLL_OPTION get_roll_option_03(void)
 
 ROLL_PARAMETER get_roll_parameter_01(void)
 {
+	//if (w32gdi.RollingOption01Is100Percent()) return ROLL_PARAMETER_100_PERCENT;
+	//if (w32gdi.RollingOption01Is99Percent()) return ROLL_PARAMETER_99_PERCENT;
+	//if (w32gdi.RollingOption01Is98Percent()) return ROLL_PARAMETER_98_PERCENT;
+	//if (w32gdi.RollingOption01Is97Percent()) return ROLL_PARAMETER_97_PERCENT;
+	//if (w32gdi.RollingOption01Is96Percent()) return ROLL_PARAMETER_96_PERCENT;
+	//if (w32gdi.RollingOption01Is95Percent()) return ROLL_PARAMETER_95_PERCENT;
+	//if (w32gdi.RollingOption01Is94Percent()) return ROLL_PARAMETER_94_PERCENT;
+	//if (w32gdi.RollingOption01Is93Percent()) return ROLL_PARAMETER_93_PERCENT;
+	//if (w32gdi.RollingOption01Is92Percent()) return ROLL_PARAMETER_92_PERCENT;
+	//if (w32gdi.RollingOption01Is91Percent()) return ROLL_PARAMETER_91_PERCENT;
+	//if (w32gdi.RollingOption01Is90Percent()) return ROLL_PARAMETER_90_PERCENT;
+	//if (w32gdi.RollingOption01Is89Percent()) return ROLL_PARAMETER_89_PERCENT;
+	//if (w32gdi.RollingOption01Is88Percent()) return ROLL_PARAMETER_88_PERCENT;
+	//if (w32gdi.RollingOption01Is87Percent()) return ROLL_PARAMETER_87_PERCENT;
+	//if (w32gdi.RollingOption01Is86Percent()) return ROLL_PARAMETER_86_PERCENT;
+	//if (w32gdi.RollingOption01Is85Percent()) return ROLL_PARAMETER_85_PERCENT;
+	//if (w32gdi.RollingOption01Is84Percent()) return ROLL_PARAMETER_84_PERCENT;
+	//if (w32gdi.RollingOption01Is83Percent()) return ROLL_PARAMETER_83_PERCENT;
+	//if (w32gdi.RollingOption01Is82Percent()) return ROLL_PARAMETER_82_PERCENT;
+	//if (w32gdi.RollingOption01Is81Percent()) return ROLL_PARAMETER_81_PERCENT;
+	//if (w32gdi.RollingOption01Is80Percent()) return ROLL_PARAMETER_80_PERCENT;
+	//if (w32gdi.RollingOption01Is79Percent()) return ROLL_PARAMETER_79_PERCENT;
+	//if (w32gdi.RollingOption01Is78Percent()) return ROLL_PARAMETER_78_PERCENT;
+	//if (w32gdi.RollingOption01Is77Percent()) return ROLL_PARAMETER_77_PERCENT;
+	//if (w32gdi.RollingOption01Is76Percent()) return ROLL_PARAMETER_76_PERCENT;
+	//if (w32gdi.RollingOption01Is75Percent()) return ROLL_PARAMETER_75_PERCENT;
+	//if (w32gdi.RollingOption01Is74Percent()) return ROLL_PARAMETER_74_PERCENT;
+	//if (w32gdi.RollingOption01Is73Percent()) return ROLL_PARAMETER_73_PERCENT;
+	//if (w32gdi.RollingOption01Is72Percent()) return ROLL_PARAMETER_72_PERCENT;
+	//if (w32gdi.RollingOption01Is71Percent()) return ROLL_PARAMETER_71_PERCENT;
+	//if (w32gdi.RollingOption01Is70Percent()) return ROLL_PARAMETER_70_PERCENT;
+	//if (w32gdi.RollingOption01Is69Percent()) return ROLL_PARAMETER_69_PERCENT;
+	//if (w32gdi.RollingOption01Is68Percent()) return ROLL_PARAMETER_68_PERCENT;
+	//if (w32gdi.RollingOption01Is67Percent()) return ROLL_PARAMETER_67_PERCENT;
+	//if (w32gdi.RollingOption01Is66Percent()) return ROLL_PARAMETER_66_PERCENT;
+	//if (w32gdi.RollingOption01Is65Percent()) return ROLL_PARAMETER_65_PERCENT;
+	//if (w32gdi.RollingOption01Is64Percent()) return ROLL_PARAMETER_64_PERCENT;
+	//if (w32gdi.RollingOption01Is63Percent()) return ROLL_PARAMETER_63_PERCENT;
+	//if (w32gdi.RollingOption01Is62Percent()) return ROLL_PARAMETER_62_PERCENT;
+	//if (w32gdi.RollingOption01Is61Percent()) return ROLL_PARAMETER_61_PERCENT;
+	//if (w32gdi.RollingOption01Is60Percent()) return ROLL_PARAMETER_60_PERCENT;
+	//if (w32gdi.RollingOption01Is59Percent()) return ROLL_PARAMETER_59_PERCENT;
+	//if (w32gdi.RollingOption01Is58Percent()) return ROLL_PARAMETER_58_PERCENT;
+	//if (w32gdi.RollingOption01Is57Percent()) return ROLL_PARAMETER_57_PERCENT;
+	//if (w32gdi.RollingOption01Is56Percent()) return ROLL_PARAMETER_56_PERCENT;
+	//if (w32gdi.RollingOption01Is55Percent()) return ROLL_PARAMETER_55_PERCENT;
+	//if (w32gdi.RollingOption01Is54Percent()) return ROLL_PARAMETER_54_PERCENT;
+	//if (w32gdi.RollingOption01Is53Percent()) return ROLL_PARAMETER_53_PERCENT;
+	//if (w32gdi.RollingOption01Is52Percent()) return ROLL_PARAMETER_52_PERCENT;
+	//if (w32gdi.RollingOption01Is51Percent()) return ROLL_PARAMETER_51_PERCENT;
+	//if (w32gdi.RollingOption01Is50Percent()) return ROLL_PARAMETER_50_PERCENT;
+	//if (w32gdi.RollingOption01Is49Percent()) return ROLL_PARAMETER_49_PERCENT;
+	//if (w32gdi.RollingOption01Is48Percent()) return ROLL_PARAMETER_48_PERCENT;
+	//if (w32gdi.RollingOption01Is47Percent()) return ROLL_PARAMETER_47_PERCENT;
+	if (w32gdi.RollingOption01Is46Percent()) return ROLL_PARAMETER_46_PERCENT;
+	//if (w32gdi.RollingOption01Is45Percent()) return ROLL_PARAMETER_45_PERCENT;
+	//if (w32gdi.RollingOption01Is44Percent()) return ROLL_PARAMETER_44_PERCENT;
+	//if (w32gdi.RollingOption01Is43Percent()) return ROLL_PARAMETER_43_PERCENT;
+	//if (w32gdi.RollingOption01Is42Percent()) return ROLL_PARAMETER_42_PERCENT;
+	//if (w32gdi.RollingOption01Is41Percent()) return ROLL_PARAMETER_41_PERCENT;
+	//if (w32gdi.RollingOption01Is40Percent()) return ROLL_PARAMETER_40_PERCENT;
+	//if (w32gdi.RollingOption01Is39Percent()) return ROLL_PARAMETER_39_PERCENT;
+	//if (w32gdi.RollingOption01Is38Percent()) return ROLL_PARAMETER_38_PERCENT;
+	//if (w32gdi.RollingOption01Is37Percent()) return ROLL_PARAMETER_37_PERCENT;
+	//if (w32gdi.RollingOption01Is36Percent()) return ROLL_PARAMETER_36_PERCENT;
+	//if (w32gdi.RollingOption01Is35Percent()) return ROLL_PARAMETER_35_PERCENT;
+	//if (w32gdi.RollingOption01Is34Percent()) return ROLL_PARAMETER_34_PERCENT;
+	//if (w32gdi.RollingOption01Is33Percent()) return ROLL_PARAMETER_33_PERCENT;
+	//if (w32gdi.RollingOption01Is32Percent()) return ROLL_PARAMETER_32_PERCENT;
+	//if (w32gdi.RollingOption01Is31Percent()) return ROLL_PARAMETER_31_PERCENT;
+	//if (w32gdi.RollingOption01Is30Percent()) return ROLL_PARAMETER_30_PERCENT;
+	//if (w32gdi.RollingOption01Is29Percent()) return ROLL_PARAMETER_29_PERCENT;
+	//if (w32gdi.RollingOption01Is28Percent()) return ROLL_PARAMETER_28_PERCENT;
+	//if (w32gdi.RollingOption01Is27Percent()) return ROLL_PARAMETER_27_PERCENT;
+	//if (w32gdi.RollingOption01Is26Percent()) return ROLL_PARAMETER_26_PERCENT;
+	//if (w32gdi.RollingOption01Is25Percent()) return ROLL_PARAMETER_25_PERCENT;
+	//if (w32gdi.RollingOption01Is24Percent()) return ROLL_PARAMETER_24_PERCENT;
+	//if (w32gdi.RollingOption01Is23Percent()) return ROLL_PARAMETER_23_PERCENT;
+	//if (w32gdi.RollingOption01Is22Percent()) return ROLL_PARAMETER_22_PERCENT;
+	//if (w32gdi.RollingOption01Is21Percent()) return ROLL_PARAMETER_21_PERCENT;
+	//if (w32gdi.RollingOption01Is20Percent()) return ROLL_PARAMETER_20_PERCENT;
+	//if (w32gdi.RollingOption01Is19Percent()) return ROLL_PARAMETER_19_PERCENT;
+	//if (w32gdi.RollingOption01Is18Percent()) return ROLL_PARAMETER_18_PERCENT;
+	//if (w32gdi.RollingOption01Is17Percent()) return ROLL_PARAMETER_17_PERCENT;
+	//if (w32gdi.RollingOption01Is16Percent()) return ROLL_PARAMETER_16_PERCENT;
 	if (w32gdi.RollingOption01Is15Percent()) return ROLL_PARAMETER_15_PERCENT;
 	if (w32gdi.RollingOption01Is14Percent()) return ROLL_PARAMETER_14_PERCENT;
 	if (w32gdi.RollingOption01Is13Percent()) return ROLL_PARAMETER_13_PERCENT;
@@ -323,6 +663,91 @@ ROLL_PARAMETER get_roll_parameter_01(void)
 }
 ROLL_PARAMETER get_roll_parameter_02(void)
 {
+	//if (w32gdi.RollingOption02Is100Percent()) return ROLL_PARAMETER_100_PERCENT;
+	//if (w32gdi.RollingOption02Is99Percent()) return ROLL_PARAMETER_99_PERCENT;
+	//if (w32gdi.RollingOption02Is98Percent()) return ROLL_PARAMETER_98_PERCENT;
+	//if (w32gdi.RollingOption02Is97Percent()) return ROLL_PARAMETER_97_PERCENT;
+	//if (w32gdi.RollingOption02Is96Percent()) return ROLL_PARAMETER_96_PERCENT;
+	//if (w32gdi.RollingOption02Is95Percent()) return ROLL_PARAMETER_95_PERCENT;
+	//if (w32gdi.RollingOption02Is94Percent()) return ROLL_PARAMETER_94_PERCENT;
+	//if (w32gdi.RollingOption02Is93Percent()) return ROLL_PARAMETER_93_PERCENT;
+	//if (w32gdi.RollingOption02Is92Percent()) return ROLL_PARAMETER_92_PERCENT;
+	//if (w32gdi.RollingOption02Is91Percent()) return ROLL_PARAMETER_91_PERCENT;
+	//if (w32gdi.RollingOption02Is90Percent()) return ROLL_PARAMETER_90_PERCENT;
+	//if (w32gdi.RollingOption02Is89Percent()) return ROLL_PARAMETER_89_PERCENT;
+	//if (w32gdi.RollingOption02Is88Percent()) return ROLL_PARAMETER_88_PERCENT;
+	//if (w32gdi.RollingOption02Is87Percent()) return ROLL_PARAMETER_87_PERCENT;
+	//if (w32gdi.RollingOption02Is86Percent()) return ROLL_PARAMETER_86_PERCENT;
+	//if (w32gdi.RollingOption02Is85Percent()) return ROLL_PARAMETER_85_PERCENT;
+	//if (w32gdi.RollingOption02Is84Percent()) return ROLL_PARAMETER_84_PERCENT;
+	//if (w32gdi.RollingOption02Is83Percent()) return ROLL_PARAMETER_83_PERCENT;
+	//if (w32gdi.RollingOption02Is82Percent()) return ROLL_PARAMETER_82_PERCENT;
+	//if (w32gdi.RollingOption02Is81Percent()) return ROLL_PARAMETER_81_PERCENT;
+	//if (w32gdi.RollingOption02Is80Percent()) return ROLL_PARAMETER_80_PERCENT;
+	//if (w32gdi.RollingOption02Is79Percent()) return ROLL_PARAMETER_79_PERCENT;
+	//if (w32gdi.RollingOption02Is78Percent()) return ROLL_PARAMETER_78_PERCENT;
+	//if (w32gdi.RollingOption02Is77Percent()) return ROLL_PARAMETER_77_PERCENT;
+	//if (w32gdi.RollingOption02Is76Percent()) return ROLL_PARAMETER_76_PERCENT;
+	//if (w32gdi.RollingOption02Is75Percent()) return ROLL_PARAMETER_75_PERCENT;
+	//if (w32gdi.RollingOption02Is74Percent()) return ROLL_PARAMETER_74_PERCENT;
+	//if (w32gdi.RollingOption02Is73Percent()) return ROLL_PARAMETER_73_PERCENT;
+	//if (w32gdi.RollingOption02Is72Percent()) return ROLL_PARAMETER_72_PERCENT;
+	//if (w32gdi.RollingOption02Is71Percent()) return ROLL_PARAMETER_71_PERCENT;
+	//if (w32gdi.RollingOption02Is70Percent()) return ROLL_PARAMETER_70_PERCENT;
+	//if (w32gdi.RollingOption02Is69Percent()) return ROLL_PARAMETER_69_PERCENT;
+	//if (w32gdi.RollingOption02Is68Percent()) return ROLL_PARAMETER_68_PERCENT;
+	//if (w32gdi.RollingOption02Is67Percent()) return ROLL_PARAMETER_67_PERCENT;
+	//if (w32gdi.RollingOption02Is66Percent()) return ROLL_PARAMETER_66_PERCENT;
+	//if (w32gdi.RollingOption02Is65Percent()) return ROLL_PARAMETER_65_PERCENT;
+	//if (w32gdi.RollingOption02Is64Percent()) return ROLL_PARAMETER_64_PERCENT;
+	//if (w32gdi.RollingOption02Is63Percent()) return ROLL_PARAMETER_63_PERCENT;
+	//if (w32gdi.RollingOption02Is62Percent()) return ROLL_PARAMETER_62_PERCENT;
+	//if (w32gdi.RollingOption02Is61Percent()) return ROLL_PARAMETER_61_PERCENT;
+	//if (w32gdi.RollingOption02Is60Percent()) return ROLL_PARAMETER_60_PERCENT;
+	//if (w32gdi.RollingOption02Is59Percent()) return ROLL_PARAMETER_59_PERCENT;
+	//if (w32gdi.RollingOption02Is58Percent()) return ROLL_PARAMETER_58_PERCENT;
+	//if (w32gdi.RollingOption02Is57Percent()) return ROLL_PARAMETER_57_PERCENT;
+	//if (w32gdi.RollingOption02Is56Percent()) return ROLL_PARAMETER_56_PERCENT;
+	//if (w32gdi.RollingOption02Is55Percent()) return ROLL_PARAMETER_55_PERCENT;
+	//if (w32gdi.RollingOption02Is54Percent()) return ROLL_PARAMETER_54_PERCENT;
+	//if (w32gdi.RollingOption02Is53Percent()) return ROLL_PARAMETER_53_PERCENT;
+	//if (w32gdi.RollingOption02Is52Percent()) return ROLL_PARAMETER_52_PERCENT;
+	//if (w32gdi.RollingOption02Is51Percent()) return ROLL_PARAMETER_51_PERCENT;
+	//if (w32gdi.RollingOption02Is50Percent()) return ROLL_PARAMETER_50_PERCENT;
+	//if (w32gdi.RollingOption02Is49Percent()) return ROLL_PARAMETER_49_PERCENT;
+	//if (w32gdi.RollingOption02Is48Percent()) return ROLL_PARAMETER_48_PERCENT;
+	//if (w32gdi.RollingOption02Is47Percent()) return ROLL_PARAMETER_47_PERCENT;
+	//if (w32gdi.RollingOption02Is46Percent()) return ROLL_PARAMETER_46_PERCENT;
+	//if (w32gdi.RollingOption02Is45Percent()) return ROLL_PARAMETER_45_PERCENT;
+	//if (w32gdi.RollingOption02Is44Percent()) return ROLL_PARAMETER_44_PERCENT;
+	//if (w32gdi.RollingOption02Is43Percent()) return ROLL_PARAMETER_43_PERCENT;
+	//if (w32gdi.RollingOption02Is42Percent()) return ROLL_PARAMETER_42_PERCENT;
+	//if (w32gdi.RollingOption02Is41Percent()) return ROLL_PARAMETER_41_PERCENT;
+	//if (w32gdi.RollingOption02Is40Percent()) return ROLL_PARAMETER_40_PERCENT;
+	//if (w32gdi.RollingOption02Is39Percent()) return ROLL_PARAMETER_39_PERCENT;
+	//if (w32gdi.RollingOption02Is38Percent()) return ROLL_PARAMETER_38_PERCENT;
+	//if (w32gdi.RollingOption02Is37Percent()) return ROLL_PARAMETER_37_PERCENT;
+	//if (w32gdi.RollingOption02Is36Percent()) return ROLL_PARAMETER_36_PERCENT;
+	//if (w32gdi.RollingOption02Is35Percent()) return ROLL_PARAMETER_35_PERCENT;
+	//if (w32gdi.RollingOption02Is34Percent()) return ROLL_PARAMETER_34_PERCENT;
+	//if (w32gdi.RollingOption02Is33Percent()) return ROLL_PARAMETER_33_PERCENT;
+	//if (w32gdi.RollingOption02Is32Percent()) return ROLL_PARAMETER_32_PERCENT;
+	//if (w32gdi.RollingOption02Is31Percent()) return ROLL_PARAMETER_31_PERCENT;
+	//if (w32gdi.RollingOption02Is30Percent()) return ROLL_PARAMETER_30_PERCENT;
+	//if (w32gdi.RollingOption02Is29Percent()) return ROLL_PARAMETER_29_PERCENT;
+	//if (w32gdi.RollingOption02Is28Percent()) return ROLL_PARAMETER_28_PERCENT;
+	//if (w32gdi.RollingOption02Is27Percent()) return ROLL_PARAMETER_27_PERCENT;
+	//if (w32gdi.RollingOption02Is26Percent()) return ROLL_PARAMETER_26_PERCENT;
+	//if (w32gdi.RollingOption02Is25Percent()) return ROLL_PARAMETER_25_PERCENT;
+	//if (w32gdi.RollingOption02Is24Percent()) return ROLL_PARAMETER_24_PERCENT;
+	//if (w32gdi.RollingOption02Is23Percent()) return ROLL_PARAMETER_23_PERCENT;
+	//if (w32gdi.RollingOption02Is22Percent()) return ROLL_PARAMETER_22_PERCENT;
+	//if (w32gdi.RollingOption02Is21Percent()) return ROLL_PARAMETER_21_PERCENT;
+	//if (w32gdi.RollingOption02Is20Percent()) return ROLL_PARAMETER_20_PERCENT;
+	//if (w32gdi.RollingOption02Is19Percent()) return ROLL_PARAMETER_19_PERCENT;
+	//if (w32gdi.RollingOption02Is18Percent()) return ROLL_PARAMETER_18_PERCENT;
+	//if (w32gdi.RollingOption02Is17Percent()) return ROLL_PARAMETER_17_PERCENT;
+	//if (w32gdi.RollingOption02Is16Percent()) return ROLL_PARAMETER_16_PERCENT;
 	if (w32gdi.RollingOption02Is15Percent()) return ROLL_PARAMETER_15_PERCENT;
 	//if (w32gdi.RollingOption02Is14Percent()) return ROLL_PARAMETER_14_PERCENT;
 	//if (w32gdi.RollingOption02Is13Percent()) return ROLL_PARAMETER_13_PERCENT;
@@ -336,7 +761,91 @@ ROLL_PARAMETER get_roll_parameter_02(void)
 }
 ROLL_PARAMETER get_roll_parameter_03(void)
 {
+	//if (w32gdi.RollingOption03Is100Percent()) return ROLL_PARAMETER_100_PERCENT;
+	//if (w32gdi.RollingOption03Is99Percent()) return ROLL_PARAMETER_99_PERCENT;
+	//if (w32gdi.RollingOption03Is98Percent()) return ROLL_PARAMETER_98_PERCENT;
+	//if (w32gdi.RollingOption03Is97Percent()) return ROLL_PARAMETER_97_PERCENT;
+	//if (w32gdi.RollingOption03Is96Percent()) return ROLL_PARAMETER_96_PERCENT;
+	//if (w32gdi.RollingOption03Is95Percent()) return ROLL_PARAMETER_95_PERCENT;
+	//if (w32gdi.RollingOption03Is94Percent()) return ROLL_PARAMETER_94_PERCENT;
+	//if (w32gdi.RollingOption03Is93Percent()) return ROLL_PARAMETER_93_PERCENT;
+	//if (w32gdi.RollingOption03Is92Percent()) return ROLL_PARAMETER_92_PERCENT;
+	//if (w32gdi.RollingOption03Is91Percent()) return ROLL_PARAMETER_91_PERCENT;
+	//if (w32gdi.RollingOption03Is90Percent()) return ROLL_PARAMETER_90_PERCENT;
+	//if (w32gdi.RollingOption03Is89Percent()) return ROLL_PARAMETER_89_PERCENT;
+	//if (w32gdi.RollingOption03Is88Percent()) return ROLL_PARAMETER_88_PERCENT;
+	//if (w32gdi.RollingOption03Is87Percent()) return ROLL_PARAMETER_87_PERCENT;
+	//if (w32gdi.RollingOption03Is86Percent()) return ROLL_PARAMETER_86_PERCENT;
+	//if (w32gdi.RollingOption03Is85Percent()) return ROLL_PARAMETER_85_PERCENT;
+	//if (w32gdi.RollingOption03Is84Percent()) return ROLL_PARAMETER_84_PERCENT;
+	//if (w32gdi.RollingOption03Is83Percent()) return ROLL_PARAMETER_83_PERCENT;
+	//if (w32gdi.RollingOption03Is82Percent()) return ROLL_PARAMETER_82_PERCENT;
+	//if (w32gdi.RollingOption03Is81Percent()) return ROLL_PARAMETER_81_PERCENT;
+	//if (w32gdi.RollingOption03Is80Percent()) return ROLL_PARAMETER_80_PERCENT;
+	//if (w32gdi.RollingOption03Is79Percent()) return ROLL_PARAMETER_79_PERCENT;
+	//if (w32gdi.RollingOption03Is78Percent()) return ROLL_PARAMETER_78_PERCENT;
+	//if (w32gdi.RollingOption03Is77Percent()) return ROLL_PARAMETER_77_PERCENT;
+	//if (w32gdi.RollingOption03Is76Percent()) return ROLL_PARAMETER_76_PERCENT;
+	//if (w32gdi.RollingOption03Is75Percent()) return ROLL_PARAMETER_75_PERCENT;
+	//if (w32gdi.RollingOption03Is74Percent()) return ROLL_PARAMETER_74_PERCENT;
+	//if (w32gdi.RollingOption03Is73Percent()) return ROLL_PARAMETER_73_PERCENT;
+	//if (w32gdi.RollingOption03Is72Percent()) return ROLL_PARAMETER_72_PERCENT;
+	//if (w32gdi.RollingOption03Is71Percent()) return ROLL_PARAMETER_71_PERCENT;
+	//if (w32gdi.RollingOption03Is70Percent()) return ROLL_PARAMETER_70_PERCENT;
+	//if (w32gdi.RollingOption03Is69Percent()) return ROLL_PARAMETER_69_PERCENT;
+	//if (w32gdi.RollingOption03Is68Percent()) return ROLL_PARAMETER_68_PERCENT;
+	//if (w32gdi.RollingOption03Is67Percent()) return ROLL_PARAMETER_67_PERCENT;
+	//if (w32gdi.RollingOption03Is66Percent()) return ROLL_PARAMETER_66_PERCENT;
+	//if (w32gdi.RollingOption03Is65Percent()) return ROLL_PARAMETER_65_PERCENT;
+	//if (w32gdi.RollingOption03Is64Percent()) return ROLL_PARAMETER_64_PERCENT;
+	//if (w32gdi.RollingOption03Is63Percent()) return ROLL_PARAMETER_63_PERCENT;
+	//if (w32gdi.RollingOption03Is62Percent()) return ROLL_PARAMETER_62_PERCENT;
+	//if (w32gdi.RollingOption03Is61Percent()) return ROLL_PARAMETER_61_PERCENT;
+	//if (w32gdi.RollingOption03Is60Percent()) return ROLL_PARAMETER_60_PERCENT;
+	//if (w32gdi.RollingOption03Is59Percent()) return ROLL_PARAMETER_59_PERCENT;
+	//if (w32gdi.RollingOption03Is58Percent()) return ROLL_PARAMETER_58_PERCENT;
+	//if (w32gdi.RollingOption03Is57Percent()) return ROLL_PARAMETER_57_PERCENT;
+	//if (w32gdi.RollingOption03Is56Percent()) return ROLL_PARAMETER_56_PERCENT;
+	//if (w32gdi.RollingOption03Is55Percent()) return ROLL_PARAMETER_55_PERCENT;
+	//if (w32gdi.RollingOption03Is54Percent()) return ROLL_PARAMETER_54_PERCENT;
+	//if (w32gdi.RollingOption03Is53Percent()) return ROLL_PARAMETER_53_PERCENT;
+	//if (w32gdi.RollingOption03Is52Percent()) return ROLL_PARAMETER_52_PERCENT;
+	//if (w32gdi.RollingOption03Is51Percent()) return ROLL_PARAMETER_51_PERCENT;
+	//if (w32gdi.RollingOption03Is50Percent()) return ROLL_PARAMETER_50_PERCENT;
+	//if (w32gdi.RollingOption03Is49Percent()) return ROLL_PARAMETER_49_PERCENT;
+	//if (w32gdi.RollingOption03Is48Percent()) return ROLL_PARAMETER_48_PERCENT;
+	//if (w32gdi.RollingOption03Is47Percent()) return ROLL_PARAMETER_47_PERCENT;
 	if (w32gdi.RollingOption03Is46Percent()) return ROLL_PARAMETER_46_PERCENT;
+	//if (w32gdi.RollingOption03Is45Percent()) return ROLL_PARAMETER_45_PERCENT;
+	//if (w32gdi.RollingOption03Is44Percent()) return ROLL_PARAMETER_44_PERCENT;
+	//if (w32gdi.RollingOption03Is43Percent()) return ROLL_PARAMETER_43_PERCENT;
+	//if (w32gdi.RollingOption03Is42Percent()) return ROLL_PARAMETER_42_PERCENT;
+	//if (w32gdi.RollingOption03Is41Percent()) return ROLL_PARAMETER_41_PERCENT;
+	//if (w32gdi.RollingOption03Is40Percent()) return ROLL_PARAMETER_40_PERCENT;
+	//if (w32gdi.RollingOption03Is39Percent()) return ROLL_PARAMETER_39_PERCENT;
+	//if (w32gdi.RollingOption03Is38Percent()) return ROLL_PARAMETER_38_PERCENT;
+	//if (w32gdi.RollingOption03Is37Percent()) return ROLL_PARAMETER_37_PERCENT;
+	//if (w32gdi.RollingOption03Is36Percent()) return ROLL_PARAMETER_36_PERCENT;
+	//if (w32gdi.RollingOption03Is35Percent()) return ROLL_PARAMETER_35_PERCENT;
+	//if (w32gdi.RollingOption03Is34Percent()) return ROLL_PARAMETER_34_PERCENT;
+	//if (w32gdi.RollingOption03Is33Percent()) return ROLL_PARAMETER_33_PERCENT;
+	//if (w32gdi.RollingOption03Is32Percent()) return ROLL_PARAMETER_32_PERCENT;
+	//if (w32gdi.RollingOption03Is31Percent()) return ROLL_PARAMETER_31_PERCENT;
+	//if (w32gdi.RollingOption03Is30Percent()) return ROLL_PARAMETER_30_PERCENT;
+	//if (w32gdi.RollingOption03Is29Percent()) return ROLL_PARAMETER_29_PERCENT;
+	//if (w32gdi.RollingOption03Is28Percent()) return ROLL_PARAMETER_28_PERCENT;
+	//if (w32gdi.RollingOption03Is27Percent()) return ROLL_PARAMETER_27_PERCENT;
+	//if (w32gdi.RollingOption03Is26Percent()) return ROLL_PARAMETER_26_PERCENT;
+	//if (w32gdi.RollingOption03Is25Percent()) return ROLL_PARAMETER_25_PERCENT;
+	//if (w32gdi.RollingOption03Is24Percent()) return ROLL_PARAMETER_24_PERCENT;
+	//if (w32gdi.RollingOption03Is23Percent()) return ROLL_PARAMETER_23_PERCENT;
+	//if (w32gdi.RollingOption03Is22Percent()) return ROLL_PARAMETER_22_PERCENT;
+	//if (w32gdi.RollingOption03Is21Percent()) return ROLL_PARAMETER_21_PERCENT;
+	//if (w32gdi.RollingOption03Is20Percent()) return ROLL_PARAMETER_20_PERCENT;
+	//if (w32gdi.RollingOption03Is19Percent()) return ROLL_PARAMETER_19_PERCENT;
+	//if (w32gdi.RollingOption03Is18Percent()) return ROLL_PARAMETER_18_PERCENT;
+	//if (w32gdi.RollingOption03Is17Percent()) return ROLL_PARAMETER_17_PERCENT;
+	//if (w32gdi.RollingOption03Is16Percent()) return ROLL_PARAMETER_16_PERCENT;
 	if (w32gdi.RollingOption03Is15Percent()) return ROLL_PARAMETER_15_PERCENT;
 	//if (w32gdi.RollingOption03Is14Percent()) return ROLL_PARAMETER_14_PERCENT;
 	//if (w32gdi.RollingOption03Is13Percent()) return ROLL_PARAMETER_13_PERCENT;
