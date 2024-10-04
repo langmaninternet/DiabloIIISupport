@@ -444,6 +444,9 @@ wchar_t* get_item_name(ROLL_ITEM x)
 	case ROLL_ITEM_FOCUS:
 		return L"Focus";
 		break;
+	case ROLL_ITEM_COE:
+		return L"CoE";
+		break;
 	case ROLL_ITEM_HUNTERS_WRATH:
 		return L"Hunter's Wrath";
 		break;
@@ -884,6 +887,7 @@ ROLL_PARAMETER get_roll_parameter_03(void)
 ROLL_ITEM get_roll_item(void)
 {
 	if (w32gdi.RollingItemIsFocus()) return ROLL_ITEM_FOCUS;
+	if (w32gdi.RollingItemIsCoE()) return ROLL_ITEM_COE;
 	if (w32gdi.RollingItemIsHuntersWrath()) return ROLL_ITEM_HUNTERS_WRATH;
 	return ROLL_ITEM_UNKNOWN;
 }
@@ -951,7 +955,7 @@ wchar_t* get_gold_info(GOLD_STATUS x)
 /************************************************************************/
 bool is_dps_ring(ROLL_ITEM x)
 {
-	return (x == ROLL_ITEM_FOCUS);
+	return (x == ROLL_ITEM_FOCUS || x == ROLL_ITEM_COE);
 }
 
 

@@ -272,6 +272,7 @@ public:
 
 
 	bool				RollingItemIsFocus(void);
+	bool				RollingItemIsCoE(void);
 	bool				RollingItemIsHuntersWrath(void);
 
 
