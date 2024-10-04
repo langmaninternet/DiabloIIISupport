@@ -208,6 +208,8 @@ public:
 
 	
 	//6. Attack Speed
+	bool				RollingOption01IsAttackSpeed(void);
+	bool				RollingOption02IsAttackSpeed(void);
 	bool				RollingOption03IsAttackSpeed(void);
 
 
@@ -279,7 +281,6 @@ public:
 
 
 	bool				RollingItemIsFocus(void);
-	bool				RollingItemIsCoE(void);
 	bool				RollingItemIsHuntersWrath(void);
 
 

@@ -483,8 +483,8 @@ ROLL_OPTION get_roll_option_01(void)
 	// 5. Reduce
 	if (w32gdi.RollingOption01IsReduceResource()) return ROLL_OPTION_REDUCE_RESOURCE;
 
-
-
+	// 6. Attack Speed
+	if (w32gdi.RollingOption01IsAttackSpeed()) return ROLL_OPTION_ATTACK_SPEED;
 
 	if (w32gdi.RollingOption01IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
 	if (w32gdi.RollingOption01IsBolas()) return ROLL_OPTION_DHSKILL_BOLAS;
@@ -524,7 +524,7 @@ ROLL_OPTION get_roll_option_02(void)
 
 
 	// 6. Attack Speed
-	if (w32gdi.RollingOption03IsAttackSpeed()) return ROLL_OPTION_ATTACK_SPEED;
+	if (w32gdi.RollingOption02IsAttackSpeed()) return ROLL_OPTION_ATTACK_SPEED;
 
 
 	// 7. life
@@ -896,7 +896,7 @@ ROLL_PARAMETER get_roll_parameter_03(void)
 ROLL_ITEM get_roll_item(void)
 {
 	if (w32gdi.RollingItemIsFocus()) return ROLL_ITEM_FOCUS;
-	if (w32gdi.RollingItemIsCoE()) return ROLL_ITEM_COE;
+	//if (w32gdi.RollingItemIsCoE()) return ROLL_ITEM_COE;
 	if (w32gdi.RollingItemIsHuntersWrath()) return ROLL_ITEM_HUNTERS_WRATH;
 	return ROLL_ITEM_UNKNOWN;
 }
