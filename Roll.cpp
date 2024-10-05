@@ -877,7 +877,7 @@ ROLL_PARAMETER get_roll_parameter_03(void)
 	//if (w32gdi.RollingOption03Is23Percent()) return ROLL_PARAMETER_23_PERCENT;
 	//if (w32gdi.RollingOption03Is22Percent()) return ROLL_PARAMETER_22_PERCENT;
 	//if (w32gdi.RollingOption03Is21Percent()) return ROLL_PARAMETER_21_PERCENT;
-	//if (w32gdi.RollingOption03Is20Percent()) return ROLL_PARAMETER_20_PERCENT;
+	if (w32gdi.RollingOption03Is20PercentBaseAreaDamage()) return ROLL_PARAMETER_20_PERCENT;
 	//if (w32gdi.RollingOption03Is19Percent()) return ROLL_PARAMETER_19_PERCENT;
 	//if (w32gdi.RollingOption03Is18Percent()) return ROLL_PARAMETER_18_PERCENT;
 	//if (w32gdi.RollingOption03Is17Percent()) return ROLL_PARAMETER_17_PERCENT;
@@ -1298,11 +1298,24 @@ void do_roll(ROLL_ITEM item,
 				&& option_02 == ROLL_OPTION_AREA_DAMAGE
 				&& is_10_to_20_percent(parameter_01)
 				&& is_10_to_20_percent(parameter_02)
-				&& parameter_02 > parameter_01
 				&& is_option__less_dps_priority_than_area_damage(option_03))
 			{
-				final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
+				if (parameter_02 > parameter_01) final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
+				else final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
 			}
+			else if (option_01 == ROLL_OPTION_AREA_DAMAGE
+				&& is_option__less_dps_priority_than_area_damage(option_02)
+				&& option_03 == ROLL_OPTION_AREA_DAMAGE
+				&& is_10_to_20_percent(parameter_01)
+				&& is_10_to_20_percent(parameter_03))
+			{
+				if (parameter_03 > parameter_01) final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
+				else final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+			}
+
+
+
+
 
 
 			//looking to update area damage
@@ -1351,7 +1364,7 @@ void do_roll(ROLL_ITEM item,
 		start_roll();
 	}
 	else if (force_to_dps_build
-		&& option_01 == ROLL_OPTION_AREA_DAMAGE 
+		&& option_01 == ROLL_OPTION_AREA_DAMAGE
 		&& is_10_to_20_percent(parameter_01)
 		&& parameter_01 < ROLL_PARAMETER_20_PERCENT
 		&& w32gdi.D3IsRollWaiting()
