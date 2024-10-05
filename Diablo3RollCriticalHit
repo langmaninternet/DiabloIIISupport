@@ -16748,7 +16748,7 @@ bool Win32GDI::RollingOption03Is26Percent(int xOffset)
 //const int				rol_02_clone_y_top = 434/*Fixed*/;
 //const int				rol_02_clone_x_right = 362;
 //const int				rol_02_clone_y_bottom = 445/*Fixed*/;
-const int int yOffset=44;
+const int yOffset=44;
 int color = 0;
 if ((GetPixel(319+xOffset, 439+yOffset)&0xE0E0E0) != 0X0) return false;
 if ((GetPixel(319+xOffset, 444+yOffset)&0xE0E0E0) != 0X0) return false;
