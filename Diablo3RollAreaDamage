@@ -3348,7 +3348,7 @@ bool Win32GDI::RollingOption03IsAreaDamage(void)
 /************************************************************************/
 
 
-bool Win32GDI::RollingOption01Is19Percent(int offset)
+bool Win32GDI::RollingOption01Is19PercentBaseAreaDamage(int offset)
 {
 //const int				rol_01_x_left = 196;
 //const int				rol_01_y_top = 388/*Fixed*/;
@@ -4001,26 +4001,26 @@ color = (GetPixel(225+offset, 397)&0xE0E0E0);if (color != 0X0 && color != 0X6040
 color = (GetPixel(225+offset, 398)&0xE0E0E0);if (color != 0X0 && color != 0XE0A080 && color != 0XE0E0E0) return false;
 return true;
 }
-bool Win32GDI::RollingOption01Is19Percent(void)
+bool Win32GDI::RollingOption01Is19PercentBaseAreaDamage(void)
 {
 	int right_limit = 50;
 	for (int i = 0; i < right_limit; i++)
 	{
-		if (RollingOption01Is19Percent(i) || RollingOption01Is19Percent(-i))
+		if (RollingOption01Is19PercentBaseAreaDamage(i) || RollingOption01Is19PercentBaseAreaDamage(-i))
 		{
 			return true;
 		}
 	}
 	for (int j = -right_limit; j  > -150; j--)
 	{
-		if (RollingOption01Is19Percent(j))
+		if (RollingOption01Is19PercentBaseAreaDamage(j))
 		{
 			return true;
 		}
 	}
 	return false;
 }
-bool Win32GDI::RollingOption02Is19Percent(int offset)
+bool Win32GDI::RollingOption02Is19PercentBaseAreaDamage(int offset)
 {
 //const int				rol_02_x_left = 196;
 //const int				rol_02_y_top = 434/*Fixed*/;
@@ -4373,19 +4373,19 @@ color = (GetPixel(221+offset, 442)&0xE0E0E0);if (color != 0X400000 && color != 0
 color = (GetPixel(224+offset, 443)&0xE0E0E0);if (color != 0XE04040 && color != 0XE04060 && color != 0XE0E0E0) return false;
 return true;
 }
-bool Win32GDI::RollingOption02Is19Percent(void)
+bool Win32GDI::RollingOption02Is19PercentBaseAreaDamage(void)
 {
 	int right_limit = 50;
 	for (int i = 0; i < right_limit; i++)
 	{
-		if (RollingOption02Is19Percent(i) || RollingOption02Is19Percent(-i))
+		if (RollingOption02Is19PercentBaseAreaDamage(i) || RollingOption02Is19PercentBaseAreaDamage(-i))
 		{
 			return true;
 		}
 	}
 	for (int j = -right_limit; j  > -150; j--)
 	{
-		if (RollingOption02Is19Percent(j))
+		if (RollingOption02Is19PercentBaseAreaDamage(j))
 		{
 			return true;
 		}
@@ -4393,6 +4393,384 @@ bool Win32GDI::RollingOption02Is19Percent(void)
 	return false;
 }
 
+
+
+
+
+bool Win32GDI::RollingOption02Is11PercentBaseAreaDamage(int offset)
+{
+//const int				rol_02_x_left = 196;
+//const int				rol_02_y_top = 434/*Fixed*/;
+//const int				rol_02_x_right = 226;
+//const int				rol_02_y_bottom = 445/*Fixed*/;
+int color = 0;
+color = (GetPixel(196+offset, 434)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
+if ((GetPixel(197+offset, 436)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(197+offset, 437)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(198+offset, 436)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(198+offset, 437)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(198+offset, 438)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(198+offset, 439)&0xE0E0E0) != 0X0) return false;
+color = (GetPixel(205+offset, 434)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
+if ((GetPixel(207+offset, 436)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(207+offset, 437)&0xE0E0E0) != 0X0) return false;
+color = (GetPixel(214+offset, 437)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
+if ((GetPixel(215+offset, 434)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(215+offset, 435)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(216+offset, 434)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(216+offset, 435)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(216+offset, 436)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(217+offset, 438)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(217+offset, 439)&0xE0E0E0) != 0X0) return false;
+color = (GetPixel(218+offset, 436)&0xE0E0E0);if (color != 0X602020 && color != 0X802020 && color != 0X808080) return false;
+if ((GetPixel(218+offset, 437)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(218+offset, 438)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(219+offset, 434)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(219+offset, 435)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(219+offset, 436)&0xE0E0E0) != 0X0) return false;
+color = (GetPixel(219+offset, 440)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
+if ((GetPixel(219+offset, 441)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(219+offset, 442)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(220+offset, 434)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(220+offset, 439)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(220+offset, 440)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(220+offset, 441)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(220+offset, 442)&0xE0E0E0) != 0X0) return false;
+color = (GetPixel(221+offset, 436)&0xE0E0E0);if (color != 0X402020 && color != 0X602020 && color != 0X806060) return false;
+if ((GetPixel(221+offset, 437)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(221+offset, 438)&0xE0E0E0) != 0X0) return false;
+color = (GetPixel(221+offset, 442)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
+if ((GetPixel(221+offset, 443)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(222+offset, 436)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(222+offset, 437)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(223+offset, 437)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(223+offset, 440)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(223+offset, 441)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(224+offset, 440)&0xE0E0E0) != 0X0) return false;
+if ((GetPixel(224+offset, 441)&0xE0E0E0) != 0X0) return false;
+color = (GetPixel(224+offset, 443)&0xE0E0E0);if (color != 0XE04040 && color != 0XE04060 && color != 0XE0E0E0) return false;
+color = (GetPixel(196+offset, 434)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
+color = (GetPixel(196+offset, 435)&0xE0E0E0);if (color != 0X200000 && color != 0X404040) return false;
+color = (GetPixel(196+offset, 436)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(196+offset, 437)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(196+offset, 438)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(196+offset, 439)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(196+offset, 440)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(196+offset, 441)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(196+offset, 442)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(196+offset, 443)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(196+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(197+offset, 434)&0xE0E0E0);if (color != 0XC04040 && color != 0XC0C0C0) return false;
+color = (GetPixel(197+offset, 435)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(197+offset, 438)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(197+offset, 439)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(197+offset, 440)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(197+offset, 441)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(197+offset, 442)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(197+offset, 443)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(197+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(198+offset, 434)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(198+offset, 435)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(198+offset, 440)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(198+offset, 441)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(198+offset, 442)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(198+offset, 443)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(198+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(199+offset, 434)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(199+offset, 435)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(199+offset, 436)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(199+offset, 437)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(199+offset, 438)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(199+offset, 439)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(199+offset, 440)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(199+offset, 441)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(199+offset, 442)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(199+offset, 443)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(199+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(200+offset, 434)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(200+offset, 435)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(200+offset, 436)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(200+offset, 437)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(200+offset, 438)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(200+offset, 439)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(200+offset, 440)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(200+offset, 441)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(200+offset, 442)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(200+offset, 443)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(200+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(201+offset, 434)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(201+offset, 435)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(201+offset, 436)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(201+offset, 437)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(201+offset, 438)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(201+offset, 439)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(201+offset, 440)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(201+offset, 441)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(201+offset, 442)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(201+offset, 443)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(201+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(202+offset, 434)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(202+offset, 435)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(202+offset, 436)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(202+offset, 437)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(202+offset, 438)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(202+offset, 439)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(202+offset, 440)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(202+offset, 441)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(202+offset, 442)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(202+offset, 443)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(202+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(203+offset, 434)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(203+offset, 435)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(203+offset, 436)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(203+offset, 437)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(203+offset, 438)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(203+offset, 439)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(203+offset, 440)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(203+offset, 441)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(203+offset, 442)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(203+offset, 443)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(203+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(204+offset, 434)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(204+offset, 435)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(204+offset, 436)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(204+offset, 437)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(204+offset, 438)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(204+offset, 439)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(204+offset, 440)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(204+offset, 441)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(204+offset, 442)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(204+offset, 443)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(204+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(205+offset, 434)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
+color = (GetPixel(205+offset, 435)&0xE0E0E0);if (color != 0X200000 && color != 0X604040) return false;
+color = (GetPixel(205+offset, 436)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(205+offset, 437)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(205+offset, 438)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(205+offset, 439)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(205+offset, 440)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(205+offset, 441)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(205+offset, 442)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(205+offset, 443)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(205+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(206+offset, 434)&0xE0E0E0);if (color != 0XC04040 && color != 0XC0C0C0) return false;
+color = (GetPixel(206+offset, 435)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(206+offset, 436)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(206+offset, 437)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(206+offset, 438)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(206+offset, 439)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(206+offset, 440)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(206+offset, 441)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(206+offset, 442)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(206+offset, 443)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(206+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(207+offset, 434)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(207+offset, 435)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(207+offset, 438)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(207+offset, 439)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(207+offset, 440)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(207+offset, 441)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(207+offset, 442)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(207+offset, 443)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(207+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(208+offset, 434)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(208+offset, 435)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(208+offset, 436)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(208+offset, 437)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(208+offset, 438)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(208+offset, 439)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(208+offset, 440)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(208+offset, 441)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(208+offset, 442)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(208+offset, 443)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(208+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(209+offset, 434)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(209+offset, 435)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(209+offset, 436)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(209+offset, 437)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(209+offset, 438)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(209+offset, 439)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(209+offset, 440)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(209+offset, 441)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(209+offset, 442)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(209+offset, 443)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(209+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(210+offset, 434)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(210+offset, 435)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(210+offset, 436)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(210+offset, 437)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(210+offset, 438)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(210+offset, 439)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(210+offset, 440)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(210+offset, 441)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(210+offset, 442)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(210+offset, 443)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(210+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(211+offset, 434)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(211+offset, 435)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(211+offset, 436)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(211+offset, 437)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(211+offset, 438)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(211+offset, 439)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(211+offset, 440)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(211+offset, 441)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(211+offset, 442)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(211+offset, 443)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(211+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(212+offset, 434)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(212+offset, 435)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(212+offset, 436)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(212+offset, 437)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(212+offset, 438)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(212+offset, 439)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(212+offset, 440)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(212+offset, 441)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(212+offset, 442)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(212+offset, 443)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(212+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(213+offset, 434)&0xE0E0E0);if (color != 0X602020 && color != 0X806080) return false;
+color = (GetPixel(213+offset, 435)&0xE0E0E0);if (color != 0X602020 && color != 0X806080) return false;
+color = (GetPixel(213+offset, 436)&0xE0E0E0);if (color != 0X200000 && color != 0X402040) return false;
+color = (GetPixel(213+offset, 437)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(213+offset, 438)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(213+offset, 439)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(213+offset, 440)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(213+offset, 441)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(213+offset, 442)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(213+offset, 443)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(213+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(214+offset, 434)&0xE0E0E0);if (color != 0XA04040 && color != 0XC0A0A0) return false;
+color = (GetPixel(214+offset, 435)&0xE0E0E0);if (color != 0XA04040 && color != 0XA0A0A0) return false;
+color = (GetPixel(214+offset, 436)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(214+offset, 437)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
+color = (GetPixel(214+offset, 438)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(214+offset, 439)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(214+offset, 440)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(214+offset, 441)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(214+offset, 442)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(214+offset, 443)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(214+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(215+offset, 436)&0xE0E0E0);if (color != 0X400000 && color != 0X604060) return false;
+color = (GetPixel(215+offset, 437)&0xE0E0E0);if (color != 0XC04040 && color != 0XE0C0E0) return false;
+color = (GetPixel(215+offset, 438)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(215+offset, 439)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(215+offset, 440)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(215+offset, 441)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(215+offset, 442)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(215+offset, 443)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(215+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(216+offset, 437)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(216+offset, 438)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(216+offset, 439)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(216+offset, 440)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(216+offset, 441)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(216+offset, 442)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(216+offset, 443)&0xE0E0E0);if (color != 0X402020 && color != 0X604060) return false;
+color = (GetPixel(216+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(217+offset, 434)&0xE0E0E0);if (color != 0X402020 && color != 0X604060) return false;
+color = (GetPixel(217+offset, 435)&0xE0E0E0);if (color != 0X400000 && color != 0X604060) return false;
+color = (GetPixel(217+offset, 436)&0xE0E0E0);if (color != 0XA04040 && color != 0XC0C0C0) return false;
+color = (GetPixel(217+offset, 437)&0xE0E0E0);if (color != 0X802020 && color != 0XA080A0) return false;
+color = (GetPixel(217+offset, 440)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(217+offset, 441)&0xE0E0E0);if (color != 0X400000 && color != 0X604060) return false;
+color = (GetPixel(217+offset, 442)&0xE0E0E0);if (color != 0XC04040 && color != 0XC0C0C0) return false;
+color = (GetPixel(217+offset, 443)&0xE0E0E0);if (color != 0XA04040 && color != 0XC0A0C0) return false;
+color = (GetPixel(217+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(218+offset, 434)&0xE0E0E0);if (color != 0XC04040 && color != 0XC0C0C0) return false;
+color = (GetPixel(218+offset, 435)&0xE0E0E0);if (color != 0XC04040 && color != 0XC0C0C0) return false;
+color = (GetPixel(218+offset, 436)&0xE0E0E0);if (color != 0X602020 && color != 0X802020 && color != 0X808080) return false;
+color = (GetPixel(218+offset, 439)&0xE0E0E0);if (color != 0X200000 && color != 0X604040) return false;
+color = (GetPixel(218+offset, 440)&0xE0E0E0);if (color != 0XA04040 && color != 0XC0C0C0) return false;
+color = (GetPixel(218+offset, 441)&0xE0E0E0);if (color != 0XC04040 && color != 0XC0C0C0) return false;
+color = (GetPixel(218+offset, 442)&0xE0E0E0);if (color != 0X200000 && color != 0X604040) return false;
+color = (GetPixel(218+offset, 443)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(218+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(219+offset, 437)&0xE0E0E0);if (color != 0X200000 && color != 0X404040) return false;
+color = (GetPixel(219+offset, 438)&0xE0E0E0);if (color != 0XA04040 && color != 0XC0A0C0) return false;
+color = (GetPixel(219+offset, 439)&0xE0E0E0);if (color != 0XC04040 && color != 0XC0C0C0) return false;
+color = (GetPixel(219+offset, 440)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
+color = (GetPixel(219+offset, 443)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(219+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(220+offset, 435)&0xE0E0E0);if (color != 0X200000 && color != 0X402040) return false;
+color = (GetPixel(220+offset, 436)&0xE0E0E0);if (color != 0XA04040 && color != 0XA0A0A0) return false;
+color = (GetPixel(220+offset, 437)&0xE0E0E0);if (color != 0XC04040 && color != 0XC0C0C0) return false;
+color = (GetPixel(220+offset, 438)&0xE0E0E0);if (color != 0X402020 && color != 0X606060) return false;
+color = (GetPixel(220+offset, 443)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(220+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(221+offset, 434)&0xE0E0E0);if (color != 0XA04040 && color != 0XA0A0A0) return false;
+color = (GetPixel(221+offset, 435)&0xE0E0E0);if (color != 0XC04040 && color != 0XE0C0E0) return false;
+color = (GetPixel(221+offset, 436)&0xE0E0E0);if (color != 0X402020 && color != 0X602020 && color != 0X806060) return false;
+color = (GetPixel(221+offset, 439)&0xE0E0E0);if (color != 0X402020 && color != 0X604060) return false;
+color = (GetPixel(221+offset, 440)&0xE0E0E0);if (color != 0XA04040 && color != 0XA0A0A0) return false;
+color = (GetPixel(221+offset, 441)&0xE0E0E0);if (color != 0XA04040 && color != 0XA0A0A0) return false;
+color = (GetPixel(221+offset, 442)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
+color = (GetPixel(221+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(222+offset, 434)&0xE0E0E0);if (color != 0X602020 && color != 0X806080) return false;
+color = (GetPixel(222+offset, 435)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(222+offset, 438)&0xE0E0E0);if (color != 0X602020 && color != 0X806080) return false;
+color = (GetPixel(222+offset, 439)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(222+offset, 440)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(222+offset, 441)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(222+offset, 442)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(222+offset, 443)&0xE0E0E0);if (color != 0X602020 && color != 0X806080) return false;
+color = (GetPixel(222+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(223+offset, 434)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(223+offset, 435)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(223+offset, 436)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(223+offset, 438)&0xE0E0E0);if (color != 0XC04040 && color != 0XE0E0E0) return false;
+color = (GetPixel(223+offset, 439)&0xE0E0E0);if (color != 0X402020 && color != 0X604060) return false;
+color = (GetPixel(223+offset, 442)&0xE0E0E0);if (color != 0X402020 && color != 0X606060) return false;
+color = (GetPixel(223+offset, 443)&0xE0E0E0);if (color != 0XE04040 && color != 0XE0E0E0) return false;
+color = (GetPixel(223+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(224+offset, 434)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(224+offset, 435)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(224+offset, 436)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(224+offset, 437)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(224+offset, 438)&0xE0E0E0);if (color != 0XE04040 && color != 0XE0E0E0) return false;
+color = (GetPixel(224+offset, 439)&0xE0E0E0);if (color != 0X402020 && color != 0X604060) return false;
+color = (GetPixel(224+offset, 442)&0xE0E0E0);if (color != 0X402020 && color != 0X606060) return false;
+color = (GetPixel(224+offset, 443)&0xE0E0E0);if (color != 0XE04040 && color != 0XE04060 && color != 0XE0E0E0) return false;
+color = (GetPixel(224+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(225+offset, 434)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(225+offset, 435)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(225+offset, 436)&0xE0E0E0);if (color != 0X0 && color != 0X200020) return false;
+color = (GetPixel(225+offset, 437)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(225+offset, 438)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(225+offset, 439)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(225+offset, 440)&0xE0E0E0);if (color != 0X602020 && color != 0X806080) return false;
+color = (GetPixel(225+offset, 441)&0xE0E0E0);if (color != 0X602020 && color != 0X808080) return false;
+color = (GetPixel(225+offset, 442)&0xE0E0E0);if (color != 0XE06060 && color != 0XE0E0E0) return false;
+color = (GetPixel(225+offset, 443)&0xE0E0E0);if (color != 0X602020 && color != 0X806080) return false;
+color = (GetPixel(225+offset, 444)&0xE0E0E0);if (color != 0X0 && color != 0X200000) return false;
+color = (GetPixel(196+offset, 434)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
+color = (GetPixel(205+offset, 434)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
+color = (GetPixel(214+offset, 437)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
+color = (GetPixel(218+offset, 436)&0xE0E0E0);if (color != 0X602020 && color != 0X802020 && color != 0X808080) return false;
+color = (GetPixel(219+offset, 440)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
+color = (GetPixel(221+offset, 436)&0xE0E0E0);if (color != 0X402020 && color != 0X602020 && color != 0X806060) return false;
+color = (GetPixel(221+offset, 442)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
+color = (GetPixel(224+offset, 443)&0xE0E0E0);if (color != 0XE04040 && color != 0XE04060 && color != 0XE0E0E0) return false;
+return true;
+}
+bool Win32GDI::RollingOption02Is11PercentBaseAreaDamage(void)
+{
+	int right_limit = 50;
+	for (int i = 0; i < right_limit; i++)
+	{
+		if (RollingOption02Is11PercentBaseAreaDamage(i) || RollingOption02Is11PercentBaseAreaDamage(-i))
+		{
+			return true;
+		}
+	}
+	for (int j = -right_limit; j  > -150; j--)
+	{
+		if (RollingOption02Is11PercentBaseAreaDamage(j))
+		{
+			return true;
+		}
+	}
+	return false;
+}
 
 
 
