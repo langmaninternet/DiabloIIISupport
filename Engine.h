@@ -198,7 +198,8 @@ public:
 	bool				RollingOption02IsIntelligence(int);
 	bool				RollingOption02IsIntelligence(void);
 
-
+	bool				RollingOption02IsVitality(int);
+	bool				RollingOption02IsVitality(void);
 	bool				RollingOption03IsVitality(int);
 	bool				RollingOption03IsVitality(void);
 
