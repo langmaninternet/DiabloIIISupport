@@ -897,7 +897,9 @@ ROLL_ITEM get_roll_item(void)
 {
 	if (w32gdi.RollingItemIsFocus()) return ROLL_ITEM_FOCUS;
 	//if (w32gdi.RollingItemIsCoE()) return ROLL_ITEM_COE;
+	
 	if (w32gdi.RollingItemIsHuntersWrath()) return ROLL_ITEM_HUNTERS_WRATH;
+	if (w32gdi.RollingItemIsColdCathodeTrousers()) return ROLL_ITEM_COLD_CATHODE_TROUSERS;
 	return ROLL_ITEM_UNKNOWN;
 }
 
@@ -1104,7 +1106,8 @@ void do_roll(ROLL_ITEM item,
 	ROLL_OPTION option_02, ROLL_PARAMETER parameter_02,
 	ROLL_OPTION option_03, ROLL_PARAMETER parameter_03,
 	RESOURCE_STATUS resource_status,
-	GOLD_STATUS gold_status)
+	GOLD_STATUS gold_status,
+	bool force_to_dps_build)
 {
 
 
@@ -1114,7 +1117,10 @@ void do_roll(ROLL_ITEM item,
 	{
 		ROLL_DESCISION final_decision = DESCISION_NOTHING;
 
-		if (item == ROLL_ITEM_HUNTERS_WRATH && (is_dh_skill(option_01) || is_dh_skill(option_02) || is_dh_skill(option_03)))
+		if ((item == ROLL_ITEM_HUNTERS_WRATH 
+			|| (force_to_dps_build && item == ROLL_ITEM_COLD_CATHODE_TROUSERS)
+			)
+			&& (is_dh_skill(option_01) || is_dh_skill(option_02) || is_dh_skill(option_03)))
 		{// Need HUNGERING_ARROW
 
 			// HUNGERING_ARROW 15% - kết thúc 

@@ -24,6 +24,8 @@
 #define IDC_SKILL03TEXT                 1024
 #define IDC_SKILL04TEXT                 1025
 #define IDC_HEALINGCHECK2               1026
+#define IDC_ENABLE_REROLL_SUPPORT2      1026
+#define IDC_FORCE_TO_DPS                1026
 #define IDC_SKILL01TEXTMS               1027
 #define IDC_SKILL02TEXTMS               1028
 #define IDC_SKILL03TEXTMS               1029

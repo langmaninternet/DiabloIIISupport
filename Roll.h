@@ -178,8 +178,10 @@ enum ROLL_ITEM
 	ROLL_ITEM_UNKNOWN,
 	ROLL_ITEM_FOCUS,
 	ROLL_ITEM_COE,
-	ROLL_ITEM_HUNTERS_WRATH,
 
+
+	ROLL_ITEM_HUNTERS_WRATH,
+	ROLL_ITEM_COLD_CATHODE_TROUSERS,
 };
 
 enum RESOURCE_STATUS
@@ -235,7 +237,8 @@ void do_roll(ROLL_ITEM item,
 	ROLL_OPTION option_02, ROLL_PARAMETER parameter_02,
 	ROLL_OPTION option_03, ROLL_PARAMETER parameter_03,
 	RESOURCE_STATUS resource_status,
-	GOLD_STATUS gold_status);
+	GOLD_STATUS gold_status,
+	bool force_to_dps_build);
 
 
 

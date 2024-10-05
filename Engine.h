@@ -281,9 +281,11 @@ public:
 
 
 	bool				RollingItemIsFocus(void);
+
+
+
 	bool				RollingItemIsHuntersWrath(void);
-
-
+	bool				RollingItemIsColdCathodeTrousers(void);
 
 
 

@@ -116,6 +116,7 @@ time_t					last_main_timer;
 extern Win32GDI			w32gdi;
 
 
+
 /************************************************************************/
 /* Process Function                                                     */
 /************************************************************************/
@@ -681,7 +682,7 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 	}
 
 
-
+	GetDlgItem(IDC_FORCE_TO_DPS)->EnableWindow(d3Config.enableRerollSupport);
 
 
 
@@ -1328,8 +1329,10 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				roll_text += get_gold_info(gold_status);
 				roll_text += L"\r\n\r\n";
 
+				CButton* m_ctlCheck = (CButton*)GetDlgItem(IDC_FORCE_TO_DPS);
+				int ChkBox = m_ctlCheck->GetCheck();
 				GetDlgItem(IDC_REROL_SUPPORT_DETAIL)->SetWindowTextW(roll_text);
-				do_roll(item, option_01, parameter_01, option_02, parameter_02, option_03, parameter_03, resource_status, gold_status);
+				do_roll(item, option_01, parameter_01, option_02, parameter_02, option_03, parameter_03, resource_status, gold_status,(ChkBox == BST_CHECKED));
 			}
 			flagOnRollingProcess = false;
 		}
@@ -1812,5 +1815,6 @@ void CDiabloIIISupportDlg::OnClickedRerollSupportCheck()
 {
 	d3Config.enableRerollSupport = !d3Config.enableRerollSupport;
 	GetDlgItem(IDC_REROL_SUPPORT_DETAIL)->EnableWindow(d3Config.enableRerollSupport);
+	GetDlgItem(IDC_FORCE_TO_DPS)->EnableWindow(d3Config.enableRerollSupport);
 	OnSaveConfig();
 }
