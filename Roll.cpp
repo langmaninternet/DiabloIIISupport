@@ -778,7 +778,7 @@ ROLL_PARAMETER get_roll_parameter_02(void)
 	//if (w32gdi.RollingOption02Is22Percent()) return ROLL_PARAMETER_22_PERCENT;
 	//if (w32gdi.RollingOption02Is21Percent()) return ROLL_PARAMETER_21_PERCENT;
 	//if (w32gdi.RollingOption02Is20Percent()) return ROLL_PARAMETER_20_PERCENT;
-	//if (w32gdi.RollingOption02Is19Percent()) return ROLL_PARAMETER_19_PERCENT;
+	if (w32gdi.RollingOption02Is19Percent()) return ROLL_PARAMETER_19_PERCENT;
 	//if (w32gdi.RollingOption02Is18Percent()) return ROLL_PARAMETER_18_PERCENT;
 	//if (w32gdi.RollingOption02Is17Percent()) return ROLL_PARAMETER_17_PERCENT;
 	//if (w32gdi.RollingOption02Is16Percent()) return ROLL_PARAMETER_16_PERCENT;
@@ -897,7 +897,7 @@ ROLL_ITEM get_roll_item(void)
 {
 	if (w32gdi.RollingItemIsFocus()) return ROLL_ITEM_FOCUS;
 	//if (w32gdi.RollingItemIsCoE()) return ROLL_ITEM_COE;
-	
+
 	if (w32gdi.RollingItemIsHuntersWrath()) return ROLL_ITEM_HUNTERS_WRATH;
 	if (w32gdi.RollingItemIsColdCathodeTrousers()) return ROLL_ITEM_COLD_CATHODE_TROUSERS;
 	return ROLL_ITEM_UNKNOWN;
@@ -968,8 +968,21 @@ bool is_dps_ring(ROLL_ITEM x)
 {
 	return (x == ROLL_ITEM_FOCUS || x == ROLL_ITEM_COE);
 }
+bool is_option__less_dps_priority_than_area_damage(ROLL_OPTION x)
+{
+	return (x == ROLL_OPTION_STRENGTH
+		|| x == ROLL_OPTION_DEXTERITY
+		|| x == ROLL_OPTION_INTELLIGENCE
+		|| x == ROLL_OPTION_VITALITY
+		|| x == ROLL_OPTION_LIFE_PERCENT
+		|| x == ROLL_OPTION_LIFE_PER_SECOND
+		|| x == ROLL_OPTION_LIFE_HIT
+		|| x == ROLL_OPTION_ARMOR);
+}
 
-
+/************************************************************************/
+/* Action                                                               */
+/************************************************************************/
 bool is_critical_hit_option(ROLL_OPTION x)
 {
 	return (x == ROLL_OPTION_CRITICAL_HIT_CHANCE
@@ -1030,6 +1043,24 @@ bool is_10_to_15_percent(ROLL_PARAMETER x)
 		|| x == ROLL_PARAMETER_14_PERCENT
 		|| x == ROLL_PARAMETER_15_PERCENT);
 }
+bool is_10_to_20_percent(ROLL_PARAMETER x)
+{
+	return (x == ROLL_PARAMETER_10_PERCENT
+		|| x == ROLL_PARAMETER_11_PERCENT
+		|| x == ROLL_PARAMETER_12_PERCENT
+		|| x == ROLL_PARAMETER_13_PERCENT
+		|| x == ROLL_PARAMETER_14_PERCENT
+		|| x == ROLL_PARAMETER_15_PERCENT
+		|| x == ROLL_PARAMETER_16_PERCENT
+		|| x == ROLL_PARAMETER_17_PERCENT
+		|| x == ROLL_PARAMETER_18_PERCENT
+		|| x == ROLL_PARAMETER_19_PERCENT
+		|| x == ROLL_PARAMETER_20_PERCENT
+		);
+}
+
+
+
 void start_roll(void)
 {
 	// Chọn nút select
@@ -1117,7 +1148,7 @@ void do_roll(ROLL_ITEM item,
 	{
 		ROLL_DESCISION final_decision = DESCISION_NOTHING;
 
-		if ((item == ROLL_ITEM_HUNTERS_WRATH 
+		if ((item == ROLL_ITEM_HUNTERS_WRATH
 			|| (force_to_dps_build && item == ROLL_ITEM_COLD_CATHODE_TROUSERS)
 			)
 			&& (is_dh_skill(option_01) || is_dh_skill(option_02) || is_dh_skill(option_03)))
@@ -1258,6 +1289,28 @@ void do_roll(ROLL_ITEM item,
 			}
 		}
 
+		// area damage
+		if (force_to_dps_build && final_decision == DESCISION_NOTHING)
+		{
+			if (option_01 == ROLL_OPTION_AREA_DAMAGE
+				&& option_02 == ROLL_OPTION_AREA_DAMAGE
+				&& is_10_to_20_percent(parameter_01)
+				&& is_10_to_20_percent(parameter_02)
+				&& parameter_02 > parameter_01
+				&& is_option__less_dps_priority_than_area_damage(option_03))
+			{
+				final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
+			}
+
+
+			//looking to update area damage
+			else if (option_01 == ROLL_OPTION_AREA_DAMAGE
+				&& is_option__less_dps_priority_than_area_damage(option_02)
+				&& is_option__less_dps_priority_than_area_damage(option_03))
+			{
+				final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+			}
+		}
 
 
 		if (final_decision == DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT)
@@ -1295,6 +1348,18 @@ void do_roll(ROLL_ITEM item,
 	{
 		start_roll();
 	}
+	else if (force_to_dps_build
+		&& option_01 == ROLL_OPTION_AREA_DAMAGE 
+		&& is_10_to_20_percent(parameter_01)
+		&& parameter_01 < ROLL_PARAMETER_20_PERCENT
+		&& w32gdi.D3IsRollWaiting()
+		&& resource_status == RESOURCE_STATUS_FULL_FOR_CLOTHES
+		&& gold_status == GOLD_STATUS_FULL_FOR_ROLLING)
+	{
+		start_roll();
+	}
+
+
 
 
 }
