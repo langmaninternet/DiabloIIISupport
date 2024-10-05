@@ -73,13 +73,33 @@ public:
 
 	bool				RollingOption01Is46Percent(int);
 	bool				RollingOption01Is46Percent(void);
+
+
+
 	bool				RollingOption03Is46Percent(int);
 	bool				RollingOption03Is46Percent(void);
 
 
+	bool				RollingOption01Is45Percent(int);
+	bool				RollingOption01Is45Percent(void);
+
+
+	bool				RollingOption02Is39Percent(int);
+	bool				RollingOption02Is39Percent(void);
+	bool				RollingOption03Is39Percent(int);
+	bool				RollingOption03Is39Percent(void);
+
 
 	bool				RollingOption03Is35Percent(int);
 	bool				RollingOption03Is35Percent(void);
+
+
+
+	bool				RollingOption02Is26Percent(int);
+	bool				RollingOption02Is26Percent(void);
+	bool				RollingOption03Is26Percent(int);
+	bool				RollingOption03Is26Percent(void);
+
 
 
 	bool				RollingOption03Is20PercentBaseAreaDamage(int);
@@ -391,12 +411,12 @@ public:
 	void				DumpSkill04(const char* filePath = "D:\\DumpSkill04.txt", const char* logDumpFolder = "D:\\DumpImage\\");
 
 
-	void				DumpRollOption01(const char* filePath = "D:\\DumpRollItem01.txt", const char* logDumpFolder = "D:\\DumpImage\\");
-	void				DumpRollOption01Ex(const char* filePath = "D:\\DumpRollItem01.txt", const char* logDumpFolder = "D:\\DumpImage\\");
-	void				DumpRollOption02(const char* filePath = "D:\\DumpRollItem02.txt", const char* logDumpFolder = "D:\\DumpImage\\");
-	void				DumpRollOption02Ex(const char* filePath = "D:\\DumpRollItem02.txt", const char* logDumpFolder = "D:\\DumpImage\\");
-	void				DumpRollOption03(const char* filePath = "D:\\DumpRollItem03.txt", const char* logDumpFolder = "D:\\DumpImage\\");
-	void				DumpRollOption03Ex(const char* filePath = "D:\\DumpRollItem03.txt", const char* logDumpFolder = "D:\\DumpImage\\");
+	void				DumpRollOption01(void);
+	void				DumpRollOption01Ex(void);
+	void				DumpRollOption02(void);
+	void				DumpRollOption02Ex(void);
+	void				DumpRollOption03(void);
+	void				DumpRollOption03Ex(void);
 
 #endif
 
