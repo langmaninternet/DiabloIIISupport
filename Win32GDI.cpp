@@ -39,9 +39,9 @@
 //right    970  1006 - Half 1016 1030
 
 
-const int				rol_01_x_left = 196;
+const int				rol_01_x_left = 81;
 const int				rol_01_y_top = 388/*Fixed*/;
-const int				rol_01_x_right = 226;
+const int				rol_01_x_right = 287;
 const int				rol_01_y_bottom = 399/*Fixed*/;
 
 //const int				rol_01_x_left = 196;
@@ -55,9 +55,9 @@ const int				rol_02_y_bottom = 445/*Fixed*/;
 
 
 
-const int				rol_03_x_left = 196;
+const int				rol_03_x_left = 368;
 const int				rol_03_y_top = 476/*Fixed*/;
-const int				rol_03_x_right = 226;
+const int				rol_03_x_right = 403;
 const int				rol_03_y_bottom = 486/*Fixed*/;
 
 extern Win32GDI w32gdi;
@@ -105,12 +105,12 @@ void		QuangBTDumpScreen(void)
 	//w32gdi.DumpSkill03();
 	//w32gdi.DumpSkill04();
 
-	//w32gdi.DumpRollItem01();
+	w32gdi.DumpRollOption01();
 	//w32gdi.DumpRollItem01Ex();
 	//w32gdi.DumpRollItem02();
 	//w32gdi.DumpRollItem02Ex();
 	//w32gdi.DumpRollItem03();
-	w32gdi.DumpRollItem03Ex();
+	//w32gdi.DumpRollItem03Ex();
 
 	//Roll item
 	//w32gdi.DumpRectangle(238, 209, 291, 307);
@@ -345,6 +345,62 @@ void				Win32GDI::SaveSubSreen(const char* filePath, int xleft, int ytop, int xr
 		DeleteDC(MemDC);
 	}
 }
+
+
+void				Win32GDI::SaveSubSreenWithBlur(const char* filePath, int xleft, int ytop, int xright, int ybottom)
+{
+	uint16_t BitsPerPixel = 24;
+	uint32_t Width = xright - xleft;
+	uint32_t Height = ybottom - ytop;
+	BITMAPINFO Info;
+	BITMAPFILEHEADER Header;
+	memset(&Info, 0, sizeof(Info));
+	memset(&Header, 0, sizeof(Header));
+	Info.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+	Info.bmiHeader.biWidth = Width;
+	Info.bmiHeader.biHeight = Height;
+	Info.bmiHeader.biPlanes = 1;
+	Info.bmiHeader.biBitCount = BitsPerPixel;
+	Info.bmiHeader.biCompression = BI_RGB;
+	Info.bmiHeader.biSizeImage = Width * Height * (BitsPerPixel > 24 ? 4 : 3);
+	Header.bfType = 0x4D42;
+	Header.bfOffBits = sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER);
+	char* memPixels = NULL;
+	HDC MemDC = CreateCompatibleDC(hScreenMemDC);
+	if (MemDC != NULL)
+	{
+		HBITMAP hSection = CreateDIBSection(hScreenMemDC, &Info, DIB_RGB_COLORS, (void**)&memPixels, 0, 0);
+		if (hSection != NULL)
+		{
+			HGDIOBJ hgiObject = SelectObject(MemDC, hSection);
+			if (hgiObject != NULL)
+			{
+				BitBlt(MemDC, 0, 0, Width, Height, hScreenMemDC, xleft, ytop, SRCCOPY);
+				for (int ix = xleft; ix < xright; ix++)
+				{
+					for (int iy = ytop; iy < ybottom; iy++)
+					{
+						int color = ::GetPixel(hScreenMemDC, ix, iy);
+						color &= 0xE0E0E0;
+						::SetPixel(hScreenMemDC, ix, iy, color);
+					}
+				}
+				std::fstream hFile(filePath, std::ios::out | std::ios::binary);
+				if (hFile.is_open())
+				{
+					hFile.write((char*)&Header, sizeof(Header));
+					hFile.write((char*)&Info.bmiHeader, sizeof(Info.bmiHeader));
+					hFile.write(memPixels, (((BitsPerPixel * Width + 31) & ~31) / 8) * Height);
+					hFile.close();
+				}
+				DeleteObject(hgiObject);
+			}
+			DeleteObject(hSection);
+		}
+		DeleteDC(MemDC);
+	}
+}
+
 void				Win32GDI::DumpRectangle(int xleft, int ytop, int xright, int ybottom)
 {
 	const char* filePath = "D:\\DumpRectangle.txt";
@@ -937,7 +993,17 @@ void				Win32GDI::DumpSkill04(const char* filePath /*= "D:\\DumpSkill04.txt"*/, 
 	}
 }
 
-void				Win32GDI::DumpRollItem01(const char* filePath, const char* logDumpFolder)
+
+
+
+
+// 0XE0E0E0 == màu trắng
+// 0XE0A080 == màu xám nhạt, chủ xuất hiện ở dòng 1
+// 0XE06060 == màu xám, xuất hiện ở dòng 2, dòng 3
+
+
+
+void				Win32GDI::DumpRollOption01(const char* filePath, const char* logDumpFolder)
 {
 	static int				skill_01_snap_count = 0;
 	static std::set<int>	bitmap_skill_01_data[rol_01_x_right - rol_01_x_left][rol_01_y_bottom - rol_01_y_top];
@@ -950,18 +1016,7 @@ void				Win32GDI::DumpRollItem01(const char* filePath, const char* logDumpFolder
 
 		char bufferDumpFileName[1000] = { 0 };
 		sprintf_s(bufferDumpFileName, 999, "%s\\DS_01_%06d.bmp", logDumpFolder, skill_01_snap_count);
-		SaveSubSreen(bufferDumpFileName, rol_01_x_left, rol_01_y_top, rol_01_x_right, rol_01_y_bottom);
-
-
-		//Copy data to set
-		for (int ix = rol_01_x_left; ix < rol_01_x_right; ix++)
-		{
-			for (int iy = rol_01_y_top; iy < rol_01_y_bottom; iy++)
-			{
-				int color = ::GetPixel(hScreenMemDC, ix, iy);
-				bitmap_skill_01_data[ix - rol_01_x_left][iy - rol_01_y_top].insert(color);
-			}
-		}
+		SaveSubSreenWithBlur(bufferDumpFileName, rol_01_x_left, rol_01_y_top, rol_01_x_right, rol_01_y_bottom);
 
 		//Write to file
 		FILE* logFile = NULL;
@@ -1032,7 +1087,7 @@ void				Win32GDI::DumpRollItem01(const char* filePath, const char* logDumpFolder
 		}
 	}
 }
-void				Win32GDI::DumpRollItem01Ex(const char* filePath, const char* logDumpFolder)
+void				Win32GDI::DumpRollOption01Ex(const char* filePath, const char* logDumpFolder)
 {
 	static int				skill_01_snap_count = 0;
 	static std::set<int>	bitmap_skill_01_data[rol_01_x_right - rol_01_x_left][rol_01_y_bottom - rol_01_y_top];
@@ -1045,7 +1100,7 @@ void				Win32GDI::DumpRollItem01Ex(const char* filePath, const char* logDumpFold
 
 		char bufferDumpFileName[1000] = { 0 };
 		sprintf_s(bufferDumpFileName, 999, "%s\\DS_01EX_%06d.bmp", logDumpFolder, skill_01_snap_count);
-		SaveSubSreen(bufferDumpFileName, rol_01_x_left, rol_01_y_top, rol_01_x_right, rol_01_y_bottom);
+		SaveSubSreenWithBlur(bufferDumpFileName, rol_01_x_left, rol_01_y_top, rol_01_x_right, rol_01_y_bottom);
 
 
 		//Copy data to set
@@ -1128,7 +1183,7 @@ void				Win32GDI::DumpRollItem01Ex(const char* filePath, const char* logDumpFold
 		}
 	}
 }
-void				Win32GDI::DumpRollItem02(const char* filePath, const char* logDumpFolder)
+void				Win32GDI::DumpRollOption02(const char* filePath, const char* logDumpFolder)
 {
 	static int				skill_02_snap_count = 0;
 	static std::set<int>	bitmap_skill_02_data[rol_02_x_right - rol_02_x_left][rol_02_y_bottom - rol_02_y_top];
@@ -1141,7 +1196,7 @@ void				Win32GDI::DumpRollItem02(const char* filePath, const char* logDumpFolder
 
 		char bufferDumpFileName[1000] = { 0 };
 		sprintf_s(bufferDumpFileName, 999, "%s\\DS_02_%06d.bmp", logDumpFolder, skill_02_snap_count);
-		SaveSubSreen(bufferDumpFileName, rol_02_x_left, rol_02_y_top, rol_02_x_right, rol_02_y_bottom);
+		SaveSubSreenWithBlur(bufferDumpFileName, rol_02_x_left, rol_02_y_top, rol_02_x_right, rol_02_y_bottom);
 
 
 		//Copy data to set
@@ -1223,7 +1278,7 @@ void				Win32GDI::DumpRollItem02(const char* filePath, const char* logDumpFolder
 		}
 	}
 }
-void				Win32GDI::DumpRollItem02Ex(const char* filePath, const char* logDumpFolder)
+void				Win32GDI::DumpRollOption02Ex(const char* filePath, const char* logDumpFolder)
 {
 	static int				skill_02_snap_count = 0;
 	static std::set<int>	bitmap_skill_02_data[rol_02_x_right - rol_02_x_left][rol_02_y_bottom - rol_02_y_top];
@@ -1236,7 +1291,7 @@ void				Win32GDI::DumpRollItem02Ex(const char* filePath, const char* logDumpFold
 
 		char bufferDumpFileName[1000] = { 0 };
 		sprintf_s(bufferDumpFileName, 999, "%s\\DS_02EX_%06d.bmp", logDumpFolder, skill_02_snap_count);
-		SaveSubSreen(bufferDumpFileName, rol_02_x_left, rol_02_y_top, rol_02_x_right, rol_02_y_bottom);
+		SaveSubSreenWithBlur(bufferDumpFileName, rol_02_x_left, rol_02_y_top, rol_02_x_right, rol_02_y_bottom);
 
 
 		//Copy data to set
@@ -1319,7 +1374,7 @@ void				Win32GDI::DumpRollItem02Ex(const char* filePath, const char* logDumpFold
 		}
 	}
 }
-void				Win32GDI::DumpRollItem03(const char* filePath, const char* logDumpFolder)
+void				Win32GDI::DumpRollOption03(const char* filePath, const char* logDumpFolder)
 {
 	static int				skill_03_snap_count = 0;
 	static std::set<int>	bitmap_skill_03_data[rol_03_x_right - rol_03_x_left][rol_03_y_bottom - rol_03_y_top];
@@ -1332,7 +1387,7 @@ void				Win32GDI::DumpRollItem03(const char* filePath, const char* logDumpFolder
 
 		char bufferDumpFileName[1000] = { 0 };
 		sprintf_s(bufferDumpFileName, 999, "%s\\DS_03_%06d.bmp", logDumpFolder, skill_03_snap_count);
-		SaveSubSreen(bufferDumpFileName, rol_03_x_left, rol_03_y_top, rol_03_x_right, rol_03_y_bottom);
+		SaveSubSreenWithBlur(bufferDumpFileName, rol_03_x_left, rol_03_y_top, rol_03_x_right, rol_03_y_bottom);
 
 
 		//Copy data to set
@@ -1414,7 +1469,7 @@ void				Win32GDI::DumpRollItem03(const char* filePath, const char* logDumpFolder
 		}
 	}
 }
-void				Win32GDI::DumpRollItem03Ex(const char* filePath, const char* logDumpFolder)
+void				Win32GDI::DumpRollOption03Ex(const char* filePath, const char* logDumpFolder)
 {
 	static int				skill_03_snap_count = 0;
 	static std::set<int>	bitmap_skill_03_data[rol_03_x_right - rol_03_x_left][rol_03_y_bottom - rol_03_y_top];
@@ -1427,7 +1482,7 @@ void				Win32GDI::DumpRollItem03Ex(const char* filePath, const char* logDumpFold
 
 		char bufferDumpFileName[1000] = { 0 };
 		sprintf_s(bufferDumpFileName, 999, "%s\\DS_03EX_%06d.bmp", logDumpFolder, skill_03_snap_count);
-		SaveSubSreen(bufferDumpFileName, rol_03_x_left, rol_03_y_top, rol_03_x_right, rol_03_y_bottom);
+		SaveSubSreenWithBlur(bufferDumpFileName, rol_03_x_left, rol_03_y_top, rol_03_x_right, rol_03_y_bottom);
 
 
 		//Copy data to set

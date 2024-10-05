@@ -107,6 +107,9 @@ wchar_t* get_roll_name(ROLL_OPTION x)
 	case ROLL_OPTION_LIFE_HIT:
 		return L"Life per hit";
 		break;
+	case ROLL_OPTION_LIFE_KILL:
+		return L"Life per kill";
+		break;
 	case ROLL_OPTION_ARMOR:
 		return L"Armor";
 		break;
@@ -486,6 +489,9 @@ ROLL_OPTION get_roll_option_01(void)
 	// 6. Attack Speed
 	if (w32gdi.RollingOption01IsAttackSpeed()) return ROLL_OPTION_ATTACK_SPEED;
 
+	//7. Life
+	if (w32gdi.RollingOption01IsLifePerKill()) return ROLL_OPTION_LIFE_KILL;
+
 	if (w32gdi.RollingOption01IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
 	if (w32gdi.RollingOption01IsBolas()) return ROLL_OPTION_DHSKILL_BOLAS;
 	if (w32gdi.RollingOption01IsGrenade()) return ROLL_OPTION_DHSKILL_GRENADE;
@@ -533,6 +539,7 @@ ROLL_OPTION get_roll_option_02(void)
 	if (w32gdi.RollingOption02IsLifePerHit()) return ROLL_OPTION_LIFE_HIT;
 
 
+
 	if (w32gdi.RollingOption02IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
 	if (w32gdi.RollingOption02IsBolas()) return ROLL_OPTION_DHSKILL_BOLAS;
 	if (w32gdi.RollingOption02IsGrenade()) return ROLL_OPTION_DHSKILL_GRENADE;
@@ -564,6 +571,9 @@ ROLL_OPTION get_roll_option_03(void)
 	// 5. Reduce	
 	if (w32gdi.RollingOption03IsReduceCooldown()) return ROLL_OPTION_REDUCE_COOLDOWN;
 	if (w32gdi.RollingOption03IsReduceResource()) return ROLL_OPTION_REDUCE_RESOURCE;
+	if (w32gdi.RollingOption03IsReduceMeleeDamage()) return ROLL_OPTION_REDUCE_MELEE_DAMAGE;
+
+
 
 	// 6. Attack Speed
 	if (w32gdi.RollingOption03IsAttackSpeed()) return ROLL_OPTION_ATTACK_SPEED;
@@ -890,6 +900,7 @@ ROLL_PARAMETER get_roll_parameter_03(void)
 	//if (w32gdi.RollingOption03Is10Percent()) return ROLL_PARAMETER_10_PERCENT;
 	//if (w32gdi.RollingOption03Is07Percent()) return ROLL_PARAMETER_07_PERCENT;
 	if (w32gdi.RollingOption03Is06Percent()) return ROLL_PARAMETER_06_PERCENT;
+	if (w32gdi.RollingOption03Is06PercentBaseReduceMelee()) return ROLL_PARAMETER_06_PERCENT;
 	if (w32gdi.RollingOption03Is05d5Percent()) return ROLL_PARAMETER_05_D_5_PERCENT;
 	if (w32gdi.RollingOption03Is05Percent()) return ROLL_PARAMETER_05_PERCENT;
 	return ROLL_PARAMETER_UNKNOWN;
@@ -979,6 +990,7 @@ bool is_option__less_dps_priority_than_area_damage(ROLL_OPTION x)
 		|| x == ROLL_OPTION_LIFE_PERCENT
 		|| x == ROLL_OPTION_LIFE_PER_SECOND
 		|| x == ROLL_OPTION_LIFE_HIT
+		|| x == ROLL_OPTION_LIFE_KILL
 		|| x == ROLL_OPTION_ARMOR);
 }
 

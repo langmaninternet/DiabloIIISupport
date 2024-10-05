@@ -146,6 +146,10 @@ public:
 	bool				RollingOption03Is06Percent(int);
 	bool				RollingOption03Is06Percent(void);
 
+	bool				RollingOption03Is06PercentBaseReduceMelee(int);
+	bool				RollingOption03Is06PercentBaseReduceMelee(void);
+
+
 	bool				RollingOption01Is05Percent(int);
 	bool				RollingOption01Is05Percent(void);
 
@@ -221,6 +225,10 @@ public:
 
 
 	// 5. Reduce
+
+	bool				RollingOption01IsReduceMeleeDamage(void);
+	bool				RollingOption03IsReduceMeleeDamage(void);
+
 	bool				RollingOption02IsReduceCooldown(void);
 	bool				RollingOption03IsReduceCooldown(void);
 
@@ -234,6 +242,18 @@ public:
 	bool				RollingOption02IsAttackSpeed(void);
 	bool				RollingOption03IsAttackSpeed(void);
 
+
+
+	//7. Life 
+
+
+
+
+
+
+
+
+	bool				RollingOption01IsReduceRangedDamage(void);
 
 
 
@@ -254,7 +274,7 @@ public:
 	bool				RollingOption03IsEntanglingShot(void);
 
 
-	bool				RollingOption01IsReduceRangedDamage(void);
+
 
 
 	bool				RollingOption01IsLifePercent(int);
@@ -276,6 +296,8 @@ public:
 	bool				RollingOption03IsLifePerHit(void);
 
 
+	bool				RollingOption01IsLifePerKill(int);
+	bool				RollingOption01IsLifePerKill(void);
 
 
 	bool				RollingOption02IsArmor(int);
@@ -360,6 +382,7 @@ public:
 #ifdef _DEBUG
 	void				SaveScreen(const char* filePath = "D:\\Dump.bmp");
 	void				SaveSubSreen(const char* filePath, int xleft, int ytop, int xright, int ybottom);
+	void				SaveSubSreenWithBlur(const char* filePath, int xleft, int ytop, int xright, int ybottom);
 	void				DumpRectangle(int xleft, int ytop, int xright, int ybottom);
 	void				DumpRectangleEx(int xleft, int ytop, int xright, int ybottom);
 	void				DumpSkill01(const char* filePath = "D:\\DumpSkill01.txt", const char* logDumpFolder = "D:\\DumpImage\\");
@@ -368,12 +391,12 @@ public:
 	void				DumpSkill04(const char* filePath = "D:\\DumpSkill04.txt", const char* logDumpFolder = "D:\\DumpImage\\");
 
 
-	void				DumpRollItem01(const char* filePath = "D:\\DumpRollItem01.txt", const char* logDumpFolder = "D:\\DumpImage\\");
-	void				DumpRollItem01Ex(const char* filePath = "D:\\DumpRollItem01.txt", const char* logDumpFolder = "D:\\DumpImage\\");
-	void				DumpRollItem02(const char* filePath = "D:\\DumpRollItem02.txt", const char* logDumpFolder = "D:\\DumpImage\\");
-	void				DumpRollItem02Ex(const char* filePath = "D:\\DumpRollItem02.txt", const char* logDumpFolder = "D:\\DumpImage\\");
-	void				DumpRollItem03(const char* filePath = "D:\\DumpRollItem03.txt", const char* logDumpFolder = "D:\\DumpImage\\");
-	void				DumpRollItem03Ex(const char* filePath = "D:\\DumpRollItem03.txt", const char* logDumpFolder = "D:\\DumpImage\\");
+	void				DumpRollOption01(const char* filePath = "D:\\DumpRollItem01.txt", const char* logDumpFolder = "D:\\DumpImage\\");
+	void				DumpRollOption01Ex(const char* filePath = "D:\\DumpRollItem01.txt", const char* logDumpFolder = "D:\\DumpImage\\");
+	void				DumpRollOption02(const char* filePath = "D:\\DumpRollItem02.txt", const char* logDumpFolder = "D:\\DumpImage\\");
+	void				DumpRollOption02Ex(const char* filePath = "D:\\DumpRollItem02.txt", const char* logDumpFolder = "D:\\DumpImage\\");
+	void				DumpRollOption03(const char* filePath = "D:\\DumpRollItem03.txt", const char* logDumpFolder = "D:\\DumpImage\\");
+	void				DumpRollOption03Ex(const char* filePath = "D:\\DumpRollItem03.txt", const char* logDumpFolder = "D:\\DumpImage\\");
 
 #endif
 
