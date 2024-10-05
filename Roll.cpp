@@ -678,7 +678,7 @@ ROLL_PARAMETER get_roll_parameter_01(void)
 	//if (w32gdi.RollingOption01Is19Percent()) return ROLL_PARAMETER_19_PERCENT;
 	//if (w32gdi.RollingOption01Is18Percent()) return ROLL_PARAMETER_18_PERCENT;
 	//if (w32gdi.RollingOption01Is17Percent()) return ROLL_PARAMETER_17_PERCENT;
-	//if (w32gdi.RollingOption01Is16Percent()) return ROLL_PARAMETER_16_PERCENT;
+	if (w32gdi.RollingOption01Is16Percent()) return ROLL_PARAMETER_16_PERCENT;
 	if (w32gdi.RollingOption01Is15Percent()) return ROLL_PARAMETER_15_PERCENT;
 	if (w32gdi.RollingOption01Is14Percent()) return ROLL_PARAMETER_14_PERCENT;
 	if (w32gdi.RollingOption01Is13Percent()) return ROLL_PARAMETER_13_PERCENT;

@@ -39,9 +39,9 @@
 //right    970  1006 - Half 1016 1030
 
 
-const int				rol_01_x_left = 80;
+const int				rol_01_x_left = 196;
 const int				rol_01_y_top = 388/*Fixed*/;
-const int				rol_01_x_right = 173;
+const int				rol_01_x_right = 226;
 const int				rol_01_y_bottom = 399/*Fixed*/;
 
 
@@ -107,14 +107,14 @@ void		QuangBTDumpScreen(void)
 	//w32gdi.DumpSkill04();
 
 	//w32gdi.DumpRollItem01();
-	//w32gdi.DumpRollItem01Ex();
+	w32gdi.DumpRollItem01Ex();
 	//w32gdi.DumpRollItem02();
 	//w32gdi.DumpRollItem02Ex();
 	//w32gdi.DumpRollItem03();
 	//w32gdi.DumpRollItem03Ex();
 
 	//Roll item
-	w32gdi.DumpRectangle(238, 209, 291, 307);
+	//w32gdi.DumpRectangle(238, 209, 291, 307);
 
 	//w32gdi.DumpRectangleEx(171, 776, 282, 785);
 
