@@ -770,12 +770,12 @@ ROLL_PARAMETER get_roll_parameter_02(void)
 	//if (w32gdi.RollingOption02Is41Percent()) return ROLL_PARAMETER_41_PERCENT;
 	//if (w32gdi.RollingOption02Is40Percent()) return ROLL_PARAMETER_40_PERCENT;
 	if (w32gdi.RollingOption02Is39Percent()) return ROLL_PARAMETER_39_PERCENT;
-	//if (w32gdi.RollingOption02Is38Percent()) return ROLL_PARAMETER_38_PERCENT;
+	if (w32gdi.RollingOption02Is38Percent()) return ROLL_PARAMETER_38_PERCENT;
 	//if (w32gdi.RollingOption02Is37Percent()) return ROLL_PARAMETER_37_PERCENT;
 	//if (w32gdi.RollingOption02Is36Percent()) return ROLL_PARAMETER_36_PERCENT;
 	//if (w32gdi.RollingOption02Is35Percent()) return ROLL_PARAMETER_35_PERCENT;
 	//if (w32gdi.RollingOption02Is34Percent()) return ROLL_PARAMETER_34_PERCENT;
-	//if (w32gdi.RollingOption02Is33Percent()) return ROLL_PARAMETER_33_PERCENT;
+	if (w32gdi.RollingOption02Is33Percent()) return ROLL_PARAMETER_33_PERCENT;
 	//if (w32gdi.RollingOption02Is32Percent()) return ROLL_PARAMETER_32_PERCENT;
 	if (w32gdi.RollingOption02Is31Percent()) return ROLL_PARAMETER_31_PERCENT;
 	//if (w32gdi.RollingOption02Is30Percent()) return ROLL_PARAMETER_30_PERCENT;
@@ -870,12 +870,12 @@ ROLL_PARAMETER get_roll_parameter_03(void)
 	//if (w32gdi.RollingOption03Is41Percent()) return ROLL_PARAMETER_41_PERCENT;
 	//if (w32gdi.RollingOption03Is40Percent()) return ROLL_PARAMETER_40_PERCENT;
 	if (w32gdi.RollingOption03Is39Percent()) return ROLL_PARAMETER_39_PERCENT;
-	//if (w32gdi.RollingOption03Is38Percent()) return ROLL_PARAMETER_38_PERCENT;
+	if (w32gdi.RollingOption03Is38Percent()) return ROLL_PARAMETER_38_PERCENT;
 	//if (w32gdi.RollingOption03Is37Percent()) return ROLL_PARAMETER_37_PERCENT;
 	//if (w32gdi.RollingOption03Is36Percent()) return ROLL_PARAMETER_36_PERCENT;
 	//if (w32gdi.RollingOption03Is35Percent()) return ROLL_PARAMETER_35_PERCENT;
 	//if (w32gdi.RollingOption03Is34Percent()) return ROLL_PARAMETER_34_PERCENT;
-	//if (w32gdi.RollingOption03Is33Percent()) return ROLL_PARAMETER_33_PERCENT;
+	if (w32gdi.RollingOption03Is33Percent()) return ROLL_PARAMETER_33_PERCENT;
 	//if (w32gdi.RollingOption03Is32Percent()) return ROLL_PARAMETER_32_PERCENT;
 	if (w32gdi.RollingOption03Is31Percent()) return ROLL_PARAMETER_31_PERCENT;
 	//if (w32gdi.RollingOption03Is30Percent()) return ROLL_PARAMETER_30_PERCENT;
@@ -1338,10 +1338,43 @@ void do_roll(ROLL_ITEM item,
 
 
 
-		// Critical hit damage
+		// Critical hit
 		if (force_to_dps_build && final_decision == DESCISION_NOTHING)
 		{
-			if (option_01 == ROLL_OPTION_CRITICAL_HIT_DAMAGE
+			if (option_01 == ROLL_OPTION_CRITICAL_HIT_CHANCE
+				&& is_04_to_06_percent(parameter_01)
+				&& is_not_critical_hit_or_socket_option(option_02)
+				&& is_not_critical_hit_or_socket_option(option_03)
+				)
+			{
+				final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+			}
+			else if (option_01 == ROLL_OPTION_CRITICAL_HIT_CHANCE
+				&& is_04_to_06_percent(parameter_01)
+				&& option_02 == ROLL_OPTION_CRITICAL_HIT_CHANCE
+				&& is_04_to_06_percent(parameter_02)
+				&& is_not_critical_hit_or_socket_option(option_03)
+				)
+			{
+				if (parameter_02 > parameter_01) final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
+				else final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+			}
+			else if (option_01 == ROLL_OPTION_CRITICAL_HIT_CHANCE
+				&& is_04_to_06_percent(parameter_01)
+				&& is_not_critical_hit_or_socket_option(option_02)
+				&& option_03 == ROLL_OPTION_CRITICAL_HIT_CHANCE
+				&& is_04_to_06_percent(parameter_03)
+
+				)
+			{
+				if (parameter_03 > parameter_01) final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
+				else final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+			}
+
+
+
+
+			else if (option_01 == ROLL_OPTION_CRITICAL_HIT_DAMAGE
 				&& is_26_to_50_percent(parameter_01)
 				&& is_not_critical_hit_or_socket_option(option_02)
 				&& is_not_critical_hit_or_socket_option(option_03)
@@ -1359,6 +1392,17 @@ void do_roll(ROLL_ITEM item,
 				if (parameter_02 > parameter_01) final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
 				else final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
 			}
+			else if (option_01 == ROLL_OPTION_CRITICAL_HIT_DAMAGE
+				&& is_26_to_50_percent(parameter_01)
+				&& is_not_critical_hit_or_socket_option(option_02)
+				&& option_03 == ROLL_OPTION_CRITICAL_HIT_DAMAGE
+				&& is_26_to_50_percent(parameter_03)
+				)
+			{
+				if (parameter_03 > parameter_01) final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
+				else final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+			}
+
 
 		}
 
@@ -1437,6 +1481,19 @@ void do_roll(ROLL_ITEM item,
 	{
 		start_roll();
 	}
+
+
+	//Critical hit chance 4 - 6
+	else if (force_to_dps_build
+		&& option_01 == ROLL_OPTION_CRITICAL_HIT_CHANCE
+		&& is_04_to_06_percent(parameter_01)
+		&& parameter_01 < ROLL_PARAMETER_06_PERCENT
+		&& w32gdi.D3IsRollWaiting()
+		&& resource_status == RESOURCE_STATUS_ENOUGH_FOR_JEWELRY)
+	{
+		start_roll();
+	}
+
 
 
 	//Critical hit damage
