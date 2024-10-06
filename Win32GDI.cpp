@@ -48,9 +48,9 @@ const int				rol_01_y_bottom = 399/*Fixed*/;
 //const int				rol_01_y_top = 388/*Fixed*/;
 //const int				rol_01_x_right = 226;
 //const int				rol_01_y_bottom = 399/*Fixed*/;
-const int				rol_02_x_left = 319;
+const int				rol_02_x_left = 274;
 const int				rol_02_y_top = 434/*Fixed*/;
-const int				rol_02_x_right = 362;
+const int				rol_02_x_right = 309;
 const int				rol_02_y_bottom = 445/*Fixed*/;
 
 
@@ -117,9 +117,9 @@ void		QuangBTDumpScreen(void)
 	//w32gdi.DumpSkill04();
 
 	//w32gdi.DumpRollOption01();
-	w32gdi.DumpRollOption01Ex();
+	//w32gdi.DumpRollOption01Ex();
 	//w32gdi.DumpRollOption02();
-	//w32gdi.DumpRollOption02Ex();
+	w32gdi.DumpRollOption02Ex();
 	//w32gdi.DumpRollOption03();
 	//w32gdi.DumpRollOption03Ex();
 

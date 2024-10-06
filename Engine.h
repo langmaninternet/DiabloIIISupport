@@ -164,6 +164,12 @@ public:
 	bool				RollingOption01Is07Percent(int);
 	bool				RollingOption01Is07Percent(void);
 
+
+	bool				RollingOption02Is07PercentBaseAttackSpeed(int);
+	bool				RollingOption02Is07PercentBaseAttackSpeed(void);
+	bool				RollingOption03Is07PercentBaseAttackSpeed(int);
+	bool				RollingOption03Is07PercentBaseAttackSpeed(void);
+
 	bool				RollingOption01Is06Percent(int);
 	bool				RollingOption01Is06Percent(void);
 	bool				RollingOption02Is06Percent(int);

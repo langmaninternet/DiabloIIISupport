@@ -699,6 +699,7 @@ ROLL_PARAMETER get_roll_parameter_01(void)
 	if (w32gdi.RollingOption01Is08Percent()) return ROLL_PARAMETER_08_PERCENT;
 
 	if (w32gdi.RollingOption01Is07Percent()) return ROLL_PARAMETER_07_PERCENT;
+
 	if (w32gdi.RollingOption01Is06Percent()) return ROLL_PARAMETER_06_PERCENT;
 	if (w32gdi.RollingOption01Is05d5Percent()) return ROLL_PARAMETER_05_D_5_PERCENT;
 	if (w32gdi.RollingOption01Is05Percent()) return ROLL_PARAMETER_05_PERCENT;
@@ -800,7 +801,7 @@ ROLL_PARAMETER get_roll_parameter_02(void)
 	if (w32gdi.RollingOption02Is11PercentBaseAreaDamage()) return ROLL_PARAMETER_11_PERCENT;
 
 	if (w32gdi.RollingOption02Is10Percent()) return ROLL_PARAMETER_10_PERCENT;
-	//if (w32gdi.RollingOption02Is07Percent()) return ROLL_PARAMETER_07_PERCENT;
+	if (w32gdi.RollingOption02Is07PercentBaseAttackSpeed()) return ROLL_PARAMETER_07_PERCENT;
 	if (w32gdi.RollingOption02Is06Percent()) return ROLL_PARAMETER_06_PERCENT;
 	if (w32gdi.RollingOption02Is04d5Percent()) return ROLL_PARAMETER_04_D_5_PERCENT;
 	return ROLL_PARAMETER_UNKNOWN;
@@ -898,7 +899,7 @@ ROLL_PARAMETER get_roll_parameter_03(void)
 	if (w32gdi.RollingOption03Is12Percent()) return ROLL_PARAMETER_12_PERCENT;
 	if (w32gdi.RollingOption03Is11Percent()) return ROLL_PARAMETER_11_PERCENT;
 	//if (w32gdi.RollingOption03Is10Percent()) return ROLL_PARAMETER_10_PERCENT;
-	//if (w32gdi.RollingOption03Is07Percent()) return ROLL_PARAMETER_07_PERCENT;
+	if (w32gdi.RollingOption03Is07PercentBaseAttackSpeed()) return ROLL_PARAMETER_07_PERCENT;
 	if (w32gdi.RollingOption03Is06Percent()) return ROLL_PARAMETER_06_PERCENT;
 	if (w32gdi.RollingOption03Is06PercentBaseReduceMelee()) return ROLL_PARAMETER_06_PERCENT;
 	if (w32gdi.RollingOption03Is05d5Percent()) return ROLL_PARAMETER_05_D_5_PERCENT;
