@@ -261,6 +261,8 @@ public:
 
 	bool				RollingOption02IsIntelligence(int);
 	bool				RollingOption02IsIntelligence(void);
+	bool				RollingOption03IsIntelligence(int);
+	bool				RollingOption03IsIntelligence(void);
 
 	bool				RollingOption02IsVitality(int);
 	bool				RollingOption02IsVitality(void);

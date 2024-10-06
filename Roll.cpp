@@ -565,7 +565,7 @@ ROLL_OPTION get_roll_option_03(void)
 
 	//4. Stats
 	if (w32gdi.RollingOption03IsDexterity()) return ROLL_OPTION_DEXTERITY;
-
+	if (w32gdi.RollingOption03IsIntelligence()) return ROLL_OPTION_INTELLIGENCE;
 	if (w32gdi.RollingOption03IsVitality()) return ROLL_OPTION_VITALITY;
 
 	// 5. Reduce	
