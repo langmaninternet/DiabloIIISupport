@@ -777,7 +777,7 @@ ROLL_PARAMETER get_roll_parameter_02(void)
 	//if (w32gdi.RollingOption02Is34Percent()) return ROLL_PARAMETER_34_PERCENT;
 	//if (w32gdi.RollingOption02Is33Percent()) return ROLL_PARAMETER_33_PERCENT;
 	//if (w32gdi.RollingOption02Is32Percent()) return ROLL_PARAMETER_32_PERCENT;
-	//if (w32gdi.RollingOption02Is31Percent()) return ROLL_PARAMETER_31_PERCENT;
+	if (w32gdi.RollingOption02Is31Percent()) return ROLL_PARAMETER_31_PERCENT;
 	//if (w32gdi.RollingOption02Is30Percent()) return ROLL_PARAMETER_30_PERCENT;
 	//if (w32gdi.RollingOption02Is29Percent()) return ROLL_PARAMETER_29_PERCENT;
 	//if (w32gdi.RollingOption02Is28Percent()) return ROLL_PARAMETER_28_PERCENT;
@@ -877,7 +877,7 @@ ROLL_PARAMETER get_roll_parameter_03(void)
 	//if (w32gdi.RollingOption03Is34Percent()) return ROLL_PARAMETER_34_PERCENT;
 	//if (w32gdi.RollingOption03Is33Percent()) return ROLL_PARAMETER_33_PERCENT;
 	//if (w32gdi.RollingOption03Is32Percent()) return ROLL_PARAMETER_32_PERCENT;
-	//if (w32gdi.RollingOption03Is31Percent()) return ROLL_PARAMETER_31_PERCENT;
+	if (w32gdi.RollingOption03Is31Percent()) return ROLL_PARAMETER_31_PERCENT;
 	//if (w32gdi.RollingOption03Is30Percent()) return ROLL_PARAMETER_30_PERCENT;
 	//if (w32gdi.RollingOption03Is29Percent()) return ROLL_PARAMETER_29_PERCENT;
 	//if (w32gdi.RollingOption03Is28Percent()) return ROLL_PARAMETER_28_PERCENT;
