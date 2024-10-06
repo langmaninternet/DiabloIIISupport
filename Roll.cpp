@@ -527,7 +527,7 @@ ROLL_OPTION get_roll_option_02(void)
 
 	// 5. Reduce
 	if (w32gdi.RollingOption02IsReduceResource()) return ROLL_OPTION_REDUCE_RESOURCE;
-
+	if (w32gdi.RollingOption02IsReduceCooldown()) return ROLL_OPTION_REDUCE_COOLDOWN;
 
 	// 6. Attack Speed
 	if (w32gdi.RollingOption02IsAttackSpeed()) return ROLL_OPTION_ATTACK_SPEED;
