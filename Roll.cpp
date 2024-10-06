@@ -936,6 +936,9 @@ wchar_t* get_resource_info(RESOURCE_STATUS x)
 	case RESOURCE_STATUS_FULL_FOR_CLOTHES:
 		return L"Full for clothes";
 		break;
+	case RESOURCE_STATUS_ENOUGH_FOR_JEWELRY:
+		return L"Enough for jewelry";
+		break;
 	default:
 		return L"-";
 		break;
