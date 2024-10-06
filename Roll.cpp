@@ -921,6 +921,7 @@ ROLL_ITEM get_roll_item(void)
 RESOURCE_STATUS get_resource_status(void)
 {
 	if (w32gdi.IsFullResourceForClothes()) return RESOURCE_STATUS_FULL_FOR_CLOTHES;
+	if (w32gdi.IsEnoughResourceForJewelry()) return RESOURCE_STATUS_ENOUGH_FOR_JEWELRY;
 
 	return RESOURCE_STATUS_UNKNOWN;
 }
@@ -1073,7 +1074,35 @@ bool is_10_to_20_percent(ROLL_PARAMETER x)
 		|| x == ROLL_PARAMETER_20_PERCENT
 		);
 }
-
+bool is_26_to_50_percent(ROLL_PARAMETER x)
+{
+	return (x == ROLL_PARAMETER_26_PERCENT
+		|| x == ROLL_PARAMETER_27_PERCENT
+		|| x == ROLL_PARAMETER_28_PERCENT
+		|| x == ROLL_PARAMETER_29_PERCENT
+		|| x == ROLL_PARAMETER_30_PERCENT
+		|| x == ROLL_PARAMETER_31_PERCENT
+		|| x == ROLL_PARAMETER_32_PERCENT
+		|| x == ROLL_PARAMETER_33_PERCENT
+		|| x == ROLL_PARAMETER_34_PERCENT
+		|| x == ROLL_PARAMETER_35_PERCENT
+		|| x == ROLL_PARAMETER_36_PERCENT
+		|| x == ROLL_PARAMETER_37_PERCENT
+		|| x == ROLL_PARAMETER_38_PERCENT
+		|| x == ROLL_PARAMETER_39_PERCENT
+		|| x == ROLL_PARAMETER_40_PERCENT
+		|| x == ROLL_PARAMETER_41_PERCENT
+		|| x == ROLL_PARAMETER_42_PERCENT
+		|| x == ROLL_PARAMETER_43_PERCENT
+		|| x == ROLL_PARAMETER_44_PERCENT
+		|| x == ROLL_PARAMETER_45_PERCENT
+		|| x == ROLL_PARAMETER_46_PERCENT
+		|| x == ROLL_PARAMETER_47_PERCENT
+		|| x == ROLL_PARAMETER_48_PERCENT
+		|| x == ROLL_PARAMETER_49_PERCENT
+		|| x == ROLL_PARAMETER_50_PERCENT
+		);
+}
 
 
 void start_roll(void)
@@ -1304,6 +1333,23 @@ void do_roll(ROLL_ITEM item,
 			}
 		}
 
+
+
+		// Critical
+		if (force_to_dps_build && final_decision == DESCISION_NOTHING)
+		{
+			if (option_01 == ROLL_OPTION_CRITICAL_HIT_CHANCE
+				&& is_26_to_50_percent(parameter_01)
+				&& is_not_critical_hit_or_socket_option(option_02)
+				&& is_not_critical_hit_or_socket_option(option_03)
+				)
+			{
+				final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+			}
+		}
+
+
+
 		// area damage
 		if (force_to_dps_build && final_decision == DESCISION_NOTHING)
 		{
@@ -1367,15 +1413,30 @@ void do_roll(ROLL_ITEM item,
 			stop_roll();
 		}
 	}
+
+	//HUNTERS_WRATH
 	else if (item == ROLL_ITEM_HUNTERS_WRATH && is_dh_skill(option_01)
 		&& (is_10_to_14_percent(parameter_01) || option_01 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW)
 		&& w32gdi.D3IsRollWaiting()
 		&& resource_status == RESOURCE_STATUS_FULL_FOR_CLOTHES
-		&& gold_status == GOLD_STATUS_FULL_FOR_ROLLING
-		)
+		&& gold_status == GOLD_STATUS_FULL_FOR_ROLLING)
 	{
 		start_roll();
 	}
+
+
+	//Critical hit chance
+	else if (force_to_dps_build
+		&& option_01 == ROLL_OPTION_CRITICAL_HIT_CHANCE
+		&& is_26_to_50_percent(parameter_01)
+		&& parameter_01 < ROLL_PARAMETER_50_PERCENT
+		&& w32gdi.D3IsRollWaiting()
+		&& resource_status == RESOURCE_STATUS_ENOUGH_FOR_JEWELRY)
+	{
+		start_roll();
+	}
+
+	//Area damage
 	else if (force_to_dps_build
 		&& option_01 == ROLL_OPTION_AREA_DAMAGE
 		&& is_10_to_20_percent(parameter_01)
@@ -1386,6 +1447,9 @@ void do_roll(ROLL_ITEM item,
 	{
 		start_roll();
 	}
+
+
+
 
 
 

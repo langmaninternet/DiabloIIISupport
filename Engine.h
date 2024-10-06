@@ -57,6 +57,7 @@ public:
 	/************************************************************************/
 	bool				IsRolling(void);
 	bool				IsFullResourceForClothes(void);
+	bool				IsEnoughResourceForJewelry(void);
 
 	bool				IsEnoughGold5Digit(int);
 	bool				IsEnoughGold5Digit(void);
