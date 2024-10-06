@@ -472,7 +472,7 @@ ROLL_OPTION get_roll_option_01(void)
 {
 	// 1. CriticalHit
 	if (w32gdi.RollingOption01IsCriticalHitChance()) return ROLL_OPTION_CRITICAL_HIT_CHANCE;
-	if (w32gdi.RollingOption01IsCriticalHitDamage()) return ROLL_OPTION_CRITICAL_HIT_CHANCE;
+	if (w32gdi.RollingOption01IsCriticalHitDamage()) return ROLL_OPTION_CRITICAL_HIT_DAMAGE;
 
 	// 2. Socket
 
@@ -1338,10 +1338,10 @@ void do_roll(ROLL_ITEM item,
 
 
 
-		// Critical
+		// Critical hit damage
 		if (force_to_dps_build && final_decision == DESCISION_NOTHING)
 		{
-			if (option_01 == ROLL_OPTION_CRITICAL_HIT_CHANCE
+			if (option_01 == ROLL_OPTION_CRITICAL_HIT_DAMAGE
 				&& is_26_to_50_percent(parameter_01)
 				&& is_not_critical_hit_or_socket_option(option_02)
 				&& is_not_critical_hit_or_socket_option(option_03)
@@ -1349,6 +1349,17 @@ void do_roll(ROLL_ITEM item,
 			{
 				final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
 			}
+			else if (option_01 == ROLL_OPTION_CRITICAL_HIT_DAMAGE
+				&& is_26_to_50_percent(parameter_01)
+				&& option_02 == ROLL_OPTION_CRITICAL_HIT_DAMAGE
+				&& is_26_to_50_percent(parameter_02)
+				&& is_not_critical_hit_or_socket_option(option_03)
+				)
+			{
+				if (parameter_02 > parameter_01) final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
+				else final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+			}
+
 		}
 
 
@@ -1428,9 +1439,9 @@ void do_roll(ROLL_ITEM item,
 	}
 
 
-	//Critical hit chance
+	//Critical hit damage
 	else if (force_to_dps_build
-		&& option_01 == ROLL_OPTION_CRITICAL_HIT_CHANCE
+		&& option_01 == ROLL_OPTION_CRITICAL_HIT_DAMAGE
 		&& is_26_to_50_percent(parameter_01)
 		&& parameter_01 < ROLL_PARAMETER_50_PERCENT
 		&& w32gdi.D3IsRollWaiting()
