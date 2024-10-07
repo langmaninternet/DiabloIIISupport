@@ -986,7 +986,14 @@ bool is_dps_ring(ROLL_ITEM x)
 {
 	return (x == ROLL_ITEM_FOCUS || x == ROLL_ITEM_COE);
 }
-bool is_option__less_dps_priority_than_area_damage(ROLL_OPTION x)
+
+bool is_require_hungering_arrow(ROLL_ITEM x, bool force_to_dps_build)
+{
+	return (x == ROLL_ITEM_HUNTERS_WRATH
+		|| (force_to_dps_build && x == ROLL_ITEM_COLD_CATHODE_TROUSERS));
+}
+
+bool is_option_less_dps_priority_than_area_damage(ROLL_OPTION x)
 {
 	return (x == ROLL_OPTION_STRENGTH
 		|| x == ROLL_OPTION_DEXTERITY
@@ -998,10 +1005,6 @@ bool is_option__less_dps_priority_than_area_damage(ROLL_OPTION x)
 		|| x == ROLL_OPTION_LIFE_KILL
 		|| x == ROLL_OPTION_ARMOR);
 }
-
-/************************************************************************/
-/* Action                                                               */
-/************************************************************************/
 bool is_critical_hit_option(ROLL_OPTION x)
 {
 	return (x == ROLL_OPTION_CRITICAL_HIT_CHANCE
@@ -1026,6 +1029,17 @@ bool is_life_option(ROLL_OPTION x)
 		|| x == ROLL_OPTION_LIFE_PER_SECOND
 		|| x == ROLL_OPTION_LIFE_HIT);
 }
+bool is_dh_skill(ROLL_OPTION x)
+{
+	return (x == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+		|| x == ROLL_OPTION_DHSKILL_BOLAS
+		|| x == ROLL_OPTION_DHSKILL_GRENADE
+		|| x == ROLL_OPTION_DHSKILL_ENTANGLING_SHOT
+		|| x == ROLL_OPTION_DHSKILL_EVASIVE_FIRE);
+}
+
+
+
 
 bool is_04_to_06_percent(ROLL_PARAMETER x)
 {
@@ -1034,16 +1048,6 @@ bool is_04_to_06_percent(ROLL_PARAMETER x)
 		|| x == ROLL_PARAMETER_05_PERCENT
 		|| x == ROLL_PARAMETER_05_D_5_PERCENT
 		|| x == ROLL_PARAMETER_06_PERCENT);
-}
-
-
-bool is_dh_skill(ROLL_OPTION x)
-{
-	return (x == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
-		|| x == ROLL_OPTION_DHSKILL_BOLAS
-		|| x == ROLL_OPTION_DHSKILL_GRENADE
-		|| x == ROLL_OPTION_DHSKILL_ENTANGLING_SHOT
-		|| x == ROLL_OPTION_DHSKILL_EVASIVE_FIRE);
 }
 bool is_10_to_14_percent(ROLL_PARAMETER x)
 {
@@ -1195,111 +1199,109 @@ void do_roll(ROLL_ITEM item,
 	{
 		ROLL_DESCISION final_decision = DESCISION_NOTHING;
 
-		if ((item == ROLL_ITEM_HUNTERS_WRATH
-			|| (force_to_dps_build && item == ROLL_ITEM_COLD_CATHODE_TROUSERS)
-			)
+		if (is_require_hungering_arrow(item, force_to_dps_build)
 			&& (is_dh_skill(option_01) || is_dh_skill(option_02) || is_dh_skill(option_03)))
-		{// Need HUNGERING_ARROW
+			{// Need HUNGERING_ARROW
 
-			// HUNGERING_ARROW 15% - kết thúc 
-			if (option_01 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW && parameter_01 == ROLL_PARAMETER_15_PERCENT)
-			{
-				final_decision = DESCISION_STAY_IN_OPTION_01;
-			}
-			else if (option_02 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW && parameter_02 == ROLL_PARAMETER_15_PERCENT)
-			{
-				final_decision = DESCISION_SELECT_OPTION_02_AND_STOP_ROLL;
-			}
-			else if (option_03 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW && parameter_03 == ROLL_PARAMETER_15_PERCENT)
-			{
-				final_decision = DESCISION_SELECT_OPTION_03_AND_STOP_ROLL;
-			}
+				// HUNGERING_ARROW 15% - kết thúc 
+				if (option_01 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW && parameter_01 == ROLL_PARAMETER_15_PERCENT)
+				{
+					final_decision = DESCISION_STAY_IN_OPTION_01;
+				}
+				else if (option_02 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW && parameter_02 == ROLL_PARAMETER_15_PERCENT)
+				{
+					final_decision = DESCISION_SELECT_OPTION_02_AND_STOP_ROLL;
+				}
+				else if (option_03 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW && parameter_03 == ROLL_PARAMETER_15_PERCENT)
+				{
+					final_decision = DESCISION_SELECT_OPTION_03_AND_STOP_ROLL;
+				}
 
-			// Chỉ có 1 dòng HUNGERING_ARROW
-			else if (option_01 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
-				&& option_02 != ROLL_OPTION_UNKNOWN && option_02 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
-				&& option_03 != ROLL_OPTION_UNKNOWN && option_03 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW)
-			{
-				final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
-			}
-			else if (option_01 != ROLL_OPTION_UNKNOWN && option_01 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
-				&& option_02 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
-				&& option_03 != ROLL_OPTION_UNKNOWN && option_03 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW)
-			{
-				final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
-			}
-			else if (option_01 != ROLL_OPTION_UNKNOWN && option_01 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
-				&& option_02 != ROLL_OPTION_UNKNOWN && option_02 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
-				&& option_03 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW)
-			{
-				final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
-			}
-
-			//Có HUNGERING_ARROW ở dòng 1 và dòng 2
-			else if (option_01 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
-				&& option_02 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
-				&& option_03 != ROLL_OPTION_UNKNOWN && option_03 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
-				&& is_10_to_15_percent(parameter_01)
-				&& is_10_to_15_percent(parameter_02)
-				)
-			{
-				if (parameter_01 >= parameter_02) final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
-				else final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
-			}
-			//Có HUNGERING_ARROW ở dòng 1 và dòng 3
-			else if (option_01 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
-				&& option_02 != ROLL_OPTION_UNKNOWN && option_02 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
-				&& option_03 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
-				&& is_10_to_15_percent(parameter_01)
-				&& is_10_to_15_percent(parameter_03)
-				)
-			{
-				if (parameter_01 >= parameter_03) final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
-				else final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
-			}
-			//Có HUNGERING_ARROW ở dòng 2 và dòng 3
-			else if (option_01 != ROLL_OPTION_UNKNOWN && option_01 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
-				&& option_02 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
-				&& option_03 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
-				&& is_10_to_15_percent(parameter_02)
-				&& is_10_to_15_percent(parameter_03)
-				)
-			{
-				if (parameter_02 >= parameter_03) final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
-				else final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
-			}
-
-
-
-
-
-			//không có HUNGERING_ARROW ở dòng nào, nhưng có skill
-			else if (option_01 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW && option_01 != ROLL_OPTION_UNKNOWN
-				&& option_02 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW && option_02 != ROLL_OPTION_UNKNOWN
-				&& option_03 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW && option_03 != ROLL_OPTION_UNKNOWN
-				&& (is_dh_skill(option_01) || is_dh_skill(option_02) || is_dh_skill(option_03))
-				)
-			{
-				if (is_dh_skill(option_01) && parameter_01 == ROLL_PARAMETER_15_PERCENT) final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
-				else if (is_dh_skill(option_02) && parameter_02 == ROLL_PARAMETER_15_PERCENT) final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
-				else if (is_dh_skill(option_03) && parameter_03 == ROLL_PARAMETER_15_PERCENT) final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
-				else if (is_dh_skill(option_01) && is_10_to_15_percent(parameter_01) && parameter_01 >= parameter_02 && parameter_01 >= parameter_03)
+				// Chỉ có 1 dòng HUNGERING_ARROW
+				else if (option_01 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+					&& option_02 != ROLL_OPTION_UNKNOWN && option_02 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+					&& option_03 != ROLL_OPTION_UNKNOWN && option_03 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW)
 				{
 					final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
 				}
-				else if (is_dh_skill(option_02) && is_10_to_15_percent(parameter_02) && parameter_02 >= parameter_01 && parameter_02 >= parameter_03)
+				else if (option_01 != ROLL_OPTION_UNKNOWN && option_01 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+					&& option_02 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+					&& option_03 != ROLL_OPTION_UNKNOWN && option_03 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW)
 				{
 					final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
 				}
-				else if (is_dh_skill(option_03) && is_10_to_15_percent(parameter_03) && parameter_03 >= parameter_01 && parameter_03 >= parameter_02)
+				else if (option_01 != ROLL_OPTION_UNKNOWN && option_01 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+					&& option_02 != ROLL_OPTION_UNKNOWN && option_02 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+					&& option_03 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW)
 				{
 					final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
 				}
-				else if (is_dh_skill(option_01)) final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
-				else if (is_dh_skill(option_02)) final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
-				else if (is_dh_skill(option_03)) final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
-				else  final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
-			}
+
+				//Có HUNGERING_ARROW ở dòng 1 và dòng 2
+				else if (option_01 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+					&& option_02 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+					&& option_03 != ROLL_OPTION_UNKNOWN && option_03 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+					&& is_10_to_15_percent(parameter_01)
+					&& is_10_to_15_percent(parameter_02)
+					)
+				{
+					if (parameter_01 >= parameter_02) final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+					else final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
+				}
+				//Có HUNGERING_ARROW ở dòng 1 và dòng 3
+				else if (option_01 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+					&& option_02 != ROLL_OPTION_UNKNOWN && option_02 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+					&& option_03 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+					&& is_10_to_15_percent(parameter_01)
+					&& is_10_to_15_percent(parameter_03)
+					)
+				{
+					if (parameter_01 >= parameter_03) final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+					else final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
+				}
+				//Có HUNGERING_ARROW ở dòng 2 và dòng 3
+				else if (option_01 != ROLL_OPTION_UNKNOWN && option_01 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+					&& option_02 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+					&& option_03 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW
+					&& is_10_to_15_percent(parameter_02)
+					&& is_10_to_15_percent(parameter_03)
+					)
+				{
+					if (parameter_02 >= parameter_03) final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
+					else final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
+				}
+
+
+
+
+
+				//không có HUNGERING_ARROW ở dòng nào, nhưng có skill
+				else if (option_01 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW && option_01 != ROLL_OPTION_UNKNOWN
+					&& option_02 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW && option_02 != ROLL_OPTION_UNKNOWN
+					&& option_03 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW && option_03 != ROLL_OPTION_UNKNOWN
+					&& (is_dh_skill(option_01) || is_dh_skill(option_02) || is_dh_skill(option_03))
+					)
+				{
+					if (is_dh_skill(option_01) && parameter_01 == ROLL_PARAMETER_15_PERCENT) final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+					else if (is_dh_skill(option_02) && parameter_02 == ROLL_PARAMETER_15_PERCENT) final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
+					else if (is_dh_skill(option_03) && parameter_03 == ROLL_PARAMETER_15_PERCENT) final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
+					else if (is_dh_skill(option_01) && is_10_to_15_percent(parameter_01) && parameter_01 >= parameter_02 && parameter_01 >= parameter_03)
+					{
+						final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+					}
+					else if (is_dh_skill(option_02) && is_10_to_15_percent(parameter_02) && parameter_02 >= parameter_01 && parameter_02 >= parameter_03)
+					{
+						final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
+					}
+					else if (is_dh_skill(option_03) && is_10_to_15_percent(parameter_03) && parameter_03 >= parameter_01 && parameter_03 >= parameter_02)
+					{
+						final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
+					}
+					else if (is_dh_skill(option_01)) final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+					else if (is_dh_skill(option_02)) final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
+					else if (is_dh_skill(option_03)) final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
+					else  final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+				}
 
 		}
 		else if (is_dps_ring(item))
@@ -1415,13 +1417,13 @@ void do_roll(ROLL_ITEM item,
 				&& option_02 == ROLL_OPTION_AREA_DAMAGE
 				&& is_10_to_20_percent(parameter_01)
 				&& is_10_to_20_percent(parameter_02)
-				&& is_option__less_dps_priority_than_area_damage(option_03))
+				&& is_option_less_dps_priority_than_area_damage(option_03))
 			{
 				if (parameter_02 > parameter_01) final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
 				else final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
 			}
 			else if (option_01 == ROLL_OPTION_AREA_DAMAGE
-				&& is_option__less_dps_priority_than_area_damage(option_02)
+				&& is_option_less_dps_priority_than_area_damage(option_02)
 				&& option_03 == ROLL_OPTION_AREA_DAMAGE
 				&& is_10_to_20_percent(parameter_01)
 				&& is_10_to_20_percent(parameter_03))
@@ -1437,8 +1439,8 @@ void do_roll(ROLL_ITEM item,
 
 			//looking to update area damage
 			else if (option_01 == ROLL_OPTION_AREA_DAMAGE
-				&& is_option__less_dps_priority_than_area_damage(option_02)
-				&& is_option__less_dps_priority_than_area_damage(option_03))
+				&& is_option_less_dps_priority_than_area_damage(option_02)
+				&& is_option_less_dps_priority_than_area_damage(option_03))
 			{
 				final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
 			}
