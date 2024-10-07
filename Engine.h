@@ -106,6 +106,8 @@ public:
 	bool				RollingOption03Is38Percent(void);
 
 
+	bool				RollingOption02Is35Percent(int);
+	bool				RollingOption02Is35Percent(void);
 	bool				RollingOption03Is35Percent(int);
 	bool				RollingOption03Is35Percent(void);
 
