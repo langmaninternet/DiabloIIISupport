@@ -664,7 +664,7 @@ ROLL_PARAMETER get_roll_parameter_01(void)
 	//if (w32gdi.RollingOption01Is43Percent()) return ROLL_PARAMETER_43_PERCENT;
 	//if (w32gdi.RollingOption01Is42Percent()) return ROLL_PARAMETER_42_PERCENT;
 	if (w32gdi.RollingOption01Is41Percent()) return ROLL_PARAMETER_41_PERCENT;
-	//if (w32gdi.RollingOption01Is40Percent()) return ROLL_PARAMETER_40_PERCENT;
+	if (w32gdi.RollingOption01Is40Percent()) return ROLL_PARAMETER_40_PERCENT;
 	//if (w32gdi.RollingOption01Is39Percent()) return ROLL_PARAMETER_39_PERCENT;
 	//if (w32gdi.RollingOption01Is38Percent()) return ROLL_PARAMETER_38_PERCENT;
 	//if (w32gdi.RollingOption01Is37Percent()) return ROLL_PARAMETER_37_PERCENT;
@@ -986,7 +986,6 @@ bool is_dps_ring(ROLL_ITEM x)
 {
 	return (x == ROLL_ITEM_FOCUS || x == ROLL_ITEM_COE);
 }
-
 bool is_require_hungering_arrow(ROLL_ITEM x, bool force_to_dps_build)
 {
 	return (x == ROLL_ITEM_HUNTERS_WRATH
@@ -1474,8 +1473,9 @@ void do_roll(ROLL_ITEM item,
 		}
 	}
 
-	//HUNTERS_WRATH
-	else if (item == ROLL_ITEM_HUNTERS_WRATH && is_dh_skill(option_01)
+	//hungering_arrow
+	else if (is_require_hungering_arrow(item, force_to_dps_build) 
+		&& is_dh_skill(option_01)
 		&& (is_10_to_14_percent(parameter_01) || option_01 != ROLL_OPTION_DHSKILL_HUNGERING_ARROW)
 		&& w32gdi.D3IsRollWaiting()
 		&& resource_status == RESOURCE_STATUS_FULL_FOR_CLOTHES
@@ -1504,7 +1504,7 @@ void do_roll(ROLL_ITEM item,
 		&& is_26_to_50_percent(parameter_01)
 		&& parameter_01 < ROLL_PARAMETER_50_PERCENT
 		&& w32gdi.D3IsRollWaiting()
-		&& resource_status == RESOURCE_STATUS_ENOUGH_FOR_JEWELRY)
+		&& (resource_status == RESOURCE_STATUS_ENOUGH_FOR_JEWELRY || resource_status == RESOURCE_STATUS_FULL_FOR_CLOTHES))
 	{
 		start_roll();
 	}

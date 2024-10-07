@@ -90,6 +90,9 @@ public:
 
 
 
+	bool				RollingOption01Is40Percent(int);
+	bool				RollingOption01Is40Percent(void);
+
 	bool				RollingOption02Is39Percent(int);
 	bool				RollingOption02Is39Percent(void);
 	bool				RollingOption03Is39Percent(int);
