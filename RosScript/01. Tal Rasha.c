@@ -45,11 +45,11 @@
 //
 
 //10 yards
-Primary()>40&Health()<30%
+Primary()>20&Health()<30%
 //15 yards
-Primary()>40&Health()<40%
+Primary()>20&Health()<40%
 //20 yards
-Primary()>40&Health()<50%
+Primary()>20&Health()<50%
 
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
 
@@ -149,7 +149,7 @@ Primary()>30
 //
 //
 //
-Primary()>40
+Primary()>20
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
 
 
@@ -186,7 +186,7 @@ Primary()>40
 
 
 //10 yards
-Primary()>40&
+Primary()>20&
 (Health()<40%
 |(Rune(Wizard_Meteor)==0&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
 |(Rune(Wizard_Meteor)==1&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
@@ -200,7 +200,7 @@ Primary()>40&
 
 
 //20 yards
-Primary()>40&
+Primary()>20&
 (Health()<60%
 |(Rune(Wizard_Meteor)==0&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
 |(Rune(Wizard_Meteor)==1&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
@@ -215,7 +215,7 @@ Primary()>40&
 
 
 //30 yard
-Primary()>40&
+Primary()>20&
 (Health()<80%
 |(Rune(Wizard_Meteor)==0&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
 |(Rune(Wizard_Meteor)==1&(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1500|(BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1&BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<3000)))
@@ -255,7 +255,7 @@ Primary()>40&
 //
 //
 //
-Primary()>40
+Primary()>20
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
 
 
@@ -288,8 +288,31 @@ Primary()>40
 //
 //
 //
-Primary()>40
+Primary()>20
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
 
 
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+//  #9 Spectra Blace
+//	Attack + Density
+//	50ms
+//		Attack Distance: 60
+//		Distance Min: 0
+//		Distance Max: 60
+//		Calculation min param: 1
+//		Calculation max param: 10
+//		Attack limit: 1, 
+//
+//		Elite weight: 10
+//		Minion weight: 0
+//		Normal monster weight:0
+//		Big guy weight: 0
+//		Goblin weight: 10
+//
+
+Primary()<20
+
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
 
