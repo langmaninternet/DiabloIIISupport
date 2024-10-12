@@ -9736,17 +9736,10 @@ return true;
 }
 bool Win32GDI::RollingOption01Is06Percent(void)
 {
-	int right_limit = 30;
-	for (int i = 0; i < right_limit; i++)
+	int offset_limit = 10;
+	for (int i = 0; i < offset_limit; i++)
 	{
 		if (RollingOption01Is06Percent(i) || RollingOption01Is06Percent(-i))
-		{
-			return true;
-		}
-	}
-	for (int j = -right_limit; j  > -100; j--)
-	{
-		if (RollingOption01Is06Percent(j))
 		{
 			return true;
 		}
@@ -10165,17 +10158,10 @@ return true;
 }
 bool Win32GDI::RollingOption02Is06Percent(void)
 {
-	int right_limit = 30;
-	for (int i = 0; i < right_limit; i++)
+	int offset_limit = 10;
+	for (int i = 0; i < offset_limit; i++)
 	{
 		if (RollingOption02Is06Percent(i) || RollingOption02Is06Percent(-i))
-		{
-			return true;
-		}
-	}
-	for (int j = -right_limit; j  > -100; j--)
-	{
-		if (RollingOption02Is06Percent(j))
 		{
 			return true;
 		}
@@ -10563,17 +10549,10 @@ return true;
 }
 bool Win32GDI::RollingOption03Is06Percent(void)
 {
-	int right_limit = 30;
-	for (int i = 0; i < right_limit; i++)
+	int offset_limit = 10;
+	for (int i = 0; i < offset_limit; i++)
 	{
 		if (RollingOption03Is06Percent(i) || RollingOption03Is06Percent(-i))
-		{
-			return true;
-		}
-	}
-	for (int j = -right_limit; j  > -100; j--)
-	{
-		if (RollingOption03Is06Percent(j))
 		{
 			return true;
 		}
@@ -10963,32 +10942,16 @@ return true;
 }
 bool Win32GDI::RollingOption01Is05d5Percent(void)
 {
-	int right_limit = 30;
-	for (int i = 0; i < right_limit; i++)
+	int offset_limit = 10;
+	for (int i = 0; i < offset_limit; i++)
 	{
 		if (RollingOption01Is05d5Percent(i) || RollingOption01Is05d5Percent(-i))
 		{
 			return true;
 		}
 	}
-	for (int j = -right_limit; j  > -100; j--)
-	{
-		if (RollingOption01Is05d5Percent(j))
-		{
-			return true;
-		}
-	}
 	return false;
 }
-
-
-
-
-
-
-
-
-
 bool Win32GDI::RollingOption02Is05d5Percent(int offset)
 {
 //const int				rol_03_clone_x_left = 313;
