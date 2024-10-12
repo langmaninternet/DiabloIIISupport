@@ -1404,7 +1404,7 @@ void do_roll(ROLL_ITEM item,
 		if (force_to_dps_build && final_decision == DESCISION_NOTHING)
 		{
 			if (option_01 == ROLL_OPTION_CRITICAL_HIT_CHANCE
-				&& is_04_to_06_percent(parameter_01)
+				&&  (is_04_to_06_percent(parameter_01) || is_08_to_10_percent(parameter_01))
 				&& is_not_critical_hit_or_socket_option(option_02)
 				&& is_not_critical_hit_or_socket_option(option_03)
 				)
@@ -1412,7 +1412,7 @@ void do_roll(ROLL_ITEM item,
 				final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
 			}
 			else if (option_01 == ROLL_OPTION_CRITICAL_HIT_CHANCE
-				&& is_04_to_06_percent(parameter_01)
+				&& (is_04_to_06_percent(parameter_01) || is_08_to_10_percent(parameter_01))
 				&& option_02 == ROLL_OPTION_CRITICAL_HIT_CHANCE
 				&& is_04_to_06_percent(parameter_02)
 				&& is_not_critical_hit_or_socket_option(option_03)
@@ -1422,7 +1422,7 @@ void do_roll(ROLL_ITEM item,
 				else final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
 			}
 			else if (option_01 == ROLL_OPTION_CRITICAL_HIT_CHANCE
-				&& is_04_to_06_percent(parameter_01)
+				&& (is_04_to_06_percent(parameter_01) || is_08_to_10_percent(parameter_01))
 				&& is_not_critical_hit_or_socket_option(option_02)
 				&& option_03 == ROLL_OPTION_CRITICAL_HIT_CHANCE
 				&& is_04_to_06_percent(parameter_03)

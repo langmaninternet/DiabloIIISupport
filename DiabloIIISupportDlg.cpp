@@ -13,7 +13,7 @@
 #include "Roll.h"
 
 
-const double DiabloIIISupportVersion = 3.0;
+const double DiabloIIISupportVersion = 3.1;
 /************************************************************************/
 /* Struct                                                               */
 /************************************************************************/
@@ -631,7 +631,7 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 	GetDlgItem(IDC_SKILL04TIME)->SetWindowText(buffer);
 
 
-	swprintf_s(buffer, L"Diablo III Support Version %0.2lf - Season 28", DiabloIIISupportVersion);
+	swprintf_s(buffer, L"Diablo III Support Version %0.2lf", DiabloIIISupportVersion);
 	SetWindowTextW(buffer);
 
 
