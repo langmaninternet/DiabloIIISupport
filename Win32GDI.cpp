@@ -39,9 +39,9 @@
 //right    970  1006 - Half 1016 1030
 
 
-const int				rol_01_x_left = 318;
+const int				rol_01_x_left = 313;
 const int				rol_01_y_top = 388/*Fixed*/;
-const int				rol_01_x_right = 362;
+const int				rol_01_x_right = 348;
 const int				rol_01_y_bottom = 399/*Fixed*/;
 
 const int				rol_02_x_left = 365;

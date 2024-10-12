@@ -134,6 +134,7 @@ public:
 	bool				RollingOption01IsCriticalHitChance(void);
 	bool				RollingOption02IsCriticalHitChance(void);
 	bool				RollingOption03IsCriticalHitChance(void);
+	bool				RollingOption01Is10Percent(void);
 	bool				RollingOption01Is08Percent(void);
 	bool				RollingOption01Is06Percent(void);
 	bool				RollingOption02Is06Percent(void);
