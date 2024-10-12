@@ -226,6 +226,13 @@ public:
 	bool				RollingOption03Is07PercentBaseAttackSpeed(int);
 	bool				RollingOption03Is07PercentBaseAttackSpeed(void);
 
+
+	bool				RollingOption03Is06PercentBaseReduceMelee(int);
+	bool				RollingOption03Is06PercentBaseReduceMelee(void);
+
+
+
+
 	bool				RollingOption01Is06Percent(int);
 	bool				RollingOption01Is06Percent(void);
 	bool				RollingOption02Is06Percent(int);
@@ -233,19 +240,17 @@ public:
 	bool				RollingOption03Is06Percent(int);
 	bool				RollingOption03Is06Percent(void);
 
-	bool				RollingOption03Is06PercentBaseReduceMelee(int);
-	bool				RollingOption03Is06PercentBaseReduceMelee(void);
-
-
-	bool				RollingOption01Is05Percent(int);
-	bool				RollingOption01Is05Percent(void);
-
 	bool				RollingOption01Is05d5Percent(int);
 	bool				RollingOption01Is05d5Percent(void);
-
+	bool				RollingOption02Is05d5Percent(int);
+	bool				RollingOption02Is05d5Percent(void);
 	bool				RollingOption03Is05d5Percent(int);
 	bool				RollingOption03Is05d5Percent(void);
 
+	bool				RollingOption01Is05Percent(int);
+	bool				RollingOption01Is05Percent(void);
+	bool				RollingOption02Is05Percent(int);
+	bool				RollingOption02Is05Percent(void);
 	bool				RollingOption03Is05Percent(int);
 	bool				RollingOption03Is05Percent(void);
 

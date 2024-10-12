@@ -454,12 +454,12 @@ wchar_t* get_item_name(ROLL_ITEM x)
 	case ROLL_ITEM_UNKNOWN:
 		return L"-";
 		break;
-	case ROLL_ITEM_FOCUS:
-		return L"Focus";
-		break;
-	case ROLL_ITEM_COE:
-		return L"CoE";
-		break;
+	//case ROLL_ITEM_FOCUS:
+	//	return L"Focus";
+	//	break;
+	//case ROLL_ITEM_COE:
+	//	return L"CoE";
+	//	break;
 	case ROLL_ITEM_HUNTERS_WRATH:
 		return L"Hunter's Wrath";
 		break;
@@ -711,6 +711,7 @@ ROLL_PARAMETER get_roll_parameter_01(void)
 	if (w32gdi.RollingOption01Is05d5Percent()) return ROLL_PARAMETER_05_D_5_PERCENT;
 	if (w32gdi.RollingOption01Is05Percent()) return ROLL_PARAMETER_05_PERCENT;
 	if (w32gdi.RollingOption01Is04d5Percent()) return ROLL_PARAMETER_04_D_5_PERCENT;
+
 	return ROLL_PARAMETER_UNKNOWN;
 }
 ROLL_PARAMETER get_roll_parameter_02(void)
@@ -808,8 +809,13 @@ ROLL_PARAMETER get_roll_parameter_02(void)
 	if (w32gdi.RollingOption02Is11PercentBaseAreaDamage()) return ROLL_PARAMETER_11_PERCENT;
 	if (w32gdi.RollingOption02Is10Percent()) return ROLL_PARAMETER_10_PERCENT;
 	if (w32gdi.RollingOption02Is07PercentBaseAttackSpeed()) return ROLL_PARAMETER_07_PERCENT;
+
 	if (w32gdi.RollingOption02Is06Percent()) return ROLL_PARAMETER_06_PERCENT;
+	if (w32gdi.RollingOption02Is05d5Percent()) return ROLL_PARAMETER_05_D_5_PERCENT;
+	if (w32gdi.RollingOption02Is05Percent()) return ROLL_PARAMETER_05_PERCENT;
 	if (w32gdi.RollingOption02Is04d5Percent()) return ROLL_PARAMETER_04_D_5_PERCENT;
+
+
 	return ROLL_PARAMETER_UNKNOWN;
 }
 ROLL_PARAMETER get_roll_parameter_03(void)
@@ -906,19 +912,20 @@ ROLL_PARAMETER get_roll_parameter_03(void)
 	if (w32gdi.RollingOption03Is11Percent()) return ROLL_PARAMETER_11_PERCENT;
 	//if (w32gdi.RollingOption03Is10Percent()) return ROLL_PARAMETER_10_PERCENT;
 	if (w32gdi.RollingOption03Is07PercentBaseAttackSpeed()) return ROLL_PARAMETER_07_PERCENT;
-	if (w32gdi.RollingOption03Is06Percent()) return ROLL_PARAMETER_06_PERCENT;
-	if (w32gdi.RollingOption03Is06PercentBaseReduceMelee()) return ROLL_PARAMETER_06_PERCENT;
+
+	//
+	if (w32gdi.RollingOption03Is06Percent()) return ROLL_PARAMETER_06_PERCENT;	
 	if (w32gdi.RollingOption03Is05d5Percent()) return ROLL_PARAMETER_05_D_5_PERCENT;
 	if (w32gdi.RollingOption03Is05Percent()) return ROLL_PARAMETER_05_PERCENT;
 	if (w32gdi.RollingOption03Is04d5Percent()) return ROLL_PARAMETER_04_D_5_PERCENT;
+
+
+	if (w32gdi.RollingOption03Is06PercentBaseReduceMelee()) return ROLL_PARAMETER_06_PERCENT;
 	return ROLL_PARAMETER_UNKNOWN;
 }
 
 ROLL_ITEM get_roll_item(void)
 {
-	if (w32gdi.RollingItemIsFocus()) return ROLL_ITEM_FOCUS;
-	//if (w32gdi.RollingItemIsCoE()) return ROLL_ITEM_COE;
-
 	if (w32gdi.RollingItemIsHuntersWrath()) return ROLL_ITEM_HUNTERS_WRATH;
 	if (w32gdi.RollingItemIsColdCathodeTrousers()) return ROLL_ITEM_COLD_CATHODE_TROUSERS;
 	return ROLL_ITEM_UNKNOWN;
@@ -989,10 +996,6 @@ wchar_t* get_gold_info(GOLD_STATUS x)
 /************************************************************************/
 /* Action                                                               */
 /************************************************************************/
-bool is_dps_ring(ROLL_ITEM x)
-{
-	return (x == ROLL_ITEM_FOCUS || x == ROLL_ITEM_COE);
-}
 bool is_require_hungering_arrow(ROLL_ITEM x, bool force_to_dps_build)
 {
 	return (x == ROLL_ITEM_HUNTERS_WRATH
@@ -1370,39 +1373,6 @@ void do_roll(ROLL_ITEM item,
 				else  final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
 			}
 
-		}
-		else if (is_dps_ring(item))
-		{
-			//chỉ có 1 dòng critical hit hoặc 
-			if (is_critical_hit_or_socket_option(option_01) && is_not_critical_hit_or_socket_option(option_02) && is_not_critical_hit_or_socket_option(option_03))
-			{
-				final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
-			}
-			else if (is_not_critical_hit_or_socket_option(option_01) && is_critical_hit_or_socket_option(option_02) && is_not_critical_hit_or_socket_option(option_03))
-			{
-				final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
-			}
-			else if (is_not_critical_hit_or_socket_option(option_01) && is_not_critical_hit_or_socket_option(option_02) && is_critical_hit_or_socket_option(option_03))
-			{
-				final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
-			}
-
-
-			//option 1 == option 2
-			else if (is_critical_hit_or_socket_option(option_01) && option_01 == option_02 && is_not_critical_hit_or_socket_option(option_03)
-				&& is_04_to_06_percent(parameter_01) && is_04_to_06_percent(parameter_02))
-			{
-				if (parameter_02 > parameter_01) final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
-				else final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
-			}
-			//option 2 == option 3
-			else if (is_not_critical_hit_or_socket_option(option_01)
-				&& is_critical_hit_or_socket_option(option_02) && option_02 == option_03
-				&& is_04_to_06_percent(parameter_02) && is_04_to_06_percent(parameter_03))
-			{
-				if (parameter_02 > parameter_03) final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
-				else final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
-			}
 		}
 
 

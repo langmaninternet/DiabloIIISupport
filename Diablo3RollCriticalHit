@@ -9288,17 +9288,10 @@ return true;
 }
 bool Win32GDI::RollingOption01Is08Percent(void)
 {
-	int right_limit = 30;
-	for (int i = 0; i < right_limit; i++)
+	int offset_limit = 10;
+	for (int i = 0; i < offset_limit; i++)
 	{
 		if (RollingOption01Is08Percent(i) || RollingOption01Is08Percent(-i))
-		{
-			return true;
-		}
-	}
-	for (int j = -right_limit; j  > -100; j--)
-	{
-		if (RollingOption01Is08Percent(j))
 		{
 			return true;
 		}
