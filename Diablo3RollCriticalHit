@@ -22867,16 +22867,13 @@ color = (GetPixel(350+xOffset, 437+yOffset)&0xE0E0E0);if (color != 0X400000 && c
 color = (GetPixel(357+xOffset, 442+yOffset)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
 return true;
 }
-
-
-
-
-bool Win32GDI::RollingOption01Is34Percent(int offset)
+bool Win32GDI::RollingOption01Is34Percent(void)
 {
 //const int				rol_01_x_left = 318;
 //const int				rol_01_y_top = 388/*Fixed*/;
 //const int				rol_01_x_right = 362;
 //const int				rol_01_y_bottom = 399/*Fixed*/;
+const int offset=0;
 int color = 0;
 if ((GetPixel(320+offset, 396)&0xE0E0E0) != 0X0) return false;
 if ((GetPixel(321+offset, 390)&0xE0E0E0) != 0X0) return false;
@@ -23382,36 +23379,18 @@ color = (GetPixel(355+offset, 393)&0xE0E0E0);if (color != 0X202000 && color != 0
 color = (GetPixel(358+offset, 388)&0xE0E0E0);if (color != 0X806040 && color != 0X806060 && color != 0XA0A0A0) return false;
 return true;
 }
-bool Win32GDI::RollingOption01Is34Percent(void)
-{
-	int offset_limit = 10;
-	for (int i = 0; i < offset_limit; i++)
-	{
-		if (RollingOption01Is34Percent(i) || RollingOption01Is34Percent(-i))
-		{
-			return true;
-		}
-	}
-	return false;
-}
 
 
 
 
 
-
-
-
-
-
-
-
-bool Win32GDI::RollingOption02Is33Percent(int xOffset)
+bool Win32GDI::RollingOption02Is33Percent(void)
 {
 //const int				rol_02_x_left = 318;
 //const int				rol_02_y_top = 434/*Fixed*/;
 //const int				rol_02_x_right = 362;
 //const int				rol_02_y_bottom = 445/*Fixed*/;
+const int xOffset=0;
 int color = 0;
 if ((GetPixel(320+xOffset, 440)&0xE0E0E0) != 0X0) return false;
 if ((GetPixel(320+xOffset, 444)&0xE0E0E0) != 0X0) return false;
@@ -23917,24 +23896,13 @@ color = (GetPixel(350+xOffset, 437)&0xE0E0E0);if (color != 0X400000 && color != 
 color = (GetPixel(357+xOffset, 442)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
 return true;
 }
-bool Win32GDI::RollingOption02Is33Percent(void)
-{
-	int offset_limit = 10;
-	for (int i = 0; i < offset_limit; i++)
-	{
-		if (RollingOption02Is33Percent(i) || RollingOption02Is33Percent(-i))
-		{
-			return true;
-		}
-	}
-	return false;
-}
-bool Win32GDI::RollingOption03Is33Percent(int xOffset)
+bool Win32GDI::RollingOption03Is33Percent(void)
 {
 //const int				rol_02_clone_x_left = 318;
 //const int				rol_02_clone_y_top = 434/*Fixed*/;
 //const int				rol_02_clone_x_right = 362;
 //const int				rol_02_clone_y_bottom = 445/*Fixed*/;
+const int int xOffset=0;
 const int yOffset=43;
 int color = 0;
 if ((GetPixel(320+xOffset, 440+yOffset)&0xE0E0E0) != 0X0) return false;
@@ -24441,34 +24409,17 @@ color = (GetPixel(350+xOffset, 437+yOffset)&0xE0E0E0);if (color != 0X400000 && c
 color = (GetPixel(357+xOffset, 442+yOffset)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
 return true;
 }
-bool Win32GDI::RollingOption03Is33Percent(void)
-{
-	int offset_limit = 10;
-	for (int i = 0; i < offset_limit; i++)
-	{
-		if (RollingOption03Is33Percent(i) || RollingOption03Is33Percent(-i))
-		{
-			return true;
-		}
-	}
-	return false;
-}
 
 
 
 
-
-
-
-
-
-
-bool Win32GDI::RollingOption02Is32Percent(int xOffset)
+bool Win32GDI::RollingOption02Is32Percent(void)
 {
 //const int				rol_02_x_left = 318;
 //const int				rol_02_y_top = 434/*Fixed*/;
 //const int				rol_02_x_right = 362;
 //const int				rol_02_y_bottom = 445/*Fixed*/;
+const int xOffset=0;
 int color = 0;
 if ((GetPixel(320+xOffset, 440)&0xE0E0E0) != 0X0) return false;
 if ((GetPixel(320+xOffset, 444)&0xE0E0E0) != 0X0) return false;
@@ -24974,24 +24925,13 @@ color = (GetPixel(350+xOffset, 437)&0xE0E0E0);if (color != 0X400000 && color != 
 color = (GetPixel(357+xOffset, 442)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
 return true;
 }
-bool Win32GDI::RollingOption02Is32Percent(void)
-{
-	int offset_limit = 10;
-	for (int i = 0; i < offset_limit; i++)
-	{
-		if (RollingOption02Is32Percent(i) || RollingOption02Is32Percent(-i))
-		{
-			return true;
-		}
-	}
-	return false;
-}
-bool Win32GDI::RollingOption03Is32Percent(int xOffset)
+bool Win32GDI::RollingOption03Is32Percent(void)
 {
 //const int				rol_02_clone_x_left = 318;
 //const int				rol_02_clone_y_top = 434/*Fixed*/;
 //const int				rol_02_clone_x_right = 362;
 //const int				rol_02_clone_y_bottom = 445/*Fixed*/;
+const int xOffset=0;
 const int yOffset=43;
 int color = 0;
 if ((GetPixel(320+xOffset, 440+yOffset)&0xE0E0E0) != 0X0) return false;
@@ -25498,35 +25438,17 @@ color = (GetPixel(350+xOffset, 437+yOffset)&0xE0E0E0);if (color != 0X400000 && c
 color = (GetPixel(357+xOffset, 442+yOffset)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
 return true;
 }
-bool Win32GDI::RollingOption03Is32Percent(void)
-{
-	int offset_limit = 10;
-	for (int i = 0; i < offset_limit; i++)
-	{
-		if (RollingOption03Is32Percent(i) || RollingOption03Is32Percent(-i))
-		{
-			return true;
-		}
-	}
-	return false;
-}
 
 
 
 
-
-
-
-
-
-
-
-bool Win32GDI::RollingOption02Is31Percent(int xOffset)
+bool Win32GDI::RollingOption02Is31Percent(void)
 {
 //const int				rol_02_x_left = 318;
 //const int				rol_02_y_top = 434/*Fixed*/;
 //const int				rol_02_x_right = 362;
 //const int				rol_02_y_bottom = 445/*Fixed*/;
+const int xOffset=0;
 int color = 0;
 if ((GetPixel(320+xOffset, 440)&0xE0E0E0) != 0X0) return false;
 if ((GetPixel(320+xOffset, 444)&0xE0E0E0) != 0X0) return false;
@@ -26032,24 +25954,13 @@ color = (GetPixel(350+xOffset, 437)&0xE0E0E0);if (color != 0X400000 && color != 
 color = (GetPixel(357+xOffset, 442)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
 return true;
 }
-bool Win32GDI::RollingOption02Is31Percent(void)
-{
-	int offset_limit = 10;
-	for (int i = 0; i < offset_limit; i++)
-	{
-		if (RollingOption02Is31Percent(i) || RollingOption02Is31Percent(-i))
-		{
-			return true;
-		}
-	}
-	return false;
-}
-bool Win32GDI::RollingOption03Is31Percent(int xOffset)
+bool Win32GDI::RollingOption03Is31Percent(void)
 {
 //const int				rol_02_clone_x_left = 318;
 //const int				rol_02_clone_y_top = 434/*Fixed*/;
 //const int				rol_02_clone_x_right = 362;
 //const int				rol_02_clone_y_bottom = 445/*Fixed*/;
+const int xOffset=0;
 const int yOffset=43;
 int color = 0;
 if ((GetPixel(320+xOffset, 440+yOffset)&0xE0E0E0) != 0X0) return false;
@@ -26556,27 +26467,17 @@ color = (GetPixel(350+xOffset, 437+yOffset)&0xE0E0E0);if (color != 0X400000 && c
 color = (GetPixel(357+xOffset, 442+yOffset)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
 return true;
 }
-bool Win32GDI::RollingOption03Is31Percent(void)
-{
-	int offset_limit = 10;
-	for (int i = 0; i < offset_limit; i++)
-	{
-		if (RollingOption03Is31Percent(i) || RollingOption03Is31Percent(-i))
-		{
-			return true;
-		}
-	}
-	return false;
-}
 
 
 
-bool Win32GDI::RollingOption02Is29Percent(int xOffset)
+
+bool Win32GDI::RollingOption02Is29Percent(void)
 {
 //const int				rol_02_x_left = 318;
 //const int				rol_02_y_top = 434/*Fixed*/;
 //const int				rol_02_x_right = 362;
 //const int				rol_02_y_bottom = 445/*Fixed*/;
+const int xOffset=0;
 int color = 0;
 if ((GetPixel(319+xOffset, 439)&0xE0E0E0) != 0X0) return false;
 if ((GetPixel(319+xOffset, 444)&0xE0E0E0) != 0X0) return false;
@@ -27080,24 +26981,13 @@ color = (GetPixel(350+xOffset, 437)&0xE0E0E0);if (color != 0X400000 && color != 
 color = (GetPixel(357+xOffset, 442)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
 return true;
 }
-bool Win32GDI::RollingOption02Is29Percent(void)
-{
-	int offset_limit = 10;
-	for (int i = 0; i < offset_limit; i++)
-	{
-		if (RollingOption02Is29Percent(i) || RollingOption02Is29Percent(-i))
-		{
-			return true;
-		}
-	}
-	return false;
-}
-bool Win32GDI::RollingOption03Is29Percent(int xOffset)
+bool Win32GDI::RollingOption03Is29Percent(void)
 {
 //const int				rol_02_clone_x_left = 318;
 //const int				rol_02_clone_y_top = 434/*Fixed*/;
 //const int				rol_02_clone_x_right = 362;
 //const int				rol_02_clone_y_bottom = 445/*Fixed*/;
+const int xOffset=0;
 const int yOffset=43;
 int color = 0;
 if ((GetPixel(319+xOffset, 439+yOffset)&0xE0E0E0) != 0X0) return false;
@@ -27602,18 +27492,6 @@ color = (GetPixel(350+xOffset, 437+yOffset)&0xE0E0E0);if (color != 0X400000 && c
 color = (GetPixel(357+xOffset, 442+yOffset)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
 return true;
 }
-bool Win32GDI::RollingOption03Is29Percent(void)
-{
-	int offset_limit = 10;
-	for (int i = 0; i < offset_limit; i++)
-	{
-		if (RollingOption03Is29Percent(i) || RollingOption03Is29Percent(-i))
-		{
-			return true;
-		}
-	}
-	return false;
-}
 
 
 
@@ -27622,14 +27500,13 @@ bool Win32GDI::RollingOption03Is29Percent(void)
 
 
 
-
-
-bool Win32GDI::RollingOption02Is26Percent(int xOffset)
+bool Win32GDI::RollingOption02Is26Percent(void)
 {
 //const int				rol_02_x_left = 319;
 //const int				rol_02_y_top = 434/*Fixed*/;
 //const int				rol_02_x_right = 362;
 //const int				rol_02_y_bottom = 445/*Fixed*/;
+const int int xOffset=0;
 int color = 0;
 if ((GetPixel(319+xOffset, 439)&0xE0E0E0) != 0X0) return false;
 if ((GetPixel(319+xOffset, 444)&0xE0E0E0) != 0X0) return false;
@@ -28124,24 +28001,13 @@ color = (GetPixel(350+xOffset, 437)&0xE0E0E0);if (color != 0X400000 && color != 
 color = (GetPixel(357+xOffset, 442)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
 return true;
 }
-bool Win32GDI::RollingOption02Is26Percent(void)
-{
-	int offset_limit = 10;
-	for (int i = 0; i < offset_limit; i++)
-	{
-		if (RollingOption02Is26Percent(i) || RollingOption02Is26Percent(-i))
-		{
-			return true;
-		}
-	}
-	return false;
-}
-bool Win32GDI::RollingOption03Is26Percent(int xOffset)
+bool Win32GDI::RollingOption03Is26Percent(void)
 {
 //const int				rol_02_clone_x_left = 319;
 //const int				rol_02_clone_y_top = 434/*Fixed*/;
 //const int				rol_02_clone_x_right = 362;
 //const int				rol_02_clone_y_bottom = 445/*Fixed*/;
+const int xOffset=0;
 const int yOffset=43;
 int color = 0;
 if ((GetPixel(319+xOffset, 439+yOffset)&0xE0E0E0) != 0X0) return false;
@@ -28637,19 +28503,6 @@ color = (GetPixel(350+xOffset, 437+yOffset)&0xE0E0E0);if (color != 0X400000 && c
 color = (GetPixel(357+xOffset, 442+yOffset)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
 return true;
 }
-bool Win32GDI::RollingOption03Is26Percent(void)
-{
-	int offset_limit = 10;
-	for (int i = 0; i < offset_limit; i++)
-	{
-		if (RollingOption03Is26Percent(i) || RollingOption03Is26Percent(-i))
-		{
-			return true;
-		}
-	}
-	return false;
-}
-
 
 
 
