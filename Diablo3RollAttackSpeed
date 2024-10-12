@@ -3479,7 +3479,7 @@ bool Win32GDI::RollingOption03Is07PercentBaseAttackSpeed(int xOffset)
 //const int				rol_02_clone_y_top = 434/*Fixed*/;
 //const int				rol_02_clone_x_right = 309;
 //const int				rol_02_clone_y_bottom = 445/*Fixed*/;
-const int yOffset=44;
+const int yOffset=43;
 int color = 0;
 if ((GetPixel(278+xOffset, 434+yOffset)&0xE0E0E0) != 0X0) return false;
 if ((GetPixel(278+xOffset, 435+yOffset)&0xE0E0E0) != 0X0) return false;

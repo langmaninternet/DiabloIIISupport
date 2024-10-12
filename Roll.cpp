@@ -82,6 +82,10 @@ wchar_t* get_roll_name(ROLL_OPTION x)
 		return L"Attack speed";
 		break;
 
+	case ROLL_OPTION_RESIST_ALL:
+		return L"Resist All";
+		break;
+
 	case ROLL_OPTION_DHSKILL_HUNGERING_ARROW:
 		return L"DH - Hungering Arrow";
 		break;
@@ -538,7 +542,7 @@ ROLL_OPTION get_roll_option_02(void)
 	if (w32gdi.RollingOption02IsLifePerSecond()) return ROLL_OPTION_LIFE_PER_SECOND;
 	if (w32gdi.RollingOption02IsLifePerHit()) return ROLL_OPTION_LIFE_HIT;
 
-
+	if (w32gdi.RollingOption02IsResistAll()) return ROLL_OPTION_RESIST_ALL;
 
 	if (w32gdi.RollingOption02IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
 	if (w32gdi.RollingOption02IsBolas()) return ROLL_OPTION_DHSKILL_BOLAS;
@@ -584,6 +588,9 @@ ROLL_OPTION get_roll_option_03(void)
 	if (w32gdi.RollingOption03IsLifePerSecond()) return ROLL_OPTION_LIFE_PER_SECOND;
 	if (w32gdi.RollingOption03IsLifePerHit()) return ROLL_OPTION_LIFE_HIT;
 
+
+	if (w32gdi.RollingOption03IsResistAll()) return ROLL_OPTION_RESIST_ALL;
+	
 
 
 	if (w32gdi.RollingOption03IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;

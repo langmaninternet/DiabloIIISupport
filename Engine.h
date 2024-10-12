@@ -339,6 +339,12 @@ public:
 
 
 
+	bool				RollingOption02IsResistAll(int);
+	bool				RollingOption02IsResistAll(void);
+	bool				RollingOption03IsResistAll(int);
+	bool				RollingOption03IsResistAll(void);
+
+
 	bool				RollingOption01IsHungeringArrow(void);
 	bool				RollingOption02IsHungeringArrow(void);
 	bool				RollingOption03IsHungeringArrow(void);
