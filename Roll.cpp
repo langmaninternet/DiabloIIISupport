@@ -910,6 +910,7 @@ ROLL_PARAMETER get_roll_parameter_03(void)
 	if (w32gdi.RollingOption03Is06PercentBaseReduceMelee()) return ROLL_PARAMETER_06_PERCENT;
 	if (w32gdi.RollingOption03Is05d5Percent()) return ROLL_PARAMETER_05_D_5_PERCENT;
 	if (w32gdi.RollingOption03Is05Percent()) return ROLL_PARAMETER_05_PERCENT;
+	if (w32gdi.RollingOption03Is04d5Percent()) return ROLL_PARAMETER_04_D_5_PERCENT;
 	return ROLL_PARAMETER_UNKNOWN;
 }
 

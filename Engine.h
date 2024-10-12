@@ -253,6 +253,8 @@ public:
 	bool				RollingOption01Is04d5Percent(void);
 	bool				RollingOption02Is04d5Percent(int);
 	bool				RollingOption02Is04d5Percent(void);
+	bool				RollingOption03Is04d5Percent(int);
+	bool				RollingOption03Is04d5Percent(void);
 
 
 	// 1. CriticalHit
