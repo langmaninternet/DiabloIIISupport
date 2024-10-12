@@ -3296,9 +3296,6 @@ bool Win32GDI::RollingOption03Is13Percent(void)
 
 
 
-
-
-
 bool Win32GDI::RollingOption01Is12Percent(int offset)
 {
 //const int				rol_01_x_left = 366;

@@ -175,51 +175,47 @@ public:
 	bool				RollingOption03Is11PercentBaseAreaDamage(int);
 	bool				RollingOption03Is11PercentBaseAreaDamage(void);
 
+
+
+
+	/************************************************************************/
+	/* HungeringArrow                                                       */
+	/************************************************************************/
+
+	bool				RollingOption01Is15PercentBaseHungeringArrow(void);
+	bool				RollingOption02Is15PercentBaseHungeringArrow(void);
+	bool				RollingOption03Is15PercentBaseHungeringArrow(void);
+
+	bool				RollingOption01Is14PercentBaseHungeringArrow(void);
+	bool				RollingOption02Is14PercentBaseHungeringArrow(void);
+	bool				RollingOption03Is14PercentBaseHungeringArrow(void);
+
+	bool				RollingOption01Is13PercentBaseHungeringArrow(void);
+	bool				RollingOption02Is13PercentBaseHungeringArrow(void);
+	bool				RollingOption03Is13PercentBaseHungeringArrow(void);
+
+	bool				RollingOption01Is12PercentBaseHungeringArrow(void);
+	bool				RollingOption02Is12PercentBaseHungeringArrow(void);
+	bool				RollingOption03Is12PercentBaseHungeringArrow(void);
+
+	bool				RollingOption01Is11PercentBaseHungeringArrow(void);
+	bool				RollingOption02Is11PercentBaseHungeringArrow(void);
+	bool				RollingOption03Is11PercentBaseHungeringArrow(void);
+
+
+	bool				RollingOption02Is10PercentBaseHungeringArrow(void);
+
 	/************************************************************************/
 	/* ???????????????????                                                  */
 	/************************************************************************/
 
-	bool				RollingOption01Is15Percent(int);
-	bool				RollingOption01Is15Percent(void);
-	bool				RollingOption02Is15Percent(int);
-	bool				RollingOption02Is15Percent(void);
-	bool				RollingOption03Is15Percent(int);
-	bool				RollingOption03Is15Percent(void);
-	bool				RollingOption01Is14Percent(int);
-	bool				RollingOption01Is14Percent(void);
-	bool				RollingOption02Is14Percent(int);
-	bool				RollingOption02Is14Percent(void);
-	bool				RollingOption03Is14Percent(int);
-	bool				RollingOption03Is14Percent(void);
-	bool				RollingOption01Is13Percent(int);
-	bool				RollingOption01Is13Percent(void);
-	bool				RollingOption02Is13Percent(int);
-	bool				RollingOption02Is13Percent(void);
-	bool				RollingOption03Is13Percent(int);
-	bool				RollingOption03Is13Percent(void);
-	bool				RollingOption01Is12Percent(int);
-	bool				RollingOption01Is12Percent(void);
-	bool				RollingOption02Is12Percent(int);
-	bool				RollingOption02Is12Percent(void);
-	bool				RollingOption03Is12Percent(int);
-	bool				RollingOption03Is12Percent(void);
-	bool				RollingOption01Is11Percent(int);
-	bool				RollingOption01Is11Percent(void);
-
-
-	bool				RollingOption02Is11Percent(int);
-	bool				RollingOption02Is11Percent(void);
 
 
 
 
 
-	bool				RollingOption03Is11Percent(int);
-	bool				RollingOption03Is11Percent(void);
-	bool				RollingOption01Is10Percent(int);
-	bool				RollingOption01Is10Percent(void);
-	bool				RollingOption02Is10Percent(int);
-	bool				RollingOption02Is10Percent(void);
+
+
 
 
 	bool				RollingOption01Is07Percent(int);

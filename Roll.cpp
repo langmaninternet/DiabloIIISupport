@@ -689,7 +689,7 @@ ROLL_PARAMETER get_roll_parameter_01(ROLL_OPTION option_01)
 	else if (option_01 == ROLL_OPTION_CRITICAL_HIT_CHANCE)
 	{
 		// Amulet
-		//		if (w32gdi.RollingOption01Is10Percent()) return ROLL_PARAMETER_10_PERCENT;
+		if (w32gdi.RollingOption01Is10Percent()) return ROLL_PARAMETER_10_PERCENT;
 		//		if (w32gdi.RollingOption01Is09d5Percent()) return ROLL_PARAMETER_09_D_5_PERCENT;
 		//		if (w32gdi.RollingOption01Is09Percent()) return ROLL_PARAMETER_09_PERCENT;
 		//		if (w32gdi.RollingOption01Is08d5Percent()) return ROLL_PARAMETER_08_D_5_PERCENT;
