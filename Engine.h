@@ -176,14 +176,18 @@ public:
 	bool				RollingOption02Is15Percent(void);
 	bool				RollingOption03Is15Percent(int);
 	bool				RollingOption03Is15Percent(void);
-
 	bool				RollingOption01Is14Percent(int);
 	bool				RollingOption01Is14Percent(void);
-
+	bool				RollingOption02Is14Percent(int);
+	bool				RollingOption02Is14Percent(void);
+	bool				RollingOption03Is14Percent(int);
+	bool				RollingOption03Is14Percent(void);
 	bool				RollingOption01Is13Percent(int);
 	bool				RollingOption01Is13Percent(void);
-
-
+	bool				RollingOption02Is13Percent(int);
+	bool				RollingOption02Is13Percent(void);
+	bool				RollingOption03Is13Percent(int);
+	bool				RollingOption03Is13Percent(void);
 	bool				RollingOption01Is12Percent(int);
 	bool				RollingOption01Is12Percent(void);
 	bool				RollingOption02Is12Percent(int);
@@ -192,6 +196,8 @@ public:
 	bool				RollingOption03Is12Percent(void);
 	bool				RollingOption01Is11Percent(int);
 	bool				RollingOption01Is11Percent(void);
+
+
 	bool				RollingOption02Is11Percent(int);
 	bool				RollingOption02Is11Percent(void);
 
