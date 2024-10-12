@@ -205,9 +205,9 @@ public:
 	bool				RollingParameter01Is11PercentBaseHungeringArrow(void);
 	bool				RollingParameter02Is11PercentBaseHungeringArrow(void);
 	bool				RollingParameter03Is11PercentBaseHungeringArrow(void);
-
 	bool				RollingParameter01Is10PercentBaseHungeringArrow(void);
 	bool				RollingParameter02Is10PercentBaseHungeringArrow(void);
+	bool				RollingParameter03Is10PercentBaseHungeringArrow(void);
 
 	/************************************************************************/
 	/* ???????????????????                                                  */
