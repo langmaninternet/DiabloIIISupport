@@ -477,12 +477,12 @@ ROLL_OPTION get_roll_option_01(void)
 	// 1. CriticalHit
 	if (w32gdi.RollingOption01IsCriticalHitChance()) return ROLL_OPTION_CRITICAL_HIT_CHANCE;
 	if (w32gdi.RollingOption01IsCriticalHitDamage()) return ROLL_OPTION_CRITICAL_HIT_DAMAGE;
-
 	// 2. Socket
-
+	//if (w32gdi.RollingOption02IsOneSocket()) return ROLL_OPTION_ONE_SOCKET;
 	// 3. Damage
-	if (w32gdi.RollingOption01IsBaseDamage()) return ROLL_OPTION_BASE_DAMAGE;
 	if (w32gdi.RollingOption01IsAreaDamage()) return ROLL_OPTION_AREA_DAMAGE;
+	if (w32gdi.RollingOption01IsBaseDamage()) return ROLL_OPTION_BASE_DAMAGE;
+
 
 
 	//4. Stats
@@ -517,18 +517,15 @@ ROLL_OPTION get_roll_option_02(void)
 	if (w32gdi.RollingOption02IsCriticalHitDamage()) return ROLL_OPTION_CRITICAL_HIT_DAMAGE;
 	// 2. Socket
 	if (w32gdi.RollingOption02IsOneSocket()) return ROLL_OPTION_ONE_SOCKET;
-
-
-	// 3. Damage
-	if (w32gdi.RollingOption02IsBaseDamage()) return ROLL_OPTION_BASE_DAMAGE;
+	// 3. Area Damage
 	if (w32gdi.RollingOption02IsAreaDamage()) return ROLL_OPTION_AREA_DAMAGE;
-
-
-
+	if (w32gdi.RollingOption02IsBaseDamage()) return ROLL_OPTION_BASE_DAMAGE;
 	//4. Stats
 	if (w32gdi.RollingOption02IsDexterity()) return ROLL_OPTION_DEXTERITY;
 	if (w32gdi.RollingOption02IsIntelligence()) return ROLL_OPTION_INTELLIGENCE;
 	if (w32gdi.RollingOption02IsVitality()) return ROLL_OPTION_VITALITY;
+
+
 
 	// 5. Reduce
 	if (w32gdi.RollingOption02IsReduceResource()) return ROLL_OPTION_REDUCE_RESOURCE;
@@ -562,19 +559,15 @@ ROLL_OPTION get_roll_option_03(void)
 	if (w32gdi.RollingOption03IsCriticalHitDamage()) return ROLL_OPTION_CRITICAL_HIT_DAMAGE;
 	// 2. Socket
 	if (w32gdi.RollingOption03IsOneSocket()) return ROLL_OPTION_ONE_SOCKET;
-
-
-
-
-
 	// 3. Damage
-	if (w32gdi.RollingOption03IsBaseDamage()) return ROLL_OPTION_BASE_DAMAGE;
 	if (w32gdi.RollingOption03IsAreaDamage()) return ROLL_OPTION_AREA_DAMAGE;
-
+	if (w32gdi.RollingOption03IsBaseDamage()) return ROLL_OPTION_BASE_DAMAGE;
 	//4. Stats
 	if (w32gdi.RollingOption03IsDexterity()) return ROLL_OPTION_DEXTERITY;
 	if (w32gdi.RollingOption03IsIntelligence()) return ROLL_OPTION_INTELLIGENCE;
 	if (w32gdi.RollingOption03IsVitality()) return ROLL_OPTION_VITALITY;
+
+
 
 	// 5. Reduce	
 	if (w32gdi.RollingOption03IsReduceCooldown()) return ROLL_OPTION_REDUCE_COOLDOWN;
@@ -695,17 +688,31 @@ ROLL_PARAMETER get_roll_parameter_01(ROLL_OPTION option_01)
 	}
 	else if (option_01 == ROLL_OPTION_CRITICAL_HIT_CHANCE)
 	{
+		// Amulet
 		//		if (w32gdi.RollingOption01Is10Percent()) return ROLL_PARAMETER_10_PERCENT;
 		//		if (w32gdi.RollingOption01Is09d5Percent()) return ROLL_PARAMETER_09_D_5_PERCENT;
 		//		if (w32gdi.RollingOption01Is09Percent()) return ROLL_PARAMETER_09_PERCENT;
 		//		if (w32gdi.RollingOption01Is08d5Percent()) return ROLL_PARAMETER_08_D_5_PERCENT;
 		if (w32gdi.RollingOption01Is08Percent()) return ROLL_PARAMETER_08_PERCENT;
-
-
+		// Ring
 		if (w32gdi.RollingOption01Is06Percent()) return ROLL_PARAMETER_06_PERCENT;
 		if (w32gdi.RollingOption01Is05d5Percent()) return ROLL_PARAMETER_05_D_5_PERCENT;
 		if (w32gdi.RollingOption01Is05Percent()) return ROLL_PARAMETER_05_PERCENT;
 		if (w32gdi.RollingOption01Is04d5Percent()) return ROLL_PARAMETER_04_D_5_PERCENT;
+	}
+	else if (option_01 == ROLL_OPTION_AREA_DAMAGE)
+	{
+		//if (w32gdi.RollingOption01Is20PercentBaseAreaDamage()) return ROLL_PARAMETER_20_PERCENT;
+		if (w32gdi.RollingOption01Is19PercentBaseAreaDamage()) return ROLL_PARAMETER_19_PERCENT;
+		//if (w32gdi.RollingOption01Is18PercentBaseAreaDamage()) return ROLL_PARAMETER_18_PERCENT;
+		//if (w32gdi.RollingOption01Is17PercentBaseAreaDamage()) return ROLL_PARAMETER_17_PERCENT;
+		if (w32gdi.RollingOption01Is16PercentBaseAreaDamage()) return ROLL_PARAMETER_16_PERCENT;
+		//if (w32gdi.RollingOption01Is15PercentBaseAreaDamage()) return ROLL_PARAMETER_15_PERCENT;
+		//if (w32gdi.RollingOption01Is14PercentBaseAreaDamage()) return ROLL_PARAMETER_14_PERCENT;
+		//if (w32gdi.RollingOption01Is13PercentBaseAreaDamage()) return ROLL_PARAMETER_13_PERCENT;
+		//if (w32gdi.RollingOption01Is12PercentBaseAreaDamage()) return ROLL_PARAMETER_12_PERCENT;
+		//if (w32gdi.RollingOption01Is11PercentBaseAreaDamage()) return ROLL_PARAMETER_11_PERCENT;
+		//if (w32gdi.RollingOption01Is10PercentBaseAreaDamage()) return ROLL_PARAMETER_10_PERCENT;
 	}
 
 	//		//if (w32gdi.RollingOption01Is25Percent()) return ROLL_PARAMETER_25_PERCENT;
@@ -714,10 +721,8 @@ ROLL_PARAMETER get_roll_parameter_01(ROLL_OPTION option_01)
 	//		//if (w32gdi.RollingOption01Is22Percent()) return ROLL_PARAMETER_22_PERCENT;
 	//		//if (w32gdi.RollingOption01Is21Percent()) return ROLL_PARAMETER_21_PERCENT;
 	//		//if (w32gdi.RollingOption01Is20Percent()) return ROLL_PARAMETER_20_PERCENT;
-	//		if (w32gdi.RollingOption01Is19PercentBaseAreaDamage()) return ROLL_PARAMETER_19_PERCENT;
 	//		//if (w32gdi.RollingOption01Is18Percent()) return ROLL_PARAMETER_18_PERCENT;
 	//		//if (w32gdi.RollingOption01Is17Percent()) return ROLL_PARAMETER_17_PERCENT;
-	//		if (w32gdi.RollingOption01Is16Percent()) return ROLL_PARAMETER_16_PERCENT;
 	//		if (w32gdi.RollingOption01Is15Percent()) return ROLL_PARAMETER_15_PERCENT;
 	//		if (w32gdi.RollingOption01Is14Percent()) return ROLL_PARAMETER_14_PERCENT;
 	//		if (w32gdi.RollingOption01Is13Percent()) return ROLL_PARAMETER_13_PERCENT;
@@ -819,14 +824,26 @@ ROLL_PARAMETER get_roll_parameter_02(ROLL_OPTION option_02)
 		if (w32gdi.RollingOption02Is05Percent()) return ROLL_PARAMETER_05_PERCENT;
 		if (w32gdi.RollingOption02Is04d5Percent()) return ROLL_PARAMETER_04_D_5_PERCENT;
 	}
-
+	else if (option_02 == ROLL_OPTION_AREA_DAMAGE)
+	{
+		if (w32gdi.RollingOption02Is20PercentBaseAreaDamage()) return ROLL_PARAMETER_20_PERCENT;
+		if (w32gdi.RollingOption02Is19PercentBaseAreaDamage()) return ROLL_PARAMETER_19_PERCENT;
+		//if (w32gdi.RollingOption02Is18PercentBaseAreaDamage()) return ROLL_PARAMETER_18_PERCENT;
+		//if (w32gdi.RollingOption02Is17PercentBaseAreaDamage()) return ROLL_PARAMETER_17_PERCENT;
+		//if (w32gdi.RollingOption02Is16PercentBaseAreaDamage()) return ROLL_PARAMETER_16_PERCENT;
+		//if (w32gdi.RollingOption02Is15PercentBaseAreaDamage()) return ROLL_PARAMETER_15_PERCENT;
+		//if (w32gdi.RollingOption02Is14PercentBaseAreaDamage()) return ROLL_PARAMETER_14_PERCENT;
+		//if (w32gdi.RollingOption02Is13PercentBaseAreaDamage()) return ROLL_PARAMETER_13_PERCENT;
+		//if (w32gdi.RollingOption02Is12PercentBaseAreaDamage()) return ROLL_PARAMETER_12_PERCENT;
+		if (w32gdi.RollingOption02Is11PercentBaseAreaDamage()) return ROLL_PARAMETER_11_PERCENT;
+		//if (w32gdi.RollingOption02Is10PercentBaseAreaDamage()) return ROLL_PARAMETER_10_PERCENT;
+	}
 	//	//if (w32gdi.RollingOption02Is25Percent()) return ROLL_PARAMETER_25_PERCENT;
 	//	//if (w32gdi.RollingOption02Is24Percent()) return ROLL_PARAMETER_24_PERCENT;
 	//	//if (w32gdi.RollingOption02Is23Percent()) return ROLL_PARAMETER_23_PERCENT;
 	//	//if (w32gdi.RollingOption02Is22Percent()) return ROLL_PARAMETER_22_PERCENT;
 	//	//if (w32gdi.RollingOption02Is21Percent()) return ROLL_PARAMETER_21_PERCENT;
 	//	//if (w32gdi.RollingOption02Is20Percent()) return ROLL_PARAMETER_20_PERCENT;
-	//	if (w32gdi.RollingOption02Is19PercentBaseAreaDamage()) return ROLL_PARAMETER_19_PERCENT;
 	//	//if (w32gdi.RollingOption02Is18Percent()) return ROLL_PARAMETER_18_PERCENT;
 	//	//if (w32gdi.RollingOption02Is17Percent()) return ROLL_PARAMETER_17_PERCENT;
 	//	//if (w32gdi.RollingOption02Is16Percent()) return ROLL_PARAMETER_16_PERCENT;
@@ -834,7 +851,6 @@ ROLL_PARAMETER get_roll_parameter_02(ROLL_OPTION option_02)
 	//	if (w32gdi.RollingOption02Is14Percent()) return ROLL_PARAMETER_14_PERCENT;
 	//	if (w32gdi.RollingOption02Is13Percent()) return ROLL_PARAMETER_13_PERCENT;
 	//	if (w32gdi.RollingOption02Is12Percent()) return ROLL_PARAMETER_12_PERCENT;
-	//	if (w32gdi.RollingOption02Is11Percent()) return ROLL_PARAMETER_11_PERCENT;
 	//	if (w32gdi.RollingOption02Is11PercentBaseAreaDamage()) return ROLL_PARAMETER_11_PERCENT;
 	//	if (w32gdi.RollingOption02Is10Percent()) return ROLL_PARAMETER_10_PERCENT;
 	//	if (w32gdi.RollingOption02Is07PercentBaseAttackSpeed()) return ROLL_PARAMETER_07_PERCENT;
@@ -931,7 +947,20 @@ ROLL_PARAMETER get_roll_parameter_03(ROLL_OPTION option_03)
 		if (w32gdi.RollingOption03Is05Percent()) return ROLL_PARAMETER_05_PERCENT;
 		if (w32gdi.RollingOption03Is04d5Percent()) return ROLL_PARAMETER_04_D_5_PERCENT;
 	}
-
+	else if (option_03 == ROLL_OPTION_AREA_DAMAGE)
+	{
+		//if (w32gdi.RollingOption03Is20PercentBaseAreaDamage()) return ROLL_PARAMETER_20_PERCENT;
+		if (w32gdi.RollingOption03Is19PercentBaseAreaDamage()) return ROLL_PARAMETER_19_PERCENT;
+		//if (w32gdi.RollingOption03Is18PercentBaseAreaDamage()) return ROLL_PARAMETER_18_PERCENT;
+		//if (w32gdi.RollingOption03Is17PercentBaseAreaDamage()) return ROLL_PARAMETER_17_PERCENT;
+		//if (w32gdi.RollingOption03Is16PercentBaseAreaDamage()) return ROLL_PARAMETER_16_PERCENT;
+		//if (w32gdi.RollingOption03Is15PercentBaseAreaDamage()) return ROLL_PARAMETER_15_PERCENT;
+		//if (w32gdi.RollingOption03Is14PercentBaseAreaDamage()) return ROLL_PARAMETER_14_PERCENT;
+		//if (w32gdi.RollingOption03Is13PercentBaseAreaDamage()) return ROLL_PARAMETER_13_PERCENT;
+		//if (w32gdi.RollingOption03Is12PercentBaseAreaDamage()) return ROLL_PARAMETER_12_PERCENT;
+		//if (w32gdi.RollingOption03Is11PercentBaseAreaDamage()) return ROLL_PARAMETER_11_PERCENT;
+		//if (w32gdi.RollingOption03Is10PercentBaseAreaDamage()) return ROLL_PARAMETER_10_PERCENT;
+	}
 
 	//	//if (w32gdi.RollingOption03Is25Percent()) return ROLL_PARAMETER_25_PERCENT;
 	//	//if (w32gdi.RollingOption03Is24Percent()) return ROLL_PARAMETER_24_PERCENT;
@@ -1563,7 +1592,7 @@ void do_roll(ROLL_ITEM item,
 			&& is_critical_hit_chance_percent(parameter_03)
 			)
 		{
-			if (parameter_01 >= parameter_02 && parameter_01 >= parameter_03 ) final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+			if (parameter_01 >= parameter_02 && parameter_01 >= parameter_03) final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
 			else if (parameter_02 >= parameter_01 && parameter_02 >= parameter_03) final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
 			else if (parameter_03 >= parameter_01 && parameter_03 >= parameter_02) final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
 		}
