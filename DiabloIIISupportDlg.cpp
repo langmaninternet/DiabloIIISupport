@@ -1290,9 +1290,9 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			ROLL_OPTION option_02 = get_roll_option_02();
 			ROLL_OPTION option_03 = get_roll_option_03();
 			
-			ROLL_PARAMETER parameter_01 = get_roll_parameter_01();
-			ROLL_PARAMETER parameter_02 = get_roll_parameter_02();
-			ROLL_PARAMETER parameter_03 = get_roll_parameter_03();
+			ROLL_PARAMETER parameter_01 = get_roll_parameter_01(option_01);
+			ROLL_PARAMETER parameter_02 = get_roll_parameter_02(option_02);
+			ROLL_PARAMETER parameter_03 = get_roll_parameter_03(option_03);
 
 
 

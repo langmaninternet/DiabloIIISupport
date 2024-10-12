@@ -224,9 +224,9 @@ ROLL_OPTION get_roll_option_01(void);
 ROLL_OPTION get_roll_option_02(void);
 ROLL_OPTION get_roll_option_03(void);
 
-ROLL_PARAMETER get_roll_parameter_01(void);
-ROLL_PARAMETER get_roll_parameter_02(void);
-ROLL_PARAMETER get_roll_parameter_03(void);
+ROLL_PARAMETER get_roll_parameter_01(ROLL_OPTION);
+ROLL_PARAMETER get_roll_parameter_02(ROLL_OPTION);
+ROLL_PARAMETER get_roll_parameter_03(ROLL_OPTION);
 wchar_t* get_parameter_name(ROLL_PARAMETER);
 
 
