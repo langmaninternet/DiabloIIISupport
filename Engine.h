@@ -182,28 +182,32 @@ public:
 	/* HungeringArrow                                                       */
 	/************************************************************************/
 
-	bool				RollingOption01Is15PercentBaseHungeringArrow(void);
-	bool				RollingOption02Is15PercentBaseHungeringArrow(void);
-	bool				RollingOption03Is15PercentBaseHungeringArrow(void);
+	bool				RollingItemIsHuntersWrath(void);
+	bool				RollingItemIsColdCathodeTrousers(void);
 
-	bool				RollingOption01Is14PercentBaseHungeringArrow(void);
-	bool				RollingOption02Is14PercentBaseHungeringArrow(void);
-	bool				RollingOption03Is14PercentBaseHungeringArrow(void);
+	bool				RollingOption01IsHungeringArrow(void);
+	bool				RollingOption02IsHungeringArrow(void);
+	bool				RollingOption03IsHungeringArrow(void);
 
-	bool				RollingOption01Is13PercentBaseHungeringArrow(void);
-	bool				RollingOption02Is13PercentBaseHungeringArrow(void);
-	bool				RollingOption03Is13PercentBaseHungeringArrow(void);
+	//Parameter
+	bool				RollingParameter01Is15PercentBaseHungeringArrow(void);
+	bool				RollingParameter02Is15PercentBaseHungeringArrow(void);
+	bool				RollingParameter03Is15PercentBaseHungeringArrow(void);
+	bool				RollingParameter01Is14PercentBaseHungeringArrow(void);
+	bool				RollingParameter02Is14PercentBaseHungeringArrow(void);
+	bool				RollingParameter03Is14PercentBaseHungeringArrow(void);
+	bool				RollingParameter01Is13PercentBaseHungeringArrow(void);
+	bool				RollingParameter02Is13PercentBaseHungeringArrow(void);
+	bool				RollingParameter03Is13PercentBaseHungeringArrow(void);
+	bool				RollingParameter01Is12PercentBaseHungeringArrow(void);
+	bool				RollingParameter02Is12PercentBaseHungeringArrow(void);
+	bool				RollingParameter03Is12PercentBaseHungeringArrow(void);
+	bool				RollingParameter01Is11PercentBaseHungeringArrow(void);
+	bool				RollingParameter02Is11PercentBaseHungeringArrow(void);
+	bool				RollingParameter03Is11PercentBaseHungeringArrow(void);
 
-	bool				RollingOption01Is12PercentBaseHungeringArrow(void);
-	bool				RollingOption02Is12PercentBaseHungeringArrow(void);
-	bool				RollingOption03Is12PercentBaseHungeringArrow(void);
-
-	bool				RollingOption01Is11PercentBaseHungeringArrow(void);
-	bool				RollingOption02Is11PercentBaseHungeringArrow(void);
-	bool				RollingOption03Is11PercentBaseHungeringArrow(void);
-
-
-	bool				RollingOption02Is10PercentBaseHungeringArrow(void);
+	bool				RollingParameter01Is10PercentBaseHungeringArrow(void);
+	bool				RollingParameter02Is10PercentBaseHungeringArrow(void);
 
 	/************************************************************************/
 	/* ???????????????????                                                  */
@@ -326,9 +330,7 @@ public:
 	bool				RollingOption03IsResistAll(void);
 
 
-	bool				RollingOption01IsHungeringArrow(void);
-	bool				RollingOption02IsHungeringArrow(void);
-	bool				RollingOption03IsHungeringArrow(void);
+
 	bool				RollingOption01IsGrenade(void);
 	bool				RollingOption02IsGrenade(void);
 	bool				RollingOption03IsGrenade(void);
@@ -396,9 +398,6 @@ public:
 	bool				RollingItemIsFocus(void);
 
 
-
-	bool				RollingItemIsHuntersWrath(void);
-	bool				RollingItemIsColdCathodeTrousers(void);
 
 
 
