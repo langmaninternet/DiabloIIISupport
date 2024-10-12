@@ -154,26 +154,29 @@ public:
 	/************************************************************************/
 	/* Area Damage                                                          */
 	/************************************************************************/
+	bool				RollingOption01IsAreaDamage(int);
+	bool				RollingOption01IsAreaDamage(void);
+	bool				RollingOption02IsAreaDamage(int);
+	bool				RollingOption02IsAreaDamage(void);
+	bool				RollingOption03IsAreaDamage(int);
+	bool				RollingOption03IsAreaDamage(void);
 
-	bool				RollingOption02Is20PercentBaseAreaDamage(int);
-	bool				RollingOption02Is20PercentBaseAreaDamage(void);
-	bool				RollingOption03Is20PercentBaseAreaDamage(int);
-	bool				RollingOption03Is20PercentBaseAreaDamage(void);
-
-	bool				RollingOption01Is19PercentBaseAreaDamage(int);
-	bool				RollingOption01Is19PercentBaseAreaDamage(void);
-	bool				RollingOption02Is19PercentBaseAreaDamage(int);
-	bool				RollingOption02Is19PercentBaseAreaDamage(void);
-	bool				RollingOption03Is19PercentBaseAreaDamage(int);
-	bool				RollingOption03Is19PercentBaseAreaDamage(void);
-
-	bool				RollingOption01Is16PercentBaseAreaDamage(int);
-	bool				RollingOption01Is16PercentBaseAreaDamage(void);
-
-	bool				RollingOption02Is11PercentBaseAreaDamage(int);
-	bool				RollingOption02Is11PercentBaseAreaDamage(void);
-	bool				RollingOption03Is11PercentBaseAreaDamage(int);
-	bool				RollingOption03Is11PercentBaseAreaDamage(void);
+	bool				RollingParameter02Is20PercentBaseAreaDamage(int);
+	bool				RollingParameter02Is20PercentBaseAreaDamage(void);
+	bool				RollingParameter03Is20PercentBaseAreaDamage(int);
+	bool				RollingParameter03Is20PercentBaseAreaDamage(void);
+	bool				RollingParameter01Is19PercentBaseAreaDamage(int);
+	bool				RollingParameter01Is19PercentBaseAreaDamage(void);
+	bool				RollingParameter02Is19PercentBaseAreaDamage(int);
+	bool				RollingParameter02Is19PercentBaseAreaDamage(void);
+	bool				RollingParameter03Is19PercentBaseAreaDamage(int);
+	bool				RollingParameter03Is19PercentBaseAreaDamage(void);
+	bool				RollingParameter01Is16PercentBaseAreaDamage(int);
+	bool				RollingParameter01Is16PercentBaseAreaDamage(void);
+	bool				RollingParameter02Is11PercentBaseAreaDamage(int);
+	bool				RollingParameter02Is11PercentBaseAreaDamage(void);
+	bool				RollingParameter03Is11PercentBaseAreaDamage(int);
+	bool				RollingParameter03Is11PercentBaseAreaDamage(void);
 
 
 
@@ -265,12 +268,6 @@ public:
 	bool				RollingOption03IsBaseDamage(int);
 	bool				RollingOption03IsBaseDamage(void);
 
-	bool				RollingOption01IsAreaDamage(int);
-	bool				RollingOption01IsAreaDamage(void);
-	bool				RollingOption02IsAreaDamage(int);
-	bool				RollingOption02IsAreaDamage(void);
-	bool				RollingOption03IsAreaDamage(int);
-	bool				RollingOption03IsAreaDamage(void);
 
 
 	// 4. Stats

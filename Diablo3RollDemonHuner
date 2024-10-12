@@ -29252,7 +29252,7 @@ color = (GetPixel(383+xOffset, 437)&0xE0E0E0);if (color != 0X400000 && color != 
 color = (GetPixel(390+xOffset, 442)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
 return true;
 }
-bool Win32GDI::RollingParameter02Is13PercentBaseHungeringArrow(void)
+bool Win32GDI::RollingParameter03Is13PercentBaseHungeringArrow(void)
 {
 //const int				rol_02_clone_x_left = 365;
 //const int				rol_02_clone_y_top = 434/*Fixed*/;
