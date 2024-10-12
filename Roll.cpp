@@ -949,7 +949,7 @@ ROLL_PARAMETER get_roll_parameter_03(ROLL_OPTION option_03)
 	}
 	else if (option_03 == ROLL_OPTION_AREA_DAMAGE)
 	{
-		//if (w32gdi.RollingOption03Is20PercentBaseAreaDamage()) return ROLL_PARAMETER_20_PERCENT;
+		if (w32gdi.RollingOption03Is20PercentBaseAreaDamage()) return ROLL_PARAMETER_20_PERCENT;
 		if (w32gdi.RollingOption03Is19PercentBaseAreaDamage()) return ROLL_PARAMETER_19_PERCENT;
 		//if (w32gdi.RollingOption03Is18PercentBaseAreaDamage()) return ROLL_PARAMETER_18_PERCENT;
 		//if (w32gdi.RollingOption03Is17PercentBaseAreaDamage()) return ROLL_PARAMETER_17_PERCENT;
@@ -958,7 +958,7 @@ ROLL_PARAMETER get_roll_parameter_03(ROLL_OPTION option_03)
 		//if (w32gdi.RollingOption03Is14PercentBaseAreaDamage()) return ROLL_PARAMETER_14_PERCENT;
 		//if (w32gdi.RollingOption03Is13PercentBaseAreaDamage()) return ROLL_PARAMETER_13_PERCENT;
 		//if (w32gdi.RollingOption03Is12PercentBaseAreaDamage()) return ROLL_PARAMETER_12_PERCENT;
-		//if (w32gdi.RollingOption03Is11PercentBaseAreaDamage()) return ROLL_PARAMETER_11_PERCENT;
+		if (w32gdi.RollingOption03Is11PercentBaseAreaDamage()) return ROLL_PARAMETER_11_PERCENT;
 		//if (w32gdi.RollingOption03Is10PercentBaseAreaDamage()) return ROLL_PARAMETER_10_PERCENT;
 	}
 
@@ -967,7 +967,6 @@ ROLL_PARAMETER get_roll_parameter_03(ROLL_OPTION option_03)
 	//	//if (w32gdi.RollingOption03Is23Percent()) return ROLL_PARAMETER_23_PERCENT;
 	//	//if (w32gdi.RollingOption03Is22Percent()) return ROLL_PARAMETER_22_PERCENT;
 	//	//if (w32gdi.RollingOption03Is21Percent()) return ROLL_PARAMETER_21_PERCENT;
-	//	if (w32gdi.RollingOption03Is20PercentBaseAreaDamage()) return ROLL_PARAMETER_20_PERCENT;
 	//	//if (w32gdi.RollingOption03Is19Percent()) return ROLL_PARAMETER_19_PERCENT;
 	//	//if (w32gdi.RollingOption03Is18Percent()) return ROLL_PARAMETER_18_PERCENT;
 	//	//if (w32gdi.RollingOption03Is17Percent()) return ROLL_PARAMETER_17_PERCENT;
@@ -1193,7 +1192,21 @@ bool is_critical_hit_damage_percent(ROLL_PARAMETER x)
 		|| x == ROLL_PARAMETER_99_PERCENT
 		|| x == ROLL_PARAMETER_100_PERCENT);
 }
-
+bool is_area_damage_percent(ROLL_PARAMETER x)
+{
+	return (x == ROLL_PARAMETER_10_PERCENT
+		|| x == ROLL_PARAMETER_11_PERCENT
+		|| x == ROLL_PARAMETER_12_PERCENT
+		|| x == ROLL_PARAMETER_13_PERCENT
+		|| x == ROLL_PARAMETER_14_PERCENT
+		|| x == ROLL_PARAMETER_15_PERCENT
+		|| x == ROLL_PARAMETER_16_PERCENT
+		|| x == ROLL_PARAMETER_17_PERCENT
+		|| x == ROLL_PARAMETER_18_PERCENT
+		|| x == ROLL_PARAMETER_19_PERCENT
+		|| x == ROLL_PARAMETER_20_PERCENT
+		);
+}
 
 bool is_04_to_06_percent(ROLL_PARAMETER x)
 {
@@ -1414,6 +1427,57 @@ void do_roll(ROLL_ITEM item,
 	{
 		ROLL_DESCISION final_decision = DESCISION_NOTHING;
 
+		// Basic - 3 same option
+		if (final_decision == DESCISION_NOTHING
+			&& option_01 == ROLL_OPTION_CRITICAL_HIT_CHANCE
+			&& option_02 == ROLL_OPTION_CRITICAL_HIT_CHANCE
+			&& option_03 == ROLL_OPTION_CRITICAL_HIT_CHANCE
+			&& is_critical_hit_chance_percent(parameter_01)
+			&& is_critical_hit_chance_percent(parameter_02)
+			&& is_critical_hit_chance_percent(parameter_03)
+			)
+		{
+			if (parameter_01 >= parameter_02 && parameter_01 >= parameter_03) final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+			else if (parameter_02 >= parameter_01 && parameter_02 >= parameter_03) final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
+			else if (parameter_03 >= parameter_01 && parameter_03 >= parameter_02) final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
+		}
+		else if (final_decision == DESCISION_NOTHING
+			&& option_01 == ROLL_OPTION_CRITICAL_HIT_DAMAGE
+			&& option_02 == ROLL_OPTION_CRITICAL_HIT_DAMAGE
+			&& option_03 == ROLL_OPTION_CRITICAL_HIT_DAMAGE
+			&& is_critical_hit_damage_percent(parameter_01)
+			&& is_critical_hit_damage_percent(parameter_02)
+			&& is_critical_hit_damage_percent(parameter_03)
+			)
+		{
+			if (parameter_01 >= parameter_02 && parameter_01 >= parameter_03) final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+			else if (parameter_02 >= parameter_01 && parameter_02 >= parameter_03) final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
+			else if (parameter_03 >= parameter_01 && parameter_03 >= parameter_02) final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
+		}
+		else if (final_decision == DESCISION_NOTHING
+			&& option_01 == ROLL_OPTION_AREA_DAMAGE
+			&& option_02 == ROLL_OPTION_AREA_DAMAGE
+			&& option_03 == ROLL_OPTION_AREA_DAMAGE
+			&& is_area_damage_percent(parameter_01)
+			&& is_area_damage_percent(parameter_02)
+			&& is_area_damage_percent(parameter_03)
+			)
+		{
+			if (parameter_01 >= parameter_02 && parameter_01 >= parameter_03) final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
+			else if (parameter_02 >= parameter_01 && parameter_02 >= parameter_03) final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
+			else if (parameter_03 >= parameter_01 && parameter_03 >= parameter_02) final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
+		}
+
+
+
+
+
+
+
+
+
+
+
 		if (is_require_hungering_arrow(item, force_to_dps_build)
 			&& (is_dh_skill(option_01) || is_dh_skill(option_02) || is_dh_skill(option_03)))
 		{// Need HUNGERING_ARROW
@@ -1522,6 +1586,7 @@ void do_roll(ROLL_ITEM item,
 
 
 
+
 		// Critical hit
 		if (force_to_dps_build && final_decision == DESCISION_NOTHING)
 		{
@@ -1583,35 +1648,6 @@ void do_roll(ROLL_ITEM item,
 			}
 
 		}
-		else if (final_decision == DESCISION_NOTHING
-			&& option_01 == ROLL_OPTION_CRITICAL_HIT_CHANCE
-			&& option_02 == ROLL_OPTION_CRITICAL_HIT_CHANCE
-			&& option_03 == ROLL_OPTION_CRITICAL_HIT_CHANCE
-			&& is_critical_hit_chance_percent(parameter_01)
-			&& is_critical_hit_chance_percent(parameter_02)
-			&& is_critical_hit_chance_percent(parameter_03)
-			)
-		{
-			if (parameter_01 >= parameter_02 && parameter_01 >= parameter_03) final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
-			else if (parameter_02 >= parameter_01 && parameter_02 >= parameter_03) final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
-			else if (parameter_03 >= parameter_01 && parameter_03 >= parameter_02) final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
-		}
-		else if (final_decision == DESCISION_NOTHING
-			&& option_01 == ROLL_OPTION_CRITICAL_HIT_DAMAGE
-			&& option_02 == ROLL_OPTION_CRITICAL_HIT_DAMAGE
-			&& option_03 == ROLL_OPTION_CRITICAL_HIT_DAMAGE
-			&& is_critical_hit_damage_percent(parameter_01)
-			&& is_critical_hit_damage_percent(parameter_02)
-			&& is_critical_hit_damage_percent(parameter_03)
-			)
-		{
-			if (parameter_01 >= parameter_02 && parameter_01 >= parameter_03) final_decision = DESCISION_SELECT_OPTION_01_AND_WAIT_NEXT;
-			else if (parameter_02 >= parameter_01 && parameter_02 >= parameter_03) final_decision = DESCISION_SELECT_OPTION_02_AND_WAIT_NEXT;
-			else if (parameter_03 >= parameter_01 && parameter_03 >= parameter_02) final_decision = DESCISION_SELECT_OPTION_03_AND_WAIT_NEXT;
-		}
-
-
-
 
 		// area damage
 		if (force_to_dps_build && final_decision == DESCISION_NOTHING)

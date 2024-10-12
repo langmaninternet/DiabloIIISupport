@@ -171,7 +171,8 @@ public:
 
 	bool				RollingOption02Is11PercentBaseAreaDamage(int);
 	bool				RollingOption02Is11PercentBaseAreaDamage(void);
-
+	bool				RollingOption03Is11PercentBaseAreaDamage(int);
+	bool				RollingOption03Is11PercentBaseAreaDamage(void);
 
 	/************************************************************************/
 	/* ???????????????????                                                  */
