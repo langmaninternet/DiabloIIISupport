@@ -26466,16 +26466,6 @@ return true;
 
 
 
-// Parameter
-// 
-// BaseHungeringArrow
-
-const int offset=0; 
-const int xOffset=0;
-
-// void
-
-
 /************************************************************************/
 /* Hungering Arrow - Percent                                            */
 /************************************************************************/
@@ -28912,7 +28902,7 @@ bool Win32GDI::RollingParameter02Is13PercentBaseHungeringArrow(void)
 //const int				rol_02_y_top = 434/*Fixed*/;
 //const int				rol_02_x_right = 395;
 //const int				rol_02_y_bottom = 445/*Fixed*/;
-const int offset=0; 
+const int xOffset=0; 
 int color = 0;
 color = (GetPixel(365+xOffset, 434)&0xE0E0E0);if (color != 0X400000 && color != 0X400020 && color != 0X604060) return false;
 if ((GetPixel(366+xOffset, 436)&0xE0E0E0) != 0X0) return false;
