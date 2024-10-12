@@ -68,7 +68,7 @@ public:
 
 
 	/************************************************************************/
-	/* 1. Critical Hit Damage                                               */
+	/* Critical Hit Damage                                                  */
 	/************************************************************************/
 	bool				RollingOption01IsCriticalHitDamage(void);
 	bool				RollingOption02IsCriticalHitDamage(void);
@@ -129,7 +129,7 @@ public:
 
 
 	/************************************************************************/
-	/* 1. Critical Hit Chance                                               */
+	/* Critical Hit Chance                                                  */
 	/************************************************************************/
 	bool				RollingOption01IsCriticalHitChance(void);
 	bool				RollingOption02IsCriticalHitChance(void);
@@ -151,8 +151,10 @@ public:
 
 
 	/************************************************************************/
-	/* ???????????????????                                                  */
+	/* Area Damage                                                          */
 	/************************************************************************/
+
+
 	bool				RollingOption03Is20PercentBaseAreaDamage(int);
 	bool				RollingOption03Is20PercentBaseAreaDamage(void);
 
@@ -163,9 +165,13 @@ public:
 
 
 
-	bool				RollingOption01Is16Percent(int);
-	bool				RollingOption01Is16Percent(void);
+	bool				RollingOption01Is16PercentBaseAreaDamage(int);
+	bool				RollingOption01Is16PercentBaseAreaDamage(void);
 
+
+	/************************************************************************/
+	/* ???????????????????                                                  */
+	/************************************************************************/
 
 	bool				RollingOption01Is15Percent(int);
 	bool				RollingOption01Is15Percent(void);

@@ -1,5 +1,5 @@
 
-
+#define AREA_DAMAGE_OFFSET_LIMIT 20
 
 bool Win32GDI::RollingOption01IsAreaDamage(int offset)
 {
@@ -1135,17 +1135,10 @@ return true;
 }
 bool Win32GDI::RollingOption01IsAreaDamage(void)
 {
-	int right_limit = 30;
-	for (int i = 0; i < right_limit; i++)
+	int area_offset_limit = AREA_DAMAGE_OFFSET_LIMIT;
+	for (int i = 0; i < area_offset_limit; i++)
 	{
 		if (RollingOption01IsAreaDamage(i) || RollingOption01IsAreaDamage(-i))
-		{
-			return true;
-		}
-	}
-	for (int j = -right_limit; j  > -50; j--)
-	{
-		if (RollingOption01IsAreaDamage(j))
 		{
 			return true;
 		}
@@ -2286,17 +2279,10 @@ return true;
 }
 bool Win32GDI::RollingOption02IsAreaDamage(void)
 {
-	int right_limit = 30;
-	for (int i = 0; i < right_limit; i++)
+	int area_offset_limit = AREA_DAMAGE_OFFSET_LIMIT;
+	for (int i = 0; i < area_offset_limit; i++)
 	{
 		if (RollingOption02IsAreaDamage(i) || RollingOption02IsAreaDamage(-i))
-		{
-			return true;
-		}
-	}
-	for (int j = -right_limit; j  > -50; j--)
-	{
-		if (RollingOption02IsAreaDamage(j))
 		{
 			return true;
 		}
@@ -3326,17 +3312,10 @@ return true;
 }
 bool Win32GDI::RollingOption03IsAreaDamage(void)
 {
-	int right_limit = 30;
-	for (int i = 0; i < right_limit; i++)
+	int area_offset_limit = AREA_DAMAGE_OFFSET_LIMIT;
+	for (int i = 0; i < area_offset_limit; i++)
 	{
 		if (RollingOption03IsAreaDamage(i) || RollingOption03IsAreaDamage(-i))
-		{
-			return true;
-		}
-	}
-	for (int j = -right_limit; j  > -50; j--)
-	{
-		if (RollingOption03IsAreaDamage(j))
 		{
 			return true;
 		}
@@ -3694,17 +3673,10 @@ return true;
 }
 bool Win32GDI::RollingOption03Is20PercentBaseAreaDamage(void)
 {
-	int right_limit = 50;
-	for (int i = 0; i < right_limit; i++)
+	int area_offset_limit = AREA_DAMAGE_OFFSET_LIMIT;
+	for (int i = 0; i < area_offset_limit; i++)
 	{
 		if (RollingOption03Is20PercentBaseAreaDamage(i) || RollingOption03Is20PercentBaseAreaDamage(-i))
-		{
-			return true;
-		}
-	}
-	for (int j = -right_limit; j  > -150; j--)
-	{
-		if (RollingOption03Is20PercentBaseAreaDamage(j))
 		{
 			return true;
 		}
@@ -4372,17 +4344,10 @@ return true;
 }
 bool Win32GDI::RollingOption01Is19PercentBaseAreaDamage(void)
 {
-	int right_limit = 50;
-	for (int i = 0; i < right_limit; i++)
+	int area_offset_limit = AREA_DAMAGE_OFFSET_LIMIT;
+	for (int i = 0; i < area_offset_limit; i++)
 	{
 		if (RollingOption01Is19PercentBaseAreaDamage(i) || RollingOption01Is19PercentBaseAreaDamage(-i))
-		{
-			return true;
-		}
-	}
-	for (int j = -right_limit; j  > -150; j--)
-	{
-		if (RollingOption01Is19PercentBaseAreaDamage(j))
 		{
 			return true;
 		}
@@ -4744,17 +4709,10 @@ return true;
 }
 bool Win32GDI::RollingOption02Is19PercentBaseAreaDamage(void)
 {
-	int right_limit = 50;
-	for (int i = 0; i < right_limit; i++)
+	int area_offset_limit = AREA_DAMAGE_OFFSET_LIMIT;
+	for (int i = 0; i < area_offset_limit; i++)
 	{
 		if (RollingOption02Is19PercentBaseAreaDamage(i) || RollingOption02Is19PercentBaseAreaDamage(-i))
-		{
-			return true;
-		}
-	}
-	for (int j = -right_limit; j  > -150; j--)
-	{
-		if (RollingOption02Is19PercentBaseAreaDamage(j))
 		{
 			return true;
 		}
@@ -5123,17 +5081,10 @@ return true;
 }
 bool Win32GDI::RollingOption02Is11PercentBaseAreaDamage(void)
 {
-	int right_limit = 50;
-	for (int i = 0; i < right_limit; i++)
+	int area_offset_limit = AREA_DAMAGE_OFFSET_LIMIT;
+	for (int i = 0; i < area_offset_limit; i++)
 	{
 		if (RollingOption02Is11PercentBaseAreaDamage(i) || RollingOption02Is11PercentBaseAreaDamage(-i))
-		{
-			return true;
-		}
-	}
-	for (int j = -right_limit; j  > -150; j--)
-	{
-		if (RollingOption02Is11PercentBaseAreaDamage(j))
 		{
 			return true;
 		}
@@ -5149,7 +5100,7 @@ bool Win32GDI::RollingOption02Is11PercentBaseAreaDamage(void)
 
 
 
-bool Win32GDI::RollingOption01Is16Percent(int offset)
+bool Win32GDI::RollingOption01Is16PercentBaseAreaDamage(int offset)
 {
 //const int				rol_01_x_left = 196;
 //const int				rol_01_y_top = 388/*Fixed*/;
@@ -5520,19 +5471,12 @@ color = (GetPixel(222+offset, 388)&0xE0E0E0);if (color != 0X806040 && color != 0
 color = (GetPixel(223+offset, 388)&0xE0E0E0);if (color != 0X604040 && color != 0X806080 && color != 0X808080) return false;
 return true;
 }
-bool Win32GDI::RollingOption01Is16Percent(void)
+bool Win32GDI::RollingOption01Is16PercentBaseAreaDamage(void)
 {
-	int right_limit = 50;
-	for (int i = 0; i < right_limit; i++)
+	int area_offset_limit = AREA_DAMAGE_OFFSET_LIMIT;
+	for (int i = 0; i < area_offset_limit; i++)
 	{
 		if (RollingOption01Is16Percent(i) || RollingOption01Is16Percent(-i))
-		{
-			return true;
-		}
-	}
-	for (int j = -right_limit; j  > -150; j--)
-	{
-		if (RollingOption01Is16Percent(j))
 		{
 			return true;
 		}
