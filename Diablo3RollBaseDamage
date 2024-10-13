@@ -1,3 +1,6 @@
+
+#define BASE_DAMAGE_OFFSET_LIMIT 10
+
 bool Win32GDI::RollingOption01IsBaseDamage(int offset)
 {
 //const int				rol_01_x_left = 144;
@@ -913,22 +916,14 @@ return true;
 }
 bool Win32GDI::RollingOption01IsBaseDamage(void)
 {
-	int right_limit = 30;
-	for (int i = 0; i < right_limit; i++)
+	int base_damage_limit = BASE_DAMAGE_OFFSET_LIMIT;
+	for (int i = 0; i < base_damage_limit; i++)
 	{
 		if (RollingOption01IsBaseDamage(i) || RollingOption01IsBaseDamage(-i))
 		{
 			return true;
 		}
 	}
-	for (int j = -right_limit; j  > -100; j--)
-	{
-		if (RollingOption01IsBaseDamage(j))
-		{
-			return true;
-		}
-	}
-	return false;
 }
 bool Win32GDI::RollingOption02IsBaseDamage(int offset)
 {
@@ -1845,17 +1840,10 @@ return true;
 }
 bool Win32GDI::RollingOption02IsBaseDamage(void)
 {
-	int right_limit = 30;
-	for (int i = 0; i < right_limit; i++)
+	int base_damage_limit = BASE_DAMAGE_OFFSET_LIMIT;
+	for (int i = 0; i < base_damage_limit; i++)
 	{
 		if (RollingOption02IsBaseDamage(i) || RollingOption02IsBaseDamage(-i))
-		{
-			return true;
-		}
-	}
-	for (int j = -right_limit; j  > -50; j--)
-	{
-		if (RollingOption02IsBaseDamage(j))
 		{
 			return true;
 		}
@@ -2695,17 +2683,10 @@ return true;
 }
 bool Win32GDI::RollingOption03IsBaseDamage(void)
 {
-	int right_limit = 30;
-	for (int i = 0; i < right_limit; i++)
+	int base_damage_limit = BASE_DAMAGE_OFFSET_LIMIT;
+	for (int i = 0; i < base_damage_limit; i++)
 	{
 		if (RollingOption03IsBaseDamage(i) || RollingOption03IsBaseDamage(-i))
-		{
-			return true;
-		}
-	}
-	for (int j = -right_limit; j  > -50; j--)
-	{
-		if (RollingOption03IsBaseDamage(j))
 		{
 			return true;
 		}
