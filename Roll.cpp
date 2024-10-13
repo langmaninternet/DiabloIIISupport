@@ -810,6 +810,13 @@ ROLL_PARAMETER get_roll_parameter_02(ROLL_OPTION option_02)
 	}
 	else if (option_02 == ROLL_OPTION_CRITICAL_HIT_CHANCE)
 	{
+		// Amulet
+		if (w32gdi.RollingParameter02Is10PercentBaseCriticalHitChance()) return ROLL_PARAMETER_10_PERCENT;
+		//if (w32gdi.RollingParameter02Is09d5PercentBaseCriticalHitChance()) return ROLL_PARAMETER_09_D_5_PERCENT;
+		//if (w32gdi.RollingParameter02Is09PercentBaseCriticalHitChance()) return ROLL_PARAMETER_09_PERCENT;
+		//if (w32gdi.RollingParameter02Is08d5PercentBaseCriticalHitChance()) return ROLL_PARAMETER_08_D_5_PERCENT;
+		//if (w32gdi.RollingParameter02Is08PercentBaseCriticalHitChance()) return ROLL_PARAMETER_08_PERCENT;
+		// Ring
 		if (w32gdi.RollingParameter02Is06PercentBaseCriticalHitChance()) return ROLL_PARAMETER_06_PERCENT;
 		if (w32gdi.RollingParameter02Is05d5PercentBaseCriticalHitChance()) return ROLL_PARAMETER_05_D_5_PERCENT;
 		if (w32gdi.RollingParameter02Is05PercentBaseCriticalHitChance()) return ROLL_PARAMETER_05_PERCENT;
@@ -923,6 +930,13 @@ ROLL_PARAMETER get_roll_parameter_03(ROLL_OPTION option_03)
 	}
 	else if (option_03 == ROLL_OPTION_CRITICAL_HIT_CHANCE)
 	{
+		// Amulet
+		if (w32gdi.RollingParameter03Is10PercentBaseCriticalHitChance()) return ROLL_PARAMETER_10_PERCENT;
+		//if (w32gdi.RollingParameter03Is09d5PercentBaseCriticalHitChance()) return ROLL_PARAMETER_09_D_5_PERCENT;
+		//if (w32gdi.RollingParameter03Is09PercentBaseCriticalHitChance()) return ROLL_PARAMETER_09_PERCENT;
+		//if (w32gdi.RollingParameter03Is08d5PercentBaseCriticalHitChance()) return ROLL_PARAMETER_08_D_5_PERCENT;
+		//if (w32gdi.RollingParameter03Is08PercentBaseCriticalHitChance()) return ROLL_PARAMETER_08_PERCENT;
+		// Ring
 		if (w32gdi.RollingParameter03Is06PercentBaseCriticalHitChance()) return ROLL_PARAMETER_06_PERCENT;
 		if (w32gdi.RollingParameter03Is05d5PercentBaseCriticalHitChance()) return ROLL_PARAMETER_05_D_5_PERCENT;
 		if (w32gdi.RollingParameter03Is05PercentBaseCriticalHitChance()) return ROLL_PARAMETER_05_PERCENT;
