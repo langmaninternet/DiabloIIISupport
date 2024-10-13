@@ -839,7 +839,6 @@ ROLL_PARAMETER get_roll_parameter_02(ROLL_OPTION option_02)
 		if (w32gdi.RollingParameter02Is10PercentBaseHungeringArrow()) return ROLL_PARAMETER_10_PERCENT;
 	}
 
-
 	return ROLL_PARAMETER_UNKNOWN;
 }
 ROLL_PARAMETER get_roll_parameter_03(ROLL_OPTION option_03)
