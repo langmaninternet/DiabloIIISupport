@@ -146,8 +146,6 @@ public:
 	bool				RollingOption02IsCriticalHitChance(void);
 	bool				RollingOption03IsCriticalHitChance(void);
 
-	//RollingParameter01Is08PercentBaseCriticalHitChance
-
 	bool				RollingParameter01Is10PercentBaseCriticalHitChance(void);
 	bool				RollingParameter01Is08PercentBaseCriticalHitChance(void);
 	bool				RollingParameter01Is06PercentBaseCriticalHitChance(void);
@@ -227,16 +225,39 @@ public:
 	bool				RollingParameter03Is10PercentBaseHungeringArrow(void);
 
 	/************************************************************************/
-	/* ???????????????????                                                  */
+	/* Stats                                                                */
 	/************************************************************************/
 
+	bool				RollingOption02IsDexterity(int);
+	bool				RollingOption02IsDexterity(void);
+	bool				RollingOption03IsDexterity(int);
+	bool				RollingOption03IsDexterity(void);
+
+	bool				RollingOption02IsIntelligence(int);
+	bool				RollingOption02IsIntelligence(void);
+	bool				RollingOption03IsIntelligence(int);
+	bool				RollingOption03IsIntelligence(void);
+
+	bool				RollingOption02IsVitality(int);
+	bool				RollingOption02IsVitality(void);
+	bool				RollingOption03IsVitality(int);
+	bool				RollingOption03IsVitality(void);
+
+
+	/************************************************************************/
+	/* Armor                                                                */
+	/************************************************************************/
+	bool				RollingOption02IsArmor(int);
+	bool				RollingOption02IsArmor(void);
+	bool				RollingOption03IsArmor(int);
+	bool				RollingOption03IsArmor(void);
 
 
 
 
-
-
-
+	/************************************************************************/
+	/* ???????????????????                                                  */
+	/************************************************************************/
 
 
 	bool				RollingOption01Is07Percent(int);
@@ -284,22 +305,7 @@ public:
 
 
 
-	// 4. Stats
 
-	bool				RollingOption02IsDexterity(int);
-	bool				RollingOption02IsDexterity(void);
-	bool				RollingOption03IsDexterity(int);
-	bool				RollingOption03IsDexterity(void);
-
-	bool				RollingOption02IsIntelligence(int);
-	bool				RollingOption02IsIntelligence(void);
-	bool				RollingOption03IsIntelligence(int);
-	bool				RollingOption03IsIntelligence(void);
-
-	bool				RollingOption02IsVitality(int);
-	bool				RollingOption02IsVitality(void);
-	bool				RollingOption03IsVitality(int);
-	bool				RollingOption03IsVitality(void);
 
 
 	// 5. Reduce
@@ -382,10 +388,6 @@ public:
 	bool				RollingOption01IsLifePerKill(void);
 
 
-	bool				RollingOption02IsArmor(int);
-	bool				RollingOption02IsArmor(void);
-	bool				RollingOption03IsArmor(int);
-	bool				RollingOption03IsArmor(void);
 
 
 	bool				RollingOption01IsHealingGlobe(void);

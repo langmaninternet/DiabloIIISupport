@@ -1,3 +1,7 @@
+
+
+
+
 bool Win32GDI::RollingOption01IsLifePercent(int offset)
 {
 //const int				rol_01_x_left = 107;

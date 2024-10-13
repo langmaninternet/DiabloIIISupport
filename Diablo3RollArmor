@@ -1,4 +1,6 @@
 
+#define ARMOR_OFFSET_LIMIT 20
+
 bool Win32GDI::RollingOption02IsArmor(int offset)
 {
 //const int				rol_02_x_left = 120;
@@ -472,8 +474,8 @@ return true;
 }
 bool Win32GDI::RollingOption02IsArmor(void)
 {
-	int right_limit = 40;
-	for (int i = 0; i < right_limit; i++)
+	int armor_limit = ARMOR_OFFSET_LIMIT;
+	for (int i = 0; i < armor_limit; i++)
 	{
 		if (RollingOption02IsArmor(i) || RollingOption02IsArmor(-i))
 		{
@@ -997,8 +999,8 @@ return true;
 }
 bool Win32GDI::RollingOption03IsArmor(void)
 {
-	int right_limit = 40;
-	for (int i = 0; i < right_limit; i++)
+	int armor_limit = ARMOR_OFFSET_LIMIT;
+	for (int i = 0; i < armor_limit; i++)
 	{
 		if (RollingOption03IsArmor(i) || RollingOption03IsArmor(-i))
 		{
