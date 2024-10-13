@@ -3464,13 +3464,6 @@ bool Win32GDI::RollingOption02Is07PercentBaseAttackSpeed(void)
 			return true;
 		}
 	}
-	for (int j = -right_limit; j  > -100; j--)
-	{
-		if (RollingOption02Is07PercentBaseAttackSpeed(j))
-		{
-			return true;
-		}
-	}
 	return false;
 }
 bool Win32GDI::RollingOption03Is07PercentBaseAttackSpeed(int xOffset)
@@ -3904,13 +3897,6 @@ bool Win32GDI::RollingOption03Is07PercentBaseAttackSpeed(void)
 	for (int i = 0; i < right_limit; i++)
 	{
 		if (RollingOption03Is07PercentBaseAttackSpeed(i) || RollingOption03Is07PercentBaseAttackSpeed(-i))
-		{
-			return true;
-		}
-	}
-	for (int j = -right_limit; j  > -100; j--)
-	{
-		if (RollingOption03Is07PercentBaseAttackSpeed(j))
 		{
 			return true;
 		}

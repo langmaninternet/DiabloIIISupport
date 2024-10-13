@@ -1,5 +1,5 @@
 
-#define AREA_DAMAGE_OFFSET_LIMIT 20
+#define AREA_DAMAGE_OFFSET_LIMIT 10
 
 
 /************************************************************************/
