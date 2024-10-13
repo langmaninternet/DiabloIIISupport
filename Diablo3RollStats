@@ -1,6 +1,6 @@
 
 // same method : + xxx stats
-#define STATS_OFFSET_LIMIT 20
+#define STATS_OFFSET_LIMIT 10
 
 
 
