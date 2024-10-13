@@ -259,10 +259,9 @@ public:
 	bool				RollingOption01IsReduceMeleeDamage(void);
 	bool				RollingOption02IsReduceMeleeDamage(void);
 	bool				RollingOption03IsReduceMeleeDamage(void);
-
-
-	bool				RollingOption03Is06PercentBaseReduceMelee(int);
-	bool				RollingOption03Is06PercentBaseReduceMelee(void);
+	bool				RollingOption01Is06PercentBaseReduceMeleeDamage(void);
+	bool				RollingOption02Is06PercentBaseReduceMeleeDamage(void);
+	bool				RollingOption03Is06PercentBaseReduceMeleeDamage(void);
 
 	/************************************************************************/
 	/* Armor                                                                */

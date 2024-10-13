@@ -722,6 +722,11 @@ ROLL_PARAMETER get_roll_parameter_01(ROLL_OPTION option_01)
 		//if (w32gdi.RollingParameter01Is11PercentBaseAreaDamage()) return ROLL_PARAMETER_11_PERCENT;
 		//if (w32gdi.RollingParameter01Is10PercentBaseAreaDamage()) return ROLL_PARAMETER_10_PERCENT;
 	}
+	else if (option_01 == ROLL_OPTION_REDUCE_MELEE_DAMAGE)
+	{
+		//if (w32gdi.RollingOption01Is07PercentBaseReduceMeleeDamage()) return ROLL_PARAMETER_07_PERCENT;
+		if (w32gdi.RollingOption01Is06PercentBaseReduceMeleeDamage()) return ROLL_PARAMETER_06_PERCENT;
+	}
 	else if (option_01 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW)
 	{
 		if (w32gdi.RollingParameter01Is15PercentBaseHungeringArrow()) return ROLL_PARAMETER_15_PERCENT;
@@ -731,7 +736,6 @@ ROLL_PARAMETER get_roll_parameter_01(ROLL_OPTION option_01)
 		if (w32gdi.RollingParameter01Is11PercentBaseHungeringArrow()) return ROLL_PARAMETER_11_PERCENT;
 		if (w32gdi.RollingParameter01Is10PercentBaseHungeringArrow()) return ROLL_PARAMETER_10_PERCENT;
 	}
-
 
 
 	return ROLL_PARAMETER_UNKNOWN;
@@ -843,6 +847,11 @@ ROLL_PARAMETER get_roll_parameter_02(ROLL_OPTION option_02)
 		//if (w32gdi.RollingParameter02Is12PercentBaseAreaDamage()) return ROLL_PARAMETER_12_PERCENT;
 		if (w32gdi.RollingParameter02Is11PercentBaseAreaDamage()) return ROLL_PARAMETER_11_PERCENT;
 		//if (w32gdi.RollingParameter02Is10PercentBaseAreaDamage()) return ROLL_PARAMETER_10_PERCENT;
+	}
+	else if (option_02 == ROLL_OPTION_REDUCE_MELEE_DAMAGE)
+	{
+		//if (w32gdi.RollingOption02Is07PercentBaseReduceMeleeDamage()) return ROLL_PARAMETER_07_PERCENT;
+		if (w32gdi.RollingOption02Is06PercentBaseReduceMeleeDamage()) return ROLL_PARAMETER_06_PERCENT;
 	}
 	else if (option_02 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW)
 	{
@@ -963,6 +972,11 @@ ROLL_PARAMETER get_roll_parameter_03(ROLL_OPTION option_03)
 		//if (w32gdi.RollingParameter03Is12PercentBaseAreaDamage()) return ROLL_PARAMETER_12_PERCENT;
 		if (w32gdi.RollingParameter03Is11PercentBaseAreaDamage()) return ROLL_PARAMETER_11_PERCENT;
 		//if (w32gdi.RollingParameter03Is10PercentBaseAreaDamage()) return ROLL_PARAMETER_10_PERCENT;
+	}
+	else if (option_03 == ROLL_OPTION_REDUCE_MELEE_DAMAGE)
+	{
+		//if (w32gdi.RollingOption03Is07PercentBaseReduceMeleeDamage()) return ROLL_PARAMETER_07_PERCENT;
+		if (w32gdi.RollingOption03Is06PercentBaseReduceMeleeDamage()) return ROLL_PARAMETER_06_PERCENT;
 	}
 	else if (option_03 == ROLL_OPTION_DHSKILL_HUNGERING_ARROW)
 	{
