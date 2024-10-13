@@ -488,6 +488,11 @@ ROLL_OPTION get_roll_option_01(void)
 	//4. Stats
 
 
+	// 5. Reduce Damage
+	if (w32gdi.RollingOption01IsReduceMeleeDamage()) return ROLL_OPTION_REDUCE_MELEE_DAMAGE;
+
+
+
 	// 5. Reduce
 	if (w32gdi.RollingOption01IsReduceResource()) return ROLL_OPTION_REDUCE_RESOURCE;
 
@@ -524,9 +529,10 @@ ROLL_OPTION get_roll_option_02(void)
 	if (w32gdi.RollingOption02IsDexterity()) return ROLL_OPTION_DEXTERITY;
 	if (w32gdi.RollingOption02IsIntelligence()) return ROLL_OPTION_INTELLIGENCE;
 	if (w32gdi.RollingOption02IsVitality()) return ROLL_OPTION_VITALITY;
-
-
-
+	// 5. Reduce Damage
+	if (w32gdi.RollingOption02IsReduceMeleeDamage()) return ROLL_OPTION_REDUCE_MELEE_DAMAGE;
+	
+	
 	// 5. Reduce
 	if (w32gdi.RollingOption02IsReduceResource()) return ROLL_OPTION_REDUCE_RESOURCE;
 	if (w32gdi.RollingOption02IsReduceCooldown()) return ROLL_OPTION_REDUCE_COOLDOWN;
@@ -566,6 +572,8 @@ ROLL_OPTION get_roll_option_03(void)
 	if (w32gdi.RollingOption03IsDexterity()) return ROLL_OPTION_DEXTERITY;
 	if (w32gdi.RollingOption03IsIntelligence()) return ROLL_OPTION_INTELLIGENCE;
 	if (w32gdi.RollingOption03IsVitality()) return ROLL_OPTION_VITALITY;
+	// 5. Reduce Damage
+	if (w32gdi.RollingOption03IsReduceMeleeDamage()) return ROLL_OPTION_REDUCE_MELEE_DAMAGE;
 
 
 
