@@ -924,6 +924,7 @@ bool Win32GDI::RollingOption01IsBaseDamage(void)
 			return true;
 		}
 	}
+		return false;
 }
 bool Win32GDI::RollingOption02IsBaseDamage(int offset)
 {
