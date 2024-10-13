@@ -74,58 +74,58 @@ public:
 	bool				RollingOption02IsCriticalHitDamage(void);
 	bool				RollingOption03IsCriticalHitDamage(void);
 
-	bool				RollingOption01Is49Percent(void);
-	bool				RollingOption02Is49Percent(void);
-	bool				RollingOption03Is49Percent(void);
+	bool				RollingParameter01Is49PercentBaseCriticalHitDamage(void);
+	bool				RollingParameter02Is49PercentBaseCriticalHitDamage(void);
+	bool				RollingParameter03Is49PercentBaseCriticalHitDamage(void);
 
 
-	bool				RollingOption01Is46Percent(void);
-	bool				RollingOption02Is46Percent(void);
-	bool				RollingOption03Is46Percent(void);
-	bool				RollingOption01Is45Percent(void);
+	bool				RollingParameter01Is46PercentBaseCriticalHitDamage(void);
+	bool				RollingParameter02Is46PercentBaseCriticalHitDamage(void);
+	bool				RollingParameter03Is46PercentBaseCriticalHitDamage(void);
+	bool				RollingParameter01Is45PercentBaseCriticalHitDamage(void);
 
 
-	bool				RollingOption01Is43Percent(void);
+	bool				RollingParameter01Is43PercentBaseCriticalHitDamage(void);
 
-	bool				RollingOption01Is42Percent(void);
+	bool				RollingParameter01Is42PercentBaseCriticalHitDamage(void);
 
-	bool				RollingOption01Is41Percent(void);
+	bool				RollingParameter01Is41PercentBaseCriticalHitDamage(void);
 
-	bool				RollingOption01Is40Percent(void);
+	bool				RollingParameter01Is40PercentBaseCriticalHitDamage(void);
 
-	bool				RollingOption02Is39Percent(void);
-	bool				RollingOption03Is39Percent(void);
-
-
-
-	bool				RollingOption02Is38Percent(void);
-	bool				RollingOption03Is38Percent(void);
+	bool				RollingParameter02Is39PercentBaseCriticalHitDamage(void);
+	bool				RollingParameter03Is39PercentBaseCriticalHitDamage(void);
 
 
-	bool				RollingOption02Is35Percent(void);
-	bool				RollingOption03Is35Percent(void);
 
-	bool				RollingOption01Is34Percent(void);
-
-
-	bool				RollingOption02Is33Percent(void);
-	bool				RollingOption03Is33Percent(void);
+	bool				RollingParameter02Is38PercentBaseCriticalHitDamage(void);
+	bool				RollingParameter03Is38PercentBaseCriticalHitDamage(void);
 
 
-	bool				RollingOption02Is32Percent(void);
-	bool				RollingOption03Is32Percent(void);
+	bool				RollingParameter02Is35PercentBaseCriticalHitDamage(void);
+	bool				RollingParameter03Is35PercentBaseCriticalHitDamage(void);
+
+	bool				RollingParameter01Is34PercentBaseCriticalHitDamage(void);
 
 
-	bool				RollingOption02Is31Percent(void);
-	bool				RollingOption03Is31Percent(void);
+	bool				RollingParameter02Is33PercentBaseCriticalHitDamage(void);
+	bool				RollingParameter03Is33PercentBaseCriticalHitDamage(void);
 
 
-	bool				RollingOption02Is29Percent(void);
-	bool				RollingOption03Is29Percent(void);
+	bool				RollingParameter02Is32PercentBaseCriticalHitDamage(void);
+	bool				RollingParameter03Is32PercentBaseCriticalHitDamage(void);
 
 
-	bool				RollingOption02Is26Percent(void);
-	bool				RollingOption03Is26Percent(void);
+	bool				RollingParameter02Is31PercentBaseCriticalHitDamage(void);
+	bool				RollingParameter03Is31PercentBaseCriticalHitDamage(void);
+
+
+	bool				RollingParameter02Is29PercentBaseCriticalHitDamage(void);
+	bool				RollingParameter03Is29PercentBaseCriticalHitDamage(void);
+
+
+	bool				RollingParameter02Is26PercentBaseCriticalHitDamage(void);
+	bool				RollingParameter03Is26PercentBaseCriticalHitDamage(void);
 
 
 	/************************************************************************/
@@ -134,20 +134,23 @@ public:
 	bool				RollingOption01IsCriticalHitChance(void);
 	bool				RollingOption02IsCriticalHitChance(void);
 	bool				RollingOption03IsCriticalHitChance(void);
-	bool				RollingOption01Is10Percent(void);
-	bool				RollingOption01Is08Percent(void);
-	bool				RollingOption01Is06Percent(void);
-	bool				RollingOption02Is06Percent(void);
-	bool				RollingOption03Is06Percent(void);
-	bool				RollingOption01Is05d5Percent(void);
-	bool				RollingOption02Is05d5Percent(void);
-	bool				RollingOption03Is05d5Percent(void);
-	bool				RollingOption01Is05Percent(void);
-	bool				RollingOption02Is05Percent(void);
-	bool				RollingOption03Is05Percent(void);
-	bool				RollingOption01Is04d5Percent(void);
-	bool				RollingOption02Is04d5Percent(void);
-	bool				RollingOption03Is04d5Percent(void);
+
+	//RollingParameter01Is08PercentBaseCriticalHitChance
+
+	bool				RollingParameter01Is10PercentBaseCriticalHitChance(void);
+	bool				RollingParameter01Is08PercentBaseCriticalHitChance(void);
+	bool				RollingParameter01Is06PercentBaseCriticalHitChance(void);
+	bool				RollingParameter02Is06PercentBaseCriticalHitChance(void);
+	bool				RollingParameter03Is06PercentBaseCriticalHitChance(void);
+	bool				RollingParameter01Is05d5PercentBaseCriticalHitChance(void);
+	bool				RollingParameter02Is05d5PercentBaseCriticalHitChance(void);
+	bool				RollingParameter03Is05d5PercentBaseCriticalHitChance(void);
+	bool				RollingParameter01Is05PercentBaseCriticalHitChance(void);
+	bool				RollingParameter02Is05PercentBaseCriticalHitChance(void);
+	bool				RollingParameter03Is05PercentBaseCriticalHitChance(void);
+	bool				RollingParameter01Is04d5PercentBaseCriticalHitChance(void);
+	bool				RollingParameter02Is04d5PercentBaseCriticalHitChance(void);
+	bool				RollingParameter03Is04d5PercentBaseCriticalHitChance(void);
 
 
 
