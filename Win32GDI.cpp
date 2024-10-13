@@ -39,7 +39,7 @@
 //right    970  1006 - Half 1016 1030
 
 //Critical Hit Damage - 100% : 319 - 371
-
+//Critical Hit Damage - xx% : 318 - 362
 
 
 const int				rol_01_x_left = 319;
@@ -127,9 +127,9 @@ void		QuangBTDumpScreen(void)
 	//w32gdi.DumpRollOption01();
 	//w32gdi.DumpRollOption01Ex();
 	//w32gdi.DumpRollOption02();
-	w32gdi.DumpRollOption02Ex();
+	//w32gdi.DumpRollOption02Ex();
 	//w32gdi.DumpRollOption03();
-	//w32gdi.DumpRollOption03Ex();
+	w32gdi.DumpRollOption03Ex();
 
 	//w32gdi.DumpRectangle(208, 776, 319, 786);
 

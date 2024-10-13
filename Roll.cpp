@@ -1824,7 +1824,7 @@ void do_roll(ROLL_ITEM item,
 		&& is_04_to_06_percent(parameter_01)
 		&& parameter_01 < ROLL_PARAMETER_06_PERCENT
 		&& w32gdi.D3IsRollWaiting()
-		&& resource_status == RESOURCE_STATUS_ENOUGH_FOR_JEWELRY)
+		&& (resource_status == RESOURCE_STATUS_ENOUGH_FOR_JEWELRY || resource_status == RESOURCE_STATUS_FULL_FOR_CLOTHES))
 	{
 		start_roll();
 	}
