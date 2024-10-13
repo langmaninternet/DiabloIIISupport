@@ -105,6 +105,9 @@ public:
 	bool				RollingParameter01Is41PercentBaseCriticalHitDamage(void);
 
 	bool				RollingParameter01Is40PercentBaseCriticalHitDamage(void);
+	bool				RollingParameter02Is40PercentBaseCriticalHitDamage(void);
+	bool				RollingParameter03Is40PercentBaseCriticalHitDamage(void);
+
 
 	bool				RollingParameter02Is39PercentBaseCriticalHitDamage(void);
 	bool				RollingParameter03Is39PercentBaseCriticalHitDamage(void);
@@ -114,6 +117,12 @@ public:
 	bool				RollingParameter02Is38PercentBaseCriticalHitDamage(void);
 	bool				RollingParameter03Is38PercentBaseCriticalHitDamage(void);
 
+
+	bool				RollingParameter02Is37PercentBaseCriticalHitDamage(void);
+	bool				RollingParameter03Is37PercentBaseCriticalHitDamage(void);
+
+	bool				RollingParameter02Is36PercentBaseCriticalHitDamage(void);
+	bool				RollingParameter03Is36PercentBaseCriticalHitDamage(void);
 
 	bool				RollingParameter02Is35PercentBaseCriticalHitDamage(void);
 	bool				RollingParameter03Is35PercentBaseCriticalHitDamage(void);
