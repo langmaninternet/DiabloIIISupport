@@ -83,6 +83,9 @@ public:
 	bool				RollingParameter01Is49PercentBaseCriticalHitDamage(void);
 	bool				RollingParameter02Is49PercentBaseCriticalHitDamage(void);
 	bool				RollingParameter03Is49PercentBaseCriticalHitDamage(void);
+	bool				RollingParameter01Is48PercentBaseCriticalHitDamage(void);
+	bool				RollingParameter02Is48PercentBaseCriticalHitDamage(void);
+	bool				RollingParameter03Is48PercentBaseCriticalHitDamage(void);
 
 
 	bool				RollingParameter01Is46PercentBaseCriticalHitDamage(void);
