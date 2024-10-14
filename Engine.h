@@ -412,7 +412,6 @@ public:
 
 	bool				RollingOption01IsLifePerSecond(void);
 	bool				RollingOption02IsLifePerSecond(void);
-	bool				RollingOption03IsLifePerSecond(int);
 	bool				RollingOption03IsLifePerSecond(void);
 
 
