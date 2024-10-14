@@ -500,6 +500,9 @@ ROLL_OPTION get_roll_option_01(void)
 	if (w32gdi.RollingOption01IsAttackSpeed()) return ROLL_OPTION_ATTACK_SPEED;
 
 	//7. Life
+	if (w32gdi.RollingOption01IsLifePercent()) return ROLL_OPTION_LIFE_PERCENT;
+
+	if (w32gdi.RollingOption01IsLifePerSecond()) return ROLL_OPTION_LIFE_PER_SECOND;
 	if (w32gdi.RollingOption01IsLifePerKill()) return ROLL_OPTION_LIFE_KILL;
 
 	if (w32gdi.RollingOption01IsHungeringArrow()) return ROLL_OPTION_DHSKILL_HUNGERING_ARROW;
@@ -507,8 +510,8 @@ ROLL_OPTION get_roll_option_01(void)
 	if (w32gdi.RollingOption01IsGrenade()) return ROLL_OPTION_DHSKILL_GRENADE;
 	if (w32gdi.RollingOption01IsEntanglingShot()) return ROLL_OPTION_DHSKILL_ENTANGLING_SHOT;
 	if (w32gdi.RollingOption01IsEvasiveFire()) return ROLL_OPTION_DHSKILL_EVASIVE_FIRE;
-	if (w32gdi.RollingOption01IsLifePerSecond()) return ROLL_OPTION_LIFE_PER_SECOND;
-	if (w32gdi.RollingOption01IsLifePercent()) return ROLL_OPTION_LIFE_PERCENT;
+	
+	
 
 
 	return ROLL_OPTION_UNKNOWN;
@@ -543,8 +546,9 @@ ROLL_OPTION get_roll_option_02(void)
 
 	// 7. life
 	if (w32gdi.RollingOption02IsLifePercent()) return ROLL_OPTION_LIFE_PERCENT;
-	if (w32gdi.RollingOption02IsLifePerSecond()) return ROLL_OPTION_LIFE_PER_SECOND;
 	if (w32gdi.RollingOption02IsLifePerHit()) return ROLL_OPTION_LIFE_HIT;
+	if (w32gdi.RollingOption02IsLifePerSecond()) return ROLL_OPTION_LIFE_PER_SECOND;
+	
 
 	if (w32gdi.RollingOption02IsResistAll()) return ROLL_OPTION_RESIST_ALL;
 
@@ -590,8 +594,9 @@ ROLL_OPTION get_roll_option_03(void)
 
 	// 7. life
 	if (w32gdi.RollingOption03IsLifePercent()) return ROLL_OPTION_LIFE_PERCENT;
-	if (w32gdi.RollingOption03IsLifePerSecond()) return ROLL_OPTION_LIFE_PER_SECOND;
 	if (w32gdi.RollingOption03IsLifePerHit()) return ROLL_OPTION_LIFE_HIT;
+	if (w32gdi.RollingOption03IsLifePerSecond()) return ROLL_OPTION_LIFE_PER_SECOND;
+	
 
 
 	if (w32gdi.RollingOption03IsResistAll()) return ROLL_OPTION_RESIST_ALL;

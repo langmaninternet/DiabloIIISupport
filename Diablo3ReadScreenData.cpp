@@ -41,10 +41,12 @@ extern Win32GDI w32gdi;
 #include "Diablo3RollCooldown"
 #include "Diablo3RollResourceCost"
 #include "Diablo3RollAreaDamage"
-#include "Diablo3RollLife"
+
 #include "Diablo3RollLifePercent"
-#include "Diablo3RollLifePerSecond"
 #include "Diablo3RollLifePerHit"
+#include "Diablo3RollLifePerSecond"
+#include "Diablo3RollLifePerKill"
+
 #include "Diablo3RollResistance"
 #include "Diablo3RollPercent"
 #include "Diablo3RollSocket"
