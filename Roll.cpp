@@ -817,7 +817,7 @@ ROLL_PARAMETER get_roll_parameter_02(ROLL_OPTION option_02)
 		if (w32gdi.RollingParameter02Is30PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_30_PERCENT;
 		if (w32gdi.RollingParameter02Is29PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_29_PERCENT;
 		//if (w32gdi.RollingParameter02Is28PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_28_PERCENT;
-		//if (w32gdi.RollingParameter02Is27PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_27_PERCENT;
+		if (w32gdi.RollingParameter02Is27PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_27_PERCENT;
 		if (w32gdi.RollingParameter02Is26PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_26_PERCENT;
 	}
 	else if (option_02 == ROLL_OPTION_CRITICAL_HIT_CHANCE)
@@ -942,7 +942,7 @@ ROLL_PARAMETER get_roll_parameter_03(ROLL_OPTION option_03)
 		if (w32gdi.RollingParameter03Is30PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_30_PERCENT;
 		if (w32gdi.RollingParameter03Is29PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_29_PERCENT;
 		//if (w32gdi.RollingParameter03Is28PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_28_PERCENT;
-		//if (w32gdi.RollingParameter03Is27PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_27_PERCENT;
+		if (w32gdi.RollingParameter03Is27PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_27_PERCENT;
 		if (w32gdi.RollingParameter03Is26PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_26_PERCENT;
 	}
 	else if (option_03 == ROLL_OPTION_CRITICAL_HIT_CHANCE)
