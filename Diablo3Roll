@@ -17031,6 +17031,7 @@ return true;
 
 
 
+##define ENOUGH_GOLD_OFFSET_LIMIT 20
 
 bool Win32GDI::IsEnoughGold5Digit(int offset)
 {
@@ -18149,8 +18150,7 @@ return true;
 }
 bool Win32GDI::IsEnoughGold5Digit(void)
 {
-	int right_limit = 50;
-	for (int i = 0; i < right_limit; i++)
+	for (int i = 0; i < ENOUGH_GOLD_OFFSET_LIMIT; i++)
 	{
 		if (IsEnoughGold5Digit(i) || IsEnoughGold5Digit(-i))
 		{
@@ -19165,8 +19165,7 @@ return true;
 }
 bool Win32GDI::IsEnoughGold6Digit(void)
 {
-	int right_limit = 50;
-	for (int i = 0; i < right_limit; i++)
+	for (int i = 0; i < ENOUGH_GOLD_OFFSET_LIMIT; i++)
 	{
 		if (IsEnoughGold6Digit(i) || IsEnoughGold6Digit(-i))
 		{
@@ -20302,8 +20301,7 @@ return true;
 }
 bool Win32GDI::IsEnoughGold7Digit(void)
 {
-	int right_limit = 50;
-	for (int i = 0; i < right_limit; i++)
+	for (int i = 0; i < ENOUGH_GOLD_OFFSET_LIMIT; i++)
 	{
 		if (IsEnoughGold7Digit(i) || IsEnoughGold7Digit(-i))
 		{
