@@ -1,7 +1,6 @@
 
 
-
-
+#define LIFE_PER_KILL_OFFSET_LIMIT 10
 
 bool Win32GDI::RollingOption01IsLifePerKill(int offset)
 {
@@ -1422,17 +1421,9 @@ return true;
 }
 bool Win32GDI::RollingOption01IsLifePerKill(void)
 {
-	int right_limit = 50;
-	for (int i = 0; i < right_limit; i++)
+	for (int i = 0; i < LIFE_PER_KILL_OFFSET_LIMIT; i++)
 	{
 		if (RollingOption01IsLifePerKill(i) || RollingOption01IsLifePerKill(-i))
-		{
-			return true;
-		}
-	}
-	for (int j = -right_limit; j  > -100; j--)
-	{
-		if (RollingOption01IsLifePerKill(j))
 		{
 			return true;
 		}
