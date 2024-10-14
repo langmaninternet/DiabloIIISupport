@@ -17031,7 +17031,7 @@ return true;
 
 
 
-##define ENOUGH_GOLD_OFFSET_LIMIT 20
+#define ENOUGH_GOLD_OFFSET_LIMIT 20
 
 bool Win32GDI::IsEnoughGold5Digit(int offset)
 {
