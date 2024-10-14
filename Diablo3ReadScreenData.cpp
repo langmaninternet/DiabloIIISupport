@@ -47,7 +47,7 @@ extern Win32GDI w32gdi;
 #include "Diablo3RollSocket"
 #include "Diablo3RollStats"
 
-
+#include "Diablo3RollThornDamage"
 
 #include "Diablo3RollDemonHuner"
 

@@ -446,7 +446,8 @@ public:
 	bool				RollingOption02IsThornDamage(void);
 
 
-
+	bool				RollingOption03IsThornDamage(int);
+	bool				RollingOption03IsThornDamage(void);
 
 
 	bool				RollingItemIsFocus(void);
