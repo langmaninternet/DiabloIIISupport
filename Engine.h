@@ -439,6 +439,9 @@ public:
 	bool				RollingOption03IsColdResistance(int);
 	bool				RollingOption03IsColdResistance(void);
 
+
+
+
 	bool				RollingOption02IsThornDamage(int);
 	bool				RollingOption02IsThornDamage(void);
 

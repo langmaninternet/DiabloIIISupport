@@ -1158,8 +1158,7 @@ return true;
 }
 bool Win32GDI::RollingOption02IsDexterity(void)
 {
-	int stats_offset_limit = STATS_OFFSET_LIMIT;
-	for (int i = 0; i < stats_offset_limit; i++)
+	for (int i = 0; i < STATS_OFFSET_LIMIT; i++)
 	{
 		if (RollingOption02IsDexterity(i) || RollingOption02IsDexterity(-i))
 		{
@@ -2219,8 +2218,7 @@ return true;
 }
 bool Win32GDI::RollingOption03IsDexterity(void)
 {
-	int stats_offset_limit = STATS_OFFSET_LIMIT;
-	for (int i = 0; i < stats_offset_limit; i++)
+	for (int i = 0; i < STATS_OFFSET_LIMIT; i++)
 	{
 		if (RollingOption03IsDexterity(i) || RollingOption03IsDexterity(-i))
 		{
@@ -3127,8 +3125,7 @@ return true;
 }
 bool Win32GDI::RollingOption02IsIntelligence(void)
 {
-	int stats_offset_limit = STATS_OFFSET_LIMIT;
-	for (int i = 0; i < stats_offset_limit; i++)
+	for (int i = 0; i < STATS_OFFSET_LIMIT; i++)
 	{
 		if (RollingOption02IsIntelligence(i) || RollingOption02IsIntelligence(-i))
 		{
@@ -3954,8 +3951,7 @@ return true;
 }
 bool Win32GDI::RollingOption03IsIntelligence(void)
 {
-	int stats_offset_limit = STATS_OFFSET_LIMIT;
-	for (int i = 0; i < stats_offset_limit; i++)
+	for (int i = 0; i < STATS_OFFSET_LIMIT; i++)
 	{
 		if (RollingOption03IsIntelligence(i) || RollingOption03IsIntelligence(-i))
 		{
@@ -4504,8 +4500,7 @@ return true;
 }
 bool Win32GDI::RollingOption02IsVitality(void)
 {
-	int stats_offset_limit = STATS_OFFSET_LIMIT;
-	for (int i = 0; i < stats_offset_limit; i++)
+	for (int i = 0; i < STATS_OFFSET_LIMIT; i++)
 	{
 		if (RollingOption02IsVitality(i) || RollingOption02IsVitality(-i))
 		{
@@ -4981,8 +4976,7 @@ return true;
 }
 bool Win32GDI::RollingOption03IsVitality(void)
 {
-	int stats_offset_limit = STATS_OFFSET_LIMIT;
-	for (int i = 0; i < stats_offset_limit; i++)
+	for (int i = 0; i < STATS_OFFSET_LIMIT; i++)
 	{
 		if (RollingOption03IsVitality(i) || RollingOption03IsVitality(-i))
 		{
@@ -5468,8 +5462,7 @@ return true;
 }
 bool Win32GDI::RollingOption02IsArmor(void)
 {
-	int stats_offset_limit = STATS_OFFSET_LIMIT;
-	for (int i = 0; i < stats_offset_limit; i++)
+	for (int i = 0; i < STATS_OFFSET_LIMIT; i++)
 	{
 		if (RollingOption02IsArmor(i) || RollingOption02IsArmor(-i))
 		{
@@ -5993,8 +5986,7 @@ return true;
 }
 bool Win32GDI::RollingOption03IsArmor(void)
 {
-	int stats_offset_limit = STATS_OFFSET_LIMIT;
-	for (int i = 0; i < stats_offset_limit; i++)
+	for (int i = 0; i < STATS_OFFSET_LIMIT; i++)
 	{
 		if (RollingOption03IsArmor(i) || RollingOption03IsArmor(-i))
 		{
