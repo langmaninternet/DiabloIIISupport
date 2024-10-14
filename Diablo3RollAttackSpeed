@@ -1,3 +1,6 @@
+
+#define ATTACK_SPEED_OFFSET_LIMIT 10
+
 bool Win32GDI::RollingOption01IsAttackSpeed(void)
 {
 //const int				rol_01_x_left = 80;
@@ -3456,8 +3459,7 @@ return true;
 }
 bool Win32GDI::RollingOption02Is07PercentBaseAttackSpeed(void)
 {
-	int right_limit = 30;
-	for (int i = 0; i < right_limit; i++)
+	for (int i = 0; i < ATTACK_SPEED_OFFSET_LIMIT; i++)
 	{
 		if (RollingOption02Is07PercentBaseAttackSpeed(i) || RollingOption02Is07PercentBaseAttackSpeed(-i))
 		{
@@ -3893,8 +3895,7 @@ return true;
 }
 bool Win32GDI::RollingOption03Is07PercentBaseAttackSpeed(void)
 {
-	int right_limit = 30;
-	for (int i = 0; i < right_limit; i++)
+	for (int i = 0; i < ATTACK_SPEED_OFFSET_LIMIT; i++)
 	{
 		if (RollingOption03Is07PercentBaseAttackSpeed(i) || RollingOption03Is07PercentBaseAttackSpeed(-i))
 		{
