@@ -122,11 +122,11 @@ void		QuangBTDumpScreen(void)
 	//w32gdi.DumpSkill04();
 
 	//w32gdi.DumpRollOption01();
-	w32gdi.DumpRollOption01Ex();
+	//w32gdi.DumpRollOption01Ex();
 	//w32gdi.DumpRollOption02();
 	//w32gdi.DumpRollOption02Ex();
 	//w32gdi.DumpRollOption03();
-	//w32gdi.DumpRollOption03Ex();
+	w32gdi.DumpRollOption03Ex();
 
 	//w32gdi.DumpRectangle(208, 776, 319, 786);
 
@@ -1405,7 +1405,7 @@ void				Win32GDI::DumpRollOption02Ex(void)
 			fprintf(logFile, "//const int				rol_02_y_top = %d/*Fixed*/;\n", rol_02_y_top);
 			fprintf(logFile, "//const int				rol_02_x_right = %d;\n", rol_02_x_right);
 			fprintf(logFile, "//const int				rol_02_y_bottom = %d/*Fixed*/;\n", rol_02_y_bottom);
-
+			fprintf(logFile, "//const int xOffset = 0;\n");
 
 			for (int isize = 1; isize <= 3; isize++)
 			{
@@ -1478,6 +1478,7 @@ void				Win32GDI::DumpRollOption02Ex(void)
 				fprintf(logFile, "//const int				rol_02_clone_y_top = %d/*Fixed*/;\n", rol_02_y_top);
 				fprintf(logFile, "//const int				rol_02_clone_x_right = %d;\n", rol_02_x_right);
 				fprintf(logFile, "//const int				rol_02_clone_y_bottom = %d/*Fixed*/;\n", rol_02_y_bottom);
+				fprintf(logFile, "//const int xOffset = 0;\n");
 				fprintf(logFile, "const int yOffset=43;\n");
 
 				for (int isize = 1; isize <= 3; isize++)
