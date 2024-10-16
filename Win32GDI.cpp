@@ -44,9 +44,9 @@
 //Reduce melee damage - x% : 368 - 403
 
 
-const int				rol_01_x_left = 368;
+const int				rol_01_x_left = 318;
 const int				rol_01_y_top = 388/*Fixed*/;
-const int				rol_01_x_right = 403;
+const int				rol_01_x_right = 362;
 const int				rol_01_y_bottom = 399/*Fixed*/;
 
 
@@ -122,9 +122,9 @@ void		QuangBTDumpScreen(void)
 	//w32gdi.DumpSkill04();
 
 	//w32gdi.DumpRollOption01();
-	//w32gdi.DumpRollOption01Ex();
+	w32gdi.DumpRollOption01Ex();
 	//w32gdi.DumpRollOption02();
-	w32gdi.DumpRollOption02Ex();
+	//w32gdi.DumpRollOption02Ex();
 	//w32gdi.DumpRollOption03();
 	//w32gdi.DumpRollOption03Ex();
 

@@ -673,7 +673,7 @@ ROLL_PARAMETER get_roll_parameter_01(ROLL_OPTION option_01)
 		//if (w32gdi.RollingParameter01Is53PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_53_PERCENT;
 		//if (w32gdi.RollingParameter01Is52PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_52_PERCENT;
 		//if (w32gdi.RollingParameter01Is51PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_51_PERCENT;
-		//if (w32gdi.RollingParameter01Is50PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_50_PERCENT;
+		if (w32gdi.RollingParameter01Is50PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_50_PERCENT;
 		if (w32gdi.RollingParameter01Is49PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_49_PERCENT;
 		if (w32gdi.RollingParameter01Is48PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_48_PERCENT;
 		//if (w32gdi.RollingParameter01Is47PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_47_PERCENT;
