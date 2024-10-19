@@ -97,6 +97,7 @@ public:
 	bool				RollingParameter02Is45PercentBaseCriticalHitDamage(void);
 	bool				RollingParameter03Is45PercentBaseCriticalHitDamage(void);
 
+	bool				RollingParameter01Is44PercentBaseCriticalHitDamage(void);
 
 	bool				RollingParameter02Is44PercentBaseCriticalHitDamage(void);
 	bool				RollingParameter03Is44PercentBaseCriticalHitDamage(void);
@@ -312,6 +313,13 @@ public:
 	bool				RollingOption03IsArmor(void);
 
 
+	/************************************************************************/
+	/* Movement Speed                                                       */
+	/************************************************************************/
+	bool				RollingOption02IsMovementSpeed(int);
+	bool				RollingOption02IsMovementSpeed(void);
+	bool				RollingOption03IsMovementSpeed(int);
+	bool				RollingOption03IsMovementSpeed(void);
 
 
 	/************************************************************************/

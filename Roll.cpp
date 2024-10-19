@@ -136,8 +136,13 @@ wchar_t* get_roll_name(ROLL_OPTION x)
 		return L"Gold Pickup";
 		break;
 	case ROLL_OPTION_EXP:
-		L"Exp after kill";
+		return L"Exp after kill";
 		break;
+
+	case ROLL_OPTION_MOVEMENT_SPEED:
+		return L"Movement speed";
+		break;
+
 	default:
 		return L"-";
 		break;
@@ -576,6 +581,7 @@ ROLL_OPTION get_roll_option_02(void)
 	if (w32gdi.RollingOption02IsEvasiveFire()) return ROLL_OPTION_DHSKILL_EVASIVE_FIRE;
 	if (w32gdi.RollingOption02IsArmor()) return ROLL_OPTION_ARMOR;
 
+	if (w32gdi.RollingOption02IsMovementSpeed()) return ROLL_OPTION_MOVEMENT_SPEED;
 	return ROLL_OPTION_UNKNOWN;
 }
 
@@ -630,7 +636,7 @@ ROLL_OPTION get_roll_option_03(void)
 	if (w32gdi.RollingOption03IsEvasiveFire()) return ROLL_OPTION_DHSKILL_EVASIVE_FIRE;
 	if (w32gdi.RollingOption03IsArmor()) return ROLL_OPTION_ARMOR;
 
-
+	if (w32gdi.RollingOption03IsMovementSpeed()) return ROLL_OPTION_MOVEMENT_SPEED;
 	return ROLL_OPTION_UNKNOWN;
 }
 
@@ -699,7 +705,7 @@ ROLL_PARAMETER get_roll_parameter_01(ROLL_OPTION option_01)
 		//if (w32gdi.RollingParameter01Is47PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_47_PERCENT;
 		if (w32gdi.RollingParameter01Is46PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_46_PERCENT;
 		if (w32gdi.RollingParameter01Is45PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_45_PERCENT;
-		//if (w32gdi.RollingParameter01Is44PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_44_PERCENT;
+		if (w32gdi.RollingParameter01Is44PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_44_PERCENT;
 		//if (w32gdi.RollingParameter01Is43PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_43_PERCENT;
 		if (w32gdi.RollingParameter01Is42PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_42_PERCENT;
 		if (w32gdi.RollingParameter01Is41PercentBaseCriticalHitDamage()) return ROLL_PARAMETER_41_PERCENT;
