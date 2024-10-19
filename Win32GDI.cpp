@@ -62,7 +62,7 @@ const int				rol_02_y_bottom = 445/*Fixed*/;
 
 const int				rol_03_x_left = 81;
 const int				rol_03_y_top = 476/*Fixed*/;
-const int				rol_03_x_right = 179;
+const int				rol_03_x_right = 152;
 const int				rol_03_y_bottom = 486/*Fixed*/;
 
 
