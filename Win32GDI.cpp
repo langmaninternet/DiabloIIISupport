@@ -40,7 +40,9 @@
 
 //Critical Hit Damage - 100% : 319 - 371
 //Critical Hit Damage - xx% : 318 - 362
+// 
 //Critical Hit Chance - xx% : 313 - 348
+//Critical Hit Chance - a.b% : 313 - 348
 //Reduce melee damage - x% : 368 - 403
 
 
@@ -56,9 +58,9 @@ const int				rol_02_x_right = 362;
 const int				rol_02_y_bottom = 445/*Fixed*/;
 
 
-const int				rol_03_x_left = 318;
+const int				rol_03_x_left = 313;
 const int				rol_03_y_top = 476/*Fixed*/;
-const int				rol_03_x_right = 362;
+const int				rol_03_x_right = 348;
 const int				rol_03_y_bottom = 486/*Fixed*/;
 
 
