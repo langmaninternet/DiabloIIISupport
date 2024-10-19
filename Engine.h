@@ -224,8 +224,11 @@ public:
 	bool				RollingParameter03Is11PercentBaseAreaDamage(int);
 	bool				RollingParameter03Is11PercentBaseAreaDamage(void);
 
-
-
+	/************************************************************************/
+	/* Elements Damage                                                      */
+	/************************************************************************/
+	bool				RollingOption02IsPhysicalDamage(void);
+	bool				RollingOption03IsPhysicalDamage(void);
 
 	/************************************************************************/
 	/* HungeringArrow                                                       */

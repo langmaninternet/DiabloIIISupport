@@ -36,6 +36,7 @@ extern Win32GDI w32gdi;
 
 #include "Diablo3RollReduceDamage"
 #include "Diablo3RollBaseDamage"
+#include "Diablo3RollElementDamage"
 #include "Diablo3RollCriticalHit"
 #include "Diablo3RollAttackSpeed"
 #include "Diablo3RollCooldown"

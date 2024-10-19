@@ -42,6 +42,9 @@ wchar_t* get_roll_name(ROLL_OPTION x)
 	case ROLL_OPTION_AREA_DAMAGE:
 		return L"Area Damage";
 		break;
+	case ROLL_OPTION_PHYSICAL_DAMAGE:
+		return L"Physical Damage";
+		break;
 
 
 		//4. Stats
@@ -531,6 +534,8 @@ ROLL_OPTION get_roll_option_02(void)
 	// 3. Area Damage
 	if (w32gdi.RollingOption02IsAreaDamage()) return ROLL_OPTION_AREA_DAMAGE;
 	if (w32gdi.RollingOption02IsBaseDamage()) return ROLL_OPTION_BASE_DAMAGE;
+	if (w32gdi.RollingOption02IsPhysicalDamage()) return ROLL_OPTION_PHYSICAL_DAMAGE;
+
 	//4. Stats
 	if (w32gdi.RollingOption02IsDexterity()) return ROLL_OPTION_DEXTERITY;
 	if (w32gdi.RollingOption02IsIntelligence()) return ROLL_OPTION_INTELLIGENCE;
@@ -575,6 +580,7 @@ ROLL_OPTION get_roll_option_03(void)
 	// 3. Damage
 	if (w32gdi.RollingOption03IsAreaDamage()) return ROLL_OPTION_AREA_DAMAGE;
 	if (w32gdi.RollingOption03IsBaseDamage()) return ROLL_OPTION_BASE_DAMAGE;
+	if (w32gdi.RollingOption03IsPhysicalDamage()) return ROLL_OPTION_PHYSICAL_DAMAGE;
 	//4. Stats
 	if (w32gdi.RollingOption03IsDexterity()) return ROLL_OPTION_DEXTERITY;
 	if (w32gdi.RollingOption03IsIntelligence()) return ROLL_OPTION_INTELLIGENCE;

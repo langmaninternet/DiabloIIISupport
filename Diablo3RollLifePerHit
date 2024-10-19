@@ -1,5 +1,5 @@
 
-#define LIFE_PER_HIT_OFFSET_LIMIT 10
+#define LIFE_PER_HIT_OFFSET_LIMIT 20
 
 bool Win32GDI::RollingOption02IsLifePerHit(int offset)
 {
