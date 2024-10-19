@@ -167,6 +167,9 @@ wchar_t* get_parameter_name(ROLL_PARAMETER x)
 	case ROLL_PARAMETER_09_PERCENT:
 		return L" + 9%";
 		break;
+	case ROLL_PARAMETER_09_D_5_PERCENT:
+		return L" + 9.5%";
+		break;
 	case ROLL_PARAMETER_10_PERCENT:
 		return L" + 10%";
 		break;
@@ -510,8 +513,8 @@ ROLL_OPTION get_roll_option_01(void)
 	if (w32gdi.RollingOption01IsGrenade()) return ROLL_OPTION_DHSKILL_GRENADE;
 	if (w32gdi.RollingOption01IsEntanglingShot()) return ROLL_OPTION_DHSKILL_ENTANGLING_SHOT;
 	if (w32gdi.RollingOption01IsEvasiveFire()) return ROLL_OPTION_DHSKILL_EVASIVE_FIRE;
-	
-	
+
+
 
 
 	return ROLL_OPTION_UNKNOWN;
@@ -534,8 +537,8 @@ ROLL_OPTION get_roll_option_02(void)
 	if (w32gdi.RollingOption02IsVitality()) return ROLL_OPTION_VITALITY;
 	// 5. Reduce Damage
 	if (w32gdi.RollingOption02IsReduceMeleeDamage()) return ROLL_OPTION_REDUCE_MELEE_DAMAGE;
-	
-	
+
+
 	// 5. Reduce
 	if (w32gdi.RollingOption02IsReduceResource()) return ROLL_OPTION_REDUCE_RESOURCE;
 	if (w32gdi.RollingOption02IsReduceCooldown()) return ROLL_OPTION_REDUCE_COOLDOWN;
@@ -548,7 +551,7 @@ ROLL_OPTION get_roll_option_02(void)
 	if (w32gdi.RollingOption02IsLifePercent()) return ROLL_OPTION_LIFE_PERCENT;
 	if (w32gdi.RollingOption02IsLifePerHit()) return ROLL_OPTION_LIFE_HIT;
 	if (w32gdi.RollingOption02IsLifePerSecond()) return ROLL_OPTION_LIFE_PER_SECOND;
-	
+
 
 	if (w32gdi.RollingOption02IsResistAll()) return ROLL_OPTION_RESIST_ALL;
 
@@ -596,7 +599,7 @@ ROLL_OPTION get_roll_option_03(void)
 	if (w32gdi.RollingOption03IsLifePercent()) return ROLL_OPTION_LIFE_PERCENT;
 	if (w32gdi.RollingOption03IsLifePerHit()) return ROLL_OPTION_LIFE_HIT;
 	if (w32gdi.RollingOption03IsLifePerSecond()) return ROLL_OPTION_LIFE_PER_SECOND;
-	
+
 
 
 	if (w32gdi.RollingOption03IsResistAll()) return ROLL_OPTION_RESIST_ALL;
@@ -703,7 +706,7 @@ ROLL_PARAMETER get_roll_parameter_01(ROLL_OPTION option_01)
 	{
 		// Amulet
 		if (w32gdi.RollingParameter01Is10PercentBaseCriticalHitChance()) return ROLL_PARAMETER_10_PERCENT;
-		//		if (w32gdi.RollingParameter01Is09d5PercentBaseCriticalHitChance()) return ROLL_PARAMETER_09_D_5_PERCENT;
+		if (w32gdi.RollingParameter01Is09d5PercentBaseCriticalHitChance()) return ROLL_PARAMETER_09_D_5_PERCENT;
 		//		if (w32gdi.RollingParameter01Is09PercentBaseCriticalHitChance()) return ROLL_PARAMETER_09_PERCENT;
 		//		if (w32gdi.RollingParameter01Is08d5PercentBaseCriticalHitChance()) return ROLL_PARAMETER_08_D_5_PERCENT;
 		if (w32gdi.RollingParameter01Is08PercentBaseCriticalHitChance()) return ROLL_PARAMETER_08_PERCENT;
