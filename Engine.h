@@ -181,6 +181,9 @@ public:
 	bool				RollingParameter02Is09d5PercentBaseCriticalHitChance(void);
 	bool				RollingParameter03Is09d5PercentBaseCriticalHitChance(void);
 
+	bool				RollingParameter02Is09PercentBaseCriticalHitChance(void);
+	bool				RollingParameter03Is09PercentBaseCriticalHitChance(void);
+
 	bool				RollingParameter01Is08PercentBaseCriticalHitChance(void);
 	bool				RollingParameter02Is08PercentBaseCriticalHitChance(void);
 	bool				RollingParameter03Is08PercentBaseCriticalHitChance(void);
