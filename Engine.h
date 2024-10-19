@@ -230,6 +230,8 @@ public:
 	bool				RollingOption02IsColdDamage(void);
 	bool				RollingOption03IsColdDamage(void);
 
+	bool				RollingOption02IsLightningDamage(void);
+	bool				RollingOption03IsLightningDamage(void);
 
 	bool				RollingOption02IsPhysicalDamage(void);
 	bool				RollingOption03IsPhysicalDamage(void);
