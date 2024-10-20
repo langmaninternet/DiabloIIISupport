@@ -76,7 +76,7 @@ Secondary()>15&Health()<90%
 
 
 // #3.1 Strafe - Channeling - Attack
-//	Attack + Density + Buff
+//	Attack + Density
 // 	Force Recast
 // Move around
 // Resouce : 
@@ -86,9 +86,9 @@ Secondary()>15&Health()<90%
 //			Min Resouce level 15
 //
 // 50ms
-//		Attack Distance: 90
-//		Distance Min: 20
-//		Distance Max: 90
+//		Attack Distance: 80
+//		Distance Min: 0
+//		Distance Max: 80
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1, 
