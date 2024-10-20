@@ -39,13 +39,12 @@ Secondary()>15&Health()<90%
 //----------------------------------------------------------------------------------------------------------------------------------------
 // #2 Hungering Arrow - Buff - Momentum|Wraps of Clarity
 // 50ms
-//	Stand still: true
 // 	Force Recast
-//	Attack + Density
+//	Attack + Density + Buff
 //
-//		Attack Distance: 40
-//		Distance Min: 0
-//		Distance Max: 40
+//		Attack Distance: 60
+//		Distance Min: 20
+//		Distance Max: 60
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1 
