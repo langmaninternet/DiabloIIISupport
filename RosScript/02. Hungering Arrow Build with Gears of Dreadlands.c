@@ -36,6 +36,26 @@ Secondary()>15&Health()<90%
 //
 
 
+// #1.4 Companion
+// Attack+Buff
+// 50ms
+//		Attack Distance: 30
+//		Distance Min: 0
+//		Distance Max: 30
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1 
+//
+//		Elite weight: 10
+//		Minion weight: 1
+//		Normal monster weight: 1
+//		Big guy weight: 10
+//		Goblin weight: 10
+//
+//
+
+
+
 //----------------------------------------------------------------------------------------------------------------------------------------
 // #2 Hungering Arrow - Buff - Momentum|Wraps of Clarity
 // 50ms
@@ -69,8 +89,39 @@ Secondary()>15&Health()<90%
 
 
 // #3.1 Strafe - Channeling - Attack
-// Attack+Buff
-// Ignore Position caculation
+//	Attack + Density + Buff
+// 	Force Recast
+// Move around
+// Resouce : 
+//			Primary 0
+//			Channeling
+//			Max Channeling Distance: 0
+//			Min Resouce level 15
+//
+// 50ms
+//		Attack Distance: 90
+//		Distance Min: 20
+//		Distance Max: 90
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1, 
+//
+//		Elite weight: 1
+//		Minion weight: 1
+//		Normal monster weight:1
+//		Big guy weight: 1
+//		Goblin weight: 1
+
+
+
+
+
+
+
+// #3.2 Strafe - Channeling - Buff
+// Density + Buff
+// Move around
+// Force Recast
 // Resouce : 
 //			Primary 0
 //			Channeling
@@ -79,17 +130,30 @@ Secondary()>15&Health()<90%
 //
 // 50ms
 
-
-// #3.2 Strafe - Channeling - Buff
-// Buff
-// Ignore Position caculation
-// Resouce : 
-//			Primary 20
-//			Channeling
-//			Max Channeling Distance: 100
-//			Min Resouce level 15
+//		Attack Distance: 90
+//		Distance Min: 0
+//		Distance Max: 90
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1, 
 //
-// 50ms
+//		Elite weight: 1
+//		Minion weight: 1
+//		Normal monster weight:1
+//		Big guy weight: 1
+//		Goblin weight: 1
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //	Attack + Density + Buff
@@ -106,6 +170,15 @@ Secondary()>15&Health()<90%
 //		Normal monster weight:15
 //		Big guy weight: 15
 //		Goblin weight: 15
+
+
+
+
+
+
+
+
+
 
 
 
