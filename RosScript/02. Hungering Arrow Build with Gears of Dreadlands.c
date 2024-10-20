@@ -37,22 +37,9 @@ Secondary()>15&Health()<90%
 
 
 // #1.4 Companion
-// Attack+Buff
+// Buff
 // 50ms
-//		Attack Distance: 30
-//		Distance Min: 0
-//		Distance Max: 30
-//		Calculation min param: 0
-//		Calculation max param: 10
-//		Attack limit: 1 
-//
-//		Elite weight: 10
-//		Minion weight: 1
-//		Normal monster weight: 1
-//		Big guy weight: 10
-//		Goblin weight: 10
-//
-//
+
 
 
 
