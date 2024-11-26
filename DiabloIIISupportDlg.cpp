@@ -13,7 +13,7 @@
 
 
 
-const double DiabloIIISupportVersion = 3.2;
+const double DiabloIIISupportVersion = 1.0;
 /************************************************************************/
 /* Struct                                                               */
 /************************************************************************/
@@ -1000,7 +1000,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				}
 
 
-				if (flagOnF3) GetDlgItem(IDC_RIGHTMOUSETEXT)->SetWindowText(L"Right Mouse (Hotkey F2): \r\n	F3-Running");
+				if (flagOnF3) GetDlgItem(IDC_RIGHTMOUSETEXT)->SetWindowText(L"Right Mouse (Hotkey F3): \r\n	F3-Running");
 				if (flagOnF3)
 				{
 					GetDlgItem(IDC_RIGHTMOUSETEXT)->EnableWindow(FALSE);
@@ -1018,7 +1018,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				}
 				else
 				{
-					GetDlgItem(IDC_RIGHTMOUSETEXT)->SetWindowText(L"Right Mouse (Hotkey F2): ");
+					GetDlgItem(IDC_RIGHTMOUSETEXT)->SetWindowText(L"Right Mouse (Hotkey F3): ");
 					GetDlgItem(IDC_RIGHTMOUSETEXT)->EnableWindow(TRUE);
 					GetDlgItem(IDC_RIGHTMOUSETEXTMS)->EnableWindow(TRUE);
 					GetDlgItem(IDC_RIGHTMOUSETIME)->EnableWindow(TRUE);
