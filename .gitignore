@@ -22,17 +22,19 @@ bld/
 [Oo]bj/
 [Ll]og/
 *.bin
-*.exe
+Build/
+DiabloIIISupport.exp
+DiabloIIISupport.iobj
+DiabloIIISupport.ipdb
+DiabloIIISupport.lib
+DiabloIIISupport.pdb
 
+DiabloIIISupport.exp
+DiabloIIISupport.iobj
+DiabloIIISupport.ipdb
+DiabloIIISupport.lib
+DiabloIIISupport.pdb
 
-#QuangBT ---------------------------------------------------------------------------------------------------------
-QBT_*.utt
-QBT_*.txt
-QBT_*.raw
-QBT_*.wav
-QBT_*.lf0
-QBT_*.mgc
-QBT_*.cmp
 
 #QuangBT ----------------------------------------------------------------------------------------------------------------
 

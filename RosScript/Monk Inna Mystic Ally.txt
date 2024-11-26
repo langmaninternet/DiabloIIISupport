@@ -1,0 +1,177 @@
+
+
+
+Fire Mystic Ally - Fire CoE Cycle + Shenlong's Spirit + [Assimilation]
+Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>2000 & IsBuffActive(1,P3_ItemPassive_Unique_Ring_026)&
+(MonkAlliesCount()>9
+|(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<3701 & MonkAlliesCount()>8 & BuffStackCount(4,Monk_WayOfTheHundredFists)>0)
+|(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<3301 & MonkAlliesCount()>7 & BuffStackCount(4,Monk_WayOfTheHundredFists)>0)
+|(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<2901 & MonkAlliesCount()>6 & BuffStackCount(4,Monk_WayOfTheHundredFists)>0)
+|(BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<2501 & MonkAlliesCount()>5 & BuffStackCount(4,Monk_WayOfTheHundredFists)>0)
+|(MonkAlliesCount()>8 & BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<3600)
+|(MonkAlliesCount()>7 & BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<3200)
+|(MonkAlliesCount()>6 & BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<2800)
+|(MonkAlliesCount()>5 & BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<2400)
+| BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<2301)
+
+
+
+
+
+
+
+Elites - Mystic Ally - Focus + Restraint + [Shenlong's Spirit]
+BuffTimeLeft(1,ItemPassive_Unique_Ring_735_x1)>1000 & BuffTimeLeft(2,ItemPassive_Unique_Ring_735_x1)>1000 
+& MonkAlliesCount() >= 10
+&((!IsBuffActive(0,P3_ItemPassive_Unique_Ring_026)) | IsBuffActive(1,P3_ItemPassive_Unique_Ring_026))
+&(BuffTimeLeft(0,Pages_Buff_Damage)>0 | Rune(X1_Monk_MysticAlly_v2)==1)
+
+
+
+
+
+
+
+
+
+Elites - Mystic Ally - On Power + {CoE Cycle | Shenlong's Spirit}
+BuffTimeLeft(0,Pages_Buff_Damage)>0
+& MonkAlliesCount() >= 10 
+&((Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>2000)
+|(Rune(X1_Monk_MysticAlly_v2)==1 & BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000)
+| IsBuffActive(1,P3_ItemPassive_Unique_Ring_026))
+
+
+
+
+
+Mystic Ally - Infinite Casting + {CoE Cycle | Shenlong's Spirit}
+BuffTimeLeft(0,Pages_Buff_Infinite_Casting) > 4000
+& MonkAlliesCount() >= 10 
+&((Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>2000)
+|(Rune(X1_Monk_MysticAlly_v2)==1 & BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000)
+|(IsBuffActive(1,P3_ItemPassive_Unique_Ring_026)& Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)==0)
+|(IsBuffActive(1,P3_ItemPassive_Unique_Ring_026)& Rune(X1_Monk_MysticAlly_v2)==1 & BuffTimeLeft(6,P2_ItemPassive_Unique_Ring_038)==0)
+)
+
+
+
+
+
+
+Mystic Ally - Last chance on CoE Cycle
+(Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>1900 & BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)<2350)
+|(Rune(X1_Monk_MysticAlly_v2)==1 & BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>1900 & BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)<2350)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Elites - Clear Spirit - Proc [Shenlong's Spirit] on Fire CoE Cycle
+Rune(X1_Monk_MysticAlly_v2)==0 & IsBuffActive(0,P3_ItemPassive_Unique_Ring_026)&(
+(BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038) > 0 & BuffTimeLeft(5,P2_ItemPassive_Unique_Ring_038)<2000)
+| BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038) > 3000)
+
+
+
+
+Urshi - Mystic Ally
+WorldIsGreaterRift()&(!WorldIsGreaterRiftNotFinished())& IsBuffActive(1,P3_ItemPassive_Unique_Ring_026)& MonkAlliesCount() >= 10 
+
+
+
+
+Elites - Buff - Dashing Strike - Proc [Approach] [Blinding Speed] [Radiance] [Sliver of Terror]
+(Rune(X1_Monk_DashingStrike) == 2 & BuffTimeLeft(2,X1_Monk_DashingStrike)<500) |(Rune(X1_Monk_DashingStrike) == 4 & BuffTimeLeft(4,X1_Monk_DashingStrike)<500) | ChargeCount(X1_Monk_DashingStrike) > 1 | MonkAlliesCount() > 10 |(IsBuffActive(0,P72_ItemPassive_Soulshard_015)& Cooldown(X1_Monk_MysticAlly_v2)<1000) | BuffTimeLeft(0,Pages_Buff_Infinite_Casting) == 0
+
+
+
+
+
+Trash - Dashing Strike
+PlayerIsMoving()& BuffStackCount(4,Monk_WayOfTheHundredFists)==0 & BuffTimeLeft(0,Monk_CycloneStrike)==0 
+& BuffTimeLeft(1,ItemPassive_Unique_Ring_735_x1)==0 & BuffTimeLeft(2,ItemPassive_Unique_Ring_735_x1)==0
+
+
+
+
+Way of the Hundred Fists - [Rift] [Bounties] [Urshi] [Spirit Guards] [Health 60%] [In-geom + Echoing fury]
+WorldIsRift()
+|(!WorldIsGreaterRift())
+|(WorldIsGreaterRift()&(!WorldIsGreaterRiftNotFinished()))
+|(IsBuffActive(0,P2_ItemPassive_Unique_Ring_034)& BuffTimeLeft(1,P2_ItemPassive_Unique_Ring_034)<1000)
+| Health()<60% 
+|(IsBuffActive(0,ItemPassive_Unique_Ring_919_x1)& IsBuffActive(0,P66_ItemPassive_Unique_Ring_927))
+|(IsBuffActive(0,P2_ItemPassive_Unique_Ring_038)& Cooldown(X1_Monk_MysticAlly_v2)<2000 & Cooldown(X1_Monk_MysticAlly_v2)>0)
+|(IsBuffActive(0,P2_ItemPassive_Unique_Ring_038)& Rune(X1_Monk_MysticAlly_v2)==0 & Cooldown(X1_Monk_MysticAlly_v2)<2000 & BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>0 & MonkAlliesCount()<9)
+
+
+
+
+
+
+Buff - Cyclone Strike - [Rift] [Bounties] [Urshi] [Lefebvre's Soliloquy] [In-geom + Echoing fury]
+WorldIsRift()
+|(!WorldIsGreaterRift())
+|(WorldIsGreaterRift()&(!WorldIsGreaterRiftNotFinished()))
+|(Health()<70% & IsBuffActive(0, P4_ItemPassive_Unique_Ring_078)& BuffTimeLeft(0,Monk_CycloneStrike)<1000)
+|(IsBuffActive(0, ItemPassive_Unique_Ring_919_x1)& IsBuffActive(0, P66_ItemPassive_Unique_Ring_927))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Buff - Serenity
+Health()<80% 
+| Cooldown(X1_Monk_MysticAlly_v2) > 10000 
+| BuffTimeLeft(0,Pages_Buff_Electrified_TieredRift) > 0 
+| BuffTimeLeft(0,Pages_Buff_Infinite_Casting) > 0 
+| BuffTimeLeft(0,Pages_Buff_Damage) > 0
+|(Rune(X1_Monk_MysticAlly_v2)==0 & BuffTimeLeft(3,P2_ItemPassive_Unique_Ring_038)>2000)
+|(Rune(X1_Monk_MysticAlly_v2)==1 & BuffTimeLeft(2,P2_ItemPassive_Unique_Ring_038)>2000)
+
+
+
+
+
+
+Legacy Fire WoL - Cyclone Strike - Density 01
+IsBuffActive(0,ItemPassive_Unique_Gem_023_x1) 
+&Rune(Monk_WaveOfLight)==1
+&!IsBuffActive(0,Monk_Serenity) &((BuffTimeLeft(0,Monk_CycloneStrike)<500&!IsBuffActive(0,Pages_Buff_Invulnerable)&!IsBuffActive(0,Pages_Buff_Infinite_Casting)) |(BuffTimeLeft(0,Monk_CycloneStrike)<1500&ActorCount(P74_Monk_Bell_WaveOfLight_RuneB,35)!=0))
+
+
+Legacy Fire WoL - Cyclone Strike - Density 02
+BuffTimeLeft(0,Monk_CycloneStrike)<4000
+&BuffTimeLeft(0, X1_Monk_Epiphany)>200
+&ActorCount(P74_Monk_Bell_WaveOfLight_RuneB,40)==0
+
+
+Legacy Fire WoL - Cyclone Strike - Density 03
+ChargeCount(X1_Monk_DashingStrike)==0
+&BuffTimeLeft(0,Monk_CycloneStrike)<2500
+&BuffTimeLeft(0, X1_Monk_Epiphany)>200
+&ActorCount(P74_Monk_Bell_WaveOfLight_RuneB,40)==0
+
+
