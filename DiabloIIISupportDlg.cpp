@@ -767,6 +767,12 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 	GetDlgItem(IDC_DEVICE_ID)->SetWindowTextW(GetDeviceIdentification());
 
 
+	bool			IsValidLicense(void);
+	if (IsValidLicense())
+	{
+		
+	}
+
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
 void		CDiabloIIISupportDlg::OnPaint()
