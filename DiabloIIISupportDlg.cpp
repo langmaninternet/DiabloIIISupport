@@ -97,20 +97,23 @@ int						enableRerollSupport = 0;
 
 const int				mainTimerDelay = 30/*ms*/;
 const int				autoCastRollTimerDelay = 100/*ms*/;
-
-
 int						townPortalDelay = 0/*ms*/;
+
+
 
 bool					flagOnF1 = false;
 bool					flagOnF2 = false;
 bool					flagOnF3 = false;
+
+bool					flagOnRightChanneling = false;
+
 bool					flagOnCtrl5 = false;
 bool					flagOnCtrl6 = false;
 bool					flagOnCtrl7 = false;
 bool					flagOnCtrl8 = false;
 bool					flagOnCtrl9 = false;
 bool					flagOnMainProcess = false;
-bool					flagOnRollingProcess = false;
+bool					flagOnAutoProcess = false;
 
 
 int						leftMouseCooldown;
@@ -265,8 +268,6 @@ void		SendD3RightMouseHold()
 
 		SendMessage(d3Wnd, WM_RBUTTONDOWN, MK_RBUTTON, lParam);
 		Sleep(10 + (rand() % 3));
-		//SendMessage(d3Wnd, WM_RBUTTONUP, 0, lParam);
-		//Sleep(10 + (rand() % 3));
 	}
 }
 void		SendD3RightMouseClick()
@@ -408,7 +409,7 @@ bool		ValidToSendD3Click(void)
 /************************************************************************/
 /* Hook                                                                 */
 /************************************************************************/
-extern "C" __declspec(dllexport) LRESULT CALLBACK HookProc(int nCode, WPARAM wParam, LPARAM lParam)
+extern "C" __declspec(dllexport) LRESULT CALLBACK KeyboardHookProc(int nCode, WPARAM wParam, LPARAM lParam)
 {
 	static bool flagOnCtrl = false;
 	static bool flagOnShift = false;
@@ -428,6 +429,9 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK HookProc(int nCode, WPARAM wPa
 			case VK_LSHIFT:
 			case VK_RSHIFT:
 				flagOnShift = false;
+				break;
+			case VK_RBUTTON:
+				if (!flagOnCtrl) flagOnRightChanneling = false;
 				break;
 			case VK_F1:
 				if (IsD3WindowActive()) flagNeedMoreHook = false;
@@ -475,14 +479,13 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK HookProc(int nCode, WPARAM wPa
 			case VK_ESCAPE:
 			case VK_SPACE:
 				enableRerollSupport = false;
-
 				flagOnCtrl = false;
 				flagOnCtrl5 = false;
 				flagOnCtrl6 = false;
 				flagOnCtrl7 = false;
 				flagOnCtrl8 = false;
 				flagOnCtrl9 = false;
-
+				break;
 
 #ifdef _DEBUG
 			case VK_F5:
@@ -561,6 +564,18 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK HookProc(int nCode, WPARAM wPa
 			case VK_RCONTROL:
 				flagOnCtrl = true;
 				break;
+
+			case VK_LSHIFT:
+			case VK_RSHIFT:
+				flagOnShift = true;
+				break;
+			case VK_RBUTTON:
+				if (flagOnCtrl)
+				{
+					flagOnRightChanneling = true;
+				}
+				break;
+
 			default:
 
 				break;
@@ -792,7 +807,7 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 
 
 
-	hGlobalHook = SetWindowsHookEx(WH_KEYBOARD_LL, HookProc, GetModuleHandle(NULL), 0);
+	hGlobalHook = SetWindowsHookEx(WH_KEYBOARD_LL, KeyboardHookProc, GetModuleHandle(NULL), 0);
 
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
@@ -937,9 +952,9 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				/************************************************************************/
 				/* Use custom                                                           */
 				/************************************************************************/
-				if (flagOnF2) GetDlgItem(IDC_F2BIGFRAME)->SetWindowTextW(L"Skill (Hotkey F2) - Running");
 				if (flagOnF2)
 				{
+					GetDlgItem(IDC_F2BIGFRAME)->SetWindowTextW(L"Skill (Hotkey F2) - Running");
 					GetDlgItem(IDC_SKILL01TIME)->EnableWindow(FALSE);
 					GetDlgItem(IDC_SKILL02TIME)->EnableWindow(FALSE);
 					GetDlgItem(IDC_SKILL03TIME)->EnableWindow(FALSE);
@@ -1006,9 +1021,9 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 					GetDlgItem(IDC_F2BIGFRAME)->SetWindowTextW(L"Skill (Hotkey F2)");
 				}
 
-				if (flagOnF1) GetDlgItem(IDC_LEFTMOUSETEXT)->SetWindowText(L"Left mouse (Hotkey F1): \r\n	Running");
 				if (flagOnF1)
 				{
+					GetDlgItem(IDC_LEFTMOUSETEXT)->SetWindowText(L"Left mouse (Hotkey F1): \r\n	Running");
 					GetDlgItem(IDC_LEFTMOUSETEXT)->EnableWindow(FALSE);
 					GetDlgItem(IDC_LEFTMOUSETEXTMS)->EnableWindow(FALSE);
 					GetDlgItem(IDC_LEFTMOUSETIME)->EnableWindow(FALSE);
@@ -1031,9 +1046,10 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				}
 
 
-				if (flagOnF3) GetDlgItem(IDC_RIGHTMOUSETEXT)->SetWindowText(L"Right Mouse (Hotkey F3): \r\n	F3-Running");
+				
 				if (flagOnF3)
 				{
+					if (flagOnF3) GetDlgItem(IDC_RIGHTMOUSETEXT)->SetWindowText(L"Right Mouse (Hotkey F3): \r\n	F3-Running");
 					GetDlgItem(IDC_RIGHTMOUSETEXT)->EnableWindow(FALSE);
 					GetDlgItem(IDC_RIGHTMOUSETEXTMS)->EnableWindow(FALSE);
 					GetDlgItem(IDC_RIGHTMOUSETIME)->EnableWindow(FALSE);
@@ -1056,6 +1072,12 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				}
 
 
+				if (flagOnRightChanneling)
+				{
+					SendD3RightMouseHold();
+				}
+
+
 			}
 
 
@@ -1065,7 +1087,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			/************************************************************************/
 			/* Craft                                                                */
 			/************************************************************************/
-			if (d3Wnd != 0 && IsD3WindowActive() && (flagOnCtrl5 || flagOnCtrl6 || flagOnCtrl8 || flagOnCtrl9))
+			if (d3Wnd != 0 && IsD3WindowActive() && (flagOnCtrl5 || flagOnCtrl6 || flagOnCtrl8 || flagOnCtrl9|| flagOnRightChanneling))
 			{
 
 				GetDlgItem(IDC_CTRL5TEXT)->EnableWindow(FALSE);
@@ -1586,12 +1608,12 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				/* Auto Reroll support                                                  */
 				/************************************************************************/
 				if (IsD3WindowActive() && enableRerollSupport
-					&& (!(flagOnF1 || flagOnF2 || flagOnF3 || flagOnCtrl5 || flagOnCtrl6 || flagOnCtrl9 || flagOnRollingProcess))
+					&& (!(flagOnF1 || flagOnF2 || flagOnF3 || flagOnCtrl5 || flagOnCtrl6 || flagOnCtrl9 || flagOnAutoProcess))
 					&& d3Engine.IsRolling())
 				{
 					d3Engine.CaptureDesktop();
 
-					flagOnRollingProcess = true;
+					flagOnAutoProcess = true;
 					CString roll_text;
 
 
@@ -1643,7 +1665,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 						GetDlgItem(IDC_REROL_SUPPORT_DETAIL)->SetWindowTextW(roll_text);
 						do_roll(item, option_01, parameter_01, option_02, parameter_02, option_03, parameter_03, resource_status, gold_status, (ChkBox == BST_CHECKED));
 					}
-					flagOnRollingProcess = false;
+					flagOnAutoProcess = false;
 				}
 
 			}
