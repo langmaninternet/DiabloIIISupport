@@ -628,7 +628,7 @@ BEGIN_MESSAGE_MAP(CDiabloIIISupportDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_AUTO_BONE_AMOR, &CDiabloIIISupportDlg::OnClickedAutoBoneAmor)
 	ON_BN_CLICKED(IDC_AUTO_SIMULACRUM, &CDiabloIIISupportDlg::OnClickedAutoSimulacrum)
 	ON_BN_CLICKED(IDC_AUTO_POTION, &CDiabloIIISupportDlg::OnClickedAutoPotion)
-	ON_EN_CHANGE(IDC_LICENSE, &CDiabloIIISupportDlg::OnChangeLicense)
+	ON_EN_CHANGE(IDC_LICENSE_ID, &CDiabloIIISupportDlg::OnChangeLicense)
 END_MESSAGE_MAP()
 
 BOOL		CDiabloIIISupportDlg::OnInitDialog()
@@ -706,7 +706,28 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 	GetDlgItem(IDC_SKILL04TIME)->SetWindowText(buffer);
 
 
-	swprintf_s(buffer, L"Diablo III Support Version %0.2lf", DiabloIIISupportVersion);
+	const wchar_t* GetDeviceIdentification(void);
+	GetDlgItem(IDC_DEVICE_ID)->SetWindowTextW(GetDeviceIdentification());
+
+
+	bool			IsValidLicense(void);
+	if (IsValidLicense())
+	{
+		GetDlgItem(IDC_LICENSE)->EnableWindow(FALSE);
+		swprintf_s(buffer, L"Diablo III Support Version %0.2lf Premium", DiabloIIISupportVersion);
+		GetDlgItem(IDC_DEVICE_ID)->SetWindowTextW(L"Premium");
+		GetDlgItem(IDC_AUTO_BONE_AMOR)->EnableWindow(TRUE);
+		GetDlgItem(IDC_AUTO_SIMULACRUM)->EnableWindow(TRUE);
+		GetDlgItem(IDC_AUTO_POTION)->EnableWindow(TRUE);
+	}
+	else
+	{
+		swprintf_s(buffer, L"Diablo III Support Version %0.2lf", DiabloIIISupportVersion);
+		GetDlgItem(IDC_AUTO_BONE_AMOR)->EnableWindow(FALSE);
+		GetDlgItem(IDC_AUTO_SIMULACRUM)->EnableWindow(FALSE);
+		GetDlgItem(IDC_AUTO_POTION)->EnableWindow(FALSE);
+
+	}
 	SetWindowTextW(buffer);
 
 
@@ -764,16 +785,6 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 
 	hGlobalHook = SetWindowsHookEx(WH_KEYBOARD_LL, HookProc, GetModuleHandle(NULL), 0);
 
-	const wchar_t* GetDeviceIdentification(void);
-	GetDlgItem(IDC_DEVICE_ID)->SetWindowTextW(GetDeviceIdentification());
-
-
-	bool			IsValidLicense(void);
-	if (IsValidLicense())
-	{
-		GetDlgItem(IDC_LICENSE)->EnableWindow(FALSE);
-		GetDlgItem(IDC_LICENSE)->SetWindowTextW(L"PremiumLicenseID");
-	}
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
@@ -2125,12 +2136,12 @@ void CDiabloIIISupportDlg::OnClickedRerollSupportCheck()
 void CDiabloIIISupportDlg::OnChangeLicense()
 {
 	wchar_t bufferText[1000] = { 0 };
-	GetDlgItem(IDC_LICENSE)->GetWindowTextW(bufferText, 999);
+	GetDlgItem(IDC_LICENSE_ID)->GetWindowTextW(bufferText, 999);
 	bool			ScanLicenseID(const wchar_t* licenseID);
 	if (ScanLicenseID(bufferText))
 	{
-		GetDlgItem(IDC_LICENSE)->EnableWindow(FALSE);
-		GetDlgItem(IDC_LICENSE)->SetWindowTextW(L"PremiumLicenseID");
+		//GetDlgItem(IDC_LICENSE_ID)->SetWindowTextW(L"PremiumLicenseID");
+		GetDlgItem(IDC_LICENSE_ID)->EnableWindow(FALSE);
 	}
 
 }
