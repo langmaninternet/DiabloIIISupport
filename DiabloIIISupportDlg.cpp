@@ -74,7 +74,7 @@ struct DiabloIIISupportConfig
 
 	int		autoBoneArmorEnable;
 	int		autoSimulacrumEnable;
-	int		autoPotion;
+	int		autoPotionEnable;
 
 
 
@@ -411,6 +411,8 @@ bool		ValidToSendD3Click(void)
 extern "C" __declspec(dllexport) LRESULT CALLBACK HookProc(int nCode, WPARAM wParam, LPARAM lParam)
 {
 	static bool flagOnCtrl = false;
+	static bool flagOnShift = false;
+
 	bool		flagNeedMoreHook = true;
 	if (nCode >= 0 && nCode == HC_ACTION)
 	{
@@ -422,6 +424,10 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK HookProc(int nCode, WPARAM wPa
 			case VK_LCONTROL:
 			case VK_RCONTROL:
 				flagOnCtrl = false;
+				break;
+			case VK_LSHIFT:
+			case VK_RSHIFT:
+				flagOnShift = false;
 				break;
 			case VK_F1:
 				if (IsD3WindowActive()) flagNeedMoreHook = false;
@@ -566,10 +572,7 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK HookProc(int nCode, WPARAM wPa
 			townPortalDelay = 11000/*ms*/;
 		}
 	}
-	if (flagNeedMoreHook == false)
-	{
-		return 1;
-	}
+	if (flagNeedMoreHook == false) return 1;
 	return CallNextHookEx(hGlobalHook, nCode, wParam, lParam);
 }
 
@@ -628,7 +631,7 @@ BEGIN_MESSAGE_MAP(CDiabloIIISupportDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_AUTO_BONE_AMOR, &CDiabloIIISupportDlg::OnClickedAutoBoneAmor)
 	ON_BN_CLICKED(IDC_AUTO_SIMULACRUM, &CDiabloIIISupportDlg::OnClickedAutoSimulacrum)
 	ON_BN_CLICKED(IDC_AUTO_POTION, &CDiabloIIISupportDlg::OnClickedAutoPotion)
-	ON_EN_CHANGE(IDC_LICENSE_ID, &CDiabloIIISupportDlg::OnChangeLicense)
+	ON_EN_CHANGE(IDC_LICENSE, &CDiabloIIISupportDlg::OnChangeLicense)
 END_MESSAGE_MAP()
 
 BOOL		CDiabloIIISupportDlg::OnInitDialog()
@@ -714,6 +717,11 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 	if (IsValidLicense())
 	{
 		GetDlgItem(IDC_LICENSE)->EnableWindow(FALSE);
+		GetDlgItem(IDC_LICENSE)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_LICENSE_TITLE)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_DEVICE_ID)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_DEVICE_ID_TITLE)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_ABOUT)->ShowWindow(SW_HIDE);		
 		swprintf_s(buffer, L"Diablo III Support Version %0.2lf Premium", DiabloIIISupportVersion);
 		GetDlgItem(IDC_DEVICE_ID)->SetWindowTextW(L"Premium");
 		GetDlgItem(IDC_AUTO_BONE_AMOR)->EnableWindow(TRUE);
@@ -757,6 +765,7 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 
 	((CButton*)GetDlgItem(IDC_AUTO_BONE_AMOR))->SetCheck(d3Config.autoBoneArmorEnable);
 	((CButton*)GetDlgItem(IDC_AUTO_SIMULACRUM))->SetCheck(d3Config.autoSimulacrumEnable);
+	((CButton*)GetDlgItem(IDC_AUTO_SIMULACRUM))->SetCheck(d3Config.autoPotionEnable);
 
 	OnShowSkillKey(IDC_SKILLKEY01, d3Config.keySKill01);
 	OnShowSkillKey(IDC_SKILLKEY02, d3Config.keySKill02);
@@ -1342,6 +1351,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			GetDlgItem(IDC_TOWNPORTALKEY)->EnableWindow(true);
 			GetDlgItem(IDC_AUTO_BONE_AMOR)->EnableWindow(true);
 			GetDlgItem(IDC_AUTO_SIMULACRUM)->EnableWindow(true);
+			GetDlgItem(IDC_AUTO_POTION)->EnableWindow(true);
 
 
 
@@ -1562,7 +1572,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 					{
 
 					}
-					if (d3Config.autoPotion)
+					if (d3Config.autoPotionEnable)
 					{
 						SendD3Key(d3Config.keyHealing);
 						GetDlgItem(IDC_AUTO_POTION)->SetWindowTextW(CString(L"Auto Potion - Key [") + d3Config.keyHealing + L"]");
@@ -1645,6 +1655,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			GetDlgItem(IDC_TOWNPORTALKEY)->EnableWindow(false);
 			GetDlgItem(IDC_AUTO_BONE_AMOR)->EnableWindow(false);
 			GetDlgItem(IDC_AUTO_SIMULACRUM)->EnableWindow(false);
+			GetDlgItem(IDC_AUTO_POTION)->EnableWindow(false);
 		}
 #else
 		GetDlgItem(IDC_AUTO_REROLL_SUPPORT_FRAME)->EnableWindow(false);
@@ -1962,7 +1973,7 @@ void CDiabloIIISupportDlg::OnClickedAutoSimulacrum()
 }
 void CDiabloIIISupportDlg::OnClickedAutoPotion()
 {
-	d3Config.autoPotion = !d3Config.autoPotion;
+	d3Config.autoPotionEnable = !d3Config.autoPotionEnable;
 	OnSaveConfig();
 }
 
@@ -2136,12 +2147,12 @@ void CDiabloIIISupportDlg::OnClickedRerollSupportCheck()
 void CDiabloIIISupportDlg::OnChangeLicense()
 {
 	wchar_t bufferText[1000] = { 0 };
-	GetDlgItem(IDC_LICENSE_ID)->GetWindowTextW(bufferText, 999);
+	GetDlgItem(IDC_LICENSE)->GetWindowTextW(bufferText, 999);
 	bool			ScanLicenseID(const wchar_t* licenseID);
 	if (ScanLicenseID(bufferText))
 	{
-		//GetDlgItem(IDC_LICENSE_ID)->SetWindowTextW(L"PremiumLicenseID");
-		GetDlgItem(IDC_LICENSE_ID)->EnableWindow(FALSE);
+		GetDlgItem(IDC_LICENSE)->EnableWindow(FALSE);
+		GetDlgItem(IDC_LICENSE)->ShowWindow(SW_HIDE);
 	}
 
 }

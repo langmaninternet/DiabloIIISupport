@@ -1,7 +1,7 @@
 ﻿#ifndef QBT_STARPACT_HEADER
 #define QBT_STARPACT_HEADER
 #include <Windows.h>
-//#define PREMIUM_FEATURE
+#define PREMIUM_FEATURE
 
 #ifdef PREMIUM_FEATURE
 #include "../DiabloIIICore/Roll/Roll.h"

@@ -71,6 +71,8 @@
 #define IDC_AUTO_REROLL_SUPPORT_FRAME   1090
 #define IDC_REROL_SUPPORT_DETAIL        1091
 #define IDC_AUTO_CAST_SKILL_FRAME       1092
+#define IDC_LICENSE_TITLE               1093
+#define IDC_DEVICE_ID_TITLE             1094
 
 // Next default values for new objects
 // 
@@ -78,7 +80,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        132
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1093
+#define _APS_NEXT_CONTROL_VALUE         1095
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
