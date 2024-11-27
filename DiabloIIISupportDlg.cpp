@@ -122,7 +122,7 @@ int						skillSlot01Cooldown;
 int						skillSlot02Cooldown;
 int						skillSlot03Cooldown;
 int						skillSlot04Cooldown;
-HHOOK					hGlobalHook;
+HHOOK					hGlobalKeyboardHook;
 time_t					last_main_timer;
 extern D3Engine			d3Engine;
 
@@ -588,7 +588,7 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK KeyboardHookProc(int nCode, WP
 		}
 	}
 	if (flagNeedMoreHook == false) return 1;
-	return CallNextHookEx(hGlobalHook, nCode, wParam, lParam);
+	return CallNextHookEx(hGlobalKeyboardHook, nCode, wParam, lParam);
 }
 
 
@@ -807,7 +807,7 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 
 
 
-	hGlobalHook = SetWindowsHookEx(WH_KEYBOARD_LL, KeyboardHookProc, GetModuleHandle(NULL), 0);
+	hGlobalKeyboardHook = SetWindowsHookEx(WH_KEYBOARD_LL, KeyboardHookProc, GetModuleHandle(NULL), 0);
 
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
