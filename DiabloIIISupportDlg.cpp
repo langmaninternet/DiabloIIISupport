@@ -628,6 +628,7 @@ BEGIN_MESSAGE_MAP(CDiabloIIISupportDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_AUTO_BONE_AMOR, &CDiabloIIISupportDlg::OnClickedAutoBoneAmor)
 	ON_BN_CLICKED(IDC_AUTO_SIMULACRUM, &CDiabloIIISupportDlg::OnClickedAutoSimulacrum)
 	ON_BN_CLICKED(IDC_AUTO_POTION, &CDiabloIIISupportDlg::OnClickedAutoPotion)
+	ON_EN_CHANGE(IDC_LICENSE, &CDiabloIIISupportDlg::OnChangeLicense)
 END_MESSAGE_MAP()
 
 BOOL		CDiabloIIISupportDlg::OnInitDialog()
@@ -770,7 +771,8 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 	bool			IsValidLicense(void);
 	if (IsValidLicense())
 	{
-		
+		GetDlgItem(IDC_LICENSE)->EnableWindow(FALSE);
+		GetDlgItem(IDC_LICENSE)->SetWindowTextW(L"PremiumLicenseID");
 	}
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
@@ -2120,5 +2122,15 @@ void CDiabloIIISupportDlg::OnClickedRerollSupportCheck()
 	GetDlgItem(IDC_FORCE_TO_DPS)->EnableWindow(enableRerollSupport);
 	OnSaveConfig();
 }
+void CDiabloIIISupportDlg::OnChangeLicense()
+{
+	wchar_t bufferText[1000] = { 0 };
+	GetDlgItem(IDC_LICENSE)->GetWindowTextW(bufferText, 999);
+	bool			ScanLicenseID(const wchar_t* licenseID);
+	if (ScanLicenseID(bufferText))
+	{
+		GetDlgItem(IDC_LICENSE)->EnableWindow(FALSE);
+		GetDlgItem(IDC_LICENSE)->SetWindowTextW(L"PremiumLicenseID");
+	}
 
-
+}

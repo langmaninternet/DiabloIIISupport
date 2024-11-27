@@ -8,7 +8,6 @@
 #define IDC_LEFTMOUSETIME               1006
 #define IDC_RIGHTMOUSETIME              1007
 #define IDC_PROFILENAME                 1009
-#define IDC_PROFILENAME2                1010
 #define IDC_DEVICE_ID                   1010
 #define IDC_SKILL01TIME                 1011
 #define IDC_SKILL01CHECK                1012
@@ -42,6 +41,8 @@
 #define IDC_AUTO_BONE_AMOR_SLOT_2       1038
 #define IDC_AUTO_SIMULACRUM             1038
 #define IDC_CTRL5TEXT                   1039
+#define IDC_DEVICE_ID2                  1039
+#define IDC_LICENSE                     1039
 #define IDC_CTRL6TEXT                   1040
 #define IDC_AUTO_SIMULACRUM2            1041
 #define IDC_AUTO_POTION                 1041

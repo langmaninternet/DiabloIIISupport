@@ -92,4 +92,5 @@ public:
 	afx_msg void OnClickedAutoBoneAmor();
 	afx_msg void OnClickedAutoSimulacrum();
 	afx_msg void OnClickedAutoPotion();
+	afx_msg void OnChangeLicense();
 };
