@@ -8,6 +8,8 @@
 #define IDC_LEFTMOUSETIME               1006
 #define IDC_RIGHTMOUSETIME              1007
 #define IDC_PROFILENAME                 1009
+#define IDC_PROFILENAME2                1010
+#define IDC_DEVICE_ID                   1010
 #define IDC_SKILL01TIME                 1011
 #define IDC_SKILL01CHECK                1012
 #define IDC_SKILL02TIME                 1013
