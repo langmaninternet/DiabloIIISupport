@@ -46,16 +46,10 @@
 #define IDC_AUTO_SMOKESCREEN            1044
 #define IDC_PROFILE01                   1045
 #define IDC_PROFILE03                   1046
-#define IDC_PROFILE08                   1047
-#define IDC_AUTO_POTION5                1047
 #define IDC_AUTO_VENGEANCE              1047
 #define IDC_PROFILE02                   1048
 #define IDC_PROFILE05                   1049
-#define IDC_PROFILE06                   1050
 #define IDC_PROFILE04                   1051
-#define IDC_PROFILE09                   1052
-#define IDC_PROFILE07                   1053
-#define IDC_PROFILE10                   1054
 #define IDC_PRIMARYSKILLKEYTEXT         1057
 #define IDC_PRIMARYSKILLKEY             1058
 #define IDC_SKILLKEY01                  1059

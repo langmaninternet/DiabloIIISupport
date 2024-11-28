@@ -168,7 +168,7 @@ void		ValidateD3Config(void)
 	if (d3Config.skill03Enable != 0) d3Config.skill03Enable = 1;
 	if (d3Config.skill04Enable != 0) d3Config.skill04Enable = 1;
 	if (d3Config.healingEnable != 0) d3Config.healingEnable = 1;
-	if (d3Config.currentProfile < 0 || d3Config.currentProfile >= maxProfileNumber) d3Config.currentProfile = 0;	
+	if (d3Config.currentProfile < 0 || d3Config.currentProfile >= maxProfileNumber) d3Config.currentProfile = 0;
 
 	for (int iprofile = 0; iprofile < maxProfileNumber; iprofile++)
 	{
@@ -639,6 +639,10 @@ BEGIN_MESSAGE_MAP(CDiabloIIISupportDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_AUTO_SIMULACRUM, &CDiabloIIISupportDlg::OnClickedAutoSimulacrum)
 	ON_BN_CLICKED(IDC_AUTO_POTION, &CDiabloIIISupportDlg::OnClickedAutoPotion)
 	ON_EN_CHANGE(IDC_LICENSE, &CDiabloIIISupportDlg::OnChangeLicense)
+	ON_BN_CLICKED(IDC_AUTO_FANOFKNIVES, &CDiabloIIISupportDlg::OnClickedAutoFanofknives)
+	ON_BN_CLICKED(IDC_AUTO_COMPANION, &CDiabloIIISupportDlg::OnClickedAutoCompanion)
+	ON_BN_CLICKED(IDC_AUTO_SMOKESCREEN, &CDiabloIIISupportDlg::OnClickedAutoSmokescreen)
+	ON_BN_CLICKED(IDC_AUTO_VENGEANCE, &CDiabloIIISupportDlg::OnClickedAutoVengeance)
 END_MESSAGE_MAP()
 
 BOOL		CDiabloIIISupportDlg::OnInitDialog()
@@ -728,7 +732,7 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 		//GetDlgItem(IDC_LICENSE_TITLE)->ShowWindow(SW_HIDE);
 		//GetDlgItem(IDC_DEVICE_ID)->ShowWindow(SW_HIDE);
 		//GetDlgItem(IDC_DEVICE_ID_TITLE)->ShowWindow(SW_HIDE);
-		GetDlgItem(IDC_ABOUT)->ShowWindow(SW_HIDE);		
+		GetDlgItem(IDC_ABOUT)->ShowWindow(SW_HIDE);
 		swprintf_s(buffer, L"Diablo III Support Version %0.2lf Premium", DiabloIIISupportVersion);
 		GetDlgItem(IDC_DEVICE_ID)->SetWindowTextW(L"Premium");
 		GetDlgItem(IDC_AUTO_BONE_AMOR)->EnableWindow(TRUE);
@@ -1062,7 +1066,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				}
 
 
-				
+
 				if (flagOnF3)
 				{
 					if (flagOnF3) GetDlgItem(IDC_RIGHTMOUSETEXT)->SetWindowText(L"Right Mouse (Hotkey F3): \r\n	F3-Running");
@@ -1103,7 +1107,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			/************************************************************************/
 			/* Craft                                                                */
 			/************************************************************************/
-			if (d3Wnd != 0 && IsD3WindowActive() && (flagOnCtrl5 || flagOnCtrl6 || flagOnCtrl8 || flagOnCtrl9|| flagOnRightChanneling))
+			if (d3Wnd != 0 && IsD3WindowActive() && (flagOnCtrl5 || flagOnCtrl6 || flagOnCtrl8 || flagOnCtrl9 || flagOnRightChanneling))
 			{
 
 				double		d3Width = d3Rect.right - d3Rect.left;
@@ -1609,7 +1613,92 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 					}
 					if (scan_demon_hunter_skip_turn == 0)
 					{
-
+						if (d3Config.autoVengeanceEnable)
+						{
+							static int cache_scan_slot_01_skip_turn = 0;
+							static int cache_scan_slot_02_skip_turn = 0;
+							static int cache_scan_slot_03_skip_turn = 0;
+							static int cache_scan_slot_04_skip_turn = 0;
+							if (cache_scan_slot_01_skip_turn > 0) cache_scan_slot_01_skip_turn--;
+							if (cache_scan_slot_02_skip_turn > 0) cache_scan_slot_02_skip_turn--;
+							if (cache_scan_slot_03_skip_turn > 0) cache_scan_slot_03_skip_turn--;
+							if (cache_scan_slot_04_skip_turn > 0) cache_scan_slot_04_skip_turn--;
+							if (flag_need_scan_skill_01 && cache_scan_slot_01_skip_turn == 0 && d3Engine.D3Skill01IsVengeanceReady())
+							{
+								SendD3Key(d3Config.keySKill01);
+								GetDlgItem(IDC_AUTO_VENGEANCE)->SetWindowTextW(CString(L"Auto Vengeance - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
+								flag_need_scan_skill_01 = false;
+								scan_witch_doctor_skip_turn = config_auto_skip_turn;
+								scan_barbarian_skip_turn = config_auto_skip_turn;
+								scan_wizard_skip_turn = config_auto_skip_turn;
+								scan_monk_skip_turn = config_auto_skip_turn;
+								// scan_demon_hunter_skip_turn = config_auto_skip_turn;
+								scan_crusader_skip_turn = config_auto_skip_turn;
+								scan_necromancer_skip_turn = config_auto_skip_turn;
+								// cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+								if (d3Config.skill01Enable) OnClickedSkill01Check();
+							}
+							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsVengeanceReady())
+							{
+								SendD3Key(d3Config.keySKill02);
+								GetDlgItem(IDC_AUTO_VENGEANCE)->SetWindowTextW(CString(L"Auto Vengeance - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
+								flag_need_scan_skill_02 = false;
+								//skip scan other character skill
+								scan_witch_doctor_skip_turn = config_auto_skip_turn;
+								scan_barbarian_skip_turn = config_auto_skip_turn;
+								scan_wizard_skip_turn = config_auto_skip_turn;
+								scan_monk_skip_turn = config_auto_skip_turn;
+								// scan_demon_hunter_skip_turn = config_auto_skip_turn;
+								scan_crusader_skip_turn = config_auto_skip_turn;
+								scan_necromancer_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+								// cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+								if (d3Config.skill02Enable) OnClickedSkill02Check();
+							}
+							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsVengeanceReady())
+							{
+								SendD3Key(d3Config.keySKill03);
+								GetDlgItem(IDC_AUTO_VENGEANCE)->SetWindowTextW(CString(L"Auto Vengeance - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
+								flag_need_scan_skill_03 = false;
+								//skip scan other character skill
+								scan_witch_doctor_skip_turn = config_auto_skip_turn;
+								scan_barbarian_skip_turn = config_auto_skip_turn;
+								scan_wizard_skip_turn = config_auto_skip_turn;
+								scan_monk_skip_turn = config_auto_skip_turn;
+								// scan_demon_hunter_skip_turn = config_auto_skip_turn;
+								scan_crusader_skip_turn = config_auto_skip_turn;
+								scan_necromancer_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+								//cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+								if (d3Config.skill03Enable) OnClickedSkill03Check();
+							}
+							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsVengeanceReady())
+							{
+								SendD3Key(d3Config.keySKill04);
+								GetDlgItem(IDC_AUTO_VENGEANCE)->SetWindowTextW(CString(L"Auto Vengeance - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
+								flag_need_scan_skill_04 = false;
+								//skip scan other character skill
+								scan_witch_doctor_skip_turn = config_auto_skip_turn;
+								scan_barbarian_skip_turn = config_auto_skip_turn;
+								scan_wizard_skip_turn = config_auto_skip_turn;
+								scan_monk_skip_turn = config_auto_skip_turn;
+								// scan_demon_hunter_skip_turn = config_auto_skip_turn;
+								scan_crusader_skip_turn = config_auto_skip_turn;
+								scan_necromancer_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+								//cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+								if (d3Config.skill04Enable) OnClickedSkill04Check();
+							}
+						}
 					}
 					if (d3Config.autoPotionEnable)
 					{
@@ -2001,24 +2090,6 @@ void CDiabloIIISupportDlg::OnClickedHealingCheck()
 	GetDlgItem(IDC_HEALINGTEXTMS)->EnableWindow(d3Config.healingEnable);
 	OnSaveConfig();
 }
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-void CDiabloIIISupportDlg::OnClickedAutoBoneAmor()
-{
-	d3Config.autoBoneArmorEnable = !d3Config.autoBoneArmorEnable;
-	OnSaveConfig();
-}
-void CDiabloIIISupportDlg::OnClickedAutoSimulacrum()
-{
-	d3Config.autoSimulacrumEnable = !d3Config.autoSimulacrumEnable;
-	OnSaveConfig();
-}
-void CDiabloIIISupportDlg::OnClickedAutoPotion()
-{
-	d3Config.autoPotionEnable = !d3Config.autoPotionEnable;
-	OnSaveConfig();
-}
 
 /************************************************************************/
 /*                                                                      */
@@ -2162,4 +2233,42 @@ void CDiabloIIISupportDlg::OnChangeLicense()
 		GetDlgItem(IDC_LICENSE)->ShowWindow(SW_HIDE);
 	}
 
+}
+/************************************************************************/
+/*                                                                      */
+/************************************************************************/
+void CDiabloIIISupportDlg::OnClickedAutoBoneAmor()
+{
+	d3Config.autoBoneArmorEnable = !d3Config.autoBoneArmorEnable;
+	OnSaveConfig();
+}
+void CDiabloIIISupportDlg::OnClickedAutoSimulacrum()
+{
+	d3Config.autoSimulacrumEnable = !d3Config.autoSimulacrumEnable;
+	OnSaveConfig();
+}
+void CDiabloIIISupportDlg::OnClickedAutoFanofknives()
+{
+	d3Config.autoFanOfKnivesEnable = !d3Config.autoFanOfKnivesEnable;
+	OnSaveConfig();
+}
+void CDiabloIIISupportDlg::OnClickedAutoCompanion()
+{
+	d3Config.autoCompanionEnable = !d3Config.autoCompanionEnable;
+	OnSaveConfig();
+}
+void CDiabloIIISupportDlg::OnClickedAutoSmokescreen()
+{
+	d3Config.autoSmokeScreenEnable = !d3Config.autoSmokeScreenEnable;
+	OnSaveConfig();
+}
+void CDiabloIIISupportDlg::OnClickedAutoVengeance()
+{
+	d3Config.autoVengeanceEnable = !d3Config.autoVengeanceEnable;
+	OnSaveConfig();
+}
+void CDiabloIIISupportDlg::OnClickedAutoPotion()
+{
+	d3Config.autoPotionEnable = !d3Config.autoPotionEnable;
+	OnSaveConfig();
 }
