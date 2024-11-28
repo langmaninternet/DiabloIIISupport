@@ -1379,9 +1379,6 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 	}
 	else if (autoCastRollTimerID == nIdEvent && IsValidLicense())
 	{
-
-
-
 #ifdef PREMIUM_FEATURE
 		if (d3Engine.ValidMode())
 		{
@@ -1408,7 +1405,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				if (d3Engine.D3IsOnBattle())
 				{
 					d3Engine.CaptureDesktop();
-					const int config_auto_skip_turn = 30;
+					const int config_auto_skip_turn = 60*1000/ autoCastRollTimerDelay;
 					static int scan_witch_doctor_skip_turn = 0;
 					static int scan_barbarian_skip_turn = 0;
 					static int scan_wizard_skip_turn = 0;
@@ -1433,8 +1430,6 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 					if (scan_demon_hunter_skip_turn > 0) scan_demon_hunter_skip_turn--;
 					if (scan_crusader_skip_turn > 0) scan_crusader_skip_turn--;
 					if (scan_necromancer_skip_turn > 0) scan_necromancer_skip_turn--;
-
-
 					if (scan_necromancer_skip_turn == 0)
 					{
 						if (d3Config.autoBoneArmorEnable)
