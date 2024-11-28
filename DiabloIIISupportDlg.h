@@ -87,4 +87,8 @@ public:
 	afx_msg void OnClickedAutoSimulacrum();
 	afx_msg void OnClickedAutoPotion();
 	afx_msg void OnChangeLicense();
+	afx_msg void OnClickedAutoFanofknives();
+	afx_msg void OnClickedAutoCompanion();
+	afx_msg void OnClickedAutoSmokescreen();
+	afx_msg void OnClickedAutoVengeance();
 };
