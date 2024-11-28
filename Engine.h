@@ -29,7 +29,7 @@ public:
 #include "../DiabloIIICore/Game/Battle.h"
 #include "../DiabloIIICore/Game/Potion.h"
 #include "../DiabloIIICore/Skill/Necromancer.h"
-
+#include "../DiabloIIICore/Skill/DemonHunter.h"
 
 
 

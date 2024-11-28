@@ -862,6 +862,7 @@ void		CDiabloIIISupportDlg::OnHelp()
 /************************************************************************/
 void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 {
+	bool			IsValidLicense(void);
 	if (mainTimerID == nIdEvent)
 	{
 		time_t current_timer;
@@ -1090,9 +1091,6 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			if (d3Wnd != 0 && IsD3WindowActive() && (flagOnCtrl5 || flagOnCtrl6 || flagOnCtrl8 || flagOnCtrl9|| flagOnRightChanneling))
 			{
 
-				GetDlgItem(IDC_CTRL5TEXT)->EnableWindow(FALSE);
-				GetDlgItem(IDC_CTRL6TEXT)->EnableWindow(FALSE);
-				GetDlgItem(IDC_CTRL9TEXT)->EnableWindow(FALSE);
 				double		d3Width = d3Rect.right - d3Rect.left;
 				double		d3Height = d3Rect.bottom - d3Rect.top;
 
@@ -1343,9 +1341,6 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 
 
-				GetDlgItem(IDC_CTRL5TEXT)->EnableWindow(TRUE);
-				GetDlgItem(IDC_CTRL6TEXT)->EnableWindow(TRUE);
-				GetDlgItem(IDC_CTRL9TEXT)->EnableWindow(TRUE);
 
 
 			}
@@ -1363,7 +1358,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			flagOnMainProcess = false;
 		}
 	}
-	else if (autoCastRollTimerID == nIdEvent)
+	else if (autoCastRollTimerID == nIdEvent && IsValidLicense())
 	{
 #ifdef PREMIUM_FEATURE
 		if (d3Engine.ValidMode())

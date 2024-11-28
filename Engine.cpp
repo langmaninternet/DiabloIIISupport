@@ -488,6 +488,7 @@ bool				IsD3WindowActive(void);
 #include "../DiabloIIICore/Game/Battle"
 #include "../DiabloIIICore/Game/Potion"
 #include "../DiabloIIICore/Skill/Necromancer"
+#include "../DiabloIIICore/Skill/DemonHunter"
 #include "../DiabloIIICore/Roll/CriticalHit"
 #include "../DiabloIIICore/Roll/ElementDamage"
 #include "../DiabloIIICore/Roll/AttackSpeed"

@@ -24,8 +24,6 @@
 #define IDC_SKILL02TEXT                 1023
 #define IDC_SKILL03TEXT                 1024
 #define IDC_SKILL04TEXT                 1025
-#define IDC_HEALINGCHECK2               1026
-#define IDC_ENABLE_REROLL_SUPPORT2      1026
 #define IDC_FORCE_TO_DPS                1026
 #define IDC_SKILL01TEXTMS               1027
 #define IDC_SKILL02TEXTMS               1028
@@ -38,17 +36,11 @@
 #define IDC_RIGHTMOUSETEXT              1035
 #define IDC_RIGHTMOUSETEXTMS            1036
 #define IDC_AUTO_BONE_AMOR              1037
-#define IDC_AUTO_BONE_AMOR_SLOT_2       1038
 #define IDC_AUTO_SIMULACRUM             1038
-#define IDC_CTRL5TEXT                   1039
-#define IDC_DEVICE_ID2                  1039
 #define IDC_LICENSE                     1039
 #define IDC_LICENSE_ID                  1039
-#define IDC_CTRL6TEXT                   1040
-#define IDC_AUTO_SIMULACRUM2            1041
 #define IDC_AUTO_POTION                 1041
 #define IDC_CTRLESC                     1042
-#define IDC_CTRL9TEXT                   1043
 #define IDC_PROFILE01                   1045
 #define IDC_PROFILE03                   1046
 #define IDC_PROFILE08                   1047
