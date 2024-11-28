@@ -17,7 +17,7 @@ const double DiabloIIISupportVersion = 1.0;
 /************************************************************************/
 /* Struct                                                               */
 /************************************************************************/
-const int	maxProfileNumber = 10;
+const int	maxProfileNumber = 4;
 const int	maxProfileNameLength = 15;
 const int	profileID[maxProfileNumber] =
 {
@@ -25,12 +25,6 @@ IDC_PROFILE01,
 IDC_PROFILE02,
 IDC_PROFILE03,
 IDC_PROFILE04,
-IDC_PROFILE05,
-IDC_PROFILE06,
-IDC_PROFILE07,
-IDC_PROFILE08,
-IDC_PROFILE09,
-IDC_PROFILE10,
 };
 struct DiabloIIISupportConfig
 {
@@ -170,7 +164,7 @@ void		ValidateD3Config(void)
 	if (d3Config.skill03Enable != 0) d3Config.skill03Enable = 1;
 	if (d3Config.skill04Enable != 0) d3Config.skill04Enable = 1;
 	if (d3Config.healingEnable != 0) d3Config.healingEnable = 1;
-	if (d3Config.currentProfile < 0 || d3Config.currentProfile >= maxProfileNumber) d3Config.currentProfile = 0;
+	if (d3Config.currentProfile < 0 || d3Config.currentProfile >= maxProfileNumber) d3Config.currentProfile = 0;	
 
 	for (int iprofile = 0; iprofile < maxProfileNumber; iprofile++)
 	{
@@ -629,12 +623,6 @@ BEGIN_MESSAGE_MAP(CDiabloIIISupportDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_PROFILE02, &CDiabloIIISupportDlg::OnBnClickedProfile02)
 	ON_BN_CLICKED(IDC_PROFILE03, &CDiabloIIISupportDlg::OnBnClickedProfile03)
 	ON_BN_CLICKED(IDC_PROFILE04, &CDiabloIIISupportDlg::OnBnClickedProfile04)
-	ON_BN_CLICKED(IDC_PROFILE05, &CDiabloIIISupportDlg::OnBnClickedProfile05)
-	ON_BN_CLICKED(IDC_PROFILE06, &CDiabloIIISupportDlg::OnBnClickedProfile06)
-	ON_BN_CLICKED(IDC_PROFILE07, &CDiabloIIISupportDlg::OnBnClickedProfile07)
-	ON_BN_CLICKED(IDC_PROFILE08, &CDiabloIIISupportDlg::OnBnClickedProfile08)
-	ON_BN_CLICKED(IDC_PROFILE09, &CDiabloIIISupportDlg::OnBnClickedProfile09)
-	ON_BN_CLICKED(IDC_PROFILE10, &CDiabloIIISupportDlg::OnBnClickedProfile10)
 	ON_EN_KILLFOCUS(IDC_SKILLKEY01, &CDiabloIIISupportDlg::OnKillFocusSkillKey01)
 	ON_EN_KILLFOCUS(IDC_SKILLKEY02, &CDiabloIIISupportDlg::OnKillFocusSkillKey02)
 	ON_EN_KILLFOCUS(IDC_SKILLKEY03, &CDiabloIIISupportDlg::OnKillFocusSkillKey03)
@@ -2113,42 +2101,6 @@ void CDiabloIIISupportDlg::OnBnClickedProfile04()
 {
 	GetDlgItem(profileID[d3Config.currentProfile])->SetWindowTextW(d3Config.profileName[d3Config.currentProfile]);
 	d3Config.currentProfile = 3;
-	OnBnClickedProfile();
-}
-void CDiabloIIISupportDlg::OnBnClickedProfile05()
-{
-	GetDlgItem(profileID[d3Config.currentProfile])->SetWindowTextW(d3Config.profileName[d3Config.currentProfile]);
-	d3Config.currentProfile = 4;
-	OnBnClickedProfile();
-}
-void CDiabloIIISupportDlg::OnBnClickedProfile06()
-{
-	GetDlgItem(profileID[d3Config.currentProfile])->SetWindowTextW(d3Config.profileName[d3Config.currentProfile]);
-	d3Config.currentProfile = 5;
-	OnBnClickedProfile();
-}
-void CDiabloIIISupportDlg::OnBnClickedProfile07()
-{
-	GetDlgItem(profileID[d3Config.currentProfile])->SetWindowTextW(d3Config.profileName[d3Config.currentProfile]);
-	d3Config.currentProfile = 6;
-	OnBnClickedProfile();
-}
-void CDiabloIIISupportDlg::OnBnClickedProfile08()
-{
-	GetDlgItem(profileID[d3Config.currentProfile])->SetWindowTextW(d3Config.profileName[d3Config.currentProfile]);
-	d3Config.currentProfile = 7;
-	OnBnClickedProfile();
-}
-void CDiabloIIISupportDlg::OnBnClickedProfile09()
-{
-	GetDlgItem(profileID[d3Config.currentProfile])->SetWindowTextW(d3Config.profileName[d3Config.currentProfile]);
-	d3Config.currentProfile = 8;
-	OnBnClickedProfile();
-}
-void CDiabloIIISupportDlg::OnBnClickedProfile10()
-{
-	GetDlgItem(profileID[d3Config.currentProfile])->SetWindowTextW(d3Config.profileName[d3Config.currentProfile]);
-	d3Config.currentProfile = 9;
 	OnBnClickedProfile();
 }
 /************************************************************************/
