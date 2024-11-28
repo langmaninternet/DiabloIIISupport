@@ -41,9 +41,14 @@
 #define IDC_LICENSE_ID                  1039
 #define IDC_AUTO_POTION                 1041
 #define IDC_CTRLESC                     1042
+#define IDC_AUTO_COMPANION              1042
+#define IDC_AUTO_FANOFKNIVES            1043
+#define IDC_AUTO_SMOKESCREEN            1044
 #define IDC_PROFILE01                   1045
 #define IDC_PROFILE03                   1046
 #define IDC_PROFILE08                   1047
+#define IDC_AUTO_POTION5                1047
+#define IDC_AUTO_VENGEANCE              1047
 #define IDC_PROFILE02                   1048
 #define IDC_PROFILE05                   1049
 #define IDC_PROFILE06                   1050

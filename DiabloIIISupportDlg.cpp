@@ -68,6 +68,10 @@ struct DiabloIIISupportConfig
 
 	int		autoBoneArmorEnable;
 	int		autoSimulacrumEnable;
+	int		autoFanOfKnivesEnable;
+	int		autoCompanionEnable;
+	int		autoSmokeScreenEnable;
+	int		autoVengeanceEnable;
 	int		autoPotionEnable;
 
 
@@ -720,16 +724,29 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 	if (IsValidLicense())
 	{
 		GetDlgItem(IDC_LICENSE)->EnableWindow(FALSE);
-		GetDlgItem(IDC_LICENSE)->ShowWindow(SW_HIDE);
-		GetDlgItem(IDC_LICENSE_TITLE)->ShowWindow(SW_HIDE);
-		GetDlgItem(IDC_DEVICE_ID)->ShowWindow(SW_HIDE);
-		GetDlgItem(IDC_DEVICE_ID_TITLE)->ShowWindow(SW_HIDE);
+		//GetDlgItem(IDC_LICENSE)->ShowWindow(SW_HIDE);
+		//GetDlgItem(IDC_LICENSE_TITLE)->ShowWindow(SW_HIDE);
+		//GetDlgItem(IDC_DEVICE_ID)->ShowWindow(SW_HIDE);
+		//GetDlgItem(IDC_DEVICE_ID_TITLE)->ShowWindow(SW_HIDE);
 		GetDlgItem(IDC_ABOUT)->ShowWindow(SW_HIDE);		
 		swprintf_s(buffer, L"Diablo III Support Version %0.2lf Premium", DiabloIIISupportVersion);
 		GetDlgItem(IDC_DEVICE_ID)->SetWindowTextW(L"Premium");
 		GetDlgItem(IDC_AUTO_BONE_AMOR)->EnableWindow(TRUE);
 		GetDlgItem(IDC_AUTO_SIMULACRUM)->EnableWindow(TRUE);
+		GetDlgItem(IDC_AUTO_FANOFKNIVES)->EnableWindow(TRUE);
+		GetDlgItem(IDC_AUTO_COMPANION)->EnableWindow(TRUE);
+		GetDlgItem(IDC_AUTO_SMOKESCREEN)->EnableWindow(TRUE);
+		GetDlgItem(IDC_AUTO_VENGEANCE)->EnableWindow(TRUE);
 		GetDlgItem(IDC_AUTO_POTION)->EnableWindow(TRUE);
+
+
+
+
+
+		//	CRect rectFrame;
+		//	GetWindowRect(&rectFrame);
+		//	rectFrame.right = rectFrame.left + 605;
+		//	MoveWindow(rectFrame);
 	}
 	else
 	{
@@ -737,6 +754,12 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 		GetDlgItem(IDC_AUTO_BONE_AMOR)->EnableWindow(FALSE);
 		GetDlgItem(IDC_AUTO_SIMULACRUM)->EnableWindow(FALSE);
 		GetDlgItem(IDC_AUTO_POTION)->EnableWindow(FALSE);
+		GetDlgItem(IDC_AUTO_FANOFKNIVES)->EnableWindow(FALSE);
+		GetDlgItem(IDC_AUTO_COMPANION)->EnableWindow(FALSE);
+		GetDlgItem(IDC_AUTO_SMOKESCREEN)->EnableWindow(FALSE);
+		GetDlgItem(IDC_AUTO_VENGEANCE)->EnableWindow(FALSE);
+
+
 
 	}
 	SetWindowTextW(buffer);
@@ -768,7 +791,11 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 
 	((CButton*)GetDlgItem(IDC_AUTO_BONE_AMOR))->SetCheck(d3Config.autoBoneArmorEnable);
 	((CButton*)GetDlgItem(IDC_AUTO_SIMULACRUM))->SetCheck(d3Config.autoSimulacrumEnable);
-	((CButton*)GetDlgItem(IDC_AUTO_SIMULACRUM))->SetCheck(d3Config.autoPotionEnable);
+	((CButton*)GetDlgItem(IDC_AUTO_FANOFKNIVES))->SetCheck(d3Config.autoFanOfKnivesEnable);
+	((CButton*)GetDlgItem(IDC_AUTO_COMPANION))->SetCheck(d3Config.autoCompanionEnable);
+	((CButton*)GetDlgItem(IDC_AUTO_SMOKESCREEN))->SetCheck(d3Config.autoSmokeScreenEnable);
+	((CButton*)GetDlgItem(IDC_AUTO_VENGEANCE))->SetCheck(d3Config.autoVengeanceEnable);
+	((CButton*)GetDlgItem(IDC_AUTO_POTION))->SetCheck(d3Config.autoPotionEnable);
 
 	OnShowSkillKey(IDC_SKILLKEY01, d3Config.keySKill01);
 	OnShowSkillKey(IDC_SKILLKEY02, d3Config.keySKill02);
@@ -1348,15 +1375,22 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 	}
 	else if (autoCastRollTimerID == nIdEvent && IsValidLicense())
 	{
+
+
+
 #ifdef PREMIUM_FEATURE
 		if (d3Engine.ValidMode())
 		{
-			GetDlgItem(IDC_AUTO_CAST_SKILL_FRAME)->EnableWindow(true);
-			GetDlgItem(IDC_FORCESTANDTEXT)->EnableWindow(true);
-			GetDlgItem(IDC_TOWNPORTALKEY)->EnableWindow(true);
-			GetDlgItem(IDC_AUTO_BONE_AMOR)->EnableWindow(true);
-			GetDlgItem(IDC_AUTO_SIMULACRUM)->EnableWindow(true);
-			GetDlgItem(IDC_AUTO_POTION)->EnableWindow(true);
+			GetDlgItem(IDC_AUTO_CAST_SKILL_FRAME)->EnableWindow(TRUE);
+			GetDlgItem(IDC_FORCESTANDTEXT)->EnableWindow(TRUE);
+			GetDlgItem(IDC_TOWNPORTALKEY)->EnableWindow(TRUE);
+			GetDlgItem(IDC_AUTO_BONE_AMOR)->EnableWindow(TRUE);
+			GetDlgItem(IDC_AUTO_SIMULACRUM)->EnableWindow(TRUE);
+			GetDlgItem(IDC_AUTO_FANOFKNIVES)->EnableWindow(TRUE);
+			GetDlgItem(IDC_AUTO_COMPANION)->EnableWindow(TRUE);
+			GetDlgItem(IDC_AUTO_SMOKESCREEN)->EnableWindow(TRUE);
+			GetDlgItem(IDC_AUTO_VENGEANCE)->EnableWindow(TRUE);
+			GetDlgItem(IDC_AUTO_POTION)->EnableWindow(TRUE);
 
 
 
@@ -1660,6 +1694,10 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			GetDlgItem(IDC_TOWNPORTALKEY)->EnableWindow(false);
 			GetDlgItem(IDC_AUTO_BONE_AMOR)->EnableWindow(false);
 			GetDlgItem(IDC_AUTO_SIMULACRUM)->EnableWindow(false);
+			GetDlgItem(IDC_AUTO_FANOFKNIVES)->EnableWindow(false);
+			GetDlgItem(IDC_AUTO_COMPANION)->EnableWindow(false);
+			GetDlgItem(IDC_AUTO_SMOKESCREEN)->EnableWindow(false);
+			GetDlgItem(IDC_AUTO_VENGEANCE)->EnableWindow(false);
 			GetDlgItem(IDC_AUTO_POTION)->EnableWindow(false);
 		}
 #else
