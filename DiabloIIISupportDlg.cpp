@@ -430,9 +430,6 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK KeyboardHookProc(int nCode, WP
 			case VK_RSHIFT:
 				flagOnShift = false;
 				break;
-			case VK_RBUTTON:
-				if (!flagOnCtrl) flagOnRightChanneling = false;
-				break;
 			case VK_F1:
 				if (IsD3WindowActive()) flagNeedMoreHook = false;
 				break;
@@ -569,13 +566,6 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK KeyboardHookProc(int nCode, WP
 			case VK_RSHIFT:
 				flagOnShift = true;
 				break;
-			case VK_RBUTTON:
-				if (flagOnCtrl)
-				{
-					flagOnRightChanneling = true;
-				}
-				break;
-
 			default:
 
 				break;
