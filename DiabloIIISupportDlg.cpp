@@ -90,21 +90,12 @@ struct DiabloIIISupportConfig
 /************************************************************************/
 DiabloIIISupportConfig	d3Config;
 wchar_t					configSavePath[3000] = { 0 };
-
-int						enableRerollSupport = 0;
-
 const int				mainTimerDelay = 30/*ms*/;
-const int				autoCastRollTimerDelay = 100/*ms*/;
+const int				autoTimerDelay = 100/*ms*/;
 int						townPortalDelay = 0/*ms*/;
-
-
-
 bool					flagOnF1 = false;
 bool					flagOnF2 = false;
 bool					flagOnF3 = false;
-
-bool					flagOnRightChanneling = false;
-
 bool					flagOnCtrl5 = false;
 bool					flagOnCtrl6 = false;
 bool					flagOnCtrl7 = false;
@@ -112,16 +103,13 @@ bool					flagOnCtrl8 = false;
 bool					flagOnCtrl9 = false;
 bool					flagOnMainProcess = false;
 bool					flagOnAutoProcess = false;
-
-
 int						leftMouseCooldown;
 int						rightMouseCooldown;
 int						skillSlot01Cooldown;
 int						skillSlot02Cooldown;
 int						skillSlot03Cooldown;
 int						skillSlot04Cooldown;
-
-
+int						enableRerollSupport = 0;
 time_t					last_main_timer;
 extern D3Engine			d3Engine;
 
@@ -130,7 +118,7 @@ extern D3Engine			d3Engine;
 /************************************************************************/
 /* Process Function                                                     */
 /************************************************************************/
-void		ValidateD3Key(wchar_t& keyValue, const wchar_t defaultValue)
+void			ValidateD3Key(wchar_t& keyValue, const wchar_t defaultValue)
 {
 	if (keyValue == '`') keyValue = '~';
 	if (!((keyValue >= 'A' && keyValue <= 'Z')
@@ -146,7 +134,7 @@ void		ValidateD3Key(wchar_t& keyValue, const wchar_t defaultValue)
 		keyValue = defaultValue;
 	}
 }
-void		ValidateD3Config(void)
+void			ValidateD3Config(void)
 {
 	d3Config.leftMouseTime = int(round(d3Config.leftMouseTime / double(mainTimerDelay)) * mainTimerDelay);
 	d3Config.rightMouseTime = int(round(d3Config.rightMouseTime / double(mainTimerDelay)) * mainTimerDelay);
@@ -218,22 +206,20 @@ void		ValidateD3Config(void)
 	/************************************************************************/
 	d3Config.healingTime = mainTimerDelay;
 }
-
-
-HWND		GetD3Windows(void)
+HWND			GetD3Windows(void)
 {
 	HWND d3Wnd = FindWindowW(L"D3 Main Window Class", L"Diablo III");
 	if (d3Wnd == NULL) d3Wnd = FindWindowW(L"D3 Main Window Class", NULL);
 	if (d3Wnd == NULL) d3Wnd = FindWindowW(NULL, L"Diablo III");
 	return d3Wnd;
 }
-bool		IsD3WindowActive(void)
+bool			IsD3WindowActive(void)
 {
 	HWND		currentHWD = GetForegroundWindow();
 	if (currentHWD == GetD3Windows()) return true;
 	return false;
 }
-void		SendD3LeftMouseClick()
+void			SendD3LeftMouseClick()
 {
 	HWND d3Wnd = GetD3Windows();
 	if (d3Wnd)
@@ -252,24 +238,7 @@ void		SendD3LeftMouseClick()
 		Sleep(10 + (rand() % 3));
 	}
 }
-void		SendD3RightMouseHold()
-{
-	HWND d3Wnd = GetD3Windows();
-	if (d3Wnd)
-	{
-		POINT point = { 0 };
-		GetCursorPos(&point);
-
-		RECT d3Rect = { 0 };
-		GetWindowRect(d3Wnd, &d3Rect);
-
-		LPARAM lParam = (point.x - d3Rect.left) | ((point.y - d3Rect.top) << 16);
-
-		SendMessage(d3Wnd, WM_RBUTTONDOWN, MK_RBUTTON, lParam);
-		Sleep(10 + (rand() % 3));
-	}
-}
-void		SendD3RightMouseClick()
+void			SendD3RightMouseClick()
 {
 	HWND d3Wnd = GetD3Windows();
 	if (d3Wnd)
@@ -288,7 +257,7 @@ void		SendD3RightMouseClick()
 		Sleep(10 + (rand() % 3));
 	}
 }
-void		SendD3Key(int keyCode)
+static void		SendD3Key(int keyCode)
 {
 	HWND d3Wnd = GetD3Windows();
 	if (d3Wnd)
@@ -299,7 +268,7 @@ void		SendD3Key(int keyCode)
 		Sleep(10 + (rand() % 3));
 	}
 }
-void		SetD3Mouse(int x, int y)
+void			SetD3Mouse(int x, int y)
 {
 	HWND d3Wnd = GetD3Windows();
 	if (d3Wnd)
@@ -309,25 +278,7 @@ void		SetD3Mouse(int x, int y)
 		SetCursorPos(d3Rect.left + x, d3Rect.top + y);
 	}
 }
-void		HoldShift(void)
-{
-	HWND d3Wnd = GetD3Windows();
-	if (d3Wnd)
-	{
-		SendMessage(d3Wnd, WM_KEYDOWN, VK_SHIFT, 0);
-		Sleep(10 + (rand() % 3));
-	}
-}
-void		ReleaseShift(void)
-{
-	HWND d3Wnd = GetD3Windows();
-	if (d3Wnd)
-	{
-		SendMessage(d3Wnd, WM_KEYUP, VK_SHIFT, 0);
-		Sleep(10 + (rand() % 3));
-	}
-}
-bool		PointInRect(POINT point, int rLeft, int rRight, int rTop, int rBottom)
+static bool		PointInRect(POINT point, int rLeft, int rRight, int rTop, int rBottom)
 {
 	if (rLeft >= rRight || rTop >= rBottom)
 	{
@@ -335,7 +286,7 @@ bool		PointInRect(POINT point, int rLeft, int rRight, int rTop, int rBottom)
 	}
 	return (point.x > rLeft && point.x < rRight && point.y > rTop && point.y < rBottom);
 }
-bool		ValidToSendD3Click(void)
+static bool		ValidToSendD3Click(void)
 {
 	if (IsD3WindowActive())
 	{
@@ -405,15 +356,34 @@ bool		ValidToSendD3Click(void)
 }
 
 
+#ifdef _DEBUG
+void		HoldShift(void)
+{
+	HWND d3Wnd = GetD3Windows();
+	if (d3Wnd)
+	{
+		SendMessage(d3Wnd, WM_KEYDOWN, VK_SHIFT, 0);
+		Sleep(10 + (rand() % 3));
+	}
+}
+void		ReleaseShift(void)
+{
+	HWND d3Wnd = GetD3Windows();
+	if (d3Wnd)
+	{
+		SendMessage(d3Wnd, WM_KEYUP, VK_SHIFT, 0);
+		Sleep(10 + (rand() % 3));
+	}
+}
+#endif
+
 /************************************************************************/
 /* Hook                                                                 */
 /************************************************************************/
 HHOOK					hGlobalKeyboardHook;
-HHOOK					hGlobalMouseHook;
-static bool flagOnCtrl = false;
-static bool flagOnShift = false;
 extern "C" __declspec(dllexport) LRESULT CALLBACK KeyboardHookProc(int nCode, WPARAM wParam, LPARAM lParam)
 {
+	static bool flagOnCtrl = false;
 	bool		flagNeedMoreHook = true;
 	if (nCode >= 0 && nCode == HC_ACTION)
 	{
@@ -425,10 +395,6 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK KeyboardHookProc(int nCode, WP
 			case VK_LCONTROL:
 			case VK_RCONTROL:
 				flagOnCtrl = false;
-				break;
-			case VK_LSHIFT:
-			case VK_RSHIFT:
-				flagOnShift = false;
 				break;
 			case VK_F1:
 				if (IsD3WindowActive()) flagNeedMoreHook = false;
@@ -482,7 +448,6 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK KeyboardHookProc(int nCode, WP
 				flagOnCtrl7 = false;
 				flagOnCtrl8 = false;
 				flagOnCtrl9 = false;
-				flagOnRightChanneling = false;
 				break;
 
 #ifdef _DEBUG
@@ -562,14 +527,6 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK KeyboardHookProc(int nCode, WP
 			case VK_RCONTROL:
 				flagOnCtrl = true;
 				break;
-
-			case VK_LSHIFT:
-			case VK_RSHIFT:
-				flagOnShift = true;
-				break;
-			default:
-
-				break;
 			}
 		}
 
@@ -581,23 +538,6 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK KeyboardHookProc(int nCode, WP
 	if (flagNeedMoreHook == false) return 1;
 	return CallNextHookEx(hGlobalKeyboardHook, nCode, wParam, lParam);
 }
-extern "C" __declspec(dllexport) LRESULT CALLBACK MouseHookProc(int nCode, WPARAM wParam, LPARAM lParam)
-{
-	if (nCode >= 0 && nCode == HC_ACTION)
-	{
-		switch (wParam)
-		{
-		case WM_RBUTTONDOWN:
-			if (flagOnCtrl) flagOnRightChanneling = true;
-			break;
-		case WM_RBUTTONUP:
-			if (!flagOnCtrl) flagOnRightChanneling = false;
-			break;
-		}
-	}
-	return CallNextHookEx(hGlobalMouseHook, nCode, wParam, lParam);
-}
-
 
 
 
@@ -690,7 +630,7 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 
 	// TODO: Add extra initialization here
 	mainTimerID = CDialogEx::SetTimer(1, mainTimerDelay, NULL);
-	autoCastRollTimerID = CDialogEx::SetTimer(2, autoCastRollTimerDelay, NULL);
+	autoCastRollTimerID = CDialogEx::SetTimer(2, autoTimerDelay, NULL);
 
 
 
@@ -835,7 +775,6 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 
 
 	hGlobalKeyboardHook = SetWindowsHookEx(WH_KEYBOARD_LL, KeyboardHookProc, GetModuleHandle(NULL), 0);
-	hGlobalMouseHook = SetWindowsHookEx(WH_MOUSE_LL, MouseHookProc, GetModuleHandle(NULL), 0);
 
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
@@ -920,8 +859,6 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			POINT point = { 0 };
 			GetCursorPos(&point);
 			const WCHAR* validToClick = L"";
-			if (ValidToSendD3Click())  validToClick = L"Vaild to click";
-			if (flagOnRightChanneling)  validToClick = L"on right channeling";
 			CString debugInfo;
 			debugInfo.AppendFormat(L"Diablo III: %ls\r\n	X: %04d     Y: %04d\r\n	W: %04d     H: %04d\r\nCursor: %ls\r\n	X : %04d     Y : %04d\r\n",
 				bufferActive,
@@ -1100,14 +1037,6 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 					GetDlgItem(IDC_RIGHTMOUSETEXTMS)->EnableWindow(TRUE);
 					GetDlgItem(IDC_RIGHTMOUSETIME)->EnableWindow(TRUE);
 				}
-
-
-				if (flagOnRightChanneling)
-				{
-					SendD3RightMouseHold();
-				}
-
-
 			}
 
 
@@ -1117,7 +1046,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			/************************************************************************/
 			/* Craft                                                                */
 			/************************************************************************/
-			if (d3Wnd != 0 && IsD3WindowActive() && (flagOnCtrl5 || flagOnCtrl6 || flagOnCtrl8 || flagOnCtrl9 || flagOnRightChanneling))
+			if (d3Wnd != 0 && IsD3WindowActive() && (flagOnCtrl5 || flagOnCtrl6 || flagOnCtrl8 || flagOnCtrl9))
 			{
 
 				double		d3Width = d3Rect.right - d3Rect.left;
@@ -1385,8 +1314,8 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 
 			flagOnMainProcess = false;
-		}
-	}
+					}
+				}
 	else if (autoCastRollTimerID == nIdEvent && IsValidLicense())
 	{
 #ifdef PREMIUM_FEATURE
@@ -1405,7 +1334,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 
 
-			if (townPortalDelay > 0) townPortalDelay -= autoCastRollTimerDelay;
+			if (townPortalDelay > 0) townPortalDelay -= autoTimerDelay;
 			else if (townPortalDelay < 0) townPortalDelay = 0;
 			if (townPortalDelay == 0)
 			{
@@ -1415,7 +1344,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				if (d3Engine.D3IsOnBattle())
 				{
 					d3Engine.CaptureDesktop();
-					const int config_auto_skip_turn = 60*1000/ autoCastRollTimerDelay;
+					const int config_auto_skip_turn = 60 * 1000 / autoTimerDelay;
 					static int scan_witch_doctor_skip_turn = 0;
 					static int scan_barbarian_skip_turn = 0;
 					static int scan_wizard_skip_turn = 0;
@@ -2057,7 +1986,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 		GetDlgItem(IDC_ENABLE_REROLL_SUPPORT)->EnableWindow(false);
 #endif // !PREMIUM_FEATURE
 	}
-}
+			}
 void CDiabloIIISupportDlg::OnLoadConfig()
 {
 	CFile loadFile;
@@ -2077,8 +2006,8 @@ void CDiabloIIISupportDlg::OnLoadConfig()
 			ValidateD3Config();
 			OnSaveConfig();
 		}
-	}
 }
+		}
 void CDiabloIIISupportDlg::OnSaveConfig()
 {
 	CFile saveFile;
