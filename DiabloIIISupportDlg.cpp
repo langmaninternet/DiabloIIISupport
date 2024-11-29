@@ -482,6 +482,7 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK KeyboardHookProc(int nCode, WP
 				flagOnCtrl7 = false;
 				flagOnCtrl8 = false;
 				flagOnCtrl9 = false;
+				flagOnRightChanneling = false;
 				break;
 
 #ifdef _DEBUG
