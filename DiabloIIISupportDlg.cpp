@@ -120,7 +120,8 @@ int						skillSlot01Cooldown;
 int						skillSlot02Cooldown;
 int						skillSlot03Cooldown;
 int						skillSlot04Cooldown;
-HHOOK					hGlobalKeyboardHook;
+
+
 time_t					last_main_timer;
 extern D3Engine			d3Engine;
 
@@ -407,11 +408,12 @@ bool		ValidToSendD3Click(void)
 /************************************************************************/
 /* Hook                                                                 */
 /************************************************************************/
+HHOOK					hGlobalKeyboardHook;
+HHOOK					hGlobalMouseHook;
+static bool flagOnCtrl = false;
+static bool flagOnShift = false;
 extern "C" __declspec(dllexport) LRESULT CALLBACK KeyboardHookProc(int nCode, WPARAM wParam, LPARAM lParam)
 {
-	static bool flagOnCtrl = false;
-	static bool flagOnShift = false;
-
 	bool		flagNeedMoreHook = true;
 	if (nCode >= 0 && nCode == HC_ACTION)
 	{
@@ -588,7 +590,22 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK KeyboardHookProc(int nCode, WP
 	if (flagNeedMoreHook == false) return 1;
 	return CallNextHookEx(hGlobalKeyboardHook, nCode, wParam, lParam);
 }
-
+extern "C" __declspec(dllexport) LRESULT CALLBACK MouseHookProc(int nCode, WPARAM wParam, LPARAM lParam)
+{
+	if (nCode >= 0 && nCode == HC_ACTION)
+	{
+		switch (wParam)
+		{
+		case WM_RBUTTONDOWN:
+			if (flagOnCtrl) flagOnRightChanneling = true;
+			break;
+		case WM_RBUTTONUP:
+			if (!flagOnCtrl) flagOnRightChanneling = false;
+			break;
+		}
+	}
+	return CallNextHookEx(hGlobalMouseHook, nCode, wParam, lParam);
+}
 
 
 
@@ -827,6 +844,7 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 
 
 	hGlobalKeyboardHook = SetWindowsHookEx(WH_KEYBOARD_LL, KeyboardHookProc, GetModuleHandle(NULL), 0);
+	hGlobalMouseHook = SetWindowsHookEx(WH_MOUSE_LL, MouseHookProc, GetModuleHandle(NULL), 0);
 
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
@@ -912,6 +930,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			GetCursorPos(&point);
 			const WCHAR* validToClick = L"";
 			if (ValidToSendD3Click())  validToClick = L"Vaild to click";
+			if (flagOnRightChanneling)  validToClick = L"on right channeling";
 			CString debugInfo;
 			debugInfo.AppendFormat(L"Diablo III: %ls\r\n	X: %04d     Y: %04d\r\n	W: %04d     H: %04d\r\nCursor: %ls\r\n	X : %04d     Y : %04d\r\n",
 				bufferActive,
