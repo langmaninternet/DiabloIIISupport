@@ -32,7 +32,7 @@ protected:
 
 	UINT_PTR mainTimerID;
 
-	UINT_PTR autoCastRollTimerID;
+	UINT_PTR autoTimerID;
 	
 
 

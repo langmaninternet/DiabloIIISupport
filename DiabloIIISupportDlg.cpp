@@ -643,7 +643,7 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 
 	// TODO: Add extra initialization here
 	mainTimerID = CDialogEx::SetTimer(1, mainTimerDelay, NULL);
-	autoCastRollTimerID = CDialogEx::SetTimer(2, autoTimerDelay, NULL);
+	autoTimerID = CDialogEx::SetTimer(2, autoTimerDelay, NULL);
 
 
 
@@ -1341,7 +1341,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			flagOnMainProcess = false;
 					}
 				}
-	else if (autoCastRollTimerID == nIdEvent && IsValidLicense())
+	else if (autoTimerID == nIdEvent && IsValidLicense())
 	{
 #ifdef PREMIUM_FEATURE
 		if (d3Engine.ValidMode())
@@ -1369,7 +1369,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				if (d3Engine.D3IsOnBattle())
 				{
 					d3Engine.CaptureDesktop();
-					const int config_auto_skip_turn = 60 * 1000 / autoTimerDelay;
+					const int config_auto_skip_turn = 30 * 1000 / autoTimerDelay;
 					static int scan_witch_doctor_skip_turn = 0;
 					static int scan_barbarian_skip_turn = 0;
 					static int scan_wizard_skip_turn = 0;
