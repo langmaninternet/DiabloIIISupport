@@ -2501,14 +2501,20 @@ void CDiabloIIISupportDlg::OnChangeDumpPercentValue()
 
 void CDiabloIIISupportDlg::OnClickedDump01Cdc2d()
 {
+#ifdef DEBUG
 	d3Engine.Dump2DigitByCriticalHitDamageLine01(dumpvalue);
+#endif // DEBUG
 }
 void CDiabloIIISupportDlg::OnClickedDump02Cdc2d()
 {
+#ifdef DEBUG
 	d3Engine.Dump2DigitByCriticalHitDamageLine02(dumpvalue);
+#endif // DEBUG
 }
 void CDiabloIIISupportDlg::OnClickedDump03Cdc2d()
 {
+#ifdef DEBUG
 	d3Engine.Dump2DigitByCriticalHitDamageLine03(dumpvalue);
+#endif // DEBUG
 }
 

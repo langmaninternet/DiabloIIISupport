@@ -507,4 +507,5 @@ bool				IsD3WindowActive(void);
 #include "../DiabloIIICore/Roll/MovementSpeed"
 #include "../DiabloIIICore/Roll/Thorn"
 #include "../DiabloIIICore/Roll/DemonHunter"
+#include "../DiabloIIICore/Roll/Digit"
 #endif

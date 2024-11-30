@@ -52,7 +52,7 @@ public:
 #include "../DiabloIIICore/Roll/Socket.h"
 #include "../DiabloIIICore/Roll/Stats.h"
 #include "../DiabloIIICore/Roll/Thorn.h"
-
+#include "../DiabloIIICore/Roll/Digit.h"
 
 
 
