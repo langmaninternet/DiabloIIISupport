@@ -80,7 +80,7 @@ struct DiabloIIISupportConfig
 };
 
 
-
+wchar_t dumpvalue[100] = { 0 };
 
 
 
@@ -454,6 +454,15 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK KeyboardHookProc(int nCode, WP
 			case VK_F5:
 				QuangBTDumpScreen();
 				break;
+			case VK_F6:
+				d3Engine.Dump2DigitByCriticalHitDamageLine01(dumpvalue);
+				break;
+			case VK_F7:
+				d3Engine.Dump2DigitByCriticalHitDamageLine02(dumpvalue);
+				break;
+			case VK_F8:
+				d3Engine.Dump2DigitByCriticalHitDamageLine03(dumpvalue);
+				break;
 #endif
 
 
@@ -594,6 +603,7 @@ BEGIN_MESSAGE_MAP(CDiabloIIISupportDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_DUMP_01_CDC_2d, &CDiabloIIISupportDlg::OnClickedDump01Cdc2d)
 	ON_BN_CLICKED(IDC_DUMP_02_CDC_2d, &CDiabloIIISupportDlg::OnClickedDump02Cdc2d)
 	ON_BN_CLICKED(IDC_DUMP_03_CDC_2d, &CDiabloIIISupportDlg::OnClickedDump03Cdc2d)
+	ON_EN_CHANGE(IDC_DUMP_PERCENT_VALUE, &CDiabloIIISupportDlg::OnChangeDumpPercentValue)
 END_MESSAGE_MAP()
 
 BOOL		CDiabloIIISupportDlg::OnInitDialog()
@@ -2480,25 +2490,25 @@ void CDiabloIIISupportDlg::OnClickedAutoPotion()
 	OnSaveConfig();
 }
 
+
+
+
+
+void CDiabloIIISupportDlg::OnChangeDumpPercentValue()
+{
+	GetDlgItem(IDC_DUMP_PERCENT_VALUE)->GetWindowTextW(dumpvalue, 99);
+}
+
 void CDiabloIIISupportDlg::OnClickedDump01Cdc2d()
 {
-	wchar_t bufferText[1000] = { 0 };
-	GetDlgItem(IDC_DUMP_PERCENT_VALUE)->GetWindowTextW(bufferText, 999);
-	d3Engine.Dump2DigitByCriticalHitDamageLine01(bufferText);
+	d3Engine.Dump2DigitByCriticalHitDamageLine01(dumpvalue);
 }
-
-
 void CDiabloIIISupportDlg::OnClickedDump02Cdc2d()
 {
-	wchar_t bufferText[1000] = { 0 };
-	GetDlgItem(IDC_DUMP_PERCENT_VALUE)->GetWindowTextW(bufferText, 999);
-	d3Engine.Dump2DigitByCriticalHitDamageLine02(bufferText);
+	d3Engine.Dump2DigitByCriticalHitDamageLine02(dumpvalue);
 }
-
-
 void CDiabloIIISupportDlg::OnClickedDump03Cdc2d()
 {
-	wchar_t bufferText[1000] = { 0 };
-	GetDlgItem(IDC_DUMP_PERCENT_VALUE)->GetWindowTextW(bufferText, 999);
-	d3Engine.Dump2DigitByCriticalHitDamageLine03(bufferText);
+	d3Engine.Dump2DigitByCriticalHitDamageLine03(dumpvalue);
 }
+

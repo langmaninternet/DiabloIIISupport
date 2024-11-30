@@ -94,4 +94,5 @@ public:
 	afx_msg void OnClickedDump01Cdc2d();
 	afx_msg void OnClickedDump02Cdc2d();
 	afx_msg void OnClickedDump03Cdc2d();
+	afx_msg void OnChangeDumpPercentValue();
 };
