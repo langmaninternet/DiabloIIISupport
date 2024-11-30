@@ -59,16 +59,11 @@ Only work on
 Premium Features : Auto Roll
 ------------
 Auto Roll Support
-+ BoneArmor
-+ Simulacrum
-+ Companion
-+ FanOfKnives
-+ SmokeScreen
-+ Vengeance
 
 Only work on
 + Resolution is 1920 × 1080 
 + Game is Fullscreen or Fullscreen Windows Mode
+
 
 
 Screenshot
