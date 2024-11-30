@@ -41,15 +41,34 @@ CTRL + 9 if you want to clear the Inventory at the Blacksmith
 ESC or SPACE to Stop 
 
 
-Features : 
+Premium Features : Auto Skill
 ------------
-Auto press for Skill on Battle
-
+Smart Auto Press for Skill on Battle
++ BoneArmor
++ Simulacrum
++ Companion
++ FanOfKnives
++ SmokeScreen
++ Vengeance
 
 Only work on
 + Resolution is 1920 × 1080 
 + Game is Fullscreen or Fullscreen Windows Mode
 
+
+Premium Features : Auto Roll
+------------
+Auto Roll Support
++ BoneArmor
++ Simulacrum
++ Companion
++ FanOfKnives
++ SmokeScreen
++ Vengeance
+
+Only work on
++ Resolution is 1920 × 1080 
++ Game is Fullscreen or Fullscreen Windows Mode
 
 
 Screenshot
