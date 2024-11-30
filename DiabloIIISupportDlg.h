@@ -91,4 +91,7 @@ public:
 	afx_msg void OnClickedAutoCompanion();
 	afx_msg void OnClickedAutoSmokescreen();
 	afx_msg void OnClickedAutoVengeance();
+	afx_msg void OnClickedDump01Cdc2d();
+	afx_msg void OnClickedDump02Cdc2d();
+	afx_msg void OnClickedDump03Cdc2d();
 };

@@ -591,6 +591,9 @@ BEGIN_MESSAGE_MAP(CDiabloIIISupportDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_AUTO_COMPANION, &CDiabloIIISupportDlg::OnClickedAutoCompanion)
 	ON_BN_CLICKED(IDC_AUTO_SMOKESCREEN, &CDiabloIIISupportDlg::OnClickedAutoSmokescreen)
 	ON_BN_CLICKED(IDC_AUTO_VENGEANCE, &CDiabloIIISupportDlg::OnClickedAutoVengeance)
+	ON_BN_CLICKED(IDC_DUMP_01_CDC_2d, &CDiabloIIISupportDlg::OnClickedDump01Cdc2d)
+	ON_BN_CLICKED(IDC_DUMP_02_CDC_2d, &CDiabloIIISupportDlg::OnClickedDump02Cdc2d)
+	ON_BN_CLICKED(IDC_DUMP_03_CDC_2d, &CDiabloIIISupportDlg::OnClickedDump03Cdc2d)
 END_MESSAGE_MAP()
 
 BOOL		CDiabloIIISupportDlg::OnInitDialog()
@@ -775,6 +778,18 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 
 
 	hGlobalKeyboardHook = SetWindowsHookEx(WH_KEYBOARD_LL, KeyboardHookProc, GetModuleHandle(NULL), 0);
+
+
+
+
+
+#ifdef _DEBUG
+	GetDlgItem(IDC_DUMP_PERCENT_VALUE)->EnableWindow(true); 
+	GetDlgItem(IDC_DUMP_01_CDC_2d)->EnableWindow(true);
+	GetDlgItem(IDC_DUMP_02_CDC_2d)->EnableWindow(true);
+	GetDlgItem(IDC_DUMP_03_CDC_2d)->EnableWindow(true);
+#endif // _DEBUG
+
 
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
@@ -2463,4 +2478,27 @@ void CDiabloIIISupportDlg::OnClickedAutoPotion()
 {
 	d3Config.autoPotionEnable = !d3Config.autoPotionEnable;
 	OnSaveConfig();
+}
+
+void CDiabloIIISupportDlg::OnClickedDump01Cdc2d()
+{
+	wchar_t bufferText[1000] = { 0 };
+	GetDlgItem(IDC_DUMP_PERCENT_VALUE)->GetWindowTextW(bufferText, 999);
+	d3Engine.Dump2DigitByCriticalHitDamageLine01(bufferText);
+}
+
+
+void CDiabloIIISupportDlg::OnClickedDump02Cdc2d()
+{
+	wchar_t bufferText[1000] = { 0 };
+	GetDlgItem(IDC_DUMP_PERCENT_VALUE)->GetWindowTextW(bufferText, 999);
+	d3Engine.Dump2DigitByCriticalHitDamageLine02(bufferText);
+}
+
+
+void CDiabloIIISupportDlg::OnClickedDump03Cdc2d()
+{
+	wchar_t bufferText[1000] = { 0 };
+	GetDlgItem(IDC_DUMP_PERCENT_VALUE)->GetWindowTextW(bufferText, 999);
+	d3Engine.Dump2DigitByCriticalHitDamageLine03(bufferText);
 }
