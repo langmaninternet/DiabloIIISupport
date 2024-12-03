@@ -5,6 +5,7 @@
 
 #ifdef PREMIUM_FEATURE
 #include "../DiabloIIICore/Roll/Roll.h"
+#include "../DiabloIIICore/Item/Inventory.h"
 #endif
 
 /************************************************************************/

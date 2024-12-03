@@ -215,29 +215,6 @@ void		CaptureInventory(void)
 	int			xInventoryArray[60] = { int(1428 * d3WidthScale), int(1428 * d3WidthScale), int(1428 * d3WidthScale), int(1428 * d3WidthScale), int(1428 * d3WidthScale), int(1428 * d3WidthScale), int(1478 * d3WidthScale), int(1478 * d3WidthScale), int(1478 * d3WidthScale), int(1478 * d3WidthScale), int(1478 * d3WidthScale), int(1478 * d3WidthScale), int(1529 * d3WidthScale), int(1529 * d3WidthScale), int(1529 * d3WidthScale), int(1529 * d3WidthScale), int(1529 * d3WidthScale), int(1529 * d3WidthScale), int(1579 * d3WidthScale), int(1579 * d3WidthScale), int(1579 * d3WidthScale), int(1579 * d3WidthScale), int(1579 * d3WidthScale), int(1579 * d3WidthScale), int(1630 * d3WidthScale), int(1630 * d3WidthScale), int(1630 * d3WidthScale), int(1630 * d3WidthScale), int(1630 * d3WidthScale), int(1630 * d3WidthScale), int(1680 * d3WidthScale), int(1680 * d3WidthScale), int(1680 * d3WidthScale), int(1680 * d3WidthScale), int(1680 * d3WidthScale), int(1680 * d3WidthScale), int(1731 * d3WidthScale), int(1731 * d3WidthScale), int(1731 * d3WidthScale), int(1731 * d3WidthScale), int(1731 * d3WidthScale), int(1731 * d3WidthScale), int(1781 * d3WidthScale), int(1781 * d3WidthScale), int(1781 * d3WidthScale), int(1781 * d3WidthScale), int(1781 * d3WidthScale), int(1781 * d3WidthScale), int(1831 * d3WidthScale), int(1831 * d3WidthScale), int(1831 * d3WidthScale), int(1831 * d3WidthScale), int(1831 * d3WidthScale), int(1831 * d3WidthScale), int(1881 * d3WidthScale), int(1881 * d3WidthScale), int(1881 * d3WidthScale), int(1881 * d3WidthScale), int(1881 * d3WidthScale), int(1881 * d3WidthScale) };
 	int			yInventoryArray[60] = { int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale), int(584 * d3HeightScale), int(634 * d3HeightScale), int(684 * d3HeightScale), int(734 * d3HeightScale), int(784 * d3HeightScale), int(833 * d3HeightScale) };
 
-	int			xOffsetItemInventoryArray[60] = {
-		/*cột 01*/ 0 , 0 , 0 , 0 , 0 , 0 ,
-		/*cột 02*/ 50 , 50 , 50 , 50 , 50 , 50 ,
-		/*cột 03*/ 100 , 100 , 100 , 100 , 100 , 100 ,
-		/*cột 04*/ 150 , 150 , 150 , 150 , 150 , 150 ,
-		/*cột 05*/ 200 , 200 , 200 , 200 , 200 , 200 ,
-		/*cột 06*/ 250 , 250 , 250 , 250 , 250 , 250 ,
-		/*cột 07*/ 300 , 300 , 300 , 300 , 300 , 300 ,
-		/*cột 08*/ 350 , 350 , 350 , 350 , 350 , 350 ,
-		/*cột 09*/ 400 , 400 , 400 , 400 , 400 , 400 ,
-		/*cột 10*/ 450 , 450 , 450 , 450 , 450 , 450 };
-
-	int			yOffsetItemInventoryArray[60] = {
-		0 , 50 , 100 , 150 , 200 , 250 ,
-		0 , 50 , 100 , 150 , 200 , 250 ,
-		0 , 50 , 100 , 150 , 200 , 250 ,
-		0 , 50 , 100 , 150 , 200 , 250 ,
-		0 , 50 , 100 , 150 , 200 , 250 ,
-		0 , 50 , 100 , 150 , 200 , 250 ,
-		0 , 50 , 100 , 150 , 200 , 250 ,
-		0 , 50 , 100 , 150 , 200 , 250 ,
-		0 , 50 , 100 , 150 , 200 , 250 ,
-		0 , 50 , 100 , 150 , 200 , 250 };
 
 
 	bool flag_shoot_all_in_one = 0;
@@ -302,7 +279,19 @@ void		QuangBTDumpScreen(void)
 
 
 	d3Engine.CaptureDesktop();
+
 	d3Engine.SaveScreen();
+
+	FILE* p = fopen("D:\\abc.txt", "w");
+	if (p)
+	{
+		for (int i = 0; i < 60; i++)
+		{
+			fprintf(p,"/*Item %d*/{%d,%d},\n ",i+1, 1407 + xOffsetItemInventoryArray[i], 563 + yOffsetItemInventoryArray[i]);
+		}
+	}
+	fclose(p);
+
 
 
 	static bool needCleanFolder = true;
@@ -404,6 +393,20 @@ void				D3Engine::CaptureDesktop(void)
 	HDC			hdcDesktop = GetWindowDC(hDesktop);
 	BitBlt(hScreenMemDC, 0, 0, rectDesktop.right, rectDesktop.bottom, hdcDesktop, 0, 0, SRCCOPY);
 	ReleaseDC(hDesktop, hdcDesktop);
+#ifdef _DEBUG
+	SetTextColor(hScreenMemDC, RGB(0xFF, 0xFF, 0xFF));
+	SetBkMode(hScreenMemDC, TRANSPARENT);
+	for (int i = 0; i < 60; i++)
+	{
+		SetPixel(hScreenMemDC, left_top_Inventory[i].x, left_top_Inventory[i].y, 0x00FFFFFF);
+		RECT  rect;
+		rect.left = left_top_Inventory[i].x+10;
+		rect.top = left_top_Inventory[i].y+10;
+		wchar_t buffer[100] = { 0 };
+		swprintf(buffer, L"%d", i + 1);
+		DrawText(hScreenMemDC, buffer, -1, &rect, DT_SINGLELINE | DT_NOCLIP);
+	}
+#endif // _DEBUG
 }
 int					D3Engine::GetPixel(int x, int y)
 {
@@ -456,6 +459,7 @@ bool				IsD3WindowActive(void);
 
 #ifdef PREMIUM_FEATURE
 #include "../DiabloIIICore/Roll/Roll.cpp"
+#include "../DiabloIIICore/Item/Inventory.cpp"
 #endif
 
 
