@@ -72,6 +72,7 @@ public:
 #include "../DiabloIIICore/GDI/DumpRectangle.h"
 #include "../DiabloIIICore/GDI/DumpSkill.h"
 #include "../DiabloIIICore/GDI/DumpRollOption.h"
+#include "../DiabloIIICore/GDI/DumpInventory.h"
 #endif
 	/*Destructor*/		~D3Engine();
 };

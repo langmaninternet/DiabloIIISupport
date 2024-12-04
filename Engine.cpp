@@ -217,57 +217,39 @@ void		CaptureInventory(void)
 
 
 
-	bool flag_shoot_all_in_one = 0;
 
 
-	if (flag_shoot_all_in_one)
+
+	bool		IsD3WindowActive(void);
+	SetD3Mouse(1000, 500);
+	d3Engine.DumpRectangle(
+		1407 + xOffsetItemInventoryArray[0],
+		563 + yOffsetItemInventoryArray[0],
+		1449 + xOffsetItemInventoryArray[0],
+		594 + yOffsetItemInventoryArray[0],
+		"0");
+
+	for (int item = 1; item < 60 && IsD3WindowActive(); item++)
 	{
-		for (int item = 0; item < 60; item++)
-		{
-			char bufferPrefix[10] = {};
-			sprintf_s(bufferPrefix, "%d", item);
-			d3Engine.DumpRectangle(
-				1407 + xOffsetItemInventoryArray[item],
-				563 + yOffsetItemInventoryArray[item],
-				1449 + xOffsetItemInventoryArray[item],
-				594 + yOffsetItemInventoryArray[item],
-				bufferPrefix);
-		}
-		SetD3Mouse(1200, 600);
-	}
-	else
-	{
-		bool		IsD3WindowActive(void);
+		SetD3Mouse(xInventoryArray[item - 1], yInventoryArray[item - 1]);
+		Sleep(100 + (rand() % 5));
+		SendD3LeftMouseClick();
+		Sleep(100 + (rand() % 5));
+		SetD3Mouse(xInventoryArray[item], yInventoryArray[item]);
+		Sleep(100 + (rand() % 5));
+		SendD3LeftMouseClick();
+		Sleep(100 + (rand() % 5));
 		SetD3Mouse(1000, 500);
+		Sleep(200 + (rand() % 5));
+
+		char bufferPrefix[10] = {};
+		sprintf_s(bufferPrefix, "%d", item);
 		d3Engine.DumpRectangle(
-			1407 + xOffsetItemInventoryArray[0],
-			563 + yOffsetItemInventoryArray[0],
-			1449 + xOffsetItemInventoryArray[0],
-			594 + yOffsetItemInventoryArray[0],
-			"0");
-
-		for (int item = 1; item < 60 && IsD3WindowActive(); item++)
-		{
-			SetD3Mouse(xInventoryArray[item - 1], yInventoryArray[item - 1]);
-			Sleep(100 + (rand() % 5));
-			SendD3LeftMouseClick();
-			Sleep(100 + (rand() % 5));
-			SetD3Mouse(xInventoryArray[item], yInventoryArray[item]);
-			Sleep(100 + (rand() % 5));
-			SendD3LeftMouseClick();
-			Sleep(100 + (rand() % 5));
-			SetD3Mouse(1000, 500);
-			Sleep(200 + (rand() % 5));
-
-			char bufferPrefix[10] = {};
-			sprintf_s(bufferPrefix, "%d", item);
-			d3Engine.DumpRectangle(
-				1407 + xOffsetItemInventoryArray[item],
-				563 + yOffsetItemInventoryArray[item],
-				1449 + xOffsetItemInventoryArray[item],
-				594 + yOffsetItemInventoryArray[item],
-				bufferPrefix);
-		}
+			1407 + xOffsetItemInventoryArray[item],
+			563 + yOffsetItemInventoryArray[item],
+			1449 + xOffsetItemInventoryArray[item],
+			594 + yOffsetItemInventoryArray[item],
+			bufferPrefix);
 	}
 }
 #endif
@@ -275,22 +257,8 @@ void		CaptureInventory(void)
 void		QuangBTDumpScreen(void)
 {
 #ifdef DEBUG
-
-
-
 	d3Engine.CaptureDesktop();
-
 	d3Engine.SaveScreen();
-
-	FILE* p = fopen("D:\\abc.txt", "w");
-	if (p)
-	{
-		for (int i = 0; i < 60; i++)
-		{
-			fprintf(p,"/*Item %d*/{%d,%d},\n ",i+1, 1407 + xOffsetItemInventoryArray[i], 563 + yOffsetItemInventoryArray[i]);
-		}
-	}
-	fclose(p);
 
 
 
@@ -326,10 +294,10 @@ void		QuangBTDumpScreen(void)
 
 
 
-	d3Engine.DumpSkill01();
-	d3Engine.DumpSkill02();
-	d3Engine.DumpSkill03();
-	d3Engine.DumpSkill04();
+	//	d3Engine.DumpSkill01();
+	//	d3Engine.DumpSkill02();
+	//	d3Engine.DumpSkill03();
+	//	d3Engine.DumpSkill04();
 
 	//d3Engine.DumpRollOption01();
 	//d3Engine.DumpRollOption02();
@@ -337,8 +305,8 @@ void		QuangBTDumpScreen(void)
 
 	//CaptureInventory();
 
-
-	d3Engine.DumpRectangle(1030, 998, 1059, 1003);
+	d3Engine.DumpInventoryItemWithUnderLine();
+	//d3Engine.DumpRectangle(1030, 998, 1059, 1003);
 
 	// item slot 01
 	//d3Engine.DumpRectangle(1407, 563, 1449, 594);
@@ -393,20 +361,6 @@ void				D3Engine::CaptureDesktop(void)
 	HDC			hdcDesktop = GetWindowDC(hDesktop);
 	BitBlt(hScreenMemDC, 0, 0, rectDesktop.right, rectDesktop.bottom, hdcDesktop, 0, 0, SRCCOPY);
 	ReleaseDC(hDesktop, hdcDesktop);
-#ifdef _DEBUG
-	SetTextColor(hScreenMemDC, RGB(0xFF, 0xFF, 0xFF));
-	SetBkMode(hScreenMemDC, TRANSPARENT);
-	for (int i = 0; i < 60; i++)
-	{
-		SetPixel(hScreenMemDC, left_top_Inventory[i].x, left_top_Inventory[i].y, 0x00FFFFFF);
-		RECT  rect;
-		rect.left = left_top_Inventory[i].x+10;
-		rect.top = left_top_Inventory[i].y+10;
-		wchar_t buffer[100] = { 0 };
-		swprintf(buffer, L"%d", i + 1);
-		DrawText(hScreenMemDC, buffer, -1, &rect, DT_SINGLELINE | DT_NOCLIP);
-	}
-#endif // _DEBUG
 }
 int					D3Engine::GetPixel(int x, int y)
 {
@@ -447,6 +401,7 @@ bool				IsD3WindowActive(void);
 #include "../DiabloIIICore/GDI/DumpRectangle.cpp"
 #include "../DiabloIIICore/GDI/DumpSkill.cpp"
 #include "../DiabloIIICore/GDI/DumpRollOption.cpp"
+#include "../DiabloIIICore/GDI/DumpInventory.cpp"
 #endif
 
 
