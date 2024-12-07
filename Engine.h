@@ -29,6 +29,9 @@ public:
 
 #include "../DiabloIIICore/Game/Battle.h"
 #include "../DiabloIIICore/Game/Potion.h"
+
+#include "../DiabloIIICore/Item/Salvage.h"
+
 #include "../DiabloIIICore/Skill/Necromancer.h"
 #include "../DiabloIIICore/Skill/DemonHunter.h"
 
@@ -61,7 +64,6 @@ public:
 #include "../DiabloIIITemp/Diablo3RolDataCode.h"
 #include "../DiabloIIITemp/Diablo3ScreenDataCode.h"
 #include "../DiabloIIITemp/Diablo3Roll.h"
-#include "../DiabloIIITemp/Diablo3Salvage.h"
 
 
 
@@ -84,11 +86,6 @@ public:
 void		QuangBTDumpScreen(void);
 
 
-
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-void		PreloadSalvageItem(int* preloadSalvageSlot, int preloadSalvageSlotSize);
 
 
 #endif

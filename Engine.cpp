@@ -21,129 +21,6 @@ D3Engine					d3Engine;
 
 
 
-/************************************************************************/
-/* D3 Game status                                                       */
-/************************************************************************/
-void		PreloadSalvageItem(int* preloadSalvageSlot, int preloadSalvageSlotSize)
-{
-	if (d3Engine.ValidMode())
-	{
-		d3Engine.CaptureDesktop();
-		int			xInventoryArray[60] = { 1428 , 1428 , 1428 , 1428 , 1428 , 1428 , 1478 , 1478 , 1478 , 1478 , 1478 , 1478 , 1529 , 1529 , 1529 , 1529 , 1529 , 1529 , 1579 , 1579 , 1579 , 1579 , 1579 , 1579 , 1630 , 1630 , 1630 , 1630 , 1630 , 1630 , 1680 , 1680 , 1680 , 1680 , 1680 , 1680 , 1731 , 1731 , 1731 , 1731 , 1731 , 1731 , 1781 , 1781 , 1781 , 1781 , 1781 , 1781 , 1831 , 1831 , 1831 , 1831 , 1831 , 1831 , 1881 , 1881 , 1881 , 1881 , 1881 , 1881 };
-		int			yInventoryArray[60] = { 584 , 634 , 684 , 734 , 784 , 833 , 584 , 634 , 684 , 734 , 784 , 833 , 584 , 634 , 684 , 734 , 784 , 833 , 584 , 634 , 684 , 734 , 784 , 833 , 584 , 634 , 684 , 734 , 784 , 833 , 584 , 634 , 684 , 734 , 784 , 833 , 584 , 634 , 684 , 734 , 784 , 833 , 584 , 634 , 684 , 734 , 784 , 833 , 584 , 634 , 684 , 734 , 784 , 833 , 584 , 634 , 684 , 734 , 784 , 833 };
-
-
-		int			xOffsetItemInventoryArray[60] = {
-			/*cột 01*/ 0 , 0 , 0 , 0 , 0 , 0 ,
-			/*cột 02*/ 50 , 50 , 50 , 50 , 50 , 50 ,
-			/*cột 03*/ 100 , 100 , 100 , 100 , 100 , 100 ,
-			/*cột 04*/ 150 , 150 , 150 , 150 , 150 , 150 ,
-			/*cột 05*/ 200 , 200 , 200 , 200 , 200 , 200 ,
-			/*cột 06*/ 250 , 250 , 250 , 250 , 250 , 250 ,
-			/*cột 07*/ 300 , 300 , 300 , 300 , 300 , 300 ,
-			/*cột 08*/ 350 , 350 , 350 , 350 , 350 , 350 ,
-			/*cột 09*/ 400 , 400 , 400 , 400 , 400 , 400 ,
-			/*cột 10*/ 450 , 450 , 450 , 450 , 450 , 450 };
-
-		int			yOffsetItemInventoryArray[60] = {
-			0 , 50 , 100 , 150 , 200 , 250 ,
-			0 , 50 , 100 , 150 , 200 , 250 ,
-			0 , 50 , 100 , 150 , 200 , 250 ,
-			0 , 50 , 100 , 150 , 200 , 250 ,
-			0 , 50 , 100 , 150 , 200 , 250 ,
-			0 , 50 , 100 , 150 , 200 , 250 ,
-			0 , 50 , 100 , 150 , 200 , 250 ,
-			0 , 50 , 100 , 150 , 200 , 250 ,
-			0 , 50 , 100 , 150 , 200 , 250 ,
-			0 , 50 , 100 , 150 , 200 , 250 };
-
-		if (d3Engine.D3IsOpenStash())
-		{
-			for (int ip = 0; ip < 60 && ip < preloadSalvageSlotSize; ip++)
-			{
-
-				int color1 = d3Engine.GetPixel(xInventoryArray[ip], yInventoryArray[ip]);
-				int color2 = d3Engine.GetPixel(xInventoryArray[ip] + 1, yInventoryArray[ip] + 1);
-				int color3 = d3Engine.GetPixel(xInventoryArray[ip] + 1, yInventoryArray[ip] - 1);
-				int color4 = d3Engine.GetPixel(xInventoryArray[ip] - 1, yInventoryArray[ip] + 1);
-				int color5 = d3Engine.GetPixel(xInventoryArray[ip] - 1, yInventoryArray[ip] - 1);
-
-				if ((color1 == 0x80D10/* R16 G13 B8*/ || color1 == 0x80E10/* R16 G14 B8*/ || color1 == 0x80F10/* R16 G15 B8*/)
-					&& (color2 == 0x80D10/* R16 G13 B8*/ || color2 == 0x80E10/* R16 G14 B8*/ || color2 == 0x80F10/* R16 G15 B8*/)
-					&& (color3 == 0x80D10/* R16 G13 B8*/ || color3 == 0x80E10/* R16 G14 B8*/ || color3 == 0x80F10/* R16 G15 B8*/)
-					&& (color4 == 0x80D10/* R16 G13 B8*/ || color4 == 0x80E10/* R16 G14 B8*/ || color4 == 0x80F10/* R16 G15 B8*/)
-					&& (color5 == 0x80D10/* R16 G13 B8*/ || color5 == 0x80E10/* R16 G14 B8*/ || color5 == 0x80F10/* R16 G15 B8*/)
-					)
-				{
-					preloadSalvageSlot[ip] = 0;
-				}
-			}
-		}
-		else
-		{
-
-			for (int ip = 0; ip < 60 && ip < preloadSalvageSlotSize; ip++)
-			{
-				int color1 = d3Engine.GetPixel(xInventoryArray[ip], yInventoryArray[ip]);
-				int color2 = d3Engine.GetPixel(xInventoryArray[ip] + 1, yInventoryArray[ip] + 1);
-				int color3 = d3Engine.GetPixel(xInventoryArray[ip] + 1, yInventoryArray[ip] - 1);
-				int color4 = d3Engine.GetPixel(xInventoryArray[ip] - 1, yInventoryArray[ip] + 1);
-				int color5 = d3Engine.GetPixel(xInventoryArray[ip] - 1, yInventoryArray[ip] - 1);
-
-				if ((color1 == 0x80D10/* R16 G13 B8*/ || color1 == 0x80E10/* R16 G14 B8*/ || color1 == 0x80F10/* R16 G15 B8*/)
-					&& (color2 == 0x80D10/* R16 G13 B8*/ || color2 == 0x80E10/* R16 G14 B8*/ || color2 == 0x80F10/* R16 G15 B8*/)
-					&& (color3 == 0x80D10/* R16 G13 B8*/ || color3 == 0x80E10/* R16 G14 B8*/ || color3 == 0x80F10/* R16 G15 B8*/)
-					&& (color4 == 0x80D10/* R16 G13 B8*/ || color4 == 0x80E10/* R16 G14 B8*/ || color4 == 0x80F10/* R16 G15 B8*/)
-					&& (color5 == 0x80D10/* R16 G13 B8*/ || color5 == 0x80E10/* R16 G14 B8*/ || color5 == 0x80F10/* R16 G15 B8*/)
-					)
-				{
-					preloadSalvageSlot[ip] = 0;
-				}
-				else if (d3Engine.ItemSlotIsMarquiseRuby(xOffsetItemInventoryArray[ip], yOffsetItemInventoryArray[ip])
-					|| d3Engine.ItemSlotIsMarquiseDiamond(xOffsetItemInventoryArray[ip], yOffsetItemInventoryArray[ip])
-					|| d3Engine.ItemSlotIsMarquiseAmethyst(xOffsetItemInventoryArray[ip], yOffsetItemInventoryArray[ip])
-					|| d3Engine.ItemSlotIsMarquiseTopaz(xOffsetItemInventoryArray[ip], yOffsetItemInventoryArray[ip])
-					|| d3Engine.ItemSlotIsMarquiseEmerald(xOffsetItemInventoryArray[ip], yOffsetItemInventoryArray[ip])
-
-					|| d3Engine.ItemSlotIsImperialRuby(xOffsetItemInventoryArray[ip], yOffsetItemInventoryArray[ip])
-					|| d3Engine.ItemSlotIsImperialDiamond(xOffsetItemInventoryArray[ip], yOffsetItemInventoryArray[ip])
-
-					|| d3Engine.ItemSlotIsWhisperOfAtonement(xOffsetItemInventoryArray[ip], yOffsetItemInventoryArray[ip])
-					|| d3Engine.ItemSlotIsRamaladinGift(xOffsetItemInventoryArray[ip], yOffsetItemInventoryArray[ip])
-					)
-				{
-					preloadSalvageSlot[ip] = 0;
-				}
-				else
-				{
-					for (int xoffset = -10; xoffset <= 10; xoffset++)
-					{
-						for (int yoffset = -10; yoffset <= 10; yoffset++)
-						{
-							if (d3Engine.ItemSlotIsWhisperOfAtonement(xoffset + xOffsetItemInventoryArray[ip], yoffset + yOffsetItemInventoryArray[ip]))
-							{
-								preloadSalvageSlot[ip] = 0;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-
-
-
-
-
-
-/************************************************************************/
-/*                                                                      */
-/************************************************************************/
-
-
-
 
 
 
@@ -439,13 +316,13 @@ bool				IsD3WindowActive(void);
 #include "../DiabloIIITemp/Diablo3RolDataCode"
 #include "../DiabloIIITemp/Diablo3ScreenDataCode"
 #include "../DiabloIIITemp/Diablo3Roll"
-#include "../DiabloIIITemp/Diablo3Salvage"
 
 
 
 #ifdef PREMIUM_FEATURE
 #include "../DiabloIIICore/Game/Battle"
 #include "../DiabloIIICore/Game/Potion"
+#include "../DiabloIIICore/Item/Salvage"
 #include "../DiabloIIICore/Skill/Necromancer"
 #include "../DiabloIIICore/Skill/DemonHunter"
 #include "../DiabloIIICore/Roll/CriticalHit"
