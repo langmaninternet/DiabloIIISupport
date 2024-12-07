@@ -884,19 +884,19 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			POINT point = { 0 };
 			GetCursorPos(&point);
 			WCHAR validToClick[100] = { 0 };
-			extern int xOffsetItemInventoryArray[60];
-			extern int yOffsetItemInventoryArray[60];
-
-			for (int ix = -10; ix <= 10; ix++)
-			{
-				for (int iy = -10; iy <= 10; iy++)
-				{
-					if (d3Engine.ItemIsImperialDiamond(xOffsetItemInventoryArray[0]+ix, yOffsetItemInventoryArray[0]+iy))
-					{
-						swprintf(validToClick, L"%d %d", ix, iy);
-					}
-				}
-			}
+			//	extern int xOffsetItemInventoryArray[60];
+			//	extern int yOffsetItemInventoryArray[60];
+			//	
+			//	for (int ix = -10; ix <= 10; ix++)
+			//	{
+			//		for (int iy = -10; iy <= 10; iy++)
+			//		{
+			//			if (d3Engine.ItemIsImperialDiamond(xOffsetItemInventoryArray[0]+ix, yOffsetItemInventoryArray[0]+iy))
+			//			{
+			//				swprintf(validToClick, L"%d %d", ix, iy);
+			//			}
+			//		}
+			//	}
 
 			CString debugInfo;
 			debugInfo.AppendFormat(L"Diablo III: %ls\r\n	X: %04d     Y: %04d\r\n	W: %04d     H: %04d\r\nCursor: %ls\r\n	X : %04d     Y : %04d\r\n",
