@@ -24,7 +24,7 @@
 //		Goblin weight: 10
 //
 //
-BuffStackCount(0,P6_Necro_BoneArmor)<10
+BuffStackCount(0,P6_Necro_BoneArmor)<5
 
 //#3 Bone Armor
 //	Density + Buff
@@ -48,18 +48,17 @@ BuffStackCount(0,P6_Necro_BoneArmor)<10
 
 
 //#4 Siphon Blood
-// Force Recast
 // Do not use in fast mode
 // Use to break item
 // 50ms
 // Resource Setting
 //		Channelling 
-//		Max Channelling Distance 25
-//		Attack Distance: 25
+//		Max Channelling Distance 20
+//		Attack Distance: 20
 //		Distance Min: 0
-//		Distance Max: 25
+//		Distance Max: 20
 //		Calculation min param: 0
-//		Calculation max param: 25
+//		Calculation max param: 20
 //		Attack limit: 1 
 //
 //		Elite weight: 10
