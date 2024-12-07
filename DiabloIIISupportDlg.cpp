@@ -1360,6 +1360,23 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 #ifdef PREMIUM_FEATURE
 		if (d3Engine.ValidMode())
 		{
+			const int config_auto_skip_turn = 30 * 1000 / autoTimerDelay;
+			static int scan_witch_doctor_skip_turn = 0;
+			static int scan_barbarian_skip_turn = 0;
+			static int scan_wizard_skip_turn = 0;
+			static int scan_monk_skip_turn = 0;
+			static int scan_demon_hunter_skip_turn = 0;
+			static int scan_crusader_skip_turn = 0;
+			static int scan_necromancer_skip_turn = 0;
+			if (scan_witch_doctor_skip_turn > 0) scan_witch_doctor_skip_turn--;
+			if (scan_barbarian_skip_turn > 0) scan_barbarian_skip_turn--;
+			if (scan_wizard_skip_turn > 0) scan_wizard_skip_turn--;
+			if (scan_monk_skip_turn > 0) scan_monk_skip_turn--;
+			if (scan_demon_hunter_skip_turn > 0) scan_demon_hunter_skip_turn--;
+			if (scan_crusader_skip_turn > 0) scan_crusader_skip_turn--;
+			if (scan_necromancer_skip_turn > 0) scan_necromancer_skip_turn--;
+
+
 			GetDlgItem(IDC_AUTO_CAST_SKILL_FRAME)->EnableWindow(TRUE);
 			GetDlgItem(IDC_FORCESTANDTEXT)->EnableWindow(TRUE);
 			GetDlgItem(IDC_TOWNPORTALKEY)->EnableWindow(TRUE);
@@ -1383,31 +1400,11 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				if (d3Engine.D3IsOnBattle())
 				{
 					d3Engine.CaptureDesktop();
-					const int config_auto_skip_turn = 30 * 1000 / autoTimerDelay;
-					static int scan_witch_doctor_skip_turn = 0;
-					static int scan_barbarian_skip_turn = 0;
-					static int scan_wizard_skip_turn = 0;
-					static int scan_monk_skip_turn = 0;
-					static int scan_demon_hunter_skip_turn = 0;
-					static int scan_crusader_skip_turn = 0;
-					static int scan_necromancer_skip_turn = 0;
-
-
-
-
 					bool flag_need_scan_skill_01 = true;
 					bool flag_need_scan_skill_02 = true;
 					bool flag_need_scan_skill_03 = true;
 					bool flag_need_scan_skill_04 = true;
 
-
-					if (scan_witch_doctor_skip_turn > 0) scan_witch_doctor_skip_turn--;
-					if (scan_barbarian_skip_turn > 0) scan_barbarian_skip_turn--;
-					if (scan_wizard_skip_turn > 0) scan_wizard_skip_turn--;
-					if (scan_monk_skip_turn > 0) scan_monk_skip_turn--;
-					if (scan_demon_hunter_skip_turn > 0) scan_demon_hunter_skip_turn--;
-					if (scan_crusader_skip_turn > 0) scan_crusader_skip_turn--;
-					if (scan_necromancer_skip_turn > 0) scan_necromancer_skip_turn--;
 					if (scan_necromancer_skip_turn == 0)
 					{
 						if (d3Config.autoBoneArmorEnable)
