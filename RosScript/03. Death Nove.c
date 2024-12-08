@@ -27,12 +27,12 @@
 // 50ms
 // Resource Setting
 //		Channelling 
-//		Max Channelling Distance 20
-//		Attack Distance: 20
+//		Max Channelling Distance 25
+//		Attack Distance: 25
 //		Distance Min: 0
-//		Distance Max: 20
+//		Distance Max: 25
 //		Calculation min param: 0
-//		Calculation max param: 20
+//		Calculation max param: 25
 //		Attack limit: 1 
 //
 //		Elite weight: 10
