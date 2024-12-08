@@ -47,22 +47,21 @@
 
 //#4 Blood Rush
 //	Attack + Density
-//	3000ms
+//	1000ms
 //		Attack Distance: 90
-//		Distance Min: 0
+//		Distance Min: 20
 //		Distance Max: 90
 //		Calculation min param: 0
 //		Calculation max param: 30
 //		Attack limit: 1 
 //
 //		Elite weight: 10
-//		Minion weight: 3
+//		Minion weight: 0
 //		Normal monster weight: 0
 //		Big guy weight: 10
 //		Goblin weight: 10
 //
 //
-BuffStackCount(0,P6_Necro_BoneArmor)<5
-
+BuffStackCount(10,P6_Necro_SiphonBlood)<0
 
 
