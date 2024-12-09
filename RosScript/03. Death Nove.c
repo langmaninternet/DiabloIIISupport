@@ -1,3 +1,6 @@
+//Global Monter Scan 150
+//Navigation Timeout 300
+
 
 // #1. Simulacrum
 // Buff
