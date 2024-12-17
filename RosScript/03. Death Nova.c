@@ -25,7 +25,7 @@
 //
 
 
-//#2 Bone Armor - Rebuff
+//#2 Bone Armor - Rebuff at 6->8+
 // 	Force Recast
 //	Elite + Density + Buff
 //	1000ms
@@ -44,7 +44,7 @@
 //
 //
 BuffStackCount(0,P6_Necro_BoneArmor)>0
-&BuffStackCount(0,P6_Necro_BoneArmor)<8
+&BuffStackCount(0,P6_Necro_BoneArmor)<7
 
 
 //#3 Siphon Blood
