@@ -34,7 +34,7 @@
 //		Distance Max: 40
 //		Calculation min param: 0
 //		Calculation max param: 40
-//		Attack limit: 10
+//		Attack limit: 8
 //
 //		Elite weight: 1
 //		Minion weight: 1
