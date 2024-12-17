@@ -27,13 +27,13 @@
 
 //#2 Bone Armor - Rebuff
 // 	Force Recast
-//	Density + Buff
+//	Elite + Density + Buff
 //	1000ms
 //		Attack Distance: 40
 //		Distance Min: 0
 //		Distance Max: 40
 //		Calculation min param: 0
-//		Calculation max param: 30
+//		Calculation max param: 40
 //		Attack limit: 10
 //
 //		Elite weight: 1
