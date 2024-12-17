@@ -24,6 +24,29 @@
 //
 //
 
+
+//#2 Bone Armor - Rebuff
+// 	Force Recast
+//	Density + Buff
+//	1000ms
+//		Attack Distance: 40
+//		Distance Min: 0
+//		Distance Max: 40
+//		Calculation min param: 0
+//		Calculation max param: 30
+//		Attack limit: 10
+//
+//		Elite weight: 1
+//		Minion weight: 1
+//		Normal monster weight: 1
+//		Big guy weight: 1
+//		Goblin weight: 1
+//
+//
+BuffStackCount(0,P6_Necro_BoneArmor)>0
+&BuffStackCount(0,P6_Necro_BoneArmor)<8
+
+
 //#3 Siphon Blood
 // Do not use in fast mode
 // Use to break item
