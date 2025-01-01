@@ -95,4 +95,5 @@ public:
 	afx_msg void OnClickedDump02Cdc2d();
 	afx_msg void OnClickedDump03Cdc2d();
 	afx_msg void OnChangeDumpPercentValue();
+	afx_msg void OnClickedAutoCommandSkeletons();
 };

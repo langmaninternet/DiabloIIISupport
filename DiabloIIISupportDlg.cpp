@@ -68,6 +68,8 @@ struct DiabloIIISupportConfig
 
 	int		autoBoneArmorEnable;
 	int		autoSimulacrumEnable;
+	int		autoCommandSkeletonsEnable;
+
 	int		autoFanOfKnivesEnable;
 	int		autoCompanionEnable;
 	int		autoSmokeScreenEnable;
@@ -604,6 +606,7 @@ BEGIN_MESSAGE_MAP(CDiabloIIISupportDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_DUMP_02_CDC_2d, &CDiabloIIISupportDlg::OnClickedDump02Cdc2d)
 	ON_BN_CLICKED(IDC_DUMP_03_CDC_2d, &CDiabloIIISupportDlg::OnClickedDump03Cdc2d)
 	ON_EN_CHANGE(IDC_DUMP_PERCENT_VALUE, &CDiabloIIISupportDlg::OnChangeDumpPercentValue)
+	ON_BN_CLICKED(IDC_AUTO_COMMAND_SKELETONS, &CDiabloIIISupportDlg::OnClickedAutoCommandSkeletons)
 END_MESSAGE_MAP()
 
 BOOL		CDiabloIIISupportDlg::OnInitDialog()
@@ -698,6 +701,7 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 		GetDlgItem(IDC_DEVICE_ID)->SetWindowTextW(L"Premium");
 		GetDlgItem(IDC_AUTO_BONE_AMOR)->EnableWindow(TRUE);
 		GetDlgItem(IDC_AUTO_SIMULACRUM)->EnableWindow(TRUE);
+		GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->EnableWindow(TRUE);
 		GetDlgItem(IDC_AUTO_FANOFKNIVES)->EnableWindow(TRUE);
 		GetDlgItem(IDC_AUTO_COMPANION)->EnableWindow(TRUE);
 		GetDlgItem(IDC_AUTO_SMOKESCREEN)->EnableWindow(TRUE);
@@ -718,6 +722,7 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 		swprintf_s(buffer, L"Diablo III Support Version %0.2lf", DiabloIIISupportVersion);
 		GetDlgItem(IDC_AUTO_BONE_AMOR)->EnableWindow(FALSE);
 		GetDlgItem(IDC_AUTO_SIMULACRUM)->EnableWindow(FALSE);
+		GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->EnableWindow(FALSE);
 		GetDlgItem(IDC_AUTO_POTION)->EnableWindow(FALSE);
 		GetDlgItem(IDC_AUTO_FANOFKNIVES)->EnableWindow(FALSE);
 		GetDlgItem(IDC_AUTO_COMPANION)->EnableWindow(FALSE);
@@ -756,10 +761,13 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 
 	((CButton*)GetDlgItem(IDC_AUTO_BONE_AMOR))->SetCheck(d3Config.autoBoneArmorEnable);
 	((CButton*)GetDlgItem(IDC_AUTO_SIMULACRUM))->SetCheck(d3Config.autoSimulacrumEnable);
+	((CButton*)GetDlgItem(IDC_AUTO_COMMAND_SKELETONS))->SetCheck(d3Config.autoCommandSkeletonsEnable);
+
 	((CButton*)GetDlgItem(IDC_AUTO_FANOFKNIVES))->SetCheck(d3Config.autoFanOfKnivesEnable);
 	((CButton*)GetDlgItem(IDC_AUTO_COMPANION))->SetCheck(d3Config.autoCompanionEnable);
 	((CButton*)GetDlgItem(IDC_AUTO_SMOKESCREEN))->SetCheck(d3Config.autoSmokeScreenEnable);
 	((CButton*)GetDlgItem(IDC_AUTO_VENGEANCE))->SetCheck(d3Config.autoVengeanceEnable);
+
 	((CButton*)GetDlgItem(IDC_AUTO_POTION))->SetCheck(d3Config.autoPotionEnable);
 
 	OnShowSkillKey(IDC_SKILLKEY01, d3Config.keySKill01);
@@ -1382,6 +1390,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			GetDlgItem(IDC_TOWNPORTALKEY)->EnableWindow(TRUE);
 			GetDlgItem(IDC_AUTO_BONE_AMOR)->EnableWindow(TRUE);
 			GetDlgItem(IDC_AUTO_SIMULACRUM)->EnableWindow(TRUE);
+			GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->EnableWindow(TRUE);
 			GetDlgItem(IDC_AUTO_FANOFKNIVES)->EnableWindow(TRUE);
 			GetDlgItem(IDC_AUTO_COMPANION)->EnableWindow(TRUE);
 			GetDlgItem(IDC_AUTO_SMOKESCREEN)->EnableWindow(TRUE);
@@ -1579,7 +1588,92 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								if (d3Config.skill04Enable) OnClickedSkill04Check();
 							}
 						}
-
+						if (d3Config.autoCommandSkeletonsEnable)
+						{
+							static int cache_scan_slot_01_skip_turn = 0;
+							static int cache_scan_slot_02_skip_turn = 0;
+							static int cache_scan_slot_03_skip_turn = 0;
+							static int cache_scan_slot_04_skip_turn = 0;
+							if (cache_scan_slot_01_skip_turn > 0) cache_scan_slot_01_skip_turn--;
+							if (cache_scan_slot_02_skip_turn > 0) cache_scan_slot_02_skip_turn--;
+							if (cache_scan_slot_03_skip_turn > 0) cache_scan_slot_03_skip_turn--;
+							if (cache_scan_slot_04_skip_turn > 0) cache_scan_slot_04_skip_turn--;
+							if (flag_need_scan_skill_01 && cache_scan_slot_01_skip_turn == 0 && d3Engine.D3Skill01IsCommandSkeletonsReady())
+							{
+								SendD3Key(d3Config.keySKill01);
+								GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->SetWindowTextW(CString(L"Auto CommandSkeletons - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
+								flag_need_scan_skill_01 = false;
+								scan_witch_doctor_skip_turn = config_auto_skip_turn;
+								scan_barbarian_skip_turn = config_auto_skip_turn;
+								scan_wizard_skip_turn = config_auto_skip_turn;
+								scan_monk_skip_turn = config_auto_skip_turn;
+								scan_demon_hunter_skip_turn = config_auto_skip_turn;
+								scan_crusader_skip_turn = config_auto_skip_turn;
+								// scan_necromancer_skip_turn = config_auto_skip_turn;
+								// cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+								if (d3Config.skill01Enable) OnClickedSkill01Check();
+							}
+							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsCommandSkeletonsReady())
+							{
+								SendD3Key(d3Config.keySKill02);
+								GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->SetWindowTextW(CString(L"Auto CommandSkeletons - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
+								flag_need_scan_skill_02 = false;
+								//skip scan other character skill
+								scan_witch_doctor_skip_turn = config_auto_skip_turn;
+								scan_barbarian_skip_turn = config_auto_skip_turn;
+								scan_wizard_skip_turn = config_auto_skip_turn;
+								scan_monk_skip_turn = config_auto_skip_turn;
+								scan_demon_hunter_skip_turn = config_auto_skip_turn;
+								scan_crusader_skip_turn = config_auto_skip_turn;
+								// scan_necromancer_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+								// cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+								if (d3Config.skill02Enable) OnClickedSkill02Check();
+							}
+							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsCommandSkeletonsReady())
+							{
+								SendD3Key(d3Config.keySKill03);
+								GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->SetWindowTextW(CString(L"Auto CommandSkeletons - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
+								flag_need_scan_skill_03 = false;
+								//skip scan other character skill
+								scan_witch_doctor_skip_turn = config_auto_skip_turn;
+								scan_barbarian_skip_turn = config_auto_skip_turn;
+								scan_wizard_skip_turn = config_auto_skip_turn;
+								scan_monk_skip_turn = config_auto_skip_turn;
+								scan_demon_hunter_skip_turn = config_auto_skip_turn;
+								scan_crusader_skip_turn = config_auto_skip_turn;
+								// scan_necromancer_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+								//cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+								if (d3Config.skill03Enable) OnClickedSkill03Check();
+							}
+							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsCommandSkeletonsReady())
+							{
+								SendD3Key(d3Config.keySKill04);
+								GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->SetWindowTextW(CString(L"Auto CommandSkeletons - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
+								flag_need_scan_skill_04 = false;
+								//skip scan other character skill
+								scan_witch_doctor_skip_turn = config_auto_skip_turn;
+								scan_barbarian_skip_turn = config_auto_skip_turn;
+								scan_wizard_skip_turn = config_auto_skip_turn;
+								scan_monk_skip_turn = config_auto_skip_turn;
+								scan_demon_hunter_skip_turn = config_auto_skip_turn;
+								scan_crusader_skip_turn = config_auto_skip_turn;
+								// scan_necromancer_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+								//cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+								if (d3Config.skill04Enable) OnClickedSkill04Check();
+							}
+						}
 					}
 					if (scan_demon_hunter_skip_turn == 0)
 					{
@@ -2011,6 +2105,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			GetDlgItem(IDC_TOWNPORTALKEY)->EnableWindow(false);
 			GetDlgItem(IDC_AUTO_BONE_AMOR)->EnableWindow(false);
 			GetDlgItem(IDC_AUTO_SIMULACRUM)->EnableWindow(false);
+			GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->EnableWindow(false);
 			GetDlgItem(IDC_AUTO_FANOFKNIVES)->EnableWindow(false);
 			GetDlgItem(IDC_AUTO_COMPANION)->EnableWindow(false);
 			GetDlgItem(IDC_AUTO_SMOKESCREEN)->EnableWindow(false);
@@ -2473,6 +2568,11 @@ void CDiabloIIISupportDlg::OnClickedAutoBoneAmor()
 void CDiabloIIISupportDlg::OnClickedAutoSimulacrum()
 {
 	d3Config.autoSimulacrumEnable = !d3Config.autoSimulacrumEnable;
+	OnSaveConfig();
+}
+void CDiabloIIISupportDlg::OnClickedAutoCommandSkeletons()
+{
+	d3Config.autoCommandSkeletonsEnable = !d3Config.autoCommandSkeletonsEnable;
 	OnSaveConfig();
 }
 void CDiabloIIISupportDlg::OnClickedAutoFanofknives()
