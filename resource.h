@@ -56,6 +56,8 @@
 #define IDC_DUMP_01_CDC_2d3             1052
 #define IDC_DUMP_03_CDC_2d              1052
 #define IDC_AUTO_COMMAND_SKELETONS      1053
+#define IDC_AUTO_COMMAND_SKELETONS2     1054
+#define IDC_AUTO_ARMY_OF_THE_DEAD       1054
 #define IDC_PRIMARYSKILLKEYTEXT         1057
 #define IDC_PRIMARYSKILLKEY             1058
 #define IDC_SKILLKEY01                  1059

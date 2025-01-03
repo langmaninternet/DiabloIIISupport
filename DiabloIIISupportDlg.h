@@ -47,8 +47,6 @@ public:
 	afx_msg void OnTimer(UINT_PTR nIdEvent);
 	afx_msg void OnLoadConfig();
 	afx_msg void OnSaveConfig();
-	afx_msg void OnKillFocusLeftMouseTime();
-	afx_msg void OnKillFocusRightMouseTime();
 	afx_msg void OnKillFocusSkill01Time();
 	afx_msg void OnKillFocusSkill02Time();
 	afx_msg void OnKillFocusSkill03Time();
@@ -96,4 +94,5 @@ public:
 	afx_msg void OnClickedDump03Cdc2d();
 	afx_msg void OnChangeDumpPercentValue();
 	afx_msg void OnClickedAutoCommandSkeletons();
+	afx_msg void OnClickedAutoArmyOfTheDead();
 };

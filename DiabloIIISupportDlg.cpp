@@ -28,8 +28,6 @@ IDC_PROFILE04,
 };
 struct DiabloIIISupportConfig
 {
-	int		leftMouseTime;
-	int		rightMouseTime;
 	int		skillSlot01Time;
 	int		skillSlot02Time;
 	int		skillSlot03Time;
@@ -44,8 +42,6 @@ struct DiabloIIISupportConfig
 
 	int     currentProfile;
 	wchar_t profileName[maxProfileNumber + 1][maxProfileNameLength + 1];
-	int		profileLeftMouseTime[maxProfileNumber + 1];
-	int		profileRightMouseTime[maxProfileNumber + 1];
 	int		profileSkillSlot01Time[maxProfileNumber + 1];
 	int		profileSkillSlot02Time[maxProfileNumber + 1];
 	int		profileSkillSlot03Time[maxProfileNumber + 1];
@@ -69,6 +65,7 @@ struct DiabloIIISupportConfig
 	int		autoBoneArmorEnable;
 	int		autoSimulacrumEnable;
 	int		autoCommandSkeletonsEnable;
+	int		autoArmyOfTheDeadEnable;
 
 	int		autoFanOfKnivesEnable;
 	int		autoCompanionEnable;
@@ -95,9 +92,7 @@ wchar_t					configSavePath[3000] = { 0 };
 const int				mainTimerDelay = 30/*ms*/;
 const int				autoTimerDelay = 100/*ms*/;
 int						townPortalDelay = 0/*ms*/;
-bool					flagOnF1 = false;
 bool					flagOnF2 = false;
-bool					flagOnF3 = false;
 bool					flagOnCtrl5 = false;
 bool					flagOnCtrl6 = false;
 bool					flagOnCtrl7 = false;
@@ -138,15 +133,11 @@ void			ValidateD3Key(wchar_t& keyValue, const wchar_t defaultValue)
 }
 void			ValidateD3Config(void)
 {
-	d3Config.leftMouseTime = int(round(d3Config.leftMouseTime / double(mainTimerDelay)) * mainTimerDelay);
-	d3Config.rightMouseTime = int(round(d3Config.rightMouseTime / double(mainTimerDelay)) * mainTimerDelay);
 	d3Config.skillSlot01Time = int(round(d3Config.skillSlot01Time / double(mainTimerDelay)) * mainTimerDelay);
 	d3Config.skillSlot02Time = int(round(d3Config.skillSlot02Time / double(mainTimerDelay)) * mainTimerDelay);
 	d3Config.skillSlot03Time = int(round(d3Config.skillSlot03Time / double(mainTimerDelay)) * mainTimerDelay);
 	d3Config.skillSlot04Time = int(round(d3Config.skillSlot04Time / double(mainTimerDelay)) * mainTimerDelay);
 	d3Config.healingTime = int(round(d3Config.healingTime / double(mainTimerDelay)) * mainTimerDelay);
-	if (d3Config.leftMouseTime < mainTimerDelay) d3Config.leftMouseTime = mainTimerDelay;
-	if (d3Config.rightMouseTime < mainTimerDelay) d3Config.rightMouseTime = mainTimerDelay;
 	if (d3Config.skillSlot01Time < mainTimerDelay) d3Config.skillSlot01Time = mainTimerDelay;
 	if (d3Config.skillSlot02Time < mainTimerDelay) d3Config.skillSlot02Time = mainTimerDelay;
 	if (d3Config.skillSlot03Time < mainTimerDelay) d3Config.skillSlot03Time = mainTimerDelay;
@@ -167,15 +158,11 @@ void			ValidateD3Config(void)
 		{
 			swprintf_s(d3Config.profileName[iprofile], L"Profile %02d", iprofile);
 		}
-		d3Config.profileLeftMouseTime[iprofile] = int(round(d3Config.profileLeftMouseTime[iprofile] / double(mainTimerDelay)) * mainTimerDelay);
-		d3Config.profileRightMouseTime[iprofile] = int(round(d3Config.profileRightMouseTime[iprofile] / double(mainTimerDelay)) * mainTimerDelay);
 		d3Config.profileSkillSlot01Time[iprofile] = int(round(d3Config.profileSkillSlot01Time[iprofile] / double(mainTimerDelay)) * mainTimerDelay);
 		d3Config.profileSkillSlot02Time[iprofile] = int(round(d3Config.profileSkillSlot02Time[iprofile] / double(mainTimerDelay)) * mainTimerDelay);
 		d3Config.profileSkillSlot03Time[iprofile] = int(round(d3Config.profileSkillSlot03Time[iprofile] / double(mainTimerDelay)) * mainTimerDelay);
 		d3Config.profileSkillSlot04Time[iprofile] = int(round(d3Config.profileSkillSlot04Time[iprofile] / double(mainTimerDelay)) * mainTimerDelay);
 		d3Config.profileHealingTime[iprofile] = int(round(d3Config.profileHealingTime[iprofile] / double(mainTimerDelay)) * mainTimerDelay);
-		if (d3Config.profileLeftMouseTime[iprofile] < mainTimerDelay) d3Config.profileLeftMouseTime[iprofile] = mainTimerDelay;
-		if (d3Config.profileRightMouseTime[iprofile] < mainTimerDelay) d3Config.profileRightMouseTime[iprofile] = mainTimerDelay;
 		if (d3Config.profileSkillSlot01Time[iprofile] < mainTimerDelay) d3Config.profileSkillSlot01Time[iprofile] = mainTimerDelay;
 		if (d3Config.profileSkillSlot02Time[iprofile] < mainTimerDelay) d3Config.profileSkillSlot02Time[iprofile] = mainTimerDelay;
 		if (d3Config.profileSkillSlot03Time[iprofile] < mainTimerDelay) d3Config.profileSkillSlot03Time[iprofile] = mainTimerDelay;
@@ -407,17 +394,6 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK KeyboardHookProc(int nCode, WP
 		{
 			switch (keyParam->vkCode)
 			{
-			case VK_F1:
-				flagNeedMoreHook = false;
-				flagOnF1 = !flagOnF1;
-				flagOnCtrl = false;
-				flagOnCtrl5 = false;
-				flagOnCtrl6 = false;
-				flagOnCtrl7 = false;
-				flagOnCtrl8 = false;
-				flagOnCtrl9 = false;
-				leftMouseCooldown = 99999;
-				break;
 			case VK_F2:
 				flagOnF2 = !flagOnF2;
 				flagOnCtrl = false;
@@ -430,16 +406,6 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK KeyboardHookProc(int nCode, WP
 				skillSlot02Cooldown = 99999;
 				skillSlot03Cooldown = 99999;
 				skillSlot04Cooldown = 99999;
-				break;
-			case VK_F3:
-				flagOnF3 = !flagOnF3;
-				flagOnCtrl = false;
-				flagOnCtrl5 = false;
-				flagOnCtrl6 = false;
-				flagOnCtrl7 = false;
-				flagOnCtrl8 = false;
-				flagOnCtrl9 = false;
-				rightMouseCooldown = 99999;
 				break;
 			case VK_ESCAPE:
 			case VK_SPACE:
@@ -471,9 +437,7 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK KeyboardHookProc(int nCode, WP
 			case 0x35/*'5'*/:
 				if (flagOnCtrl)
 				{
-					flagOnF1 = false;
 					flagOnF2 = false;
-					flagOnF3 = false;
 					flagOnCtrl5 = true;
 					flagOnCtrl6 = false;
 					flagOnCtrl7 = false;
@@ -484,9 +448,7 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK KeyboardHookProc(int nCode, WP
 			case 0x36/*'6'*/:
 				if (flagOnCtrl)
 				{
-					flagOnF1 = false;
 					flagOnF2 = false;
-					flagOnF3 = false;
 					flagOnCtrl5 = false;
 					flagOnCtrl6 = true;
 					flagOnCtrl7 = false;
@@ -497,9 +459,7 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK KeyboardHookProc(int nCode, WP
 			case 0x37/*'7'*/:
 				if (flagOnCtrl)
 				{
-					flagOnF1 = false;
 					flagOnF2 = false;
-					flagOnF3 = false;
 					flagOnCtrl5 = false;
 					flagOnCtrl6 = false;
 					flagOnCtrl7 = true;
@@ -510,9 +470,7 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK KeyboardHookProc(int nCode, WP
 			case 0x38/*'8'*/:
 				if (flagOnCtrl)
 				{
-					flagOnF1 = false;
 					flagOnF2 = false;
-					flagOnF3 = false;
 					flagOnCtrl5 = false;
 					flagOnCtrl6 = false;
 					flagOnCtrl7 = false;
@@ -523,9 +481,7 @@ extern "C" __declspec(dllexport) LRESULT CALLBACK KeyboardHookProc(int nCode, WP
 			case 0x39/*'9'*/:
 				if (flagOnCtrl)
 				{
-					flagOnF1 = false;
 					flagOnF2 = false;
-					flagOnF3 = false;
 					flagOnCtrl5 = false;
 					flagOnCtrl6 = false;
 					flagOnCtrl7 = false;
@@ -569,8 +525,6 @@ BEGIN_MESSAGE_MAP(CDiabloIIISupportDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_WM_TIMER()
-	ON_EN_KILLFOCUS(IDC_LEFTMOUSETIME, &CDiabloIIISupportDlg::OnKillFocusLeftMouseTime)
-	ON_EN_KILLFOCUS(IDC_RIGHTMOUSETIME, &CDiabloIIISupportDlg::OnKillFocusRightMouseTime)
 	ON_EN_KILLFOCUS(IDC_SKILL01TIME, &CDiabloIIISupportDlg::OnKillFocusSkill01Time)
 	ON_EN_KILLFOCUS(IDC_SKILL02TIME, &CDiabloIIISupportDlg::OnKillFocusSkill02Time)
 	ON_EN_KILLFOCUS(IDC_SKILL03TIME, &CDiabloIIISupportDlg::OnKillFocusSkill03Time)
@@ -607,6 +561,7 @@ BEGIN_MESSAGE_MAP(CDiabloIIISupportDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_DUMP_03_CDC_2d, &CDiabloIIISupportDlg::OnClickedDump03Cdc2d)
 	ON_EN_CHANGE(IDC_DUMP_PERCENT_VALUE, &CDiabloIIISupportDlg::OnChangeDumpPercentValue)
 	ON_BN_CLICKED(IDC_AUTO_COMMAND_SKELETONS, &CDiabloIIISupportDlg::OnClickedAutoCommandSkeletons)
+	ON_BN_CLICKED(IDC_AUTO_ARMY_OF_THE_DEAD, &CDiabloIIISupportDlg::OnClickedAutoArmyOfTheDead)
 END_MESSAGE_MAP()
 
 BOOL		CDiabloIIISupportDlg::OnInitDialog()
@@ -664,12 +619,6 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 
 	ValidateD3Config();
 	wchar_t buffer[1000] = { 0 };
-
-	swprintf_s(buffer, L"%d", d3Config.leftMouseTime);
-	GetDlgItem(IDC_LEFTMOUSETIME)->SetWindowText(buffer);
-
-	swprintf_s(buffer, L"%d", d3Config.rightMouseTime);
-	GetDlgItem(IDC_RIGHTMOUSETIME)->SetWindowText(buffer);
 
 	swprintf_s(buffer, L"%d", d3Config.skillSlot01Time);
 	GetDlgItem(IDC_SKILL01TIME)->SetWindowText(buffer);
@@ -762,6 +711,7 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 	((CButton*)GetDlgItem(IDC_AUTO_BONE_AMOR))->SetCheck(d3Config.autoBoneArmorEnable);
 	((CButton*)GetDlgItem(IDC_AUTO_SIMULACRUM))->SetCheck(d3Config.autoSimulacrumEnable);
 	((CButton*)GetDlgItem(IDC_AUTO_COMMAND_SKELETONS))->SetCheck(d3Config.autoCommandSkeletonsEnable);
+	((CButton*)GetDlgItem(IDC_AUTO_ARMY_OF_THE_DEAD))->SetCheck(d3Config.autoArmyOfTheDeadEnable);
 
 	((CButton*)GetDlgItem(IDC_AUTO_FANOFKNIVES))->SetCheck(d3Config.autoFanOfKnivesEnable);
 	((CButton*)GetDlgItem(IDC_AUTO_COMPANION))->SetCheck(d3Config.autoCompanionEnable);
@@ -881,9 +831,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			if (d3Wnd == 0)
 			{
 				bufferActive[0] = NULL;
-				flagOnF1 = false;
 				flagOnF2 = false;
-				flagOnF3 = false;
 			}
 			else
 			{
@@ -945,9 +893,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 			if (flagIsOpenUrshi)
 			{
-				flagOnF1 = false;
 				flagOnF2 = false;
-				flagOnF3 = false;
 			}
 
 
@@ -1034,56 +980,6 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 					GetDlgItem(IDC_HEALINGCHECK)->EnableWindow(TRUE);
 					GetDlgItem(IDC_F2BIGFRAME)->SetWindowTextW(L"Skill (Hotkey F2)");
 				}
-
-				if (flagOnF1)
-				{
-					GetDlgItem(IDC_LEFTMOUSETEXT)->SetWindowText(L"Left mouse (Hotkey F1): \r\n	Running");
-					GetDlgItem(IDC_LEFTMOUSETEXT)->EnableWindow(FALSE);
-					GetDlgItem(IDC_LEFTMOUSETEXTMS)->EnableWindow(FALSE);
-					GetDlgItem(IDC_LEFTMOUSETIME)->EnableWindow(FALSE);
-					if (d3Wnd != 0)
-					{
-						leftMouseCooldown += mainTimerDelay;
-						if (leftMouseCooldown >= d3Config.leftMouseTime)
-						{
-							if (ValidToSendD3Click()) SendD3LeftMouseClick();
-							leftMouseCooldown = 0;
-						}
-					}
-				}
-				else
-				{
-					GetDlgItem(IDC_LEFTMOUSETEXT)->SetWindowText(L"Left mouse (Hotkey F1): ");
-					GetDlgItem(IDC_LEFTMOUSETEXT)->EnableWindow(TRUE);
-					GetDlgItem(IDC_LEFTMOUSETEXTMS)->EnableWindow(TRUE);
-					GetDlgItem(IDC_LEFTMOUSETIME)->EnableWindow(TRUE);
-				}
-
-
-
-				if (flagOnF3)
-				{
-					if (flagOnF3) GetDlgItem(IDC_RIGHTMOUSETEXT)->SetWindowText(L"Right Mouse (Hotkey F3): \r\n	F3-Running");
-					GetDlgItem(IDC_RIGHTMOUSETEXT)->EnableWindow(FALSE);
-					GetDlgItem(IDC_RIGHTMOUSETEXTMS)->EnableWindow(FALSE);
-					GetDlgItem(IDC_RIGHTMOUSETIME)->EnableWindow(FALSE);
-					if (d3Wnd != 0)
-					{
-						rightMouseCooldown += mainTimerDelay;
-						if (rightMouseCooldown >= d3Config.leftMouseTime)
-						{
-							if (ValidToSendD3Click()) SendD3RightMouseClick();
-							rightMouseCooldown = 0;
-						}
-					}
-				}
-				else
-				{
-					GetDlgItem(IDC_RIGHTMOUSETEXT)->SetWindowText(L"Right Mouse (Hotkey F3): ");
-					GetDlgItem(IDC_RIGHTMOUSETEXT)->EnableWindow(TRUE);
-					GetDlgItem(IDC_RIGHTMOUSETEXTMS)->EnableWindow(TRUE);
-					GetDlgItem(IDC_RIGHTMOUSETIME)->EnableWindow(TRUE);
-				}
 			}
 
 
@@ -1162,9 +1058,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				}
 				if (!IsD3WindowActive())
 				{
-					flagOnF1 = false;
 					flagOnF2 = false;
-					flagOnF3 = false;
 					flagOnCtrl5 = false;
 					flagOnCtrl6 = false;
 					flagOnCtrl8 = false;
@@ -1391,6 +1285,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			GetDlgItem(IDC_AUTO_BONE_AMOR)->EnableWindow(TRUE);
 			GetDlgItem(IDC_AUTO_SIMULACRUM)->EnableWindow(TRUE);
 			GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->EnableWindow(TRUE);
+			GetDlgItem(IDC_AUTO_ARMY_OF_THE_DEAD)->EnableWindow(TRUE);
 			GetDlgItem(IDC_AUTO_FANOFKNIVES)->EnableWindow(TRUE);
 			GetDlgItem(IDC_AUTO_COMPANION)->EnableWindow(TRUE);
 			GetDlgItem(IDC_AUTO_SMOKESCREEN)->EnableWindow(TRUE);
@@ -1601,7 +1496,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							if (flag_need_scan_skill_01 && cache_scan_slot_01_skip_turn == 0 && d3Engine.D3Skill01IsCommandSkeletonsReady())
 							{
 								SendD3Key(d3Config.keySKill01);
-								GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->SetWindowTextW(CString(L"Auto CommandSkeletons - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
+								GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->SetWindowTextW(CString(L"Auto Command Skeletons - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
 								flag_need_scan_skill_01 = false;
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
 								scan_barbarian_skip_turn = config_auto_skip_turn;
@@ -1619,7 +1514,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsCommandSkeletonsReady())
 							{
 								SendD3Key(d3Config.keySKill02);
-								GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->SetWindowTextW(CString(L"Auto CommandSkeletons - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
+								GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->SetWindowTextW(CString(L"Auto Command Skeletons - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
 								flag_need_scan_skill_02 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -1638,7 +1533,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsCommandSkeletonsReady())
 							{
 								SendD3Key(d3Config.keySKill03);
-								GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->SetWindowTextW(CString(L"Auto CommandSkeletons - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
+								GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->SetWindowTextW(CString(L"Auto Command Skeletons - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
 								flag_need_scan_skill_03 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -1657,7 +1552,93 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsCommandSkeletonsReady())
 							{
 								SendD3Key(d3Config.keySKill04);
-								GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->SetWindowTextW(CString(L"Auto CommandSkeletons - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
+								GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->SetWindowTextW(CString(L"Auto Command Skeletons - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
+								flag_need_scan_skill_04 = false;
+								//skip scan other character skill
+								scan_witch_doctor_skip_turn = config_auto_skip_turn;
+								scan_barbarian_skip_turn = config_auto_skip_turn;
+								scan_wizard_skip_turn = config_auto_skip_turn;
+								scan_monk_skip_turn = config_auto_skip_turn;
+								scan_demon_hunter_skip_turn = config_auto_skip_turn;
+								scan_crusader_skip_turn = config_auto_skip_turn;
+								// scan_necromancer_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+								//cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+								if (d3Config.skill04Enable) OnClickedSkill04Check();
+							}
+						}
+						if (d3Config.autoArmyOfTheDeadEnable)
+						{
+							static int cache_scan_slot_01_skip_turn = 0;
+							static int cache_scan_slot_02_skip_turn = 0;
+							static int cache_scan_slot_03_skip_turn = 0;
+							static int cache_scan_slot_04_skip_turn = 0;
+							if (cache_scan_slot_01_skip_turn > 0) cache_scan_slot_01_skip_turn--;
+							if (cache_scan_slot_02_skip_turn > 0) cache_scan_slot_02_skip_turn--;
+							if (cache_scan_slot_03_skip_turn > 0) cache_scan_slot_03_skip_turn--;
+							if (cache_scan_slot_04_skip_turn > 0) cache_scan_slot_04_skip_turn--;
+							if (flag_need_scan_skill_01 && cache_scan_slot_01_skip_turn == 0 && d3Engine.D3Skill01IsArmyOfTheDeadReady())
+							{
+								SendD3Key(d3Config.keySKill01);
+								GetDlgItem(IDC_AUTO_ARMY_OF_THE_DEAD)->SetWindowTextW(CString(L"Auto Army of the Dead - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
+								flag_need_scan_skill_01 = false;
+								scan_witch_doctor_skip_turn = config_auto_skip_turn;
+								scan_barbarian_skip_turn = config_auto_skip_turn;
+								scan_wizard_skip_turn = config_auto_skip_turn;
+								scan_monk_skip_turn = config_auto_skip_turn;
+								scan_demon_hunter_skip_turn = config_auto_skip_turn;
+								scan_crusader_skip_turn = config_auto_skip_turn;
+								// scan_necromancer_skip_turn = config_auto_skip_turn;
+								// cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+								if (d3Config.skill01Enable) OnClickedSkill01Check();
+							}
+							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsArmyOfTheDeadReady())
+							{
+								SendD3Key(d3Config.keySKill02);
+								GetDlgItem(IDC_AUTO_ARMY_OF_THE_DEAD)->SetWindowTextW(CString(L"Auto Army of the Dead - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
+								flag_need_scan_skill_02 = false;
+								//skip scan other character skill
+								scan_witch_doctor_skip_turn = config_auto_skip_turn;
+								scan_barbarian_skip_turn = config_auto_skip_turn;
+								scan_wizard_skip_turn = config_auto_skip_turn;
+								scan_monk_skip_turn = config_auto_skip_turn;
+								scan_demon_hunter_skip_turn = config_auto_skip_turn;
+								scan_crusader_skip_turn = config_auto_skip_turn;
+								// scan_necromancer_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+								// cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+								if (d3Config.skill02Enable) OnClickedSkill02Check();
+							}
+							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsArmyOfTheDeadReady())
+							{
+								SendD3Key(d3Config.keySKill03);
+								GetDlgItem(IDC_AUTO_ARMY_OF_THE_DEAD)->SetWindowTextW(CString(L"Auto Army of the Dead - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
+								flag_need_scan_skill_03 = false;
+								//skip scan other character skill
+								scan_witch_doctor_skip_turn = config_auto_skip_turn;
+								scan_barbarian_skip_turn = config_auto_skip_turn;
+								scan_wizard_skip_turn = config_auto_skip_turn;
+								scan_monk_skip_turn = config_auto_skip_turn;
+								scan_demon_hunter_skip_turn = config_auto_skip_turn;
+								scan_crusader_skip_turn = config_auto_skip_turn;
+								// scan_necromancer_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+								//cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+								if (d3Config.skill03Enable) OnClickedSkill03Check();
+							}
+							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsArmyOfTheDeadReady())
+							{
+								SendD3Key(d3Config.keySKill04);
+								GetDlgItem(IDC_AUTO_ARMY_OF_THE_DEAD)->SetWindowTextW(CString(L"Auto Army of the Dead - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
 								flag_need_scan_skill_04 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -2036,7 +2017,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				/* Auto Reroll support                                                  */
 				/************************************************************************/
 				if (IsD3WindowActive() && enableRerollSupport
-					&& (!(flagOnF1 || flagOnF2 || flagOnF3 || flagOnCtrl5 || flagOnCtrl6 || flagOnCtrl9 || flagOnAutoProcess))
+					&& (!( flagOnF2 ||  flagOnCtrl5 || flagOnCtrl6 || flagOnCtrl9 || flagOnAutoProcess))
 					&& d3Engine.IsRolling())
 				{
 					d3Engine.CaptureDesktop();
@@ -2106,6 +2087,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			GetDlgItem(IDC_AUTO_BONE_AMOR)->EnableWindow(false);
 			GetDlgItem(IDC_AUTO_SIMULACRUM)->EnableWindow(false);
 			GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->EnableWindow(false);
+			GetDlgItem(IDC_AUTO_ARMY_OF_THE_DEAD)->EnableWindow(false);
 			GetDlgItem(IDC_AUTO_FANOFKNIVES)->EnableWindow(false);
 			GetDlgItem(IDC_AUTO_COMPANION)->EnableWindow(false);
 			GetDlgItem(IDC_AUTO_SMOKESCREEN)->EnableWindow(false);
@@ -2151,40 +2133,6 @@ void CDiabloIIISupportDlg::OnSaveConfig()
 /************************************************************************/
 /*                                                                      */
 /************************************************************************/
-void CDiabloIIISupportDlg::OnKillFocusLeftMouseTime()
-{
-	wchar_t bufferText[1000] = { 0 };
-	GetDlgItem(IDC_LEFTMOUSETIME)->GetWindowTextW(bufferText, 999);
-	int newValue = 0;
-	swscanf_s(bufferText, L"%d", &newValue);
-	newValue = int(round(newValue / (double)(mainTimerDelay)) * mainTimerDelay);
-	if (newValue < mainTimerDelay) newValue = mainTimerDelay;
-	swprintf_s(bufferText, L"%d", newValue);
-	GetDlgItem(IDC_LEFTMOUSETIME)->SetWindowTextW(bufferText);
-	if (newValue != d3Config.leftMouseTime)
-	{
-		d3Config.leftMouseTime = newValue;
-		d3Config.profileLeftMouseTime[d3Config.currentProfile] = newValue;
-		OnSaveConfig();
-	}
-}
-void CDiabloIIISupportDlg::OnKillFocusRightMouseTime()
-{
-	wchar_t bufferText[1000] = { 0 };
-	GetDlgItem(IDC_RIGHTMOUSETIME)->GetWindowTextW(bufferText, 999);
-	int newValue = 0;
-	swscanf_s(bufferText, L"%d", &newValue);
-	newValue = int(round(newValue / (double)(mainTimerDelay)) * mainTimerDelay);
-	if (newValue < mainTimerDelay) newValue = mainTimerDelay;
-	swprintf(bufferText, L"%d", newValue);
-	GetDlgItem(IDC_RIGHTMOUSETIME)->SetWindowTextW(bufferText);
-	if (newValue != d3Config.rightMouseTime)
-	{
-		d3Config.rightMouseTime = newValue;
-		d3Config.profileRightMouseTime[d3Config.currentProfile] = newValue;
-		OnSaveConfig();
-	}
-}
 void CDiabloIIISupportDlg::OnKillFocusSkill01Time()
 {
 	wchar_t bufferText[1000] = { 0 };
@@ -2431,8 +2379,6 @@ void CDiabloIIISupportDlg::OnKillFocusProfileName()
 }
 void CDiabloIIISupportDlg::OnBnClickedProfile()
 {
-	d3Config.leftMouseTime = d3Config.profileLeftMouseTime[d3Config.currentProfile];
-	d3Config.rightMouseTime = d3Config.profileRightMouseTime[d3Config.currentProfile];
 	d3Config.skillSlot01Time = d3Config.profileSkillSlot01Time[d3Config.currentProfile];
 	d3Config.skillSlot02Time = d3Config.profileSkillSlot02Time[d3Config.currentProfile];
 	d3Config.skillSlot03Time = d3Config.profileSkillSlot03Time[d3Config.currentProfile];
@@ -2461,11 +2407,6 @@ void CDiabloIIISupportDlg::OnBnClickedProfile()
 
 	wchar_t buffer[1000] = { 0 };
 
-	swprintf_s(buffer, L"%d", d3Config.leftMouseTime);
-	GetDlgItem(IDC_LEFTMOUSETIME)->SetWindowText(buffer);
-
-	swprintf_s(buffer, L"%d", d3Config.rightMouseTime);
-	GetDlgItem(IDC_RIGHTMOUSETIME)->SetWindowText(buffer);
 
 	swprintf_s(buffer, L"%d", d3Config.skillSlot01Time);
 	GetDlgItem(IDC_SKILL01TIME)->SetWindowText(buffer);
@@ -2575,6 +2516,19 @@ void CDiabloIIISupportDlg::OnClickedAutoCommandSkeletons()
 	d3Config.autoCommandSkeletonsEnable = !d3Config.autoCommandSkeletonsEnable;
 	OnSaveConfig();
 }
+void CDiabloIIISupportDlg::OnClickedAutoArmyOfTheDead()
+{
+	d3Config.autoArmyOfTheDeadEnable = !d3Config.autoArmyOfTheDeadEnable;
+	OnSaveConfig();
+}
+
+
+
+
+
+
+
+
 void CDiabloIIISupportDlg::OnClickedAutoFanofknives()
 {
 	d3Config.autoFanOfKnivesEnable = !d3Config.autoFanOfKnivesEnable;
@@ -2628,4 +2582,5 @@ void CDiabloIIISupportDlg::OnClickedDump03Cdc2d()
 	d3Engine.Dump2DigitByCriticalHitDamageLine03(dumpvalue);
 #endif // DEBUG
 }
+
 
