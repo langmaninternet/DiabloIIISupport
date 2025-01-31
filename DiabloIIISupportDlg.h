@@ -95,4 +95,5 @@ public:
 	afx_msg void OnChangeDumpPercentValue();
 	afx_msg void OnClickedAutoCommandSkeletons();
 	afx_msg void OnClickedAutoArmyOfTheDead();
+	afx_msg void OnClickedAutoSerenity();
 };

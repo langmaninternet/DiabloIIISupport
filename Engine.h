@@ -34,6 +34,7 @@ public:
 
 #include "../DiabloIIICore/Skill/Necromancer.h"
 #include "../DiabloIIICore/Skill/DemonHunter.h"
+#include "../DiabloIIICore/Skill/Monk.h"
 
 
 

@@ -71,6 +71,8 @@ struct DiabloIIISupportConfig
 	int		autoCompanionEnable;
 	int		autoSmokeScreenEnable;
 	int		autoVengeanceEnable;
+	int		autoSerenityEnable;
+
 	int		autoPotionEnable;
 
 
@@ -556,12 +558,15 @@ BEGIN_MESSAGE_MAP(CDiabloIIISupportDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_AUTO_COMPANION, &CDiabloIIISupportDlg::OnClickedAutoCompanion)
 	ON_BN_CLICKED(IDC_AUTO_SMOKESCREEN, &CDiabloIIISupportDlg::OnClickedAutoSmokescreen)
 	ON_BN_CLICKED(IDC_AUTO_VENGEANCE, &CDiabloIIISupportDlg::OnClickedAutoVengeance)
+	ON_BN_CLICKED(IDC_AUTO_SERENITY, &CDiabloIIISupportDlg::OnClickedAutoSerenity)
+
 	ON_BN_CLICKED(IDC_DUMP_01_CDC_2d, &CDiabloIIISupportDlg::OnClickedDump01Cdc2d)
 	ON_BN_CLICKED(IDC_DUMP_02_CDC_2d, &CDiabloIIISupportDlg::OnClickedDump02Cdc2d)
 	ON_BN_CLICKED(IDC_DUMP_03_CDC_2d, &CDiabloIIISupportDlg::OnClickedDump03Cdc2d)
 	ON_EN_CHANGE(IDC_DUMP_PERCENT_VALUE, &CDiabloIIISupportDlg::OnChangeDumpPercentValue)
 	ON_BN_CLICKED(IDC_AUTO_COMMAND_SKELETONS, &CDiabloIIISupportDlg::OnClickedAutoCommandSkeletons)
 	ON_BN_CLICKED(IDC_AUTO_ARMY_OF_THE_DEAD, &CDiabloIIISupportDlg::OnClickedAutoArmyOfTheDead)
+	
 END_MESSAGE_MAP()
 
 BOOL		CDiabloIIISupportDlg::OnInitDialog()
@@ -655,6 +660,8 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 		GetDlgItem(IDC_AUTO_COMPANION)->EnableWindow(TRUE);
 		GetDlgItem(IDC_AUTO_SMOKESCREEN)->EnableWindow(TRUE);
 		GetDlgItem(IDC_AUTO_VENGEANCE)->EnableWindow(TRUE);
+		GetDlgItem(IDC_AUTO_SERENITY)->EnableWindow(TRUE);
+
 		GetDlgItem(IDC_AUTO_POTION)->EnableWindow(TRUE);
 
 
@@ -677,7 +684,7 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 		GetDlgItem(IDC_AUTO_COMPANION)->EnableWindow(FALSE);
 		GetDlgItem(IDC_AUTO_SMOKESCREEN)->EnableWindow(FALSE);
 		GetDlgItem(IDC_AUTO_VENGEANCE)->EnableWindow(FALSE);
-
+		GetDlgItem(IDC_AUTO_SERENITY)->EnableWindow(FALSE);
 
 
 	}
@@ -718,6 +725,7 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 	((CButton*)GetDlgItem(IDC_AUTO_SMOKESCREEN))->SetCheck(d3Config.autoSmokeScreenEnable);
 	((CButton*)GetDlgItem(IDC_AUTO_VENGEANCE))->SetCheck(d3Config.autoVengeanceEnable);
 
+	((CButton*)GetDlgItem(IDC_AUTO_SERENITY))->SetCheck(d3Config.autoSerenityEnable);
 	((CButton*)GetDlgItem(IDC_AUTO_POTION))->SetCheck(d3Config.autoPotionEnable);
 
 	OnShowSkillKey(IDC_SKILLKEY01, d3Config.keySKill01);
@@ -1290,6 +1298,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			GetDlgItem(IDC_AUTO_COMPANION)->EnableWindow(TRUE);
 			GetDlgItem(IDC_AUTO_SMOKESCREEN)->EnableWindow(TRUE);
 			GetDlgItem(IDC_AUTO_VENGEANCE)->EnableWindow(TRUE);
+			GetDlgItem(IDC_AUTO_SERENITY)->EnableWindow(TRUE);
 			GetDlgItem(IDC_AUTO_POTION)->EnableWindow(TRUE);
 
 
@@ -2003,6 +2012,98 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							}
 						}
 					}
+
+					if (scan_monk_skip_turn == 0)
+					{
+
+						if (d3Config.autoSerenityEnable)
+						{
+							static int cache_scan_slot_01_skip_turn = 0;
+							static int cache_scan_slot_02_skip_turn = 0;
+							static int cache_scan_slot_03_skip_turn = 0;
+							static int cache_scan_slot_04_skip_turn = 0;
+							if (cache_scan_slot_01_skip_turn > 0) cache_scan_slot_01_skip_turn--;
+							if (cache_scan_slot_02_skip_turn > 0) cache_scan_slot_02_skip_turn--;
+							if (cache_scan_slot_03_skip_turn > 0) cache_scan_slot_03_skip_turn--;
+							if (cache_scan_slot_04_skip_turn > 0) cache_scan_slot_04_skip_turn--;
+							if (flag_need_scan_skill_01 && cache_scan_slot_01_skip_turn == 0 && d3Engine.D3Skill01IsSerenityReady())
+							{
+								SendD3Key(d3Config.keySKill01);
+								GetDlgItem(IDC_AUTO_SERENITY)->SetWindowTextW(CString(L"Auto Serenity - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
+								flag_need_scan_skill_01 = false;
+								scan_witch_doctor_skip_turn = config_auto_skip_turn;
+								scan_barbarian_skip_turn = config_auto_skip_turn;
+								scan_wizard_skip_turn = config_auto_skip_turn;
+								// scan_monk_skip_turn = config_auto_skip_turn;
+								scan_demon_hunter_skip_turn = config_auto_skip_turn;
+								scan_crusader_skip_turn = config_auto_skip_turn;
+								scan_necromancer_skip_turn = config_auto_skip_turn;
+								// cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+								if (d3Config.skill01Enable) OnClickedSkill01Check();
+							}
+							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsSerenityReady())
+							{
+								SendD3Key(d3Config.keySKill02);
+								GetDlgItem(IDC_AUTO_SERENITY)->SetWindowTextW(CString(L"Auto Serenity - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
+								flag_need_scan_skill_02 = false;
+								//skip scan other character skill
+								scan_witch_doctor_skip_turn = config_auto_skip_turn;
+								scan_barbarian_skip_turn = config_auto_skip_turn;
+								scan_wizard_skip_turn = config_auto_skip_turn;
+								// scan_monk_skip_turn = config_auto_skip_turn;
+								scan_demon_hunter_skip_turn = config_auto_skip_turn;
+								scan_crusader_skip_turn = config_auto_skip_turn;
+								scan_necromancer_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+								// cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+								if (d3Config.skill02Enable) OnClickedSkill02Check();
+							}
+							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsSerenityReady())
+							{
+								SendD3Key(d3Config.keySKill03);
+								GetDlgItem(IDC_AUTO_SERENITY)->SetWindowTextW(CString(L"Auto Serenity - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
+								flag_need_scan_skill_03 = false;
+								//skip scan other character skill
+								scan_witch_doctor_skip_turn = config_auto_skip_turn;
+								scan_barbarian_skip_turn = config_auto_skip_turn;
+								scan_wizard_skip_turn = config_auto_skip_turn;
+								// scan_monk_skip_turn = config_auto_skip_turn;
+								scan_demon_hunter_skip_turn = config_auto_skip_turn;
+								scan_crusader_skip_turn = config_auto_skip_turn;
+								scan_necromancer_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+								//cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+								if (d3Config.skill03Enable) OnClickedSkill03Check();
+							}
+							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsSerenityReady())
+							{
+								SendD3Key(d3Config.keySKill04);
+								GetDlgItem(IDC_AUTO_SERENITY)->SetWindowTextW(CString(L"Auto Serenity - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
+								flag_need_scan_skill_04 = false;
+								//skip scan other character skill
+								scan_witch_doctor_skip_turn = config_auto_skip_turn;
+								scan_barbarian_skip_turn = config_auto_skip_turn;
+								scan_wizard_skip_turn = config_auto_skip_turn;
+								// scan_monk_skip_turn = config_auto_skip_turn;
+								scan_demon_hunter_skip_turn = config_auto_skip_turn;
+								scan_crusader_skip_turn = config_auto_skip_turn;
+								scan_necromancer_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+								//cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+								if (d3Config.skill04Enable) OnClickedSkill04Check();
+							}
+						}
+					}
+
 					if (d3Config.autoPotionEnable)
 					{
 						SendD3Key(d3Config.keyHealing);
@@ -2092,6 +2193,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			GetDlgItem(IDC_AUTO_COMPANION)->EnableWindow(false);
 			GetDlgItem(IDC_AUTO_SMOKESCREEN)->EnableWindow(false);
 			GetDlgItem(IDC_AUTO_VENGEANCE)->EnableWindow(false);
+			GetDlgItem(IDC_AUTO_SERENITY)->EnableWindow(false);
 			GetDlgItem(IDC_AUTO_POTION)->EnableWindow(false);
 		}
 #else
@@ -2549,6 +2651,17 @@ void CDiabloIIISupportDlg::OnClickedAutoVengeance()
 	d3Config.autoVengeanceEnable = !d3Config.autoVengeanceEnable;
 	OnSaveConfig();
 }
+void CDiabloIIISupportDlg::OnClickedAutoSerenity()
+{
+	d3Config.autoSerenityEnable = !d3Config.autoSerenityEnable;
+	OnSaveConfig();
+}
+
+
+
+
+
+
 void CDiabloIIISupportDlg::OnClickedAutoPotion()
 {
 	d3Config.autoPotionEnable = !d3Config.autoPotionEnable;
