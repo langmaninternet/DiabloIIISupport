@@ -104,3 +104,5 @@ BOOL CDiabloIIISupportApp::InitInstance()
 	return FALSE;
 }
 
+
+

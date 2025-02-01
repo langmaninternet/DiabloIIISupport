@@ -171,10 +171,10 @@ void		QuangBTDumpScreen(void)
 
 
 
-		d3Engine.DumpSkill01();
-		d3Engine.DumpSkill02();
+		//d3Engine.DumpSkill01();
+		//d3Engine.DumpSkill02();
 		d3Engine.DumpSkill03();
-		d3Engine.DumpSkill04();
+		//d3Engine.DumpSkill04();
 
 	//d3Engine.DumpRollOption01();
 	//d3Engine.DumpRollOption02();

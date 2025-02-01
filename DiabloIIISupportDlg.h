@@ -83,17 +83,26 @@ public:
 
 	afx_msg void OnClickedAutoBoneAmor();
 	afx_msg void OnClickedAutoSimulacrum();
-	afx_msg void OnClickedAutoPotion();
-	afx_msg void OnChangeLicense();
+	afx_msg void OnClickedAutoCommandSkeletons();
+	afx_msg void OnClickedAutoArmyOfTheDead();
+
 	afx_msg void OnClickedAutoFanofknives();
 	afx_msg void OnClickedAutoCompanion();
 	afx_msg void OnClickedAutoSmokescreen();
 	afx_msg void OnClickedAutoVengeance();
+
+
+
+	afx_msg void OnClickedAutoSerenity();
+	afx_msg void OnBnClickedAutoMantraOfHealing();
+
+	afx_msg void OnClickedAutoPotion();
+
+	afx_msg void OnChangeLicense();
+
+
 	afx_msg void OnClickedDump01Cdc2d();
 	afx_msg void OnClickedDump02Cdc2d();
 	afx_msg void OnClickedDump03Cdc2d();
 	afx_msg void OnChangeDumpPercentValue();
-	afx_msg void OnClickedAutoCommandSkeletons();
-	afx_msg void OnClickedAutoArmyOfTheDead();
-	afx_msg void OnClickedAutoSerenity();
 };
