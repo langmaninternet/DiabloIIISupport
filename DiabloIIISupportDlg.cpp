@@ -2197,7 +2197,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								if (d3Config.skill01Enable) OnClickedSkill01Check();
 								current_character_type = CHARACTER_TYPE_MONK;
 							}
-							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsMantraOfRetributionReady())
+							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsMantraOfRetributionReady() && d3Engine.SpiritEstimate() > 50)
 							{
 								SendD3Key(d3Config.keySKill02);
 								GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION)->SetWindowTextW(CString(L"Auto Mantra of Retribution - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
@@ -2217,7 +2217,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								if (d3Config.skill02Enable) OnClickedSkill02Check();
 								current_character_type = CHARACTER_TYPE_MONK;
 							}
-							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsMantraOfRetributionReady())
+							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsMantraOfRetributionReady() && d3Engine.SpiritEstimate() > 50)
 							{
 								SendD3Key(d3Config.keySKill03);
 								GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION)->SetWindowTextW(CString(L"Auto Mantra of Retribution - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
