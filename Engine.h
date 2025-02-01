@@ -8,6 +8,14 @@
 #include "../DiabloIIICore/Item/Inventory.h"
 #endif
 
+enum CHARACTER_TYPE  {
+	CHARACTER_TYPE_UNKNOWN,
+	CHARACTER_TYPE_DEMON_HUNTER,
+	CHARACTER_TYPE_NECROMANCER,
+	CHARACTER_TYPE_MONK,
+
+};
+
 /************************************************************************/
 /* D3Engine                                                             */
 /************************************************************************/
@@ -29,6 +37,7 @@ public:
 
 #include "../DiabloIIICore/Game/Battle.h"
 #include "../DiabloIIICore/Game/Potion.h"
+#include "../DiabloIIICore/Game/Spirit.h"
 
 #include "../DiabloIIICore/Item/Salvage.h"
 

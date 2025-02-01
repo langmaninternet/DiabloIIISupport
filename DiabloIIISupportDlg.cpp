@@ -82,6 +82,7 @@ struct DiabloIIISupportConfig
 	double	saveDiabloIIISupportVersion;
 };
 
+CHARACTER_TYPE current_character_type = CHARACTER_TYPE_UNKNOWN;
 
 wchar_t dumpvalue[100] = { 0 };
 
@@ -555,7 +556,7 @@ BEGIN_MESSAGE_MAP(CDiabloIIISupportDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_AUTO_BONE_AMOR, &CDiabloIIISupportDlg::OnClickedAutoBoneAmor)
 	ON_BN_CLICKED(IDC_AUTO_SIMULACRUM, &CDiabloIIISupportDlg::OnClickedAutoSimulacrum)
 
-	
+
 	ON_BN_CLICKED(IDC_AUTO_FANOFKNIVES, &CDiabloIIISupportDlg::OnClickedAutoFanofknives)
 	ON_BN_CLICKED(IDC_AUTO_COMPANION, &CDiabloIIISupportDlg::OnClickedAutoCompanion)
 	ON_BN_CLICKED(IDC_AUTO_SMOKESCREEN, &CDiabloIIISupportDlg::OnClickedAutoSmokescreen)
@@ -574,7 +575,7 @@ BEGIN_MESSAGE_MAP(CDiabloIIISupportDlg, CDialogEx)
 	ON_EN_CHANGE(IDC_DUMP_PERCENT_VALUE, &CDiabloIIISupportDlg::OnChangeDumpPercentValue)
 	ON_BN_CLICKED(IDC_AUTO_COMMAND_SKELETONS, &CDiabloIIISupportDlg::OnClickedAutoCommandSkeletons)
 	ON_BN_CLICKED(IDC_AUTO_ARMY_OF_THE_DEAD, &CDiabloIIISupportDlg::OnClickedAutoArmyOfTheDead)
-	
+
 END_MESSAGE_MAP()
 
 BOOL		CDiabloIIISupportDlg::OnInitDialog()
@@ -692,7 +693,7 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 		GetDlgItem(IDC_AUTO_BONE_AMOR)->EnableWindow(FALSE);
 		GetDlgItem(IDC_AUTO_SIMULACRUM)->EnableWindow(FALSE);
 		GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->EnableWindow(FALSE);
-		
+
 		GetDlgItem(IDC_AUTO_FANOFKNIVES)->EnableWindow(FALSE);
 		GetDlgItem(IDC_AUTO_COMPANION)->EnableWindow(FALSE);
 		GetDlgItem(IDC_AUTO_SMOKESCREEN)->EnableWindow(FALSE);
@@ -779,7 +780,7 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 
 
 #ifdef _DEBUG
-	GetDlgItem(IDC_DUMP_PERCENT_VALUE)->EnableWindow(true); 
+	GetDlgItem(IDC_DUMP_PERCENT_VALUE)->EnableWindow(true);
 	GetDlgItem(IDC_DUMP_01_CDC_2d)->EnableWindow(true);
 	GetDlgItem(IDC_DUMP_02_CDC_2d)->EnableWindow(true);
 	GetDlgItem(IDC_DUMP_03_CDC_2d)->EnableWindow(true);
@@ -881,6 +882,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			//		}
 			//	}
 
+
 			CString debugInfo;
 			debugInfo.AppendFormat(L"Diablo III: %ls\r\n	X: %04d     Y: %04d\r\n	W: %04d     H: %04d\r\nCursor: %ls\r\n	X : %04d     Y : %04d\r\n",
 				bufferActive,
@@ -892,6 +894,10 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				point.x,
 				point.y
 			);
+			if (current_character_type == CHARACTER_TYPE_MONK)
+			{
+				debugInfo.AppendFormat(L"Monk: %d%% spirits", d3Engine.SpiritEstimate());
+			}
 
 
 			GetDlgItem(IDC_DEBUGINFO)->SetWindowTextW(debugInfo);
@@ -1282,8 +1288,8 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 
 			flagOnMainProcess = false;
-					}
-				}
+		}
+	}
 	else if (autoTimerID == nIdEvent && IsValidLicense())
 	{
 #ifdef PREMIUM_FEATURE
@@ -1307,19 +1313,19 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 
 
 			GetDlgItem(IDC_AUTO_CAST_SKILL_FRAME)->EnableWindow(TRUE);
-			GetDlgItem(IDC_FORCESTANDTEXT)->EnableWindow(TRUE);			
+			GetDlgItem(IDC_FORCESTANDTEXT)->EnableWindow(TRUE);
 			GetDlgItem(IDC_TOWNPORTALKEY)->EnableWindow(TRUE);
 
 			GetDlgItem(IDC_AUTO_BONE_AMOR)->EnableWindow(TRUE);
 			GetDlgItem(IDC_AUTO_SIMULACRUM)->EnableWindow(TRUE);
 			GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->EnableWindow(TRUE);
 			GetDlgItem(IDC_AUTO_ARMY_OF_THE_DEAD)->EnableWindow(TRUE);
-			
+
 			GetDlgItem(IDC_AUTO_FANOFKNIVES)->EnableWindow(TRUE);
 			GetDlgItem(IDC_AUTO_COMPANION)->EnableWindow(TRUE);
 			GetDlgItem(IDC_AUTO_SMOKESCREEN)->EnableWindow(TRUE);
 			GetDlgItem(IDC_AUTO_VENGEANCE)->EnableWindow(TRUE);
-			
+
 			GetDlgItem(IDC_AUTO_SERENITY)->EnableWindow(TRUE);
 			GetDlgItem(IDC_AUTO_MANTRAOFHEALING)->EnableWindow(TRUE);
 
@@ -1371,6 +1377,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill01Enable) OnClickedSkill01Check();
+								current_character_type = CHARACTER_TYPE_NECROMANCER;
 							}
 							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsBoneArmorReady())
 							{
@@ -1390,6 +1397,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill02Enable) OnClickedSkill02Check();
+								current_character_type = CHARACTER_TYPE_NECROMANCER;
 							}
 							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsBoneArmorReady())
 							{
@@ -1409,6 +1417,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								//cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill03Enable) OnClickedSkill03Check();
+								current_character_type = CHARACTER_TYPE_NECROMANCER;
 							}
 							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsBoneArmorReady())
 							{
@@ -1428,6 +1437,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								//cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill04Enable) OnClickedSkill04Check();
+								current_character_type = CHARACTER_TYPE_NECROMANCER;
 							}
 						}
 						if (d3Config.autoSimulacrumEnable)
@@ -1457,6 +1467,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill01Enable) OnClickedSkill01Check();
+								current_character_type = CHARACTER_TYPE_NECROMANCER;
 							}
 							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsSimulacrumReady())
 							{
@@ -1476,6 +1487,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill02Enable) OnClickedSkill02Check();
+								current_character_type = CHARACTER_TYPE_NECROMANCER;
 							}
 							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsSimulacrumReady())
 							{
@@ -1495,6 +1507,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								//cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill03Enable) OnClickedSkill03Check();
+								current_character_type = CHARACTER_TYPE_NECROMANCER;
 							}
 							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsSimulacrumReady())
 							{
@@ -1514,6 +1527,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								//cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill04Enable) OnClickedSkill04Check();
+								current_character_type = CHARACTER_TYPE_NECROMANCER;
 							}
 						}
 						if (d3Config.autoCommandSkeletonsEnable)
@@ -1543,6 +1557,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill01Enable) OnClickedSkill01Check();
+								current_character_type = CHARACTER_TYPE_NECROMANCER;
 							}
 							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsCommandSkeletonsReady())
 							{
@@ -1562,6 +1577,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill02Enable) OnClickedSkill02Check();
+								current_character_type = CHARACTER_TYPE_NECROMANCER;
 							}
 							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsCommandSkeletonsReady())
 							{
@@ -1581,6 +1597,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								//cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill03Enable) OnClickedSkill03Check();
+								current_character_type = CHARACTER_TYPE_NECROMANCER;
 							}
 							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsCommandSkeletonsReady())
 							{
@@ -1600,6 +1617,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								//cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill04Enable) OnClickedSkill04Check();
+								current_character_type = CHARACTER_TYPE_NECROMANCER;
 							}
 						}
 						if (d3Config.autoArmyOfTheDeadEnable)
@@ -1629,6 +1647,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill01Enable) OnClickedSkill01Check();
+								current_character_type = CHARACTER_TYPE_NECROMANCER;
 							}
 							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsArmyOfTheDeadReady())
 							{
@@ -1648,6 +1667,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill02Enable) OnClickedSkill02Check();
+								current_character_type = CHARACTER_TYPE_NECROMANCER;
 							}
 							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsArmyOfTheDeadReady())
 							{
@@ -1667,6 +1687,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								//cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill03Enable) OnClickedSkill03Check();
+								current_character_type = CHARACTER_TYPE_NECROMANCER;
 							}
 							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsArmyOfTheDeadReady())
 							{
@@ -1686,6 +1707,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								//cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill04Enable) OnClickedSkill04Check();
+								current_character_type = CHARACTER_TYPE_NECROMANCER;
 							}
 						}
 					}
@@ -1718,6 +1740,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill01Enable) OnClickedSkill01Check();
+								current_character_type = CHARACTER_TYPE_DEMON_HUNTER;
 							}
 							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsFanOfKnivesReady())
 							{
@@ -1737,6 +1760,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill02Enable) OnClickedSkill02Check();
+								current_character_type = CHARACTER_TYPE_DEMON_HUNTER;
 							}
 							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsFanOfKnivesReady())
 							{
@@ -1756,6 +1780,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								//cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill03Enable) OnClickedSkill03Check();
+								current_character_type = CHARACTER_TYPE_DEMON_HUNTER;
 							}
 							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsFanOfKnivesReady())
 							{
@@ -1775,6 +1800,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								//cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill04Enable) OnClickedSkill04Check();
+								current_character_type = CHARACTER_TYPE_DEMON_HUNTER;
 							}
 						}
 						if (d3Config.autoCompanionEnable)
@@ -1804,6 +1830,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill01Enable) OnClickedSkill01Check();
+								current_character_type = CHARACTER_TYPE_DEMON_HUNTER;
 							}
 							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsCompanionReady())
 							{
@@ -1823,6 +1850,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill02Enable) OnClickedSkill02Check();
+								current_character_type = CHARACTER_TYPE_DEMON_HUNTER;
 							}
 							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsCompanionReady())
 							{
@@ -1842,6 +1870,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								//cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill03Enable) OnClickedSkill03Check();
+								current_character_type = CHARACTER_TYPE_DEMON_HUNTER;
 							}
 							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsCompanionReady())
 							{
@@ -1861,6 +1890,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								//cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill04Enable) OnClickedSkill04Check();
+								current_character_type = CHARACTER_TYPE_DEMON_HUNTER;
 							}
 						}
 						if (d3Config.autoSmokeScreenEnable)
@@ -1890,6 +1920,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill01Enable) OnClickedSkill01Check();
+								current_character_type = CHARACTER_TYPE_DEMON_HUNTER;
 							}
 							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsSmokeScreenReady())
 							{
@@ -1909,6 +1940,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill02Enable) OnClickedSkill02Check();
+								current_character_type = CHARACTER_TYPE_DEMON_HUNTER;
 							}
 							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsSmokeScreenReady())
 							{
@@ -1928,6 +1960,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								//cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill03Enable) OnClickedSkill03Check();
+								current_character_type = CHARACTER_TYPE_DEMON_HUNTER;
 							}
 							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsSmokeScreenReady())
 							{
@@ -1947,6 +1980,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								//cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill04Enable) OnClickedSkill04Check();
+								current_character_type = CHARACTER_TYPE_DEMON_HUNTER;
 							}
 						}
 						if (d3Config.autoVengeanceEnable)
@@ -1976,6 +2010,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill01Enable) OnClickedSkill01Check();
+								current_character_type = CHARACTER_TYPE_DEMON_HUNTER;
 							}
 							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsVengeanceReady())
 							{
@@ -1995,6 +2030,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill02Enable) OnClickedSkill02Check();
+								current_character_type = CHARACTER_TYPE_DEMON_HUNTER;
 							}
 							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsVengeanceReady())
 							{
@@ -2014,6 +2050,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								//cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill03Enable) OnClickedSkill03Check();
+								current_character_type = CHARACTER_TYPE_DEMON_HUNTER;
 							}
 							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsVengeanceReady())
 							{
@@ -2033,6 +2070,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								//cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill04Enable) OnClickedSkill04Check();
+								current_character_type = CHARACTER_TYPE_DEMON_HUNTER;
 							}
 						}
 					}
@@ -2067,6 +2105,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill01Enable) OnClickedSkill01Check();
+								current_character_type = CHARACTER_TYPE_MONK;
 							}
 							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsSerenityReady())
 							{
@@ -2086,6 +2125,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill02Enable) OnClickedSkill02Check();
+								current_character_type = CHARACTER_TYPE_MONK;
 							}
 							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsSerenityReady())
 							{
@@ -2105,6 +2145,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								//cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill03Enable) OnClickedSkill03Check();
+								current_character_type = CHARACTER_TYPE_MONK;
 							}
 							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsSerenityReady())
 							{
@@ -2124,6 +2165,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								//cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill04Enable) OnClickedSkill04Check();
+								current_character_type = CHARACTER_TYPE_MONK;
 							}
 						}
 						if (d3Config.autoMantraOfHealingEnable)
@@ -2153,6 +2195,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill01Enable) OnClickedSkill01Check();
+								current_character_type = CHARACTER_TYPE_MONK;
 							}
 							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsMantraOfHealingReady())
 							{
@@ -2172,6 +2215,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill02Enable) OnClickedSkill02Check();
+								current_character_type = CHARACTER_TYPE_MONK;
 							}
 							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsMantraOfHealingReady())
 							{
@@ -2191,8 +2235,9 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								//cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill03Enable) OnClickedSkill03Check();
+								current_character_type = CHARACTER_TYPE_MONK;
 							}
-							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsMantraOfHealingReady())
+							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsMantraOfHealingReady() && d3Engine.SpiritEstimate() > 50)
 							{
 								SendD3Key(d3Config.keySKill04);
 								GetDlgItem(IDC_AUTO_MANTRAOFHEALING)->SetWindowTextW(CString(L"Auto Mantra of Healing - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
@@ -2210,6 +2255,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 								//cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 								if (d3Config.skill04Enable) OnClickedSkill04Check();
+								current_character_type = CHARACTER_TYPE_MONK;
 							}
 						}
 					}
@@ -2228,7 +2274,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 				/* Auto Reroll support                                                  */
 				/************************************************************************/
 				if (IsD3WindowActive() && enableRerollSupport
-					&& (!( flagOnF2 ||  flagOnCtrl5 || flagOnCtrl6 || flagOnCtrl9 || flagOnAutoProcess))
+					&& (!(flagOnF2 || flagOnCtrl5 || flagOnCtrl6 || flagOnCtrl9 || flagOnAutoProcess))
 					&& d3Engine.IsRolling())
 				{
 					d3Engine.CaptureDesktop();
@@ -2311,7 +2357,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 		GetDlgItem(IDC_ENABLE_REROLL_SUPPORT)->EnableWindow(false);
 #endif // !PREMIUM_FEATURE
 	}
-			}
+}
 void CDiabloIIISupportDlg::OnLoadConfig()
 {
 	CFile loadFile;
@@ -2331,8 +2377,8 @@ void CDiabloIIISupportDlg::OnLoadConfig()
 			ValidateD3Config();
 			OnSaveConfig();
 		}
+	}
 }
-		}
 void CDiabloIIISupportDlg::OnSaveConfig()
 {
 	CFile saveFile;

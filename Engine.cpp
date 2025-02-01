@@ -173,7 +173,7 @@ void		QuangBTDumpScreen(void)
 
 		//d3Engine.DumpSkill01();
 		//d3Engine.DumpSkill02();
-		d3Engine.DumpSkill03();
+		//d3Engine.DumpSkill03();
 		//d3Engine.DumpSkill04();
 
 	//d3Engine.DumpRollOption01();
@@ -322,6 +322,7 @@ bool				IsD3WindowActive(void);
 #ifdef PREMIUM_FEATURE
 #include "../DiabloIIICore/Game/Battle"
 #include "../DiabloIIICore/Game/Potion"
+#include "../DiabloIIICore/Game/Spirit"
 #include "../DiabloIIICore/Item/Salvage"
 #include "../DiabloIIICore/Skill/Necromancer"
 #include "../DiabloIIICore/Skill/DemonHunter"
