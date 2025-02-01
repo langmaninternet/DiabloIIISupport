@@ -94,7 +94,7 @@ public:
 
 
 	afx_msg void OnClickedAutoSerenity();
-	afx_msg void OnBnClickedAutoMantraOfHealing();
+	afx_msg void OnBnClickedAutoMantraOfRetribution();
 
 	afx_msg void OnClickedAutoPotion();
 

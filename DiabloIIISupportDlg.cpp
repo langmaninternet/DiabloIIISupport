@@ -73,7 +73,7 @@ struct DiabloIIISupportConfig
 	int		autoVengeanceEnable;
 
 	int		autoSerenityEnable;
-	int		autoMantraOfHealingEnable;
+	int		autoMantraOfRetributionEnable;
 
 	int		autoPotionEnable;
 
@@ -563,7 +563,7 @@ BEGIN_MESSAGE_MAP(CDiabloIIISupportDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_AUTO_VENGEANCE, &CDiabloIIISupportDlg::OnClickedAutoVengeance)
 
 	ON_BN_CLICKED(IDC_AUTO_SERENITY, &CDiabloIIISupportDlg::OnClickedAutoSerenity)
-	ON_BN_CLICKED(IDC_AUTO_MANTRAOFHEALING, &CDiabloIIISupportDlg::OnBnClickedAutoMantraOfHealing)
+	ON_BN_CLICKED(IDC_AUTO_MANTRAOFRETRIBUTION, &CDiabloIIISupportDlg::OnBnClickedAutoMantraOfRetribution)
 
 	ON_BN_CLICKED(IDC_AUTO_POTION, &CDiabloIIISupportDlg::OnClickedAutoPotion)
 
@@ -673,7 +673,7 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 		GetDlgItem(IDC_AUTO_VENGEANCE)->EnableWindow(TRUE);
 
 		GetDlgItem(IDC_AUTO_SERENITY)->EnableWindow(TRUE);
-		GetDlgItem(IDC_AUTO_MANTRAOFHEALING)->EnableWindow(TRUE);
+		GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION)->EnableWindow(TRUE);
 
 		GetDlgItem(IDC_AUTO_POTION)->EnableWindow(TRUE);
 
@@ -700,7 +700,7 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 		GetDlgItem(IDC_AUTO_VENGEANCE)->EnableWindow(FALSE);
 
 		GetDlgItem(IDC_AUTO_SERENITY)->EnableWindow(FALSE);
-		GetDlgItem(IDC_AUTO_MANTRAOFHEALING)->EnableWindow(FALSE);
+		GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION)->EnableWindow(FALSE);
 
 		GetDlgItem(IDC_AUTO_POTION)->EnableWindow(FALSE);
 
@@ -744,7 +744,7 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 	((CButton*)GetDlgItem(IDC_AUTO_VENGEANCE))->SetCheck(d3Config.autoVengeanceEnable);
 
 	((CButton*)GetDlgItem(IDC_AUTO_SERENITY))->SetCheck(d3Config.autoSerenityEnable);
-	((CButton*)GetDlgItem(IDC_AUTO_MANTRAOFHEALING))->SetCheck(d3Config.autoMantraOfHealingEnable);
+	((CButton*)GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION))->SetCheck(d3Config.autoMantraOfRetributionEnable);
 
 	((CButton*)GetDlgItem(IDC_AUTO_POTION))->SetCheck(d3Config.autoPotionEnable);
 
@@ -1327,7 +1327,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			GetDlgItem(IDC_AUTO_VENGEANCE)->EnableWindow(TRUE);
 
 			GetDlgItem(IDC_AUTO_SERENITY)->EnableWindow(TRUE);
-			GetDlgItem(IDC_AUTO_MANTRAOFHEALING)->EnableWindow(TRUE);
+			GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION)->EnableWindow(TRUE);
 
 			GetDlgItem(IDC_AUTO_POTION)->EnableWindow(TRUE);
 
@@ -2168,7 +2168,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								current_character_type = CHARACTER_TYPE_MONK;
 							}
 						}
-						if (d3Config.autoMantraOfHealingEnable)
+						if (d3Config.autoMantraOfRetributionEnable)
 						{
 							static int cache_scan_slot_01_skip_turn = 0;
 							static int cache_scan_slot_02_skip_turn = 0;
@@ -2178,10 +2178,10 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							if (cache_scan_slot_02_skip_turn > 0) cache_scan_slot_02_skip_turn--;
 							if (cache_scan_slot_03_skip_turn > 0) cache_scan_slot_03_skip_turn--;
 							if (cache_scan_slot_04_skip_turn > 0) cache_scan_slot_04_skip_turn--;
-							if (flag_need_scan_skill_01 && cache_scan_slot_01_skip_turn == 0 && d3Engine.D3Skill01IsMantraOfHealingReady())
+							if (flag_need_scan_skill_01 && cache_scan_slot_01_skip_turn == 0 && d3Engine.D3Skill01IsMantraOfRetributionReady())
 							{
 								SendD3Key(d3Config.keySKill01);
-								GetDlgItem(IDC_AUTO_MANTRAOFHEALING)->SetWindowTextW(CString(L"Auto Mantra of Healing - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
+								GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION)->SetWindowTextW(CString(L"Auto Mantra of Retribution - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
 								flag_need_scan_skill_01 = false;
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
 								scan_barbarian_skip_turn = config_auto_skip_turn;
@@ -2197,10 +2197,10 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								if (d3Config.skill01Enable) OnClickedSkill01Check();
 								current_character_type = CHARACTER_TYPE_MONK;
 							}
-							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsMantraOfHealingReady())
+							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsMantraOfRetributionReady())
 							{
 								SendD3Key(d3Config.keySKill02);
-								GetDlgItem(IDC_AUTO_MANTRAOFHEALING)->SetWindowTextW(CString(L"Auto Mantra of Healing - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
+								GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION)->SetWindowTextW(CString(L"Auto Mantra of Retribution - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
 								flag_need_scan_skill_02 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -2217,10 +2217,10 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								if (d3Config.skill02Enable) OnClickedSkill02Check();
 								current_character_type = CHARACTER_TYPE_MONK;
 							}
-							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsMantraOfHealingReady())
+							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsMantraOfRetributionReady())
 							{
 								SendD3Key(d3Config.keySKill03);
-								GetDlgItem(IDC_AUTO_MANTRAOFHEALING)->SetWindowTextW(CString(L"Auto Mantra of Healing - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
+								GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION)->SetWindowTextW(CString(L"Auto Mantra of Retribution - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
 								flag_need_scan_skill_03 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -2237,10 +2237,10 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								if (d3Config.skill03Enable) OnClickedSkill03Check();
 								current_character_type = CHARACTER_TYPE_MONK;
 							}
-							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsMantraOfHealingReady() && d3Engine.SpiritEstimate() > 50)
+							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsMantraOfRetributionReady() && d3Engine.SpiritEstimate() > 50)
 							{
 								SendD3Key(d3Config.keySKill04);
-								GetDlgItem(IDC_AUTO_MANTRAOFHEALING)->SetWindowTextW(CString(L"Auto Mantra of Healing - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
+								GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION)->SetWindowTextW(CString(L"Auto Mantra of Retribution - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
 								flag_need_scan_skill_04 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -2812,9 +2812,9 @@ void CDiabloIIISupportDlg::OnClickedAutoSerenity()
 	d3Config.autoSerenityEnable = !d3Config.autoSerenityEnable;
 	OnSaveConfig();
 }
-void CDiabloIIISupportDlg::OnBnClickedAutoMantraOfHealing()
+void CDiabloIIISupportDlg::OnBnClickedAutoMantraOfRetribution()
 {
-	d3Config.autoMantraOfHealingEnable = !d3Config.autoMantraOfHealingEnable;
+	d3Config.autoMantraOfRetributionEnable = !d3Config.autoMantraOfRetributionEnable;
 	OnSaveConfig();
 }
 
