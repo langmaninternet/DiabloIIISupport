@@ -36,11 +36,11 @@ Secondary()>15&Health()<90%
 //
 
 
-// #1.4 Companion
+// #1.5 Companion
 // Buff
 // 50ms
 
-// #1.5 Multishot
+// #1.6 Multishot
 // Buff
 // 10000ms
 
