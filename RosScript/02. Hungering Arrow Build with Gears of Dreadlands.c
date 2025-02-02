@@ -44,7 +44,7 @@ Secondary()>15&Health()<90%
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-// #2 Hungering Arrow - Buff - Momentum|Wraps of Clarity
+// #2.1 Hungering Arrow - Buff - Momentum|Wraps of Clarity
 // 50ms
 // 	Force Recast
 //	Attack + Density + Buff
@@ -71,6 +71,29 @@ Secondary()>15&Health()<90%
 |Primary()<20
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
 
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+// #2.2 Entangling Shot - Buff - Focus
+// 50ms
+// 	Force Recast
+//	Attack + Density + Buff
+//
+//		Attack Distance: 60
+//		Distance Min: 20
+//		Distance Max: 60
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1 
+//
+//		Elite weight: 10
+//		Minion weight: 1
+//		Normal monster weight: 1
+//		Big guy weight: 10
+//		Goblin weight: 10
+//
+(IsBuffActive(0,ItemPassive_Unique_Ring_735_x1)&BuffTimeLeft(1,ItemPassive_Unique_Ring_735_x1)<2000)
+|Primary()<20
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
 
 
 
