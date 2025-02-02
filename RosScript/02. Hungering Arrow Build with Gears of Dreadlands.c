@@ -46,6 +46,7 @@ Secondary()>15&Health()<90%
 
 // #1.7 Entangling Shot
 // Attack
+//		Attack Distance: 60
 // 5000ms
 
 
