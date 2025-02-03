@@ -41,18 +41,12 @@ Secondary()>15&Health()<90%
 // 50ms
 
 
-//Strafe now casts the last non-channeled Hatred spending ability casted
-//IsBuffActive(0, P74_ItemPassive_SeasonTheme_004)  // 5 == Multishot
-//IsBuffActive(5, P74_ItemPassive_SeasonTheme_004)  // 5 == Multishot
-// #1.7 Entangling Shot
-
-
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-// #2.0 Multishot Proc Sanctified Strafe
+// #1.6 Multishot Proc Sanctified Strafe
 // 1000ms
 // 	Force Recast
-//	Attack + Density
+//	Attack + Density + Buff
 //
 //		Attack Distance: 60
 //		Distance Min: 1
@@ -69,6 +63,14 @@ Secondary()>15&Health()<90%
 //
 !IsBuffActive(5, P74_ItemPassive_SeasonTheme_004)
 
+
+
+//Strafe now casts the last non-channeled Hatred spending ability casted
+//IsBuffActive(0, P74_ItemPassive_SeasonTheme_004)  // 5 == Multishot
+//IsBuffActive(5, P74_ItemPassive_SeasonTheme_004)  // 5 == Multishot
+// #1.7 Entangling Shot
+
+1
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
