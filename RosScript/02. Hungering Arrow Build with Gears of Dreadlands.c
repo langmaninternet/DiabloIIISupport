@@ -94,34 +94,11 @@
 
 
 
-//----------------------------------------------------------------------------------------------------------------------------------------
-// #1.7 Entangling Shot - Proc Focus
-// 50ms
-// Stand still
-// Ignore position calculation
-//	Attack + Density + Buff
-//
-//		Attack Distance: 30
-//		Distance Min: 1
-//		Distance Max: 30
-//		Calculation min param: 0
-//		Calculation max param: 10
-//		Attack limit: 1 
-//
-//		Elite weight: 10
-//		Minion weight: 1
-//		Normal monster weight: 1
-//		Big guy weight: 10
-//		Goblin weight: 10
-//
-(IsBuffActive(0,ItemPassive_Unique_Ring_735_x1)&BuffTimeLeft(1,ItemPassive_Unique_Ring_735_x1)<2000)
-|Primary()<20
-//\\----------------------------------------------------------------------------------------------------------------------------------------////
 
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-// #2 Hungering Arrow - Buff - Momentum|Wraps of Clarity
+// #2.0 Hungering Arrow - Buff - Momentum|Wraps of Clarity
 // 50ms
 // 	Force Recast
 //	Attack + Density + Buff
@@ -150,6 +127,29 @@
 
 
 
+//----------------------------------------------------------------------------------------------------------------------------------------
+// #2.1 Entangling Shot - Proc Focus
+// 50ms
+// Stand still
+// Ignore position calculation
+//	Attack + Density + Buff
+//
+//		Attack Distance: 30
+//		Distance Min: 1
+//		Distance Max: 30
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1 
+//
+//		Elite weight: 10
+//		Minion weight: 1
+//		Normal monster weight: 1
+//		Big guy weight: 10
+//		Goblin weight: 10
+//
+(IsBuffActive(0,ItemPassive_Unique_Ring_735_x1)&BuffTimeLeft(1,ItemPassive_Unique_Ring_735_x1)<2000)
+|Primary()<20
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
 
 
 // #3.1 Strafe - Channeling - Attack
