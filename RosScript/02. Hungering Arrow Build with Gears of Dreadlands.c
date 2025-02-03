@@ -44,6 +44,11 @@ Secondary()>15&Health()<90%
 // Buff
 // 10000ms
 
+//Strafe now casts the last non-channeled Hatred spending ability casted
+IsBuffActive(5, P74_ItemPassive_SeasonTheme_004)  // 5 == Multishot
+IsBuffActive(5, P74_ItemPassive_SeasonTheme_004)  // 5 == Multishot
+
+
 // #1.7 Entangling Shot
 // Attack
 //		Attack Distance: 60
