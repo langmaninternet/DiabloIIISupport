@@ -40,19 +40,35 @@ Secondary()>15&Health()<90%
 // Buff
 // 50ms
 
-// #1.6 Multishot
-// Buff
-// 10000ms
 
 //Strafe now casts the last non-channeled Hatred spending ability casted
-IsBuffActive(5, P74_ItemPassive_SeasonTheme_004)  // 5 == Multishot
-IsBuffActive(5, P74_ItemPassive_SeasonTheme_004)  // 5 == Multishot
-
-
+//IsBuffActive(0, P74_ItemPassive_SeasonTheme_004)  // 5 == Multishot
+//IsBuffActive(5, P74_ItemPassive_SeasonTheme_004)  // 5 == Multishot
 // #1.7 Entangling Shot
-// Attack
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+// #2.0 Multishot Proc Sanctified Strafe
+// 1000ms
+// 	Force Recast
+//	Attack + Density
+//
 //		Attack Distance: 60
-// 5000ms
+//		Distance Min: 1
+//		Distance Max: 60
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1 
+//
+//		Elite weight: 10
+//		Minion weight: 1
+//		Normal monster weight: 1
+//		Big guy weight: 10
+//		Goblin weight: 10
+//
+!IsBuffActive(5, P74_ItemPassive_SeasonTheme_004)
+
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
