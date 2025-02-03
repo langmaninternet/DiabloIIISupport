@@ -71,7 +71,7 @@ Secondary()>15&Health()<90%
 
 //----------------------------------------------------------------------------------------------------------------------------------------
 // #1.7 Entangling Shot - Proc Focus
-// 1000ms
+// 50ms
 // Stand still
 // Ignore position calculation
 //	Attack + Density + Buff
