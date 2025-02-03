@@ -11,7 +11,6 @@
 // 50ms
 
 
-
 // #1.3 Smoke Screen
 // Buff
 // 50ms
@@ -47,7 +46,8 @@
 //Strafe now casts the last non-channeled Hatred spending ability casted
 //IsBuffActive(5, P74_ItemPassive_SeasonTheme_004)  // 5 == Multishot
 // 50ms
-// 	Force Recast
+// Stand still
+// Ignore position calculation
 //	Attack + Density + Buff
 //
 //		Attack Distance: 60
@@ -72,12 +72,13 @@
 //Strafe now casts the last non-channeled Hatred spending ability casted
 //IsBuffActive(6, P74_ItemPassive_SeasonTheme_004)  // 6 == Impale
 // 50ms
-// 	Force Recast
+// Stand still
+// Ignore position calculation
 //	Attack + Density + Buff
 //
-//		Attack Distance: 60
+//		Attack Distance: 40
 //		Distance Min: 1
-//		Distance Max: 60
+//		Distance Max: 40
 //		Calculation min param: 0
 //		Calculation max param: 10
 //		Attack limit: 1 
