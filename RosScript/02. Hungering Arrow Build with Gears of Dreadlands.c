@@ -44,6 +44,8 @@ Secondary()>15&Health()<90%
 
 //----------------------------------------------------------------------------------------------------------------------------------------
 // #1.6 Multishot Proc Sanctified Strafe
+//Strafe now casts the last non-channeled Hatred spending ability casted
+//IsBuffActive(0, P74_ItemPassive_SeasonTheme_004)  // 5 == Multishot
 // 1000ms
 // 	Force Recast
 //	Attack + Density + Buff
@@ -62,19 +64,39 @@ Secondary()>15&Health()<90%
 //		Goblin weight: 10
 //
 !IsBuffActive(5, P74_ItemPassive_SeasonTheme_004)
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
 
 
-
-//Strafe now casts the last non-channeled Hatred spending ability casted
-//IsBuffActive(0, P74_ItemPassive_SeasonTheme_004)  // 5 == Multishot
-//IsBuffActive(5, P74_ItemPassive_SeasonTheme_004)  // 5 == Multishot
-// #1.7 Entangling Shot
-
-1
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
-// #2.1 Hungering Arrow - Buff - Momentum|Wraps of Clarity
+// #1.7 Entangling Shot - Proc Focus
+// 1000ms
+// Stand still
+// Ignore position calculation
+//	Attack + Density + Buff
+//
+//		Attack Distance: 30
+//		Distance Min: 1
+//		Distance Max: 30
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1 
+//
+//		Elite weight: 10
+//		Minion weight: 1
+//		Normal monster weight: 1
+//		Big guy weight: 10
+//		Goblin weight: 10
+//
+(IsBuffActive(0,ItemPassive_Unique_Ring_735_x1)&BuffTimeLeft(1,ItemPassive_Unique_Ring_735_x1)<2000)
+|Primary()<20
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+// #2 Hungering Arrow - Buff - Momentum|Wraps of Clarity
 // 50ms
 // 	Force Recast
 //	Attack + Density + Buff
@@ -101,29 +123,6 @@ Secondary()>15&Health()<90%
 |Primary()<20
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
 
-
-//----------------------------------------------------------------------------------------------------------------------------------------
-// #2.2 Entangling Shot - Buff - Focus
-// 50ms
-// 	Force Recast
-//	Attack + Density + Buff
-//
-//		Attack Distance: 60
-//		Distance Min: 20
-//		Distance Max: 60
-//		Calculation min param: 0
-//		Calculation max param: 10
-//		Attack limit: 1 
-//
-//		Elite weight: 10
-//		Minion weight: 1
-//		Normal monster weight: 1
-//		Big guy weight: 10
-//		Goblin weight: 10
-//
-(IsBuffActive(0,ItemPassive_Unique_Ring_735_x1)&BuffTimeLeft(1,ItemPassive_Unique_Ring_735_x1)<2000)
-|Primary()<20
-//\\----------------------------------------------------------------------------------------------------------------------------------------////
 
 
 
