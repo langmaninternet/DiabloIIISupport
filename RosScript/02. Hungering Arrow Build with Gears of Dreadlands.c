@@ -9,7 +9,7 @@
 // #1.2 Shadow Power
 // Buff
 // 50ms
-Secondary()>15&Health()<90%
+
 
 
 // #1.3 Smoke Screen
