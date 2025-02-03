@@ -46,7 +46,7 @@ Secondary()>15&Health()<90%
 // #1.6 Multishot Proc Sanctified Strafe
 //Strafe now casts the last non-channeled Hatred spending ability casted
 //IsBuffActive(0, P74_ItemPassive_SeasonTheme_004)  // 5 == Multishot
-// 1000ms
+// 50ms
 // 	Force Recast
 //	Attack + Density + Buff
 //
