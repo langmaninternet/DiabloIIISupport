@@ -45,7 +45,7 @@ Secondary()>15&Health()<90%
 //----------------------------------------------------------------------------------------------------------------------------------------
 // #1.6 Multishot Proc Sanctified Strafe
 //Strafe now casts the last non-channeled Hatred spending ability casted
-//IsBuffActive(0, P74_ItemPassive_SeasonTheme_004)  // 5 == Multishot
+//IsBuffActive(5, P74_ItemPassive_SeasonTheme_004)  // 5 == Multishot
 // 50ms
 // 	Force Recast
 //	Attack + Density + Buff
@@ -66,6 +66,30 @@ Secondary()>15&Health()<90%
 !IsBuffActive(5, P74_ItemPassive_SeasonTheme_004)
 //\\----------------------------------------------------------------------------------------------------------------------------------------////
 
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+// #1.7 Impale Proc Sanctified Strafe
+//Strafe now casts the last non-channeled Hatred spending ability casted
+//IsBuffActive(6, P74_ItemPassive_SeasonTheme_004)  // 6 == Impale
+// 50ms
+// 	Force Recast
+//	Attack + Density + Buff
+//
+//		Attack Distance: 60
+//		Distance Min: 1
+//		Distance Max: 60
+//		Calculation min param: 0
+//		Calculation max param: 10
+//		Attack limit: 1 
+//
+//		Elite weight: 10
+//		Minion weight: 1
+//		Normal monster weight: 1
+//		Big guy weight: 10
+//		Goblin weight: 10
+//
+!IsBuffActive(6, P74_ItemPassive_SeasonTheme_004)
+//\\----------------------------------------------------------------------------------------------------------------------------------------////
 
 
 
