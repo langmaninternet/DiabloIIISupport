@@ -75,6 +75,9 @@ struct DiabloIIISupportConfig
 	int		autoSerenityEnable;
 	int		autoMantraOfRetributionEnable;
 
+	int		autoGargantuanEnable;
+	int		autoSummonZombieDogEnable;
+
 	int		autoPotionEnable;
 
 
@@ -565,6 +568,9 @@ BEGIN_MESSAGE_MAP(CDiabloIIISupportDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_AUTO_SERENITY, &CDiabloIIISupportDlg::OnClickedAutoSerenity)
 	ON_BN_CLICKED(IDC_AUTO_MANTRAOFRETRIBUTION, &CDiabloIIISupportDlg::OnBnClickedAutoMantraOfRetribution)
 
+	ON_BN_CLICKED(IDC_AUTO_GARGANTUAN, &CDiabloIIISupportDlg::OnClickedAutoGargantuan)
+	ON_BN_CLICKED(IDC_AUTO_SUMMONZOMBIEDOG, &CDiabloIIISupportDlg::OnClickedAutoSummonzombiedog)
+
 	ON_BN_CLICKED(IDC_AUTO_POTION, &CDiabloIIISupportDlg::OnClickedAutoPotion)
 
 	ON_EN_CHANGE(IDC_LICENSE, &CDiabloIIISupportDlg::OnChangeLicense)
@@ -675,6 +681,10 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 		GetDlgItem(IDC_AUTO_SERENITY)->EnableWindow(TRUE);
 		GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION)->EnableWindow(TRUE);
 
+		GetDlgItem(IDC_AUTO_GARGANTUAN)->EnableWindow(TRUE);
+		GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG)->EnableWindow(TRUE);
+
+
 		GetDlgItem(IDC_AUTO_POTION)->EnableWindow(TRUE);
 
 
@@ -701,6 +711,9 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 
 		GetDlgItem(IDC_AUTO_SERENITY)->EnableWindow(FALSE);
 		GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION)->EnableWindow(FALSE);
+
+		GetDlgItem(IDC_AUTO_GARGANTUAN)->EnableWindow(FALSE);
+		GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG)->EnableWindow(FALSE);
 
 		GetDlgItem(IDC_AUTO_POTION)->EnableWindow(FALSE);
 
@@ -745,6 +758,9 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 
 	((CButton*)GetDlgItem(IDC_AUTO_SERENITY))->SetCheck(d3Config.autoSerenityEnable);
 	((CButton*)GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION))->SetCheck(d3Config.autoMantraOfRetributionEnable);
+
+	((CButton*)GetDlgItem(IDC_AUTO_GARGANTUAN))->SetCheck(d3Config.autoGargantuanEnable);
+	((CButton*)GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG))->SetCheck(d3Config.autoSummonZombieDogEnable);
 
 	((CButton*)GetDlgItem(IDC_AUTO_POTION))->SetCheck(d3Config.autoPotionEnable);
 
@@ -1329,6 +1345,9 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			GetDlgItem(IDC_AUTO_SERENITY)->EnableWindow(TRUE);
 			GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION)->EnableWindow(TRUE);
 
+			GetDlgItem(IDC_AUTO_GARGANTUAN)->EnableWindow(TRUE);
+			GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG)->EnableWindow(TRUE);
+
 			GetDlgItem(IDC_AUTO_POTION)->EnableWindow(TRUE);
 
 
@@ -1363,7 +1382,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							if (flag_need_scan_skill_01 && cache_scan_slot_01_skip_turn == 0 && d3Engine.D3Skill01IsBoneArmorReady())
 							{
 								SendD3Key(d3Config.keySKill01);
-								GetDlgItem(IDC_AUTO_BONE_AMOR)->SetWindowTextW(CString(L"Auto BoneArmor - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
+								//GetDlgItem(IDC_AUTO_BONE_AMOR)->SetWindowTextW(CString(L"Auto BoneArmor - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
 								flag_need_scan_skill_01 = false;
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
 								scan_barbarian_skip_turn = config_auto_skip_turn;
@@ -1382,7 +1401,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsBoneArmorReady())
 							{
 								SendD3Key(d3Config.keySKill02);
-								GetDlgItem(IDC_AUTO_BONE_AMOR)->SetWindowTextW(CString(L"Auto BoneArmor - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
+								//GetDlgItem(IDC_AUTO_BONE_AMOR)->SetWindowTextW(CString(L"Auto BoneArmor - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
 								flag_need_scan_skill_02 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -1402,7 +1421,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsBoneArmorReady())
 							{
 								SendD3Key(d3Config.keySKill03);
-								GetDlgItem(IDC_AUTO_BONE_AMOR)->SetWindowTextW(CString(L"Auto BoneArmor - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
+								//GetDlgItem(IDC_AUTO_BONE_AMOR)->SetWindowTextW(CString(L"Auto BoneArmor - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
 								flag_need_scan_skill_03 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -1422,7 +1441,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsBoneArmorReady())
 							{
 								SendD3Key(d3Config.keySKill04);
-								GetDlgItem(IDC_AUTO_BONE_AMOR)->SetWindowTextW(CString(L"Auto BoneArmor - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
+								//GetDlgItem(IDC_AUTO_BONE_AMOR)->SetWindowTextW(CString(L"Auto BoneArmor - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
 								flag_need_scan_skill_04 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -1453,7 +1472,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							if (flag_need_scan_skill_01 && cache_scan_slot_01_skip_turn == 0 && d3Engine.D3Skill01IsSimulacrumReady())
 							{
 								SendD3Key(d3Config.keySKill01);
-								GetDlgItem(IDC_AUTO_SIMULACRUM)->SetWindowTextW(CString(L"Auto Simulacrum - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
+								//GetDlgItem(IDC_AUTO_SIMULACRUM)->SetWindowTextW(CString(L"Auto Simulacrum - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
 								flag_need_scan_skill_01 = false;
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
 								scan_barbarian_skip_turn = config_auto_skip_turn;
@@ -1472,7 +1491,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsSimulacrumReady())
 							{
 								SendD3Key(d3Config.keySKill02);
-								GetDlgItem(IDC_AUTO_SIMULACRUM)->SetWindowTextW(CString(L"Auto Simulacrum - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
+								//GetDlgItem(IDC_AUTO_SIMULACRUM)->SetWindowTextW(CString(L"Auto Simulacrum - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
 								flag_need_scan_skill_02 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -1492,7 +1511,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsSimulacrumReady())
 							{
 								SendD3Key(d3Config.keySKill03);
-								GetDlgItem(IDC_AUTO_SIMULACRUM)->SetWindowTextW(CString(L"Auto Simulacrum - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
+								//GetDlgItem(IDC_AUTO_SIMULACRUM)->SetWindowTextW(CString(L"Auto Simulacrum - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
 								flag_need_scan_skill_03 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -1512,7 +1531,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsSimulacrumReady())
 							{
 								SendD3Key(d3Config.keySKill04);
-								GetDlgItem(IDC_AUTO_SIMULACRUM)->SetWindowTextW(CString(L"Auto Simulacrum - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
+								//GetDlgItem(IDC_AUTO_SIMULACRUM)->SetWindowTextW(CString(L"Auto Simulacrum - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
 								flag_need_scan_skill_04 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -1543,7 +1562,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							if (flag_need_scan_skill_01 && cache_scan_slot_01_skip_turn == 0 && d3Engine.D3Skill01IsCommandSkeletonsReady())
 							{
 								SendD3Key(d3Config.keySKill01);
-								GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->SetWindowTextW(CString(L"Auto Command Skeletons - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
+								//GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->SetWindowTextW(CString(L"Auto Command Skeletons - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
 								flag_need_scan_skill_01 = false;
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
 								scan_barbarian_skip_turn = config_auto_skip_turn;
@@ -1562,7 +1581,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsCommandSkeletonsReady())
 							{
 								SendD3Key(d3Config.keySKill02);
-								GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->SetWindowTextW(CString(L"Auto Command Skeletons - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
+								//GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->SetWindowTextW(CString(L"Auto Command Skeletons - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
 								flag_need_scan_skill_02 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -1582,7 +1601,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsCommandSkeletonsReady())
 							{
 								SendD3Key(d3Config.keySKill03);
-								GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->SetWindowTextW(CString(L"Auto Command Skeletons - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
+								//GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->SetWindowTextW(CString(L"Auto Command Skeletons - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
 								flag_need_scan_skill_03 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -1602,7 +1621,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsCommandSkeletonsReady())
 							{
 								SendD3Key(d3Config.keySKill04);
-								GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->SetWindowTextW(CString(L"Auto Command Skeletons - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
+								//GetDlgItem(IDC_AUTO_COMMAND_SKELETONS)->SetWindowTextW(CString(L"Auto Command Skeletons - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
 								flag_need_scan_skill_04 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -1633,7 +1652,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							if (flag_need_scan_skill_01 && cache_scan_slot_01_skip_turn == 0 && d3Engine.D3Skill01IsArmyOfTheDeadReady())
 							{
 								SendD3Key(d3Config.keySKill01);
-								GetDlgItem(IDC_AUTO_ARMY_OF_THE_DEAD)->SetWindowTextW(CString(L"Auto Army of the Dead - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
+								//GetDlgItem(IDC_AUTO_ARMY_OF_THE_DEAD)->SetWindowTextW(CString(L"Auto Army of the Dead - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
 								flag_need_scan_skill_01 = false;
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
 								scan_barbarian_skip_turn = config_auto_skip_turn;
@@ -1652,7 +1671,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsArmyOfTheDeadReady())
 							{
 								SendD3Key(d3Config.keySKill02);
-								GetDlgItem(IDC_AUTO_ARMY_OF_THE_DEAD)->SetWindowTextW(CString(L"Auto Army of the Dead - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
+								//GetDlgItem(IDC_AUTO_ARMY_OF_THE_DEAD)->SetWindowTextW(CString(L"Auto Army of the Dead - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
 								flag_need_scan_skill_02 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -1672,7 +1691,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsArmyOfTheDeadReady())
 							{
 								SendD3Key(d3Config.keySKill03);
-								GetDlgItem(IDC_AUTO_ARMY_OF_THE_DEAD)->SetWindowTextW(CString(L"Auto Army of the Dead - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
+								//GetDlgItem(IDC_AUTO_ARMY_OF_THE_DEAD)->SetWindowTextW(CString(L"Auto Army of the Dead - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
 								flag_need_scan_skill_03 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -1692,7 +1711,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsArmyOfTheDeadReady())
 							{
 								SendD3Key(d3Config.keySKill04);
-								GetDlgItem(IDC_AUTO_ARMY_OF_THE_DEAD)->SetWindowTextW(CString(L"Auto Army of the Dead - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
+								//GetDlgItem(IDC_AUTO_ARMY_OF_THE_DEAD)->SetWindowTextW(CString(L"Auto Army of the Dead - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
 								flag_need_scan_skill_04 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -1726,7 +1745,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							if (flag_need_scan_skill_01 && cache_scan_slot_01_skip_turn == 0 && d3Engine.D3Skill01IsFanOfKnivesReady())
 							{
 								SendD3Key(d3Config.keySKill01);
-								GetDlgItem(IDC_AUTO_FANOFKNIVES)->SetWindowTextW(CString(L"Auto FanOfKnives - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
+								//GetDlgItem(IDC_AUTO_FANOFKNIVES)->SetWindowTextW(CString(L"Auto FanOfKnives - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
 								flag_need_scan_skill_01 = false;
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
 								scan_barbarian_skip_turn = config_auto_skip_turn;
@@ -1745,7 +1764,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsFanOfKnivesReady())
 							{
 								SendD3Key(d3Config.keySKill02);
-								GetDlgItem(IDC_AUTO_FANOFKNIVES)->SetWindowTextW(CString(L"Auto FanOfKnives - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
+								//GetDlgItem(IDC_AUTO_FANOFKNIVES)->SetWindowTextW(CString(L"Auto FanOfKnives - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
 								flag_need_scan_skill_02 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -1765,7 +1784,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsFanOfKnivesReady())
 							{
 								SendD3Key(d3Config.keySKill03);
-								GetDlgItem(IDC_AUTO_FANOFKNIVES)->SetWindowTextW(CString(L"Auto FanOfKnives - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
+								//GetDlgItem(IDC_AUTO_FANOFKNIVES)->SetWindowTextW(CString(L"Auto FanOfKnives - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
 								flag_need_scan_skill_03 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -1785,7 +1804,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsFanOfKnivesReady())
 							{
 								SendD3Key(d3Config.keySKill04);
-								GetDlgItem(IDC_AUTO_FANOFKNIVES)->SetWindowTextW(CString(L"Auto FanOfKnives - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
+								//GetDlgItem(IDC_AUTO_FANOFKNIVES)->SetWindowTextW(CString(L"Auto FanOfKnives - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
 								flag_need_scan_skill_04 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -1816,7 +1835,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							if (flag_need_scan_skill_01 && cache_scan_slot_01_skip_turn == 0 && d3Engine.D3Skill01IsCompanionReady())
 							{
 								SendD3Key(d3Config.keySKill01);
-								GetDlgItem(IDC_AUTO_COMPANION)->SetWindowTextW(CString(L"Auto Companion - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
+								//GetDlgItem(IDC_AUTO_COMPANION)->SetWindowTextW(CString(L"Auto Companion - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
 								flag_need_scan_skill_01 = false;
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
 								scan_barbarian_skip_turn = config_auto_skip_turn;
@@ -1835,7 +1854,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsCompanionReady())
 							{
 								SendD3Key(d3Config.keySKill02);
-								GetDlgItem(IDC_AUTO_COMPANION)->SetWindowTextW(CString(L"Auto Companion - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
+								//GetDlgItem(IDC_AUTO_COMPANION)->SetWindowTextW(CString(L"Auto Companion - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
 								flag_need_scan_skill_02 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -1855,7 +1874,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsCompanionReady())
 							{
 								SendD3Key(d3Config.keySKill03);
-								GetDlgItem(IDC_AUTO_COMPANION)->SetWindowTextW(CString(L"Auto Companion - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
+								//GetDlgItem(IDC_AUTO_COMPANION)->SetWindowTextW(CString(L"Auto Companion - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
 								flag_need_scan_skill_03 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -1875,7 +1894,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsCompanionReady())
 							{
 								SendD3Key(d3Config.keySKill04);
-								GetDlgItem(IDC_AUTO_COMPANION)->SetWindowTextW(CString(L"Auto Companion - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
+								//GetDlgItem(IDC_AUTO_COMPANION)->SetWindowTextW(CString(L"Auto Companion - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
 								flag_need_scan_skill_04 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -1906,7 +1925,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							if (flag_need_scan_skill_01 && cache_scan_slot_01_skip_turn == 0 && d3Engine.D3Skill01IsSmokeScreenReady())
 							{
 								SendD3Key(d3Config.keySKill01);
-								GetDlgItem(IDC_AUTO_SMOKESCREEN)->SetWindowTextW(CString(L"Auto SmokeScreen - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
+								//GetDlgItem(IDC_AUTO_SMOKESCREEN)->SetWindowTextW(CString(L"Auto SmokeScreen - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
 								flag_need_scan_skill_01 = false;
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
 								scan_barbarian_skip_turn = config_auto_skip_turn;
@@ -1925,7 +1944,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsSmokeScreenReady())
 							{
 								SendD3Key(d3Config.keySKill02);
-								GetDlgItem(IDC_AUTO_SMOKESCREEN)->SetWindowTextW(CString(L"Auto SmokeScreen - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
+								//GetDlgItem(IDC_AUTO_SMOKESCREEN)->SetWindowTextW(CString(L"Auto SmokeScreen - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
 								flag_need_scan_skill_02 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -1945,7 +1964,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsSmokeScreenReady())
 							{
 								SendD3Key(d3Config.keySKill03);
-								GetDlgItem(IDC_AUTO_SMOKESCREEN)->SetWindowTextW(CString(L"Auto SmokeScreen - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
+								//GetDlgItem(IDC_AUTO_SMOKESCREEN)->SetWindowTextW(CString(L"Auto SmokeScreen - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
 								flag_need_scan_skill_03 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -1965,7 +1984,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsSmokeScreenReady())
 							{
 								SendD3Key(d3Config.keySKill04);
-								GetDlgItem(IDC_AUTO_SMOKESCREEN)->SetWindowTextW(CString(L"Auto SmokeScreen - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
+								//GetDlgItem(IDC_AUTO_SMOKESCREEN)->SetWindowTextW(CString(L"Auto SmokeScreen - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
 								flag_need_scan_skill_04 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -1996,7 +2015,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							if (flag_need_scan_skill_01 && cache_scan_slot_01_skip_turn == 0 && d3Engine.D3Skill01IsVengeanceReady())
 							{
 								SendD3Key(d3Config.keySKill01);
-								GetDlgItem(IDC_AUTO_VENGEANCE)->SetWindowTextW(CString(L"Auto Vengeance - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
+								//GetDlgItem(IDC_AUTO_VENGEANCE)->SetWindowTextW(CString(L"Auto Vengeance - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
 								flag_need_scan_skill_01 = false;
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
 								scan_barbarian_skip_turn = config_auto_skip_turn;
@@ -2015,7 +2034,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsVengeanceReady())
 							{
 								SendD3Key(d3Config.keySKill02);
-								GetDlgItem(IDC_AUTO_VENGEANCE)->SetWindowTextW(CString(L"Auto Vengeance - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
+								//GetDlgItem(IDC_AUTO_VENGEANCE)->SetWindowTextW(CString(L"Auto Vengeance - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
 								flag_need_scan_skill_02 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -2035,7 +2054,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsVengeanceReady())
 							{
 								SendD3Key(d3Config.keySKill03);
-								GetDlgItem(IDC_AUTO_VENGEANCE)->SetWindowTextW(CString(L"Auto Vengeance - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
+								//GetDlgItem(IDC_AUTO_VENGEANCE)->SetWindowTextW(CString(L"Auto Vengeance - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
 								flag_need_scan_skill_03 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -2055,7 +2074,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsVengeanceReady())
 							{
 								SendD3Key(d3Config.keySKill04);
-								GetDlgItem(IDC_AUTO_VENGEANCE)->SetWindowTextW(CString(L"Auto Vengeance - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
+								//GetDlgItem(IDC_AUTO_VENGEANCE)->SetWindowTextW(CString(L"Auto Vengeance - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
 								flag_need_scan_skill_04 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -2074,7 +2093,6 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							}
 						}
 					}
-
 					if (scan_monk_skip_turn == 0)
 					{
 
@@ -2091,7 +2109,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							if (flag_need_scan_skill_01 && cache_scan_slot_01_skip_turn == 0 && d3Engine.D3Skill01IsSerenityReady())
 							{
 								SendD3Key(d3Config.keySKill01);
-								GetDlgItem(IDC_AUTO_SERENITY)->SetWindowTextW(CString(L"Auto Serenity - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
+								//GetDlgItem(IDC_AUTO_SERENITY)->SetWindowTextW(CString(L"Auto Serenity - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
 								flag_need_scan_skill_01 = false;
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
 								scan_barbarian_skip_turn = config_auto_skip_turn;
@@ -2110,7 +2128,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsSerenityReady())
 							{
 								SendD3Key(d3Config.keySKill02);
-								GetDlgItem(IDC_AUTO_SERENITY)->SetWindowTextW(CString(L"Auto Serenity - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
+								//GetDlgItem(IDC_AUTO_SERENITY)->SetWindowTextW(CString(L"Auto Serenity - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
 								flag_need_scan_skill_02 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -2130,7 +2148,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsSerenityReady())
 							{
 								SendD3Key(d3Config.keySKill03);
-								GetDlgItem(IDC_AUTO_SERENITY)->SetWindowTextW(CString(L"Auto Serenity - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
+								//GetDlgItem(IDC_AUTO_SERENITY)->SetWindowTextW(CString(L"Auto Serenity - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
 								flag_need_scan_skill_03 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -2150,7 +2168,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsSerenityReady())
 							{
 								SendD3Key(d3Config.keySKill04);
-								GetDlgItem(IDC_AUTO_SERENITY)->SetWindowTextW(CString(L"Auto Serenity - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
+								//GetDlgItem(IDC_AUTO_SERENITY)->SetWindowTextW(CString(L"Auto Serenity - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
 								flag_need_scan_skill_04 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -2181,7 +2199,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							if (flag_need_scan_skill_01 && cache_scan_slot_01_skip_turn == 0 && d3Engine.D3Skill01IsMantraOfRetributionReady())
 							{
 								SendD3Key(d3Config.keySKill01);
-								GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION)->SetWindowTextW(CString(L"Auto Mantra of Retribution - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
+								//GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION)->SetWindowTextW(CString(L"Auto Mantra of Retribution - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
 								flag_need_scan_skill_01 = false;
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
 								scan_barbarian_skip_turn = config_auto_skip_turn;
@@ -2200,7 +2218,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsMantraOfRetributionReady() && d3Engine.SpiritEstimate() > 50)
 							{
 								SendD3Key(d3Config.keySKill02);
-								GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION)->SetWindowTextW(CString(L"Auto Mantra of Retribution - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
+								//GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION)->SetWindowTextW(CString(L"Auto Mantra of Retribution - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
 								flag_need_scan_skill_02 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -2220,7 +2238,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsMantraOfRetributionReady() && d3Engine.SpiritEstimate() > 50)
 							{
 								SendD3Key(d3Config.keySKill03);
-								GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION)->SetWindowTextW(CString(L"Auto Mantra of Retribution - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
+								//GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION)->SetWindowTextW(CString(L"Auto Mantra of Retribution - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
 								flag_need_scan_skill_03 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -2240,7 +2258,190 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsMantraOfRetributionReady() && d3Engine.SpiritEstimate() > 50)
 							{
 								SendD3Key(d3Config.keySKill04);
-								GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION)->SetWindowTextW(CString(L"Auto Mantra of Retribution - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
+								//GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION)->SetWindowTextW(CString(L"Auto Mantra of Retribution - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
+								flag_need_scan_skill_04 = false;
+								//skip scan other character skill
+								scan_witch_doctor_skip_turn = config_auto_skip_turn;
+								scan_barbarian_skip_turn = config_auto_skip_turn;
+								scan_wizard_skip_turn = config_auto_skip_turn;
+								// scan_monk_skip_turn = config_auto_skip_turn;
+								scan_demon_hunter_skip_turn = config_auto_skip_turn;
+								scan_crusader_skip_turn = config_auto_skip_turn;
+								scan_necromancer_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+								//cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+								if (d3Config.skill04Enable) OnClickedSkill04Check();
+								current_character_type = CHARACTER_TYPE_MONK;
+							}
+						}
+					}
+					if (scan_witch_doctor_skip_turn == 0)
+					{
+						if (d3Config.autoGargantuanEnable)
+						{
+							static int cache_scan_slot_01_skip_turn = 0;
+							static int cache_scan_slot_02_skip_turn = 0;
+							static int cache_scan_slot_03_skip_turn = 0;
+							static int cache_scan_slot_04_skip_turn = 0;
+							if (cache_scan_slot_01_skip_turn > 0) cache_scan_slot_01_skip_turn--;
+							if (cache_scan_slot_02_skip_turn > 0) cache_scan_slot_02_skip_turn--;
+							if (cache_scan_slot_03_skip_turn > 0) cache_scan_slot_03_skip_turn--;
+							if (cache_scan_slot_04_skip_turn > 0) cache_scan_slot_04_skip_turn--;
+							if (flag_need_scan_skill_01 && cache_scan_slot_01_skip_turn == 0 && d3Engine.D3Skill01IsGargantuanReady())
+							{
+								SendD3Key(d3Config.keySKill01);
+								//GetDlgItem(IDC_AUTO_GARGANTUAN)->SetWindowTextW(CString(L"Auto Gargantuan - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
+								flag_need_scan_skill_01 = false;
+								scan_witch_doctor_skip_turn = config_auto_skip_turn;
+								scan_barbarian_skip_turn = config_auto_skip_turn;
+								scan_wizard_skip_turn = config_auto_skip_turn;
+								// scan_monk_skip_turn = config_auto_skip_turn;
+								scan_demon_hunter_skip_turn = config_auto_skip_turn;
+								scan_crusader_skip_turn = config_auto_skip_turn;
+								scan_necromancer_skip_turn = config_auto_skip_turn;
+								// cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+								if (d3Config.skill01Enable) OnClickedSkill01Check();
+								current_character_type = CHARACTER_TYPE_MONK;
+							}
+							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsGargantuanReady())
+							{
+								SendD3Key(d3Config.keySKill02);
+								//GetDlgItem(IDC_AUTO_GARGANTUAN)->SetWindowTextW(CString(L"Auto Gargantuan - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
+								flag_need_scan_skill_02 = false;
+								//skip scan other character skill
+								scan_witch_doctor_skip_turn = config_auto_skip_turn;
+								scan_barbarian_skip_turn = config_auto_skip_turn;
+								scan_wizard_skip_turn = config_auto_skip_turn;
+								// scan_monk_skip_turn = config_auto_skip_turn;
+								scan_demon_hunter_skip_turn = config_auto_skip_turn;
+								scan_crusader_skip_turn = config_auto_skip_turn;
+								scan_necromancer_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+								// cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+								if (d3Config.skill02Enable) OnClickedSkill02Check();
+								current_character_type = CHARACTER_TYPE_MONK;
+							}
+							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsGargantuanReady())
+							{
+								SendD3Key(d3Config.keySKill03);
+								//GetDlgItem(IDC_AUTO_GARGANTUAN)->SetWindowTextW(CString(L"Auto Gargantuan - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
+								flag_need_scan_skill_03 = false;
+								//skip scan other character skill
+								scan_witch_doctor_skip_turn = config_auto_skip_turn;
+								scan_barbarian_skip_turn = config_auto_skip_turn;
+								scan_wizard_skip_turn = config_auto_skip_turn;
+								// scan_monk_skip_turn = config_auto_skip_turn;
+								scan_demon_hunter_skip_turn = config_auto_skip_turn;
+								scan_crusader_skip_turn = config_auto_skip_turn;
+								scan_necromancer_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+								//cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+								if (d3Config.skill03Enable) OnClickedSkill03Check();
+								current_character_type = CHARACTER_TYPE_MONK;
+							}
+							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsGargantuanReady())
+							{
+								SendD3Key(d3Config.keySKill04);
+								//GetDlgItem(IDC_AUTO_GARGANTUAN)->SetWindowTextW(CString(L"Auto Gargantuan - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
+								flag_need_scan_skill_04 = false;
+								//skip scan other character skill
+								scan_witch_doctor_skip_turn = config_auto_skip_turn;
+								scan_barbarian_skip_turn = config_auto_skip_turn;
+								scan_wizard_skip_turn = config_auto_skip_turn;
+								// scan_monk_skip_turn = config_auto_skip_turn;
+								scan_demon_hunter_skip_turn = config_auto_skip_turn;
+								scan_crusader_skip_turn = config_auto_skip_turn;
+								scan_necromancer_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+								//cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+								if (d3Config.skill04Enable) OnClickedSkill04Check();
+								current_character_type = CHARACTER_TYPE_MONK;
+							}
+						}
+						if (d3Config.autoSummonZombieDogEnable)
+						{
+							static int cache_scan_slot_01_skip_turn = 0;
+							static int cache_scan_slot_02_skip_turn = 0;
+							static int cache_scan_slot_03_skip_turn = 0;
+							static int cache_scan_slot_04_skip_turn = 0;
+							if (cache_scan_slot_01_skip_turn > 0) cache_scan_slot_01_skip_turn--;
+							if (cache_scan_slot_02_skip_turn > 0) cache_scan_slot_02_skip_turn--;
+							if (cache_scan_slot_03_skip_turn > 0) cache_scan_slot_03_skip_turn--;
+							if (cache_scan_slot_04_skip_turn > 0) cache_scan_slot_04_skip_turn--;
+							if (flag_need_scan_skill_01 && cache_scan_slot_01_skip_turn == 0 && d3Engine.D3Skill01IsSummonZombieDogReady())
+							{
+								SendD3Key(d3Config.keySKill01);
+								//GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG)->SetWindowTextW(CString(L"Auto SummonZombieDog - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
+								flag_need_scan_skill_01 = false;
+								scan_witch_doctor_skip_turn = config_auto_skip_turn;
+								scan_barbarian_skip_turn = config_auto_skip_turn;
+								scan_wizard_skip_turn = config_auto_skip_turn;
+								// scan_monk_skip_turn = config_auto_skip_turn;
+								scan_demon_hunter_skip_turn = config_auto_skip_turn;
+								scan_crusader_skip_turn = config_auto_skip_turn;
+								scan_necromancer_skip_turn = config_auto_skip_turn;
+								// cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+								if (d3Config.skill01Enable) OnClickedSkill01Check();
+								current_character_type = CHARACTER_TYPE_MONK;
+							}
+							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsSummonZombieDogReady())
+							{
+								SendD3Key(d3Config.keySKill02);
+								//GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG)->SetWindowTextW(CString(L"Auto SummonZombieDog - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
+								flag_need_scan_skill_02 = false;
+								//skip scan other character skill
+								scan_witch_doctor_skip_turn = config_auto_skip_turn;
+								scan_barbarian_skip_turn = config_auto_skip_turn;
+								scan_wizard_skip_turn = config_auto_skip_turn;
+								// scan_monk_skip_turn = config_auto_skip_turn;
+								scan_demon_hunter_skip_turn = config_auto_skip_turn;
+								scan_crusader_skip_turn = config_auto_skip_turn;
+								scan_necromancer_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+								// cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+								if (d3Config.skill02Enable) OnClickedSkill02Check();
+								current_character_type = CHARACTER_TYPE_MONK;
+							}
+							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsSummonZombieDogReady())
+							{
+								SendD3Key(d3Config.keySKill03);
+								//GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG)->SetWindowTextW(CString(L"Auto SummonZombieDog - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
+								flag_need_scan_skill_03 = false;
+								//skip scan other character skill
+								scan_witch_doctor_skip_turn = config_auto_skip_turn;
+								scan_barbarian_skip_turn = config_auto_skip_turn;
+								scan_wizard_skip_turn = config_auto_skip_turn;
+								// scan_monk_skip_turn = config_auto_skip_turn;
+								scan_demon_hunter_skip_turn = config_auto_skip_turn;
+								scan_crusader_skip_turn = config_auto_skip_turn;
+								scan_necromancer_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+								//cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+								if (d3Config.skill03Enable) OnClickedSkill03Check();
+								current_character_type = CHARACTER_TYPE_MONK;
+							}
+							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsSummonZombieDogReady())
+							{
+								SendD3Key(d3Config.keySKill04);
+								//GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG)->SetWindowTextW(CString(L"Auto SummonZombieDog - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
 								flag_need_scan_skill_04 = false;
 								//skip scan other character skill
 								scan_witch_doctor_skip_turn = config_auto_skip_turn;
@@ -2260,10 +2461,17 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 						}
 					}
 
+
+
+
+
+
+
+
 					if (d3Config.autoPotionEnable)
 					{
 						SendD3Key(d3Config.keyHealing);
-						GetDlgItem(IDC_AUTO_POTION)->SetWindowTextW(CString(L"Auto Potion - Key [") + d3Config.keyHealing + L"]");
+						//GetDlgItem(IDC_AUTO_POTION)->SetWindowTextW(CString(L"Auto Potion - Key [") + d3Config.keyHealing + L"]");
 						if (d3Config.healingEnable) OnClickedHealingCheck();
 					}
 				}
@@ -2350,6 +2558,9 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			GetDlgItem(IDC_AUTO_SMOKESCREEN)->EnableWindow(false);
 			GetDlgItem(IDC_AUTO_VENGEANCE)->EnableWindow(false);
 			GetDlgItem(IDC_AUTO_SERENITY)->EnableWindow(false);
+			GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION)->EnableWindow(false);
+			GetDlgItem(IDC_AUTO_GARGANTUAN)->EnableWindow(false);
+			GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG)->EnableWindow(false);
 			GetDlgItem(IDC_AUTO_POTION)->EnableWindow(false);
 		}
 #else
@@ -2817,16 +3028,21 @@ void CDiabloIIISupportDlg::OnBnClickedAutoMantraOfRetribution()
 	d3Config.autoMantraOfRetributionEnable = !d3Config.autoMantraOfRetributionEnable;
 	OnSaveConfig();
 }
-
-
-
-
+void CDiabloIIISupportDlg::OnClickedAutoGargantuan()
+{
+	d3Config.autoGargantuanEnable = !d3Config.autoGargantuanEnable;
+	OnSaveConfig();
+}
+void CDiabloIIISupportDlg::OnClickedAutoSummonzombiedog()
+{
+	d3Config.autoSummonZombieDogEnable = !d3Config.autoSummonZombieDogEnable;
+	OnSaveConfig();
+}
 void CDiabloIIISupportDlg::OnClickedAutoPotion()
 {
 	d3Config.autoPotionEnable = !d3Config.autoPotionEnable;
 	OnSaveConfig();
 }
-
 
 
 
@@ -2854,5 +3070,6 @@ void CDiabloIIISupportDlg::OnClickedDump03Cdc2d()
 	d3Engine.Dump2DigitByCriticalHitDamageLine03(dumpvalue);
 #endif // DEBUG
 }
+
 
 

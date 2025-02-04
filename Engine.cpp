@@ -171,10 +171,10 @@ void		QuangBTDumpScreen(void)
 
 
 
-		//d3Engine.DumpSkill01();
-		//d3Engine.DumpSkill02();
-		//d3Engine.DumpSkill03();
-		//d3Engine.DumpSkill04();
+		d3Engine.DumpSkill01();
+		d3Engine.DumpSkill02();
+		d3Engine.DumpSkill03();
+		d3Engine.DumpSkill04();
 
 	//d3Engine.DumpRollOption01();
 	//d3Engine.DumpRollOption02();
@@ -327,6 +327,7 @@ bool				IsD3WindowActive(void);
 #include "../DiabloIIICore/Skill/Necromancer"
 #include "../DiabloIIICore/Skill/DemonHunter"
 #include "../DiabloIIICore/Skill/Monk"
+#include "../DiabloIIICore/Skill/WitchDoctor"
 #include "../DiabloIIICore/Roll/CriticalHit"
 #include "../DiabloIIICore/Roll/ElementDamage"
 #include "../DiabloIIICore/Roll/AttackSpeed"
