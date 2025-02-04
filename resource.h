@@ -63,13 +63,14 @@
 #define IDC_PRIMARYSKILLKEYTEXT         1057
 #define IDC_AUTO_GARGANTUAN             1057
 #define IDC_PRIMARYSKILLKEY             1058
-#define IDC_AUTO_GARGANTUAN2            1058
 #define IDC_AUTO_SUMMONZOMBIEDOG        1058
 #define IDC_SKILLKEY01                  1059
 #define IDC_SKILLKEY02                  1060
 #define IDC_SKILLKEY03                  1061
 #define IDC_SKILLKEY04                  1062
 #define IDC_HEALINGKEY                  1063
+#define IDC_AUTO_GARGANTUAN2            1064
+#define IDC_AUTO_SPIRITWALK             1064
 #define IDC_FORCESTANDTEXT              1068
 #define IDC_TOWNPORTALKEY               1069
 #define IDC_AUTO_REROLL_SUPPORT_FRAME   1090
