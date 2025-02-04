@@ -2466,7 +2466,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 								current_character_type = CHARACTER_TYPE_MONK;
 							}
 						}
-						if (d3Config.autoSummonZombieDogEnable)
+						if (d3Config.autoSummonZombieDogEnable && (!d3Engine.D3HaveFiveZombieDog())
 						{
 							static int cache_scan_slot_01_skip_turn = 0;
 							static int cache_scan_slot_02_skip_turn = 0;
