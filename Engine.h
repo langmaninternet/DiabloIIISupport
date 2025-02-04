@@ -44,8 +44,6 @@ public:
 #include "../DiabloIIICore/Skill/Necromancer.h"
 #include "../DiabloIIICore/Skill/DemonHunter.h"
 #include "../DiabloIIICore/Skill/Monk.h"
-#include "../DiabloIIICore/Skill/WitchDoctor.h"
-#include "../DiabloIIICore/Skill/WitchDoctorEx.h"
 
 #include "../DiabloIIICore/Roll/AreaDamage.h"
 #include "../DiabloIIICore/Roll/AttackSpeed.h"

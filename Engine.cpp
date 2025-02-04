@@ -183,7 +183,7 @@ void		QuangBTDumpScreen(void)
 	//CaptureInventory();
 
 	//d3Engine.DumpInventoryItemWithUnderLine();
-	d3Engine.DumpRectangle(222, 59, 228, 70);
+	d3Engine.DumpFiveZombieDog();
 
 	// item slot 01
 	//d3Engine.DumpRectangle(1407, 563, 1449, 594);
@@ -327,8 +327,6 @@ bool				IsD3WindowActive(void);
 #include "../DiabloIIICore/Skill/Necromancer"
 #include "../DiabloIIICore/Skill/DemonHunter"
 #include "../DiabloIIICore/Skill/Monk"
-#include "../DiabloIIICore/Skill/WitchDoctor"
-#include "../DiabloIIICore/Skill/WitchDoctorEx"
 #include "../DiabloIIICore/Roll/CriticalHit"
 #include "../DiabloIIICore/Roll/ElementDamage"
 #include "../DiabloIIICore/Roll/AttackSpeed"

@@ -569,9 +569,9 @@ BEGIN_MESSAGE_MAP(CDiabloIIISupportDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_AUTO_SERENITY, &CDiabloIIISupportDlg::OnClickedAutoSerenity)
 	ON_BN_CLICKED(IDC_AUTO_MANTRAOFRETRIBUTION, &CDiabloIIISupportDlg::OnBnClickedAutoMantraOfRetribution)
 
-	ON_BN_CLICKED(IDC_AUTO_GARGANTUAN, &CDiabloIIISupportDlg::OnClickedAutoGargantuan)
-	ON_BN_CLICKED(IDC_AUTO_SPIRITWALK, &CDiabloIIISupportDlg::OnClickedAutoSpiritwalk)
-	ON_BN_CLICKED(IDC_AUTO_SUMMONZOMBIEDOG, &CDiabloIIISupportDlg::OnClickedAutoSummonzombiedog)
+	//ON_BN_CLICKED(IDC_AUTO_GARGANTUAN, &CDiabloIIISupportDlg::OnClickedAutoGargantuan)
+	//ON_BN_CLICKED(IDC_AUTO_SPIRITWALK, &CDiabloIIISupportDlg::OnClickedAutoSpiritwalk)
+	//ON_BN_CLICKED(IDC_AUTO_SUMMONZOMBIEDOG, &CDiabloIIISupportDlg::OnClickedAutoSummonzombiedog)
 
 	ON_BN_CLICKED(IDC_AUTO_POTION, &CDiabloIIISupportDlg::OnClickedAutoPotion)
 
@@ -684,9 +684,9 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 		GetDlgItem(IDC_AUTO_SERENITY)->EnableWindow(TRUE);
 		GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION)->EnableWindow(TRUE);
 
-		GetDlgItem(IDC_AUTO_GARGANTUAN)->EnableWindow(TRUE);
-		GetDlgItem(IDC_AUTO_SPIRITWALK)->EnableWindow(TRUE);
-		GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG)->EnableWindow(TRUE);
+		//GetDlgItem(IDC_AUTO_GARGANTUAN)->EnableWindow(TRUE);
+		//GetDlgItem(IDC_AUTO_SPIRITWALK)->EnableWindow(TRUE);
+		//GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG)->EnableWindow(TRUE);
 
 
 		GetDlgItem(IDC_AUTO_POTION)->EnableWindow(TRUE);
@@ -716,9 +716,9 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 		GetDlgItem(IDC_AUTO_SERENITY)->EnableWindow(FALSE);
 		GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION)->EnableWindow(FALSE);
 
-		GetDlgItem(IDC_AUTO_GARGANTUAN)->EnableWindow(FALSE);
-		GetDlgItem(IDC_AUTO_SPIRITWALK)->EnableWindow(FALSE);
-		GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG)->EnableWindow(FALSE);
+		//GetDlgItem(IDC_AUTO_GARGANTUAN)->EnableWindow(FALSE);
+		//GetDlgItem(IDC_AUTO_SPIRITWALK)->EnableWindow(FALSE);
+		//GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG)->EnableWindow(FALSE);
 
 		GetDlgItem(IDC_AUTO_POTION)->EnableWindow(FALSE);
 
@@ -764,9 +764,9 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 	((CButton*)GetDlgItem(IDC_AUTO_SERENITY))->SetCheck(d3Config.autoSerenityEnable);
 	((CButton*)GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION))->SetCheck(d3Config.autoMantraOfRetributionEnable);
 
-	((CButton*)GetDlgItem(IDC_AUTO_GARGANTUAN))->SetCheck(d3Config.autoGargantuanEnable);
-	((CButton*)GetDlgItem(IDC_AUTO_SPIRITWALK))->SetCheck(d3Config.autoSpiritWalkEnable);
-	((CButton*)GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG))->SetCheck(d3Config.autoSummonZombieDogEnable);
+	//((CButton*)GetDlgItem(IDC_AUTO_GARGANTUAN))->SetCheck(d3Config.autoGargantuanEnable);
+	//((CButton*)GetDlgItem(IDC_AUTO_SPIRITWALK))->SetCheck(d3Config.autoSpiritWalkEnable);
+	//((CButton*)GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG))->SetCheck(d3Config.autoSummonZombieDogEnable);
 
 	((CButton*)GetDlgItem(IDC_AUTO_POTION))->SetCheck(d3Config.autoPotionEnable);
 
@@ -1351,9 +1351,9 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			GetDlgItem(IDC_AUTO_SERENITY)->EnableWindow(TRUE);
 			GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION)->EnableWindow(TRUE);
 
-			GetDlgItem(IDC_AUTO_GARGANTUAN)->EnableWindow(TRUE);
-			GetDlgItem(IDC_AUTO_SPIRITWALK)->EnableWindow(TRUE);
-			GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG)->EnableWindow(TRUE);
+			//GetDlgItem(IDC_AUTO_GARGANTUAN)->EnableWindow(TRUE);
+			//GetDlgItem(IDC_AUTO_SPIRITWALK)->EnableWindow(TRUE);
+			//GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG)->EnableWindow(TRUE);
 
 			GetDlgItem(IDC_AUTO_POTION)->EnableWindow(TRUE);
 
@@ -2284,279 +2284,279 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							}
 						}
 					}
-					if (scan_witch_doctor_skip_turn == 0)
-					{
-						if (d3Config.autoGargantuanEnable)
-						{
-							static int cache_scan_slot_01_skip_turn = 0;
-							static int cache_scan_slot_02_skip_turn = 0;
-							static int cache_scan_slot_03_skip_turn = 0;
-							static int cache_scan_slot_04_skip_turn = 0;
-							if (cache_scan_slot_01_skip_turn > 0) cache_scan_slot_01_skip_turn--;
-							if (cache_scan_slot_02_skip_turn > 0) cache_scan_slot_02_skip_turn--;
-							if (cache_scan_slot_03_skip_turn > 0) cache_scan_slot_03_skip_turn--;
-							if (cache_scan_slot_04_skip_turn > 0) cache_scan_slot_04_skip_turn--;
-							if (flag_need_scan_skill_01 && cache_scan_slot_01_skip_turn == 0 && d3Engine.D3Skill01IsGargantuanReady())
-							{
-								SendD3Key(d3Config.keySKill01);
-								//GetDlgItem(IDC_AUTO_GARGANTUAN)->SetWindowTextW(CString(L"Auto Gargantuan - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
-								flag_need_scan_skill_01 = false;
-								scan_witch_doctor_skip_turn = config_auto_skip_turn;
-								scan_barbarian_skip_turn = config_auto_skip_turn;
-								scan_wizard_skip_turn = config_auto_skip_turn;
-								// scan_monk_skip_turn = config_auto_skip_turn;
-								scan_demon_hunter_skip_turn = config_auto_skip_turn;
-								scan_crusader_skip_turn = config_auto_skip_turn;
-								scan_necromancer_skip_turn = config_auto_skip_turn;
-								// cache_scan_slot_01_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
-								if (d3Config.skill01Enable) OnClickedSkill01Check();
-								current_character_type = CHARACTER_TYPE_MONK;
-							}
-							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsGargantuanReady())
-							{
-								SendD3Key(d3Config.keySKill02);
-								//GetDlgItem(IDC_AUTO_GARGANTUAN)->SetWindowTextW(CString(L"Auto Gargantuan - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
-								flag_need_scan_skill_02 = false;
-								//skip scan other character skill
-								scan_witch_doctor_skip_turn = config_auto_skip_turn;
-								scan_barbarian_skip_turn = config_auto_skip_turn;
-								scan_wizard_skip_turn = config_auto_skip_turn;
-								// scan_monk_skip_turn = config_auto_skip_turn;
-								scan_demon_hunter_skip_turn = config_auto_skip_turn;
-								scan_crusader_skip_turn = config_auto_skip_turn;
-								scan_necromancer_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
-								// cache_scan_slot_02_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
-								if (d3Config.skill02Enable) OnClickedSkill02Check();
-								current_character_type = CHARACTER_TYPE_MONK;
-							}
-							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsGargantuanReady())
-							{
-								SendD3Key(d3Config.keySKill03);
-								//GetDlgItem(IDC_AUTO_GARGANTUAN)->SetWindowTextW(CString(L"Auto Gargantuan - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
-								flag_need_scan_skill_03 = false;
-								//skip scan other character skill
-								scan_witch_doctor_skip_turn = config_auto_skip_turn;
-								scan_barbarian_skip_turn = config_auto_skip_turn;
-								scan_wizard_skip_turn = config_auto_skip_turn;
-								// scan_monk_skip_turn = config_auto_skip_turn;
-								scan_demon_hunter_skip_turn = config_auto_skip_turn;
-								scan_crusader_skip_turn = config_auto_skip_turn;
-								scan_necromancer_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
-								//cache_scan_slot_03_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
-								if (d3Config.skill03Enable) OnClickedSkill03Check();
-								current_character_type = CHARACTER_TYPE_MONK;
-							}
-							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsGargantuanReady())
-							{
-								SendD3Key(d3Config.keySKill04);
-								//GetDlgItem(IDC_AUTO_GARGANTUAN)->SetWindowTextW(CString(L"Auto Gargantuan - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
-								flag_need_scan_skill_04 = false;
-								//skip scan other character skill
-								scan_witch_doctor_skip_turn = config_auto_skip_turn;
-								scan_barbarian_skip_turn = config_auto_skip_turn;
-								scan_wizard_skip_turn = config_auto_skip_turn;
-								// scan_monk_skip_turn = config_auto_skip_turn;
-								scan_demon_hunter_skip_turn = config_auto_skip_turn;
-								scan_crusader_skip_turn = config_auto_skip_turn;
-								scan_necromancer_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
-								//cache_scan_slot_04_skip_turn = config_auto_skip_turn;
-								if (d3Config.skill04Enable) OnClickedSkill04Check();
-								current_character_type = CHARACTER_TYPE_MONK;
-							}
-						}
-						if (d3Config.autoSpiritWalkEnable)
-						{
-							static int cache_scan_slot_01_skip_turn = 0;
-							static int cache_scan_slot_02_skip_turn = 0;
-							static int cache_scan_slot_03_skip_turn = 0;
-							static int cache_scan_slot_04_skip_turn = 0;
-							if (cache_scan_slot_01_skip_turn > 0) cache_scan_slot_01_skip_turn--;
-							if (cache_scan_slot_02_skip_turn > 0) cache_scan_slot_02_skip_turn--;
-							if (cache_scan_slot_03_skip_turn > 0) cache_scan_slot_03_skip_turn--;
-							if (cache_scan_slot_04_skip_turn > 0) cache_scan_slot_04_skip_turn--;
-							if (flag_need_scan_skill_01 && cache_scan_slot_01_skip_turn == 0 && d3Engine.D3Skill01IsSpiritWalkReady())
-							{
-								SendD3Key(d3Config.keySKill01);
-								//GetDlgItem(IDC_AUTO_SPIRITWALK)->SetWindowTextW(CString(L"Auto SpiritWalk - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
-								flag_need_scan_skill_01 = false;
-								scan_witch_doctor_skip_turn = config_auto_skip_turn;
-								scan_barbarian_skip_turn = config_auto_skip_turn;
-								scan_wizard_skip_turn = config_auto_skip_turn;
-								// scan_monk_skip_turn = config_auto_skip_turn;
-								scan_demon_hunter_skip_turn = config_auto_skip_turn;
-								scan_crusader_skip_turn = config_auto_skip_turn;
-								scan_necromancer_skip_turn = config_auto_skip_turn;
-								// cache_scan_slot_01_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
-								if (d3Config.skill01Enable) OnClickedSkill01Check();
-								current_character_type = CHARACTER_TYPE_MONK;
-							}
-							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsSpiritWalkReady())
-							{
-								SendD3Key(d3Config.keySKill02);
-								//GetDlgItem(IDC_AUTO_SPIRITWALK)->SetWindowTextW(CString(L"Auto SpiritWalk - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
-								flag_need_scan_skill_02 = false;
-								//skip scan other character skill
-								scan_witch_doctor_skip_turn = config_auto_skip_turn;
-								scan_barbarian_skip_turn = config_auto_skip_turn;
-								scan_wizard_skip_turn = config_auto_skip_turn;
-								// scan_monk_skip_turn = config_auto_skip_turn;
-								scan_demon_hunter_skip_turn = config_auto_skip_turn;
-								scan_crusader_skip_turn = config_auto_skip_turn;
-								scan_necromancer_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
-								// cache_scan_slot_02_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
-								if (d3Config.skill02Enable) OnClickedSkill02Check();
-								current_character_type = CHARACTER_TYPE_MONK;
-							}
-							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsSpiritWalkReady())
-							{
-								SendD3Key(d3Config.keySKill03);
-								//GetDlgItem(IDC_AUTO_SPIRITWALK)->SetWindowTextW(CString(L"Auto SpiritWalk - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
-								flag_need_scan_skill_03 = false;
-								//skip scan other character skill
-								scan_witch_doctor_skip_turn = config_auto_skip_turn;
-								scan_barbarian_skip_turn = config_auto_skip_turn;
-								scan_wizard_skip_turn = config_auto_skip_turn;
-								// scan_monk_skip_turn = config_auto_skip_turn;
-								scan_demon_hunter_skip_turn = config_auto_skip_turn;
-								scan_crusader_skip_turn = config_auto_skip_turn;
-								scan_necromancer_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
-								//cache_scan_slot_03_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
-								if (d3Config.skill03Enable) OnClickedSkill03Check();
-								current_character_type = CHARACTER_TYPE_MONK;
-							}
-							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsSpiritWalkReady())
-							{
-								SendD3Key(d3Config.keySKill04);
-								//GetDlgItem(IDC_AUTO_SPIRITWALK)->SetWindowTextW(CString(L"Auto SpiritWalk - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
-								flag_need_scan_skill_04 = false;
-								//skip scan other character skill
-								scan_witch_doctor_skip_turn = config_auto_skip_turn;
-								scan_barbarian_skip_turn = config_auto_skip_turn;
-								scan_wizard_skip_turn = config_auto_skip_turn;
-								// scan_monk_skip_turn = config_auto_skip_turn;
-								scan_demon_hunter_skip_turn = config_auto_skip_turn;
-								scan_crusader_skip_turn = config_auto_skip_turn;
-								scan_necromancer_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
-								//cache_scan_slot_04_skip_turn = config_auto_skip_turn;
-								if (d3Config.skill04Enable) OnClickedSkill04Check();
-								current_character_type = CHARACTER_TYPE_MONK;
-							}
-						}
-						if (d3Config.autoSummonZombieDogEnable && (!d3Engine.D3HaveFiveZombieDog())
-						{
-							static int cache_scan_slot_01_skip_turn = 0;
-							static int cache_scan_slot_02_skip_turn = 0;
-							static int cache_scan_slot_03_skip_turn = 0;
-							static int cache_scan_slot_04_skip_turn = 0;
-							if (cache_scan_slot_01_skip_turn > 0) cache_scan_slot_01_skip_turn--;
-							if (cache_scan_slot_02_skip_turn > 0) cache_scan_slot_02_skip_turn--;
-							if (cache_scan_slot_03_skip_turn > 0) cache_scan_slot_03_skip_turn--;
-							if (cache_scan_slot_04_skip_turn > 0) cache_scan_slot_04_skip_turn--;
-							if (flag_need_scan_skill_01 && cache_scan_slot_01_skip_turn == 0 && d3Engine.D3Skill01IsSummonZombieDogReady())
-							{
-								SendD3Key(d3Config.keySKill01);
-								//GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG)->SetWindowTextW(CString(L"Auto SummonZombieDog - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
-								flag_need_scan_skill_01 = false;
-								scan_witch_doctor_skip_turn = config_auto_skip_turn;
-								scan_barbarian_skip_turn = config_auto_skip_turn;
-								scan_wizard_skip_turn = config_auto_skip_turn;
-								// scan_monk_skip_turn = config_auto_skip_turn;
-								scan_demon_hunter_skip_turn = config_auto_skip_turn;
-								scan_crusader_skip_turn = config_auto_skip_turn;
-								scan_necromancer_skip_turn = config_auto_skip_turn;
-								// cache_scan_slot_01_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
-								if (d3Config.skill01Enable) OnClickedSkill01Check();
-								current_character_type = CHARACTER_TYPE_MONK;
-							}
-							else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsSummonZombieDogReady())
-							{
-								SendD3Key(d3Config.keySKill02);
-								//GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG)->SetWindowTextW(CString(L"Auto SummonZombieDog - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
-								flag_need_scan_skill_02 = false;
-								//skip scan other character skill
-								scan_witch_doctor_skip_turn = config_auto_skip_turn;
-								scan_barbarian_skip_turn = config_auto_skip_turn;
-								scan_wizard_skip_turn = config_auto_skip_turn;
-								// scan_monk_skip_turn = config_auto_skip_turn;
-								scan_demon_hunter_skip_turn = config_auto_skip_turn;
-								scan_crusader_skip_turn = config_auto_skip_turn;
-								scan_necromancer_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
-								// cache_scan_slot_02_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
-								if (d3Config.skill02Enable) OnClickedSkill02Check();
-								current_character_type = CHARACTER_TYPE_MONK;
-							}
-							else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsSummonZombieDogReady())
-							{
-								SendD3Key(d3Config.keySKill03);
-								//GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG)->SetWindowTextW(CString(L"Auto SummonZombieDog - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
-								flag_need_scan_skill_03 = false;
-								//skip scan other character skill
-								scan_witch_doctor_skip_turn = config_auto_skip_turn;
-								scan_barbarian_skip_turn = config_auto_skip_turn;
-								scan_wizard_skip_turn = config_auto_skip_turn;
-								// scan_monk_skip_turn = config_auto_skip_turn;
-								scan_demon_hunter_skip_turn = config_auto_skip_turn;
-								scan_crusader_skip_turn = config_auto_skip_turn;
-								scan_necromancer_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
-								//cache_scan_slot_03_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_04_skip_turn = config_auto_skip_turn;
-								if (d3Config.skill03Enable) OnClickedSkill03Check();
-								current_character_type = CHARACTER_TYPE_MONK;
-							}
-							else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsSummonZombieDogReady())
-							{
-								SendD3Key(d3Config.keySKill04);
-								//GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG)->SetWindowTextW(CString(L"Auto SummonZombieDog - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
-								flag_need_scan_skill_04 = false;
-								//skip scan other character skill
-								scan_witch_doctor_skip_turn = config_auto_skip_turn;
-								scan_barbarian_skip_turn = config_auto_skip_turn;
-								scan_wizard_skip_turn = config_auto_skip_turn;
-								// scan_monk_skip_turn = config_auto_skip_turn;
-								scan_demon_hunter_skip_turn = config_auto_skip_turn;
-								scan_crusader_skip_turn = config_auto_skip_turn;
-								scan_necromancer_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_01_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_02_skip_turn = config_auto_skip_turn;
-								cache_scan_slot_03_skip_turn = config_auto_skip_turn;
-								//cache_scan_slot_04_skip_turn = config_auto_skip_turn;
-								if (d3Config.skill04Enable) OnClickedSkill04Check();
-								current_character_type = CHARACTER_TYPE_MONK;
-							}
-						}
-					}
+					//			if (scan_witch_doctor_skip_turn == 0)
+					//			{
+					//				if (d3Config.autoGargantuanEnable)
+					//				{
+					//					static int cache_scan_slot_01_skip_turn = 0;
+					//					static int cache_scan_slot_02_skip_turn = 0;
+					//					static int cache_scan_slot_03_skip_turn = 0;
+					//					static int cache_scan_slot_04_skip_turn = 0;
+					//					if (cache_scan_slot_01_skip_turn > 0) cache_scan_slot_01_skip_turn--;
+					//					if (cache_scan_slot_02_skip_turn > 0) cache_scan_slot_02_skip_turn--;
+					//					if (cache_scan_slot_03_skip_turn > 0) cache_scan_slot_03_skip_turn--;
+					//					if (cache_scan_slot_04_skip_turn > 0) cache_scan_slot_04_skip_turn--;
+					//					if (flag_need_scan_skill_01 && cache_scan_slot_01_skip_turn == 0 && d3Engine.D3Skill01IsGargantuanReady())
+					//					{
+					//						SendD3Key(d3Config.keySKill01);
+					//						//GetDlgItem(IDC_AUTO_GARGANTUAN)->SetWindowTextW(CString(L"Auto Gargantuan - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
+					//						flag_need_scan_skill_01 = false;
+					//						scan_witch_doctor_skip_turn = config_auto_skip_turn;
+					//						scan_barbarian_skip_turn = config_auto_skip_turn;
+					//						scan_wizard_skip_turn = config_auto_skip_turn;
+					//						// scan_monk_skip_turn = config_auto_skip_turn;
+					//						scan_demon_hunter_skip_turn = config_auto_skip_turn;
+					//						scan_crusader_skip_turn = config_auto_skip_turn;
+					//						scan_necromancer_skip_turn = config_auto_skip_turn;
+					//						// cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+					//						if (d3Config.skill01Enable) OnClickedSkill01Check();
+					//						current_character_type = CHARACTER_TYPE_MONK;
+					//					}
+					//					else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsGargantuanReady())
+					//					{
+					//						SendD3Key(d3Config.keySKill02);
+					//						//GetDlgItem(IDC_AUTO_GARGANTUAN)->SetWindowTextW(CString(L"Auto Gargantuan - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
+					//						flag_need_scan_skill_02 = false;
+					//						//skip scan other character skill
+					//						scan_witch_doctor_skip_turn = config_auto_skip_turn;
+					//						scan_barbarian_skip_turn = config_auto_skip_turn;
+					//						scan_wizard_skip_turn = config_auto_skip_turn;
+					//						// scan_monk_skip_turn = config_auto_skip_turn;
+					//						scan_demon_hunter_skip_turn = config_auto_skip_turn;
+					//						scan_crusader_skip_turn = config_auto_skip_turn;
+					//						scan_necromancer_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+					//						// cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+					//						if (d3Config.skill02Enable) OnClickedSkill02Check();
+					//						current_character_type = CHARACTER_TYPE_MONK;
+					//					}
+					//					else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsGargantuanReady())
+					//					{
+					//						SendD3Key(d3Config.keySKill03);
+					//						//GetDlgItem(IDC_AUTO_GARGANTUAN)->SetWindowTextW(CString(L"Auto Gargantuan - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
+					//						flag_need_scan_skill_03 = false;
+					//						//skip scan other character skill
+					//						scan_witch_doctor_skip_turn = config_auto_skip_turn;
+					//						scan_barbarian_skip_turn = config_auto_skip_turn;
+					//						scan_wizard_skip_turn = config_auto_skip_turn;
+					//						// scan_monk_skip_turn = config_auto_skip_turn;
+					//						scan_demon_hunter_skip_turn = config_auto_skip_turn;
+					//						scan_crusader_skip_turn = config_auto_skip_turn;
+					//						scan_necromancer_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+					//						//cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+					//						if (d3Config.skill03Enable) OnClickedSkill03Check();
+					//						current_character_type = CHARACTER_TYPE_MONK;
+					//					}
+					//					else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsGargantuanReady())
+					//					{
+					//						SendD3Key(d3Config.keySKill04);
+					//						//GetDlgItem(IDC_AUTO_GARGANTUAN)->SetWindowTextW(CString(L"Auto Gargantuan - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
+					//						flag_need_scan_skill_04 = false;
+					//						//skip scan other character skill
+					//						scan_witch_doctor_skip_turn = config_auto_skip_turn;
+					//						scan_barbarian_skip_turn = config_auto_skip_turn;
+					//						scan_wizard_skip_turn = config_auto_skip_turn;
+					//						// scan_monk_skip_turn = config_auto_skip_turn;
+					//						scan_demon_hunter_skip_turn = config_auto_skip_turn;
+					//						scan_crusader_skip_turn = config_auto_skip_turn;
+					//						scan_necromancer_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+					//						//cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+					//						if (d3Config.skill04Enable) OnClickedSkill04Check();
+					//						current_character_type = CHARACTER_TYPE_MONK;
+					//					}
+					//				}
+					//				if (d3Config.autoSpiritWalkEnable)
+					//				{
+					//					static int cache_scan_slot_01_skip_turn = 0;
+					//					static int cache_scan_slot_02_skip_turn = 0;
+					//					static int cache_scan_slot_03_skip_turn = 0;
+					//					static int cache_scan_slot_04_skip_turn = 0;
+					//					if (cache_scan_slot_01_skip_turn > 0) cache_scan_slot_01_skip_turn--;
+					//					if (cache_scan_slot_02_skip_turn > 0) cache_scan_slot_02_skip_turn--;
+					//					if (cache_scan_slot_03_skip_turn > 0) cache_scan_slot_03_skip_turn--;
+					//					if (cache_scan_slot_04_skip_turn > 0) cache_scan_slot_04_skip_turn--;
+					//					if (flag_need_scan_skill_01 && cache_scan_slot_01_skip_turn == 0 && d3Engine.D3Skill01IsSpiritWalkReady())
+					//					{
+					//						SendD3Key(d3Config.keySKill01);
+					//						//GetDlgItem(IDC_AUTO_SPIRITWALK)->SetWindowTextW(CString(L"Auto SpiritWalk - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
+					//						flag_need_scan_skill_01 = false;
+					//						scan_witch_doctor_skip_turn = config_auto_skip_turn;
+					//						scan_barbarian_skip_turn = config_auto_skip_turn;
+					//						scan_wizard_skip_turn = config_auto_skip_turn;
+					//						// scan_monk_skip_turn = config_auto_skip_turn;
+					//						scan_demon_hunter_skip_turn = config_auto_skip_turn;
+					//						scan_crusader_skip_turn = config_auto_skip_turn;
+					//						scan_necromancer_skip_turn = config_auto_skip_turn;
+					//						// cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+					//						if (d3Config.skill01Enable) OnClickedSkill01Check();
+					//						current_character_type = CHARACTER_TYPE_MONK;
+					//					}
+					//					else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsSpiritWalkReady())
+					//					{
+					//						SendD3Key(d3Config.keySKill02);
+					//						//GetDlgItem(IDC_AUTO_SPIRITWALK)->SetWindowTextW(CString(L"Auto SpiritWalk - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
+					//						flag_need_scan_skill_02 = false;
+					//						//skip scan other character skill
+					//						scan_witch_doctor_skip_turn = config_auto_skip_turn;
+					//						scan_barbarian_skip_turn = config_auto_skip_turn;
+					//						scan_wizard_skip_turn = config_auto_skip_turn;
+					//						// scan_monk_skip_turn = config_auto_skip_turn;
+					//						scan_demon_hunter_skip_turn = config_auto_skip_turn;
+					//						scan_crusader_skip_turn = config_auto_skip_turn;
+					//						scan_necromancer_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+					//						// cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+					//						if (d3Config.skill02Enable) OnClickedSkill02Check();
+					//						current_character_type = CHARACTER_TYPE_MONK;
+					//					}
+					//					else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsSpiritWalkReady())
+					//					{
+					//						SendD3Key(d3Config.keySKill03);
+					//						//GetDlgItem(IDC_AUTO_SPIRITWALK)->SetWindowTextW(CString(L"Auto SpiritWalk - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
+					//						flag_need_scan_skill_03 = false;
+					//						//skip scan other character skill
+					//						scan_witch_doctor_skip_turn = config_auto_skip_turn;
+					//						scan_barbarian_skip_turn = config_auto_skip_turn;
+					//						scan_wizard_skip_turn = config_auto_skip_turn;
+					//						// scan_monk_skip_turn = config_auto_skip_turn;
+					//						scan_demon_hunter_skip_turn = config_auto_skip_turn;
+					//						scan_crusader_skip_turn = config_auto_skip_turn;
+					//						scan_necromancer_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+					//						//cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+					//						if (d3Config.skill03Enable) OnClickedSkill03Check();
+					//						current_character_type = CHARACTER_TYPE_MONK;
+					//					}
+					//					else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsSpiritWalkReady())
+					//					{
+					//						SendD3Key(d3Config.keySKill04);
+					//						//GetDlgItem(IDC_AUTO_SPIRITWALK)->SetWindowTextW(CString(L"Auto SpiritWalk - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
+					//						flag_need_scan_skill_04 = false;
+					//						//skip scan other character skill
+					//						scan_witch_doctor_skip_turn = config_auto_skip_turn;
+					//						scan_barbarian_skip_turn = config_auto_skip_turn;
+					//						scan_wizard_skip_turn = config_auto_skip_turn;
+					//						// scan_monk_skip_turn = config_auto_skip_turn;
+					//						scan_demon_hunter_skip_turn = config_auto_skip_turn;
+					//						scan_crusader_skip_turn = config_auto_skip_turn;
+					//						scan_necromancer_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+					//						//cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+					//						if (d3Config.skill04Enable) OnClickedSkill04Check();
+					//						current_character_type = CHARACTER_TYPE_MONK;
+					//					}
+					//				}
+					//				if (d3Config.autoSummonZombieDogEnable && (!d3Engine.D3HaveFiveZombieDog()))
+					//				{
+					//					static int cache_scan_slot_01_skip_turn = 0;
+					//					static int cache_scan_slot_02_skip_turn = 0;
+					//					static int cache_scan_slot_03_skip_turn = 0;
+					//					static int cache_scan_slot_04_skip_turn = 0;
+					//					if (cache_scan_slot_01_skip_turn > 0) cache_scan_slot_01_skip_turn--;
+					//					if (cache_scan_slot_02_skip_turn > 0) cache_scan_slot_02_skip_turn--;
+					//					if (cache_scan_slot_03_skip_turn > 0) cache_scan_slot_03_skip_turn--;
+					//					if (cache_scan_slot_04_skip_turn > 0) cache_scan_slot_04_skip_turn--;
+					//					if (flag_need_scan_skill_01 && cache_scan_slot_01_skip_turn == 0 && d3Engine.D3Skill01IsSummonZombieDogReady())
+					//					{
+					//						SendD3Key(d3Config.keySKill01);
+					//						//GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG)->SetWindowTextW(CString(L"Auto SummonZombieDog - Skill 01 - Key [") + d3Config.keySKill01 + L"]");
+					//						flag_need_scan_skill_01 = false;
+					//						scan_witch_doctor_skip_turn = config_auto_skip_turn;
+					//						scan_barbarian_skip_turn = config_auto_skip_turn;
+					//						scan_wizard_skip_turn = config_auto_skip_turn;
+					//						// scan_monk_skip_turn = config_auto_skip_turn;
+					//						scan_demon_hunter_skip_turn = config_auto_skip_turn;
+					//						scan_crusader_skip_turn = config_auto_skip_turn;
+					//						scan_necromancer_skip_turn = config_auto_skip_turn;
+					//						// cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+					//						if (d3Config.skill01Enable) OnClickedSkill01Check();
+					//						current_character_type = CHARACTER_TYPE_MONK;
+					//					}
+					//					else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsSummonZombieDogReady())
+					//					{
+					//						SendD3Key(d3Config.keySKill02);
+					//						//GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG)->SetWindowTextW(CString(L"Auto SummonZombieDog - Skill 02 - Key [") + d3Config.keySKill02 + L"]");
+					//						flag_need_scan_skill_02 = false;
+					//						//skip scan other character skill
+					//						scan_witch_doctor_skip_turn = config_auto_skip_turn;
+					//						scan_barbarian_skip_turn = config_auto_skip_turn;
+					//						scan_wizard_skip_turn = config_auto_skip_turn;
+					//						// scan_monk_skip_turn = config_auto_skip_turn;
+					//						scan_demon_hunter_skip_turn = config_auto_skip_turn;
+					//						scan_crusader_skip_turn = config_auto_skip_turn;
+					//						scan_necromancer_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+					//						// cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+					//						if (d3Config.skill02Enable) OnClickedSkill02Check();
+					//						current_character_type = CHARACTER_TYPE_MONK;
+					//					}
+					//					else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsSummonZombieDogReady())
+					//					{
+					//						SendD3Key(d3Config.keySKill03);
+					//						//GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG)->SetWindowTextW(CString(L"Auto SummonZombieDog - Skill 03 - Key [") + d3Config.keySKill03 + L"]");
+					//						flag_need_scan_skill_03 = false;
+					//						//skip scan other character skill
+					//						scan_witch_doctor_skip_turn = config_auto_skip_turn;
+					//						scan_barbarian_skip_turn = config_auto_skip_turn;
+					//						scan_wizard_skip_turn = config_auto_skip_turn;
+					//						// scan_monk_skip_turn = config_auto_skip_turn;
+					//						scan_demon_hunter_skip_turn = config_auto_skip_turn;
+					//						scan_crusader_skip_turn = config_auto_skip_turn;
+					//						scan_necromancer_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+					//						//cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+					//						if (d3Config.skill03Enable) OnClickedSkill03Check();
+					//						current_character_type = CHARACTER_TYPE_MONK;
+					//					}
+					//					else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsSummonZombieDogReady())
+					//					{
+					//						SendD3Key(d3Config.keySKill04);
+					//						//GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG)->SetWindowTextW(CString(L"Auto SummonZombieDog - Skill 04 - Key [") + d3Config.keySKill04 + L"]");
+					//						flag_need_scan_skill_04 = false;
+					//						//skip scan other character skill
+					//						scan_witch_doctor_skip_turn = config_auto_skip_turn;
+					//						scan_barbarian_skip_turn = config_auto_skip_turn;
+					//						scan_wizard_skip_turn = config_auto_skip_turn;
+					//						// scan_monk_skip_turn = config_auto_skip_turn;
+					//						scan_demon_hunter_skip_turn = config_auto_skip_turn;
+					//						scan_crusader_skip_turn = config_auto_skip_turn;
+					//						scan_necromancer_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_01_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_02_skip_turn = config_auto_skip_turn;
+					//						cache_scan_slot_03_skip_turn = config_auto_skip_turn;
+					//						//cache_scan_slot_04_skip_turn = config_auto_skip_turn;
+					//						if (d3Config.skill04Enable) OnClickedSkill04Check();
+					//						current_character_type = CHARACTER_TYPE_MONK;
+					//					}
+					//				}
+					//			}
 
 
 
@@ -2656,9 +2656,9 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			GetDlgItem(IDC_AUTO_VENGEANCE)->EnableWindow(false);
 			GetDlgItem(IDC_AUTO_SERENITY)->EnableWindow(false);
 			GetDlgItem(IDC_AUTO_MANTRAOFRETRIBUTION)->EnableWindow(false);
-			GetDlgItem(IDC_AUTO_GARGANTUAN)->EnableWindow(false);
-			GetDlgItem(IDC_AUTO_SPIRITWALK)->EnableWindow(false);
-			GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG)->EnableWindow(false);
+			//GetDlgItem(IDC_AUTO_GARGANTUAN)->EnableWindow(false);
+			//GetDlgItem(IDC_AUTO_SPIRITWALK)->EnableWindow(false);
+			//GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG)->EnableWindow(false);
 			GetDlgItem(IDC_AUTO_POTION)->EnableWindow(false);
 		}
 #else
