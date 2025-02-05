@@ -2337,6 +2337,8 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 							}
 						}
 					}
+
+
 					//			if (scan_witch_doctor_skip_turn == 0)
 					//			{
 					//				if (d3Config.autoGargantuanEnable)
@@ -2365,7 +2367,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 					//						cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 					//						cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 					//						if (d3Config.skill01Enable) OnClickedSkill01Check();
-					//						current_character_type = CHARACTER_TYPE_MONK;
+					//						current_character_type = CHARACTER_TYPE_WITCH_DOCTOR;
 					//					}
 					//					else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsGargantuanReady())
 					//					{
@@ -2384,7 +2386,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 					//						cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 					//						cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 					//						if (d3Config.skill02Enable) OnClickedSkill02Check();
-					//						current_character_type = CHARACTER_TYPE_MONK;
+					//						current_character_type = CHARACTER_TYPE_WITCH_DOCTOR;
 					//					}
 					//					else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsGargantuanReady())
 					//					{
@@ -2403,7 +2405,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 					//						//cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 					//						cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 					//						if (d3Config.skill03Enable) OnClickedSkill03Check();
-					//						current_character_type = CHARACTER_TYPE_MONK;
+					//						current_character_type = CHARACTER_TYPE_WITCH_DOCTOR;
 					//					}
 					//					else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsGargantuanReady())
 					//					{
@@ -2422,7 +2424,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 					//						cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 					//						//cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 					//						if (d3Config.skill04Enable) OnClickedSkill04Check();
-					//						current_character_type = CHARACTER_TYPE_MONK;
+					//						current_character_type = CHARACTER_TYPE_WITCH_DOCTOR;
 					//					}
 					//				}
 					//				if (d3Config.autoSpiritWalkEnable)
@@ -2451,7 +2453,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 					//						cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 					//						cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 					//						if (d3Config.skill01Enable) OnClickedSkill01Check();
-					//						current_character_type = CHARACTER_TYPE_MONK;
+					//						current_character_type = CHARACTER_TYPE_WITCH_DOCTOR;
 					//					}
 					//					else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsSpiritWalkReady())
 					//					{
@@ -2470,7 +2472,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 					//						cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 					//						cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 					//						if (d3Config.skill02Enable) OnClickedSkill02Check();
-					//						current_character_type = CHARACTER_TYPE_MONK;
+					//						current_character_type = CHARACTER_TYPE_WITCH_DOCTOR;
 					//					}
 					//					else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsSpiritWalkReady())
 					//					{
@@ -2489,7 +2491,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 					//						//cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 					//						cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 					//						if (d3Config.skill03Enable) OnClickedSkill03Check();
-					//						current_character_type = CHARACTER_TYPE_MONK;
+					//						current_character_type = CHARACTER_TYPE_WITCH_DOCTOR;
 					//					}
 					//					else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsSpiritWalkReady())
 					//					{
@@ -2508,7 +2510,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 					//						cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 					//						//cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 					//						if (d3Config.skill04Enable) OnClickedSkill04Check();
-					//						current_character_type = CHARACTER_TYPE_MONK;
+					//						current_character_type = CHARACTER_TYPE_WITCH_DOCTOR;
 					//					}
 					//				}
 					//				if (d3Config.autoSummonZombieDogEnable && (!d3Engine.D3HaveFiveZombieDog()))
@@ -2537,7 +2539,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 					//						cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 					//						cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 					//						if (d3Config.skill01Enable) OnClickedSkill01Check();
-					//						current_character_type = CHARACTER_TYPE_MONK;
+					//						current_character_type = CHARACTER_TYPE_WITCH_DOCTOR;
 					//					}
 					//					else if (flag_need_scan_skill_02 && cache_scan_slot_02_skip_turn == 0 && d3Engine.D3Skill02IsSummonZombieDogReady())
 					//					{
@@ -2556,7 +2558,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 					//						cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 					//						cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 					//						if (d3Config.skill02Enable) OnClickedSkill02Check();
-					//						current_character_type = CHARACTER_TYPE_MONK;
+					//						current_character_type = CHARACTER_TYPE_WITCH_DOCTOR;
 					//					}
 					//					else if (flag_need_scan_skill_03 && cache_scan_slot_03_skip_turn == 0 && d3Engine.D3Skill03IsSummonZombieDogReady())
 					//					{
@@ -2575,7 +2577,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 					//						//cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 					//						cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 					//						if (d3Config.skill03Enable) OnClickedSkill03Check();
-					//						current_character_type = CHARACTER_TYPE_MONK;
+					//						current_character_type = CHARACTER_TYPE_WITCH_DOCTOR;
 					//					}
 					//					else if (flag_need_scan_skill_04 && cache_scan_slot_04_skip_turn == 0 && d3Engine.D3Skill04IsSummonZombieDogReady())
 					//					{
@@ -2594,7 +2596,7 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 					//						cache_scan_slot_03_skip_turn = config_auto_skip_turn;
 					//						//cache_scan_slot_04_skip_turn = config_auto_skip_turn;
 					//						if (d3Config.skill04Enable) OnClickedSkill04Check();
-					//						current_character_type = CHARACTER_TYPE_MONK;
+					//						current_character_type = CHARACTER_TYPE_WITCH_DOCTOR;
 					//					}
 					//				}
 					//			}
