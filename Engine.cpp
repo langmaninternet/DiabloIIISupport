@@ -171,10 +171,10 @@ void		QuangBTDumpScreen(void)
 
 
 
-		//	d3Engine.DumpSkill01();
-		//	d3Engine.DumpSkill02();
-		//	d3Engine.DumpSkill03();
-		//	d3Engine.DumpSkill04();
+			d3Engine.DumpSkill01();
+			d3Engine.DumpSkill02();
+			d3Engine.DumpSkill03();
+			d3Engine.DumpSkill04();
 
 	//d3Engine.DumpRollOption01();
 	//d3Engine.DumpRollOption02();
@@ -183,7 +183,7 @@ void		QuangBTDumpScreen(void)
 	//CaptureInventory();
 
 	//d3Engine.DumpInventoryItemWithUnderLine();
-	d3Engine.DumpFiveZombieDog();
+	//d3Engine.DumpFiveZombieDog();
 
 	// item slot 01
 	//d3Engine.DumpRectangle(1407, 563, 1449, 594);

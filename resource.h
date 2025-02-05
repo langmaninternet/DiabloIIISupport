@@ -61,8 +61,9 @@
 #define IDC_AUTO_SERENITY2              1056
 #define IDC_AUTO_MANTRAOFRETRIBUTION    1056
 #define IDC_PRIMARYSKILLKEYTEXT         1057
+#define IDC_AUTO_COMPANION2             1057
+#define IDC_AUTO_SHADOWPOWER            1057
 #define IDC_PRIMARYSKILLKEY             1058
-#define IDC_AUTO_SUMMONZOMBIEDOG        1058
 #define IDC_SKILLKEY01                  1059
 #define IDC_SKILLKEY02                  1060
 #define IDC_SKILLKEY03                  1061

@@ -108,4 +108,5 @@ public:
 	afx_msg void OnClickedAutoGargantuan();
 	afx_msg void OnClickedAutoSummonzombiedog();
 	afx_msg void OnClickedAutoSpiritwalk();
+	afx_msg void OnClickedAutoShadowpower();
 };
