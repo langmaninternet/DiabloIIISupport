@@ -1,3 +1,8 @@
+Change ???? to your windows user name folder
+
 Step 01: Copy 7325179.dat to C:\Users\????\Documents\RoS-BoT\CSkills
-Step 02: Change LastScriptUsed
+Step 02: Open C:\Users\<????>\Documents\RoS-BoT\RosBotGlobalSettings.ini
+Step 03: Change LastScriptUsed in RosBotGlobalSettings.ini
 LastScriptUsed = 7325179
+
+
