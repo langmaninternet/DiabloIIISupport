@@ -1,3 +1,6 @@
-Step 01: Copy 7325179.dat to C:\Users\????\Documents\RoS-BoT\CPickits
-Step 02: Change LastPickitUsed
+Change ???? to your windows user name foldeer
+
+Step 01: Copy 7325179.dat to C:\Users\<????>\Documents\RoS-BoT\CPickits
+Step 02: Open C:\Users\<????>\Documents\RoS-BoT\RosBotGlobalSettings.ini
+Step 02: Change LastPickitUsed in RosBotGlobalSettings.ini
 LastPickitUsed = 3653169
