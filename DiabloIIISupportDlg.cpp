@@ -752,6 +752,7 @@ BOOL		CDiabloIIISupportDlg::OnInitDialog()
 	((CButton*)GetDlgItem(IDC_SKILL03CHECK))->SetCheck(d3Config.skill03Enable);
 	((CButton*)GetDlgItem(IDC_SKILL04CHECK))->SetCheck(d3Config.skill04Enable);
 	((CButton*)GetDlgItem(IDC_HEALINGCHECK))->SetCheck(d3Config.healingEnable);
+
 	((CButton*)GetDlgItem(IDC_ENABLE_REROLL_SUPPORT))->SetCheck(enableRerollSupport);
 	GetDlgItem(IDC_REROL_SUPPORT_DETAIL)->EnableWindow(enableRerollSupport);
 
@@ -926,6 +927,10 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			{
 				debugInfo.AppendFormat(L"Monk: %d%% spirits", d3Engine.SpiritEstimate());
 			}
+			//	if (current_character_type == CHARACTER_TYPE_DEMON_HUNTER)
+			//	{
+			//		debugInfo.AppendFormat(L"Hunter: %d%% spirits", d3Engine.DisciplineEstimate());
+			//	}
 
 
 			GetDlgItem(IDC_DEBUGINFO)->SetWindowTextW(debugInfo);
@@ -2704,6 +2709,8 @@ void CDiabloIIISupportDlg::OnTimer(UINT_PTR nIdEvent)
 			//GetDlgItem(IDC_AUTO_SUMMONZOMBIEDOG)->EnableWindow(FALSE);
 			GetDlgItem(IDC_AUTO_POTION)->EnableWindow(FALSE);
 		}
+		((CButton*)GetDlgItem(IDC_ENABLE_REROLL_SUPPORT))->SetCheck(enableRerollSupport);
+		GetDlgItem(IDC_REROL_SUPPORT_DETAIL)->EnableWindow(enableRerollSupport);
 #else
 		GetDlgItem(IDC_AUTO_REROLL_SUPPORT_FRAME)->EnableWindow(FALSE);
 		GetDlgItem(IDC_ENABLE_REROLL_SUPPORT)->EnableWindow(FALSE);
