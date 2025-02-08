@@ -169,6 +169,7 @@ void		QuangBTDumpScreen(void)
 	//left     905  1006 - Half 951 1030
 	//right    970  1006 - Half 1016 1030
 
+	d3Engine.DumpRollItem();
 
 
 			//	d3Engine.DumpSkill01();
